@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdulla Al-Jabri</title>
 
-<!-- استيراد خط Tajawal للعربي -->
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -78,6 +77,30 @@ a:hover { text-decoration:underline; }
 }
 
 .center { text-align:center; margin-top:50px; color:#666; }
+
+/* BarMenu Styles */
+.barmenu { 
+  display: flex; 
+  gap: 10px; 
+  justify-content: center; 
+  margin: 30px 0; 
+  flex-wrap: wrap; 
+}
+.barmenu button {
+  padding: 10px 20px; 
+  border: 1px solid #1f1f2e; 
+  border-radius: 8px; 
+  background: #14141f; 
+  color: #e8e8f0; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: 0.2s;
+  font-family: "Tajawal", sans-serif;
+}
+.barmenu button:hover { background: #1f1f2e; }
+.barmenu button.active { background: #6ae3ff; color: #0a0a0f; border-color: #6ae3ff; }
+.panel { display: none; }
+.panel.active { display: block; }
 </style>
 </head>
 <body>
@@ -85,49 +108,127 @@ a:hover { text-decoration:underline; }
 <div class="header">
   <img src="profile.jpg" alt="Abdulla Al-Jabri">
   <h1>Abdulla Mohammed Nasser Al-Jabri</h1>
-  <h2>عبدالله محمد ناصر الجبري</h2>
+  <h2>毓亘丿丕賱賱賴 賲丨賲丿 賳丕氐乇 丕賱噩亘乇賷</h2>
   <h2>Independent Researcher in Mathematics & Theoretical Physics</h2>
-  <h2>باحث مستقل في الرياضيات والفيزياء النظرية</h2>
+  <h2>亘丕丨孬 賲爻鬲賯賱 賮賷 丕賱乇賷丕囟賷丕鬲 賵丕賱賮賷夭賷丕亍 丕賱賳馗乇賷丞</h2>
   <a href="https://github.com/Jabri-web" class="badge">Visit GitHub Profile</a>
 </div>
 
 <div class="container">
 
-<h3>Main Repositories / المستودعات الرئيسية</h3>
-<ul>
-  <li><a href="https://Jabri-web.github.io/jabri_lab/">1. jabri_lab</a> <span class="desc">- Zx function & Millennium Problems</span></li>
-  <li><a href="https://Jabri-web.github.io/Jabri_Nobble/">2. Jabri_Nobble</a> <span class="desc">- Zx_RiemannOS archive</span></li>
-  <li><a href="https://Jabri-web.github.io/Zx_RiemannOS/">3. Zx_RiemannOS</a> <span class="desc">- Riemann hypothesis framework</span></li>
-  <li><a href="https://Jabri-web.github.io/Zx_RieOS_v1.2/">4. Zx_RieOS_v1.2</a> <span class="desc">- v1.2 improved algorithms</span></li>
-  <li><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/">5. Zx_RieOS_v1.1</a> <span class="desc">- v1.1 numerical validation</span></li>
-  <li><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/">6. Zx_Mother_Function_Jabri</a> <span class="desc">- Core theory</span></li>
-  <li><a href="https://Jabri-web.github.io/Jabri_Checkout/">7. Jabri_Checkout</a> <span class="desc">- Testing scripts</span></li>
-</ul>
+<div class="barmenu">
+  <button onclick="showPanel('A')" class="active">A - 丕賱亘乇賷丿</button>
+  <button onclick="showPanel('B')">B - 丕賱鬲賵丕氐賱</button>
+  <button onclick="showPanel('C')">C - 丕賱夭賵丕乇</button>
+  <button onclick="showPanel('D')">D - 毓賳賷</button>
+</div>
 
-<h3>Published Papers with DOI</h3>
-<ul>
-  <li><a href="https://doi.org/10.5281/zenodo.20139904">Riemann Hypothesis</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20145279">P vs NP</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20148344">Yang-Mills Mass Gap</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20149618">Navier-Stokes</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20145337">Zx_RiemannOS v1.3</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20114317">Jabri Identity</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20100622">Zx_RieOS v1.2 Gold</a></li>
-  <li><a href="https://doi.org/10.5281/zenodo.20070594">Zx_RieOS v1.1</a></li>
-</ul>
+<div id="panel-A" class="panel active">
+  <h3>丕賱廿賷賲賷賱丕鬲 / Emails</h3>
+  <ul>
+    <li><a href="mailto:Jabri62018@gmail.com">Jabri62018@gmail.com</a></li>
+    <li><a href="mailto:Jabri62018jr@gmail.com">Jabri62018jr@gmail.com</a></li>
+    <li><a href="mailto:Jr62018jr@gmail.com">Jr62018jr@gmail.com</a></li>
+    <li><a href="mailto:AlJabriAbdulla23@gmail.com">AlJabriAbdulla23@gmail.com</a></li>
+    <li><a href="mailto:JabrAlJabri2025@gmail.com">JabrAlJabri2025@gmail.com</a></li>
+    <li><a href="mailto:NassimAbdulla113@gmail.com">NassimAbdulla113@gmail.com</a></li>
+  </ul>
+</div>
 
-<h3>Contact</h3>
-<ul>
-  <li><a href="https://orcid.org/0009-0001-1319-3622">ORCID: 0009-0001-1319-3622</a></li>
-  <li><a href="mailto:jabri.2018@gmail.com">jabri.2018@gmail.com</a></li>
-  <li><a href="https://Jabri-web.github.io">Website: Jabri-web.github.io</a></li>
-</ul>
+<div id="panel-B" class="panel">
+  <h3>賵爻丕卅賱 丕賱鬲賵丕氐賱 / Social Media</h3>
+  <ul>
+    <li><strong>Facebook:</strong> <a href="https://facebook.com/Jabri2026" target="_blank">Jabri2026</a>, <a href="https://facebook.com/jabri2030" target="_blank">jabri2030</a></li>
+    <li><strong>Instagram:</strong> <a href="https://instagram.com/Jabri2025" target="_blank">@Jabri2025</a></li>
+    <li><strong>Telegram:</strong> <a href="https://t.me/Jabri2025" target="_blank">@Jabri2025</a></li>
+    <li><strong>TikTok:</strong> <a href="https://tiktok.com/@jabri2025" target="_blank">@jabri2025</a></li>
+    <li><strong>WhatsApp:</strong> <a href="https://wa.me/+967773415383" target="_blank">+967 773 415 383</a></li>
+    <li><strong>YouTube:</strong> <a href="https://youtube.com/@abdullajabri-p3w" target="_blank">@abdullajabri-p3w</a></li>
+    <li><strong>Google Drive:</strong> <a href="https://drive.google.com/file/Zx_5.ipynb/view" target="_blank">Zx_5.ipynb</a></li>
+    <li><strong>Colab:</strong> <a href="https://colab.research.google.com/github/Jabri-web/Zx_RieOS_v1.1/blob/main/Zx_al.ipynb" target="_blank">Zx_al.ipynb</a></li>
+    <li><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.19963026" target="_blank">10.5281/zenodo.19963026</a></li>
+    <li><strong>GemSpace:</strong> <a href="https://links.gemspace.com/Yemen_Icon" target="_blank">Yemen_Icon</a></li>
+    <li><strong>Snapchat:</strong> <a href="https://snapchat.com/jabri2025" target="_blank">jabri2025</a></li>
+    <li><strong>GitHub Page:</strong> <a href="https://Jabri-web.github.io/" target="_blank">Jabri-web.github.io</a></li>
+  </ul>
+</div>
+
+<div id="panel-C" class="panel">
+  <h3>廿丨氐丕卅賷丕鬲 丕賱夭賵丕乇 / Visitors</h3>
+  <ul>
+    <li>毓丿丿 丕賱夭賷丕乇丕鬲: <span id="visit-counter">0</span></li>
+    <li>丕賱乇丕亘胤 丕賱丨丕賱賷: <span id="current-url"></span></li>
+    <li>丕賱賵賯鬲: <span id="current-time"></span></li>
+    <li>丕賱鬲丕乇賷禺: <span id="current-date"></span></li>
+    <li>丕賱鬲賯賷賷賲: <button onclick="vote('like')">馃憤</button> <button onclick="vote('dislike')">馃憥</button> <span id="vote-count">0</span></li>
+  </ul>
+</div>
+
+<div id="panel-D" class="panel">
+  <h3>毓賳賷 / About</h3>
+  <ul>
+    <li><a href="#">氐賵乇 丕賱賷賲賳</a></li>
+    <li><a href="#">丕賱爻賷乇丞 丕賱匕丕鬲賷丞</a></li>
+  </ul>
+  <p>亘丕丨孬 賲爻鬲賯賱 - 氐賳毓丕亍貙 丕賱賷賲賳 2026</p>
+  
+  <h3>丕賱賲爻鬲賵丿毓丕鬲 丕賱乇卅賷爻賷丞</h3>
+  <ul>
+    <li><a href="https://Jabri-web.github.io/jabri_lab/">1. jabri_lab</a> <span class="desc">- Zx function & Millennium Problems</span></li>
+    <li><a href="https://Jabri-web.github.io/Jabri_Nobble/">2. Jabri_Nobble</a> <span class="desc">- Zx_RiemannOS archive</span></li>
+    <li><a href="https://Jabri-web.github.io/Zx_RiemannOS/">3. Zx_RiemannOS</a> <span class="desc">- Riemann hypothesis framework</span></li>
+    <li><a href="https://Jabri-web.github.io/Zx_RieOS_v1.2/">4. Zx_RieOS_v1.2</a> <span class="desc">- v1.2 improved algorithms</span></li>
+    <li><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/">5. Zx_RieOS_v1.1</a> <span class="desc">- v1.1 numerical validation</span></li>
+    <li><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/">6. Zx_Mother_Function_Jabri</a> <span class="desc">- Core theory</span></li>
+    <li><a href="https://Jabri-web.github.io/Jabri_Checkout/">7. Jabri_Checkout</a> <span class="desc">- Testing scripts</span></li>
+  </ul>
+
+  <h3>丕賱兀賵乇丕賯 丕賱賲賳卮賵乇丞</h3>
+  <ul>
+    <li><a href="https://doi.org/10.5281/zenodo.20139904">Riemann Hypothesis</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20145279">P vs NP</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20148344">Yang-Mills Mass Gap</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20149618">Navier-Stokes</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20145337">Zx_RiemannOS v1.3</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20114317">Jabri Identity</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20100622">Zx_RieOS v1.2 Gold</a></li>
+    <li><a href="https://doi.org/10.5281/zenodo.20070594">Zx_RieOS v1.1</a></li>
+  </ul>
+</div>
 
 <div class="center">
   <p>CC BY 4.0 | Jabri Identity: Z + C + A = 1</p>
-  <p>From Sana'a to the Universe 🇾🇪</p>
+  <p>From Sana'a to the Universe 馃嚲馃嚜</p>
 </div>
 
 </div>
+
+<script>
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.barmenu button').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Visitor info
+document.getElementById('current-url').textContent = window.location.href;
+document.getElementById('current-time').textContent = new Date().toLocaleTimeString('ar-EG');
+document.getElementById('current-date').textContent = new Date().toLocaleDateString('ar-EG');
+
+let visits = localStorage.getItem('visits') || 0;
+visits++;
+localStorage.setItem('visits', visits);
+document.getElementById('visit-counter').textContent = visits;
+
+let votes = localStorage.getItem('votes') || 0;
+document.getElementById('vote-count').textContent = votes;
+function vote(type) {
+  votes = parseInt(votes) + (type === 'like' ? 1 : -1);
+  localStorage.setItem('votes', votes);
+  document.getElementById('vote-count').textContent = votes;
+}
+</script>
+
 </body>
 </html>
