@@ -12,8 +12,7 @@
 ![Zx Equations](Zx_Equations.png)
 ![Zx Equation Figure](Zx_Eq_figure.png)
 
-[[Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
-
+[![Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
 ---
 
 </div>
