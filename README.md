@@ -1,13 +1,13 @@
 <div align="center">
 
 # Eng. Abdulla Mohammed Nasser Al-Jabri
-### م. عبدالله محمد ناصر الجبري
+### 賲. 毓亘丿丕賱賱賴 賲丨賲丿 賳丕氐乇 丕賱噩亘乇賷
 
 **Independent Researcher in Mathematics & Theoretical Physics**  
-**باحث مستقل في الرياضيات والفيزياء النظرية**
+**亘丕丨孬 賲爻鬲賯賱 賮賷 丕賱乇賷丕囟賷丕鬲 賵丕賱賮賷夭賷丕亍 丕賱賳馗乇賷丞**
 
 **Research Focus:** Zx Function & Millennium Problems  
-**مجال البحث:** دالة Zx ومسائل الألفية
+**賲噩丕賱 丕賱亘丨孬:** 丿丕賱丞 Zx 賵賲爻丕卅賱 丕賱兀賱賮賷丞
 
 [![Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
 
@@ -15,13 +15,13 @@
 
 </div>
 
-### 📄 License / الترخيص
+### 馃搫 License / 丕賱鬲乇禺賷氐
 **CC BY 4.0** - Free to use with attribution  
 **Jabri Identity:** `Z + C + A = 1`
 
 ---
 
-## 📚 Main Repositories / المستودعات الرئيسية
+## 馃摎 Main Repositories / 丕賱賲爻鬲賵丿毓丕鬲 丕賱乇卅賷爻賷丞
 
 1. **[jabri_lab](https://Jabri-web.github.io/jabri_lab/)** - Zx function & Millennium Problems  
 2. **[Jabri_Nobble](https://Jabri-web.github.io/Jabri_Nobble/)** - Zx_RiemannOS archive  
@@ -33,7 +33,7 @@
 
 ---
 
-## 📑 Published Papers with DOI
+## 馃搼 Published Papers with DOI
 
 1. **Riemann Hypothesis** - [10.5281/zenodo.20139904](https://doi.org/10.5281/zenodo.20139904)  
 2. **P vs NP** - [10.5281/zenodo.20145279](https://doi.org/10.5281/zenodo.20145279)  
@@ -46,7 +46,7 @@
 
 ---
 
-## 🔗 Contact
+## 馃敆 Contact
 
 - **ORCID:** [0009-0001-1319-3622](https://orcid.org/0009-0001-1319-3622)  
 - **Email:** [jabri.2018@gmail.com](mailto:jabri.2018@gmail.com)  
@@ -55,5 +55,5 @@
 ---
 
 <div align="center">
-<strong>From Sana'a to the Universe / من صنعاء إلى الكون 🇾🇪</strong>
+<strong>From Sana'a to the Universe / 賲賳 氐賳毓丕亍 廿賱賶 丕賱賰賵賳 馃嚲馃嚜</strong>
 </div>
