@@ -9,7 +9,10 @@
 **Research Focus:** Zx Function & Millennium Problems  
 **مجال البحث:** دالة Zx ومسائل الألفية
 
-[![Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
+![Zx Equations](Zx_Equations.png)
+![Zx Equation Figure](Zx_Eq_figure.png)
+
+[[Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
 
 ---
 
