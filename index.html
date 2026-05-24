@@ -6,83 +6,117 @@
 <title>Sindbad Yemen</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
 <style>
-html, body { 
-  height: 100%; 
-  margin: 0; 
-  padding: 0; 
-  background: #fff; 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
 }
-body { 
-  font-family: 'Noto Naskh Arabic', Tahoma, Arial, sans-serif; 
-  color: #000; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+
+body {
+  font-family: 'Noto Naskh Arabic', Tahoma, Arial, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.container { 
-  width: 90%; 
-  max-width: 500px; 
-  text-align: center; 
+
+.header {
+  text-align: center;
+  margin-top: 20px;
 }
-h1 { 
-  font-size: 34px; 
-  margin: 0 0 10px 0; 
-  font-weight: bold; 
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 5px 0;
+  font-weight: bold;
 }
-.sub-ar { 
-  font-size: 20px; 
-  margin-bottom: 5px; 
-  font-weight: bold; 
+
+.eye {
+  font-size: 28px;
+  vertical-align: middle;
 }
-.sub-en { 
-  font-size: 16px; 
-  margin-bottom: 35px; 
-  color: #555; 
+
+.sub-ar {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
-.btn { 
-  display: block; 
-  width: 100%; 
-  margin: 14px 0; 
-  padding: 18px; 
-  background: #000; 
-  color: #fff; 
-  text-decoration: none; 
-  font-size: 18px; 
-  font-weight: bold; 
-  border-radius: 15px; 
-  box-sizing: border-box; 
-  transition: 0.2s; 
+
+.sub-en {
+  font-size: 16px;
+  margin-bottom: 35px;
+  color: #555;
 }
-.btn:hover { 
-  background: #333; 
+
+.container {
+  width: 90%;
+  max-width: 500px;
 }
-.eye { 
-  font-size: 36px; 
-  vertical-align: middle; 
+
+.btn {
+  display: block;
+  width: 100%;
+  margin: 14px 0;
+  padding: 18px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+.footer {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #000;
 }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>سندباد اليمن <span class="eye">👁️</span> <br> Yemen Sindbad</h1>
+
+<div class="header">
+  <h1><span class="eye">👁️</span> سندباد اليمن</h1>
+  <div style="font-size: 28px; margin-bottom: 10px;">Yemen Sindbad</div>
   <div class="sub-ar">م/عبدالله الجبري</div>
   <div class="sub-en">Eng. Abdulla Al-Jabri</div>
-  
-  <a class="btn" href="https://jabri-web.github.io/jabri62018.github.io/">
-    الصفحة 1: موقعي | Page 1: My Site
-  </a>
-  
-  <a class="btn" href="https://jabri-web.github.io/Zx_RieOS_v1.2/">
-    الصفحة 2: طائر اليمن | Page 2: Yemen Bird
-  </a>
-  
-  <a class="btn" href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/">
-    الصفحة 3: قواعد البيانات | Page 3: Databases
-  </a>
-  
-  <a class="btn" href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/">
-    الصفحة 4: الصفحات والبحوث | Page 4: Pages & Research
-  </a>
 </div>
+
+<div class="container">
+  <a class="btn" href="Page1.index">سندباد اليمن &nbsp;&nbsp;&nbsp; Yemen Sindbad</a>
+  <a class="btn" href="Page2.index">طائر اليمن &nbsp;&nbsp;&nbsp; Yemen Bird</a>
+  <a class="btn" href="Page3.index">عنكبوت-اليمن &nbsp;&nbsp;&nbsp; Yemen Ankaboot</a>
+  <a class="btn" href="Page4.index">صفحات وبحوث &nbsp;&nbsp;&nbsp; Pages & Researches</a>
+</div>
+
+<div class="footer">
+  <span>الوقت: <span id="time"></span></span>
+  <span>التاريخ: <span id="date"></span></span>
+</div>
+
+<script>
+function updateTime() {
+  document.getElementById('time').innerText = new Date().toLocaleTimeString('ar-SA');
+  document.getElementById('date').innerText = new Date().toLocaleDateString('ar-SA');
+}
+updateTime();
+setInterval(updateTime, 1000);
+</script>
+
 </body>
 </html>
