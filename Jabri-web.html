@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سندباد اليمن | م/ عبدالله الجبري - Yemen Sindbad</title>
+<meta name="description" content="موقع م/ عبدالله الجبري الرسمي. مشاريع سندباد اليمن، طائر اليمن، عنكبوت اليمن، وصفحات وبحوث هندسية وتقنية.">
+<meta name="keywords" content="سندباد اليمن, عبدالله الجبري, Yemen Sindbad, مشاريع هندسية, Yemen Bird, Yemen Ankaboot">
+<meta name="author" content="Abdulla Al-Jabri">
+<meta name="robots" content="index, follow">
+
+<!-- مشاركة الواتساب وتويتر -->
+<meta property="og:title" content="سندباد اليمن | م/ عبدالله الجبري">
+<meta property="og:description" content="مشاريع سندباد اليمن الهندسية والتقنية">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jabri-web.github.io/">
+<meta property="og:image" content="https://jabri-web.github.io/cover.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="سندباد اليمن | م/ عبدالله الجبري">
+<meta name="twitter:description" content="مشاريع سندباد اليمن الهندسية والتقنية">
+<meta name="twitter:image" content="https://jabri-web.github.io/cover.png">
+
+<link rel="canonical" href="https://jabri-web.github.io/">
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.container {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+.top-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.eye {
+  font-size: 28px;
+}
+h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+}
+.sub-ar {
+  font-size: 20px;
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+}
+.sub-en {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #555;
+}
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 14px 0;
+  padding: 18px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+.btn:active {
+  transform: scale(0.98);
+  background: #333;
+}
+.btn-exit {
+  background: #c62828;
+}
+.btn-exit:active {
+  background: #b71c1c;
+}
+.audio-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999;
+}
+</style>
+</head>
+<body>
+
+<button class="audio-btn" onclick="toggleAudio()">🔊</button>
+<audio id="bgAudio" loop>
+  <source src="bg-music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div class="top-line">
+    <span class="eye">👁️</span>
+    <h1>سندباد اليمن</h1>
+    <span class="eye">👁️</span>
+  </div>
+  
+  <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Yemen Sindbad</div>
+  
+  <div class="sub-ar">م/ عبدالله الجبري</div>
+  <div class="sub-en">Eng. Abdulla Al-Jabri</div>
+
+  <a class="btn" href="p1/index.html" onclick="playClick()">
+    <span>سندباد اليمن</span>
+    <span>Yemen Sindbad</span>
+  </a>
+  
+  <a class="btn" href="p2/index.html" onclick="playClick()">
+    <span>طائر اليمن</span>
+    <span>Yemen Bird</span>
+  </a>
+  
+  <a class="btn" href="p3/index.html" onclick="playClick()">
+    <span>عنكبوت اليمن</span>
+    <span>Yemen Ankaboot</span>
+  </a>
+  
+  <a class="btn" href="p4/index.html" onclick="playClick()">
+    <span>صفحات وبحوث</span>
+    <span>Pages & Researches</span>
+  </a>
+
+  <a class="btn btn-exit" href="about:blank">
+    <span>خروج</span>
+    <span>Exit</span>
+  </a>
+</div>
+
+<script>
+const audio = document.getElementById('bgAudio');
+const clickSound = new Audio('click.mp3');
+let isPlaying = false;
+
+function toggleAudio() {
+  if (isPlaying) {
+    audio.pause();
+    document.querySelector('.audio-btn').textContent = '🔇';
+  } else {
+    audio.play();
+    document.querySelector('.audio-btn').textContent = '🔊';
+  }
+  isPlaying = !isPlaying;
+}
+
+function playClick() {
+  clickSound.play();
+}
+</script>
+
+</body>
+</html>
