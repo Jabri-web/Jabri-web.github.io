@@ -8,7 +8,7 @@
 <meta name="google-site-verification" content="u6HUio_bcj-43qLkWvA1iJ0dO6yXEX93WO29i8VDGx4" />
 <style>
 :root{
-  --container-width: 500px; /* الجافا بتغيرها حسب الشاشة */
+  --container-width: 500px;
 }
 
 html, body { 
@@ -64,6 +64,23 @@ h1 {
   color: #555;
 }
 
+/* صورة الطير + النبض */
+.bird-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px auto 35px auto;
+  border: 3px solid #000;
+  display: block;
+  transition: transform 0.6s ease-in-out;
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+ 0%, 100% { transform: scale(1); }
+ 50% { transform: scale(var(--scale, 1.15)); }
+}
+
 .btn {
   display: flex;
   justify-content: space-between;
@@ -88,31 +105,69 @@ h1 {
 
 .btn-exit {
   background: #c62828;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .btn-exit:active {
   background: #b71c1c;
 }
+
+/* صندوق المعلومات التاريخ والوقت */
+.info-box {
+  margin-top: 2vh;
+  padding: 2vh;
+  background: white;
+  border-radius: 12px;
+  text-align: right;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.info-box b {
+  color: #0a3d62;
+}
 </style>
 
 <script>
-// جس نبض الشاشة عن طريق طائر اليمن
+// جس نبض الشاشة + الطير
 function adjustScreen(){
   const screenWidth = window.innerWidth;
   
-  // عرض الحاوية = الشاشة - 40px عشان الهوامش
   let containerWidth = screenWidth - 40;
-  if(containerWidth > 500) containerWidth = 500; // حد أقصى زي codepen
-  if(containerWidth < 320) containerWidth = 320; // حد أدنى
+  if(containerWidth > 500) containerWidth = 500;
+  if(containerWidth < 320) containerWidth = 320;
   
   document.documentElement.style.setProperty('--container-width', containerWidth + 'px');
+
+  // نبض الطير حسب المقاس
+  const bird = document.querySelector('.bird-img');
+  if(bird) {
+    let scale = 1.1;
+    if (screenWidth < 400) scale = 1.25;
+    else if (screenWidth < 768) scale = 1.18;
+    else scale = 1.12;
+    bird.style.setProperty('--scale', scale);
+  }
+}
+
+// التاريخ والوقت
+function updateTime(){
+  const now = new Date();
+  document.getElementById('date').innerText = now.toLocaleDateString('ar-EG');
+  document.getElementById('time').innerText = now.toLocaleTimeString('ar-EG');
 }
 
 window.onload = function() {
-  adjustScreen(); // نقرأ المقاس أول ما تفتح
+  adjustScreen();
+  updateTime();
+  setInterval(updateTime, 1000); // يتحدث كل ثانية
 }
 
-window.onresize = adjustScreen; // لو قلبت الجوال
+window.onresize = adjustScreen;
 </script>
 </head>
 <body>
@@ -128,7 +183,10 @@ window.onresize = adjustScreen; // لو قلبت الجوال
   <div class="sub-ar">م/ عبدالله الجبري</div>
   <div class="sub-en">Eng. Abdulla Al-Jabri</div>
 
-  <!-- رجعنا كل الأزرار زي codepen + زر مكتبتي -->
+  <!-- الطير بالنبض -->
+  <img src="Yemen-bird.png" alt="طائر اليمن" class="bird-img">
+
+  <!-- كل الأزرار زي CodePen -->
   <a class="btn" href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">
     <span>سندباد اليمن</span>
     <span>Yemen Sindbad</span>
@@ -154,10 +212,17 @@ window.onresize = adjustScreen; // لو قلبت الجوال
     <span>My Library</span>
   </a>
 
-  <a class="btn btn-exit" href="about:blank">
+  <button class="btn btn-exit" onclick="history.back()">
+    <span>🚪 Exit</span>
     <span>خروج</span>
-    <span>Exit</span>
-  </a>
+  </button>
+
+  <!-- التاريخ والوقت ومن نحن -->
+  <div class="info-box">
+    <b>التاريخ:</b> <span id="date">...</span><br>
+    <b>الوقت:</b> <span id="time">...</span><br>
+    <b>من نحن:</b> مكتبة اليمن الرقمية - باحث مستقل في الرياضيات والفيزياء النظرية
+  </div>
 </div>
 
 </body>
