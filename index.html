@@ -7,12 +7,17 @@
 <meta name="description" content="Independent Researcher in Mathematics & Theoretical Physics. أوراق بحثية حول فرضية ريمان، P vs NP، معادلات نافييه-ستوكس">
 <meta name="google-site-verification" content="u6HUio_bcj-43qLkWvA1iJ0dO6yXEX93WO29i8VDGx4" />
 <style>
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #fff;
+:root{
+  --container-width: 500px; /* الجافا بتغيرها حسب الشاشة */
 }
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  background: #fff; 
+}
+
 body {
   font-family: Tahoma, Arial, sans-serif;
   color: #000;
@@ -22,13 +27,15 @@ body {
   padding: 20px 0 80px 0;
   box-sizing: border-box;
   overflow-y: auto;
-  text-align: center;
 }
+
 .container {
-  width: 90%;
+  width: var(--container-width);
   max-width: 500px;
-  padding-bottom: 20px;
+  text-align: center;
+  padding: 0 20px 20px 20px;
 }
+
 .top-line {
   display: flex;
   align-items: center;
@@ -36,45 +43,25 @@ body {
   gap: 10px;
   margin-bottom: 5px;
 }
-.eye {
-  font-size: 28px;
-}
+
+.eye { font-size: 28px; }
+
 h1 {
   font-size: 28px;
   margin: 0;
   font-weight: bold;
 }
-.yemen-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+
 .sub-ar {
   font-size: 20px;
   margin: 10px 0 5px 0;
   font-weight: bold;
 }
+
 .sub-en {
   font-size: 16px;
   margin-bottom: 35px;
   color: #555;
-}
-
-/* صورة الطير + النبض */
-.bird-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 15px auto;
-  border: 3px solid #000;
-  display: block;
-  transition: transform 0.6s ease-in-out;
-  animation: pulse 2s infinite ease-in-out;
-}
-@keyframes pulse {
- 0%, 100% { transform: scale(1); }
- 50% { transform: scale(var(--scale, 1.15)); }
 }
 
 .btn {
@@ -93,24 +80,85 @@ h1 {
   box-sizing: border-box;
   transition: 0.2s;
 }
+
 .btn:active {
   transform: scale(0.98);
   background: #333;
 }
+
 .btn-exit {
   background: #c62828;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
 }
+
 .btn-exit:active {
   background: #b71c1c;
 }
 </style>
+
+<script>
+// جس نبض الشاشة عن طريق طائر اليمن
+function adjustScreen(){
+  const screenWidth = window.innerWidth;
+  
+  // عرض الحاوية = الشاشة - 40px عشان الهوامش
+  let containerWidth = screenWidth - 40;
+  if(containerWidth > 500) containerWidth = 500; // حد أقصى زي codepen
+  if(containerWidth < 320) containerWidth = 320; // حد أدنى
+  
+  document.documentElement.style.setProperty('--container-width', containerWidth + 'px');
+}
+
+window.onload = function() {
+  adjustScreen(); // نقرأ المقاس أول ما تفتح
+}
+
+window.onresize = adjustScreen; // لو قلبت الجوال
+</script>
 </head>
 <body>
 
 <div class="container">
   <div class="top-line">
     <span class="eye">👁️</span>
-    <h1>سندباد اليمن</h1
+    <h1>سندباد اليمن</h1>
+    <span class="eye">👁️</span>
+  </div>
+  
+  <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Yemen Sindbad</div>
+  <div class="sub-ar">م/ عبدالله الجبري</div>
+  <div class="sub-en">Eng. Abdulla Al-Jabri</div>
+
+  <!-- رجعنا كل الأزرار زي codepen + زر مكتبتي -->
+  <a class="btn" href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">
+    <span>سندباد اليمن</span>
+    <span>Yemen Sindbad</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank">
+    <span>طائر اليمن</span>
+    <span>Yemen Bird</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank">
+    <span>عنكبوت اليمن</span>
+    <span>Yemen Ankaboot</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/research.html" target="_blank">
+    <span>صفحات وبحوث</span>
+    <span>Pages & Researches</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Jabri-web/" target="_blank">
+    <span>مكتبتي</span>
+    <span>My Library</span>
+  </a>
+
+  <a class="btn btn-exit" href="about:blank">
+    <span>خروج</span>
+    <span>Exit</span>
+  </a>
+</div>
+
+</body>
+</html>
