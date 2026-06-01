@@ -21,17 +21,6 @@
 [![GitHub Followers](https://img.shields.io/github/followers/Jabri-web?color=green&style=for-the-badge&logo=github)](https://github.com/Jabri-web?tab=followers)
 
 ---
-<div align="center">
-
-# Eng. Abdulla Mohammed Nasser Al-Jabri
-### م. عبدالله محمد ناصر الجبري
-
-**Independent Researcher in Mathematics & Theoretical Physics**  
-**باحث مستقل في الرياضيات والفيزياء النظرية**
-
-**Research Focus:** Zx Function & Millennium Problems  
-**مجال البحث:** دالة Zx ومسائل الألفية
-
 ![Zx Equations](Zx_Equations.png)
 ![Zx Equation Figure](Zx_Eq_figure.png)
 
