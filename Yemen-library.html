@@ -1,5 +1,4 @@
-<! File=Yemen-library.html
-
+<!file= Yemen-libraru.html
 
 
 <!DOCTYPE html>
@@ -11,109 +10,137 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body{font-family:'Tajawal',sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:40px 20px}
-.container{max-width:900px;margin:auto;background:#161b22;padding:35px;border-radius:12px;border:1px solid #30363d}
-
-/* هيدر البروفايل */
+.container{max-width:1100px;margin:auto;background:#161b22;border-radius:12px;border:1px solid #30363d;padding:35px}
 .profile-header{text-align:center;margin-bottom:40px;padding-bottom:30px;border-bottom:2px solid #30363d}
 .profile-img{width:140px;height:140px;border-radius:50%;border:4px solid #6ae3ff;object-fit:cover;margin-bottom:20px;box-shadow:0 0 30px rgba(106,227,255,0.3)}
 .profile-name{color:#6ae3ff;font-size:1.8rem;font-weight:700;margin:10px 0}
-.profile-name-ar{color:#f0f6fc;font-size:1.4rem;font-weight:600;margin-bottom:15px}
-.profile-title{color:#8d96a0;font-size:1.05rem;margin:5px 0;line-height:1.8}
-.profile-focus{color:#6ae3ff;font-size:1rem;margin-top:15px;font-weight:600}
-
-h1{color:#58a6ff;text-align:center;margin-bottom:8px}
-.subtitle{color:#8d96a0;text-align:center;margin-bottom:35px;font-size:1.05rem}
-.section-title{color:#58a6ff;margin:30px 0 12px 0;font-size:1.2rem;text-align:center}
-
-/* شبكة مضبوطة 2x2 */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.card{background:#21262d;border:1px solid #30363d;border-radius:10px;padding:24px;text-decoration:none;color:#c9d1d9;transition:0.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
-.card:hover{background:#30363d;border-color:#58a6ff;transform:translateY(-4px);box-shadow:0 6px 18px rgba(88,166,255,0.15)}
-
-.badge{display:inline-block;color:#fff;padding:4px 12px;border-radius:6px;font-size:0.85rem;font-weight:700;margin-bottom:8px}
-.badge.p1{background:#1f6feb}
-.badge.p2{background:#238636}
-.badge.p3{background:#a371f7}
-.badge.p4{background:#f9826c}
-.en-title{font-weight:700;color:#58a6ff;font-size:1.2rem;display:block}
-.ar-title{color:#f0f6fc;font-size:1.1rem;margin-top:5px;display:block;font-weight:600}
-.repo-desc{font-size:0.9rem;color:#8d96a0;margin-top:8px}
+.profile-name-ar{color:#f0f6fc;font-size:1.4rem;font-weight:600;margin:8px 0}
+.profile-title{color:#8d96a0;font-size:1.05rem;margin:5px 0}
+.section-title{color:#58a6ff;text-align:center;margin:35px 0 20px;font-size:1.3rem;border-bottom:2px solid #30363d;padding-bottom:10px}
+/* شبكة 5 أعمدة */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.card{background:#21262d;border:1px solid #30363d;border-radius:10px;padding:20px;text-decoration:none;color:#c9d1d9;text-align:center;transition:0.25s;min-height:140px;display:flex;flex-direction:column;justify-content:center}
+.card:hover{background:#30363d;border-color:#58a6ff;transform:translateY(-4px)}
+.badge{display:inline-block;color:#fff;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:8px;font-size:0.85rem}
+.badge.p1{background:#1f6feb}.badge.p2{background:#238636}.badge.p3{background:#a371f7}
+.badge.p4{background:#f9826c}.badge.p5{background:#d29922}.badge.p6{background:#8957e5}
+.badge.p7{background:#e36209}.badge.p8{background:#2ea043}.badge.p9{background:#db61a2}
+.badge.p10{background:#8b949e}
+.en-title{font-weight:700;color:#58a6ff;display:block;font-size:1rem}
+.ar-title{color:#f0f6fc;display:block;font-size:0.95rem;margin-top:4px}
+.repo-desc{color:#8d96a0;font-size:0.8rem;margin-top:6px;line-height:1.4}
 .paper-list{list-style:none;padding:0}
-.paper-list li{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:14px;margin-bottom:10px;text-align:center}
+.paper-list li{background:#21262d;border:1px solid #30363d;border-radius:8px;padding:12px;margin-bottom:10px;text-align:center}
 .paper-doi{color:#58a6ff;text-decoration:none;font-size:0.9rem}
 .contact-list{list-style:none;padding:0;text-align:center}
-.contact-list li{margin-bottom:12px;color:#8d96a0}
-.contact-list a{color:#58a6ff;text-decoration:none}
+.contact-list li{margin:8px 0;color:#8d96a0}
+.contact-list a{color:#58a6ff;text-decoration:none;font-weight:600}
 .footer-text{text-align:center;margin-top:35px;color:#8d96a0;font-size:0.9rem;font-style:italic}
-@media(max-width:600px){body{padding:20px 12px}.container{padding:25px 18px}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){body{padding:20px 12px}.container{padding:25px 18px}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- الهيدر الجديد باسمك وصورتك -->
 <div class="profile-header">
-  <img src="Jabri_photo.png" alt="Eng. Abdulla Al-Jabri" class="profile-img">
-  <h1 class="profile-name">Eng. Abdulla Mohammed Nasser Al-Jabri</h1>
-  <h2 class="profile-name-ar">م. عبدالله محمد ناصر الجبري</h2>
-  <p class="profile-title">Independent Researcher in Mathematics & Theoretical Physics</p>
-  <p class="profile-title">باحث مستقل في الرياضيات والفيزياء النظرية</p>
-  <p class="profile-focus">Research Focus: Yemen Heritage & Zx Function</p>
-  <p class="profile-focus">مجال البحث: تراث اليمن ودالة Zx</p>
+<img src="Jabri_photo.png" alt="Eng. Abdulla Al-Jabri" class="profile-img">
+<h1 class="profile-name">Eng. Abdulla Mohammed Nasser Al-Jabri</h1>
+<h2 class="profile-name-ar">م. عبدالله محمد ناصر الجبري</h2>
+<p class="profile-title">Independent Researcher in Mathematics & Theoretical Physics</p>
+<p class="profile-title">باحث مستقل في الرياضيات والفيزياء النظرية</p>
+<p class="profile-title" style="color:#6ae3ff;font-weight:600">مجال البحث: تراث اليمن + دالة Zx</p>
 </div>
 
-<h2 class="section-title">Featured P1 → P4 <br> المميزة من 1 إلى 4</h2>
+<h2 class="section-title">🗄️ قواعد بيانات اليمن | Yemen Databases 1 → 10</h2>
 <div class="grid">
 
 <a href="https://jabri-web.github.io/jabri62018.github.io" class="card" target="_blank">
 <span class="badge p1">P1</span>
 <span class="en-title">Yemen Sindbad</span>
 <span class="ar-title">سندباد اليمن</span>
-<div class="repo-desc">Yemen heritage & stories <br> تراث وحكايات اليمن</div>
+<div class="repo-desc">التراث والحكايات الشعبية</div>
 </a>
 
 <a href="https://jabri-web.github.io/Zx_RieOS_v1.2" class="card" target="_blank">
 <span class="badge p2">P2</span>
-<span class="en-title">Yemen bird</span>
+<span class="en-title">Yemen Bird</span>
 <span class="ar-title">طائر اليمن</span>
-<div class="repo-desc">v1.2 improved algorithms <br> v1.2 خوارزميات محسنة</div>
+<div class="repo-desc">خوارزميات محسنة v1.2</div>
 </a>
 
 <a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri" class="card" target="_blank">
 <span class="badge p3">P3</span>
 <span class="en-title">Yemen Ankboot</span>
 <span class="ar-title">العنكبوت اليمني</span>
-<div class="repo-desc">Core theory - Mother Function <br> النظرية الأساسية - الدالة الأم</div>
+<div class="repo-desc">الدالة الأم - النظرية الأساسية</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p4">P4</span>
+<span class="en-title">Yemen Atlas</span>
+<span class="ar-title">أطلس اليمن</span>
+<div class="repo-desc">الخرائط والمواقع الجغرافية</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p5">P5</span>
+<span class="en-title">Yemen Plants</span>
+<span class="ar-title">نباتات اليمن</span>
+<div class="repo-desc">النباتات الطبية والنادرة</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p6">P6</span>
+<span class="en-title">Yemen Dialects</span>
+<span class="ar-title">لهجات اليمن</span>
+<div class="repo-desc">قاموس اللهجات المحلية</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p7">P7</span>
+<span class="en-title">Yemen Coins</span>
+<span class="ar-title">عملات اليمن</span>
+<div class="repo-desc">العملات التاريخية والقديمة</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p8">P8</span>
+<span class="en-title">Yemen Poetry</span>
+<span class="ar-title">شعر اليمن</span>
+<div class="repo-desc">ديوان الشعراء اليمنيين</div>
+</a>
+
+<a href="#" class="card" target="_blank">
+<span class="badge p9">P9</span>
+<span class="en-title">Yemen Foods</span>
+<span class="ar-title">أكلات اليمن</span>
+<div class="repo-desc">المأكولات التقليدية</div>
 </a>
 
 <a href="https://jabri-web.github.io" class="card" target="_blank">
-<span class="badge p4">P4</span>
-<span class="en-title">Pages & Researches</span>
-<span class="ar-title">الصفحات والبحوث</span>
-<div class="repo-desc">Main Hub - All projects <br> المركز الرئيسي - كل المشاريع</div>
+<span class="badge p10">P10</span>
+<span class="en-title">Pages Hub</span>
+<span class="ar-title">المركز الرئيسي</span>
+<div class="repo-desc">كل المشاريع والأبحاث</div>
 </a>
 
 </div>
 
-<h2 class="section-title">📄 Published Papers with DOI <br> الأوراق المنشورة برقم DOI</h2>
+<h2 class="section-title">📄 الأبحاث المنشورة DOI</h2>
 <ul class="paper-list">
-<li><b>Riemann Hypothesis</b> فرضية ريمان<br><a href="https://doi.org/10.5281/zenodo.20139904" class="paper-doi" target="_blank">10.5281/zenodo.20139904</a></li>
-<li><b>P vs NP</b> مسألة P مقابل NP<br><a href="https://doi.org/10.5281/zenodo.20145279" class="paper-doi" target="_blank">10.5281/zenodo.20145279</a></li>
-<li><b>Yang-Mills Mass Gap</b> فجوة كتلة يانغ-ميلز<br><a href="https://doi.org/10.5281/zenodo.20148344" class="paper-doi" target="_blank">10.5281/zenodo.20148344</a></li>
-<li><b>Navier-Stokes</b> معادلات نافيير-ستوكس<br><a href="https://doi.org/10.5281/zenodo.20149618" class="paper-doi" target="_blank">10.5281/zenodo.20149618</a></li>
-<li><b>Zx_RiemannOS v1.3</b><br><a href="https://doi.org/10.5281/zenodo.20145337" class="paper-doi" target="_blank">10.5281/zenodo.20145337</a></li>
-<li><b>Jabri Identity</b> هوية الجبري<br><a href="https://doi.org/10.5281/zenodo.20114317" class="paper-doi" target="_blank">10.5281/zenodo.20114317</a></li>
-<li><b>Zx_RieOS v1.2 Gold</b><br><a href="https://doi.org/10.5281/zenodo.20100622" class="paper-doi" target="_blank">10.5281/zenodo.20100622</a></li>
-<li><b>Zx_RieOS v1.1</b><br><a href="https://doi.org/10.5281/zenodo.20070594" class="paper-doi" target="_blank">10.5281/zenodo.20070594</a></li>
+<li><b>Riemann Hypothesis</b> - <a href="https://doi.org/10.5281/zenodo.20139904" class="paper-doi" target="_blank">10.5281/zenodo.20139904</a></li>
+<li><b>P vs NP</b> - <a href="https://doi.org/10.5281/zenodo.20145279" class="paper-doi" target="_blank">10.5281/zenodo.20145279</a></li>
+<li><b>Navier-Stokes</b> - <a href="https://doi.org/10.5281/zenodo.20149618" class="paper-doi" target="_blank">10.5281/zenodo.20149618</a></li>
+<li><b>Jabri Identity</b> - <a href="https://doi.org/10.5281/zenodo.20114317" class="paper-doi" target="_blank">10.5281/zenodo.20114317</a></li>
 </ul>
 
-<h2 class="section-title">📞 Contact <br> التواصل</h2>
+<h2 class="section-title">📞 التواصل</h2>
 <ul class="contact-list">
 <li><b>الاسم:</b> م. عبدالله محمد ناصر الجبري</li>
 <li><b>ORCID:</b> <a href="https://orcid.org/0009-0001-1319-3622" target="_blank">0009-0001-1319-3622</a></li>
-<li><b>Email البريد:</b> <a href="mailto:jabri62018@gmail.com">jabri62018@gmail.com</a></li>
-<li><b>Website الموقع:</b> <a href="https://jabri-web.github.io" target="_blank">Jabri-web.github.io</a></li>
+<li><b>Email:</b> <a href="mailto:jabri62018@gmail.com">jabri62018@gmail.com</a></li>
+<li><b>Website:</b> <a href="https://jabri-web.github.io" target="_blank">jabri-web.github.io</a></li>
 </ul>
 
 <div class="footer-text">From Sana'a to the Universe <br> من صنعاء إلى الكون © 2026</div>
