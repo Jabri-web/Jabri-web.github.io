@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://jabri-web.vercel.app/$1",
-      "permanent": true
-    }
-  ]
-}
