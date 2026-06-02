@@ -1,79 +1,232 @@
-<! Main screen= File=p4= Sindbad.html
+<! file=index.html..=p4
+<!repo= Jabri-web.github.io
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Abdulla Al-Jabri - مكتبة اليمن</title>
-</head>
-<body style="margin:0;padding:0;font-family:Tahoma,sans-serif;background:#f5f7fa;color:#000;min-height:100svh;display:flex;flex-direction:column">
-<header style="background:linear-gradient(135deg,#0a3d62,#1e6f9f);color:white;text-align:center;padding:2vh 10px;border-bottom:3px solid #f39c12">
-  <img src="Yemen-bird.png" alt="طائر اليمن" style="width:75px;height:75px;border-radius:50%;border:2px solid #00ff88;display:block;margin:0 auto 1vh">
-  <h1 style="font-size:5vw;max-font-size:20px;margin:0;font-weight:bold">Republic of Yemen الجمهورية اليمنية</h1>
-  <p style="font-size:3vw;max-font-size:12px;margin:1vh 0 0 0;opacity:0.9">Riemann zeta & Cosmology</p>
-</header>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulla Al-Jabri | باحث في الرياضيات والفيزياء النظرية</title>
+<meta name="description" content="Independent Researcher in Mathematics & Theoretical Physics. أوراق بحثية حول فرضية ريمان، P vs NP، معادلات نافييه-ستوكس">
+<meta name="google-site-verification" content="u6HUio_bcj-43qLkWvA1iJ0dO6yXEX93WO29i8VDGx4" />
+<style>
+:root{
+  --container-width: 500px;
+}
 
-<div style="width:90%;max-width:500px;margin:0 auto;padding:2vh 0;flex:1;display:flex;flex-direction:column;text-align:center;min-height:80svh">
-  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1vh">
-    <span style="font-size:6vw">👁️</span>
-    <h2 style="font-size:6vw;margin:0">سندباد اليمن</h2>
-    <span style="font-size:6vw">👁️</span>
-  </div>
-  <div style="font-size:4vw;font-weight:bold;margin-bottom:0.5vh">م/عبدالله الجبري</div>
-  <div style="font-size:3vw;color:#555;margin-bottom:4vh">Eng. Abdulla Al-Jabri</div>
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  background: #fff; 
+}
 
-  <a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
-    <span>سندباد اليمن</span> <span>Yemen Sindbad</span>
-  </a>
-  <a href="https://jabri-web.github.io/Zx_RieOS_v1.2" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
-    <span>طائر اليمن</span> <span>Yemen Bird</span>
-  </a>
-  <a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
-    <span>عنكبوت اليمن</span> <span>Yemen Ankaboot</span>
-  </a>
-  <a href="https://jabri-web.github.io/Pages-Researches.html" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
-    <span>صفحات وبحوث</span> <span>Pages & Researches</span>
-  </a>
-  <a href="https://jabri-web.github.io/Yemen-library.html" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
-    <span>مكتبتي</span> <span>My Library</span>
-  </a>
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 0 80px 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
 
-  <!-- زر الخروج أحمر بنفس مقاس الأزرار السود -->
-  <button onclick="history.back()" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#c62828;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;border:none;cursor:pointer;box-sizing:border-box">
-    <span>🚪 Exit</span> <span>خروج</span>
-  </button>
+.container {
+  width: var(--container-width);
+  max-width: 500px;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
 
-  <div id="info" style="margin-top:2vh;padding:2vh;background:white;border-radius:12px;text-align:right;font-size:3vw;color:#333;line-height:1.8;border:1px solid #ddd;box-sizing:border-box">
-    <b style="color:#0a3d62">التاريخ:</b> <span id="date">...</span><br>
-    <b style="color:#0a3d62">الوقت:</b> <span id="time">...</span><br>
-    <b style="color:#0a3d62">من نحن:</b> مكتبة اليمن الرقمية
-  </div>
-</div>
+.top-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
 
-<footer style="background:#0a3d62;color:white;text-align:center;padding:2vh 10px;font-size:3vw;border-top:3px solid #f39c12">
-  <p style="margin:0">© 2026 Yemen Sindbad - جميع الحقوق محفوظة</p>
-  <p style="margin:0">صنع بحب في اليمن 🇾🇪</p>
-</footer>
+.eye { font-size: 28px; }
+
+h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.sub-ar {
+  font-size: 20px;
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+}
+
+.sub-en {
+  font-size: 16px;
+  margin-bottom: 35px;
+  color: #555;
+}
+
+/* صورة الطير + النبض */
+.bird-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px auto 35px auto;
+  border: 3px solid #000;
+  display: block;
+  transition: transform 0.6s ease-in-out;
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+ 0%, 100% { transform: scale(1); }
+ 50% { transform: scale(var(--scale, 1.15)); }
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 14px 0;
+  padding: 18px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  background: #333;
+}
+
+.btn-exit {
+  background: #c62828;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-exit:active {
+  background: #b71c1c;
+}
+
+/* صندوق المعلومات التاريخ والوقت */
+.info-box {
+  margin-top: 2vh;
+  padding: 2vh;
+  background: white;
+  border-radius: 12px;
+  text-align: right;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.info-box b {
+  color: #0a3d62;
+}
+</style>
 
 <script>
+// جس نبض الشاشة + الطير
+function adjustScreen(){
+  const screenWidth = window.innerWidth;
+  
+  let containerWidth = screenWidth - 40;
+  if(containerWidth > 500) containerWidth = 500;
+  if(containerWidth < 320) containerWidth = 320;
+  
+  document.documentElement.style.setProperty('--container-width', containerWidth + 'px');
+
+  // نبض الطير حسب المقاس
+  const bird = document.querySelector('.bird-img');
+  if(bird) {
+    let scale = 1.1;
+    if (screenWidth < 400) scale = 1.25;
+    else if (screenWidth < 768) scale = 1.18;
+    else scale = 1.12;
+    bird.style.setProperty('--scale', scale);
+  }
+}
+
+// التاريخ والوقت
 function updateTime(){
   const now = new Date();
   document.getElementById('date').innerText = now.toLocaleDateString('ar-EG');
   document.getElementById('time').innerText = now.toLocaleTimeString('ar-EG');
 }
-updateTime();
-setInterval(updateTime, 1000);
+
+window.onload = function() {
+  adjustScreen();
+  updateTime();
+  setInterval(updateTime, 1000); // يتحدث كل ثانية
+}
+
+window.onresize = adjustScreen;
 </script>
-  <!________
-<script>
-(function(){
-  var host = window.location.hostname;
-  if(host === 'jabri-web.github.io' || host === 'www.jabri-web.github.io'){
-    var newUrl = 'https://jabri-web.vercel.app' + window.location.pathname + window.location.search + window.location.hash;
-    window.location.replace(newUrl);
-  }
-})();
-</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-line">
+    <span class="eye">👁️</span>
+    <h1>سندباد اليمن</h1>
+    <span class="eye">👁️</span>
+  </div>
+  
+  <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Yemen Sindbad</div>
+  <div class="sub-ar">م/ عبدالله الجبري</div>
+  <div class="sub-en">Eng. Abdulla Al-Jabri</div>
+
+  <!-- الطير بالنبض -->
+  <img src="Yemen-bird.png" alt="طائر اليمن" class="bird-img">
+
+  <!-- كل الأزرار زي CodePen -->
+  <a class="btn" href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">
+    <span>سندباد اليمن</span>
+    <span>Yemen Sindbad</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank">
+    <span>طائر اليمن</span>
+    <span>Yemen Bird</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank">
+    <span>عنكبوت اليمن</span>
+    <span>Yemen Ankaboot</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/research.html" target="_blank">
+    <span>صفحات وبحوث</span>
+    <span>Pages & Researches</span>
+  </a>
+
+  <a class="btn" href="https://jabri-web.github.io/Jabri-web/" target="_blank">
+    <span>مكتبتي</span>
+    <span>My Library</span>
+  </a>
+
+  <button class="btn btn-exit" onclick="history.back()">
+    <span>🚪 Exit</span>
+    <span>خروج</span>
+  </button>
+
+  <!-- التاريخ والوقت ومن نحن -->
+  <div class="info-box">
+    <b>التاريخ:</b> <span id="date">...</span><br>
+    <b>الوقت:</b> <span id="time">...</span><br>
+    <b>من نحن:</b> مكتبة اليمن الرقمية - باحث مستقل في الرياضيات والفيزياء النظرية
+  </div>
+</div>
+
 </body>
 </html>
