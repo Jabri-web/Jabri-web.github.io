@@ -1,7 +1,37 @@
-<! file=index.html..=p4
-<!repo= Jabri-web.github.io
-
 <!DOCTYPE html>
+<!-- file=index.html..=p4 | repo= Jabri-web.github.io -->
+<!-- ___future_________ Compiler Pass2: github.io → vercel.app -->
+<script>
+(function(){
+  // هذا حق الاد-هوك ايرور
+  window.addEventListener('error', function(e){
+    const x = e.message;
+    console.error("You have to check this:", x);
+  });
+
+  // هذا حق تبديل الروابط
+  const x = 'github.io';
+  const y = location.hostname;
+  if(y!== x &&!y.includes('localhost')){
+    document.querySelectorAll('a, link, script[src], img[src]').forEach(el => {
+      const attr = el.href? 'href' : 'src';
+      if(el[attr] && el[attr].includes(x)){
+        el[attr] = el[attr].replace(/github\.io(?=\/|$|")/g, y);
+      }
+    });
+  }
+})();
+</script>
+<!-- ____future_______ End -->
+
+<html lang="ar" dir="rtl">
+<head>
+...
+  <a class="btn" href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">
+    <span>سندباد اليمن</span>
+    <span>Yemen Sindbad</span>
+  </a>
+...
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
