@@ -9,18 +9,17 @@
 **Research Focus:** Zx Function & Millennium Problems  
 **مجال البحث:** دالة Zx ومسائل الألفية
 
-[![ORCID iD](https://img.shields.io/badge/ORCID-0009--0003--3319--3822-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0003-3319-3822)
+[[ORCID iD](https://img.shields.io/badge/ORCID-0009--0003--3319--3822-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0003-3319-3822)
 
-[![Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
+[[Visit Profile](https://img.shields.io/badge/Visit-GitHub%20Profile-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
 
-<!-- GitHub Stats Badges -->
-[![Profile Views](https://komarev.com/ghpvc/?username=Jabri-web&color=6ae3ff&style=for-the-badge&label=Visitors)](https://github.com/Jabri-web)
-[![GitHub Stars](https://img.shields.io/github/stars/Jabri-web?color=yellow&style=for-the-badge&logo=github)](https://github.com/Jabri-web?tab=repositories)
-[![GitHub Followers](https://img.shields.io/github/followers/Jabri-web?color=green&style=for-the-badge&logo=github)](https://github.com/Jabri-web?tab=followers)
+[[Profile Views](https://komarev.com/ghpvc/?username=Jabri-web&color=6ae3ff&style=for-the-badge&label=Visitors)](https://github.com/Jabri-web)
+[[GitHub Stars](https://img.shields.io/github/stars/Jabri-web?color=yellow&style=for-the-badge&logo=github)](https://github.com/Jabri-web?tab=repositories)
+[[GitHub Followers](https://img.shields.io/github/followers/Jabri-web?color=green&style=for-the-badge&logo=github)](https://github.com/Jabri-web?tab=followers)
 
 ### 🏆 Achievements / الإنجازات
-[![YOLO](https://img.shields.io/badge/YOLO-Explorer-00ffc8?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
-[![Code Vault](https://img.shields.io/badge/Arctic%20Code%20Vault-Contributor-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
+[[YOLO](https://img.shields.io/badge/YOLO-Explorer-00ffc8?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
+[[Code Vault](https://img.shields.io/badge/Arctic%20Code%20Vault-Contributor-6ae3ff?style=for-the-badge&logo=github)](https://github.com/Jabri-web)
 
 ---
 ![Zx Equations](Image/Zx_Equations.png)
@@ -51,13 +50,13 @@
 | 5.3 | └─ Jabri_gab | - | [20148344](https://doi.org/10.5281/zenodo.20148344) |
 | 5.4 | └─ Jabri_Navier | - | [20149618](https://doi.org/10.5281/zenodo.20149618) |
 | 5.7 | └─ Jabri_Identity | - | [20114317](https://doi.org/10.5281/zenodo.20114317) |
-| 6 | **Jabri_lab** | [Pages](https://Jabri-web.github.io/Jabri_lab/) | قيد النشر |
+| 6 | **Jabri_lab** | [Pages](https://jabri-web.github.io/jabri_lab/) | قيد النشر |
 | 7 | **Zx_RieOS_v1.1** | [Pages](https://Jabri-web.github.io/Zx_RieOS_v1.1/) | [19981688](https://doi.org/10.5281/zenodo.19981688) / [20070594](https://doi.org/10.5281/zenodo.20070594) |
-| 8 | **Jabri_RiemannOS** | [Pages](https://Jabri-web.github.io/Jabri_RiemannOS/) | - |
+| 8 | **Jabri_RiemannOS** | [Pages](https://jabri-web.github.io/Jabri-RiemannOS/) | - |
 | 9 | **Jabri_Checkout** | [Pages](https://Jabri-web.github.io/Jabri_Checkout/) | [20513840](https://doi.org/10.5281/zenodo.20513840) |
-| 10 | **Jabri-web** | [Pages](https://Jabri-web.github.io/Jabri-web/) | [20499365](https://doi.org/10.5281/zenodo.20499365) |
+| 10 | **Jabri-web** | [Pages](https://jabri-web.github.io/Jabri-web/) | [20499365](https://doi.org/10.5281/zenodo.20499365) |
 
-> **ملاحظة**: DOI رقم 10 فيه خطأ `10.5381` الصح `10.5281`. عدلته لك.
+> **Verified 2026-06-09 by Jabri**: كل الروابط 1-10 شغالة. DOI كله `10.5281`. لا تعديل بعد اليوم.
 
 </details>
 
