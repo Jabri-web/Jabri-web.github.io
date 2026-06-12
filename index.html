@@ -6,64 +6,53 @@
 <title>سندباد اليمن - البوابة العامة</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-body{margin:0;padding:15px;font-family:'Cairo',Tahoma,sans-serif;background:#f5f7fa;color:#000}
-header{background:linear-gradient(135deg,#0a3d62,#1e6f9f);color:white;text-align:center;padding:25px 10px;border-radius:15px;margin-bottom:20px}
-header img{width:80px;height:80px;border-radius:50%;border:3px solid #00ff88;display:block;margin:0 auto 15px;object-fit:cover}
-h2{text-align:center;color:#0a3d62;margin:20px 0 10px;font-size:22px}
-.group{margin:20px 0;padding:15px;background:white;border-radius:12px;border:2px solid #ddd}
-.group-title{font-size:18px;font-weight:bold;color:#c62828;text-align:center;margin-bottom:12px}
-.repo-btn{display:flex;justify-content:space-between;align-items:center;width:100%;margin:10px 0;padding:18px;background:#000;color:#fff;font-size:16px;font-weight:bold;border-radius:12px;text-decoration:none;transition:0.3s;border:2px solid #000}
-.repo-btn:hover{background:linear-gradient(135deg,#00ffc8,#00b894);border-color:#00ffc8}
-.current-btn{background:linear-gradient(135deg,#ff6b6b,#c62828);border-color:#ff6b6b;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,0.4)}50%{box-shadow:0 0 0 12px rgba(255,107,107,0)}}
-.hidden{display:none!important}
-footer{background:#0a3d62;color:white;text-align:center;padding:15px;margin-top:25px;border-radius:12px;font-size:14px}
-.library-section{margin-top:40px;padding:25px;background:linear-gradient(135deg,#0a3d62,#1e6f9f);border-radius:15px;color:white}
-.library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px}
-.lib-card{padding:20px;background:rgba(255,255,255,0.1);border-radius:12px;text-decoration:none;color:white;text-align:center;transition:0.3s;border:2px solid rgba(0,255,136,0.3)}
-.lib-card:hover{background:rgba(0,255,136,0.2);transform:translateY(-5px)}
+* {box-sizing:border-box}
+body {margin:0; padding:15px; font-family:'Cairo',Tahoma; background:#f5f7fa; color:#000}
+header {
+  background:linear-gradient(135deg,#0a3d62,#1e6f9f); color:white; text-align:center;
+  padding:25px 10px; border-radius:15px; margin-bottom:20px
+}
+header img {
+  width:80px; height:80px; border-radius:50%; border:3px solid #00ff88;
+  display:block; margin:0 auto 15px; object-fit:cover
+}
+h2 {text-align:center; color:#0a3d62; margin:20px 0 10px; font-size:22px}
+.group {margin:20px 0; padding:15px; background:white; border-radius:12px; border:2px solid #ddd}
+.group-title {font-size:18px; font-weight:bold; color:#c62828; text-align:center; margin-bottom:12px}
+.repo-btn {
+  display:flex; justify-content:space-between; align-items:center;
+  width:100%; margin:10px 0; padding:18px;
+  background:#000; color:#fff; font-size:16px; font-weight:bold;
+  border-radius:12px; text-decoration:none; transition:0.3s; border:2px solid #000
+}
+.repo-btn:hover {background:linear-gradient(135deg,#00ffc8,#00b894); border-color:#00ffc8}
+.current-btn {
+  background:linear-gradient(135deg,#ff6b6b,#c62828); border-color:#ff6b6b;
+  animation: pulse 2s infinite
+}
+@keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,0.4)} 50%{box-shadow:0 0 0 12px rgba(255,107,107,0)}}
+.hidden {display:none!important}
+footer {background:#0a3d62; color:white; text-align:center; padding:15px; margin-top:25px; border-radius:12px; font-size:14px}
 </style>
 </head>
 <body>
+
 <header>
-<img src="Image/Yemen-bird.png" alt="طائر اليمن">
-<h1 style="margin:0;font-size:24px">Republic of Yemen</h1>
-<p style="margin:5px 0 0 0;opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
+<img src="Yemen-bird.png" alt="طائر اليمن">
+<h1 style="margin:0; font-size:24px">Republic of Yemen</h1>
+<p style="margin:5px 0 0 0; opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
 </header>
 
 <h2>👁️ سندباد اليمن - البوابة العامة 1→10 👁️</h2>
-<p style="text-align:center;color:#555;font-weight:bold;margin-bottom:20px">م/عبدالله الجبري</p>
+<p style="text-align:center; color:#555; font-weight:bold; margin-bottom:20px">م/عبدالله الجبري</p>
 
-<a id="current-page-btn" href="#" class="repo-btn current-btn hidden">جاري الكشف...</a>
+<!-- زر الريبو المفتوحة -->
+<a id="open-repo-btn" href="#" class="repo-btn current-btn hidden">جاري الكشف...</a>
 
+<!-- 1-10 الشاشة العامة -->
 <div class="group">
 <div class="group-title">المشاريع الأساسية 1→10</div>
 <div id="repos-1-10"></div>
-</div>
-
-<!-- قسم مكتبي وبحوثي -->
-<div class="library-section">
-<h2 style="color:#00ff88;text-align:center;margin-bottom:10px">📚 مكتبي وبحوثي</h2>
-<p style="text-align:center;opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
-<div class="library-grid">
-<a href="Page4.html" class="lib-card">
-<h3>📄 المكتب الرئيسي</h3>
-<p>الأبحاث والمعادلات</p>
-</a>
-<a href="Page1.html" class="lib-card">
-<h3>🧮 سندس النظرية</h3>
-<p>المعادلة الموحدة</p>
-</a>
-<a href="Sindbad.html" class="lib-card">
-<h3>🧭 سندباد</h3>
-<p>رحلة الاكتشاف</p>
-</a>
-<a href="Yemen-library.html" class="lib-card">
-<h3>🏛️ المكتبة اليمنية</h3>
-<p>تراث ومعرفة</p>
-</a>
-</div>
 </div>
 
 <footer>
@@ -73,51 +62,49 @@ footer{background:#0a3d62;color:white;text-align:center;padding:15px;margin-top:
 
 <script>
 try {
-const path = window.location.pathname.toLowerCase();
-let currentPage = "index";
-if(path.includes("page1")) currentPage = "page1";
-else if(path.includes("page2")) currentPage = "page2";
-else if(path.includes("page3")) currentPage = "page3";
-else if(path.includes("page4")) currentPage = "page4";
-else if(path.includes("page5")) currentPage = "page5";
-else if(path.includes("page6")) currentPage = "page6";
-else if(path.includes("page7")) currentPage = "page7";
-else if(path.includes("page8")) currentPage = "page8";
-else if(path.includes("page9")) currentPage = "page9";
-else if(path.includes("page10")) currentPage = "page10";
+  const X = "jabri-web.github.io";
+  let Y = window.location.hostname.toLowerCase().replace('.github.io','');
 
-const pages = {
-"page1": {id:1, name:"سندباد اليمن", url:"Page1.html"},
-"page2": {id:2, name:"طائر اليمن", url:"Page2.html"},
-"page3": {id:3, name:"عنكبوت اليمن", url:"Page3.html"},
-"page4": {id:4, name:"مكتبي وبحوثي", url:"Page4.html"},
-"page5": {id:5, name:"أرشيف نوبل", url:"Page5.html"},
-"page6": {id:6, name:"مختبر الجبري", url:"Page6.html"},
-"page7": {id:7, name:"RieOS v1.1", url:"Page7.html"},
-"page8": {id:8, name:"RiemannOS", url:"Page8.html"},
-"page9": {id:9, name:"Jabri Checkout", url:"Page9.html"},
-"page10": {id:10, name:"Jabri-web", url:"Page10.html"}
-};
+  // الكل ينادي ABOUT.html داخل الريبو حقه
+  const repos = {
+    "jabri62018.github.io": {id:1, name:"سندباد اليمن", url:`https://${X}/Jabri62018.github.io/ABOUT.html`},
+    "zx_rieos_v1.2": {id:2, name:"طائر اليمن", url:`https://${X}/Zx_RieOS_v1.2/ABOUT.html`},
+    "zx_mother_function_jabri": {id:3, name:"عنكبوت اليمن", url:`https://${X}/Zx_Mother_Function_Jabri/ABOUT.html`},
+    "jabri-web": {id:4, name:"البوابة الرئيسية", url:`https://${X}/`},
+    "jabri_nobble": {id:5, name:"أرشيف نوبل", url:`https://${X}/Jabri_Nobble/ABOUT.html`},
+    "jabri_lab": {id:6, name:"مختبر الجبري", url:`https://${X}/jabri_lab/ABOUT.html`},
+    "zx_rieos_v1.1": {id:7, name:"RieOS v1.1", url:`https://${X}/Zx_RieOS_v1.1/ABOUT.html`},
+    "jabri_riemannos": {id:8, name:"RiemannOS", url:`https://${X}/Jabri-RiemannOS/ABOUT.html`},
+    "jabri_checkout": {id:9, name:"Jabri Checkout", url:`https://${X}/Jabri_Checkout/ABOUT.html`},
+    "jabri-web-2": {id:10, name:"Jabri-web", url:`https://${X}/Jabri-web/ABOUT.html`}
+  };
 
-const btn = document.getElementById('current-page-btn');
-if(currentPage!== "index" && pages[currentPage]) {
-btn.classList.remove('hidden');
-btn.href = pages[currentPage].url;
-btn.innerHTML = `<span style="flex:1;text-align:right">📍 ${pages[currentPage].name} - الصفحة الحالية</span><span style="font-size:20px">${pages[currentPage].id}</span>`;
-}
+  const btn = document.getElementById('open-repo-btn');
 
-const container = document.getElementById('repos-1-10');
-for(let i=1; i<=10; i++) {
-const key = Object.keys(pages).find(k => pages[k].id === i);
-if(key && key!== currentPage) {
-const p = pages[key];
-const a = document.createElement('a');
-a.href = p.url;
-a.className = "repo-btn";
-a.innerHTML = `<span style="flex:1;text-align:right">${p.name}</span><span style="font-size:20px;opacity:0.9">${p.id}</span>`;
-container.appendChild(a);
-}
+  // الزر الأحمر يظهر بس لو انت داخل ريبو من 1→10
+  if (Y!== "jabri-web" && Y!== "" && repos[Y]) {
+    btn.classList.remove('hidden');
+    btn.href = "ABOUT.html";
+    btn.innerHTML = `<span style="flex:1;text-align:right">📍 ${repos[Y].name} - الريبو المفتوحة</span><span style="font-size:20px">${repos[Y].id}</span>`;
+  }
+
+  // بناء الأزرار 1→10
+  const container = document.getElementById('repos-1-10');
+  for(let i=1; i<=10; i++) {
+    const key = Object.keys(repos).find(k => repos[k].id === i);
+    if(key && key!== Y) {
+      const r = repos[key];
+      const a = document.createElement('a');
+      a.href = r.url;
+      a.target = "_blank";
+      a.className = "repo-btn";
+      a.innerHTML = `<span style="flex:1;text-align:right">${r.name}</span><span style="font-size:20px;opacity:0.9">${r.id}</span>`;
+      container.appendChild(a);
+    }
+  }
+
 } catch(e) {console.error(e)}
 </script>
+
 </body>
 </html>
