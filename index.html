@@ -3,107 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ø³Ù†Ø¯Ø¨Ø§Ø¯ Ø§Ù„ÙŠÙ…Ù† - Ø§Ù„Ø¨ÙˆØ§Ø¨Ø© Ø§Ù„Ø¹Ø§Ù…Ø©</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+<title>1„01‡21ƒ91„01„1 1…71„01„71ƒ91†81†81‡1 1…71„01„71ƒ91†81†81‡1 | Abdullah Gateway - P4</title>
 <style>
-* {box-sizing:border-box}
-body {margin:0; padding:15px; font-family:'Cairo',Tahoma; background:#f5f7fa; color:#000}
-header {
-  background:linear-gradient(135deg,#0a3d62,#1e6f9f); color:white; text-align:center;
-  padding:25px 10px; border-radius:15px; margin-bottom:20px
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    transition: 0.3s;
 }
-header img {
-  width:80px; height:80px; border-radius:50%; border:3px solid #00ff88;
-  display:block; margin:0 auto 15px; object-fit:cover
+body.en { direction: ltr; font-family: 'Segoe UI', Arial; }
+.lang-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #ff3333;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
 }
-h2 {text-align:center; color:#0a3d62; margin:20px 0 10px; font-size:22px}
-.group {margin:20px 0; padding:15px; background:white; border-radius:12px; border:2px solid #ddd}
-.group-title {font-size:18px; font-weight:bold; color:#c62828; text-align:center; margin-bottom:12px}
-.repo-btn {
-  display:flex; justify-content:space-between; align-items:center;
-  width:100%; margin:10px 0; padding:18px;
-  background:#000; color:#fff; font-size:16px; font-weight:bold;
-  border-radius:12px; text-decoration:none; transition:0.3s; border:2px solid #000
+.logo {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    letter-spacing: 3px;
 }
-.repo-btn:hover {background:linear-gradient(135deg,#00ffc8,#00b894); border-color:#00ffc8}
-.current-btn {
-  background:linear-gradient(135deg,#ff6b6b,#c62828); border-color:#ff6b6b;
-  animation: pulse 2s infinite
+.logo span { color: #ff3333; }
+h1 { font-size: 24px; margin-bottom: 10px; color: #ccc; }
+h1 small { display: block; font-size: 16px; color: #888; margin-top: 5px; }
+.current {
+    background: #ff3333;
+    border: 2px solid #ff6666;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 450px;
+    animation: pulse 2s infinite;
 }
-@keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,0.4)} 50%{box-shadow:0 0 0 12px rgba(255,107,107,0)}}
-.hidden {display:none!important}
-footer {background:#0a3d62; color:white; text-align:center; padding:15px; margin-top:25px; border-radius:12px; font-size:14px}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px #ff3333; }
+    50% { box-shadow: 0 0 40px #ff6666; }
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+.btn {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    color: #fff;
+    padding: 25px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: block;
+}
+.btn:hover {
+    background: #2a2a2a;
+    border-color: #ff3333;
+    transform: translateY(-3px);
+}
+.section-title {
+    font-size: 22px;
+    margin: 50px 0 20px;
+    color: #ff3333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.datetime {
+    margin-top: 50px;
+    color: #666;
+    font-size: 14px;
+}
+.ar, .en { display: inline; }
+body.en .ar { display: none; }
+body:not(.en) .en { display: none; }
 </style>
 </head>
 <body>
 
-<header>
-<img src="Yemen-bird.png" alt="Ø·Ø§Ø¦Ø± Ø§Ù„ÙŠÙ…Ù†">
-<h1 style="margin:0; font-size:24px">Republic of Yemen</h1>
-<p style="margin:5px 0 0 0; opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
-</header>
+<button class="lang-btn" onclick="toggleLang()">
+    <span class="ar">EN</span>
+    <span class="en">1…71„91„01‡4</span>
+</button>
 
-<h2>ðŸ‘ï¸ Ø³Ù†Ø¯Ø¨Ø§Ø¯ Ø§Ù„ÙŠÙ…Ù† - Ø§Ù„Ø¨ÙˆØ§Ø¨Ø© Ø§Ù„Ø¹Ø§Ù…Ø© 1â†’10 ðŸ‘ï¸</h2>
-<p style="text-align:center; color:#555; font-weight:bold; margin-bottom:20px">Ù…/Ø¹Ø¨Ø¯Ø§Ù„Ù„Ù‡ Ø§Ù„Ø¬Ø¨Ø±ÙŠ</p>
+<div class="logo">Z<span>+</span>C<span>+</span>A<span>=</span>1</div>
+<h1>
+    <span class="ar">1„01‡21ƒ91„01„1 1…71„01„71ƒ91†81†81‡1 1…71„01„71ƒ91†81†81‡1 1ƒ91†81„91ƒ81‡41…11‡41„1</span>
+    <span class="en">Abdullah Abdullah Main Gateway</span>
+    <small>
+        <span class="ar">P4 - 1„01‡21ƒ91„01„1 1ƒ91†81†91…21ƒ91„91‡41…7 1¡ú10</span>
+        <span class="en">P4 - Projects Gateway 1¡ú10</span>
+    </small>
+</h1>
 
-<!-- Ø²Ø± Ø§Ù„Ø±ÙŠØ¨Ùˆ Ø§Ù„Ù…ÙØªÙˆØ­Ø© -->
-<a id="open-repo-btn" href="#" class="repo-btn current-btn hidden">Ø¬Ø§Ø±ÙŠ Ø§Ù„ÙƒØ´Ù...</a>
-
-<!-- 1-10 Ø§Ù„Ø´Ø§Ø´Ø© Ø§Ù„Ø¹Ø§Ù…Ø© -->
-<div class="group">
-<div class="group-title">Ø§Ù„Ù…Ø´Ø§Ø±ÙŠØ¹ Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ© 1â†’10</div>
-<div id="repos-1-10"></div>
+<div class="current">
+    <span class="ar">1ƒ91†81…31†51„51„1 1ƒ91†81„51ƒ91†81‡41„1<br><b>1„41ƒ91„91‡4 1ƒ91†81†71…21†5 1…71‡0 1ƒ91†81…21†51„91„1...</b></span>
+    <span class="en">Current Page<br><b>Decoding in Progress...</b></span>
 </div>
 
-<footer>
-<p style="margin:5px">Â© 2026 Yemen Sindbad - Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©</p>
-<p style="margin:5px">ØµÙ†Ø¹ Ø¨Ø­Ø¨ ÙÙŠ Ø§Ù„ÙŠÙ…Ù† ðŸ‡¾ðŸ‡ª</p>
-</footer>
+<h2 class="section-title">
+    <span class="ar">1ƒ91†81†91…21ƒ91„91‡41…7 1ƒ91†81ƒ51…11ƒ91…11‡41„1 1¡ú10</span>
+    <span class="en">Core Projects 1¡ú10</span>
+</h2>
+<div class="grid">
+    <a href="Page1.html" class="btn">1. <span class="ar">1…11‡01„71„01ƒ91„7 1ƒ91†81‡41†91‡0</span><span class="en">Sindbad Yemen</span></a>
+    <a href="Page2.html" class="btn">2. <span class="ar">1…51ƒ91ƒ81„9 1ƒ91†81‡41†91‡0</span><span class="en">Yemen Bird</span></a>
+    <a href="Page3.html" class="btn">3. <span class="ar">1…71‡01†71„01‡21„2 1ƒ91†81‡41†91‡0</span><span class="en">Yemen Spider</span></a>
+    <a href="Page4.html" class="btn">4. <span class="ar">1†91†71„21„01‡4 1‡21„01„51‡21„31‡4</span><span class="en">My Office & Research</span></a>
+    <a href="Page5.html" class="btn">5. <span class="ar">1†91…21„91‡21…7 5</span><span class="en">Project 5</span></a>
+    <a href="Page6.html" class="btn">6. <span class="ar">1†91…21„91‡21…7 6</span><span class="en">Project 6</span></a>
+    <a href="Page7.html" class="btn">7. <span class="ar">1†91…21„91‡21…7 7</span><span class="en">Project 7</span></a>
+    <a href="Page8.html" class="btn">8. <span class="ar">1†91…21„91‡21…7 8</span><span class="en">Project 8</span></a>
+    <a href="Page9.html" class="btn">9. <span class="ar">1†91…21„91‡21…7 9</span><span class="en">Project 9</span></a>
+    <a href="Page10.html" class="btn">10. <span class="ar">1†91…21„91‡21…7 10</span><span class="en">Project 10</span></a>
+</div>
+
+<h2 class="section-title">
+    <span class="ar">1†91†71„21„01‡4 1‡21„01„51‡21„31‡4</span>
+    <span class="en">My Office & Research</span>
+</h2>
+<div class="grid">
+    <a href="Page4.html" class="btn"><span class="ar">1ƒ91†81†91†71„21„0 1ƒ91†81„91ƒ81‡41…11‡4</span><span class="en">Main Office</span></a>
+    <a href="Yemen-library.html#sandas" class="btn"><span class="ar">1ƒ91†81†91†71„21„01„1 1ƒ91†81‡41†91‡01‡41„1</span><span class="en">Yemen Library</span></a>
+    <a href="Pages-Researches.html#library" class="btn"><span class="ar">1…31†51„51ƒ91„2 1‡21„01„51‡21„3 class="en">Pages & Researcjes</span></a>
+    <a href="History-pdf.html" class="btn"><span class="ar">1†71„21„0 1„21ƒ91„91‡41„61‡41„1  class="en">History Books</span></a>
+    <a href="research.html#library" class="btn"><span class="ar">1„01„51‡21„3 1†91‡21„31†61„1 class="en">Registered Researches</span></a>
+    <a href="yemen-photo.html" class="btn"><span class="ar">1ƒ91†81…11‡41ƒ91„51„1 1†51‡4 1ƒ91†81‡41†91‡0</span><span class="en">Torist in Yemen</span></a>
+</div>
+
+<div class="datetime" id="dt"></div>
 
 <script>
-try {
-  const X = "jabri-web.github.io";
-  let Y = window.location.hostname.toLowerCase().replace('.github.io','');
+function toggleLang() {
+    document.body.classList.toggle('en');
+    localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
+}
+if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
 
-  // Ø§Ù„ÙƒÙ„ ÙŠÙ†Ø§Ø¯ÙŠ ABOUT.html Ø¯Ø§Ø®Ù„ Ø§Ù„Ø±ÙŠØ¨Ùˆ Ø­Ù‚Ù‡
-  const repos = {
-    "jabri62018.github.io": {id:1, name:"Ø³Ù†Ø¯Ø¨Ø§Ø¯ Ø§Ù„ÙŠÙ…Ù†", url:`https://${X}/Jabri62018.github.io/ABOUT.html`},
-    "zx_rieos_v1.2": {id:2, name:"Ø·Ø§Ø¦Ø± Ø§Ù„ÙŠÙ…Ù†", url:`https://${X}/Zx_RieOS_v1.2/ABOUT.html`},
-    "zx_mother_function_jabri": {id:3, name:"Ø¹Ù†ÙƒØ¨ÙˆØª Ø§Ù„ÙŠÙ…Ù†", url:`https://${X}/Zx_Mother_Function_Jabri/ABOUT.html`},
-    "jabri-web": {id:4, name:"Ø§Ù„Ø¨ÙˆØ§Ø¨Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", url:`https://${X}/`},
-    "jabri_nobble": {id:5, name:"Ø£Ø±Ø´ÙŠÙ Ù†ÙˆØ¨Ù„", url:`https://${X}/Jabri_Nobble/ABOUT.html`},
-    "jabri_lab": {id:6, name:"Ù…Ø®ØªØ¨Ø± Ø§Ù„Ø¬Ø¨Ø±ÙŠ", url:`https://${X}/jabri_lab/ABOUT.html`},
-    "zx_rieos_v1.1": {id:7, name:"RieOS v1.1", url:`https://${X}/Zx_RieOS_v1.1/ABOUT.html`},
-    "jabri_riemannos": {id:8, name:"RiemannOS", url:`https://${X}/Jabri-RiemannOS/ABOUT.html`},
-    "jabri_checkout": {id:9, name:"Jabri Checkout", url:`https://${X}/Jabri_Checkout/ABOUT.html`},
-    "jabri-web-2": {id:10, name:"Jabri-web", url:`https://${X}/Jabri-web/ABOUT.html`}
-  };
-
-  const btn = document.getElementById('open-repo-btn');
-
-  // Ø§Ù„Ø²Ø± Ø§Ù„Ø£Ø­Ù…Ø± ÙŠØ¸Ù‡Ø± Ø¨Ø³ Ù„Ùˆ Ø§Ù†Øª Ø¯Ø§Ø®Ù„ Ø±ÙŠØ¨Ùˆ Ù…Ù† 1â†’10
-  if (Y!== "jabri-web" && Y!== "" && repos[Y]) {
-    btn.classList.remove('hidden');
-    btn.href = "ABOUT.html";
-    btn.innerHTML = `<span style="flex:1;text-align:right">ðŸ“ ${repos[Y].name} - Ø§Ù„Ø±ÙŠØ¨Ùˆ Ø§Ù„Ù…ÙØªÙˆØ­Ø©</span><span style="font-size:20px">${repos[Y].id}</span>`;
-  }
-
-  // Ø¨Ù†Ø§Ø¡ Ø§Ù„Ø£Ø²Ø±Ø§Ø± 1â†’10
-  const container = document.getElementById('repos-1-10');
-  for(let i=1; i<=10; i++) {
-    const key = Object.keys(repos).find(k => repos[k].id === i);
-    if(key && key!== Y) {
-      const r = repos[key];
-      const a = document.createElement('a');
-      a.href = r.url;
-      a.target = "_blank";
-      a.className = "repo-btn";
-      a.innerHTML = `<span style="flex:1;text-align:right">${r.name}</span><span style="font-size:20px;opacity:0.9">${r.id}</span>`;
-      container.appendChild(a);
-    }
-  }
-
-} catch(e) {console.error(e)}
+function updateTime() {
+    const now = new Date();
+    const lang = document.body.classList.contains('en') ? 'en-US' : 'ar-EG';
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    document.getElementById('dt').innerHTML = now.toLocaleDateString(lang, options);
+}
+updateTime();
+setInterval(updateTime, 60000);
 </script>
 
 </body>
