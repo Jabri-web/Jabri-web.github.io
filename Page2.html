@@ -1,0 +1,215 @@
+<! P2 =file=Yeme-bird=index.html
+<!repo= Zx_RieOS_v1.2
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sindbad Yemen - Research</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{ --container-width: 400px; --bird-scale: 1.15; }
+*{box-sizing:border-box}
+body {
+  font-family: "Tajawal", Tahoma, Arial, sans-serif;
+  background: #fff;
+  color: #000;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  overflow-x: hidden;
+}
+.wrapper{ width: var(--container-width); margin: 0 auto; }
+h1 { font-size: 28px; margin-bottom: 5px; }
+.sub { font-size: 18px; color: #555; margin-bottom: 15px; }
+.bird-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px 0;
+  border: 3px solid #000;
+  transition: transform 0.6s ease-in-out;
+  animation: pulse 2s infinite ease-in-out;
+  transform: scale(var(--bird-scale));
+}
+@keyframes pulse {
+ 0%, 100% { transform: scale(var(--bird-scale)); }
+ 50% { transform: scale(calc(var(--bird-scale) * 1.08)); }
+}
+.bar-menu { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+.bar-menu button, .bar-menu a {
+  width: 100%;
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  line-height: 1.4;
+  transition: 0.2s;
+}
+.bar-menu button:hover, .bar-menu a:hover { background: #333; transform: translateY(-2px); }
+.bar-menu button.exit { background: #c62828; }
+.bar-menu button.exit:hover { background: #b71c1c; }
+.en-text {display: block; font-size: 16px;}
+.ar-text {display: block; font-size: 14px; opacity: 0.85; margin-top: 3px;}
+.row-btn { display: flex; gap: 10px; }
+.row-btn a { flex: 1; }
+.section { display: none; text-align: right; background: #f5f5f5; padding: 15px; border-radius: 12px; margin: 15px 0; }
+.section.active { display: block; }
+.section h3 { margin-top: 0; text-align: center; }
+.section a { display: block; color: #0066cc; text-decoration: none; margin: 6px 0; word-break: break-all; }
+.section a:hover { text-decoration: underline; }
+.footer-info { margin-top: 30px; font-size: 14px; color: #555; display: flex; justify-content: space-between; }
+</style>
+
+<script>
+function adjustScreen(){
+  const screenWidth = window.innerWidth;
+  let containerWidth = screenWidth - 40;
+  if(containerWidth > 400) containerWidth = 400;
+  if(containerWidth < 300) containerWidth = 300;
+  
+  let birdScale = 1.12;
+  if(screenWidth < 400) birdScale = 1.25;
+  else if(screenWidth < 768) birdScale = 1.18;
+  else birdScale = 1.12;
+  
+  document.documentElement.style.setProperty('--container-width', containerWidth + 'px');
+  document.documentElement.style.setProperty('--bird-scale', birdScale);
+}
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function updateTime(){
+  const now = new Date();
+  document.getElementById('time-footer').innerText = now.toLocaleTimeString('ar-SA');
+  document.getElementById('date-footer').innerText = now.toLocaleDateString('ar-SA');
+  document.getElementById('time-visitor').innerText = now.toLocaleTimeString('ar-SA');
+  document.getElementById('date-visitor').innerText = now.toLocaleDateString('ar-SA');
+}
+
+window.onload = function() {
+  adjustScreen();
+  updateTime();
+  setInterval(updateTime, 1000);
+}
+window.onresize = adjustScreen;
+</script>
+</head>
+<body>
+
+<div class="wrapper">
+  <h1>Sindbad Yemen <br> سندباد اليمن</h1>
+  <div class="sub">Eng. Jabr Abdulla Al-Jabri <br> م/ جبر عبدالله الجبري</div>
+  <img src="Image/Yemen_bird.png" alt="Yemen Bird" class="bird-img">
+
+  <!-- Bar Menu -->
+  <div class="bar-menu">
+    <a href="Yemen-library.html" target="_blank">
+      <span class="en-text">Contents</span>
+      <span class="ar-text">المحتوى</span>
+    </a>
+
+    <button onclick="showSection('email')">
+      <span class="en-text">Email</span>
+      <span class="ar-text">البريد</span>
+    </button>
+
+    <button onclick="showSection('social')">
+      <span class="en-text">Social Media</span>
+      <span class="ar-text">التواصل الاجتماعي</span>
+    </button>
+
+    <button onclick="showSection('visitor')">
+      <span class="en-text">Visitors</span>
+      <span class="ar-text">الزوار</span>
+    </button>
+
+    <button onclick="showSection('about')">
+      <span class="en-text">About</span>
+      <span class="ar-text">حول</span>
+    </button>
+
+    <div class="row-btn">
+      <a href="index.html">
+        <span class="en-text">Home</span>
+        <span class="ar-text">رجوع للرئيسية</span>
+      </a>
+    </div>
+
+    <button class="exit" onclick="history.back()">
+      <span class="en-text">Exit</span>
+      <span class="ar-text">خروج</span>
+    </button>
+  </div>
+
+  <!-- A: Email -->
+  <div id="email" class="section">
+    <h3>Email Addresses <br> الإيميلات</h3>
+    <a href="mailto:Jabri62018@gmail.com">Jabri62018@gmail.com</a>
+    <a href="mailto:Jabri62018jr@gmail.com">Jabri62018jr@gmail.com</a>
+    <a href="mailto:Jr62018jr@gmail.com">Jr62018jr@gmail.com</a>
+    <a href="mailto:AlJabriAbdulla23@gmail.com">AlJabriAbdulla23@gmail.com</a>
+    <a href="mailto:JabrAlJabri2025@gmail.com">JabrAlJabri2025@gmail.com</a>
+    <a href="mailto:NassimAbdulla113@gmail.com">NassimAbdulla113@gmail.com</a>
+  </div>
+
+  <!-- B: Social -->
+  <div id="social" class="section">
+    <h3>Social Media <br> وسائل التواصل</h3>
+    <a href="https://facebook.com/Jabri2026" target="_blank">Facebook - Jabri2026</a>
+    <a href="https://facebook.com/jabri2030" target="_blank">Facebook - jabri2030</a>
+    <a href="https://instagram.com/Jabri2025" target="_blank">Instagram</a>
+    <a href="https://t.me/Jabri2025" target="_blank">Telegram</a>
+    <a href="https://tiktok.com/@jabri2025" target="_blank">TikTok</a>
+    <a href="https://wa.me/+967773415383" target="_blank">WhatsApp</a>
+    <a href="https://youtube.com/@abdullajabri-p3w" target="_blank">YouTube</a>
+    <a href="https://drive.google.com/file/Zx_5.ipynb/view" target="_blank">Google Drive</a>
+    <a href="https://colab.research.google.com/github/Jabri-web/Zx_RieOS_v1.1/blob/main/Zx_al.ipynb" target="_blank">Colab Notebook</a>
+    <a href="https://doi.org/10.5281/zenodo.19963026" target="_blank">DOI - Zenodo</a>
+    <a href="https://links.gemspace.com/Yemen_Icon" target="_blank">GemSpace</a>
+    <a href="https://snapchat.com/jabri2025" target="_blank">Snapchat</a>
+    <a href="https://Jabri-web.github.io/" target="_blank">GitHub Pages</a>
+  </div>
+
+  <!-- C: Visitors -->
+  <div id="visitor" class="section">
+    <h3>Visitors Stats <br> إحصائيات الزوار</h3>
+    <p>1- Counter: يمكن تفعيله عبر Statcounter أو Google Analytics</p>
+    <p>2- Links: Get URL - جاهز للإضافة</p>
+    <p>3- Time: <span id="time-visitor"></span></p>
+    <p>4- Date: <span id="date-visitor"></span></p>
+    <p>5- Like/Dislike: أضفها لاحقًا عبر Google Forms أو Firebase</p>
+  </div>
+
+  <!-- D: About -->
+  <div id="about" class="section">
+    <h3>About <br> عن الموقع</h3>
+    <a href="yemen-photo.html" style="margin: 10px 0;">1- Yemen Photos <br> صور اليمن</a>
+    <a href="Author-cv.html" style="margin: 10px 0;">2- Author CV <br> السيرة الذاتية للمؤلف</a>
+    <p style="margin-top: 20px;">Independent Researcher - Sana'a, Yemen (2026)</p>
+    <p>Author: Eng. Jabr Abdulla Al-Jabri - م/ جبر عبدالله الجبري</p>
+  </div>
+
+  <!-- Footer Time/Date -->
+  <div class="footer-info">
+    <span>Time: <span id="time-footer"></span></span>
+    <span>Date: <span id="date-footer"></span></span>
+  </div>
+</div>
+
+</body>
+</html>
