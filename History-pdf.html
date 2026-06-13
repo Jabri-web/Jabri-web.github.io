@@ -1,0 +1,53 @@
+<!- file=History-pdf.html
+<!- repo= Jabri_RiemannOS
+
+
+<!DOCTYPE html><html lang="ar" dir="rtl" style="background:#000"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000">
+<title>History PDFs - كتب التاريخ</title>
+<style>
+html,body{margin:0;padding:0;height:100%;background:#000!important;color:#e0e0e0;font-family:Tahoma;text-align:center}
+#shield{position:fixed;inset:0;background:#000;z-index:99999}
+.page{opacity:0;transition:opacity 0.4s;background:#000;min-height:100svh;padding:30px 20px}
+h1{color:#6ae3ff;font-size:6vw;margin:10px 0}
+h4{color:#6ae3ff;font-size:4.5vw;margin-top:5vh;margin-bottom:3vh}
+.pdf{display:block;background:#0a0a0a;color:#6ae3ff;text-decoration:none;line-height:2.6;font-size:4vw;margin:1.5vh auto;padding:2vh;border-radius:10px;border:1px solid #222;max-width:500px}
+.pdf:hover{border-color:#6ae3ff;background:#111}
+.back{position:fixed;top:10px;right:10px;background:#c62828;color:#fff;border:none;padding:8px 15px;border-radius:8px;font-weight:bold;z-index:11;font-size:3.5vw}
+.sub{font-size:3vw;color:#aaa;margin-bottom:4vh}
+</style>
+<script>document.documentElement.style.background='#000';</script>
+</head>
+<body style="background:#000">
+
+<div id="shield"></div>
+<button class="back" onclick="history.back()">← رجوع</button>
+
+<div class="page">
+<h1>📚 History PDFs</h1>
+<div class="sub">كتب التاريخ الإسلامي</div>
+
+<h4>Islamic History</h4>
+<a class="pdf" href="pdfs/Hist3.pdf" target="_blank">Hist3.pdf - 15.45 MB</a>
+<a class="pdf" href="pdfs/Hist7.pdf" target="_blank">Hist7.pdf - 5.53 MB</a>
+<a class="pdf" href="pdfs/Hist10.pdf" target="_blank">Hist10.pdf - 8.13 MB</a>
+<a class="pdf" href="pdfs/Hist13.pdf" target="_blank">Hist13.pdf - 5.24 MB</a>
+<a class="pdf" href="pdfs/Hist16.pdf" target="_blank">Hist16.pdf - 4.71 MB</a>
+
+<h4>Yemen Heritage</h4>
+<a class="pdf" href="pdfs/YemenGeography.pdf" target="_blank">YemenGeography.pdf</a>
+<div class="sub">مجموع بلدان اليمن وقبائلها للحجري</div>
+
+</div>
+
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.getElementById('shield').style.display='none';
+    document.querySelector('.page').style.opacity='1';
+  },150);
+});
+</script>
+</body></html>
