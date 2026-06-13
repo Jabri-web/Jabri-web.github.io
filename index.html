@@ -4,166 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>بوابة عبدالله الرئيسية | Abdullah Gateway - P4</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    background: #0a0a0a;
-    color: #fff;
-    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial;
-    text-align: center;
-    padding: 20px;
-    min-height: 100vh;
-    transition: 0.3s;
-}
-body.en { direction: ltr; font-family: 'Segoe UI', Arial; }
-.lang-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #ff3333;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-}
-.logo {
-    font-size: 48px;
-    font-weight: bold;
-    margin: 40px 0 20px;
-    letter-spacing: 3px;
-    color: #ff3333;
-}
-.logo span { color: #fff; }
-h1 { font-size: 24px; margin-bottom: 10px; color: #ccc; }
-h1 small { display: block; font-size: 16px; color: #888; margin-top: 5px; }
-.current {
-    background: #ff3333;
-    border: 2px solid #ff6666;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 30px auto;
-    max-width: 450px;
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 20px #ff3333; }
-    50% { box-shadow: 0 0 40px #ff6666; }
-}
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    max-width: 900px;
-    margin: 40px auto;
-}
-.btn {
-    background: #1a1a1a;
-    border: 2px solid #333;
-    color: #fff;
-    padding: 25px 15px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
-    display: block;
-}
-.btn:hover {
-    background: #2a2a2a;
-    border-color: #ff3333;
-    transform: translateY(-3px);
-}
-.section-title {
-    font-size: 22px;
-    margin: 50px 0 20px;
-    color: #ff3333;
-    border-bottom: 2px solid #333;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.datetime {
-    margin-top: 50px;
-    color: #666;
-    font-size: 14px;
-}
-.ar, .en { display: inline; }
-body.en .ar { display: none; }
-body:not(.en) .en { display: none; }
+*{box-sizing:border-box}
+body{margin:0;padding:15px;font-family:'Cairo',Tahoma,sans-serif;background:#0a0a0a;color:#fff;text-align:center}
+header{background:linear-gradient(135deg,#0a3d62,#1e6f9f);color:white;text-align:center;padding:25px 10px;border-radius:15px;margin-bottom:20px}
+header img{width:80px;height:80px;border-radius:50%;border:3px solid #00ff88;display:block;margin:0 auto 15px}
+h1{margin:0;font-size:24px}
+h2{text-align:center;color:#ff3333;margin:20px 0 10px;font-size:22px;border-bottom:2px solid #333;padding-bottom:10px;display:inline-block}
+.group{margin:20px auto;padding:15px;background:#1a1a1a;border-radius:12px;border:2px solid #333;max-width:900px}
+.group-title{font-size:18px;font-weight:bold;color:#ff3333;text-align:center;margin-bottom:12px}
+.repo-btn{display:flex;justify-content:space-between;align-items:center;width:100%;margin:10px 0;padding:18px;background:#000;color:#fff;font-size:16px;font-weight:bold;border-radius:12px;text-decoration:none;transition:0.3s;border:2px solid #333}
+.repo-btn:hover{background:#2a2a2a;border-color:#ff3333;transform:translateY(-3px)}
+.current-btn{background:linear-gradient(135deg,#ff6b6b,#c62828);border-color:#ff6b6b;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,0.4)}50%{box-shadow:0 0 0 12px rgba(255,107,107,0)}}
+footer{background:#0a0a0a;color:#666;text-align:center;padding:15px;margin-top:25px;border-top:2px solid #333;font-size:14px}
+.library-section{margin-top:40px;padding:25px;background:linear-gradient(135deg,#0a3d62,#1e6f9f);border-radius:15px;color:white;max-width:900px;margin:40px auto}
+.library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px}
+.lib-card{padding:20px;background:rgba(255,255,255,0.1);border-radius:12px;text-decoration:none;color:white;text-align:center;transition:0.3s;border:2px solid rgba(0,255,136,0.3)}
+.lib-card:hover{background:rgba(0,255,136,0.2);transform:translateY(-5px)}
 </style>
 </head>
 <body>
 
-<button class="lang-btn" onclick="toggleLang()">
-    <span class="ar">EN</span>
-    <span class="en">عربي</span>
-</button>
+<header>
+  <img src="Image/Yemen-bird.png" alt="طائر اليمن">
+  <h1>Republic of Yemen</h1>
+  <p style="margin:5px 0 0 0;opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
+</header>
 
-<div class="logo">Z<span>+</span>C<span>+</span>A<span>=</span>1</div>
-<h1>
-    <span class="ar">بوابة عبدالله الرئيسية بوابة عبدالله الرسمية</span>
-    <span class="en">Abdullah Abdullah Main Gateway</span>
-    <small>
-        <span class="ar">P4 - بوابة المشاريع 1→10</span>
-        <span class="en">P4 - Projects Gateway 1→10</span>
-    </small>
-</h1>
+<h2>👁️ سندباد اليمن - البوابة العامة 1→10 👁️</h2>
+<p style="text-align:center;color:#aaa;font-weight:bold;margin-bottom:20px">م/عبدالله الجبري</p>
 
-<div class="current">
-    <span class="ar">الصفحة الحالية<br><b>فك التشفير جاري...</b></span>
-    <span class="en">Current Page<br><b>Decoding in Progress...</b></span>
+<div class="group">
+  <div class="group-title">المشاريع الأساسية 1→10</div>
+  <a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank" class="repo-btn"><span>سندباد اليمن</span><span>1</span></a>
+  <a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank" class="repo-btn"><span>طائر اليمن</span><span>2</span></a>
+  <a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank" class="repo-btn"><span>عنكبوت اليمن</span><span>3</span></a>
+  <a href="https://jabri-web.github.io/" target="_blank" class="repo-btn"><span>مكتبي وبحوثي</span><span>4</span></a>
+  <a href="https://jabri-web.github.io/Jabri_Nobble/" target="_blank" class="repo-btn"><span>أرشيف نوبل</span><span>5</span></a>
+  <a href="https://jabri-web.github.io/jabri_lab/" target="_blank" class="repo-btn"><span>مختبر الجبري</span><span>6</span></a>
+  <a href="https://jabri-web.github.io/Zx_RieOS_v1.1/" target="_blank" class="repo-btn"><span>RieOS v1.1</span><span>7</span></a>
+  <a href="https://jabri-web.github.io/Jabri-RiemannOS/" target="_blank" class="repo-btn"><span>RiemannOS</span><span>8</span></a>
+  <a href="https://jabri-web.github.io/Jabri_Checkout/" target="_blank" class="repo-btn"><span>Jabri Checkout</span><span>9</span></a>
+  <a href="https://jabri-web.github.io/Jabri-web/" target="_blank" class="repo-btn"><span>Jabri-web</span><span>10</span></a>
 </div>
 
-<h2 class="section-title">
-    <span class="ar">المشاريع الأساسية 1→10</span>
-    <span class="en">Core Projects 1→10</span>
-</h2>
-<div class="grid">
-    <a href="Page1.html" class="btn">1. <span class="ar">سندباد اليمن</span><span class="en">Sindbad Yemen</span></a>
-    <a href="Page2.html" class="btn">2. <span class="ar">طير اليمن</span><span class="en">Yemen Bird</span></a>
-    <a href="Page3.html" class="btn">3. <span class="ar">عنكبوت اليمن</span><span class="en">Yemen Spider</span></a>
-    <a href="Page4.html" class="btn">4. <span class="ar">مكتبي والبحث</span><span class="en">My Office & Research</span></a>
-    <a href="Page5.html" class="btn">5. <span class="ar">المشروع 5</span><span class="en">Project 5</span></a>
-    <a href="Page6.html" class="btn">6. <span class="ar">المشروع 6</span><span class="en">Project 6</span></a>
-    <a href="Page7.html" class="btn">7. <span class="ar">المشروع 7</span><span class="en">Project 7</span></a>
-    <a href="Page8.html" class="btn">8. <span class="ar">المشروع 8</span><span class="en">Project 8</span></a>
-    <a href="Page9.html" class="btn">9. <span class="ar">المشروع 9</span><span class="en">Project 9</span></a>
-    <a href="Page10.html" class="btn">10. <span class="ar">المشروع 10</span><span class="en">Project 10</span></a>
+<div class="library-section">
+  <h2 style="color:#00ff88;text-align:center;margin-bottom:10px">📚 مكتبي وبحوثي</h2>
+  <p style="text-align:center;opacity:0.9">Z + C + A = 1 | Riemann zeta & Cosmology</p>
+  <div class="library-grid">
+    <a href="https://jabri-web.github.io/" target="_blank" class="lib-card">
+      <h3>📫 المكتب الرئيسي</h3>
+      <p>الأبحاث والمعادلات</p>
+    </a>
+    <a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank" class="lib-card">
+      <h3>🔬 سندس النظرية</h3>
+      <p>المعادلة الموحدة</p>
+    </a>
+    <a href="https://jabri-web.github.io/Jabri_Nobble/" target="_blank" class="lib-card">
+      <h3>🗺️ سندباد</h3>
+      <p>رحلة الاكتشاف</p>
+    </a>
+    <a href="https://jabri-web.github.io/jabri_lab/" target="_blank" class="lib-card">
+      <h3>🏛️ المكتبة اليمنية</h3>
+      <p>تراث ومعرفة</p>
+    </a>
+  </div>
 </div>
 
-<h2 class="section-title">
-    <span class="ar">مكتبي والبحث</span>
-    <span class="en">My Office & Research</span>
-</h2>
-<div class="grid">
-    <a href="Page4.html" class="btn"><span class="ar">المكتب الرئيسي</span><span class="en">Main Office</span></a>
-    <a href="Yemen-library.html#sandas" class="btn"><span class="ar">مكتبة اليمن</span><span class="en">Yemen Library</span></a>
-    <a href="Pages-Researches.html#library" class="btn"><span class="ar">صفحات وأبحاث</span><span class="en">Pages & Researches</span></a>
-    <a href="History-pdf.html" class="btn"><span class="ar">كتب التاريخ</span><span class="en">History Books</span></a>
-    <a href="research.html#library" class="btn"><span class="ar">أبحاث مسجلة</span><span class="en">Registered Researches</span></a>
-    <a href="yemen-photo.html" class="btn"><span class="ar">السياحة في اليمن</span><span class="en">Tourist in Yemen</span></a>
-</div>
-
-<div class="datetime" id="dt"></div>
-
-<script>
-function toggleLang() {
-    document.body.classList.toggle('en');
-    localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
-}
-if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
-
-function updateTime() {
-    const now = new Date();
-    const lang = document.body.classList.contains('en') ? 'en-US' : 'ar-EG';
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    document.getElementById('dt').innerHTML = now.toLocaleDateString(lang, options);
-}
-updateTime();
-setInterval(updateTime, 60000);
-</script>
+<footer>
+  <p style="margin:5px">© 2026 Yemen Sindbad - جميع الحقوق محفوظة</p>
+  <p style="margin:5px">صنع بحب في اليمن 🇾🇪</p>
+</footer>
 
 </body>
 </html>
