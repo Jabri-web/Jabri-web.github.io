@@ -1,3 +1,4 @@
+
 #General README.md
 
 <meta charset="UTF-8">
@@ -101,7 +102,7 @@
 | 8 | **Jabri_RiemannOS** | [Pages](https://jabri-web.github.io/Jabri-RiemannOS/) | - |
 | 9 | **Jabri_Checkout** | [Pages](https://Jabri-web.github.io/Jabri_Checkout/) | [20513840](https://doi.org/10.5281/zenodo.20513840) |
 | 10 | **Jabri-web** | [Pages](https://jabri-web.github.io/Jabri-web/) | [20499365](https://doi.org/10.5281/zenodo.20499365) |
-| 11 | **Jabri-com** | [Pages](https://jabri-web.github.io/jabri-com/) | [20499365](https://doi.org/10.5281/zenodo.20499365) |
+| 11 | **Jabri-com** | [Pages](https://jabri-web.github.io/jabri-com/) | [21003990](https://doi.org/10.5281/zenodo.21003990) |
 
 > **Verified 2026-06-09 by Jabri**: كل الروابط 1-10 شغالة. DOI كله `10.5281`. لا
 
