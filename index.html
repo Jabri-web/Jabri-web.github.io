@@ -217,5 +217,10 @@ function toggleLang() {
 if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
 </script>
 
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+</script>
 </body>
 </html>
