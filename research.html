@@ -3,226 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بحوث الجبري | Jabri Research - 11 مشروع</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
+<title>بحوث الجبري | Jabri Research - أوفلاين</title>
 <style>
-:root{--bg:#0a0a0f;--card:#11131a;--border:#1f2233;--accent:#6ae3ff;--text:#e8e8f0;--muted:#8a8a9e}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:"Tajawal",sans-serif}
-.header{text-align:center;padding:50px 20px;background:linear-gradient(180deg,#0a0a0a 0%, #0a0a0f 100%);border-bottom:1px solid var(--border)}
-.header img{width:140px;height:140px;border-radius:50%;border:4px solid var(--accent);object-fit:cover;margin-bottom:15px;box-shadow:0 0 25px rgba(106,227,255,0.2)}
-h1{color:var(--accent);font-size:1.8rem} h2{color:var(--muted);font-size:1.1rem}
-.container{max-width:1200px;margin:0 auto;padding:40px 20px}
-.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
-.filter-btn{padding:10px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-family:"Tajawal";font-weight:600}
-.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
-.search-box{text-align:center;margin-bottom:30px}
-.search-box input{width:100%;max-width:500px;padding:12px 20px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:"Tajawal"}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:0.3s}
-.card:hover{border-color:var(--accent);transform:translateY(-5px)}
-.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.card h3{color:var(--accent);font-size:1.1rem}
-.badge{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600}
-.badge.verified{background:#198754;color:#fff}
-.badge.pending{background:#f85149;color:#fff}
-.badge.system{background:#1f6feb;color:#fff}
-.sub-list{margin:10px 0;padding-right:15px;border-right:2px solid var(--border)}
-.sub-item{margin:8px 0} .sub-item b{color:var(--accent);font-size:13px}
-.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
-.btn{flex:1 1 110px;text-align:center;padding:10px;border-radius:10px;text-decoration:none;font-weight:600;font-size:13px;border:1px solid var(--border)}
-.btn.page{background:var(--accent);color:#000} .btn.github{background:#161b22;color:var(--text)}
-.btn.db{background:#30363d;color:var(--text)} .btn.doi{background:#1f6feb;color:#fff}
-.doi-group{display:flex;gap:6px;flex-wrap:wrap} .doi-group .btn{flex:0 1 auto;font-size:12px;padding:6px 10px}
-.footer{text-align:center;margin-top:50px;padding:30px;color:var(--muted);border-top:1px solid var(--border)}
+body{font-family:'Tahoma','Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;transition:0.3s}
+body.en{direction:ltr;font-family:'Segoe UI',Tahoma;text-align:left}
+
+/* زر اللغة ثابت */
+.lang-btn{position:fixed;top:20px;left:20px;background:#6ae3ff;border:none;color:#0d1117;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:15px;z-index:9999;box-shadow:0 4px 12px rgba(106,227,255,0.4)}
+.lang-btn:hover{background:#4dd4ff}
+
+.container{width:100%;max-width:700px;text-align:center}
+.back-btn{display:inline-block;background:#6ae3ff;color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;margin-bottom:30px;font-weight:bold;transition:0.3s}
+.back-btn:hover{background:#4dd4ff;transform:translateY(-2px)}
+
+.offline-badge{background:#ff3333;color:#fff;padding:12px;border-radius:8px;margin:20px auto;max-width:400px;font-weight:bold;font-size:14px}
+
+h1{color:#6ae3ff;font-size:2em;margin-bottom:10px}
+h2{color:#6ae3ff;font-size:1.3em;margin:30px 0 15px;text-align:right;border-right:4px solid #6ae3ff;padding-right:12px}
+body.en h2{text-align:left;border-right:none;border-left:4px solid #6ae3ff;padding-left:12px;padding-right:0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:15px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:15px;text-align:right;transition:0.3s}
+body.en .card{text-align:left}
+.card:hover{border-color:#6ae3ff;transform:translateY(-3px)}
+.card a{color:#c9d1d9;text-decoration:none;font-size:15px;display:block}
+.card a:hover{color:#6ae3ff}
+.badge{display:inline-block;font-size:12px;padding:3px 8px;border-radius:5px;margin-left:5px;font-weight:bold}
+.badge.reg{background:#1f6feb;color:#fff}
+.badge.under{background:#f85149;color:#fff}
+
+.profile-img{width:140px;height:140px;border-radius:50%;border:4px solid #6ae3ff;object-fit:cover;background:#161b22;margin-bottom:15px}
+
+hr{border:none;border-top:1px solid #30363d;margin:40px 0}
+.ar,.en{display:inline}
+body.en .ar{display:none}
+body:not(.en) .en{display:none}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <img src="image/Jabri-photo.png" alt="Abdulla Al-Jabri" onerror="this.style.display='none'">
-  <h1>Eng. Abdulla Mohammed Nasser Al-Jabri</h1>
-  <h2>باحث مستقل في الرياضيات والفيزياء النظرية</h2>
-  <p style="color:var(--accent);font-weight:bold;margin-top:10px">Z + C + A = 1</p>
-</div>
+<button class="lang-btn" onclick="toggleLang()">
+  <span class="ar">EN</span>
+  <span class="en">عربي</span>
+</button>
 
 <div class="container">
-  <div class="search-box">
-    <input type="text" id="search" placeholder="ابحث عن: Riemann, Gravity, DOI...">
-  </div>
-  <div class="filters">
-    <button class="filter-btn active" onclick="filter('all')">الكل 11</button>
-    <button class="filter-btn" onclick="filter('verified')">الموثق</button>
-    <button class="filter-btn" onclick="filter('pending')">قيد النشر</button>
-    <button class="filter-btn" onclick="filter('system')">النظام</button>
-  </div>
 
-  <div class="grid" id="projects">
+<a href="Sindbad.html" class="back-btn">
+  <span class="ar">← العودة للمكتب</span>
+  <span class="en">← Back to Office</span>
+</a>
 
-    <!-- 1 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>1. Jabri6218.github.io</h3><span class="badge verified">موثق</span></div>
-      <p style="color:var(--muted)">الموقع الرئيسي والبوابة</p>
-      <div class="btns">
-        <a href="Jabri.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/jabri62018.github.io" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.20403864" class="btn doi" target="_blank">DOI</a>
-      </div>
-    </div>
+<div class="offline-badge">
+  <span class="ar">✓ اهلا بالزوار- Welcome Visitor</span>
+  <span class="en">✓ Welcome Visitor - أهلا بالزوار
+  </span>
+</div>
 
-    <!-- 2 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>2. Zx_RieOS_v1.2</h3><span class="badge verified">موثق</span></div>
-      <p style="color:var(--muted)">نظام تشغيل Zx لريمان</p>
-      <div class="btns">
-        <a href="Jabr.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.20100622" class="btn doi" target="_blank">DOI</a>
-      </div>
-    </div>
+<div align="center">
+  <img src="Image/Jabri-photo.png" class="profile-img" alt="Abdulla Al-Jabri" onerror="this.style.display='none'">
+  <h1><span class="ar">م. عبدالله محمد ناصر الجبري</span><span class="en">Eng. Abdulla M. N. Al-Jabri</span></h1>
+  <h2 style="border:none;text-align:center;padding:0;margin:10px 0;font-size:1.1em">
+    <span class="ar">باحث مستقل في الرياضيات والفيزياء النظرية</span>
+    <span class="en">Independent Researcher in Mathematics & Theoretical Physics</span>
+  </h2>
+  <p style="margin:10px 0">
+    <b><span class="ar">مجال البحث:</span><span class="en">Research Focus:</span></b> 
+    <span class="ar">دالة Zx ومسائل الألفية</span><span class="en">Zx Function & Millennium Problems</span>
+  </p>
+  <p style="color:#6ae3ff;font-weight:bold;margin:15px 0">Z + C + A = 1</p>
+</div>
 
-    <!-- 3 -->
-    <div class="card" data-type="pending">
-      <div class="card-header"><h3>3. Zx_Mother_Function_Jabri</h3><span class="badge pending">قيد النشر</span></div>
-      <p style="color:var(--muted)">الدالة الأم Zx</p>
-      <div class="btns">
-        <a href="Baleegh.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" class="btn github" target="_blank">GitHub</a>
-        <a href="#" class="btn doi">DOI قريبا</a>
-      </div>
-    </div>
+<h1><span class="ar">بحوث الجبري</span><span class="en">Jabri Research Projects</span></h1>
+<p style="color:#8a8a9e;margin-bottom:20px"><span class="ar">المشاريع المسجلة وتحت التطوير</span><span class="en">Registered & Under Development</span></p>
 
-    <!-- 4 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>4. Jabri-web.github.io</h3><span class="badge verified">موثق</span></div>
-      <p style="color:var(--muted)">المكتب الرئيسي</p>
-      <div class="btns">
-        <a href="Office.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri-web.github.io" class="btn github" target="_blank">GitHub</a>
-        <div class="doi-group">
-          <a href="https://doi.org/10.5281/zenodo.20499365" class="btn doi" target="_blank">DOI 20499365</a>
-          <a href="https://doi.org/10.5281/zenodo.20404167" class="btn doi" target="_blank">DOI 20404167</a>
-        </div>
-      </div>
-    </div>
+<!-- القسم 1: مسجلة -->
+<h2>(1) <span class="ar">مسجلة</span><span class="en">Registered</span></h2>
+<div class="grid">
+  <div class="card"><a href="#"><span class="badge reg">5-1</span> <span class="ar">Jabri-5</span><span class="en">Jabri-5</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-2</span> <span class="ar">Jabri-28</span><span class="en">Jabri-28</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-3</span> <span class="ar">Jabri-Gravity</span><span class="en">Jabri-Gravity</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-4</span> <span class="ar">Jabri-Spacetime</span><span class="en">Jabri-Spacetime</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-5</span> <span class="ar">Jabri-Darkenergy</span><span class="en">Jabri-Darkenergy</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-6</span> <span class="ar">Jabri-Planck</span><span class="en">Jabri-Planck</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-7</span> <span class="ar">Jabri-Hubble</span><span class="en">Jabri-Hubble</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-8</span> <span class="ar">Jabri-Periodic</span><span class="en">Jabri-Periodic</span></a></div>
+  <div class="card"><a href="#"><span class="badge reg">5-9</span> <span class="ar">Jabri-all</span><span class="en">Jabri-all</span></a></div>
+</div>
 
-    <!-- 5 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>5. Jabri_Nobble</h3><span class="badge verified">موثق</span></div>
-      <p style="color:var(--muted)">حزمة مسائل الألفية</p>
-      <div class="sub-list">
-        <div class="sub-item"><b>5.1 Jabri_Riemann</b><div class="doi-group"><a href="https://doi.org/10.5281/zenodo.20139904" class="btn doi" target="_blank">DOI 20139904</a><a href="https://doi.org/10.5281/zenodo.20145337" class="btn doi" target="_blank">DOI 20145337</a></div></div>
-        <div class="sub-item"><b>5.2 Jabri_np</b><a href="https://doi.org/10.5281/zenodo.20145279" class="btn doi" target="_blank">DOI 20145279</a></div>
-        <div class="sub-item"><b>5.3 Jabri_gap</b><a href="https://doi.org/10.5281/zenodo.20148344" class="btn doi" target="_blank">DOI 20148344</a></div>
-        <div class="sub-item"><b>5.4 Jabri_Identity</b><a href="https://doi.org/10.5281/zenodo.20114317" class="btn doi" target="_blank">DOI 20114317</a></div>
-        <div class="sub-item"><b>5.5 Jabri_Navier</b><a href="https://doi.org/10.5281/zenodo.20149618" class="btn doi" target="_blank">DOI 20149618</a></div>
-      </div>
-      <div class="btns">
-        <a href="Jabri_Nobble.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri_Nobble" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.20148770" class="btn doi" target="_blank">DOI رئيسي</a>
-      </div>
-    </div>
+<!-- القسم 2: قيد التطوير -->
+<h2>(2) <span class="ar">قيد التطوير</span><span class="en">Undergoing</span></h2>
+<div class="grid">
+  <div class="card"><a href="#"><span class="badge under">6-1</span> <span class="ar">Jabri-Riemann</span><span class="en">Jabri-Riemann</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-2</span> <span class="ar">Jabri-np</span><span class="en">Jabri-np</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-3</span> <span class="ar">Jabri-gap</span><span class="en">Jabri-gap</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-4</span> <span class="ar">Jabri-Navier</span><span class="en">Jabri-Navier</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-5</span> <span class="ar">Jabri-Birch</span><span class="en">Jabri-Birch</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-6</span> <span class="ar">Jabri-Hodge</span><span class="en">Jabri-Hodge</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">6-7</span> <span class="ar">Jabri-S-curve</span><span class="en">Jabri-S-curve</span></a></div>
+  <div class="card"><a href="#"><span class="badge under">Z+C+A=1</span> <span class="ar">Jabri-Identity</span><span class="en">Jabri-Identity</span></a></div>
+</div>
 
-    <!-- 6 -->
-    <div class="card" data-type="pending">
-      <div class="card-header"><h3>6. Jabri_lab</h3><span class="badge pending">قيد النشر</span></div>
-      <p style="color:var(--muted)">المختبر التجريبي</p>
-      <div class="btns">
-        <a href="Jabri_lab.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri_lab" class="btn github" target="_blank">GitHub</a>
-        <a href="#" class="btn doi">DOI قريبا</a>
-      </div>
-    </div>
+<hr>
 
-    <!-- 7 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>7. Zx_RieOS_v1.1</h3><span class="badge verified">موثق</span></div>
-      <div class="btns">
-        <a href="Code-os.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Zx_RieOS_v1.1" class="btn github" target="_blank">GitHub</a>
-        <div class="doi-group">
-          <a href="https://doi.org/10.5281/zenodo.19981688" class="btn doi" target="_blank">DOI 19981688</a>
-          <a href="https://doi.org/10.5281/zenodo.20070594" class="btn doi" target="_blank">DOI 20070594</a>
-        </div>
-      </div>
-    </div>
+<p style="color:#666;font-size:13px">
+  <span class="ar">ملاحظة: الروابط المحلية تعمل بدون نت. روابط GitHub تحتاج انترنت</span>
+  <span class="en">Note: Local links work offline. GitHub links need internet</span>
+</p>
 
-    <!-- 8 -->
-    <div class="card" data-type="system">
-      <div class="card-header"><h3>8. Jabri_RiemannOS</h3><span class="badge system">نظام</span></div>
-      <div class="btns">
-        <a href="Code.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri-RiemannOS" class="btn github" target="_blank">GitHub</a>
-        <a href="#" class="btn doi">لا يوجد</a>
-      </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>9. Jabri_Checkout</h3><span class="badge verified">موثق</span></div>
-      <div class="btns">
-        <a href="Check.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri_Checkout" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.20513840" class="btn doi" target="_blank">DOI</a>
-      </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>10. Jabri-web</h3><span class="badge verified">موثق</span></div>
-      <div class="btns">
-        <a href="Router-all.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri-web" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.20499365" class="btn doi" target="_blank">DOI</a>
-      </div>
-    </div>
-
-    <!-- 11 -->
-    <div class="card" data-type="verified">
-      <div class="card-header"><h3>11. Jabri-com</h3><span class="badge verified">موثق</span></div>
-      <div class="btns">
-        <a href="index.html" class="btn page" target="_blank">الصفحة</a>
-        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
-        <a href="https://github.com/Jabri-web/Jabri-com" class="btn github" target="_blank">GitHub</a>
-        <a href="https://doi.org/10.5281/zenodo.21003990" class="btn doi" target="_blank">DOI</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    <p><b>Verified 2026-06-11 by Jabri</b>: كل الروابط 1-11 شغالة. DOI كله 10.5281. لا تعديل بعد اليوم.</p>
-    <p>CC BY 4.0 | Jabri Identity: Z + C + A = 1</p>
-  </div>
 </div>
 
 <script>
-// فلترة
-function filter(type){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('.card').forEach(card=>{
-    card.style.display = (type==='all' || card.dataset.type===type) ? '' : 'none';
-  });
+function toggleLang() {
+  document.body.classList.toggle('en');
+  document.documentElement.dir = document.body.classList.contains('en') ? 'ltr' : 'rtl';
+  document.documentElement.lang = document.body.classList.contains('en') ? 'en' : 'ar';
+  localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
 }
-// بحث
-document.getElementById('search').addEventListener('keyup', function(){
-  let q = this.value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card=>{
-    card.style.display = card.innerText.toLowerCase().includes(q) ? '' : 'none';
-  });
-});
+if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
 </script>
 
 </body>
