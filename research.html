@@ -3,126 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بحوث الجبري | Jabri Research - أوفلاين</title>
+<title><span class="ar">بحوث الجبري | 11 مشروع | نظرية سندس Z+C+A=1</span><span class="en">Jabri Research | 11 Projects | Sundus Theory Z+C+A=1</span></title>
+<meta name="description" content="11 مشروع بحثي لم/ عبدالله الجبري: من أصفار ريمان إلى بنية الكون. نظرية سندس الموحدة. DOI + GitHub + ملخص لكل بحث">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#0a0a0f;--card:#11131a;--border:#1f2233;--accent:#6ae3ff;--text:#e8e8f0;--muted:#8a8a9e}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Tahoma','Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;transition:0.3s}
-body.en{direction:ltr;font-family:'Segoe UI',Tahoma;text-align:left}
-
-/* زر اللغة ثابت */
-.lang-btn{position:fixed;top:20px;left:20px;background:#6ae3ff;border:none;color:#0d1117;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:15px;z-index:9999;box-shadow:0 4px 12px rgba(106,227,255,0.4)}
-.lang-btn:hover{background:#4dd4ff}
-
-.container{width:100%;max-width:700px;text-align:center}
-.back-btn{display:inline-block;background:#6ae3ff;color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;margin-bottom:30px;font-weight:bold;transition:0.3s}
-.back-btn:hover{background:#4dd4ff;transform:translateY(-2px)}
-
-.offline-badge{background:#ff3333;color:#fff;padding:12px;border-radius:8px;margin:20px auto;max-width:400px;font-weight:bold;font-size:14px}
-
-h1{color:#6ae3ff;font-size:2em;margin-bottom:10px}
-h2{color:#6ae3ff;font-size:1.3em;margin:30px 0 15px;text-align:right;border-right:4px solid #6ae3ff;padding-right:12px}
-body.en h2{text-align:left;border-right:none;border-left:4px solid #6ae3ff;padding-left:12px;padding-right:0}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:15px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:15px;text-align:right;transition:0.3s}
-body.en .card{text-align:left}
-.card:hover{border-color:#6ae3ff;transform:translateY(-3px)}
-.card a{color:#c9d1d9;text-decoration:none;font-size:15px;display:block}
-.card a:hover{color:#6ae3ff}
-.badge{display:inline-block;font-size:12px;padding:3px 8px;border-radius:5px;margin-left:5px;font-weight:bold}
-.badge.reg{background:#1f6feb;color:#fff}
-.badge.under{background:#f85149;color:#fff}
-
-.profile-img{width:140px;height:140px;border-radius:50%;border:4px solid #6ae3ff;object-fit:cover;background:#161b22;margin-bottom:15px}
-
-hr{border:none;border-top:1px solid #30363d;margin:40px 0}
-.ar,.en{display:inline}
+body{background:var(--bg);color:var(--text);font-family:"Tajawal",sans-serif;transition:0.3s}
+body.en{direction:ltr;font-family:'Segoe UI',Tahoma,sans-serif}
 body.en .ar{display:none}
 body:not(.en) .en{display:none}
+
+/* ازرار علوية */
+.top-bar{position:fixed;top:15px;left:0;right:0;display:flex;justify-content:space-between;padding:0 15px;z-index:9999}
+.lang-btn,.back-btn{background:var(--accent);border:none;color:#000;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:700;font-size:14px;font-family:"Tajawal";box-shadow:0 4px 12px rgba(106,227,255,0.3)}
+.lang-btn:hover,.back-btn:hover{background:#4dd4ff;transform:translateY(-2px)}
+
+.header{text-align:center;padding:80px 20px 50px;background:linear-gradient(180deg,#0a0a0a 0%, #0a0a0f 100%);border-bottom:1px solid var(--border)}
+.header img{width:140px;height:140px;border-radius:50%;border:4px solid var(--accent);object-fit:cover;margin-bottom:15px;box-shadow:0 0 25px rgba(106,227,255,0.2)}
+h1{color:var(--accent);font-size:1.8rem} h2{color:var(--muted);font-size:1.1rem}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
+.filter-btn{padding:10px 20px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-family:"Tajawal";font-weight:600}
+body.en .filter-btn{font-family:'Segoe UI'}
+.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.search-box{text-align:center;margin-bottom:30px}
+.search-box input{width:100%;max-width:500px;padding:12px 20px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:"Tajawal"}
+body.en .search-box input{font-family:'Segoe UI'}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:0.3s}
+.card:hover{border-color:var(--accent);transform:translateY(-5px)}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card h3{color:var(--accent);font-size:1.1rem}
+.badge{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600}
+.badge.verified{background:#198754;color:#fff}
+.badge.pending{background:#f85149;color:#fff}
+.badge.system{background:#1f6feb;color:#fff}
+.card-desc{color:var(--muted);font-size:14px;line-height:1.8;margin:12px 0;min-height:60px}
+.keywords{font-size:12px;color:var(--accent);margin-bottom:10px}
+.sub-list{margin:10px 0;padding-right:15px;border-right:2px solid var(--border)}
+body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-left:2px solid var(--border)}
+.sub-item{margin:8px 0} .sub-item b{color:var(--accent);font-size:13px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{flex:1 1 110px;text-align:center;padding:10px;border-radius:10px;text-decoration:none;font-weight:600;font-size:13px;border:1px solid var(--border)}
+.btn.page{background:var(--accent);color:#000} .btn.github{background:#161b22;color:var(--text)}
+.btn.db{background:#30363d;color:var(--text)} .btn.doi{background:#1f6feb;color:#fff}
+.doi-group{display:flex;gap:6px;flex-wrap:wrap} .doi-group .btn{flex:0 1 auto;font-size:12px;padding:6px 10px}
+.footer{text-align:center;margin-top:50px;padding:30px;color:var(--muted);border-top:1px solid var(--border)}
 </style>
 </head>
 <body>
 
-<button class="lang-btn" onclick="toggleLang()">
-  <span class="ar">EN</span>
-  <span class="en">عربي</span>
-</button>
+<!-- ازرار علوية -->
+<div class="top-bar">
+  <button class="back-btn" onclick="window.location.href='index.html'">
+    <span class="ar">← العودة</span><span class="en">← Back</span>
+  </button>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span class="ar">EN</span><span class="en">عربي</span>
+  </button>
+</div>
+
+<div class="header">
+  <img src="image/Jabri-photo.png" alt="Abdulla Al-Jabri" onerror="this.style.display='none'">
+  <h1>Eng. Abdulla Mohammed Nasser Al-Jabri</h1>
+  <h2><span class="ar">باحث مستقل في الرياضيات والفيزياء النظرية</span><span class="en">Independent Researcher in Mathematics & Theoretical Physics</span></h2>
+  <p style="color:var(--accent);font-weight:bold;margin-top:10px;font-size:18px">Sundus Theory: Z + C + A = 1</p>
+</div>
 
 <div class="container">
+  <div class="search-box">
+    <input type="text" id="search" placeholder="ابحث عن: Riemann, Gravity, DOI, نظرية سندس...">
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all',event)"><span class="ar">الكل 11</span><span class="en">All 11</span></button>
+    <button class="filter-btn" onclick="filter('verified',event)"><span class="ar">الموثق</span><span class="en">Verified</span></button>
+    <button class="filter-btn" onclick="filter('pending',event)"><span class="ar">قيد النشر</span><span class="en">Pending</span></button>
+    <button class="filter-btn" onclick="filter('system',event)"><span class="ar">النظام</span><span class="en">System</span></button>
+  </div>
 
-<a href="Sindbad.html" class="back-btn">
-  <span class="ar">← العودة للمكتب</span>
-  <span class="en">← Back to Office</span>
-</a>
+  <div class="grid" id="projects">
 
-<div class="offline-badge">
-  <span class="ar">✓ اهلا بالزوار- Welcome Visitor</span>
-  <span class="en">✓ Welcome Visitor - أهلا بالزوار
-  </span>
+    <!-- 1 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>1. Jabri6218.github.io</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">بوابة, سندباد اليمن, الهوية الرقمية</span><span class="en">Portal, Sindbad Yemen, Digital Identity</span></div>
+      <p class="card-desc"><span class="ar">البوابة الرئيسية لمبادرة سندباد اليمن. توثيق التراث اليمني صنعاء شبام سقطرى وربطه بالهوية البحثية للجبري.</span><span class="en">Main portal for Yemen Sindbad initiative. Documenting Yemeni heritage Sanaa Shibam Socotra and linking it to Al-Jabri research identity.</span></p>
+      <div class="btns">
+        <a href="Jabri.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/jabri62018.github.io" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.20403864" class="btn doi" target="_blank">DOI</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>2. Zx_RieOS_v1.2</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">نظام تشغيل, ريمان, Zx, محاكاة</span><span class="en">OS, Riemann, Zx, Simulation</span></div>
+      <p class="card-desc"><span class="ar">نظام تشغيل تجريبي مبني على دالة زيتا لريمان. يهدف لمحاكاة توزيع الأصفار وربطها بالثوابت الكونية ضمن نظرية سندس.</span><span class="en">Experimental OS based on Riemann Zeta function. Simulates zero distribution and links it to cosmic constants within Sundus Theory.</span></p>
+      <div class="btns">
+        <a href="Jabr.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.20100622" class="btn doi" target="_blank">DOI</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card" data-type="pending">
+      <div class="card-header"><h3>3. Zx_Mother_Function_Jabri</h3><span class="badge pending"><span class="ar">قيد النشر</span><span class="en">Pending</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">الدالة الأم, Zx, نظرية سندس, Z+C+A=1</span><span class="en">Mother Function, Zx, Sundus Theory, Z+C+A=1</span></div>
+      <p class="card-desc"><span class="ar">الورقة الأساسية لنظرية سندس الموحدة. تطرح المعادلة Z+C+A=1 كحل يربط بين أصفار ريمان وبنية الكون والثوابت الفيزيائية.</span><span class="en">Core paper of Sundus Unified Theory. Presents Z+C+A=1 equation linking Riemann zeros to universe structure and physics constants.</span></p>
+      <div class="btns">
+        <a href="Baleegh.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" class="btn github" target="_blank">GitHub</a>
+        <a href="#" class="btn doi"><span class="ar">DOI قريبا</span><span class="en">DOI Soon</span></a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>4. Jabri-web.github.io</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">المكتب, الأرشيف, البحوث, اليمن</span><span class="en">Office, Archive, Research, Yemen</span></div>
+      <p class="card-desc"><span class="ar">المكتب الرئيسي لواحة الجبري. يضم الأبحاث والمكتبة والصور والسيرة الذاتية. المركز الأكاديمي للمشاريع.</span><span class="en">Main Office of Heaven Al-Jabri. Includes research, library, images, and CV. Academic hub for all projects.</span></p>
+      <div class="btns">
+        <a href="Office.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri-web.github.io" class="btn github" target="_blank">GitHub</a>
+        <div class="doi-group">
+          <a href="https://doi.org/10.5281/zenodo.20499365" class="btn doi" target="_blank">DOI 20499365</a>
+          <a href="https://doi.org/10.5281/zenodo.20404167" class="btn doi" target="_blank">DOI 20404167</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>5. Jabri_Nobble</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">مسائل الألفية, ريمان, P vs NP, نافيير ستوكس</span><span class="en">Millennium Problems, Riemann, P vs NP, Navier-Stokes</span></div>
+      <p class="card-desc"><span class="ar">حزمة أبحاث لمعالجة مسائل جائزة الألفية. تشمل إثباتات مقترحة لفرضية ريمان و P vs NP ومعادلات نافيير ستوكس وهودج.</span><span class="en">Research package tackling Millennium Prize Problems. Includes proposed proofs for Riemann, P vs NP, Navier-Stokes, and Hodge.</span></p>
+      <div class="sub-list">
+        <div class="sub-item"><b>5.1 Jabri_Riemann</b><div class="doi-group"><a href="https://doi.org/10.5281/zenodo.20139904" class="btn doi" target="_blank">DOI 20139904</a><a href="https://doi.org/10.5281/zenodo.20145337" class="btn doi" target="_blank">DOI 20145337</a></div></div>
+        <div class="sub-item"><b>5.2 Jabri_np</b><a href="https://doi.org/10.5281/zenodo.20145279" class="btn doi" target="_blank">DOI 20145279</a></div>
+        <div class="sub-item"><b>5.3 Jabri_gap</b><a href="https://doi.org/10.5281/zenodo.20148344" class="btn doi" target="_blank">DOI 20148344</a></div>
+        <div class="sub-item"><b>5.4 Jabri_Identity</b><a href="https://doi.org/10.5281/zenodo.20114317" class="btn doi" target="_blank">DOI 20114317</a></div>
+        <div class="sub-item"><b>5.5 Jabri_Navier</b><a href="https://doi.org/10.5281/zenodo.20149618" class="btn doi" target="_blank">DOI 20149618</a></div>
+      </div>
+      <div class="btns">
+        <a href="Jabri_Nobble.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri_Nobble" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.20148770" class="btn doi" target="_blank"><span class="ar">DOI رئيسي</span><span class="en">Main DOI</span></a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card" data-type="pending">
+      <div class="card-header"><h3>6. Jabri_lab</h3><span class="badge pending"><span class="ar">قيد النشر</span><span class="en">Pending</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">مختبر, تجارب, محاكاة, فيزياء</span><span class="en">Lab, Experiments, Simulation, Physics</span></div>
+      <p class="card-desc"><span class="ar">مختبر الجبري للتجارب الحاسوبية والفيزيائية. مساحة لاختبار المعادلات والمحاكاة قبل النشر الرسمي.</span><span class="en">Jabri Lab for computational and physics experiments. Testing ground for equations and simulations before official publication.</span></p>
+      <div class="btns">
+        <a href="Jabri_lab.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri_lab" class="btn github" target="_blank">GitHub</a>
+        <a href="#" class="btn doi"><span class="ar">DOI قريبا</span><span class="en">DOI Soon</span></a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>7. Zx_RieOS_v1.1</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">نظام تشغيل, v1.1, نواة, ريمان</span><span class="en">OS, v1.1, Kernel, Riemann</span></div>
+      <p class="card-desc"><span class="ar">الإصدار الأول من نظام Zx_RieOS. نواة برمجية تتعامل مع الأعداد الأولية وتوزيعها كمدخل لفهم الكون.</span><span class="en">First version of Zx_RieOS. Kernel handling prime numbers and their distribution as an entry to understanding the universe.</span></p>
+      <div class="btns">
+        <a href="Code-os.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Zx_RieOS_v1.1" class="btn github" target="_blank">GitHub</a>
+        <div class="doi-group">
+          <a href="https://doi.org/10.5281/zenodo.19981688" class="btn doi" target="_blank">DOI 19981688</a>
+          <a href="https://doi.org/10.5281/zenodo.20070594" class="btn doi" target="_blank">DOI 20070594</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card" data-type="system">
+      <div class="card-header"><h3>8. Jabri_RiemannOS</h3><span class="badge system"><span class="ar">نظام</span><span class="en">System</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">نظام تشغيل, محاكاة كونية, رياضيات</span><span class="en">OS, Cosmic Simulation, Mathematics</span></div>
+      <p class="card-desc"><span class="ar">نظام تشغيل متكامل يحاول تمثيل الكون عبر نموذج رياضي مستوحى من فرضية ريمان وتوزيع الأعداد الأولية.</span><span class="en">Integrated OS attempting to model the universe via a mathematical model inspired by Riemann Hypothesis and prime distribution.</span></p>
+      <div class="btns">
+        <a href="Code.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri-RiemannOS" class="btn github" target="_blank">GitHub</a>
+        <a href="#" class="btn doi"><span class="ar">لا يوجد</span><span class="en">N/A</span></a>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>9. Jabri_Checkout</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">دفع, تجارة, بوابة, يمن</span><span class="en">Payment, Commerce, Gateway, Yemen</span></div>
+      <p class="card-desc"><span class="ar">بوابة دفع إلكتروني محلية. مشروع لدعم التجارة الرقمية وربطها بمنصة واحة الجبري.</span><span class="en">Local e-payment gateway. Project to support digital commerce and link it to Heaven Al-Jabri platform.</span></p>
+      <div class="btns">
+        <a href="Check.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri_Checkout" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.20513840" class="btn doi" target="_blank">DOI</a>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>10. Jabri-web</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
+      <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">مستودع, مصدر, Router, أصول</span><span class="en">Repository, Source, Router, Assets</span></div>
+      <p class="card-desc"><span class="ar">المستودع الرئيسي للأكواد والأصول. يحتوي على الراوتر الذي يربط بين جميع المشاريع الـ 11.</span><span class="en">Main repository for codes and assets. Contains the router linking all 11 projects.</span></p>
+      <div class="btns">
+        <a href="Router-all.html" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
+        <a href="#" class="btn db" target="_blank"><span class="ar">قاعدة البيانات</span><span class="en">Database</span></a>
+        <a href="https://github.com/Jabri-web/Jabri-web" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.20499365" class="btn doi" target="_blank">DOI</a>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <!-- 11 -->
+    <div class="card" data-type="verified">
+      <div class="card-header"><h3>11. Jabri-com</h3><span class="badge verified">موثق</span></div>
+      <div class="btns">
+        <a href="index.html" class="btn page" target="_blank">الصفحة</a>
+        <a href="#" class="btn db" target="_blank">قاعدة البيانات</a>
+        <a href="https://github.com/Jabri-web/Jabri-com" class="btn github" target="_blank">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.21003990" class="btn doi" target="_blank">DOI</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p><b>Verified 2026-06-11 by Jabri</b>: كل الروابط 1-11 شغالة. DOI كله 10.5281. لا تعديل بعد اليوم.</p>
+    <p>CC BY 4.0 | Jabri Identity: Z + C + A = 1</p>
+  </div>
 </div>
 
-<div align="center">
-  <img src="Image/Jabri-photo.png" class="profile-img" alt="Abdulla Al-Jabri" onerror="this.style.display='none'">
-  <h1><span class="ar">م. عبدالله محمد ناصر الجبري</span><span class="en">Eng. Abdulla M. N. Al-Jabri</span></h1>
-  <h2 style="border:none;text-align:center;padding:0;margin:10px 0;font-size:1.1em">
-    <span class="ar">باحث مستقل في الرياضيات والفيزياء النظرية</span>
-    <span class="en">Independent Researcher in Mathematics & Theoretical Physics</span>
-  </h2>
-  <p style="margin:10px 0">
-    <b><span class="ar">مجال البحث:</span><span class="en">Research Focus:</span></b> 
-    <span class="ar">دالة Zx ومسائل الألفية</span><span class="en">Zx Function & Millennium Problems</span>
-  </p>
-  <p style="color:#6ae3ff;font-weight:bold;margin:15px 0">Z + C + A = 1</p>
-</div>
-
-<h1><span class="ar">بحوث الجبري</span><span class="en">Jabri Research Projects</span></h1>
-<p style="color:#8a8a9e;margin-bottom:20px"><span class="ar">المشاريع المسجلة وتحت التطوير</span><span class="en">Registered & Under Development</span></p>
-
-<!-- القسم 1: مسجلة -->
-<h2>(1) <span class="ar">مسجلة</span><span class="en">Registered</span></h2>
-<div class="grid">
-  <div class="card"><a href="#"><span class="badge reg">5-1</span> <span class="ar">Jabri-5</span><span class="en">Jabri-5</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-2</span> <span class="ar">Jabri-28</span><span class="en">Jabri-28</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-3</span> <span class="ar">Jabri-Gravity</span><span class="en">Jabri-Gravity</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-4</span> <span class="ar">Jabri-Spacetime</span><span class="en">Jabri-Spacetime</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-5</span> <span class="ar">Jabri-Darkenergy</span><span class="en">Jabri-Darkenergy</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-6</span> <span class="ar">Jabri-Planck</span><span class="en">Jabri-Planck</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-7</span> <span class="ar">Jabri-Hubble</span><span class="en">Jabri-Hubble</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-8</span> <span class="ar">Jabri-Periodic</span><span class="en">Jabri-Periodic</span></a></div>
-  <div class="card"><a href="#"><span class="badge reg">5-9</span> <span class="ar">Jabri-all</span><span class="en">Jabri-all</span></a></div>
-</div>
-
-<!-- القسم 2: قيد التطوير -->
-<h2>(2) <span class="ar">قيد التطوير</span><span class="en">Undergoing</span></h2>
-<div class="grid">
-  <div class="card"><a href="#"><span class="badge under">6-1</span> <span class="ar">Jabri-Riemann</span><span class="en">Jabri-Riemann</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-2</span> <span class="ar">Jabri-np</span><span class="en">Jabri-np</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-3</span> <span class="ar">Jabri-gap</span><span class="en">Jabri-gap</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-4</span> <span class="ar">Jabri-Navier</span><span class="en">Jabri-Navier</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-5</span> <span class="ar">Jabri-Birch</span><span class="en">Jabri-Birch</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-6</span> <span class="ar">Jabri-Hodge</span><span class="en">Jabri-Hodge</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">6-7</span> <span class="ar">Jabri-S-curve</span><span class="en">Jabri-S-curve</span></a></div>
-  <div class="card"><a href="#"><span class="badge under">Z+C+A=1</span> <span class="ar">Jabri-Identity</span><span class="en">Jabri-Identity</span></a></div>
-</div>
-
-<hr>
-
-<p style="color:#666;font-size:13px">
-  <span class="ar">ملاحظة: الروابط المحلية تعمل بدون نت. روابط GitHub تحتاج انترنت</span>
-  <span class="en">Note: Local links work offline. GitHub links need internet</span>
-</p>
-
-</div>
 
 <script>
-function toggleLang() {
-  document.body.classList.toggle('en');
-  document.documentElement.dir = document.body.classList.contains('en') ? 'ltr' : 'rtl';
-  document.documentElement.lang = document.body.classList.contains('en') ? 'en' : 'ar';
-  localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
-}
-if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
+  // فلترة
+  function filter(type, e) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+    });
+  }
+  
+  // بحث
+  document.getElementById('search').addEventListener('keyup', function() {
+    let q = this.value.toLowerCase();
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.display = card.innerText.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+  
+  // تبديل اللغة
+  function toggleLang() {
+    document.body.classList.toggle('en');
+    const isEn = document.body.classList.contains('en');
+    
+    document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+    document.documentElement.lang = isEn ? 'en' : 'ar';
+    
+    // تحديث عنوان الصفحة
+    document.title = isEn ?
+      'Jabri Research | 11 Projects | Sundus Theory Z+C+A=1' :
+      'بحوث الجبري | 11 مشروع | نظرية سندس Z+C+A=1';
+    
+    // تحديث placeholder البحث
+    document.getElementById('search').placeholder = isEn ?
+      'Search: Riemann, Gravity, DOI, Sundus Theory...' :
+      'ابحث عن: Riemann, Gravity, DOI, نظرية سندس...';
+    
+    localStorage.setItem('lang', isEn ? 'en' : 'ar');
+  }
+  
+  // تحميل اللغة المحفوظة اول ما الصفحة تفتح
+  window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('lang') === 'en') {
+      toggleLang();
+    }
+  });
 </script>
 
+<!-- Social Links -->
+<div style="margin:30px 0">
+  <a href="https://github.com/Jabri-web" target="_blank" style="color:#6ae3ff;margin:0 10px">GitHub</a>
+  <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#6ae3ff;margin:0 10px">ORCID</a>
+  <a href="mailto:jabri62018@gmail.com" style="color:#6ae3ff;margin:0 10px">Email</a>
+</div>
 </body>
 </html>
