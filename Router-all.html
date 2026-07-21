@@ -103,23 +103,100 @@ body:not(.en) .en{display:none}
 <div class="datetime" id="dt"></div>
 
 
-<footer>
-  <p id="ar-text">
-    <span class="ar">من أصفار ريمان إلى بنية الكون</span>
-  </p>
-  <p id="en-text" style="display:all">
-    <span class="en">From Riemann zeros to the structure of the universe</span>
+<!-- footer.html -->
+<footer id="site-footer" style="background:#0a0a0f;color:#e8e8f0;padding:30px 15px;border-top:1px solid #2a2a3e;font-family:'Tajawal',Arial,sans-serif;">
+  
+  <!-- البحث عن الباحث -->
+  <div style="text-align:center;margin:20px 0;border-top:1px solid #2a2a3e;padding-top:20px;">
+    <p id="searchTitle"><strong>🔍 البحث عن الباحث:</strong></p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://www.google.com/search?q=واحة+الجبري" target="_blank" style="color:#6ae3ff;text-decoration:none;">🏛️ <span class="txt" data-ar="بحث عن واحة الجبري" data-en="Search Al-Jabri Oasis">بحث عن واحة الجبري</span></a>
+      <a href="https://www.google.com/search?q=عبدالله+محمد+ناصر+الجبري" target="_blank" style="color:#6ae3ff;text-decoration:none;">👨‍🔬 <span class="txt" data-ar="بحث عن عبدالله الجبري" data-en="Search Abdulla Al-Jabri">بحث عن عبدالله الجبري</span></a>
+      <a href="https://www.google.com/search?q=Abdulla+Al-Jabri" target="_blank" style="color:#6ae3ff;text-decoration:none;">🔎 <span class="txt" data-ar="بحث بالانجليزي" data-en="Search Abdulla Al-Jabri">Search Abdulla Al-Jabri</span></a>
+    </div>
+  </div>
+  
+  <!-- الروابط -->
+  <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:15px 0;">
+    <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🆔 <span class="txt" data-ar="ORCID" data-en="ORCID">ORCID</span></a>
+    <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📖 <span class="txt" data-ar="ويكيبيديا" data-en="Wikipedia">Wikipedia</span></a>
+    <a href="https://github.com/jabri-web" target="_blank" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🐙 <span class="txt" data-ar="جيتهاب" data-en="GitHub">GitHub</span></a>
+    
+    
+    <a href="https://zenodo.org/me/uploads" target="_blank" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🐙 <span class="txt" data-ar="زينو" data-en="Zeno">Zeno</span></a>
+    
+    
+    
+    <a href="mailto:jabri62018@gmail.com" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📧 <span class="txt" data-ar="البريد" data-en="Email">Email</span></a>
+    <a href="Author-cv.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📄 <span class="txt" data-ar="السيرة الذاتية" data-en="C.V">C.V</span></a>
+    <a href="citations.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">♻️ <span class="txt" data-ar="الاستشهادات" data-en="Citations">Cite</span></a>
+    <a href="source.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📜 <span class="txt" data-ar="المصادر" data-en="Source">Source</span></a>
+    <a href="about.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">ℹ️ <span class="txt" data-ar="عن الموقع" data-en="About">About</span></a>
+  </div>
+  
+  <!-- الحقوق -->
+  <p id="copyright" style="margin-top:20px;color:#666;font-size:14px;text-align:center;">
+    © 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة
   </p>
   
-  <p style="margin-top:10px">
-    📧 <a href="mailto:jabri62018@gmail.com">Email</a> |
-    🆔 <a href="https://orcid.org/0009-0003-3319-3822" target="_blank">[ORCID]</a>
-  </p>
-  
-  <p style="margin-top:15px">
-    <span id="ar-copy">© 2026 م. عبدالله محمد ناصر الجبري</span>
-    <span id="en-copy" style="display:all">© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri</span>
-  </p>
+  <!-- Footer Language Script -->
+  <script>
+    function updateFooterLang() {
+      const isEnglish = document.documentElement.lang === 'en';
+      console.log('🔄 updateFooterLang called, isEnglish:', isEnglish);
+      
+      // Change direction
+      const footer = document.getElementById('site-footer');
+      if (footer) {
+        footer.dir = isEnglish ? "ltr" : "rtl";
+      }
+      
+      // Update search title
+      const searchTitle = document.getElementById('searchTitle');
+      if (searchTitle) {
+        searchTitle.innerHTML = isEnglish ?
+          "<strong>🔍 Search for Researcher:</strong>" :
+          "<strong>🔍 البحث عن الباحث:</strong>";
+      }
+      
+      // Update copyright
+      const copyright = document.getElementById('copyright');
+      if (copyright) {
+        copyright.innerHTML = isEnglish ?
+          "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved" :
+          "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
+      }
+      
+      // Update all text elements
+      document.querySelectorAll('#site-footer .txt').forEach(el => {
+        const newText = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+        if (newText) {
+          el.textContent = newText;
+        }
+      });
+      
+      console.log('✅ Footer updated');
+    }
+    
+    // Expose globally
+    window.updateFooterLang = updateFooterLang;
+    
+    // Run on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 Footer DOM loaded');
+      if (typeof updateFooterLang === 'function') {
+        updateFooterLang();
+      }
+    });
+    
+    // Also run when footer is dynamically loaded
+    document.addEventListener('footerLoaded', function() {
+      console.log('📄 Footer loaded event received');
+      if (typeof updateFooterLang === 'function') {
+        updateFooterLang();
+      }
+    });
+  </script>
 </footer>
 
 
