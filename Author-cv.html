@@ -913,6 +913,61 @@
     // Default: Arabic
     setLanguage('ar');
 </script>
+<!-- أيقونة العداد - شمال نصف المسافة -->
+<div id="visitorCounter" style="position:fixed; top:65px; left:25%; transform:translateX(-50%) scale(0.5); transform-origin:center; background:linear-gradient(135deg,#8B4513,#A0522D); color:white; padding:10px 20px; border-radius:50px; font-size:18px; font-weight:bold; box-shadow:0 4px 15px rgba(139,69,19,0.5); z-index:9999; display:flex; align-items:center; gap:8px; border:1px solid #D2B48C;">
+  <span id="counterText" data-ar="👥 زوا visitorر:" data-en="👥 Visitors:">👥 زوار:</span>
+  <span id="counterNumber">1</span>
+</div>
 
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script>
+  // 1. بيانات Firebase (حط بياناتك الحقيقية)
+  const firebaseConfig = {
+    apiKey: "AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "jabri-waha.firebaseapp.com",
+    databaseURL: "https://jabri-waha-default-rtdb.firebaseio.com",
+    projectId: "jabri-waha",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const counterRef = db.ref('visitorCount');
+  
+  const counterTextEl = document.getElementById('counterText');
+  const counterNumberEl = document.getElementById('counterNumber');
+  
+  // دالة تحديث اللغة
+  function updateLang() {
+    const isEn = document.body.classList.contains('en');
+    counterTextEl.textContent = isEn ? counterTextEl.getAttribute('data-en') : counterTextEl.getAttribute('data-ar');
+  }
+  
+  // 2. استماع فوري للتغييرات (تحديث الرقم لكل الزوار لحظياً)
+  counterRef.on('value', (s) => {
+    const count = s.val() || 1;
+    const isEn = document.body.classList.contains('en');
+    counterNumberEl.textContent = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
+    updateLang();
+  });
+  
+  // 3. تسجيل الزائر الجديد فقط (الحقيقي)
+  if (!sessionStorage.getItem('visited')) {
+    sessionStorage.setItem('visited', 'true');
+    // لو أول زائر في التاريخ يبدا من 1، واللي بعده 2، 3، 4...
+    counterRef.transaction(c => (c || 0) + 1);
+  }
+  
+  // 4. ربط اللغة بزر التبديل
+  const oldToggle = window.toggleLang;
+  if (typeof oldToggle === 'function') {
+    window.toggleLang = function() {
+      oldToggle();
+      updateLang();
+    }
+  }
+</script>
+<!-- نهاية زر الزوار
+
+    
 </body>
 </html>
