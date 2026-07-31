@@ -1,114 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- ===== الصفحة الرئيسية ===== -->
+  
+  <!-- الصفحة الرئيسية AR -->
   <url>
     <loc>https://jabri-com.vercel.app/</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <!-- النسخ البديلة للغة -->
-    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar-page.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en-page.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/"/>
   </url>
 
-  <!-- ===== الصفحات الرئيسية للغة ===== -->
+  <!-- الصفحة الرئيسية EN - دا اللي ناقصك -->
   <url>
-    <loc>https://jabri-com.vercel.app/ar-page.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://jabri-com.vercel.app/en-page.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- ===== صفحات "عن الباحث" (الجديدة) ===== -->
-  <url>
-    <loc>https://jabri-com.vercel.app/ar/about.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jabri-com.vercel.app/en/about.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- ===== صفحة الاتصال ===== -->
-  <url>
-    <loc>https://jabri-com.vercel.app/contact.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- ===== باقي الصفحات كما هي ===== -->
-  <url>
-    <loc>https://jabri-com.vercel.app/Author-cv.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://jabri-com.vercel.app/en/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/"/>
   </url>
 
-  <url>
-    <loc>https://jabri-com.vercel.app/about.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- المدن والتراث -->
-  <url>
-    <loc>https://jabri-com.vercel.app/Sanaa.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jabri-com.vercel.app/Shibam.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://jabri-com.vercel.app/Soqatra.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- المكتبة والبحوث -->
   <url>
     <loc>https://jabri-com.vercel.app/research.html</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- صفحة من نحن AR - كملنا السطر -->
+  <url>
+    <loc>https://jabri-com.vercel.app/ar/about.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/about.html"/>
+  </url>
+
+  <!-- صفحة من نحن EN - كملنا السطر -->
+  <url>
+    <loc>https://jabri-com.vercel.app/en/about.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/about.html"/>
+  </url>
+
+  <url>
+    <loc>https://jabri-com.vercel.app/mikrotik.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jabri-com.vercel.app/privacy-policy.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://jabri-com.vercel.app/Yemen-library.html</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.6</priority>
   </url>
-
-  <!-- بوابة السندباد 1→11 -->
-  <url><loc>https://jabri-com.vercel.app/Page1.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page2.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page3.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page4.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page5.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page6.html</loc><lastmod>2026-07-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page7.html</loc><lastmod>2026-07-23</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page8.html</loc><lastmod>2026-07-23</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page9.html</loc><lastmod>2026-07-23</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page10.html</loc><lastmod>2026-07-23</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page11.html</loc><lastmod>2026-07-23</lastmod><priority>0.7</priority></url>
-
+  <url>
+    <loc>https://jabri-com.vercel.app/Router-all.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jabri-com.vercel.app/Page9.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
