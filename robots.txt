@@ -1,0 +1,13 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /dashboard
+Disallow: /api/
+
+Sitemap: https://jabri-com.vercel.app/sitemap.xml
