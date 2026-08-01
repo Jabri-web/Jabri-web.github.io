@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير المشروع | منظومة Jabri-web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background:#0a0a0f; color:#e8e8f0; font-family: "Tajawal", sans-serif; padding: 0; margin: 0; line-height: 1.8; }
+        .lang-switch { text-align:center; padding: 15px; background: #161b22; border-bottom: 1px solid #30363d; }
+        .lang-switch a { background: #6ae3ff; color: #0a0a0f; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block; }
+        .lang-switch a.inactive { background: transparent; color: #c9d1d9; border: 1px solid #30363d; }
+        .header { text-align:center; padding: 40px 20px; background: #0a0a0a; border-bottom: 1px solid #1f1f2e; }
+        .header img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #6ae3ff; object-fit: cover; margin-bottom: 15px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        h1, h2, h3 { color:#6ae3ff; }
+        h1 { font-size: 2.2rem; text-align:center; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
+        h3 { font-size: 1.2rem; margin-top: 30px; }
+        .card { background: #161b22; padding: 20px; border-radius: 12px; border: 1px solid #30363d; margin-bottom: 20px; }
+        .counter-card { background: #0d1117; border: 2px solid #6ae3ff; border-radius: 16px; padding: 20px 30px; text-align: center; margin-bottom: 30px; }
+        .counter-number { font-size: 4rem; font-weight: 700; color: #a78bfa; letter-spacing: 3px; line-height: 1.2; }
+        .counter-label { font-size: 1rem; color: #8b949e; margin-top: 5px; }
+        .counter-status { font-size: 0.85rem; color: #6ae3ff; margin-top: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: #1f2233; color: #6ae3ff; padding: 12px; text-align: right; border-bottom: 2px solid #30363d; }
+        td { padding: 10px 12px; border-bottom: 1px solid #1f2233; }
+        td a { color: #6ae3ff; text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        .highlight-box { background: #11131a; border-right: 4px solid #6ae3ff; padding: 15px 20px; margin: 20px 0; border-radius: 4px; }
+        footer { margin-top: 40px; padding: 30px; border-top: 1px solid #30363d; text-align: center; }
+        .footer-counter { display: inline-block; background: #161b22; padding: 5px 20px; border-radius: 40px; font-size: 0.9rem; border: 1px solid #30363d; margin-top: 10px; }
+        @media (max-width: 600px) { .container { padding: 10px; } table { font-size: 0.7rem; } td, th { padding: 5px; } .counter-number { font-size: 2.8rem; } }
+    </style>
+</head>
+<body>
+
+<div class="lang-switch">
+    <a href="./project.html" class="inactive">🇬🇧 English (Default)</a>
+    <a href="./project-AR.html">🇾🇪 العربية</a>
+</div>
+
+<div class="header">
+    <img src="Image/Jabri-photo.png" alt="عبدالله الجبري">
+    <h1>منظومة Jabri-web</h1>
+    <p style="font-size:1.2rem; color:#a78bfa;">من أصفار ريمان إلى بنية الكون</p>
+    <p><b>الهوية:</b> Z + C + A = 1 | <b>الترخيص:</b> CC BY 4.0</p>
+</div>
+
+<div class="container">
+    <!-- ✅ صورة قاعدة البيانات -->
+    <img src="Image/dbase.png" alt="Dbase" style="display:block; margin:0 auto 20px; max-width:100%; border-radius:12px; border:1px solid #30363d;">
+
+    <div class="highlight-box">
+        <h2>📌 ملخص تنفيذي</h2>
+        <p><strong>منظومة Jabri-web</strong> هي إطار رقمي ونظري موحد يربط الرياضيات البحتة (فرضية ريمان) بالفيزياء النظرية (النسبية العامة، الطاقة المظلمة) والبنية التحتية الرقمية. تتكون من <strong>12 مستودعاً مترابطاً</strong> (بوابة رئيسية واحدة، 5 مستودعات بحثية أساسية، 3 أنظمة تجريبية، و3 مستودعات راوتر/بوابة) التي تحقق مجتمعة هوية الجبري: <strong>Z + C + A = 1</strong>.</p>
+    </div>
+
+    <!-- 🔥 عداد زوار (بدون Firebase - يستخدم التخزين الداخلي للمتصفح) -->
+    <div class="counter-card" id="visitorCounter">
+        <div class="counter-number" id="visitCount">⏳ جارٍ التحميل...</div>
+        <div class="counter-label">👥 عدد زوار هذه الصفحة (تقديري)</div>
+        <div class="counter-status" id="counterStatus">✅ يعمل بدون Firebase، ولا يسبب أخطاء للأرشفة</div>
+    </div>
+
+    <h2>🗺️ هيكل المشروع: المستودعات الـ 12</h2>
+    <div class="card">
+        <table>
+            <thead><tr><th>#</th><th>المستودع</th><th>الدور</th><th>المنصة</th><th>DOI</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td><a href="https://jabri-web.github.io/jabri62018.github.io/">Jabri6218.github.io</a></td><td>البوابة الرئيسية (P1)</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20403864">20403864</a></td></tr>
+                <tr><td>2</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2/">Zx_RieOS_v1.2</a></td><td>RieOS v1.2 (خوارزميات محسّنة)</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20100622">20100622</a></td></tr>
+                <tr><td>3</td><td><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/">Zx_Mother_Function_Jabri</a></td><td>النظرية الأساسية (قلب Zx)</td><td>GitHub Pages</td><td>-</td></tr>
+                <tr><td>4</td><td><a href="https://Jabri-web.github.io/">Jabri-web.github.io</a></td><td>المركز التنظيمي (فهرس احتياطي)</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20499365">20499365</a></td></tr>
+                <tr><td>5</td><td><a href="https://jabri-web.github.io/Jabri_Nobble/">Jabri_Nobble</a></td><td>مجموعة مسائل الألفية</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20148770">20148770</a></td></tr>
+                <tr><td>6</td><td><a href="https://jabri-web.github.io/jabri_lab/">Jabri_lab</a></td><td>المختبر الرقمي (9 توسعات)</td><td>GitHub Pages</td><td>قيد النشر</td></tr>
+                <tr><td>7</td><td><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/">Zx_RieOS_v1.1</a></td><td>RieOS v1.1 (التحقق العددي)</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.19981688">19981688</a></td></tr>
+                <tr><td>8</td><td><a href="https://jabri-web.github.io/Jabri-RiemannOS/">Jabri_RiemannOS</a></td><td>إطار مخصص لفرضية ريمان</td><td>GitHub Pages</td><td>-</td></tr>
+                <tr><td>9</td><td><a href="https://jabri-web.github.io/Jabri_Checkout/">Jabri_Checkout</a></td><td>نظام التحقق والاختبار</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20513840">20513840</a></td></tr>
+                <tr><td>10</td><td><a href="https://jabri-web.github.io/Jabri-web/">Jabri-web</a></td><td>راوتر GitHub الرئيسي</td><td>GitHub Pages</td><td><a href="https://doi.org/10.5281/zenodo.20499365">20499365</a></td></tr>
+                <tr><td>11</td><td><a href="https://jabri-com.vercel.app">jabri-com</a></td><td>راوتر Vercel البديل</td><td>Vercel</td><td><a href="https://doi.org/10.5281/zenodo.21003990">21003990</a></td></tr>
+                <tr><td>12</td><td><a href="https://jabri.com">jabri.com</a></td><td>HyperRouter (GitHub + Vercel + Google)</td><td>نطاق مخصص</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🧠 النواة النظرية: دالة Zx الأم</h2>
+    <div class="card">
+        <p>تقوم المنظومة بأكملها على <strong>دالة Zx الأم</strong> (المستودع رقم 3). وهي تقدم توحيداً خالياً من المعاملات (صفر معاملات حرة) بين فرضية ريمان والنسبية العامة.</p>
+        <ul>
+            <li><strong>المدخلات:</strong> أصفار ريمان (ζ(s)).</li>
+            <li><strong>المخرجات:</strong> الثوابت الفيزيائية (G, α, Λ)، حل أزمة هابل (0σ)، والطاقة المظلمة (w = -1.03).</li>
+            <li><strong>الهوية:</strong> <code>Z(x) + C(x) + A(x) = 1</code> (هوية الجبري).</li>
+        </ul>
+    </div>
+
+    <h2>🔬 الأنظمة البحثية والتجريبية</h2>
+    <div class="card">
+        <h3>RieOS (v1.1 و v1.2)</h3>
+        <p>أنظمة تشغيل تجريبية مبنية للتحقق العددي من أصفار زيتا لريمان وتوليد نماذج كونية تنبؤية (المستودعات رقم 2، 7).</p>
+        <h3>Jabri_Nobble (المستودع رقم 5)</h3>
+        <p>مجموعة شاملة تغطي جميع <strong>مسائل الألفية السبع</strong> (ريمان، P مقابل NP، يانغ-ميلز، نافييه-ستوكس، بيرش، هودج) باستخدام إطار Zx.</p>
+        <h3>Jabri_lab (المستودع رقم 6)</h3>
+        <p>ساحة تجارب رقمية تحتوي على 9 مشاريع متخصصة (Jabri-5، Jabri-28، Jabri-Gravity، Jabri-Spacetime، Jabri-Darkenergy، Jabri-Planck، Jabri-Hubble، Jabri-Periodic، Jabri-all).</p>
+    </div>
+
+    <h2>🌐 البنية التحتية والتوجيه</h2>
+    <div class="card">
+        <p>لضمان الوصول العالمي (وتجاوز الحجب الإقليمي)، تستخدم المنظومة استراتيجية توجيه ثلاثية المستويات:</p>
+        <ul>
+            <li><strong>المستوى 1 (GitHub):</strong> جميع المستودعات مستضافة على GitHub Pages (المستودعات 1-10).</li>
+            <li><strong>المستوى 2 (Vercel):</strong> نشر بديل على <a href="https://jabri-com.vercel.app">jabri-com.vercel.app</a> (المستودع 11).</li>
+            <li><strong>المستوى 3 (HyperRouter):</strong> النطاق الرئيسي <a href="https://jabri.com">jabri.com</a> (المستودع 12) الذي يوجّه الزوار بذكاء عبر GitHub و Vercel و Google.</li>
+        </ul>
+    </div>
+
+    <h2>📄 الترخيص والهوية الموحدة</h2>
+    <div class="card">
+        <p>جميع المستودعات مُرخَّصة بموجب <strong>CC BY 4.0</strong> (حرية الاستخدام مع الإشارة إلى المصدر).</p>
+        <p>تُعد <strong>هوية الجبري</strong> (<code>Z + C + A = 1</code>) التوقيع الرياضي والفلسفي للمشروع بأكمله، الذي يربط نظرية الأعداد والزمكان والإحداثيات المقفلة.</p>
+    </div>
+
+    <div class="highlight-box" style="text-align:center; border-right-color: #a78bfa;">
+        <h3 style="color:#a78bfa;">🇾🇪 من صنعاء إلى الكون</h3>
+        <p>هذا المشروع هو شهادة على قوة البحث المستقل، المتجذر في التراث اليمني والمتطلع إلى البنية الأساسية للواقع.</p>
+    </div>
+
+    <p><b>الموقع الرسمي:</b> <a href="ar-page.html" style="color:#00ff88">واحة الجبري</a></p>
+    <p><b>عن الباحث عربي :</b> <a href="about-ar.html" style="color:#00ff88">عبدالله الجبري</a></p>
+    <p><b>عن الباحث انجليزي :</b> <a href="about-en.html" style="color:#00ff88">Abdulla Al-Jabri</a></p>
+
+
+    <footer>
+        <p>© 2026 م/ عبدالله محمد ناصر الجبري</p>
+        <p style="font-size:0.9rem; color:#666;"><i>"From Riemann zeros to the structure of the universe"</i></p>
+        <div class="footer-counter">👥 الزوار (تقديري): <span id="footerVisitCount">0</span></div>
+    </footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // عداد بسيط باستخدام localStorage (بدون Firebase)
+    // يخزن العدد في متصفح الزائر نفسه، ولا يحتاج إنترنت
+    // --------------------------------------------------------------
+    (function() {
+        try {
+            // قراءة العدد القديم
+            let count = localStorage.getItem('jabri_visitor_count');
+            if (count === null) {
+                count = 0;
+            } else {
+                count = parseInt(count, 10);
+            }
+            
+            // زيادة العدد
+            count = count + 1;
+            
+            // حفظ العدد الجديد
+            localStorage.setItem('jabri_visitor_count', count.toString());
+            
+            // عرض العدد في الصفحة
+            const formatted = count.toLocaleString();
+            const mainDisplay = document.getElementById('visitCount');
+            const footerDisplay = document.getElementById('footerVisitCount');
+            
+            if (mainDisplay) mainDisplay.innerText = formatted;
+            if (footerDisplay) footerDisplay.innerText = formatted;
+            
+        } catch (e) {
+            // في حال حدوث خطأ نادر
+            const mainDisplay = document.getElementById('visitCount');
+            if (mainDisplay) mainDisplay.innerText = '⚠️';
+        }
+    })();
+</script>
+
+</body>
+</html>
