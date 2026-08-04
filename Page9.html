@@ -21,15 +21,8 @@
     <meta name="DC.creator" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
     <meta name="copyright" content="© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri" />
     
-    <!-- Google Analytics -->
+    <!-- Google Verification (بدون سكربت تحميل فوري) -->
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-EQBMJKBC24');
-    </script>
     
     <!-- Open Graph -->
     <meta property="og:locale" content="en_US" />
@@ -135,7 +128,6 @@
             </section>
         </main>
 
-        <!-- ===== الفوتر الكامل من contact.html ===== -->
         <footer role="contentinfo">
             <div class="footer-search">
                 <p><strong class="txt" data-ar="🔍 البحث عن الباحث:" data-en="🔍 Search for the Researcher:">🔍 Search for the Researcher:</strong></p>
@@ -161,6 +153,39 @@
     </div>
 
     <script>
+        // ============================================================
+        // 1. تحميل Google Analytics فقط للمستخدمين الحقيقيين (ليس للأرشيف)
+        // ============================================================
+        (function() {
+            var ua = navigator.userAgent.toLowerCase();
+            // قائمة بالكلمات المفتاحية لروبوتات الأرشفة والزحف
+            var archiveBots = [
+                'archive.org', 'wayback', 'bot', 'spider', 'crawler',
+                'googlebot', 'bingbot', 'yandexbot', 'duckduckbot',
+                'slurp', 'baiduspider', 'facebot', 'ia_archiver'
+            ];
+            var isArchiveBot = archiveBots.some(function(bot) {
+                return ua.indexOf(bot) !== -1;
+            });
+
+            if (!isArchiveBot) {
+                // تحميل السكربت الرئيسي لـ gtag
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24';
+                document.head.appendChild(script);
+
+                // تعريف دالة gtag وإرسال البيانات
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-EQBMJKBC24');
+            }
+        })();
+
+        // ============================================================
+        // 2. تبديل اللغة (نفس الكود السابق)
+        // ============================================================
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -170,14 +195,14 @@
             document.getElementById('copyright').textContent = lang === 'ar' 
                 ? "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة" 
                 : "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved";
-            document.querySelectorAll('.txt').forEach(el => {
-                el.textContent = el.getAttribute(`data-${lang}`);
+            document.querySelectorAll('.txt').forEach(function(el) {
+                el.textContent = el.getAttribute('data-' + lang);
             });
             localStorage.setItem('preferred-language', lang);
         }
-        document.getElementById('lang-ar').onclick = () => applyLanguage('ar');
-        document.getElementById('lang-en').onclick = () => applyLanguage('en');
-        document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('lang-ar').onclick = function() { applyLanguage('ar'); };
+        document.getElementById('lang-en').onclick = function() { applyLanguage('en'); };
+        document.addEventListener('DOMContentLoaded', function() {
             applyLanguage(localStorage.getItem('preferred-language') || 'en');
         });
     </script>
