@@ -21,7 +21,7 @@
     <meta name="DC.creator" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
     <meta name="copyright" content="© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri" />
     
-    <!-- Google Verification (بدون سكربت تحميل فوري) -->
+    <!-- Google Verification (مطلوب للـ Search Console، لا يُحدث طلبات خارجية) -->
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
     
     <!-- Open Graph -->
@@ -154,37 +154,7 @@
 
     <script>
         // ============================================================
-        // 1. تحميل Google Analytics فقط للمستخدمين الحقيقيين (ليس للأرشيف)
-        // ============================================================
-        (function() {
-            var ua = navigator.userAgent.toLowerCase();
-            // قائمة بالكلمات المفتاحية لروبوتات الأرشفة والزحف
-            var archiveBots = [
-                'archive.org', 'wayback', 'bot', 'spider', 'crawler',
-                'googlebot', 'bingbot', 'yandexbot', 'duckduckbot',
-                'slurp', 'baiduspider', 'facebot', 'ia_archiver'
-            ];
-            var isArchiveBot = archiveBots.some(function(bot) {
-                return ua.indexOf(bot) !== -1;
-            });
-
-            if (!isArchiveBot) {
-                // تحميل السكربت الرئيسي لـ gtag
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24';
-                document.head.appendChild(script);
-
-                // تعريف دالة gtag وإرسال البيانات
-                window.dataLayer = window.dataLayer || [];
-                function gtag() { dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-EQBMJKBC24');
-            }
-        })();
-
-        // ============================================================
-        // 2. تبديل اللغة (نفس الكود السابق)
+        // تبديل اللغة (تم الاحتفاظ به فقط، بدون أي تتبع خارجي)
         // ============================================================
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
