@@ -1,245 +1,299 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO الأساسي -->
-    <title>نظام فحص الواحة | Jabri Check System</title>
-    <meta name="description" content="صفحة فحص نظام واحة الجبري. اختبار الروابط والارشفة والسكربتات." />
-    <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
-    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-    
-    <!-- الروابط -->
-    <link rel="canonical" href="https://jabri-com.vercel.app/Check.html" />
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Check.html" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/Check.html" />
-    
-    <!-- مهم جداً: نخفي الصفحة من قوقل (متعمد) -->
-    <meta name="robots" content="noindex, nofollow, max-image-preview:large" />
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri" />
-    <meta property="og:title" content="نظام فحص الواحة | Jabri Check System" />
-    <meta property="og:description" content="صفحة فحص نظام واحة الجبري. اختبار الروابط والارشفة والسكربتات." />
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/Check.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000">
+<meta name="color-scheme" content="dark">
+<title>Eng. Abdulla Al-Jabri - P8</title>
+<style>
+  :root{color-scheme:dark}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#000!important;color:#e0e0e0;font-family:'Cairo',Tahoma,sans-serif;height:auto}
+  
+  /* ====== Language Switch ====== */
+  .lang-switch {
+    position: fixed;
+    top: 15px;
+    z-index: 9999;
+    display: flex;
+    gap: 4px;
+    background: #1a1a2e;
+    padding: 4px 10px;
+    border-radius: 30px;
+    border: 1px solid #2a2a4e;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  body:not(.en) .lang-switch { left: 15px; }
+  body.en .lang-switch { right: 15px; }
+  
+  .lang-switch button {
+    background: none;
+    border: none;
+    color: #8888bb;
+    padding: 5px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+  .lang-switch button:hover { color: #d0d0ea; background: #2a2a4e; }
+  .lang-switch button.active { background: #6ae3ff; color: #0b0b16; }
+  .lang-switch button.active:hover { background: #5ad0f0; }
+  
+  .header{
+    width:100%;
+    background:#0a0a0a;
+    border-bottom:2px solid #00ffc8;
+    padding:18px 20px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,255,200,0.2)
+  }
+  .header .name{font-size:19px;color:#6ae3ff;font-weight:bold}
+  .header .name-ar{font-size:15px;color:#aaa;margin-top:4px}
+  .header .title{font-size:13px;color:#fff;margin-top:6px}
+  .header .title-ar{font-size:12px;color:#777;margin-top:2px}
+  
+  .wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:15px 20px 25px}
+  
+  .circle{width:85px;height:85px;border:2px solid #00ffc8;border-radius:50%;background:#0a0a0a;box-shadow:0 0 25px rgba(0,255,200,0.3);overflow:hidden;margin-top:5px}
+  .circle img{width:100%;height:100%;object-fit:cover}
+  
+  .title-box{background:#0a0a0a;border:2px solid #00ffc8;border-radius:10px;padding:12px 40px;color:#00ffc8;font-size:16px;font-weight:bold;min-width:240px;text-align:center;box-shadow:0 0 20px rgba(0,255,200,0.2)}
+  
+  a.box{background:#0a0a0a;border:1px solid #1e1e2f;border-radius:10px;padding:12px 40px;color:#00ffc8;font-size:16px;font-weight:bold;min-width:240px;text-align:center;text-decoration:none;transition:0.3s;display:block}
+  a.box:active{transform:scale(0.97);background:#111;box-shadow:0 0 25px rgba(0,255,200,0.4)}
+  
+  .row{display:flex;gap:10px}
+  .row a.box{min-width:114px;padding:12px 20px}
+  .sub{font-size:11px;color:#777;margin-bottom:3px}
+  
+  /* ====== Language-specific content ====== */
+  .ar-text { display: inline; }
+  .en-text { display: none; }
+  body.en .ar-text { display: none; }
+  body.en .en-text { display: inline; }
+  
+  .footer{width:100%;background:#0a0a0a;border-top:2px solid #00ffc8;padding:20px 20px;text-align:right}
+  .contact-title{font-size:17px;color:#00ffc8;font-weight:bold;margin-bottom:10px;border-bottom:1px solid #1e1e2f;padding-bottom:6px}
+  .contact-list{list-style:none;margin:0 0 12px 0}
+  .contact-list li{margin:8px 0;font-size:13px;color:#aaa}
+  .contact-list b{color:#e0e0e0;margin-left:6px}
+  .contact-list a{color:#6ae3ff;text-decoration:none;border-bottom:1px solid #6ae3ff}
+  .contact-list a:active{color:#00ffc8;background:#111;padding:2px 4px;border-radius:4px}
+  .slogan{text-align:center;font-size:14px;color:#00ffc8;font-weight:bold;margin-top:10px;padding-top:10px;border-top:1px solid #1e1e2f}
 
-    <!-- Schema.org JSON-LD - واحة الجبري (مدمج) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://jabri-com.vercel.app/#person",
-          "name": "م/ عبدالله محمد ناصر الجبري",
-          "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri","Abdulla Al-Jabri","سندباد اليمن"],
-          "identifier": {"@type": "PropertyValue","propertyID": "ORCID","value": "0009-0003-3319-3822","url": "https://orcid.org/0009-0003-3319-3822"},
-          "url": "https://jabri-com.vercel.app/",
-          "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-          "jobTitle": ["باحث مستقل", "مؤسس واحة الجبري"],
-          "nationality": "YE",
-          "email": "mailto:jabri62018@gmail.com",
-          "owns": { "@id": "https://jabri-com.vercel.app/#org" },
-          "founderOf": { "@id": "https://jabri-com.vercel.app/#org" },
-          "sameAs": ["https://orcid.org/0009-0003-3319-3822","https://github.com/jabri-web","https://en.wikipedia.org/wiki/User:Jabri2026","https://www.linkedin.com/in/abdulla-al-jabri","https://x.com/jabri_web","https://scholar.google.com/citations?user=jabri","https://www.researchgate.net/profile/Abdulla-Al-Jabri","https://www.youtube.com/@HeavenAlJabri","https://facebook.com/HeavenAlJabri","https://instagram.com/heaven_aljabri","https://t.me/HeavenAlJabri","https://www.kaggle.com/jabriweb","https://stackoverflow.com/users/jabri","https://dev.to/jabriweb","https://medium.com/@jabri62018","https://www.producthunt.com/@jabri","https://www.behance.net/jabri","https://dribbble.com/jabri","https://codepen.io/jabri-web","https://gitlab.com/jabri-web","https://bitbucket.org/jabri-web","https://huggingface.co/jabri","https://www.slideshare.net/jabri","https://soundcloud.com/heavenaljabri","https://vimeo.com/jabri","https://zenodo.org/records/20513840"]
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://jabri-com.vercel.app/#org",
-          "name": "واحة الجبري",
-          "alternateName": "Heaven Al-Jabri",
-          "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
-          "url": "https://jabri-com.vercel.app/",
-          "logo": {"@type": "ImageObject","url": "https://jabri-com.vercel.app/image/Jabri-photo.png","width": 512,"height": 512},
-          "founder": { "@id": "https://jabri-com.vercel.app/#person" },
-          "owner": { "@id": "https://jabri-com.vercel.app/#person" },
-          "publisher": { "@id": "https://jabri-com.vercel.app/#person" },
-          "sameAs": ["https://github.com/jabri-web","https://www.linkedin.com/company/jabri","https://www.youtube.com/@HeavenAlJabri"]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://jabri-com.vercel.app/#website",
-          "url": "https://jabri-com.vercel.app/",
-          "name": "واحة الجبري | Heaven Al-Jabri",
-          "alternateName": "Sindbad Yemen",
-          "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
-          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
-          "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#person" },
-          "inLanguage": ["ar", "en"]
-        }
-      ]
-    }
-    </script>
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0f; color: #e8e8f0; font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
-            padding: 20px; line-height: 1.8; transition: 0.3s; min-height: 100vh; display: flex; flex-direction: column;
-        }
-        body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
-        .lang-btn { 
-            position: fixed; top: 15px; left: 16.66%; transform: translateX(-50%); 
-            background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; 
-            border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 999; 
-        }
-        .lang-btn:hover { opacity: 0.85; }
-        #visitorCounter { 
-            position: fixed; top: 15px; left: 50%; transform: translateX(-50%); 
-            background: linear-gradient(135deg, #1a1a2e, #2a2a3e); color: #6ae3ff; 
-            padding: 8px 20px; border-radius: 50px; font-size: 16px; font-weight: bold; 
-            z-index: 9999; border: 1px solid #6ae3ff; display: flex; gap: 8px; 
-        }
-        .container { max-width: 1000px; margin: 60px auto 0; flex: 1; width: 100%; }
-        .header { 
-            text-align: center; padding: 40px 20px; 
-            background: linear-gradient(135deg, #0a3d62, #1e6f9f); 
-            border-radius: 12px; margin-bottom: 30px; border: 2px solid #6ae3ff; 
-        }
-        .header h1 { font-size: 2.2rem; color: #fff; }
-        .header .subtitle { font-size: 1.3rem; font-weight: 700; color: #6ae3ff; margin: 8px 0; }
-        .section { 
-            background: #1a1a2e; border: 2px solid #2a2a3e; border-radius: 12px; 
-            padding: 30px; margin: 25px 0; text-align: center; 
-        }
-        .section h2 { color: #6ae3ff; margin-bottom: 15px; font-size: 1.8rem; }
-        .links-box { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 15px; margin-top: 20px; 
-        }
-        .links-box a { 
-            background: #0a0a0f; color: #6ae3ff; text-decoration: none; padding: 12px; 
-            border-radius: 8px; border: 1px solid #2a2a3e; transition: 0.3s; 
-        }
-        .links-box a:hover { border-color: #6ae3ff; background: #6ae3ff; color: #0a0a0f; }
-        #site-footer { background: #0a0a0f; padding: 30px 15px; border-top: 1px solid #2a2a3e; margin-top: 40px; }
-        #site-footer a { color: #6ae3ff; text-decoration: none; margin: 0 8px; }
-        .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
-        #copyright { margin-top: 20px; color: #666; font-size: 14px; text-align: center; }
-        .ar, .en { display: inline; }
-        body.en .ar { display: none; }
-        body:not(.en) .en { display: none; }
-        #errorBox { 
-            background: #2a0000; border: 2px solid #ff4444; color: #ffaaaa; 
-            padding: 15px; border-radius: 8px; margin: 20px 0; text-align: left; 
-            direction: ltr; font-family: monospace; display: none; 
-        }
-    </style>
+  @media (max-width: 600px) {
+    .lang-switch { top: 10px; padding: 3px 8px; }
+    body:not(.en) .lang-switch { left: 10px; }
+    body.en .lang-switch { right: 10px; }
+    .lang-switch button { padding: 4px 8px; font-size: 0.7rem; }
+    .title-box { font-size: 14px; padding: 10px 20px; min-width: 200px; }
+    a.box { font-size: 14px; padding: 10px 20px; min-width: 200px; }
+    .row a.box { min-width: 90px; padding: 10px 12px; font-size: 13px; }
+  }
+</style>
 </head>
 <body>
 
-    <button class="lang-btn" onclick="toggleLang()"><span class="ar">🇬🇧 EN</span><span class="en">🇸🇦 عربي</span></button>
-    <div id="visitorCounter">
-        <span class="ar">👥 زوار:</span>
-        <span class="en">👥 Visitors:</span>
-        <span id="visitorCountDisplay">1</span>
+  <!-- ====== Language Switch ====== -->
+  <div class="lang-switch">
+    <button id="lang-ar" class="active" onclick="switchLanguage('ar')">🇸🇦 عربي</button>
+    <button id="lang-en" onclick="switchLanguage('en')">🇬🇧 English</button>
+  </div>
+
+  <div class="header">
+    <div class="name">
+      <span class="ar-text">م. عبدالله محمد ناصر الجبري</span>
+      <span class="en-text">Eng. Abdulla M. N. Al-Jabri</span>
     </div>
-
-    <div class="container">
-        <header class="header">
-            <h1>🏛️ <span class="ar">نظام فحص الواحة</span><span class="en">Jabri Check System</span></h1>
-            <div class="subtitle"><span class="ar">🇾🇪 تراث اليمن 🇾🇪</span><span class="en">🇾🇪 Yemen Heritage 🇾🇪</span></div>
-            <p><span class="ar">صفحة جسر لاختبار الروابط والارشفة والسكربتات</span><span class="en">Bridge page to test links, indexing & scripts</span></p>
-        </header>
-
-        <main>
-            <div id="errorBox"></div>
-            <section class="section">
-                <h2><span class="ar">🔗 روابط للفحص</span><span class="en">🔗 Links for Testing</span></h2>
-                <div class="links-box">
-                    <a href="/" class="txt" data-ar="الصفحة الرئيسية" data-en="Home">Home</a>
-                    <a href="/about.html" class="txt" data-ar="عن الموقع" data-en="About">About</a>
-                    <a href="/contact.html" class="txt" data-ar="اتصل بنا" data-en="Contact">Contact</a>
-                    <a href="/privacy-policy.html" class="txt" data-ar="الخصوصية" data-en="Privacy">Privacy</a>
-                    <a href="https://orcid.org/0009-0003-3319-3822" target="_blank">ORCID</a>
-                    <a href="/sitemap.xml" class="txt" data-ar="خارطة الموقع" data-en="Sitemap">Sitemap</a>
-                </div>
-            </section>
-        </main>
-
-        <footer id="site-footer">
-            <div class="footer-links">
-                <a href="/about.html">ℹ️ <span class="txt" data-ar="عن الموقع" data-en="About">About</span></a>
-                <a href="/contact.html">📞 <span class="txt" data-ar="اتصل بنا" data-en="Contact">Contact</span></a>
-                <a href="/privacy-policy.html">🔒 <span class="txt" data-ar="الخصوصية" data-en="Privacy">Privacy</span></a>
-                <a href="mailto:jabri62018@gmail.com">📧 Email</a>
-            </div>
-            <p id="copyright">© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة</p>
-        </footer>
+    <div class="name-ar">
+      <span class="ar-text">باحث مستقل في الرياضيات والفيزياء النظرية</span>
+      <span class="en-text">Independent Researcher in Mathematics & Theoretical Physics</span>
     </div>
+    <div class="title">
+      <span class="ar-text">المؤسس - واحة الجبري</span>
+      <span class="en-text">Founder - Heaven Al-Jabri</span>
+    </div>
+    <div class="title-ar">
+      <span class="ar-text">تراث اليمن ونظرية السندباد الموحدة</span>
+      <span class="en-text">Yemen Heritage & Unified Sindbad Theory</span>
+    </div>
+  </div>
+  
+  <div class="wrap">
+    <div class="circle">
+      <img src="Image/Jabri-photo.png" alt="Eng. Abdulla Al-Jabri">
+    </div>
+    
+    <div class="title-box">
+      <span class="ar-text">عادل الجبري</span>
+      <span class="en-text">Adel Al-Jabri</span>
+    </div>
+    
+    <div class="row">
+      <a href="Profile.html" class="box">
+        <span class="ar-text">الملف الشخصي</span>
+        <span class="en-text">Profile</span>
+      </a>
+      <a href="Collab.html" class="box">
+        <span class="ar-text">التعاون</span>
+        <span class="en-text">Collab</span>
+      </a>
+    </div>
+    
+    <a href="History-pdf.html" class="box">
+      <div class="sub">
+        <span class="ar-text">كتب التاريخ</span>
+        <span class="en-text">History Books</span>
+      </div>
+      <span class="ar-text">تاريخ-ملف.pdf</span>
+      <span class="en-text">History-pdf.html</span>
+    </a>
+    
+    <a href="Dbase.html" class="box">
+      <div class="sub">
+        <span class="ar-text">قواعد البيانات</span>
+        <span class="en-text">Databases</span>
+      </div>
+      <span class="ar-text">قاعدة-بيانات.html</span>
+      <span class="en-text">Dbase.html</span>
+    </a>
+  </div>
+  
+  <!-- start ofvmanuall footer
+  <!-- ====== Footer ====== -->
+  <footer id="site-footer" style="background:#0a0a0f;color:#e8e8f0;padding:30px 15px;border-top:1px solid #2a2a3e;font-family:'Tajawal',Arial,sans-serif;">
+    
+    <!-- البحث عن الباحث -->
+    <div style="text-align:center;margin:20px 0;border-top:1px solid #2a2a3e;padding-top:20px;">
+      <p id="searchTitle"><strong>🔍 البحث عن الباحث:</strong></p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
 
-    <script>
-        // ====== معالج الأخطاء ======
-        window.onerror = function(msg, url, line, col, error) {
-            const box = document.getElementById('errorBox');
-            box.style.display = 'block';
-            box.innerHTML += `<b>خطأ:</b> ${msg}<br><b>السطر:</b> ${line}<br><hr>`;
-        };
+      <a href="https://www.google.com/search?q=واحة+الجبري&udm=50" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;">🏛️ <span class="txt" data-ar="بحث عن واحة الجبري" data-en="Search Al-Jabri Oasis">بحث عن واحة الجبري</span></a>
+      <a href="https://www.google.com/search?q=واحة+الجبري+|+Heaven+Al-Jabri&udm=50" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;">🏛️ <span class="txt" data-ar="بحث انجليزي" data-en="Search Al-Jabri Oasis">بحث عن واحة الجبري</span></a>
+      
+      
+      <a href="https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&udm=50" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;">👨‍🔬 <span class="txt" data-ar="بحث عن عبدالله الجبري" data-en="Search Abdulla Al-Jabri">بحث عن عبدالله الجبري</span></a>
+      <a href="https://www.google.com/search?q=Eng.+Abdulla+Mohammed+Nasser+Al-Jabri&udm=50" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;">🔎 <span class="txt" data-ar="بحث بالانجليزي" data-en="Search Abdulla Al-Jabri">Search Abdulla Al-Jabri</span></a>
 
-        // ====== عداد الزوار (محسّن) ======
-        (function() {
-            const counterEl = document.getElementById('visitorCountDisplay');
-            if (!counterEl) return;
-            
-            let count = parseInt(localStorage.getItem('jabri_visitor_count_check') || '0');
-            
-            // زيادة العدد مرة واحدة فقط لكل زائر حقيقي
-            if (!sessionStorage.getItem('visited_check_page')) {
-                sessionStorage.setItem('visited_check_page', 'true');
-                count++;
-                localStorage.setItem('jabri_visitor_count_check', count);
-            }
-            
-            counterEl.innerText = count;
-        })();
 
-        // ====== دالة تبديل اللغة ======
-        function toggleLang() {
-            const html = document.documentElement;
-            const newLang = html.lang === 'ar' ? 'en' : 'ar';
-            html.lang = newLang;
-            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-            document.body.classList.toggle('en', newLang === 'en');
-            localStorage.setItem('preferred-language', newLang);
-            updateFooterLang();
-            updateVisitorCounterLang();
+      </div>
+    </div>
+    
+    <!-- الروابط -->
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:15px 0;">
+  
+          <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🆔 <span class="txt" data-ar="ORCID" data-en="ORCID">ORCID</span></a>
+    <a href="https://zenodo.org/records/20513840" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📊 <span class="txt" data-ar="زينودو" data-en="Zenodo">Zenodo</span></a>
+    <a href="https://overleaf.com/project" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📝 <span class="txt" data-ar="اوفرليف" data-en="Overleaf">Overleaf</span></a>
+    <a href="https://colab.research.google.com/drive/12oG9B7DgsQpTWlvfMm4awnpbt34yPv_h" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🧠 <span class="txt" data-ar="كولاب" data-en="Colab">Colab</span></a>
+    
+    <!-- تطوير -->
+    <a href="https://github.com/jabri-web" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🐙 <span class="txt" data-ar="جيتهاب" data-en="GitHub">GitHub</span></a>
+    <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📖 <span class="txt" data-ar="ويكيبيديا" data-en="Wikipedia">Wikipedia</span></a>
+    
+    <!-- تواصل -->
+    <a href="https://www.facebook.com/share/p/1CvCG9xehw/" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📘 <span class="txt" data-ar="فيسبوك" data-en="Facebook">Facebook</span></a>
+    <a href="https://www.instagram.com/reel/Da5zRhypJlo/?igsh=MXVsbHVzbXBsNmF3MQ==" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📷 <span class="txt" data-ar="انستجرام" data-en="Instagram">Instagram</span></a>
+    <a href="https://t.me/Jabri2025" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">✈️ <span class="txt" data-ar="تلجرام" data-en="Telegram">Telegram</span></a>
+    <a href="https://t.me/Heaven_Jabri/" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🏛️ <span class="txt" data-ar="قناة الواحة" data-en="Heaven Channel">Heaven</span></a>
+    <a href="https://www.threads.com/@jabri2023" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🧵 <span class="txt" data-ar="ثريدز" data-en="Threads">Threads</span></a>
+    <a href="https://chat.whatsapp.com/Haty83AA1eTKGLLXUL7QCK" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">💬 <span class="txt" data-ar="واتساب" data-en="WhatsApp">WhatsApp</span></a>
+    <a href="https://www.linkedin.com/feed" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">💼 <span class="txt" data-ar="لينكدإن" data-en="LinkedIn">LinkedIn</span></a>
+    <a href="https://snapchat.com/t/uEiJqBnd" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">👻 <span class="txt" data-ar="سنابشات" data-en="Snapchat">Snapchat</span></a>
+    <a href="https://links.gemspace.com/join/Jabri2024_Global" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">💎 <span class="txt" data-ar="الجوهرة" data-en="GemSpace">GemSpace</span></a>
+    
+    <!-- الموقع -->
+    <a href="mailto:jabri62018@gmail.com" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📧 <span class="txt" data-ar="البريد" data-en="Email">Email</span></a>
+    <a href="Author-cv.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📄 <span class="txt" data-ar="السيرة الذاتية" data-en="C.V">C.V</span></a>
+    <a href="citations.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">♻️ <span class="txt" data-ar="الاستشهادات" data-en="Citations">Citations</span></a>
+    <a href="source.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📜 <span class="txt" data-ar="المصادر" data-en="Source">Source</span></a>
+    <a href="about.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">ℹ️ <span class="txt" data-ar="عن الموقع" data-en="About">About</span></a>
+    <a href="who-we.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">👥 <span class="txt" data-ar="من نحن" data-en="Who We Are">Who We</span></a>
+      
+      
+    </div>
+    
+    <!-- الحقوق -->
+    <p id="copyright" style="margin-top:20px;color:#666;font-size:14px;text-align:center;">
+      © 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة
+    </p>
+  </footer>
+  
+  <!-- ====== Language Script ====== -->
+  <script>
+    // ====== دالة تحديث الفوتر ======
+    function updateFooterLang() {
+      const isEnglish = document.documentElement.lang === 'en';
+      console.log('🔄 تحديث الفوتر, اللغة:', isEnglish ? 'English' : 'Arabic');
+      
+      // تغيير اتجاه الفوتر
+      const footer = document.getElementById('site-footer');
+      if (footer) {
+        footer.dir = isEnglish ? "ltr" : "rtl";
+      }
+      
+      // تحديث عنوان البحث
+      const searchTitle = document.getElementById('searchTitle');
+      if (searchTitle) {
+        searchTitle.innerHTML = isEnglish ?
+          "<strong>🔍 Search for Researcher:</strong>" :
+          "<strong>🔍 البحث عن الباحث:</strong>";
+      }
+      
+      // تحديث حقوق النشر
+      const copyright = document.getElementById('copyright');
+      if (copyright) {
+        copyright.innerHTML = isEnglish ?
+          "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved" :
+          "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
+      }
+      
+      // تحديث جميع النصوص في الفوتر
+      document.querySelectorAll('#site-footer .txt').forEach(el => {
+        const newText = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+        if (newText) {
+          el.textContent = newText;
         }
-
-        // ====== تحديث الفوتر ======
-        function updateFooterLang() {
-            const isEn = document.documentElement.lang === 'en';
-            const copyright = document.getElementById('copyright');
-            if (copyright) {
-                copyright.textContent = isEn 
-                    ? "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved" 
-                    : "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
-            }
-            document.querySelectorAll('.txt').forEach(el => {
-                el.textContent = isEn ? el.getAttribute('data-en') : el.getAttribute('data-ar');
-            });
-        }
-
-        // ====== تحديث لغة العداد ======
-        function updateVisitorCounterLang() {
-            const isEn = document.documentElement.lang === 'en';
-            const arSpans = document.querySelectorAll('#visitorCounter .ar');
-            const enSpans = document.querySelectorAll('#visitorCounter .en');
-            arSpans.forEach(el => el.style.display = isEn ? 'none' : 'inline');
-            enSpans.forEach(el => el.style.display = isEn ? 'inline' : 'none');
-        }
-
-        // ====== التهيئة عند تحميل الصفحة ======
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('preferred-language') || 'ar';
-            document.documentElement.lang = savedLang;
-            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
-            document.body.classList.toggle('en', savedLang === 'en');
-            updateFooterLang();
-            updateVisitorCounterLang();
-        });
-    </script>
+      });
+      
+      console.log('✅ تم تحديث الفوتر');
+    }
+    
+    // ====== دالة تبديل اللغة ======
+    function switchLanguage(lang) {
+      // تحديث الـ body
+      document.body.classList.remove('ar', 'en');
+      document.body.classList.add(lang);
+      
+      // تحديث عناصر HTML
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      
+      // تحديث حالة الأزرار
+      document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      
+      // حفظ التفضيل
+      localStorage.setItem('preferred-language', lang);
+      
+      // ====== تحديث الفوتر ======
+      updateFooterLang();
+      
+      console.log(`🌐 تم تبديل اللغة إلى: ${lang}`);
+    }
+    
+    // ====== تحميل اللغة المحفوظة ======
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('preferred-language') || 'ar';
+      switchLanguage(savedLang);
+    });
+  </script>
+<!-- end of manuall <footer>
+  
+</footer>
 </body>
 </html>
