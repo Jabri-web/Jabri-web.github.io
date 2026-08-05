@@ -44,97 +44,125 @@
 <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
 
 <!-- Schema.org JSON-LD الكامل المصح -->
+
+<!-- Schema.org JSON-LD - نسخة واحة الجبري النهائية -->
 <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@graph": [
-  {
-    "@type": "Person",
-    "@id": "https://jabri-com.vercel.app/#person",
-    "name": "م/ عبدالله محمد ناصر الجبري",
-    "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri", "Abdulla Al-Jabri"],
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "ORCID",
-      "value": "0009-0003-3319-3822",
-      "url": "https://orcid.org/0009-0003-3319-3822"
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jabri-com.vercel.app/#person",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "alternateName": [
+        "Eng. Abdulla Mohammed Nasser Al-Jabri",
+        "Abdulla Al-Jabri",
+        "سندباد اليمن"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": "0009-0003-3319-3822",
+        "url": "https://orcid.org/0009-0003-3319-3822"
+      },
+      "url": "https://jabri-com.vercel.app/",
+      "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+      "jobTitle": ["باحث مستقل", "مؤسس واحة الجبري"],
+      "nationality": "YE",
+      "email": "mailto:jabri62018@gmail.com",
+      "owns": { "@id": "https://jabri-com.vercel.app/#org" },
+      "founderOf": { "@id": "https://jabri-com.vercel.app/#org" },
+      "sameAs": [
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://github.com/jabri-web",
+        "https://en.wikipedia.org/wiki/User:Jabri2026",
+        "https://www.linkedin.com/in/abdulla-al-jabri",
+        "https://x.com/jabri_web",
+        "https://scholar.google.com/citations?user=jabri",
+        "https://www.researchgate.net/profile/Abdulla-Al-Jabri",
+        "https://www.youtube.com/@HeavenAlJabri",
+        "https://facebook.com/HeavenAlJabri",
+        "https://instagram.com/heaven_aljabri",
+        "https://t.me/HeavenAlJabri",
+        "https://www.kaggle.com/jabriweb",
+        "https://stackoverflow.com/users/jabri",
+        "https://dev.to/jabriweb",
+        "https://medium.com/@jabri62018",
+        "https://www.producthunt.com/@jabri",
+        "https://www.behance.net/jabri",
+        "https://dribbble.com/jabri",
+        "https://codepen.io/jabri-web",
+        "https://gitlab.com/jabri-web",
+        "https://bitbucket.org/jabri-web",
+        "https://huggingface.co/jabri",
+        "https://www.slideshare.net/jabri",
+        "https://soundcloud.com/heavenaljabri",
+        "https://vimeo.com/jabri",
+        "https://zenodo.org/records/20513840"
+      ]
     },
-    "url": "https://jabri-com.vercel.app/",
-    "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-    "jobTitle": "Researcher, Author & Founder",
-    "nationality": "Yemeni",
-    "email": "mailto:jabri62018@gmail.com",
-    "owns": {"@id": "https://jabri-com.vercel.app/#org"},
-    "founderOf": {"@id": "https://jabri-com.vercel.app/#org"},
-    "sameAs": [
-      "https://orcid.org/0009-0003-3319-3822",
-      "https://github.com/jabri-web",
-      "https://en.wikipedia.org/wiki/User:Jabri2026",
-      "https://jabri-com.vercel.app/",
-      "https://jabri-web.vercel.app/"
-    ]
-  },
-  {
-    "@type": "Organization",
-    "@id": "https://jabri-com.vercel.app/#org",
-    "name": "واحة الجبري",
-    "alternateName": "Heaven Al-Jabri",
-    "url": "https://jabri-com.vercel.app/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://jabri-com.vercel.app/image/Jabri-photo.png"
+    {
+      "@type": "Organization",
+      "@id": "https://jabri-com.vercel.app/#org",
+      "name": "واحة الجبري",
+      "alternateName": "Heaven Al-Jabri",
+      "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
+      "url": "https://jabri-com.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+        "width": 512,
+        "height": 512
+      },
+      "founder": { "@id": "https://jabri-com.vercel.app/#person" },
+      "owner": { "@id": "https://jabri-com.vercel.app/#person" },
+      "publisher": { "@id": "https://jabri-com.vercel.app/#person" },
+      "sameAs": [
+        "https://github.com/jabri-web",
+        "https://www.linkedin.com/company/jabri",
+        "https://www.youtube.com/@HeavenAlJabri"
+      ]
     },
-    "founder": {"@id": "https://jabri-com.vercel.app/#person"},
-    "owner": {"@id": "https://jabri-com.vercel.app/#person"},
-    "publisher": {"@id": "https://jabri-com.vercel.app/#person"}
-  },
-  {
-    "@type": "WebSite",
-    "@id": "https://jabri-com.vercel.app/#website",
-    "url": "https://jabri-com.vercel.app/",
-    "name": "واحة الجبري | Heaven Al-Jabri",
-    "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية في الرياضيات والفيزياء النظرية",
-    "publisher": {"@id": "https://jabri-com.vercel.app/#org"},
-    "copyrightHolder": {"@id": "https://jabri-com.vercel.app/#person"},
-    "inLanguage": ["ar", "en"]
-  },
-  {
-    "@type": "ScholarlyArticle",
-    "name": "نظرية السندباد الموحدة Z+C+A=1",
-    "author": {"@id": "https://jabri-com.vercel.app/#person"},
-    "datePublished": "2026",
-    "url": "https://jabri-com.vercel.app/research.html",
-    "description": "بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة",
-    "identifier": "10.5281/zenodo.20148344",
-    "publisher": {"@id": "https://jabri-com.vercel.app/#org"}
-  },
-  {
-    "@type": "CollectionPage",
-    "name": "تراث اليمن العريق",
-    "description": "توثيق مدن صنعاء، شبام، سقطرى",
-    "url": "https://jabri-com.vercel.app/Sanaa.html",
-    "about": {
-      "@type": "Place",
-      "name": "صنعاء القديمة",
-      "description": "مدينة صنعاء القديمة - تراث يمني عريق"
+    {
+      "@type": "WebSite",
+      "@id": "https://jabri-com.vercel.app/#website",
+      "url": "https://jabri-com.vercel.app/",
+      "name": "واحة الجبري | Heaven Al-Jabri",
+      "alternateName": "Sindbad Yemen",
+      "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
+      "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#person" },
+      "inLanguage": ["ar", "en"]
     },
-    "publisher": {"@id": "https://jabri-com.vercel.app/#org"}
-  },
-  {
-    "@type": "ImageObject",
-    "contentUrl": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-    "description": "صورة الباحث اليمني م/ عبدالله محمد ناصر الجبري المؤس",
-    "name": "Jabri-photo"
-  },
-  {
-    "@type": "ImageObject",
-    "contentUrl": "https://jabri-com.vercel.app/image/Yemen2026.png",
-    "description": "خريطة وجمال تراث اليمن العريق - صنعاء شبام سقطرى",
-    "name": "Yemen-Heritage-Map"
-  }
-]
+    {
+      "@type": "WebPage",
+      "@id": "https://jabri-com.vercel.app/#webpage",
+      "url": "https://jabri-com.vercel.app/",
+      "name": "واحة الجبري | Heaven Al-Jabri",
+      "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
+      "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+      "about": { "@id": "https://jabri-com.vercel.app/#org" },
+      "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#person" },
+      "inLanguage": ["ar", "en"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jabri-com.vercel.app/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://jabri-com.vercel.app/"
+        }
+      ]
+    }
+  ]
 }
 </script>
+
+
 </head>
 <!-- end of header-orginal.html
     
@@ -690,9 +718,13 @@
                     <span>Jabri-web</span>
                     <span>10</span>
                 </a>
-                <a href="Office.html" target="_blank" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 10px 0; padding: 18px; background: #000; color: #fff; font-size: 16px; font-weight: bold; border-radius: 12px; text-decoration: none; transition: 0.3s; border: 2px solid #333;">
-                    <span>Jabri.com</span>
+                <a href="Page11.html" target="_blank" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 10px 0; padding: 18px; background: #000; color: #fff; font-size: 16px; font-weight: bold; border-radius: 12px; text-decoration: none; transition: 0.3s; border: 2px solid #333;">
+                    <span>Jabri-com</span>
                     <span>11</span>
+                </a>
+                                <a href="Page12.html" target="_blank" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 10px 0; padding: 18px; background: #000; color: #fff; font-size: 16px; font-weight: bold; border-radius: 12px; text-decoration: none; transition: 0.3s; border: 2px solid #333;">
+                  <span>jabri.com</span>
+                  <span>12</span>
                 </a>
             </div>
         </div>
