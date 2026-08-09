@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>المسرح السينمائي - واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== إعادة ضبط ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0f;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* ===== خلفية سينمائية ===== */
+        .cinema-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #11131a 0%, #0a0a0f 100%);
+            z-index: 0;
+        }
+        .cinema-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 4px);
+            pointer-events: none;
+        }
+        /* ===== البطاقة الرئيسية ===== */
+        .cinema-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(20, 22, 36, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(106, 227, 255, 0.15);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(106, 227, 255, 0.05);
+            padding: 25px 20px 30px;
+            max-width: 900px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        /* ===== حاوية الفيديو ===== */
+        .video-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 10px 40px rgba(0,0,0,0.6);
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            background: #000;
+        }
+        /* ===== زر ملء الشاشة (داخل الفيديو) ===== */
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+        .fullscreen-btn:hover {
+            background: rgba(106, 227, 255, 0.3);
+            border-color: #6ae3ff;
+            transform: scale(1.1);
+        }
+        /* ===== تحكمات المشغل ===== */
+        .player-controls {
+            margin-top: 20px;
+            padding: 0 5px;
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .ctrl-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .ctrl-btn:hover {
+            border-color: #6ae3ff;
+            color: #6ae3ff;
+            background: rgba(106, 227, 255, 0.1);
+            transform: scale(1.05);
+        }
+        .ctrl-btn.play-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            background: linear-gradient(135deg, #6ae3ff, #3b9fcb);
+            color: #0a0a0f;
+            border: none;
+            box-shadow: 0 0 30px rgba(106, 227, 255, 0.2);
+        }
+        .ctrl-btn.play-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 50px rgba(106, 227, 255, 0.4);
+        }
+        .ctrl-btn.play-btn.playing {
+            background: linear-gradient(135deg, #ff6a6a, #cb3b3b);
+            box-shadow: 0 0 30px rgba(255, 106, 106, 0.3);
+        }
+        /* ===== شريط التقدم ===== */
+        .progress-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0 8px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: height 0.2s;
+        }
+        .progress-bar:hover {
+            height: 6px;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6ae3ff, #3b9fcb);
+            border-radius: 4px;
+            transition: width 0.05s linear;
+        }
+        .time-label {
+            color: #888;
+            font-size: 0.75rem;
+            min-width: 38px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        /* ===== عناوين ===== */
+        .title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .title-section h2 {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .title-section .badge {
+            background: rgba(106, 227, 255, 0.15);
+            color: #6ae3ff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(106, 227, 255, 0.1);
+        }
+        /* ===== أزرار اللغة ===== */
+        .lang-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #888;
+            padding: 6px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .lang-btn.active {
+            background: #6ae3ff;
+            color: #0a0a0f;
+            border-color: #6ae3ff;
+        }
+        .lang-btn:hover {
+            border-color: #6ae3ff;
+            color: #d0d0ea;
+        }
+        /* ===== زر العودة ===== */
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #6ae3ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 8px 24px;
+            border: 1px solid rgba(106, 227, 255, 0.15);
+            border-radius: 30px;
+            transition: 0.3s;
+            background: rgba(106, 227, 255, 0.05);
+            text-align: center;
+        }
+        .back-link:hover {
+            background: rgba(106, 227, 255, 0.1);
+            border-color: #6ae3ff;
+        }
+        /* ===== الحالة ===== */
+        .status-msg {
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            min-height: 22px;
+        }
+        /* ===== استجابة للشاشات الصغيرة ===== */
+        @media (max-width: 600px) {
+            .cinema-card {
+                padding: 15px 12px 20px;
+                border-radius: 20px;
+            }
+            .title-section h2 {
+                font-size: 1rem;
+            }
+            .ctrl-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .ctrl-btn.play-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            .controls-row {
+                gap: 10px;
+            }
+            .fullscreen-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+                bottom: 10px;
+                right: 10px;
+            }
+            .time-label {
+                font-size: 0.65rem;
+                min-width: 32px;
+            }
+        }
+        @media (max-width: 400px) {
+            .cinema-card {
+                padding: 10px 8px 16px;
+                border-radius: 16px;
+            }
+            .controls-row {
+                gap: 6px;
+            }
+            .ctrl-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 15px;
+            }
+            .ctrl-btn.play-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- خلفية سينمائية -->
+    <div class="cinema-bg"></div>
+
+    <!-- البطاقة الرئيسية -->
+    <div class="cinema-card">
+        <!-- عنوان الفيديو -->
+        <div class="title-section">
+            <h2 id="movieTitle" data-ar="🎬 عرض سينمائي" data-en="🎬 Cinema Show">🎬 عرض سينمائي</h2>
+            <span class="badge" id="langBadge" data-ar="🇾🇪 يمني" data-en="🇾🇪 Yemeni">🇾🇪 يمني</span>
+        </div>
+
+        <!-- حاوية الفيديو -->
+        <div class="video-wrapper" id="videoWrapper">
+            <video id="heavenVideo" playsinline preload="metadata">
+                <source src="/image/heaven.mp4" type="video/mp4">
+                <p id="fallbackMsg" data-ar="⚠️ متصفحك لا يدعم تشغيل الفيديو" data-en="⚠️ Your browser does not support video playback.">⚠️ متصفحك لا يدعم تشغيل الفيديو</p>
+            </video>
+            <!-- زر ملء الشاشة -->
+            <button class="fullscreen-btn" id="fullscreenBtn" title="ملء الشاشة">⛶</button>
+        </div>
+
+        <!-- تحكمات المشغل -->
+        <div class="player-controls">
+            <div class="controls-row">
+                <button class="ctrl-btn" id="rewindBtn" title="إعادة 10 ثوان">⏪</button>
+                <button class="ctrl-btn play-btn" id="playBtn">▶</button>
+                <button class="ctrl-btn" id="forwardBtn" title="تقديم 10 ثوان">⏩</button>
+            </div>
+
+            <!-- شريط التقدم -->
+            <div class="progress-area">
+                <span class="time-label" id="currentTimeDisplay">0:00</span>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="time-label" id="totalTimeDisplay">0:00</span>
+            </div>
+
+            <!-- حالة التشغيل -->
+            <div class="status-msg" id="statusMsg" data-ar="⏸ متوقف" data-en="⏸ Paused">⏸ متوقف</div>
+        </div>
+
+        <!-- أزرار اللغة -->
+        <div class="lang-row">
+            <button class="lang-btn active" data-lang="ar" onclick="setLang('ar')">🇾🇪 عربي</button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+        </div>
+
+        <!-- زر العودة للرئيسية -->
+        <a href="/" class="back-link" id="backLink" data-ar="🏠 العودة للرئيسية" data-en="🏠 Back to Home">🏠 العودة للرئيسية</a>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ===== العناصر =====
+            const video = document.getElementById('heavenVideo');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+            const totalTimeDisplay = document.getElementById('totalTimeDisplay');
+            const statusMsg = document.getElementById('statusMsg');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const videoWrapper = document.getElementById('videoWrapper');
+            const rewindBtn = document.getElementById('rewindBtn');
+            const forwardBtn = document.getElementById('forwardBtn');
+
+            // ===== متغيرات الحالة =====
+            let isPlaying = false;
+            let lang = localStorage.getItem('cinema_lang') || 'ar';
+            let isDragging = false;
+
+            // ===== تهيئة الصوت =====
+            video.volume = 0.4;
+            video.muted = false;
+
+            // ===== دوال مساعدة =====
+            function formatTime(seconds) {
+                if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+                const m = Math.floor(seconds / 60);
+                const s = Math.floor(seconds % 60);
+                return m + ':' + String(s).padStart(2, '0');
+            }
+
+            function updateProgress() {
+                if (!isDragging && video.duration) {
+                    const percent = (video.currentTime / video.duration) * 100;
+                    progressFill.style.width = percent + '%';
+                    currentTimeDisplay.textContent = formatTime(video.currentTime);
+                    totalTimeDisplay.textContent = formatTime(video.duration);
+                }
+            }
+
+            function updatePlayButton() {
+                if (video.paused) {
+                    playBtn.textContent = '▶';
+                    playBtn.classList.remove('playing');
+                    statusMsg.textContent = lang === 'en' ? '⏸ Paused' : '⏸ متوقف';
+                    isPlaying = false;
+                } else {
+                    playBtn.textContent = '⏸';
+                    playBtn.classList.add('playing');
+                    statusMsg.textContent = lang === 'en' ? '▶ Playing' : '▶ تشغيل';
+                    isPlaying = true;
+                }
+            }
+
+            // ===== التحكم في التشغيل =====
+            function togglePlay() {
+                if (video.paused) {
+                    video.play().then(() => {
+                        updatePlayButton();
+                    }).catch(err => {
+                        console.warn('⚠️ فشل التشغيل:', err);
+                        statusMsg.textContent = lang === 'en' ? '⚠️ Tap to play' : '⚠️ اضغط للتشغيل';
+                    });
+                } else {
+                    video.pause();
+                    updatePlayButton();
+                }
+            }
+
+            // ===== أحداث الفيديو =====
+            video.addEventListener('timeupdate', updateProgress);
+            video.addEventListener('loadedmetadata', () => {
+                totalTimeDisplay.textContent = formatTime(video.duration);
+                updateProgress();
+            });
+            video.addEventListener('play', updatePlayButton);
+            video.addEventListener('pause', updatePlayButton);
+            video.addEventListener('ended', () => {
+                playBtn.textContent = '▶';
+                playBtn.classList.remove('playing');
+                statusMsg.textContent = lang === 'en' ? '⏹ Ended' : '⏹ انتهى';
+                isPlaying = false;
+                progressFill.style.width = '100%';
+            });
+
+            // ===== أزرار التحكم =====
+            playBtn.addEventListener('click', togglePlay);
+
+            rewindBtn.addEventListener('click', () => {
+                video.currentTime = Math.max(0, video.currentTime - 10);
+            });
+
+            forwardBtn.addEventListener('click', () => {
+                video.currentTime = Math.min(video.duration, video.currentTime + 10);
+            });
+
+            // ===== شريط التقدم (سحب) =====
+            progressBar.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                if (video.duration) {
+                    video.currentTime = percent * video.duration;
+                }
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            progressBar.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const rect = progressBar.getBoundingClientRect();
+                const touch = e.touches[0];
+                const percent = (touch.clientX - rect.left) / rect.width;
+                if (video.duration) {
+                    video.currentTime = percent * video.duration;
+                }
+                document.addEventListener('touchmove', onTouchMove);
+                document.addEventListener('touchend', onTouchEnd);
+            });
+
+            function onMouseMove(e) {
+                const rect = progressBar.getBoundingClientRect();
+                let percent = (e.clientX - rect.left) / rect.width;
+                percent = Math.min(1, Math.max(0, percent));
+                if (video.duration) {
+                    video.currentTime = percent * video.duration;
+                }
+                progressFill.style.width = (percent * 100) + '%';
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+
+            function onTouchMove(e) {
+                const rect = progressBar.getBoundingClientRect();
+                const touch = e.touches[0];
+                let percent = (touch.clientX - rect.left) / rect.width;
+                percent = Math.min(1, Math.max(0, percent));
+                if (video.duration) {
+                    video.currentTime = percent * video.duration;
+                }
+                progressFill.style.width = (percent * 100) + '%';
+            }
+
+            function onTouchEnd() {
+                isDragging = false;
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+            }
+
+            // ===== ملء الشاشة =====
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    if (videoWrapper.requestFullscreen) {
+                        videoWrapper.requestFullscreen();
+                    } else if (videoWrapper.webkitRequestFullscreen) {
+                        videoWrapper.webkitRequestFullscreen();
+                    } else if (videoWrapper.msRequestFullscreen) {
+                        videoWrapper.msRequestFullscreen();
+                    } else {
+                        // بديل: تكبير الفيديو
+                        video.style.position = 'fixed';
+                        video.style.top = '0';
+                        video.style.left = '0';
+                        video.style.width = '100vw';
+                        video.style.height = '100vh';
+                        video.style.objectFit = 'cover';
+                        video.style.zIndex = '9999';
+                        fullscreenBtn.textContent = '⛶';
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    } else {
+                        video.style.position = '';
+                        video.style.top = '';
+                        video.style.left = '';
+                        video.style.width = '';
+                        video.style.height = '';
+                        video.style.objectFit = '';
+                        video.style.zIndex = '';
+                    }
+                }
+            }
+
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+            // استماع لأحداث الخروج من ملء الشاشة
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    video.style.position = '';
+                    video.style.top = '';
+                    video.style.left = '';
+                    video.style.width = '';
+                    video.style.height = '';
+                    video.style.objectFit = '';
+                    video.style.zIndex = '';
+                }
+            });
+
+            // ===== اللغة =====
+            function setLang(newLang) {
+                lang = newLang;
+                localStorage.setItem('cinema_lang', lang);
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+                // تحديث النصوص
+                document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                    el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+                });
+
+                // تحديث حالة التشغيل
+                if (video.paused) {
+                    statusMsg.textContent = lang === 'en' ? '⏸ Paused' : '⏸ متوقف';
+                } else {
+                    statusMsg.textContent = lang === 'en' ? '▶ Playing' : '▶ تشغيل';
+                }
+
+                // تحديث الأزرار
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+
+            // ===== تشغيل تلقائي عند أول تفاعل =====
+            document.addEventListener('click', function firstTap() {
+                if (video.paused) {
+                    video.play().catch(() => {});
+                }
+                document.removeEventListener('click', firstTap);
+            }, { once: true });
+
+            // ===== تهيئة الصفحة =====
+            setLang(lang);
+
+            // جعل الدوال عالمية
+            window.togglePlay = togglePlay;
+            window.setLang = setLang;
+
+            console.log('🎬 المسرح السينمائي جاهز - heaven.mp4');
+        })();
+    </script>
+</body>
+</html>

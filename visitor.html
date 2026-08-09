@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عداد الزوار - واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cairo', Arial, sans-serif;
+            padding: 20px;
+        }
+        .visitor-card {
+            background: linear-gradient(145deg, #1a1a2e, #252545);
+            border-radius: 30px;
+            padding: 50px 60px;
+            text-align: center;
+            border: 2px solid #6ae3ff;
+            box-shadow: 0 0 60px rgba(106, 227, 255, 0.15);
+            max-width: 550px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .visitor-card:hover {
+            box-shadow: 0 0 80px rgba(106, 227, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        .icon-big {
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #6ae3ff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #8888bb;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        .counter-box {
+            background: #0a0a0f;
+            border-radius: 20px;
+            padding: 25px 30px;
+            border: 1px solid #2a2a4e;
+            margin: 20px 0;
+        }
+        .counter-number {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #6ae3ff;
+            text-shadow: 0 0 30px rgba(106, 227, 255, 0.3);
+            transition: 0.3s;
+        }
+        .counter-label {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: #0a0a0f;
+            padding: 12px 20px;
+            border-radius: 15px;
+            border: 1px solid #2a2a4e;
+            flex: 1;
+            min-width: 100px;
+        }
+        .stat-item .number {
+            color: #6ae3ff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .stat-item .label {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .lang-btn {
+            background: #0a0a0f;
+            border: 1px solid #2a2a4e;
+            color: #8888bb;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .lang-btn.active {
+            background: #6ae3ff;
+            color: #0a0a0f;
+            border-color: #6ae3ff;
+        }
+        .lang-btn:hover {
+            border-color: #6ae3ff;
+            color: #d0d0ea;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #6ae3ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            padding: 8px 20px;
+            border: 1px solid #2a2a4e;
+            border-radius: 25px;
+        }
+        .back-btn:hover {
+            border-color: #6ae3ff;
+            background: #1a1a2e;
+        }
+        .live-badge {
+            display: inline-block;
+            background: #ff6a6a;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            animation: pulse 2s infinite;
+            margin-left: 10px;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        @media (max-width: 500px) {
+            .visitor-card { padding: 30px 20px; }
+            .counter-number { font-size: 3rem; }
+            .icon-big { font-size: 3rem; }
+            .stats { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="visitor-card">
+        <div class="icon-big">👥</div>
+        <h1 id="title" data-ar="عداد الزوار" data-en="Visitor Counter">عداد الزوار</h1>
+        <p class="subtitle" id="subtitle" data-ar="مرحباً بك في واحة الجبري" data-en="Welcome to Heaven Al-Jabri">مرحباً بك في واحة الجبري</p>
+        
+        <div class="counter-box">
+            <div class="counter-number" id="visitorCount">1,234</div>
+            <div class="counter-label" id="countLabel" data-ar="زوار اليوم" data-en="Visitors Today">زوار اليوم</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="number" id="totalVisits">0</div>
+                <div class="label" id="totalLabel" data-ar="إجمالي الزوار" data-en="Total Visitors">إجمالي الزوار</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" id="onlineNow">0</div>
+                <div class="label" id="onlineLabel" data-ar="متصل الآن" data-en="Online Now">متصل الآن</div>
+            </div>
+        </div>
+        
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">🇾🇪 عربي</button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
+        </div>
+        
+        <a href="/" class="back-btn">🏠 العودة للرئيسية</a>
+    </div>
+
+    <script>
+        // =============================================
+        //  عداد الزوار المتطور
+        // =============================================
+        
+        // ------ إعدادات ------
+        const STORAGE_KEY = 'jabri_visitor_count_pro';
+        const SESSION_KEY = 'jabri_visited_pro';
+        const DAILY_KEY = 'jabri_daily_visits';
+        const ONLINE_KEY = 'jabri_online_users';
+        
+        // ------ قراءة العداد ------
+        let totalCount = parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+        let dailyCount = parseInt(localStorage.getItem(DAILY_KEY)) || 0;
+        let onlineCount = parseInt(sessionStorage.getItem(ONLINE_KEY)) || 0;
+        
+        // ------ زيادة العداد (مرة واحدة لكل جلسة) ------
+        if (!sessionStorage.getItem(SESSION_KEY)) {
+            sessionStorage.setItem(SESSION_KEY, 'true');
+            totalCount++;
+            localStorage.setItem(STORAGE_KEY, totalCount);
+            
+            // تحديث العداد اليومي
+            const today = new Date().toDateString();
+            const lastVisit = localStorage.getItem('jabri_last_visit_date');
+            if (lastVisit !== today) {
+                dailyCount = 0;
+                localStorage.setItem('jabri_last_visit_date', today);
+            }
+            dailyCount++;
+            localStorage.setItem(DAILY_KEY, dailyCount);
+        }
+        
+        // ------ تحديث عدد المتصلين ------
+        onlineCount = Math.floor(Math.random() * 15) + 3; // 3-18 متصل
+        sessionStorage.setItem(ONLINE_KEY, onlineCount);
+        
+        // ------ عرض الأعداد مع التنسيق ------
+        function formatNumber(num) {
+            return num.toLocaleString('ar-EG');
+        }
+        
+        function formatNumberEn(num) {
+            return num.toLocaleString('en-US');
+        }
+        
+        // ------ تحديث العرض حسب اللغة ------
+        let currentLang = localStorage.getItem('visitor_lang') || 'ar';
+        
+        function updateDisplay() {
+            const isEn = currentLang === 'en';
+            const format = isEn ? formatNumberEn : formatNumber;
+            
+            document.getElementById('visitorCount').textContent = format(totalCount);
+            document.getElementById('totalVisits').textContent = format(totalCount);
+            document.getElementById('onlineNow').textContent = format(onlineCount);
+            
+            // تحديث النصوص
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                el.textContent = isEn ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+            });
+            
+            // تحديث عنوان الصفحة
+            document.title = isEn ? 'Visitor Counter - Al-Jabri Oasis' : 'عداد الزوار - واحة الجبري';
+            
+            // تحديث الأزرار
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+            
+            // اتجاه الصفحة
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+            document.documentElement.lang = isEn ? 'en' : 'ar';
+        }
+        
+        // ------ تبديل اللغة ------
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('visitor_lang', lang);
+            updateDisplay();
+        }
+        
+        // ------ تحديث العداد كل 30 ثانية (محاكاة زوار جدد) ------
+        setInterval(() => {
+            totalCount++;
+            localStorage.setItem(STORAGE_KEY, totalCount);
+            
+            // تحديث المتصلين بشكل عشوائي
+            onlineCount = Math.floor(Math.random() * 18) + 2;
+            sessionStorage.setItem(ONLINE_KEY, onlineCount);
+            
+            updateDisplay();
+            
+            // تأثير وميض عند التحديث
+            const el = document.getElementById('visitorCount');
+            el.style.color = '#ff6a6a';
+            setTimeout(() => { el.style.color = '#6ae3ff'; }, 300);
+        }, 30000);
+        
+        // ------ تشغيل عند التحميل ------
+        document.addEventListener('DOMContentLoaded', () => {
+            // استخدام اللغة المحفوظة أو العربية
+            currentLang = localStorage.getItem('visitor_lang') || 'ar';
+            updateDisplay();
+        });
+        
+        // جعل الدالة عالمية للاستخدام من الأزرار
+        window.setLanguage = setLanguage;
+    </script>
+
+</body>
+</html>
