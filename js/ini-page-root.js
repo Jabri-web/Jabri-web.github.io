@@ -1,0 +1,76 @@
+js<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - واحة الجبري</title>
+  <script src="/js/init-page-root.js"></script>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cairo', sans-serif;
+    }
+    .center-box {
+      text-align: center;
+      color: #f0e6d3;
+      padding: 30px;
+    }
+    .center-box h1 {
+      font-size: 80px;
+      color: #6ae3ff;
+      margin: 0;
+    }
+    .center-box p {
+      font-size: 22px;
+      color: #aaa;
+    }
+    .visitor-badge {
+      margin-top: 20px;
+      font-size: 18px;
+      background: rgba(255,255,255,0.05);
+      padding: 10px 25px;
+      border-radius: 40px;
+      border: 1px solid #b48b5a;
+      display: inline-block;
+    }
+    .visitor-badge span {
+      color: #f7d44a;
+      font-weight: bold;
+    }
+    .loader {
+      margin: 30px auto;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(106,227,255,0.1);
+      border-top: 3px solid #6ae3ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h1>🌿 404</h1>
+    <p>عذرًا.. هذا الدرب غير موجود</p>
+    <div class="loader"></div>
+    <div class="visitor-badge">👥 عدد زوار الواحة: <span id="visitorDisplay">1</span></div>
+    <p style="margin-top:20px; font-size:15px; color:#888;">🎵 نغمات السندباد تعزف... سيتم تحويلك بعد 7 ثوانٍ</p>
+  </div>
+
+  <script>
+    // جلب العداد من localStorage
+    (function() {
+      let count = localStorage.getItem('jabriVisitorCount');
+      if (count === null) count = Math.floor(Math.random() * 80) + 20;
+      else count = Number(count);
+      document.getElementById('visitorDisplay').textContent = count;
+    })();
+  </script>
+</body>
+</html>
