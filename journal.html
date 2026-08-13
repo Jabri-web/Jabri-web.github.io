@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ============================================================ -->
+    <!--  1. منع الشاشة البيضاء (لون فوري)                            -->
+    <!-- ============================================================ -->
+    <style>
+        /* نحمّل الخلفية فوراً قبل أي شيء */
+        html, body { margin:0; padding:0; background:#0a0a0f; color:#e8e8f0; }
+        /* شاشة تحميل صغيرة جداً (تختفي خلال نص ثانية) */
+        #splashPreload {
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            background:#0a0a0f; z-index:999999;
+            display:flex; align-items:center; justify-content:center;
+            font-family: 'Cairo', sans-serif; color:#6ae3ff;
+            font-size:1.5rem; transition: opacity 0.4s ease;
+        }
+        #splashPreload.hidden { opacity:0; pointer-events:none; }
+    </style>
+
+    <!-- ============================================================ -->
+    <!--  2. SEO الأساسي + الاستشهادات (Citation)                     -->
+    <!-- ============================================================ -->
+    <title id="pageTitle">من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة | واحة الجبري</title>
+    <meta id="pageDescription" name="description" content="قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن. اقرأ القصة الكاملة لواحة الجبري.">
+    <meta name="keywords" content="عبدالله الجبري, واحة الجبري, نظرية السندباد الموحدة, تراث اليمن, صنعاء, شبام, سقطرى, قوقل, بحث علمي">
+    <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+    <link rel="canonical" href="https://jabri-com.vercel.app/journal.html">
+
+    <!-- استشهادات جوجل سكولار -->
+    <meta name="citation_title" content="من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة">
+    <meta name="citation_author" content="عبدالله محمد ناصر الجبري">
+    <meta name="citation_publication_date" content="2026-08-10">
+    <meta name="citation_journal_title" content="واحة الجبري للأبحاث العلمية">
+    <meta name="citation_doi" content="10.5281/zenodo.20513840">
+    <meta name="citation_pdf_url" content="https://jabri-com.vercel.app/papers/sindbad-theory.pdf">
+
+    <!-- ============================================================ -->
+    <!--  3. اللغات و Open Graph / Twitter                            -->
+    <!-- ============================================================ -->
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/journal.html">
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/journal.html">
+    <meta property="og:locale" content="ar_YE">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
+    <meta property="og:title" id="ogTitle" content="من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة">
+    <meta property="og:description" id="ogDescription" content="قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن. اقرأ القصة الكاملة.">
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://jabri-com.vercel.app/journal.html">
+    <meta property="article:published_time" content="2026-08-10">
+    <meta property="article:modified_time" content="2026-08-14">
+    <meta property="article:section" content="علوم وتكنولوجيا">
+    <meta name="news_keywords" content="عبدالله الجبري, نظرية السندباد, تراث اليمن, قوقل, بحث علمي">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@JabriAbdulla1">
+    <meta name="twitter:creator" content="@JabriAbdulla1">
+    <meta name="twitter:title" id="twitterTitle" content="من صنعاء إلى قوقل: قصة الباحث اليمني عبدالله الجبري">
+    <meta name="twitter:description" id="twitterDescription" content="قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن.">
+    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+
+    <!-- ============================================================ -->
+    <!--  4. JSON-LD (شامل للمقال والصفحة والشخص)                     -->
+    <!-- ============================================================ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://jabri-com.vercel.app/#person",
+          "name": "م/ عبدالله محمد ناصر الجبري",
+          "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri", "Abdulla Al-Jabri", "سندباد اليمن"],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "ORCID",
+            "value": "0009-0003-3319-3822",
+            "url": "https://orcid.org/0009-0003-3319-3822"
+          },
+          "url": "https://jabri-com.vercel.app/",
+          "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+          "jobTitle": ["باحث مستقل", "مؤسس واحة الجبري"],
+          "nationality": "YE",
+          "email": "mailto:jabri62018@gmail.com",
+          "sameAs": [
+            "https://orcid.org/0009-0003-3319-3822",
+            "https://github.com/jabri-web",
+            "https://www.linkedin.com/in/abdulla-al-jabri",
+            "https://x.com/jabri_web",
+            "https://scholar.google.com/citations?user=jabri",
+            "https://www.researchgate.net/profile/Abdulla-Al-Jabri",
+            "https://www.youtube.com/@HeavenAlJabri",
+            "https://facebook.com/HeavenAlJabri",
+            "https://instagram.com/heaven_aljabri",
+            "https://t.me/HeavenAlJabri"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://jabri-com.vercel.app/#org",
+          "name": "واحة الجبري",
+          "alternateName": "Heaven Al-Jabri",
+          "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
+          "url": "https://jabri-com.vercel.app/",
+          "logo": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+          "founder": { "@id": "https://jabri-com.vercel.app/#person" },
+          "sameAs": [
+            "https://github.com/jabri-web",
+            "https://www.linkedin.com/company/jabri",
+            "https://www.youtube.com/@HeavenAlJabri"
+          ]
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "@id": "https://jabri-com.vercel.app/journal.html#article",
+          "headline": "من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة",
+          "alternativeHeadline": "Google يعترف بباحث يمني ويوثق نظريته",
+          "datePublished": "2026-08-10",
+          "dateModified": "2026-08-14",
+          "author": { "@id": "https://jabri-com.vercel.app/#person" },
+          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+          "url": "https://jabri-com.vercel.app/journal.html",
+          "mainEntityOfPage": "https://jabri-com.vercel.app/journal.html",
+          "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+          "articleSection": "علوم وتكنولوجيا",
+          "keywords": "عبدالله الجبري, نظرية السندباد, تراث اليمن, قوقل",
+          "description": "قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن.",
+          "inLanguage": "ar",
+          "identifier": "10.5281/zenodo.20513840"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ============================================================ -->
+    <!--  5. الخطوط والستايل (مع تحسين سرعة الظهور)                    -->
+    <!-- ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+    
+    <style>
+        /* --- إعادة ضبط --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            padding: 20px;
+            line-height: 1.9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .container {
+            max-width: 860px;
+            width: 100%;
+            background: #14141e;
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid #2a2a3e;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            margin: 20px 0;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== زر اللغة ===== */
+        .lang-toggle { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+        .lang-btn {
+            background: #1e1e2e; border: 2px solid #2a2a3e; color: #aab;
+            padding: 8px 18px; border-radius: 40px; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: 0.3s; font-family: 'Cairo', sans-serif;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .lang-btn:hover { background: #2a2a3e; border-color: #6ae3ff; color: #6ae3ff; }
+
+        /* ===== نظام الترجمة ===== */
+        .lang-ar { display: block; }
+        .lang-en { display: none; }
+        body.lang-en .lang-ar { display: none; }
+        body.lang-en .lang-en { display: block; }
+        body.lang-en .container { direction: ltr; text-align: left; }
+        body.lang-en .highlight-box { border-right: none; border-left: 4px solid #6ae3ff; }
+
+        /* ===== تنسيقات المحتوى ===== */
+        h1 { font-size: 2.4rem; font-weight: 900; color: #6ae3ff; margin-bottom: 16px; line-height: 1.3; text-align: center; }
+        .meta {
+            display: flex; justify-content: space-between; color: #8899aa; font-size: 0.95rem;
+            border-bottom: 1px solid #2a2a3e; padding-bottom: 16px; margin-bottom: 28px;
+            flex-wrap: wrap; gap: 8px;
+        }
+        .meta span { background: #1e1e2e; padding: 4px 14px; border-radius: 20px; }
+        .article-body p { margin-bottom: 24px; font-size: 1.08rem; text-align: justify; }
+        .article-body strong { color: #6ae3ff; }
+        .highlight-box {
+            background: #1a1a2e; border-right: 4px solid #6ae3ff;
+            padding: 18px 22px; border-radius: 10px; margin: 28px 0;
+            font-style: italic; color: #c8d8e8;
+        }
+        .highlight-box a { color: #6ae3ff; text-decoration: none; font-weight: 700; }
+        .highlight-box a:hover { text-decoration: underline; }
+
+        /* ===== أزرار المشاركة ===== */
+        .share-section {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+            margin: 30px 0 20px; padding: 20px 0; border-top: 1px solid #2a2a3e; border-bottom: 1px solid #2a2a3e;
+        }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border-radius: 40px; text-decoration: none; font-weight: 700;
+            font-size: 0.9rem; transition: 0.3s; color: #fff;
+        }
+        .share-btn:hover { transform: scale(1.05); }
+        .share-twitter { background: #1DA1F2; }
+        .share-linkedin { background: #0A66C2; }
+        .share-whatsapp { background: #25D366; }
+        .share-facebook { background: #1877F2; }
+
+        /* ===== شبكة الحضور الرقمي (منصات النشر) ===== */
+        .platform-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px; margin: 25px 0 15px;
+        }
+        .platform-card {
+            background: #1a1a2e; padding: 12px 8px; border-radius: 12px;
+            text-align: center; text-decoration: none; color: #aab;
+            border: 1px solid #2a2a3e; transition: 0.3s; font-size: 0.85rem;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+        }
+        .platform-card:hover { background: #2a2a3e; border-color: #6ae3ff; transform: translateY(-3px); color: #fff; }
+        .platform-card .icon { font-size: 1.6rem; }
+        .platform-card .name { font-weight: 700; color: #6ae3ff; }
+
+        /* ===== صندوق الكاتب ===== */
+        .author-box {
+            display: flex; align-items: center; gap: 20px;
+            background: #1a1a2e; border-radius: 16px; padding: 20px; margin: 30px 0 20px;
+            border: 1px solid #2a2a3e; flex-wrap: wrap;
+        }
+        .author-box img {
+            width: 80px; height: 80px; border-radius: 50%; border: 3px solid #6ae3ff;
+            object-fit: cover;
+        }
+        .author-box .info { flex: 1; }
+        .author-box .info h3 { color: #6ae3ff; font-size: 1.2rem; }
+        .author-box .info p { color: #8899aa; font-size: 0.95rem; }
+
+        /* ===== باقي العناصر ===== */
+        .btn-primary {
+            display: inline-block; background: #6ae3ff; color: #0a0a0f;
+            padding: 14px 32px; border-radius: 40px; font-weight: 700;
+            text-decoration: none; margin-top: 10px; transition: 0.3s;
+            border: none; font-size: 1.1rem;
+        }
+        .btn-primary:hover { background: #4dd4ff; transform: scale(1.03); box-shadow: 0 0 20px rgba(106,227,255,0.3); }
+        .tags { margin: 30px 0 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tags span { background: #1e1e2e; padding: 6px 18px; border-radius: 30px; font-size: 0.9rem; color: #aab; border: 1px solid #2a2a3e; }
+        .footer-links { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; border-top: 1px solid #2a2a3e; padding-top: 28px; }
+        .footer-links a { color: #6ae3ff; text-decoration: none; font-weight: 500; }
+        .footer-links a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.8rem; }
+            .meta { font-size: 0.8rem; }
+            .article-body p { font-size: 1rem; }
+            .lang-toggle { justify-content: center; }
+            .author-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== شاشة تحميل سريعة جداً (تمنع الشاشة البيضاء) ===== -->
+    <div id="splashPreload">⏳ جاري التحميل...</div>
+
+    <div class="container">
+        <!-- ===== زر اللغة ===== -->
+        <div class="lang-toggle">
+            <button id="langSwitchBtn" class="lang-btn">
+                <span id="langIcon">🇸🇦</span>
+                <span id="langLabel">عربي</span>
+            </button>
+        </div>
+
+        <!-- ===== العنوان ===== -->
+        <h1>
+            <span class="lang-ar">🇾🇪 من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى "نظرية السندباد الموحدة"</span>
+            <span class="lang-en">🇾🇪 From Sana'a to Google: Engineer Abdulla Al-Jabri Transforms Yemeni Heritage into "The Unified Sindbad Theory"</span>
+        </h1>
+
+        <!-- ===== الميتا ===== -->
+        <div class="meta">
+            <span class="lang-ar">📅 10 أغسطس 2026</span><span class="lang-en">📅 August 10, 2026</span>
+            <span class="lang-ar">⏱ 4 دقائق قراءة</span><span class="lang-en">⏱ 4 min read</span>
+            <span>🏷️ <span class="lang-ar">#تراث_اليمن</span><span class="lang-en">#Yemen_Heritage</span></span>
+        </div>
+
+        <!-- ===== المحتوى ===== -->
+        <div class="article-body">
+
+            <p class="lang-ar"><strong>في خطوة تاريخية،</strong> أصدر محرك البحث <strong>قوقل</strong> ملخصاً ذكياً عن <strong>"واحة الجبري"</strong> – المنصة اليمنية الرقمية التي أسسها المهندس والباحث المستقل <strong>عبدالله محمد ناصر الجبري</strong>. الربط بين توثيق التراث اليمني العريق في <strong>صنعاء</strong> و<strong>شبام</strong> و<strong>سقطرى</strong>، وبين أبحاث في الفيزياء النظرية والرياضيات، وضع اسم اليمن على خريطة المعرفة الرقمية العالمية.</p>
+            <p class="lang-en"><strong>In a historic step,</strong> Google has issued a smart summary about <strong>"Heaven Al-Jabri"</strong> – a Yemeni digital platform founded by independent engineer and researcher <strong>Abdulla Mohammed Nasser Al-Jabri</strong>. The connection between documenting Yemen's rich heritage in <strong>Sana'a</strong>, <strong>Shibam</strong>, and <strong>Socotra</strong>, and research in theoretical physics and mathematics, has placed Yemen's name on the global digital knowledge map.</p>
+
+            <div class="highlight-box">
+                <span class="lang-ar">“التراث اليمني ليس مجرد ماضٍ، بل هو مفتاح لفهم الكون والحاضر” – م/ عبدالله الجبري</span>
+                <span class="lang-en">“Yemeni heritage is not just a past, but a key to understanding the universe and the present” – Eng. Abdulla Al-Jabri</span>
+            </div>
+
+            <p class="lang-ar"><strong>بدأت الرحلة</strong> من مقاعد الدراسة في جامعة الملك فهد للبترول والمعادن، بشغف لربط الماضي بالحاضر. فكانت <strong>“نظرية السندباد الموحدة Z+C+A=1”</strong> محاولة لصياغة قوانين رياضية تربط بين الكون والتراث والوعي. واجه المشروع تحديات في التوثيق، منها الحظر المؤقت على ويكيبيديا، لكن الإصرار على النشر العلمي في <strong>ORCID</strong> و<strong>Zenodo</strong> و<strong>GitHub</strong> جعل قوقل نفسه يتعرف على المشروع ويصدر عنه ملخصاً معرفياً.</p>
+            <p class="lang-en"><strong>The journey began</strong> from the classrooms of King Fahd University of Petroleum and Minerals, with a passion to connect the past with the present. The <strong>"Unified Sindbad Theory Z+C+A=1"</strong> was an attempt to formulate mathematical laws linking the universe, heritage, and consciousness. The project faced documentation challenges, including a temporary ban on Wikipedia, but persistence in scientific publishing on <strong>ORCID</strong>, <strong>Zenodo</strong>, and <strong>GitHub</strong> made Google itself recognize the project and issue a knowledge summary about it.</p>
+
+            <p class="lang-ar"><strong>"واحة الجبري"</strong> ليست موقعاً فقط، بل هي رسالة: أن التراث اليمني يمكن أن يكون مصدر إلهام للعلم الحديث. أدعو الباحثين والمهتمين لزيارة المنصة والاطلاع على الأبحاث ودعم جهود توثيق هوية اليمن.</p>
+            <p class="lang-en"><strong>"Heaven Al-Jabri"</strong> is not just a website, but a message: that Yemeni heritage can be a source of inspiration for modern science. I invite researchers and enthusiasts to visit the platform, explore the research, and support efforts to document Yemen's identity.</p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://jabri-com.vercel.app/" class="btn-primary">
+                    <span class="lang-ar">🌐 زيارة واحة الجبري</span>
+                    <span class="lang-en">🌐 Visit Heaven Al-Jabri</span>
+                </a>
+            </div>
+
+            <!-- ===== التاغات ===== -->
+            <div class="tags">
+                <span class="lang-ar">#اليمن</span><span class="lang-en">#Yemen</span>
+                <span class="lang-ar">#تراث_اليمن</span><span class="lang-en">#Yemen_Heritage</span>
+                <span class="lang-ar">#نظرية_السندباد</span><span class="lang-en">#Sindbad_Theory</span>
+                <span class="lang-ar">#عبدالله_الجبري</span><span class="lang-en">#Abdulla_AlJabri</span>
+                <span class="lang-ar">#واحة_الجبري</span><span class="lang-en">#Heaven_AlJabri</span>
+                <span>#بحث_علمي</span>
+                <span>#Google</span>
+            </div>
+        </div>
+
+        <!-- ===== أزرار المشاركة السريعة ===== -->
+        <div class="share-section">
+            <span style="color:#8899aa; font-weight:700;"><span class="lang-ar">شارك المقال:</span><span class="lang-en">Share:</span></span>
+            <a href="https://twitter.com/intent/tweet?text=من%20صنعاء%20إلى%20قوقل%3A%20المهندس%20عبدالله%20الجبري%20يحول%20تراث%20اليمن%20إلى%20نظرية%20السندباد%20الموحدة%20%7C%20واحة%20الجبري&url=https://jabri-com.vercel.app/journal.html" target="_blank" class="share-btn share-twitter">🐦 X</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://jabri-com.vercel.app/journal.html" target="_blank" class="share-btn share-linkedin">🔗 LinkedIn</a>
+            <a href="https://api.whatsapp.com/send?text=من%20صنعاء%20إلى%20قوقل%3A%20المهندس%20عبدالله%20الجبري%20يحول%20تراث%20اليمن%20إلى%20نظرية%20السندباد%20الموحدة%0Ahttps://jabri-com.vercel.app/journal.html" target="_blank" class="share-btn share-whatsapp">💬 WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://jabri-com.vercel.app/journal.html" target="_blank" class="share-btn share-facebook">📘 Facebook</a>
+        </div>
+
+        <!-- ===== صندوق الكاتب ===== -->
+        <div class="author-box">
+            <img src="https://jabri-com.vercel.app/image/Jabri-photo.png" alt="عبدالله الجبري">
+            <div class="info">
+                <h3>م/ عبدالله محمد ناصر الجبري</h3>
+                <p class="lang-ar">باحث مستقل في الرياضيات والفيزياء النظرية، ومؤسس منصة "واحة الجبري" لتوثيق التراث اليمني ونظرية السندباد الموحدة.</p>
+                <p class="lang-en">Independent researcher in mathematics and theoretical physics, founder of "Heaven Al-Jabri" platform for documenting Yemeni heritage and the Unified Sindbad Theory.</p>
+            </div>
+        </div>
+
+        <!-- ===== شبكة الحضور الرقمي (منصات النشر والشغل) ===== -->
+        <h3 style="color:#6ae3ff; margin: 20px 0 10px; text-align:center;">
+            <span class="lang-ar">🌐 التواجد الرقمي للباحث</span>
+            <span class="lang-en">🌐 Researcher's Digital Presence</span>
+        </h3>
+        <div class="platform-grid">
+            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="platform-card"><span class="icon">🆔</span><span class="name">ORCID</span></a>
+            <a href="https://github.com/jabri-web" target="_blank" class="platform-card"><span class="icon">🐙</span><span class="name">GitHub</span></a>
+            <a href="https://zenodo.org/records/20513840" target="_blank" class="platform-card"><span class="icon">📊</span><span class="name">Zenodo</span></a>
+            <a href="https://www.linkedin.com/in/abdulla-al-jabri" target="_blank" class="platform-card"><span class="icon">💼</span><span class="name">LinkedIn</span></a>
+            <a href="https://www.researchgate.net/profile/Abdulla-Al-Jabri" target="_blank" class="platform-card"><span class="icon">🧪</span><span class="name">ResearchGate</span></a>
+            <a href="https://scholar.google.com/citations?user=jabri" target="_blank" class="platform-card"><span class="icon">🎓</span><span class="name">Google Scholar</span></a>
+            <a href="https://x.com/jabri_web" target="_blank" class="platform-card"><span class="icon">🐦</span><span class="name">X (Twitter)</span></a>
+            <a href="https://www.youtube.com/@HeavenAlJabri" target="_blank" class="platform-card"><span class="icon">📺</span><span class="name">YouTube</span></a>
+            <a href="https://facebook.com/HeavenAlJabri" target="_blank" class="platform-card"><span class="icon">📘</span><span class="name">Facebook</span></a>
+            <a href="https://instagram.com/heaven_aljabri" target="_blank" class="platform-card"><span class="icon">📷</span><span class="name">Instagram</span></a>
+            <a href="https://t.me/HeavenAlJabri" target="_blank" class="platform-card"><span class="icon">✈️</span><span class="name">Telegram</span></a>
+            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" class="platform-card"><span class="icon">📖</span><span class="name">Wikipedia</span></a>
+            <a href="https://www.kaggle.com/jabriweb" target="_blank" class="platform-card"><span class="icon">🏆</span><span class="name">Kaggle</span></a>
+            <a href="https://medium.com/@jabri62018" target="_blank" class="platform-card"><span class="icon">📝</span><span class="name">Medium</span></a>
+        </div>
+
+        <!-- ===== الفوتر ===== -->
+        <div class="footer-links">
+            <a href="https://jabri-com.vercel.app/">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+            <a href="https://jabri-com.vercel.app/research.html">📚 <span class="lang-ar">الأبحاث</span><span class="lang-en">Research</span></a>
+            <a href="https://jabri-com.vercel.app/about.html">👤 <span class="lang-ar">عن الباحث</span><span class="lang-en">About</span></a>
+            <a href="https://jabri-com.vercel.app/contact.html">📞 <span class="lang-ar">اتصل بنا</span><span class="lang-en">Contact</span></a>
+        </div>
+
+        <div style="margin-top: 24px; font-size: 0.9rem; color: #667; text-align: center; border-top: 1px solid #1e1e2e; padding-top: 18px;">
+            <span class="lang-ar">© 2026 م/ عبدالله محمد ناصر الجبري – جميع الحقوق محفوظة</span>
+            <span class="lang-en">© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri – All Rights Reserved</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== السكربت السحري ===== -->
+    <script>
+        (function() {
+            // 1. إخفاء شاشة التحميل فوراً
+            const splash = document.getElementById('splashPreload');
+            if (splash) {
+                setTimeout(() => { splash.classList.add('hidden'); }, 300);
+                setTimeout(() => { if (splash.parentNode) splash.remove(); }, 800);
+            }
+
+            // 2. زر اللغة الذكي
+            const btn = document.getElementById('langSwitchBtn');
+            const body = document.body;
+            const htmlTag = document.documentElement;
+
+            const pageTitle = document.getElementById('pageTitle');
+            const pageDesc = document.getElementById('pageDescription');
+            const ogTitle = document.getElementById('ogTitle');
+            const ogDesc = document.getElementById('ogDescription');
+            const twTitle = document.getElementById('twitterTitle');
+            const twDesc = document.getElementById('twitterDescription');
+            const langIcon = document.getElementById('langIcon');
+            const langLabel = document.getElementById('langLabel');
+
+            const texts = {
+                ar: {
+                    title: 'من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة | واحة الجبري',
+                    desc: 'قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن. اقرأ القصة الكاملة لواحة الجبري.',
+                    ogTitle: 'من صنعاء إلى قوقل: المهندس عبدالله الجبري يحول تراث اليمن إلى نظرية السندباد الموحدة',
+                    ogDesc: 'قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن. اقرأ القصة الكاملة.',
+                    twTitle: 'من صنعاء إلى قوقل: قصة الباحث اليمني عبدالله الجبري',
+                    twDesc: 'قوقل يعترف بباحث يمني ويربط اسمه بنظرية رياضية وتراث اليمن.',
+                    icon: '🇸🇦',
+                    label: 'عربي'
+                },
+                en: {
+                    title: 'From Sana\'a to Google: Engineer Abdulla Al-Jabri Transforms Yemeni Heritage into The Unified Sindbad Theory | Heaven Al-Jabri',
+                    desc: 'Google recognizes a Yemeni researcher and links his name to a mathematical theory and Yemeni heritage. Read the full story.',
+                    ogTitle: 'From Sana\'a to Google: Engineer Abdulla Al-Jabri Transforms Yemeni Heritage into The Unified Sindbad Theory',
+                    ogDesc: 'Google recognizes a Yemeni researcher and links his name to a mathematical theory and Yemeni heritage.',
+                    twTitle: 'From Sana\'a to Google: The Story of Yemeni Researcher Abdulla Al-Jabri',
+                    twDesc: 'Google recognizes a Yemeni researcher and links his name to a mathematical theory and Yemeni heritage.',
+                    icon: '🇬🇧',
+                    label: 'English'
+                }
+            };
+
+            function setLanguage(lang) {
+                body.classList.remove('lang-en', 'lang-ar');
+                body.classList.add('lang-' + lang);
+                htmlTag.lang = lang;
+                htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+                const t = texts[lang];
+                if (pageTitle) pageTitle.textContent = t.title;
+                if (pageDesc) pageDesc.setAttribute('content', t.desc);
+                if (ogTitle) ogTitle.setAttribute('content', t.ogTitle);
+                if (ogDesc) ogDesc.setAttribute('content', t.ogDesc);
+                if (twTitle) twTitle.setAttribute('content', t.twTitle);
+                if (twDesc) twDesc.setAttribute('content', t.twDesc);
+                if (langIcon) langIcon.textContent = t.icon;
+                if (langLabel) langLabel.textContent = t.label;
+
+                localStorage.setItem('jabri_lang_preference', lang);
+            }
+
+            btn.addEventListener('click', function() {
+                const current = localStorage.getItem('jabri_lang_preference') || 'ar';
+                const newLang = current === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+            const saved = localStorage.getItem('jabri_lang_preference');
+            if (saved === 'ar' || saved === 'en') {
+                setLanguage(saved);
+            } else {
+                const browser = navigator.language || navigator.userLanguage;
+                setLanguage(browser.startsWith('ar') ? 'ar' : 'en');
+            }
+
+            console.log('🌍 journal.html (النسخة الذهبية 2.0) جاهزة للنشر العالمي!');
+        })();
+    </script>
+</body>
+</html>
