@@ -336,6 +336,88 @@
             background: #cc0000;
         }
 
+        /* ===== مربع الصور الأربع (الأركان) ===== */
+        .oasis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 700px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+        }
+        .corner {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .corner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .corner:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+            background: rgba(255, 215, 0, 0.06);
+        }
+        .corner:hover::before {
+            opacity: 1;
+        }
+        .corner img {
+            width: 100%;
+            max-width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+            display: block;
+            margin: 0 auto 8px;
+            background: #0a0a0f;
+        }
+        .corner:hover img {
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            transform: scale(1.03);
+        }
+        .corner span {
+            display: block;
+            font-size: 0.85rem;
+            color: #ccc;
+            font-weight: 600;
+            padding: 4px 0;
+            transition: 0.3s;
+        }
+        .corner:hover span {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+        .corner .label-ar {
+            font-size: 0.75rem;
+            color: #999;
+            font-weight: 400;
+        }
+        .corner:hover .label-ar {
+            color: #bbb;
+        }
+
         /* ===== أزرار المدن الجديدة (بطاقات فخمة) ===== */
         .city-grid {
             display: grid;
@@ -703,7 +785,7 @@
         /* ===== الأزرار الذهبية الجديدة (موسيقى وزوار) ===== */
         .extra-buttons {
             position: fixed;
-            bottom: 105px; /* فوق زر المحادثة (25px + 60px + gap) */
+            bottom: 105px;
             left: 25px;
             display: flex;
             flex-direction: column;
@@ -788,7 +870,20 @@
                 font-size: 14px;
                 min-width: 110px;
             }
-            /* تجاوب المدن */
+            /* تجاوب الأركان */
+            .oasis-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                padding: 12px;
+                max-width: 100%;
+            }
+            .corner img {
+                max-width: 100%;
+                height: 90px;
+            }
+            .corner span {
+                font-size: 0.75rem;
+            }
             .city-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -823,6 +918,14 @@
             }
         }
         @media (max-width: 400px) {
+            .oasis-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                padding: 8px;
+            }
+            .corner img {
+                height: 70px;
+            }
             .city-grid {
                 grid-template-columns: 1fr;
             }
@@ -873,6 +976,30 @@
 
     <!-- ===== المحتوى الرئيسي ===== -->
     <main class="container">
+
+        <!-- ===== مربع الصور الأربع (الأركان) ===== -->
+        <div class="oasis-grid">
+            <div class="corner">
+                <img src="/image/door.webp" alt="باب اليمن" loading="lazy" />
+                <span>🚪 باب اليمن</span>
+                <span class="label-ar">صنعاء القديمة</span>
+            </div>
+            <div class="corner">
+                <img src="/image/water1.webp" alt="حضرموت - الغنة" loading="lazy" />
+                <span>💧 حضرموت - الغنة</span>
+                <span class="label-ar">وادي حضرموت</span>
+            </div>
+            <div class="corner">
+                <img src="/image/water2.webp" alt="صهاريج عدن" loading="lazy" />
+                <span>🏛️ صهاريج عدن</span>
+                <span class="label-ar">معلم تاريخي</span>
+            </div>
+            <div class="corner">
+                <img src="/image/Jabri-photo.webp" alt="المؤسس عبدالله الجبري" loading="lazy" />
+                <span>👨‍💻 المصمم - المؤسس</span>
+                <span class="label-ar">م/ عبدالله الجبري</span>
+            </div>
+        </div>
 
         <!-- ===== الصور (webp) ===== -->
         <img src="/image/Yemen-photo1.png" alt="صورة الباحث اليمني م/ عبدالله محمد ناصر الجبري" class="hero-img" />
