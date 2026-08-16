@@ -25,7 +25,7 @@
     <meta name="keywords" content="الدالة الأم, نظرية السندباد الموحدة, Z+C+A=1, عبدالله الجبري, رياضيات, فيزياء نظرية, تراث اليمن, صنعاء, شبام, سقطرى">
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
     
-    <!-- ========== Citation Tags (Google Scholar) ========== -->
+    <!-- ========== Citation Tags ========== -->
     <meta name="citation_title" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1">
     <meta name="citation_author" content="عبدالله محمد ناصر الجبري">
     <meta name="citation_publication_date" content="2026">
@@ -172,26 +172,12 @@
             { "@type": "ListItem", "position": 2, "name": "شبام حضرموت", "item": "https://jabri-com.vercel.app/Shibam.html" },
             { "@type": "ListItem", "position": 3, "name": "سقطرى", "item": "https://jabri-com.vercel.app/Soqatra.html" }
           ]
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "@id": "https://jabri-com.vercel.app/#article",
-          "headline": "الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1",
-          "alternativeHeadline": "Mother Function Z(x) and Unified Sinbad Theory Z+C+A=1",
-          "author": { "@id": "https://jabri-com.vercel.app/#person" },
-          "datePublished": "2026-08-16",
-          "dateModified": "2026-08-16",
-          "doi": "10.5281/zenodo.20513840",
-          "abstract": "اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% من خلال الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)، مع نظرية موحدة Zx = Z + C + A تحل توتر هابل والطاقة المظلمة.",
-          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
-          "inLanguage": ["ar", "en"],
-          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" }
         }
       ]
     }
     </script>
     
-    <!-- ========== الروابط الأساسية في الهيدر ========== -->
+    <!-- ========== الروابط الأساسية ========== -->
     <link rel="home" href="https://jabri-com.vercel.app/">
     <link rel="index" href="https://jabri-com.vercel.app/">
     <link rel="contents" href="https://jabri-com.vercel.app/#webpage">
@@ -211,7 +197,7 @@
     <style>
         /* ===== جميع الأنماط ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Cairo', sans-serif; background: #0a0a0f; min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
+        body { font-family: 'Cairo', sans-serif; background: #0a0a0f; min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; flex-direction: column; }
         .hero { text-align: center; padding: 20px; max-width: 600px; }
         .hero h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(135deg, #6ae3ff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { opacity: 0.6; font-size: 1.1rem; }
@@ -232,7 +218,6 @@
         @media (max-width: 600px) { .btn-container { bottom: 18px; left: 18px; gap: 12px; } .top-btn { height: 48px; font-size: 15px; padding: 0 18px; min-width: 100px; } .music-btn { font-size: 19px; } #visitorCount { font-size: 19px; min-width: 28px; } .hero h1 { font-size: 1.8rem; } }
         @media (max-width: 400px) { .btn-container { bottom: 14px; left: 14px; gap: 10px; } .top-btn { height: 42px; font-size: 13px; padding: 0 14px; min-width: 80px; } .music-btn { font-size: 17px; } #visitorCount { font-size: 17px; min-width: 24px; } }
         
-        /* ===== منع التحديد ===== */
         .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
         * { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
     </style>
@@ -254,6 +239,294 @@
         <button id="langBtn" class="top-btn lang-btn" aria-label="تبديل اللغة" title="تبديل اللغة">🇾🇪 عربي</button>
     </div>
     
+    <!-- ===== القائمة الذكية مضمنة هنا ===== -->
+    <script>
+    // ============================================================
+    //   menu.js - القائمة الذكية متعددة اللغات - واحة الجبري
+    //   مضمنة في الهيدر لضمان ظهورها في كل الصفحات
+    // ============================================================
+    (function() {
+        // تحديد اللغة والمسار
+        const currentPath = window.location.pathname;
+        let langDir = '';
+        let isArabic = true;
+
+        if (currentPath.startsWith('/ar/')) {
+            langDir = '/ar';
+            isArabic = true;
+        } else if (currentPath.startsWith('/en/')) {
+            langDir = '/en';
+            isArabic = false;
+        } else {
+            langDir = '';
+            isArabic = true;
+        }
+
+        // زر القائمة الذهبي
+        const menuContainer = document.createElement('div');
+        menuContainer.id = 'hamburger-menu';
+        menuContainer.style.cssText = `
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 9999999 !important;
+            cursor: pointer !important;
+            background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+            color: #0a0a0f !important;
+            border: none !important;
+            padding: 10px 16px !important;
+            border-radius: 12px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+            transition: 0.3s !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            backdrop-filter: blur(6px) !important;
+            border: 1px solid rgba(255, 215, 0, 0.2) !important;
+        `;
+
+        menuContainer.innerHTML = `
+            <div style="display:flex;flex-direction:column;gap:4px;width:24px;height:18px;justify-content:center;">
+                <span style="display:block;height:2.5px;background:#0a0a0f;border-radius:4px;"></span>
+                <span style="display:block;height:2.5px;background:#0a0a0f;border-radius:4px;"></span>
+                <span style="display:block;height:2.5px;background:#0a0a0f;border-radius:4px;"></span>
+            </div>
+            <span style="font-size:13px;color:#0a0a0f;font-weight:bold;">${isArabic ? 'القائمة' : 'Menu'}</span>
+        `;
+
+        menuContainer.addEventListener('mouseenter', () => {
+            menuContainer.style.transform = 'scale(1.05)';
+            menuContainer.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.7)';
+        });
+        menuContainer.addEventListener('mouseleave', () => {
+            menuContainer.style.transform = 'scale(1)';
+            menuContainer.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.4)';
+        });
+
+        // القائمة المنسدلة
+        const dropdown = document.createElement('div');
+        dropdown.id = 'menu-dropdown';
+        dropdown.style.cssText = `
+            display: none !important;
+            position: fixed !important;
+            top: 75px !important;
+            right: 20px !important;
+            background: rgba(10, 10, 20, 0.96) !important;
+            backdrop-filter: blur(16px) !important;
+            border: 2px solid #ffd700 !important;
+            border-radius: 18px !important;
+            padding: 20px 18px !important;
+            min-width: 260px !important;
+            max-height: 80vh !important;
+            overflow-y: auto !important;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
+            z-index: 9999998 !important;
+            flex-direction: column !important;
+            gap: 2px !important;
+        `;
+
+        // محتوى القائمة
+        const staticContent = `
+            <!-- تبديل اللغة -->
+            <div style="display:flex; gap:10px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.15); margin-bottom:10px;">
+                <a href="/ar/author-history.html" style="color:${isArabic ? '#ffd700' : '#888'}; padding:5px 16px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:0.3s;">🇾🇪 عربي</a>
+                <a href="/en/author-history.html" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:5px 16px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:0.3s;">🇬🇧 English</a>
+            </div>
+
+            <!-- الروابط -->
+            <a href="${langDir}/" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🏠</span> ${isArabic ? 'الرئيسية' : 'Home'}
+            </a>
+            <a href="${langDir}/Sanaa.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🏙️</span> ${isArabic ? 'صنعاء القديمة' : 'Old Sanaa'}
+            </a>
+            <a href="${langDir}/Shibam.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🏘️</span> ${isArabic ? 'شبام حضرموت' : 'Shibam Hadramawt'}
+            </a>
+            <a href="${langDir}/Soqatra.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🌴</span> ${isArabic ? 'سقطرى' : 'Socotra'}
+            </a>
+            <a href="${langDir}/journal.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">📰</span> ${isArabic ? 'رسالة قوقل' : 'Google Message'}
+            </a>
+            <a href="${langDir}/research.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🔬</span> ${isArabic ? 'البحوث' : 'Research'}
+            </a>
+            <a href="${langDir}/Office.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">📫</span> ${isArabic ? 'المكتبة' : 'Library'}
+            </a>
+            <a href="${langDir}/Author-cv.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🧑‍💼</span> ${isArabic ? 'السيرة الذاتية' : 'CV'}
+            </a>
+            <a href="${langDir}/about.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">ℹ️</span> ${isArabic ? 'عن الواحة' : 'About Oasis'}
+            </a>
+            <a href="${langDir}/author-history.html" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">📜</span> ${isArabic ? 'التاريخ العلمي' : 'Scientific History'}
+            </a>
+
+            <!-- إنجازات اليوم -->
+            <div style="border-top:2px solid #ffd700; margin:12px 0 8px 0; padding-top:10px;">
+                <div style="color:#ffd700; font-size:0.8rem; font-weight:bold; text-align:center; letter-spacing:1px; margin-bottom:8px;">
+                    ⭐ ${isArabic ? 'إنجازات اليوم - 16 أغسطس 2026' : 'Today\'s Achievements — Aug 16, 2026'}
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:0.85rem; color:#ccc; padding:0 4px;">
+                    <div style="display:flex; align-items:center; gap:10px; background:rgba(255,215,0,0.04); padding:6px 12px; border-radius:8px; border-right:3px solid #ffd700;">
+                        <span>🧮</span> <span>${isArabic ? 'الدالة الأم - اشتقاق ثابت الجاذبية' : 'Mother Function — Gravitational Constant'}</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; background:rgba(255,215,0,0.04); padding:6px 12px; border-radius:8px; border-right:3px solid #ffd700;">
+                        <span>🌌</span> <span>${isArabic ? 'النظرية الموحدة Zx = Z + C + A' : 'Unified Theory Zx = Z + C + A'}</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; background:rgba(255,215,0,0.04); padding:6px 12px; border-radius:8px; border-right:3px solid #ffd700;">
+                        <span>📐</span> <span>${isArabic ? 'ثابت الجاذبية من الأعداد الصرفة - دقة 99.95%' : 'Gravitational Constant — 99.95% Accuracy'}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- روابط خارجية -->
+            <div style="border-top:1px solid rgba(255,215,0,0.1); margin:8px 0 4px 0; padding-top:8px;"></div>
+            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🌐</span> Wikipedia
+            </a>
+            <a href="https://github.com/jabri-web" target="_blank" style="color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.06);">
+                <span style="font-size:1.4rem;">🐙</span> GitHub
+            </a>
+
+            <!-- المحادثات -->
+            <div style="border-top:1px solid rgba(255,215,0,0.1); margin:8px 0 4px 0; padding-top:8px;">
+                <div style="color:#6ae3ff; padding:4px 6px; font-size:0.85rem; font-weight:bold;">
+                    💬 ${isArabic ? 'آخر الاستفسارات:' : 'Recent Inquiries:'}
+                </div>
+                <div id="dynamic-chats" style="display:flex;flex-direction:column;gap:4px;margin:4px 0;"></div>
+            </div>
+
+            <!-- زر مسح -->
+            <button id="clear-chats-btn" style="background: rgba(255, 0, 0, 0.08); color: #ff6b6b; border: 1px solid #ff6b6b; border-radius: 10px; padding: 8px 14px; cursor: pointer; font-weight: bold; transition: 0.3s; width: 100%; text-align: center; margin-top:4px;">
+                🗑️ ${isArabic ? 'مسح السجل' : 'Clear History'}
+            </button>
+        `;
+
+        dropdown.innerHTML = staticContent;
+        document.body.appendChild(menuContainer);
+        document.body.appendChild(dropdown);
+
+        // تحديث المحادثات
+        function updateChats() {
+            let chats = JSON.parse(localStorage.getItem('jabri_chats')) || [];
+            if (chats.length === 0) {
+                chats = [
+                    { text: isArabic ? '🚀 استفسار حول اشتقاق ثابت الجاذبية' : '🚀 Inquiry about gravitational constant', time: isArabic ? 'الآن' : 'now' },
+                    { text: isArabic ? '📜 توثيق النظرية الموحدة' : '📜 Unified Theory Documentation', time: isArabic ? 'منذ 10 دقائق' : '10 min ago' },
+                    { text: isArabic ? '🏛️ أرشيف صنعاء وشبام وسقطرى' : '🏛️ Sanaa, Shibam & Socotra Archive', time: isArabic ? 'منذ ساعة' : '1 hour ago' }
+                ];
+                localStorage.setItem('jabri_chats', JSON.stringify(chats));
+            }
+            const recentChats = chats.slice(-5).reverse();
+            const container = document.getElementById('dynamic-chats');
+            if (container) {
+                container.innerHTML = recentChats.map(chat => `
+                    <div style="padding:6px 12px; background:rgba(255,215,0,0.04); border-radius:8px; color:#ccc; font-size:0.85rem; border-right:3px solid #ffd700;">
+                        💬 ${chat.text}
+                        <span style="display:block;font-size:0.65rem;color:#666;margin-top:2px;">${chat.time}</span>
+                    </div>
+                `).join('') || `<div style="color:#666;padding:6px 12px;">${isArabic ? 'لا توجد استفسارات' : 'No inquiries'}</div>`;
+            }
+        }
+
+        updateChats();
+
+        // إضافة محادثة
+        window.addChat = function(text) {
+            const chats = JSON.parse(localStorage.getItem('jabri_chats')) || [];
+            chats.push({
+                text: text,
+                time: new Date().toLocaleTimeString(isArabic ? 'ar-EG' : 'en-US', { hour: '2-digit', minute: '2-digit' })
+            });
+            localStorage.setItem('jabri_chats', JSON.stringify(chats));
+            updateChats();
+        };
+
+        // مسح المحادثات
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'clear-chats-btn' || e.target.closest('#clear-chats-btn')) {
+                if (confirm(isArabic ? '🗑️ هل تريد مسح سجل الاستفسارات؟' : '🗑️ Clear inquiry history?')) {
+                    localStorage.removeItem('jabri_chats');
+                    updateChats();
+                    window.addChat(isArabic ? '✨ تم مسح السجل. بداية جديدة.' : '✨ History cleared. Fresh start.');
+                }
+            }
+        });
+
+        // تأثيرات الروابط
+        dropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.background = 'rgba(255, 215, 0, 0.08)';
+                link.style.color = '#ffd700';
+                link.style.transform = 'translateX(-4px)';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.background = 'transparent';
+                link.style.color = '#fff';
+                link.style.transform = 'translateX(0)';
+            });
+        });
+
+        // فتح/إغلاق القائمة
+        let isOpen = false;
+        let closeTimer;
+
+        menuContainer.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isOpen) {
+                dropdown.style.display = 'none';
+                isOpen = false;
+                clearTimeout(closeTimer);
+            } else {
+                updateChats();
+                dropdown.style.display = 'flex';
+                isOpen = true;
+                clearTimeout(closeTimer);
+                closeTimer = setTimeout(() => {
+                    dropdown.style.display = 'none';
+                    isOpen = false;
+                }, 10000);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!menuContainer.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+                isOpen = false;
+                clearTimeout(closeTimer);
+            }
+        });
+
+        dropdown.querySelectorAll('a, #clear-chats-btn').forEach(el => {
+            el.addEventListener('click', function() {
+                if (this.id !== 'clear-chats-btn') {
+                    dropdown.style.display = 'none';
+                    isOpen = false;
+                    clearTimeout(closeTimer);
+                }
+            });
+        });
+
+        // رسالة ترحيبية
+        if (!localStorage.getItem('jabri_welcome_shown')) {
+            setTimeout(() => {
+                window.addChat(isArabic ? '👋 مرحباً بك في واحة الجبري - 16 أغسطس 2026' : '👋 Welcome to Al-Jabri Oasis - Aug 16, 2026');
+            }, 2000);
+            localStorage.setItem('jabri_welcome_shown', 'true');
+        }
+
+        console.log('🌴 واحة الجبري - القائمة الذكية جاهزة');
+        console.log('📜 Zx = Z + C + A | Z + C + A = 1');
+        console.log('🇾🇪 اليمن - صنعاء');
+    })();
+    </script>
+
     <script>
         (function() {
             const VERSION = '4.0.0';

@@ -1,479 +1,667 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/" />
-  <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en-page.html" />
-  <link rel="canonical" href="https://jabri-com.vercel.app/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <title>واحة الجبري | تراث اليمن العريق وبوابة السندباد</title>
-  <meta name="description" content="م/ عبدالله محمد ناصر الجبري – باحث مستقل في الرياضيات والفيزياء النظرية. توثيق تراث اليمن. بوابة السندباد." />
-  <meta name="keywords" content="عبدالله الجبري, واحة الجبري, تراث اليمن, نظرية السندباد" />
-  <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
-  <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-  
-  <!-- ===== Google Analytics ===== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO الأساسي -->
+    <meta name="description" content="نظام فحص واحة الجبري - اختبار الروابط، السرعة، 404، والأداء الشامل" />
+    <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+    
+    <!-- الروابط -->
+    <link rel="canonical" href="https://jabri-com.vercel.app/Checkout.html" />
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Checkout.html" />
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Checkout.html" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="واحة الجبري | نظام الفحص" />
+    <meta property="og:title" content="نظام فحص الواحة - Jabri Checkout" />
+    <meta property="og:description" content="فحص شامل للروابط، السرعة، 404، وأداء واحة الجبري" />
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
+    <meta property="og:url" content="https://jabri-com.vercel.app/Checkout.html" />
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EQBMJKBC24');
-  </script>
-  
-  <!-- ===== Open Graph ===== -->
-  <meta property="og:locale" content="ar_YE" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="واحة الجبري" />
-  <meta property="og:title" content="واحة الجبري | تراث اليمن وبوابة السندباد" />
-  <meta property="og:description" content="باحث يمني في الرياضيات والفيزياء + تراث اليمن." />
-  <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png" />
-  <meta property="og:url" content="https://jabri-com.vercel.app/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  
-  <!-- ===== أنماط الصفحة ===== -->
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      background: #0a0a0a; 
-      color: #FFD700; 
-      font-family: 'Tajawal', 'Segoe UI', Arial, sans-serif; 
-      padding: 20px; 
-      line-height: 1.8; 
-    }
-    .container { max-width: 1100px; margin: 0 auto; }
-    
-    /* ===== الهيدر ===== */
-    .header { 
-      text-align: center; 
-      padding: 30px 20px; 
-      background: linear-gradient(135deg, #0a0a0a, #1a1a1a); 
-      border-radius: 20px; 
-      margin-bottom: 30px; 
-      border: 2px solid #8B4513; 
-    }
-    .header-img-wrapper { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 25px; 
-      flex-wrap: wrap; 
-    }
-    .header-img-wrapper img { 
-      width: 120px; 
-      height: 120px; 
-      border-radius: 50%; 
-      border: 4px solid #FFD700; 
-      object-fit: cover; 
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); 
-    }
-    .header-text h1 { 
-      font-size: 2.2rem; 
-      color: #FFD700; 
-      text-shadow: 0 0 15px #8B4513; 
-      margin: 0;
-    }
-    .header-text .subtitle { 
-      font-size: 1.2rem; 
-      font-weight: 700; 
-      color: #DAA520; 
-    }
-    .header-text p { 
-      color: #ccc; 
-      margin: 5px 0 10px;
-    }
-    
-    /* ===== الأزرار ===== */
-    .btn { 
-      display: inline-block; 
-      padding: 8px 18px; 
-      border-radius: 30px; 
-      font-weight: bold; 
-      text-decoration: none; 
-      transition: 0.3s; 
-      border: none; 
-      cursor: pointer; 
-      font-size: 13px; 
-      margin: 3px; 
-    }
-    .btn-primary { 
-      background: linear-gradient(135deg, #6ae3ff, #1e6f9f); 
-      color: #0a0a0f; 
-    }
-    .btn-primary:hover { transform: scale(1.05); opacity: 0.9; }
-    .btn-secondary { background: #2a2a2a; color: #ccc; border: 1px solid #444; }
-    .btn-secondary:hover { background: #3a3a3a; }
-    .btn-github { background: #333; color: #fff; border: 1px solid #6ae3ff; }
-    .btn-github:hover { background: #6ae3ff; color: #0a0a0f; transform: scale(1.05); }
-    .btn-gold { background: linear-gradient(135deg, #8B4513, #A0522D); color: #fff; }
-    .btn-gold:hover { opacity: 0.8; transform: scale(1.05); }
-    
-    /* ===== الأقسام ===== */
-    .section { 
-      background: #111; 
-      border: 2px solid #2a2a2a; 
-      border-radius: 15px; 
-      padding: 30px; 
-      margin: 30px 0; 
-    }
-    .section h2 { 
-      color: #FFD700; 
-      text-align: center; 
-      font-size: 1.8rem; 
-      margin-bottom: 20px; 
-      border-bottom: 2px solid #8B4513; 
-      padding-bottom: 10px; 
-    }
-    .city-buttons { 
-      display: flex; 
-      justify-content: center; 
-      flex-wrap: wrap; 
-      gap: 15px; 
-      margin: 20px 0; 
-    }
-    
-    /* ===== بطاقات المشاريع ===== */
-    .projects-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-      gap: 20px; 
-      margin-top: 20px; 
-    }
-    .project-card { 
-      background: #1a1a1a; 
-      border: 1px solid #333; 
-      border-radius: 15px; 
-      padding: 20px; 
-      transition: 0.3s; 
-      border-right: 4px solid #FFD700; 
-    }
-    .project-card:hover { 
-      border-color: #FFD700; 
-      transform: translateY(-5px); 
-      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1); 
-    }
-    .project-card .title { 
-      font-size: 1.1rem; 
-      font-weight: bold; 
-      color: #FFD700; 
-      margin-bottom: 5px; 
-    }
-    .project-card .badge-num { 
-      display: inline-block; 
-      background: #8B4513; 
-      color: #fff; 
-      padding: 0 10px; 
-      border-radius: 20px; 
-      font-size: 12px; 
-      margin-left: 10px; 
-    }
-    .project-card .doi { 
-      color: #DAA520; 
-      font-size: 0.8rem; 
-      direction: ltr; 
-      text-align: left; 
-      margin-top: 5px; 
-    }
-    .project-card .doi a { color: #DAA520; text-decoration: none; }
-    .project-card .actions { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-    .project-card .parts-list { 
-      margin-top: 8px; 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 4px; 
-    }
-    .project-card .parts-list .part-badge { 
-      background: #1a3a2a; 
-      color: #8fbc8f; 
-      padding: 2px 10px; 
-      border-radius: 12px; 
-      font-size: 11px; 
-      border: 1px solid #2d5a3d; 
-    }
-    
-    /* ===== الروابط السفلية ===== */
-    .links-section {
-      background: #111;
-      border: 2px solid #2a2a2a;
-      border-radius: 15px;
-      padding: 25px 30px;
-      margin: 30px 0;
-    }
-    .links-section h3 {
-      color: #FFD700;
-      text-align: center;
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #8B4513;
-      padding-bottom: 10px;
-    }
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
-    }
-    .links-grid a {
-      color: #00ff88;
-      text-decoration: none;
-      font-size: 14px;
-      transition: 0.3s;
-      padding: 5px 10px;
-      border-radius: 8px;
-      display: block;
-    }
-    .links-grid a:hover {
-      background: rgba(0, 255, 136, 0.1);
-      color: #FFD700;
-      transform: translateX(5px);
-    }
-    .links-grid .link-label {
-      color: #888;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    
-    /* ===== الصور ===== */
-    .img-center { 
-      width: 100%; 
-      max-width: 400px; 
-      display: block; 
-      margin: 20px auto; 
-      border-radius: 12px; 
-      border: 2px solid #6ae3ff; 
-    }
-    .img-full { 
-      width: 100%; 
-      border-radius: 12px; 
-      margin: 20px 0; 
-      border: 2px solid #6ae3ff; 
-    }
-    
-    @media (max-width: 600px) { 
-      .header-img-wrapper { flex-direction: column; gap: 15px; } 
-      .header-img-wrapper img { width: 100px; height: 100px; } 
-      .projects-grid { grid-template-columns: 1fr; }
-      .links-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+    <style>
+        /* ===== RESET ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0f;
+            color: #e8e8f0;
+            font-family: 'Cairo', 'Tahoma', 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
+
+        /* ===== الأزرار الثابتة ===== */
+        .lang-btn {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            background: #6ae3ff;
+            border: none;
+            color: #0a0a0f;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            z-index: 999;
+            font-family: inherit;
+        }
+        body.en .lang-btn { left: auto; right: 20px; }
+
+        #visitorCounter {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
+            color: #6ae3ff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 9999;
+            border: 1px solid #6ae3ff;
+            display: flex;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .music-btn-fixed {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 99999;
+            background: linear-gradient(135deg, #6ae3ff, #3b9fcb);
+            border: none;
+            color: #0a0a0f;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(106, 227, 255, 0.4);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.en .music-btn-fixed { right: auto; left: 20px; }
+        .music-btn-fixed:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(106, 227, 255, 0.7); }
+        .music-btn-fixed.playing {
+            background: linear-gradient(135deg, #ff6a6a, #cb3b3b);
+            color: #fff;
+            animation: pulse-red 1.5s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 106, 106, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0); }
+        }
+        @media (max-width: 600px) {
+            .music-btn-fixed { width: 42px; height: 42px; font-size: 20px; top: 75px; right: 10px; }
+            body.en .music-btn-fixed { right: auto; left: 10px; }
+            .lang-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 13px; }
+            #visitorCounter { font-size: 13px; padding: 5px 14px; top: 10px; }
+        }
+
+        /* ===== الحاوية ===== */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            flex: 1;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #0a3d62, #1e6f9f);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 2px solid #6ae3ff;
+        }
+        .header h1 { font-size: 2.5rem; color: #fff; }
+        .header .subtitle { font-size: 1.3rem; font-weight: 700; color: #6ae3ff; margin: 8px 0; }
+
+        /* ===== البطاقات ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .card {
+            background: #1a1a2e;
+            border: 2px solid #2a2a3e;
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: #6ae3ff; }
+        .card h2 {
+            color: #6ae3ff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card .status {
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: bold;
+        }
+        .status.green { background: #00ff8820; color: #00ff88; border: 1px solid #00ff8840; }
+        .status.red { background: #ff444420; color: #ff4444; border: 1px solid #ff444440; }
+        .status.yellow { background: #ffd70020; color: #ffd700; border: 1px solid #ffd70040; }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .links-grid a {
+            background: #0a0a0f;
+            color: #6ae3ff;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #2a2a3e;
+            text-align: center;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .links-grid a:hover {
+            border-color: #6ae3ff;
+            background: #6ae3ff;
+            color: #0a0a0f;
+        }
+        .links-grid a.error { border-color: #ff4444; color: #ff4444; }
+        .links-grid a.success { border-color: #00ff88; color: #00ff88; }
+
+        /* ===== جدول النتائج ===== */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .result-table th {
+            background: #2a2a3e;
+            color: #6ae3ff;
+            padding: 10px 15px;
+            text-align: center;
+            border: 1px solid #3a3a4e;
+        }
+        .result-table td {
+            padding: 10px 15px;
+            border: 1px solid #2a2a3e;
+            text-align: center;
+        }
+        .result-table .pass { color: #00ff88; }
+        .result-table .fail { color: #ff4444; }
+        .result-table .warn { color: #ffd700; }
+
+        /* ===== زر التشغيل ===== */
+        .run-btn {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0f;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 15px 0;
+            font-family: inherit;
+        }
+        .run-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        .run-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* ===== الفوتر ===== */
+        #footer-placeholder { margin-top: 40px; }
+
+        /* ===== متفرقات ===== */
+        .ar, .en { display: inline; }
+        body.en .ar { display: none; }
+        body:not(.en) .en { display: none; }
+
+        #errorBox {
+            background: #2a0000;
+            border: 2px solid #ff4444;
+            color: #ffaaaa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+            direction: ltr;
+            font-family: monospace;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #1a1a2e;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6ae3ff, #ffd700);
+            width: 0%;
+            transition: width 0.3s;
+            border-radius: 4px;
+        }
+        .log-box {
+            background: #0a0a0f;
+            border: 1px solid #2a2a3e;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 10px;
+            direction: ltr;
+            text-align: left;
+        }
+        .log-box .log-ok { color: #00ff88; }
+        .log-box .log-fail { color: #ff4444; }
+        .log-box .log-warn { color: #ffd700; }
+        .log-box .log-info { color: #6ae3ff; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .badge.green { background: #00ff8820; color: #00ff88; border: 1px solid #00ff8840; }
+        .badge.red { background: #ff444420; color: #ff4444; border: 1px solid #ff444440; }
+        .badge.gold { background: #ffd70020; color: #ffd700; border: 1px solid #ffd70040; }
+    </style>
 </head>
 <body>
 
-  <!-- ===== الهيدر ===== -->
-  <div id="header-placeholder"></div>
+    <!-- ===== الأزرار الثابتة ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="image/music.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn-fixed" id="musicToggle" title="🎵 تشغيل / إيقاف">🎵</button>
 
-  <div class="container">
+    <button class="lang-btn" onclick="toggleLang()">
+        <span class="ar">🇬🇧 English</span>
+        <span class="en">🇾🇪 عربي</span>
+    </button>
 
-    <!-- ===== المحتوى الرئيسي
-    
-    
-      <!-- ===== الهيدر ===== -->
-  <div class="header">
-    <div class="header-img-wrapper">
-      <img src="image/Jabri-photo.png" alt="صورة الباحث" />
-      <div class="header-text">
-        <h1>🏛️ واحة الجبري</h1>
-        <div class="subtitle">🇾🇪 تراث اليمن العريق 🇾🇪</div>
-        <p>من أصفار ريمان إلى بنية الكون | نظرية السندباد الموحدة Z+C+A=1</p>
-        <a href="/en-page.html" class="btn btn-secondary" style="margin-top:10px;">English 🇬🇧</a>
-      </div>
-    </div>
-  </div>
-    
-    <img src="image/Yemen-photo1.png" alt="صورة" class="img-center" />
-    <img src="image/Yemen2026.png" alt="خريطة" class="img-full" />
-
-    <!-- ===== مدن اليمن ===== -->
-    <div class="section">
-      <h2>🌍 اكتشف مدن اليمن</h2>
-      <div class="city-buttons">
-        <a href="/Sanaa.html" class="btn btn-gold">1- صنعاء</a>
-        <a href="/Shibam.html" class="btn btn-gold">2- شبام</a>
-        <a href="/Soqatra.html" class="btn btn-gold">3- سقطرى</a>
-        <a href="/Nezar.html" class="btn btn-gold">يا تونس الخضراء</a>
-        <a href="/Sindbad-Brdoni.html" class="btn btn-gold">السندباد اليمني</a>
-      </div>
+    <div id="visitorCounter">
+        <span class="ar">👥 زوار:</span>
+        <span class="en">👥 Visitors:</span>
+        <span id="visitorCountDisplay">1</span>
     </div>
 
-    <!-- ===== المشاريع (12 ريبو) ===== -->
-    <div class="section">
-      <h2>🧭 بوابة السندباد - المشاريع الأساسية</h2>
-      <p style="text-align:center; color:#aaa; margin-bottom:20px;">
-        <span style="color:#6ae3ff;">🔵 فتح (Vercel)</span> يعمل في اليمن | 
-        <span style="color:#ccc;">⚪ فتح (GitHub)</span> بديل يعمل محلياً وعالمياً
-      </p>
-      
-      <div class="projects-grid">
+    <!-- ===== المحتوى ===== -->
+    <div id="header-placeholder"></div>
 
-        <!-- ===== 1 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">1</span> Jabri6218.github.io</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.20403864" target="_blank">10.5281/zenodo.20403864</a></div>
-          <div class="actions">
-            <a href="https://jabri62018.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/jabri62018.github.io" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
+    <div class="container">
+        <header class="header">
+            <h1>🔍 <span class="ar">نظام فحص الواحة</span><span class="en">Jabri Checkout System</span></h1>
+            <div class="subtitle"><span class="ar">🇾🇪 فحص شامل للروابط، السرعة، 404، والأداء</span><span class="en">🇾🇪 Full Link, Speed, 404 & Performance Scan</span></div>
+            <p style="color: #94a3b8; margin-top: 8px;">
+                <span class="ar">📌 فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span>
+                <span class="en">📌 Scan every page, link, file & repo</span>
+            </p>
+        </header>
+
+        <div id="errorBox"></div>
+
+        <!-- ===== أزرار التحكم ===== -->
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px 0;">
+            <button class="run-btn" id="runFullScan">🚀 <span class="ar">فحص شامل</span><span class="en">Full Scan</span></button>
+            <button class="run-btn" id="runSpeedTest" style="background: linear-gradient(135deg, #6ae3ff, #3b9fcb);">⚡ <span class="ar">اختبار السرعة</span><span class="en">Speed Test</span></button>
+            <button class="run-btn" id="run404Test" style="background: linear-gradient(135deg, #ff6a6a, #cb3b3b);">🚨 <span class="ar">فحص 404</span><span class="en">404 Check</span></button>
+            <button class="run-btn" id="clearLogs" style="background: #2a2a3e; color: #94a3b8;">🗑️ <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
         </div>
 
-        <!-- ===== 2 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">2</span> Zx_RieOS_v1.2</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.20100622" target="_blank">10.5281/zenodo.20100622</a></div>
-          <div class="actions">
-            <a href="https:/_jabricom.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
+        <!-- ===== شريط التقدم ===== -->
+        <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+
+        <!-- ===== البطاقات ===== -->
+        <div class="grid-2">
+            <!-- بطاقة الصفحات -->
+            <div class="card">
+                <h2>📄 <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2>
+                <div class="links-grid" id="pageLinks">
+                    <!-- يتم توليدها بواسطة JS -->
+                </div>
+                <div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;">
+                    <span class="ar">✅ جاهزة: <span id="pageReady">0</span> / 12</span>
+                    <span class="en">✅ Ready: <span id="pageReadyEn">0</span> / 12</span>
+                </div>
+            </div>
+
+            <!-- بطاقة الريبوهات -->
+            <div class="card">
+                <h2>📁 <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2>
+                <div class="links-grid" id="repoLinks">
+                    <!-- يتم توليدها بواسطة JS -->
+                </div>
+                <div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;">
+                    <span class="ar">📦 ريبوهات: <span id="repoCount">0</span></span>
+                    <span class="en">📦 Repos: <span id="repoCountEn">0</span></span>
+                </div>
+            </div>
         </div>
 
-        <!-- ===== 3 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">3</span> Zx_Mother_Function_Jabri</div>
-          <div class="doi">📜 DOI: <span style="color:#888;">قيد النشر</span></div>
-          <div class="actions">
-            <a href="https://zx-mother-function-jabri.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
+        <!-- ===== نتائج الفحص ===== -->
+        <div class="card" style="margin-top: 20px;">
+            <h2>📊 <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2>
+            <div style="overflow-x: auto;">
+                <table class="result-table" id="resultTable">
+                    <thead>
+                        <tr>
+                            <th><span class="ar">العنصر</span><span class="en">Item</span></th>
+                            <th><span class="ar">الحالة</span><span class="en">Status</span></th>
+                            <th><span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th>
+                            <th><span class="ar">النتيجة</span><span class="en">Result</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultBody">
+                        <tr><td colspan="4" style="color:#666;"><span class="ar">🔍 اضغط "فحص شامل" للبدء</span><span class="en">🔍 Press "Full Scan" to start</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- ===== 4 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">4</span> Jabri-web.github.io</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">10.5281/zenodo.20499365</a></div>
-          <div class="actions">
-            <a href="https://jabri-web.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri-web.github.io" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
+        <!-- ===== سجل العمليات ===== -->
+        <div class="card" style="margin-top: 20px;">
+            <h2>📋 <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2>
+            <div class="log-box" id="logBox">
+                <div class="log-info">📌 <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div>
+            </div>
         </div>
 
-        <!-- ===== 5 (أجزاء 1-7) ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">5</span> Jabri_Nobble</div>
-          <div class="doi">
-            📜 DOIs: 
-            <a href="https://doi.org/10.5281/zenodo.20148770" target="_blank">10.5281/zenodo.20148770</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148771" target="_blank">10.5281/zenodo.20148771</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148772" target="_blank">10.5281/zenodo.20148772</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148773" target="_blank">10.5281/zenodo.20148773</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148774" target="_blank">10.5281/zenodo.20148774</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148775" target="_blank">10.5281/zenodo.20148775</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20148776" target="_blank">10.5281/zenodo.20148776</a>
-          </div>
-          <div class="parts-list">
-            <span class="part-badge">📄 جزء 1</span>
-            <span class="part-badge">📄 جزء 2</span>
-            <span class="part-badge">📄 جزء 3</span>
-            <span class="part-badge">📄 جزء 4</span>
-            <span class="part-badge">📄 جزء 5</span>
-            <span class="part-badge">📄 جزء 6</span>
-            <span class="part-badge">📄 جزء 7</span>
-          </div>
-          <div class="actions">
-            <a href="https://jabri-nobble.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri_Nobble" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 6 (أجزاء 1-9) ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">6</span> Jabri_lab</div>
-          <div class="doi">
-            📜 DOIs: 
-            <a href="https://doi.org/10.5281/zenodo.20513841" target="_blank">10.5281/zenodo.20513841</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513842" target="_blank">10.5281/zenodo.20513842</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513843" target="_blank">10.5281/zenodo.20513843</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513844" target="_blank">10.5281/zenodo.20513844</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513845" target="_blank">10.5281/zenodo.20513845</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513846" target="_blank">10.5281/zenodo.20513846</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513847" target="_blank">10.5281/zenodo.20513847</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513848" target="_blank">10.5281/zenodo.20513848</a> ·
-            <a href="https://doi.org/10.5281/zenodo.20513849" target="_blank">10.5281/zenodo.20513849</a>
-          </div>
-          <div class="parts-list">
-            <span class="part-badge">📄 جزء 1</span>
-            <span class="part-badge">📄 جزء 2</span>
-            <span class="part-badge">📄 جزء 3</span>
-            <span class="part-badge">📄 جزء 4</span>
-            <span class="part-badge">📄 جزء 5</span>
-            <span class="part-badge">📄 جزء 6</span>
-            <span class="part-badge">📄 جزء 7</span>
-            <span class="part-badge">📄 جزء 8</span>
-            <span class="part-badge">📄 جزء 9</span>
-          </div>
-          <div class="actions">
-            <a href="https://jabri-lab.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri_lab" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 7 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">7</span> Zx_RieOS_v1.1</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.19981688" target="_blank">10.5281/zenodo.19981688</a></div>
-          <div class="actions">
-            <a href="https://zx-rieos-v1-1.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Zx_RieOS_v1.1" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 8 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">8</span> Jabri_RiemannOS</div>
-          <div class="doi">📜 DOI: <span style="color:#888;">غير مفعل</span></div>
-          <div class="actions">
-            <a href="https://jabri-riemannos.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri-RiemannOS" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 9 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">9</span> Jabri_Checkout</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.20513840" target="_blank">10.5281/zenodo.20513840</a></div>
-          <div class="actions">
-            <a href="https://jabri-checkout.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri_Checkout" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 10 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">10</span> Jabri-web</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">10.5281/zenodo.20499365</a></div>
-          <div class="actions">
-            <a href="https://jabri-web.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri-web" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 11 ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">11</span> Jabri-com <span style="font-size:0.8rem; color:#DAA520;">(هذه الواحة)</span></div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.21003990" target="_blank">10.5281/zenodo.21003990</a></div>
-          <div class="actions">
-            <a href="https://jabri-com.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri-com" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-
-        <!-- ===== 12 (جديد) ===== -->
-        <div class="project-card">
-          <div class="title"><span class="badge-num">12</span> Jabri_Sindbad_Gateway</div>
-          <div class="doi">📜 DOI: <a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">10.5281/zenodo.21003991</a></div>
-          <div class="actions">
-            <a href="https://jabri-sindbad.vercel.app/" target="_blank" class="btn btn-primary">🚀 Vercel</a>
-            <a href="https://github.com/Jabri-web/Jabri_Sindbad_Gateway" target="_blank" class="btn btn-github">📂 GitHub</a>
-          </div>
-        </div>
-      </div>
+        <!-- ===== الفوتر ===== -->
+        <div id="footer-placeholder"></div>
     </div>
 
+    <!-- ====================================================================== -->
+    <!-- السكربتات -->
+    <!-- ====================================================================== -->
+    <script>
+        // ===== توليد الروابط =====
+        function generateLinks() {
+            const pageContainer = document.getElementById('pageLinks');
+            const pages = [];
+            for (let i = 1; i <= 12; i++) {
+                pages.push(`Page${i}.html`);
+            }
+            pageContainer.innerHTML = pages.map(p => 
+                `<a href="/${p}" target="_blank" data-page="${p}">📄 ${p}</a>`
+            ).join('');
 
-  <!-- ===== الفوتر ===== -->
-  <div id="footer-placeholder"></div>
+            const repoContainer = document.getElementById('repoLinks');
+            const repos = [
+                'Jabri-web', 'Jabri_RiemannOS', 'Zx_Mother_Function_Jabri',
+                'Jabri_Nobble', 'Jabri_Checkout', 'Jabri_Archive'
+            ];
+            repoContainer.innerHTML = repos.map(r =>
+                `<a href="https://github.com/jabri-web/${r}" target="_blank">📁 ${r}</a>`
+            ).join('');
+            document.getElementById('repoCount').innerText = repos.length;
+            document.getElementById('repoCountEn').innerText = repos.length;
+        }
 
-  <!-- ===== تحميل الـ JS ===== -->
-  <script src="js/init-page-root.js"></script>
-  <script src="js/init-page-ar.js"></script>
+        // ===== تسجيل السجل =====
+        function addLog(msg, type = 'info') {
+            const box = document.getElementById('logBox');
+            const colors = {
+                ok: 'log-ok',
+                fail: 'log-fail',
+                warn: 'log-warn',
+                info: 'log-info'
+            };
+            const cls = colors[type] || 'log-info';
+            const time = new Date().toLocaleTimeString();
+            box.innerHTML += `<div class="${cls}">[${time}] ${msg}</div>`;
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('logBox').innerHTML = '';
+            document.getElementById('resultBody').innerHTML = '';
+            document.getElementById('progressFill').style.width = '0%';
+            addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info');
+        }
+
+        // ===== فحص صفحة =====
+        function checkPage(url) {
+            return new Promise((resolve) => {
+                const start = performance.now();
+                fetch(url, { method: 'HEAD', cache: 'no-cache' })
+                    .then(res => {
+                        const time = Math.round(performance.now() - start);
+                        resolve({ url, status: res.status, time, ok: res.ok });
+                    })
+                    .catch(() => {
+                        const time = Math.round(performance.now() - start);
+                        resolve({ url, status: 404, time, ok: false });
+                    });
+            });
+        }
+
+        // ===== فحص شامل =====
+        async function runFullScan() {
+            const btn = document.getElementById('runFullScan');
+            btn.disabled = true;
+            btn.innerHTML = '⏳ <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
+            document.getElementById('resultBody').innerHTML = '';
+            clearLogs();
+            addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
+
+            const progress = document.getElementById('progressFill');
+            const results = [];
+            const pages = [];
+            for (let i = 1; i <= 12; i++) pages.push(`Page${i}.html`);
+
+            // إضافة صفحات النظرية
+            pages.push('theory-ar.html', 'theory-en.html', 'Checkout.html', 'Check.html');
+
+            let completed = 0;
+            const total = pages.length;
+
+            for (const page of pages) {
+                const url = `/${page}`;
+                const result = await checkPage(url);
+                results.push(result);
+                completed++;
+                progress.style.width = `${(completed / total) * 100}%`;
+                
+                const statusText = result.ok ? '✅' : '❌';
+                const statusClass = result.ok ? 'pass' : 'fail';
+                addLog(`${statusText} ${page} — ${result.status} (${result.time}ms)`, result.ok ? 'ok' : 'fail');
+
+                // تحديث الجدول
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${page}</td>
+                    <td class="${statusClass}">${result.status}</td>
+                    <td>${result.time}</td>
+                    <td class="${statusClass}">${result.ok ? '✔️' : '❌'}</td>
+                `;
+                document.getElementById('resultBody').appendChild(row);
+            }
+
+            // إحصاءات
+            const okCount = results.filter(r => r.ok).length;
+            const failCount = results.filter(r => !r.ok).length;
+            const avgTime = Math.round(results.reduce((sum, r) => sum + r.time, 0) / results.length);
+
+            addLog(`📊 <span class="ar">النتيجة النهائية: ✅ ${okCount} ناجح | ❌ ${failCount} فاشل | ⏱️ متوسط ${avgTime}ms</span><span class="en">Final: ✅ ${okCount} passed | ❌ ${failCount} failed | ⏱️ Avg ${avgTime}ms</span>`, 'info');
+
+            btn.disabled = false;
+            btn.innerHTML = '🚀 <span class="ar">فحص شامل</span><span class="en">Full Scan</span>';
+            progress.style.width = '100%';
+        }
+
+        // ===== اختبار السرعة =====
+        async function runSpeedTest() {
+            const btn = document.getElementById('runSpeedTest');
+            btn.disabled = true;
+            addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info');
+
+            const urls = [
+                '/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html',
+                '/theory-ar.html', '/theory-en.html', '/Checkout.html'
+            ];
+            const results = [];
+            for (const url of urls) {
+                const start = performance.now();
+                try {
+                    await fetch(url, { cache: 'no-cache' });
+                    const time = Math.round(performance.now() - start);
+                    results.push({ url, time, ok: true });
+                    addLog(`⚡ ${url} — ${time}ms`, 'ok');
+                } catch {
+                    const time = Math.round(performance.now() - start);
+                    results.push({ url, time, ok: false });
+                    addLog(`❌ ${url} — فشل (${time}ms)`, 'fail');
+                }
+            }
+
+            const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length);
+            const fastest = Math.min(...results.map(r => r.time));
+            const slowest = Math.max(...results.map(r => r.time));
+            addLog(`📊 <span class="ar">السرعة: المتوسط ${avg}ms | الأسرع ${fastest}ms | الأبطأ ${slowest}ms</span><span class="en">Speed: Avg ${avg}ms | Fastest ${fastest}ms | Slowest ${slowest}ms</span>`, 'info');
+            btn.disabled = false;
+        }
+
+        // ===== فحص 404 =====
+        async function run404Test() {
+            const btn = document.getElementById('run404Test');
+            btn.disabled = true;
+            addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn');
+
+            const testUrls = [
+                '/nonexistent.html',
+                '/fake-page',
+                '/wrong-path',
+                '/missing-file.js',
+                '/invalid.css'
+            ];
+            let found404 = 0;
+            for (const url of testUrls) {
+                const result = await checkPage(url);
+                if (result.status === 404) {
+                    found404++;
+                    addLog(`🚨 404 تم كشفه: ${url}`, 'warn');
+                } else {
+                    addLog(`✅ ${url} — ${result.status}`, 'ok');
+                }
+            }
+            addLog(`📊 <span class="ar">تم كشف ${found404} من ${testUrls.length} روابط 404</span><span class="en">Found ${found404} of ${testUrls.length} 404 links</span>`, found404 > 0 ? 'warn' : 'ok');
+            btn.disabled = false;
+        }
+
+        // ===== تبديل اللغة =====
+        function toggleLang() {
+            const html = document.documentElement;
+            const newLang = html.lang === 'ar' ? 'en' : 'ar';
+            html.lang = newLang;
+            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.toggle('en', newLang === 'en');
+            localStorage.setItem('preferred-language', newLang);
+            // تحديث نصوص .txt
+            document.querySelectorAll('.txt').forEach(el => {
+                el.textContent = newLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+            });
+            // تحديث footer
+            if (typeof updateFooterLang === 'function') updateFooterLang();
+        }
+
+        // ===== عداد الزوار =====
+        (function() {
+            let count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0');
+            count += 1;
+            localStorage.setItem('jabri_visitor_count_checkout', count);
+            document.getElementById('visitorCountDisplay').innerText = count;
+        })();
+
+        // ===== تشغيل الموسيقى =====
+        (function() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicToggle');
+            if (!music || !btn) return;
+            let isPlaying = false;
+            music.volume = 0.3;
+            btn.addEventListener('click', function() {
+                if (isPlaying) {
+                    music.pause();
+                    btn.innerHTML = '🎵';
+                    btn.classList.remove('playing');
+                    isPlaying = false;
+                } else {
+                    music.play().then(() => {
+                        btn.innerHTML = '🔊';
+                        btn.classList.add('playing');
+                        isPlaying = true;
+                    }).catch(() => {});
+                }
+            });
+            document.addEventListener('click', function firstInteraction() {
+                if (!isPlaying) {
+                    music.play().then(() => {
+                        btn.innerHTML = '🔊';
+                        btn.classList.add('playing');
+                        isPlaying = true;
+                    }).catch(() => {});
+                }
+                document.removeEventListener('click', firstInteraction);
+            });
+        })();
+
+        // ===== ربط الأزرار =====
+        document.addEventListener('DOMContentLoaded', function() {
+            generateLinks();
+            document.getElementById('runFullScan').addEventListener('click', runFullScan);
+            document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
+            document.getElementById('run404Test').addEventListener('click', run404Test);
+            document.getElementById('clearLogs').addEventListener('click', clearLogs);
+
+            // استعادة اللغة
+            const savedLang = localStorage.getItem('preferred-language') || 'ar';
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.toggle('en', savedLang === 'en');
+            document.querySelectorAll('.txt').forEach(el => {
+                el.textContent = savedLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+            });
+
+            console.log('🔍 نظام فحص الواحة جاهز');
+            console.log('📄 12 صفحة + 6 ريبوهات');
+            console.log('🇾🇪 من صنعاء إلى الكون');
+        });
+    </script>
+
+    <!-- تحميل الهيدر والفوتر -->
+    <script src="js/init-page-root.js"></script>
+    <script src="js/init-page-ar.js"></script>
 
 </body>
 </html>
