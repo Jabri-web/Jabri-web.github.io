@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mother Function — Al-Jabri Unified Theory</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0b0e1a;
+            color: #e0e8f0;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .poster {
+            max-width: 1000px;
+            width: 100%;
+            background: linear-gradient(145deg, #111827 0%, #0b0e1a 100%);
+            border: 2px solid #d4af37;
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 25px 50px -8px rgba(0,0,0,0.9), 0 0 0 1px #d4af3750 inset;
+            position: relative;
+            overflow: hidden;
+        }
+        .poster::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(2px 2px at 20% 30%, #fff3, transparent),
+                              radial-gradient(2px 2px at 40% 70%, #fff2, transparent),
+                              radial-gradient(1px 1px at 70% 20%, #fff4, transparent),
+                              radial-gradient(1px 1px at 90% 80%, #fff2, transparent),
+                              radial-gradient(2px 2px at 10% 80%, #fff2, transparent);
+            background-size: 200px 200px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .content { position: relative; z-index: 1; }
+
+        /* ===== TOP NAV ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #d4af3760;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .nav-btn {
+            background: #1e293b80;
+            border: 1px solid #d4af3750;
+            color: #e0e8f0;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-btn:hover {
+            background: #d4af3720;
+            border-color: #d4af37;
+            color: #f7e05e;
+            transform: scale(1.03);
+        }
+        .nav-btn .icon { font-size: 1.2rem; }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #f7e05e, #d4af37, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px #d4af3740;
+        }
+        .header .sub {
+            font-size: 1.1rem;
+            letter-spacing: 6px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* ===== MAIN FUNCTION ===== */
+        .eq-block {
+            background: #0f172a80;
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+            padding: 1.8rem 1.5rem;
+            margin: 1.8rem 0;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 8px 20px #00000050;
+        }
+        .eq-block h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #6ae3ff;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .eq-block h2::before { content: '⚡'; font-size: 1.4rem; }
+        .math {
+            font-size: 1.6rem;
+            text-align: center;
+            padding: 0.8rem 0;
+            color: #f0f9ff;
+            font-weight: 500;
+            font-family: 'Times New Roman', 'CMU Serif', serif;
+            letter-spacing: 0.5px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .math .highlight { color: #6ae3ff; }
+        .math .gold { color: #d4af37; }
+
+        .desc {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 0.6rem;
+            padding: 0 0.2rem;
+        }
+        .desc ul {
+            list-style: none;
+            padding: 0.4rem 0 0 0.8rem;
+        }
+        .desc ul li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+        .desc ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #6ae3ff;
+            font-weight: 700;
+        }
+
+        /* ===== TWO-COLUMN LAYOUT ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .card {
+            background: #0f172a80;
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+            padding: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h3 .icon { font-size: 1.3rem; }
+        .card p, .card li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .card ul { list-style: none; padding: 0; }
+        .card ul li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.2rem;
+        }
+        .card ul li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #6ae3ff;
+            font-size: 0.8rem;
+        }
+
+        /* ===== PLOT ===== */
+        .plot-box {
+            background: #0b0e1a;
+            border: 1px dashed #334155;
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1.2rem 0;
+        }
+        .plot-box .plot-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+        .plot-box .plot-svg {
+            max-width: 100%;
+            height: auto;
+            margin: 0.5rem 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #d4af3760;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        .footer .orcid {
+            color: #6ae3ff;
+            font-weight: 600;
+        }
+        .footer .badge {
+            background: #d4af3720;
+            border: 1px solid #d4af3750;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #d4af37;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .math { font-size: 1.2rem; white-space: normal; }
+            .poster { padding: 1.5rem 1rem; }
+            .top-nav { flex-direction: column; align-items: stretch; }
+            .nav-btn { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="poster">
+    <div class="content">
+
+        <!-- TOP NAV -->
+        <div class="top-nav">
+            <a href="/" class="nav-btn">
+                <span class="icon">🏡</span> Back to The Oasis
+            </a>
+            <a href="/ar/theory-ar.html" class="nav-btn">
+                <span class="icon">🌐</span> العربية
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>FROM SANA'A TO THE COSMOS</h1>
+            <div class="sub">YEMENI RESEARCHER · MATHEMATICAL FUNCTION</div>
+        </div>
+
+        <!-- MAIN FUNCTION -->
+        <div class="eq-block">
+            <h2>MAIN FUNCTION</h2>
+            <div class="math">
+                Z(x) = x<sup>5</sup> ln(x) · sin(2π/x) · exp(−x / x<sub>p</sub>)
+            </div>
+            <div class="desc">
+                <strong>Domain:</strong> <em>x &gt; 0</em>, <em>x<sub>p</sub> &gt; 0</em> — characteristic scale parameter
+                <ul>
+                    <li>Oscillatory behavior from sin(2π/x) produces decaying oscillations as <em>x</em> increases</li>
+                    <li>Exponential term exp(−x/x<sub>p</sub>) provides damping for large <em>x</em></li>
+                    <li>Prefactor x<sup>5</sup> ln(x) modulates amplitude with logarithmic growth</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NORMALIZATION IDENTITY -->
+        <div class="eq-block" style="border-color: #6ae3ff40;">
+            <h2>NORMALIZATION IDENTITY</h2>
+            <div class="math">
+                <span class="highlight">Z<sub>x</sub></span> = <span class="gold">Z</span> + <span class="gold">C</span> + <span class="gold">A</span> &nbsp;&nbsp;·&nbsp;&nbsp; <span class="highlight">Z + C + A = 1</span>
+            </div>
+            <div class="desc">
+                Conservation condition: the sum <em>Z + C + A</em> is normalized to unity, ensuring closure of the system. <em>Z<sub>x</sub></em> is the normalized total.
+            </div>
+        </div>
+
+        <!-- KEY FEATURES + PLOT -->
+        <div class="grid-2">
+            <div class="card">
+                <h3><span class="icon">⚡</span> Multiscale Structure</h3>
+                <p>Combines power-law growth x<sup>5</sup>, logarithmic factor ln(x), and periodic term sin(2π/x) to capture oscillations across scales.</p>
+                <br>
+                <h3><span class="icon">🌀</span> Damping &amp; Decay</h3>
+                <p>Exponential damping exp(−x/x<sub>p</sub>) ensures the function converges to zero as x → ∞, modeling stable attenuation.</p>
+                <br>
+                <h3><span class="icon">🌌</span> Physical Role</h3>
+                <p>Proposed as a spectral-type function for modeling structured oscillatory distributions in theoretical physics and cosmology.</p>
+                <br>
+                <h3><span class="icon">🔗</span> Normalization</h3>
+                <p>The condition Z + C + A = 1 provides a conserved unit sum, useful for probabilistic or structural interpretations.</p>
+            </div>
+            <div class="card">
+                <h3><span class="icon">📈</span> Illustrative Plot</h3>
+                <div class="plot-box">
+                    <div class="plot-label">Z(x) for x<sub>p</sub> = 2.0 — Oscillatory Decay</div>
+                    <svg class="plot-svg" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="320" height="120" fill="#0b0e1a" rx="8" />
+                        <polyline points="10,90 30,75 50,60 70,48 90,55 110,38 130,45 150,30 170,35 190,20 210,28 230,18 250,22 270,14 290,18 310,10" stroke="#6ae3ff" stroke-width="2" fill="none" opacity="0.9" />
+                        <line x1="10" y1="90" x2="310" y2="90" stroke="#334155" stroke-width="0.5" stroke-dasharray="4 4" />
+                        <text x="12" y="105" fill="#94a3b8" font-size="8">0</text>
+                        <text x="300" y="105" fill="#94a3b8" font-size="8">x</text>
+                        <text x="12" y="18" fill="#6ae3ff" font-size="8" opacity="0.7">Z(x)</text>
+                    </svg>
+                </div>
+                <br>
+                <h3><span class="icon">📖</span> Research Context</h3>
+                <p>This formulation explores a damped oscillatory function intended for modeling spectral-like distributions in theoretical cosmology and mathematical physics. The structure integrates power-law, logarithmic, and periodic components with exponential decay to represent realistic attenuation processes observed in natural oscillatory systems. The normalization constraint ensures probabilistic interpretation and total conservation across the defined domain.</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div>
+                <strong>Eng. Abdulla Al-Jabri</strong> &nbsp;|&nbsp; <span class="orcid">ORCID 0009-0003-3319-3822</span>
+            </div>
+            <div>
+                Sana'a, Yemen · Independent Research · 2024 · Theoretical Study
+            </div>
+            <div class="badge">⚡ From Riemann zeros to structure of universe</div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

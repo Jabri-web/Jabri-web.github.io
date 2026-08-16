@@ -1,121 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ======== Languages & Canonical ======== -->
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/en/" />
-    <meta name="robots" content="index, follow, max-image-preview:large">
-
-    <!-- ======== Primary Title & Description ======== -->
-    <title>Heaven Al-Jabri | Researcher Al-Jabri - Yemen Heritage & Sindbad Gateway</title>
-    <meta name="description" content="Heaven Al-Jabri: Documenting Yemen's rich heritage (Sana'a, Shibam, Socotra) and scientific research (Sindbad Unified Theory Z+C+A=1). Eng. Abdulla Mohammed Nasser Al-Jabri.">
-    <meta name="keywords" content="Abdulla Al-Jabri, Heaven Al-Jabri, Yemeni researcher, Yemen heritage, Sindbad Unified Theory, Sana'a, Shibam, Socotra">
-    <meta name="author" content="Eng. Abdulla Mohammed Nasser Al-Jabri">
-    <link rel="author" href="https://jabri-com.vercel.app/about.html" />
-
-    <!-- ======== Dublin Core ======== -->
-    <meta name="DC.title" content="Heaven Al-Jabri" />
-    <meta name="DC.creator" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
-    <meta name="DC.subject" content="Yemen Heritage, Mathematics, Theoretical Physics" />
-    <meta name="copyright" content="© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri" />
-
-    <!-- ======== Google Ownership ======== -->
-    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-
-    <!-- ======== Open Graph ======== -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ar_YE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- ========== إعدادات عامة ========== -->
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- ========== اللغات والكانونيكال ========== -->
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/">
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/">
+    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/">
+    <link rel="canonical" href="https://jabri-com.vercel.app/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml">
+    
+    <!-- ========== الروبوتات ========== -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large">
+    
+    <!-- ========== SEO الأساسي ========== -->
+    <title id="pageTitle">الدالة الأم | Zx = Z + C + A — نظرية الجبري الموحدة</title>
+    <meta id="pageDescription" name="description" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - المهندس عبدالله محمد ناصر الجبري - باحث يمني في الرياضيات والفيزياء النظرية.">
+    <meta name="keywords" content="الدالة الأم, نظرية السندباد الموحدة, Z+C+A=1, عبدالله الجبري, رياضيات, فيزياء نظرية, تراث اليمن, صنعاء, شبام, سقطرى">
+    <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+    
+    <!-- ========== Citation Tags (Google Scholar) ========== -->
+    <meta name="citation_title" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1">
+    <meta name="citation_author" content="عبدالله محمد ناصر الجبري">
+    <meta name="citation_publication_date" content="2026">
+    <meta name="citation_journal_title" content="واحة الجبري - أبحاث رياضية وفيزيائية">
+    <meta name="citation_doi" content="10.5281/zenodo.20513840">
+    <meta name="citation_pdf_url" content="https://jabri-com.vercel.app/papers/mother-function-theory.pdf">
+    
+    <!-- ========== Dublin Core ========== -->
+    <meta name="DC.title" content="الدالة الأم Z(x) - نظرية الجبري الموحدة">
+    <meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري">
+    <meta name="DC.subject" content="الرياضيات, الفيزياء النظرية, نظرية السندباد, تراث اليمن">
+    <meta name="DC.description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة - دقة 99.95% - نظرية موحدة للكون">
+    <meta name="DC.publisher" content="واحة الجبري">
+    <meta name="DC.date" content="2026-08-16">
+    <meta name="DC.type" content="Text">
+    <meta name="DC.format" content="text/html">
+    <meta name="DC.language" content="ar">
+    <meta name="DC.coverage" content="Yemen">
+    <meta name="DC.rights" content="© 2026 م/ عبدالله محمد ناصر الجبري - CC BY 4.0">
+    <meta name="DC.identifier" content="10.5281/zenodo.20513840">
+    
+    <!-- ========== ملكية جوجل ========== -->
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U">
+    
+    <!-- ========== Open Graph ========== -->
+    <meta property="og:locale" content="ar_YE">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Heaven Al-Jabri">
-    <meta property="og:title" content="Heaven Al-Jabri | Yemen Heritage & Sindbad Gateway">
-    <meta property="og:description" content="Yemeni researcher in mathematics and theoretical physics + documenting Yemen's heritage Sana'a Shibam Socotra + Sindbad Gateway.">
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
-    <meta property="og:url" content="https://jabri-com.vercel.app/en/">
-
-    <!-- ======== Twitter Cards ======== -->
+    <meta property="og:site_name" content="واحة الجبري | الدالة الأم - نظرية السندباد">
+    <meta property="og:title" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
+    <meta property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+    <meta property="og:image:secure_url" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="المهندس عبدالله الجبري - الدالة الأم ونظرية السندباد الموحدة">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:url" content="https://jabri-com.vercel.app/">
+    <meta property="og:updated_time" content="2026-08-16">
+    
+    <!-- ========== Twitter Cards ========== -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Heaven Al-Jabri | Yemen Heritage & Research">
-    <meta name="twitter:description" content="Yemeni heritage and theoretical physics research - Eng. Abdulla Al-Jabri.">
-    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
-
-    <!-- ======== Structured Data – Final English Version ======== -->
+    <meta name="twitter:site" content="@JabriAbdulla1">
+    <meta name="twitter:creator" content="@JabriAbdulla1">
+    <meta name="twitter:title" content="الدالة الأم Z(x) - نظرية الجبري الموحدة">
+    <meta name="twitter:description" content="Zx = Z + C + A | Z + C + A = 1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - تراث اليمن">
+    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+    <meta name="twitter:image:alt" content="المهندس عبدالله الجبري">
+    
+    <!-- ========== JSON-LD الشامل ========== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [{
-        "@type": "Person",
-        "@id": "https://jabri-com.vercel.app/#person",
-        "name": "Eng. Abdulla Mohammed Nasser Al-Jabri",
-        "alternateName": ["Abdulla Al-Jabri", "Heaven Al-Jabri", "م/ عبدالله محمد ناصر الجبري", "واحة الجبري"],
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "ORCID",
-          "value": "0009-0003-3319-3822",
-          "url": "https://orcid.org/0009-0003-3319-3822"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://jabri-com.vercel.app/#person",
+          "name": "م/ عبدالله محمد ناصر الجبري",
+          "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri", "Abdulla Al-Jabri", "سندباد اليمن"],
+          "url": "https://jabri-com.vercel.app/ar/about.html",
+          "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "jobTitle": "باحث مستقل - رياضيات وفيزياء نظرية",
+          "description": "باحث يمني مستقل، مؤسس واحة الجبري. متخصص في الرياضيات النظرية والفيزياء النظرية، ومطور نظرية السندباد الموحدة Z + C + A = 1 والدالة الأم Z(x).",
+          "nationality": "Yemeni",
+          "email": "jabri62018@gmail.com",
+          "knowsAbout": [
+            "الرياضيات النظرية",
+            "الفيزياء النظرية",
+            "نظرية السندباد الموحدة",
+            "الدالة الأم Z(x)",
+            "تراث اليمن",
+            "توثيق التراث الرقمي"
+          ],
+          "worksFor": { "@id": "https://jabri-com.vercel.app/#org" },
+          "sameAs": [
+            "https://orcid.org/0009-0003-3319-3822",
+            "https://github.com/jabri-web",
+            "https://en.wikipedia.org/wiki/User:Jabri2026",
+            "https://www.linkedin.com/in/abdulla-al-jabri",
+            "https://x.com/jabri_web",
+            "https://scholar.google.com/citations?user=jabri",
+            "https://www.researchgate.net/profile/Abdulla-Al-Jabri",
+            "https://www.youtube.com/@HeavenAlJabri",
+            "https://t.me/HeavenAlJabri"
+          ]
         },
-        "url": "https://jabri-com.vercel.app/",
-        "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-        "jobTitle": "Researcher, Author & Founder",
-        "nationality": "Yemeni",
-        "email": "mailto:jabri62018@gmail.com",
-        "owns": { "@id": "https://jabri-com.vercel.app/#org" },
-        "founderOf": { "@id": "https://jabri-com.vercel.app/#org" },
-        "sameAs": [
-          "https://orcid.org/0009-0003-3319-3822",
-          "https://github.com/Jabri-web",
-          "https://doi.org/10.5281/zenodo.20513840",
-          "https://zenodo.org/record/20513840",
-          "https://en.wikipedia.org/wiki/User:Jabri2026",
-          "https://vercel.com/jabri2026-project?repo=https://github.com/Jabri-web/Jabri-com",
-          "https://colab.research.google.com/drive/12oG9B7DgsQpTWlvfMm4awnpbt34yPv_h",
-          "https://x.com/JabriAbdulla1",
-          "https://x.com/i/status/1486127904362844165",
-          "https://x.com/i/status/1479879560858640388",
-          "https://www.facebook.com/groups/1036110285229507/permalink/1448121714028360/",
-          "https://www.google.com/collections/s/list/jzGySoUX9BMdLyM61TNKKQ/9PfneG4IrZs",
-          "https://www.google.com/collections/s/list/I9LO4tcYAAuQ_-7XRMXitQ/xRec-n9_dRw",
-          "https://share.google/oubR9eXvPmrKeXqMG",
-          "https://share.google/JUYgh38iWYtCDkhig"
-        ]
-      }, {
-        "@type": "Organization",
-        "@id": "https://jabri-com.vercel.app/#org",
-        "name": "Heaven Al-Jabri",
-        "alternateName": "واحة الجبري",
-        "url": "https://jabri-com.vercel.app/",
-        "logo": { "@type": "ImageObject", "url": "https://jabri-com.vercel.app/image/Jabri-photo.png" },
-        "founder": { "@id": "https://jabri-com.vercel.app/#person" },
-        "owner": { "@id": "https://jabri-com.vercel.app/#person" },
-        "publisher": { "@id": "https://jabri-com.vercel.app/#person" }
-      }, {
-        "@type": "WebSite",
-        "@id": "https://jabri-com.vercel.app/en/#website",
-        "url": "https://jabri-com.vercel.app/en/",
-        "name": "Heaven Al-Jabri",
-        "description": "Platform documenting Yemeni heritage and the Sindbad Gateway for scientific research",
-        "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
-        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#person" },
-        "inLanguage": ["en"]
-      }, {
-        "@type": "ScholarlyArticle",
-        "name": "Sindbad Unified Theory Z+C+A=1",
-        "author": { "@id": "https://jabri-com.vercel.app/#person" },
-        "datePublished": "2026",
-        "url": "https://jabri-com.vercel.app/research.html",
-        "description": "Research in mathematics and theoretical physics presenting a unified theory connecting the Zx function and Millennium Problems.",
-        "identifier": "10.5281/zenodo.20513840",
-        "publisher": { "@id": "https://jabri-com.vercel.app/#org" }
-      }, {
-        "@type": "CollectionPage",
-        "name": "Yemen's Rich Heritage",
-        "description": "Documenting cities Sana'a, Shibam, Socotra",
-        "url": "https://jabri-com.vercel.app/Sanaa.html",
-        "about": { "@type": "Place", "name": "Old Sana'a", "description": "Old city of Sana'a - rich Yemeni heritage" },
-        "publisher": { "@id": "https://jabri-com.vercel.app/#org" }
-      }]
+        {
+          "@type": "Organization",
+          "@id": "https://jabri-com.vercel.app/#org",
+          "name": "واحة الجبري",
+          "alternateName": "Heaven Al-Jabri",
+          "description": "منصة توثيق التراث اليمني ونظرية السندباد الموحدة - الدالة الأم Z(x)",
+          "url": "https://jabri-com.vercel.app/",
+          "logo": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "founder": { "@id": "https://jabri-com.vercel.app/#person" },
+          "sameAs": [
+            "https://github.com/jabri-web",
+            "https://www.youtube.com/@HeavenAlJabri",
+            "https://t.me/HeavenAlJabri"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jabri-com.vercel.app/#website",
+          "url": "https://jabri-com.vercel.app/",
+          "name": "واحة الجبري | الدالة الأم - نظرية السندباد",
+          "alternateName": "Heaven Al-Jabri",
+          "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - تراث اليمن",
+          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+          "inLanguage": ["ar", "en"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://jabri-com.vercel.app/#webpage",
+          "url": "https://jabri-com.vercel.app/",
+          "name": "الدالة الأم Z(x) - نظرية الجبري الموحدة",
+          "description": "اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون",
+          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+          "about": { "@id": "https://jabri-com.vercel.app/#org" },
+          "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+          "inLanguage": ["ar", "en"],
+          "breadcrumb": { "@id": "https://jabri-com.vercel.app/#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://jabri-com.vercel.app/#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://jabri-com.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "الدالة الأم", "item": "https://jabri-com.vercel.app/theory-ar.html" }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://jabri-com.vercel.app/#cities-list",
+          "name": "المدن اليمنية التاريخية",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "صنعاء القديمة", "item": "https://jabri-com.vercel.app/Sanaa.html" },
+            { "@type": "ListItem", "position": 2, "name": "شبام حضرموت", "item": "https://jabri-com.vercel.app/Shibam.html" },
+            { "@type": "ListItem", "position": 3, "name": "سقطرى", "item": "https://jabri-com.vercel.app/Soqatra.html" }
+          ]
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "@id": "https://jabri-com.vercel.app/#article",
+          "headline": "الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1",
+          "alternativeHeadline": "Mother Function Z(x) and Unified Sinbad Theory Z+C+A=1",
+          "author": { "@id": "https://jabri-com.vercel.app/#person" },
+          "datePublished": "2026-08-16",
+          "dateModified": "2026-08-16",
+          "doi": "10.5281/zenodo.20513840",
+          "abstract": "اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% من خلال الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)، مع نظرية موحدة Zx = Z + C + A تحل توتر هابل والطاقة المظلمة.",
+          "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+          "inLanguage": ["ar", "en"],
+          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" }
+        }
+      ]
     }
     </script>
+    
+    <!-- ========== الروابط الأساسية في الهيدر ========== -->
+    <link rel="home" href="https://jabri-com.vercel.app/">
+    <link rel="index" href="https://jabri-com.vercel.app/">
+    <link rel="contents" href="https://jabri-com.vercel.app/#webpage">
+    <link rel="section" href="https://jabri-com.vercel.app/research.html">
+    <link rel="section" href="https://jabri-com.vercel.app/about.html">
+    <link rel="section" href="https://jabri-com.vercel.app/Yemen-library.html">
+    <link rel="collection" href="https://jabri-com.vercel.app/Sanaa.html">
+    <link rel="collection" href="https://jabri-com.vercel.app/Shibam.html">
+    <link rel="collection" href="https://jabri-com.vercel.app/Soqatra.html">
+    
+    <!-- ========== Preload ========== -->
+    <link rel="preload" as="image" href="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== جميع الأنماط ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: #0a0a0f; min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; }
+        .hero { text-align: center; padding: 20px; max-width: 600px; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(135deg, #6ae3ff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { opacity: 0.6; font-size: 1.1rem; }
+        .btn-container { position: fixed; bottom: 28px; left: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; direction: ltr; }
+        .top-btn { height: 56px; border: none; border-radius: 30px; font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 26px; font-size: 18px; transition: all 0.3s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); min-width: 130px; white-space: nowrap; user-select: none; border: 2px solid transparent; background: rgba(255, 255, 255, 0.06); color: #fff; }
+        .top-btn:hover { transform: scale(1.07); opacity: 0.9; }
+        .music-btn { background: rgba(106, 227, 255, 0.18); color: #6ae3ff; border-color: rgba(106, 227, 255, 0.25); font-size: 22px; animation: pulse 2s infinite; }
+        .music-btn:hover { background: rgba(106, 227, 255, 0.32); }
+        .music-btn.playing { background: rgba(255, 106, 106, 0.22); color: #ff6a6a; border-color: rgba(255, 106, 106, 0.35); animation: none; }
+        .music-link-btn { background: rgba(255, 200, 100, 0.15); color: #ffc864; border-color: rgba(255, 200, 100, 0.2); font-size: 17px; }
+        .music-link-btn:hover { background: rgba(255, 200, 100, 0.28); }
+        .visitor-btn { background: rgba(106, 255, 181, 0.15); color: #6affb5; border-color: rgba(106, 255, 181, 0.2); font-size: 17px; }
+        .visitor-btn:hover { background: rgba(106, 255, 181, 0.28); }
+        #visitorCount { font-size: 22px; font-weight: 900; color: #6affb5; min-width: 34px; text-align: center; display: inline-block; }
+        .lang-btn { background: rgba(255, 215, 0, 0.15); color: #ffd700; border-color: rgba(255, 215, 0, 0.2); font-size: 17px; }
+        .lang-btn:hover { background: rgba(255, 215, 0, 0.28); }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(106, 227, 255, 0.35); } 70% { box-shadow: 0 0 0 18px rgba(106, 227, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(106, 227, 255, 0); } }
+        @media (max-width: 600px) { .btn-container { bottom: 18px; left: 18px; gap: 12px; } .top-btn { height: 48px; font-size: 15px; padding: 0 18px; min-width: 100px; } .music-btn { font-size: 19px; } #visitorCount { font-size: 19px; min-width: 28px; } .hero h1 { font-size: 1.8rem; } }
+        @media (max-width: 400px) { .btn-container { bottom: 14px; left: 14px; gap: 10px; } .top-btn { height: 42px; font-size: 13px; padding: 0 14px; min-width: 80px; } .music-btn { font-size: 17px; } #visitorCount { font-size: 17px; min-width: 24px; } }
+        
+        /* ===== منع التحديد ===== */
+        .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+        * { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+    </style>
 </head>
+<body>
+    <div class="hero">
+        <h1>🌊 واحة الجبري</h1>
+        <p>الدالة الأم · نظرية السندباد الموحدة</p>
+        <p style="font-size:0.8rem; margin-top:20px; opacity:0.4;">الأزرار في الزاوية اليسرى السفلية 👇</p>
+    </div>
+    
+    <div class="btn-container">
+        <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+            <source src="/image/music.mp3" type="audio/mpeg">
+        </audio>
+        <button id="musicToggleBtn" class="top-btn music-btn" aria-label="تشغيل أو إيقاف الموسيقى" title="تشغيل / إيقاف الموسيقى">🎵</button>
+        <a href="/music.html" class="top-btn music-link-btn" aria-label="صفحة الموسيقى" title="الموسيقى">👀 <span id="musicLinkText">موسيقى</span></a>
+        <a href="/visitor.html" class="top-btn visitor-btn" aria-label="عداد الزوار" title="زوار">♻️ <span id="visitorText">زوار</span> <span id="visitorCount">1</span></a>
+        <button id="langBtn" class="top-btn lang-btn" aria-label="تبديل اللغة" title="تبديل اللغة">🇾🇪 عربي</button>
+    </div>
+    
+    <script>
+        (function() {
+            const VERSION = '4.0.0';
+            if (localStorage.getItem('jabri_version') !== VERSION) {
+                localStorage.clear();
+                localStorage.setItem('jabri_version', VERSION);
+                console.log('🔄 واحة الجبري v' + VERSION);
+            }
+        })();
+        
+        (function initMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicToggleBtn');
+            if (!music || !btn) return;
+            let isPlaying = false;
+            music.volume = 0.3;
+            btn.addEventListener('click', function() {
+                if (isPlaying) {
+                    music.pause();
+                    this.innerHTML = '🎵';
+                    this.classList.remove('playing');
+                    isPlaying = false;
+                    localStorage.setItem('jabri_music_state', 'paused');
+                } else {
+                    music.play().then(() => {
+                        this.innerHTML = '🔇';
+                        this.classList.add('playing');
+                        isPlaying = true;
+                        localStorage.setItem('jabri_music_state', 'playing');
+                    }).catch(function() {
+                        document.addEventListener('click', function playOnClick() {
+                            music.play().then(() => {
+                                btn.innerHTML = '🔇';
+                                btn.classList.add('playing');
+                                isPlaying = true;
+                                localStorage.setItem('jabri_music_state', 'playing');
+                            }).catch(function() {});
+                            document.removeEventListener('click', playOnClick);
+                        }, { once: true });
+                    });
+                }
+            });
+            setTimeout(function() {
+                if (localStorage.getItem('jabri_music_state') === 'playing') {
+                    music.play().then(() => {
+                        btn.innerHTML = '🔇';
+                        btn.classList.add('playing');
+                        isPlaying = true;
+                    }).catch(function() {});
+                }
+            }, 500);
+        })();
+        
+        (function initCounter() {
+            let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
+            count += 1;
+            localStorage.setItem('jabri_visitor_count', count);
+            const display = document.getElementById('visitorCount');
+            if (display) display.innerText = count.toLocaleString('ar-EG');
+        })();
+        
+        (function magicTranslator() {
+            const btn = document.getElementById('langBtn');
+            const musicLinkText = document.getElementById('musicLinkText');
+            const visitorText = document.getElementById('visitorText');
+            if (!btn) return;
+            function updateUIText() {
+                const isEnglish = window.location.pathname.startsWith('/en/') || window.location.pathname === '/en';
+                btn.textContent = isEnglish ? '🇾🇪 عربي' : '🇬🇧 English';
+                if (musicLinkText) musicLinkText.innerText = isEnglish ? 'Music' : 'موسيقى';
+                if (visitorText) visitorText.innerText = isEnglish ? 'Visitors' : 'زوار';
+                document.documentElement.lang = isEnglish ? 'en' : 'ar';
+                document.documentElement.dir = isEnglish ? 'ltr' : 'rtl';
+            }
+            function switchLanguage() {
+                const currentPath = window.location.pathname;
+                const isEnglish = currentPath.startsWith('/en/') || currentPath === '/en';
+                let newPath;
+                if (isEnglish) {
+                    newPath = currentPath.replace(/^\/en/, '') || '/';
+                } else {
+                    newPath = currentPath === '/' ? '/en/' : `/en${currentPath}`;
+                }
+                const query = window.location.search;
+                const hash = window.location.hash;
+                window.location.href = newPath + query + hash;
+            }
+            btn.addEventListener('click', switchLanguage);
+            updateUIText();
+            window.addEventListener('popstate', updateUIText);
+            console.log('🧙‍♂️ المترجم الذكي جاهز');
+        })();
+        
+        console.log('✅ header.html - النسخة النهائية v4.0.0');
+        console.log('📜 الدالة الأم: Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
+        console.log('🌌 Zx = Z + C + A | Z + C + A = 1');
+        console.log('🇾🇪 من صنعاء إلى الكون');
+    </script>
+</body>
+</html>
