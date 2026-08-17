@@ -19,7 +19,7 @@
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
     <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/" />
+    <link rel="canonical" href="https://jabri-com.vercel.app/Page11.html" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- ============================================ -->
@@ -63,7 +63,7 @@
     <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/" />
+    <meta property="og:url" content="https://jabri-com.vercel.app/Page11.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="واحة الجبري | Heaven Al-Jabri" />
     <meta name="twitter:description" content="تراث اليمن العريق وأبحاث الرياضيات والفيزياء" />
@@ -147,8 +147,8 @@
         },
         {
           "@type": "WebPage",
-          "@id": "https://jabri-com.vercel.app/#webpage",
-          "url": "https://jabri-com.vercel.app/",
+          "@id": "https://jabri-com.vercel.app/Page11.html#webpage",
+          "url": "https://jabri-com.vercel.app/Page11.html",
           "name": "واحة الجبري | Heaven Al-Jabri",
           "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
           "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
@@ -172,7 +172,7 @@
               "@type": "ListItem",
               "position": 2,
               "name": "واحة الجبري",
-              "item": "https://jabri-com.vercel.app/"
+              "item": "https://jabri-com.vercel.app/Page11.html"
             }
           ]
         }
@@ -870,7 +870,6 @@
                 font-size: 14px;
                 min-width: 110px;
             }
-            /* تجاوب الأركان */
             .oasis-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -941,12 +940,6 @@
             }
         }
     </style>
-
-    <!-- ============================================ -->
-    <!--     السكريبتات المركزية (مرة واحدة في البداية) -->
-    <!-- ============================================ -->
-    <script src="/js/init-page-root.js"></script>
-    <script src="/js/menu.js"></script>
 
 </head>
 <body>
@@ -1233,135 +1226,11 @@
         <button class="btn" style="width:100%"><span class="ar">ارسال</span><span class="en">Send</span></button>
     </div>
 
-
-
-
-
-
-
     <!-- ============================================ -->
-    <!--  تشغيل السكريبتات المركزية (مرة واحدة)       -->
+    <!--         السكريبتات المركزية                   -->
     <!-- ============================================ -->
-    
-    <!-- أولاً: تحميل المكتبة الأساسية -->
-    <script src="/js/init-page-root.js"></script>
-    
-    <!-- ثانياً: محاولة تحميل menu.js -->
-    <script>
-        // دالة لإنشاء القائمة يدوياً (احتياطي)
-        function createMenuFallback() {
-            // نتحقق إذا كانت القائمة موجودة بالفعل
-            if (document.getElementById('hamburger-menu')) return;
-            
-            console.log('🔄 تنفيذ النسخة الاحتياطية للقائمة...');
-            
-            // إنشاء زر القائمة يدوياً
-            const menu = document.createElement('div');
-            menu.id = 'hamburger-menu';
-            menu.style.cssText = `
-                position: fixed !important;
-                top: 50px !important;
-                right: 250px !important;
-                z-index: 9999999 !important;
-                cursor: pointer !important;
-                background: linear-gradient(135deg, #ffd700, #f0a500) !important;
-                color: #0a0a0f !important;
-                padding: 8px 14px !important;
-                border-radius: 10px !important;
-                font-size: 14px !important;
-                font-weight: bold !important;
-                box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 6px !important;
-                backdrop-filter: blur(6px) !important;
-            `;
-            menu.innerHTML = `
-                <div style="display:flex;flex-direction:column;gap:4px;width:22px;height:18px;justify-content:center;">
-                    <span style="display:block;height:3px;background:#0a0a0f;border-radius:4px;"></span>
-                    <span style="display:block;height:3px;background:#0a0a0f;border-radius:4px;"></span>
-                    <span style="display:block;height:3px;background:#0a0a0f;border-radius:4px;"></span>
-                </div>
-                <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">قائمة</span>
-            `;
-            
-            // إضافة حدث الضغط
-            menu.addEventListener('click', function(e) {
-                e.stopPropagation();
-                let dropdown = document.getElementById('menu-dropdown');
-                if (!dropdown) {
-                    // إنشاء القائمة المنسدلة إذا لم تكن موجودة
-                    dropdown = document.createElement('div');
-                    dropdown.id = 'menu-dropdown';
-                    dropdown.style.cssText = `
-                        display: none !important;
-                        position: fixed !important;
-                        top: 70px !important;
-                        right: 20px !important;
-                        background: rgba(26, 26, 46, 0.95) !important;
-                        backdrop-filter: blur(12px) !important;
-                        border: 2px solid #ffd700 !important;
-                        border-radius: 16px !important;
-                        padding: 18px 22px !important;
-                        min-width: 250px !important;
-                        max-height: 70vh !important;
-                        overflow-y: auto !important;
-                        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7) !important;
-                        z-index: 9999998 !important;
-                        flex-direction: column !important;
-                        gap: 4px !important;
-                    `;
-                    dropdown.innerHTML = `
-                        <a href="/" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🏠 الرئيسية</a>
-                        <a href="/Sanaa.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🏙️ صنعاء</a>
-                        <a href="/Shibam.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🏘️ شبام</a>
-                        <a href="/Soqatra.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🌴 سقطرى</a>
-                        <a href="/journal.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">📰 رسالة قوقل</a>
-                        <a href="/research.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🔬 البحوث</a>
-                        <a href="/Office.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">📫 المكتبة</a>
-                        <a href="/Author-cv.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">🧑‍💼 السيرة الذاتية</a>
-                        <a href="/about.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">ℹ️ عن الواحة</a>
-                        <a href="/author-history.html" style="color:#fff;padding:10px 14px;text-decoration:none;display:block;">📜 قصة الباحث</a>
-                    `;
-                    document.body.appendChild(dropdown);
-                }
-                
-                // تبديل ظهور القائمة
-                if (dropdown.style.display === 'none' || dropdown.style.display === '') {
-                    dropdown.style.display = 'flex';
-                } else {
-                    dropdown.style.display = 'none';
-                }
-            });
-            
-            document.body.appendChild(menu);
-            console.log('✅ تم إنشاء القائمة احتياطياً');
-        }
-        
-        // محاولة تحميل menu.js، وإذا فشل، استخدم النسخة الاحتياطية
-        function loadMenu() {
-            const script = document.createElement('script');
-            script.src = '/js/menu.js';
-            script.onload = function() {
-                console.log('✅ تم تحميل menu.js بنجاح');
-            };
-            script.onerror = function() {
-                console.warn('⚠️ فشل تحميل menu.js، استخدام النسخة الاحتياطية');
-                createMenuFallback();
-            };
-            document.head.appendChild(script);
-            
-            // كضمان إضافي: إذا لم تظهر القائمة بعد 3 ثواني، استخدم الاحتياطي
-            setTimeout(function() {
-                if (!document.getElementById('hamburger-menu')) {
-                    console.warn('⏳ القائمة لم تظهر، استخدام النسخة الاحتياطية');
-                    createMenuFallback();
-                }
-            }, 3000);
-        }
-        
-        // بدء التحميل
-        loadMenu();
-    </script>
+    <script src="../js/init-page-root.js"></script>
+    <script src="../js/menu.js"></script>
+
 </body>
 </html>

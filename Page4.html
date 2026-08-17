@@ -7,7 +7,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Abdulla Al-Jabri - مكتبة اليمن</title>
+  
+  <!-- ===== الكانونيكال الديناميكي ===== -->
+  <link rel="alternate" hreflang="ar" href="" />
+  <link rel="alternate" hreflang="en" href="" />
+  <link rel="canonical" href="" />
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const base = window.location.origin;
+      const path = window.location.pathname;
+      document.querySelector('link[rel="canonical"]').href = base + path;
+      document.querySelector('link[hreflang="ar"]').href = base + path;
+      document.querySelector('link[hreflang="en"]').href = base + '/en' + path;
+    });
+  </script>
+  
+  <!-- ===== SEO اساسي ===== -->
+  <title>Page4 | مكتبي وبحوثي - Office & Research | Eng. Abdulla Al-Jabri</title>
+  <meta name="description" content="Page4 - مكتبي وبحوثي. أبحاث ريمان ونظرية سندس والفيزياء النظرية. م/ عبدالله الجبري">
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+  <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
 </head>
 
 <body style="margin:0;padding:0;font-family:Tahoma,sans-serif;background:#f5f7fa;color:#000;min-height:100svh;display:flex;flex-direction:column">
@@ -68,6 +87,13 @@
     updateTime();
     setInterval(updateTime, 1000);
   </script>
+  
+  
+  <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+  
 </body>
-
 </html>

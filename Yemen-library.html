@@ -8,50 +8,50 @@
     <!--              HEADER (SEO + Meta)             -->
     <!-- ============================================ -->
 
-    <!-- اللغات و الكانونيكال (خاص بـ Yemen-library) -->
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Yemen-library.html" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Yemen-library.html" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/Yemen-library.html" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- ===== حماية المحتوى + الكانونيكال الثابت ===== -->
+    <link rel="alternate" hreflang="ar" href="" />
+    <link rel="alternate" hreflang="en" href="" />
+    <link rel="canonical" href="" />
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const base = 'https://jabri-web.github.io';
+        const path = window.location.pathname;
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const arAlt = document.querySelector('link[hreflang="ar"]');
+        const enAlt = document.querySelector('link[hreflang="en"]');
+        if (canonical) canonical.href = base + path;
+        if (arAlt) arAlt.href = base + path;
+        if (enAlt) enAlt.href = base + '/en' + path;
+    });
+    </script>
 
     <!-- SEO أساسي (مخصص للصفحة) -->
-    <title>مكتبة اليمن | Yemen Library - واحة الجبري للتراث والأبحاث</title>
-    <meta name="description" content="مكتبة اليمن: منصة توثيق التراث اليمني والأبحاث العلمية في الرياضيات والفيزياء النظرية ضمن واحة الجبري. قواعد بيانات 1→11، أبحاث مسجلة DOI.">
-    <meta name="keywords" content="مكتبة اليمن, Yemen Library, واحة الجبري, تراث اليمن, أبحاث DOI, رياضيات, فيزياء, سندباد اليمن">
+    <title>مكتبة اليمن | Yemen Library - واحة الجبري للتراث والأبحاث 1→12</title>
+    <meta name="description" content="مكتبة اليمن: منصة توثيق التراث اليمني والأبحاث العلمية في الرياضيات والفيزياء النظرية ضمن واحة الجبري. قواعد بيانات 1→12، أبحاث مسجلة DOI.">
+    <meta name="keywords" content="مكتبة اليمن, Yemen Library, واحة الجبري, تراث اليمن, أبحاث DOI, رياضيات, فيزياء, سندباد اليمن, jabri.com">
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
-    <link rel="author" href="https://jabri-com.vercel.app/about.html" />
+    <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved.">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
 
     <!-- Dublin Core -->
     <meta name="DC.title" content="مكتبة اليمن | Yemen Library - واحة الجبري" />
     <meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري" />
     <meta name="DC.subject" content="تراث اليمن, الرياضيات, الفيزياء النظرية" />
-    <meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري" />
-
-    <!-- ملكية جوجل (Vercel) -->
-    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){ dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-EQBMJKBC24');
-    </script>
 
     <!-- Open Graph + Twitter -->
     <meta property="og:locale" content="ar_YE">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
-    <meta property="og:title" content="مكتبة اليمن | Yemen Library - واحة الجبري">
+    <meta property="og:title" content="مكتبة اليمن | Yemen Library - واحة الجبري 1→12">
     <meta property="og:description" content="منصة توثيق التراث اليمني والأبحاث العلمية في الرياضيات والفيزياء النظرية.">
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
-    <meta property="og:url" content="https://jabri-com.vercel.app/Yemen-library.html">
+    <meta property="og:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
+    <meta property="og:url" content="https://jabri-web.github.io/Yemen-library.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="مكتبة اليمن | Yemen Library - واحة الجبري">
     <meta name="twitter:description" content="تراث اليمن والأبحاث العلمية - واحة الجبري">
-    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+    <meta name="twitter:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
 
     <!-- JSON-LD (البيانات المنظمة) -->
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://jabri-com.vercel.app/#person",
+          "@id": "https://jabri-web.github.io/#person",
           "name": "م/ عبدالله محمد ناصر الجبري",
           "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri", "Abdulla Al-Jabri"],
           "identifier": {
@@ -69,65 +69,32 @@
             "value": "0009-0003-3319-3822",
             "url": "https://orcid.org/0009-0003-3319-3822"
           },
-          "url": "https://jabri-com.vercel.app/",
-          "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+          "url": "https://jabri-web.github.io/",
+          "image": "https://jabri-web.github.io/image/Jabri-photo.png",
           "jobTitle": "Researcher, Author & Founder",
           "nationality": "Yemeni",
           "email": "mailto:jabri62018@gmail.com",
-          "owns": {"@id": "https://jabri-com.vercel.app/#org"},
-          "founderOf": {"@id": "https://jabri-com.vercel.app/#org"},
           "sameAs": [
             "https://orcid.org/0009-0003-3319-3822",
             "https://github.com/jabri-web",
             "https://en.wikipedia.org/wiki/User:Jabri2026",
-            "https://jabri-com.vercel.app/"
+            "https://jabri-web.github.io/"
           ]
         },
         {
-          "@type": "Organization",
-          "@id": "https://jabri-com.vercel.app/#org",
-          "name": "واحة الجبري",
-          "alternateName": "Heaven Al-Jabri",
-          "url": "https://jabri-com.vercel.app/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://jabri-com.vercel.app/image/Jabri-photo.png"
-          },
-          "founder": {"@id": "https://jabri-com.vercel.app/#person"},
-          "owner": {"@id": "https://jabri-com.vercel.app/#person"},
-          "publisher": {"@id": "https://jabri-com.vercel.app/#person"}
-        },
-        {
           "@type": "WebSite",
-          "@id": "https://jabri-com.vercel.app/#website",
-          "url": "https://jabri-com.vercel.app/",
+          "@id": "https://jabri-web.github.io/#website",
+          "url": "https://jabri-web.github.io/",
           "name": "واحة الجبري | Heaven Al-Jabri",
           "description": "منصة توثيق التراث اليمني وبوابة السندباد للأبحاث العلمية",
-          "publisher": {"@id": "https://jabri-com.vercel.app/#org"},
-          "copyrightHolder": {"@id": "https://jabri-com.vercel.app/#person"},
           "inLanguage": ["ar", "en"]
         },
         {
-          "@type": "ScholarlyArticle",
-          "name": "نظرية السندباد الموحدة Z+C+A=1",
-          "author": {"@id": "https://jabri-com.vercel.app/#person"},
-          "datePublished": "2026",
-          "url": "https://jabri-com.vercel.app/research.html",
-          "description": "بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة",
-          "identifier": "10.5281/zenodo.20148344",
-          "publisher": {"@id": "https://jabri-com.vercel.app/#org"}
-        },
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-          "description": "صورة الباحث اليمني م/ عبدالله محمد ناصر الجبري المؤس",
-          "name": "Jabri-photo"
-        },
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://jabri-com.vercel.app/image/Yemen2026.png",
-          "description": "خريطة وجمال تراث اليمن العريق - صنعاء شبام سقطرى",
-          "name": "Yemen-Heritage-Map"
+          "@type": "WebPage",
+          "@id": "https://jabri-web.github.io/Yemen-library.html",
+          "url": "https://jabri-web.github.io/Yemen-library.html",
+          "name": "مكتبة اليمن | Yemen Library - واحة الجبري",
+          "description": "منصة توثيق التراث اليمني والأبحاث العلمية 1→12"
         }
       ]
     }
@@ -139,10 +106,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* ---------- الأنماط العامة (من الموقع الرئيسي) ---------- */
+        /* ---------- الأنماط العامة ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -319,11 +286,15 @@
             border-bottom: 2px solid #30363d;
             padding-bottom: 10px;
         }
+        .section-title i {
+            margin-left: 10px;
+            color: #f7d44a;
+        }
 
-        /* شبكة قواعد البيانات */
+        /* شبكة قواعد البيانات 12 */
         .grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
@@ -367,6 +338,8 @@
         .badge.p8 { background: #2ea043; }
         .badge.p9 { background: #db61a2; }
         .badge.p10 { background: #8b949e; }
+        .badge.p11 { background: #f0883e; }
+        .badge.p12 { background: #ff3333; }
 
         .en-title {
             font-weight: 700;
@@ -382,9 +355,18 @@
         }
         .repo-desc {
             color: #8d96a0;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin-top: 6px;
             line-height: 1.4;
+        }
+
+        .card-highlight {
+            border-color: #ff3333;
+            background: #1a0a0a;
+        }
+        .card-highlight:hover {
+            border-color: #ff6666;
+            background: #2a0a0a;
         }
 
         /* قائمة الأبحاث */
@@ -457,6 +439,10 @@
             .profile-img { width: 100px; height: 100px; }
             .profile-name { font-size: 1.3rem; }
         }
+        @media (max-width: 400px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+            .card { min-height: 110px; padding: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -494,25 +480,28 @@
                     <span class="en-text">Independent Researcher in Mathematics & Theoretical Physics</span>
                 </p>
                 <p class="profile-title" style="color:#6ae3ff;font-weight:600;">
-                    <span class="ar-text">شعار البحث: سندباد + Zx</span>
-                    <span class="en-text">Research Motto: Sindbad + Zx</span>
+                    <span class="ar-text">🐦 شعار البحث: سندباد + Zx</span>
+                    <span class="en-text">🐦 Research Motto: Sindbad + Zx</span>
                 </p>
             </div>
 
-            <!-- قواعد البيانات -->
+            <!-- ===== قواعد البيانات 1 → 12 ===== -->
             <h2 class="section-title">
-                <span class="ar-text">قواعد بيانات اليمن 1 → 10</span>
-                <span class="en-text">Yemen Databases 1 → 10</span>
+                <i class="fas fa-database"></i>
+                <span class="ar-text">قواعد بيانات اليمن 1 → 12</span>
+                <span class="en-text">Yemen Databases 1 → 12</span>
             </h2>
 
             <div class="grid">
+                <!-- P1 -->
                 <a href="Jabri.html" class="card">
                     <span class="badge p1">P1</span>
                     <span class="en-title">Yemen Sindbad</span>
                     <span class="ar-title">سندباد اليمن</span>
-                    <div class="repo-desc"><span class="ar-text">بحث رياضيات الفيزياء الكونية</span><span class="en-text">Cosmic Physics Mathematics Research</span></div>
+                    <div class="repo-desc"><span class="ar-text">بحث رياضيات الفيزياء الكونية</span><span class="en-text">Cosmic Physics Mathematics</span></div>
                 </a>
 
+                <!-- P2 -->
                 <a href="Jabr.html" class="card">
                     <span class="badge p2">P2</span>
                     <span class="en-title">Yemen Bird</span>
@@ -520,13 +509,15 @@
                     <div class="repo-desc"><span class="ar-text">نظام Zx_RieOS v1.2</span><span class="en-text">Zx_RieOS System v1.2</span></div>
                 </a>
 
+                <!-- P3 -->
                 <a href="Baleegh.html" class="card">
                     <span class="badge p3">P3</span>
                     <span class="en-title">Yemen Ankboot</span>
                     <span class="ar-title">عنكبوت اليمن</span>
-                    <div class="repo-desc"><span class="ar-text">الدالة الأم - Zx Function</span><span class="en-text">Mother Function - Zx Function</span></div>
+                    <div class="repo-desc"><span class="ar-text">الدالة الأم - Zx Function</span><span class="en-text">Mother Function - Zx</span></div>
                 </a>
 
+                <!-- P4 -->
                 <a href="Office.html" class="card">
                     <span class="badge p4">P4</span>
                     <span class="en-title">Yemen Atlas</span>
@@ -534,6 +525,7 @@
                     <div class="repo-desc"><span class="ar-text">الفهرس العام للمشاريع</span><span class="en-text">General Projects Index</span></div>
                 </a>
 
+                <!-- P5 -->
                 <a href="Jabri_Nobble.html" class="card">
                     <span class="badge p5">P5</span>
                     <span class="en-title">Yemen Nobble</span>
@@ -541,6 +533,7 @@
                     <div class="repo-desc"><span class="ar-text">Zx_RiemannOS - نظام ريمان</span><span class="en-text">Zx_RiemannOS - Riemann System</span></div>
                 </a>
 
+                <!-- P6 -->
                 <a href="Jabri_lab.html" class="card">
                     <span class="badge p6">P6</span>
                     <span class="en-title">Yemen Lab</span>
@@ -548,6 +541,7 @@
                     <div class="repo-desc">Zx Function & Millennium Problems</div>
                 </a>
 
+                <!-- P7 -->
                 <a href="Code-os.html" class="card">
                     <span class="badge p7">P7</span>
                     <span class="en-title">Yemen Legacy</span>
@@ -555,6 +549,7 @@
                     <div class="repo-desc"><span class="ar-text">v1.1 النظام القديم</span><span class="en-text">v1.1 Legacy System</span></div>
                 </a>
 
+                <!-- P8 -->
                 <a href="Code.html" class="card">
                     <span class="badge p8">P8</span>
                     <span class="en-title">Yemen Riemann</span>
@@ -562,6 +557,7 @@
                     <div class="repo-desc"><span class="ar-text">Framework v1.3 نظام ريمان</span><span class="en-text">Framework v1.3 Riemann System</span></div>
                 </a>
 
+                <!-- P9 -->
                 <a href="Check.html" class="card">
                     <span class="badge p9">P9</span>
                     <span class="en-title">Yemen Test</span>
@@ -569,46 +565,68 @@
                     <div class="repo-desc">Testing Scripts</div>
                 </a>
 
+                <!-- P10 -->
                 <a href="Router-all.html" class="card">
                     <span class="badge p10">P10</span>
                     <span class="en-title">Pages Hub</span>
                     <span class="ar-title">مركز الصفحات</span>
                     <div class="repo-desc"><span class="ar-text">كل صفحات المشاريع</span><span class="en-text">All Project Pages</span></div>
                 </a>
+
+                <!-- P11 - Jabri-com (الصفحة الرئيسية) -->
+                <a href="index.html" class="card">
+                    <span class="badge p11">P11</span>
+                    <span class="en-title">Jabri-com</span>
+                    <span class="ar-title">الرئيسية</span>
+                    <div class="repo-desc"><span class="ar-text">الصفحة الرئيسية للواحة</span><span class="en-text">Main Oasis Homepage</span></div>
+                </a>
+
+                <!-- P12 - jabri.com (النطاق الرسمي) -->
+                <a href="https://jabri.com" target="_blank" class="card card-highlight">
+                    <span class="badge p12">P12</span>
+                    <span class="en-title">jabri.com</span>
+                    <span class="ar-title">النطاق الرسمي</span>
+                    <div class="repo-desc"><span class="ar-text">🌐 الموقع الرسمي للباحث</span><span class="en-text">🌐 Official Researcher Domain</span></div>
+                </a>
             </div>
 
-            <!-- الأبحاث المسجلة -->
+            <!-- ===== الأبحاث المسجلة ===== -->
             <h2 class="section-title">
+                <i class="fas fa-file-alt"></i>
                 <span class="ar-text">أبحاث مسجلة DOI</span>
                 <span class="en-text">Registered Researches DOI</span>
             </h2>
 
             <ul class="paper-list">
-                <li><b>Riemann Hypothesis</b> - <a href="https://doi.org/10.5281/zenodo.20139904" class="paper-doi" target="_blank">10.5281/zenodo.20139904</a></li>
-                <li><b>P vs NP</b> - <a href="https://doi.org/10.5281/zenodo.20145279" class="paper-doi" target="_blank">10.5281/zenodo.20145279</a></li>
-                <li><b>Yang-Mills Mass Gap</b> - <a href="https://doi.org/10.5281/zenodo.20148344" class="paper-doi" target="_blank">10.5281/zenodo.20148344</a></li>
-                <li><b>Navier-Stokes</b> - <a href="https://doi.org/10.5281/zenodo.20149618" class="paper-doi" target="_blank">10.5281/zenodo.20149618</a></li>
-                <li><b>Jabri Identity</b> - <a href="https://doi.org/10.5281/zenodo.20114317" class="paper-doi" target="_blank">10.5281/zenodo.20114317</a></li>
+                <li><b>Riemann Hypothesis</b> - <a href="https://doi.org/10.5281/zenodo.20139904" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20139904</a></li>
+                <li><b>P vs NP</b> - <a href="https://doi.org/10.5281/zenodo.20145279" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20145279</a></li>
+                <li><b>Yang-Mills Mass Gap</b> - <a href="https://doi.org/10.5281/zenodo.20148344" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20148344</a></li>
+                <li><b>Navier-Stokes</b> - <a href="https://doi.org/10.5281/zenodo.20149618" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20149618</a></li>
+                <li><b>Birch & Swinnerton-Dyer</b> - <a href="https://doi.org/10.5281/zenodo.20145337" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20145337</a></li>
+                <li><b>Hodge Conjecture</b> - <a href="https://doi.org/10.5281/zenodo.20114317" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20114317</a></li>
+                <li><b>Jabri Identity</b> - <a href="https://doi.org/10.5281/zenodo.20100622" class="paper-doi" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20100622</a></li>
             </ul>
 
-            <!-- معلومات التواصل -->
+            <!-- ===== معلومات التواصل ===== -->
             <h2 class="section-title">
+                <i class="fas fa-address-card"></i>
                 <span class="ar-text">بيانات التواصل</span>
                 <span class="en-text">Contact Info</span>
             </h2>
 
             <ul class="contact-list">
                 <li><b><span class="ar-text">الباحث:</span><span class="en-text">Researcher:</span></b> <span class="ar-text">م. عبدالله محمد ناصر الجبري</span><span class="en-text">Eng. Abdulla Mohammed Nasser Al-Jabri</span></li>
-                <li><b>ORCID:</b> <a href="https://orcid.org/0009-0003-3319-3822" target="_blank">0009-0003-3319-3822</a></li>
-                <li><b>Email:</b> <a href="mailto:jabri62018@gmail.com">jabri62018@gmail.com</a></li>
-                <li><b>Website:</b> <a href="Page4.html" target="_blank">jabri-web.github.io</a></li>
-                <li><b>Website:</b> <a href="Router-all.html" target="_blank">jabri62018.github.io</a></li>
+                <li><b>ORCID:</b> <a href="https://orcid.org/0009-0003-3319-3822" target="_blank"><i class="fas fa-id-card"></i> 0009-0003-3319-3822</a></li>
+                <li><b>Email:</b> <a href="mailto:jabri62018@gmail.com"><i class="fas fa-envelope"></i> jabri62018@gmail.com</a></li>
+                <li><b>GitHub:</b> <a href="https://github.com/jabri-web" target="_blank"><i class="fab fa-github"></i> jabri-web</a></li>
+                <li><b>Website:</b> <a href="Router-all.html" target="_blank"><i class="fas fa-globe"></i> jabri-web.github.io</a></li>
+                <li><b>Official Domain:</b> <a href="https://jabri.com" target="_blank"><i class="fas fa-globe"></i> jabri.com</a></li>
             </ul>
 
             <div class="footer-text">
-                <span class="ar-text">من صنعاء إلى الكون</span>
-                <span class="en-text">From Sana'a to the Universe</span>
-                <br>© 2026
+                <span class="ar-text">🇾🇪 من صنعاء إلى الكون</span>
+                <span class="en-text">🇾🇪 From Sana'a to the Universe</span>
+                <br>© 2026 م/ عبدالله محمد ناصر الجبري
             </div>
 
         </div>
@@ -621,41 +639,23 @@
 
     <footer id="site-footer">
 
-        <!-- البحث عن الباحث -->
         <div class="footer-search">
             <p id="searchTitle"><strong>🔍 البحث عن الباحث:</strong></p>
             <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
                 <a href="https://www.google.com/search?q=واحة+الجبري&udm=50" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="بحث عن واحة الجبري" data-en="Search Al-Jabri Oasis">بحث عن واحة الجبري</span></a>
                 <a href="https://www.google.com/search?q=واحة+الجبري+|+Heaven+Al-Jabri&udm=50" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="بحث انجليزي" data-en="Search in English">بحث انجليزي</span></a>
-                <a href="https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&udm=50" target="_blank" rel="noopener">👨‍🔬 <span class="txt" data-ar="بحث عن عبدالله الجبري" data-en="Search Abdulla Mohammed Nasser Al-Jabri">بحث عن عبدالله الجبري</span></a>
+                <a href="https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&udm=50" target="_blank" rel="noopener">👨‍🔬 <span class="txt" data-ar="بحث عن عبدالله الجبري" data-en="Search Abdulla Al-Jabri">بحث عن عبدالله الجبري</span></a>
                 <a href="https://www.google.com/search?q=Eng.+Abdulla+Mohammed+Nasser+Al-Jabri&udm=50" target="_blank" rel="noopener">🔎 <span class="txt" data-ar="بحث بالانجليزي" data-en="Search in English">بحث بالانجليزي</span></a>
             </div>
         </div>
 
-        <!-- الروابط -->
         <div class="footer-links">
-            <!-- أكاديمي -->
             <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">🆔 <span class="txt" data-ar="ORCID" data-en="ORCID">ORCID</span></a>
             <a href="https://zenodo.org/records/20513840" target="_blank" rel="noopener">📊 <span class="txt" data-ar="زينودو" data-en="Zenodo">Zenodo</span></a>
             <a href="https://overleaf.com/project" target="_blank" rel="noopener">📝 <span class="txt" data-ar="اوفرليف" data-en="Overleaf">Overleaf</span></a>
             <a href="https://colab.research.google.com/drive/12oG9B7DgsQpTWlvfMm4awnpbt34yPv_h" target="_blank" rel="noopener">🧠 <span class="txt" data-ar="كولاب" data-en="Colab">Colab</span></a>
-
-            <!-- تطوير -->
             <a href="https://github.com/jabri-web" target="_blank" rel="noopener">🐙 <span class="txt" data-ar="جيتهاب" data-en="GitHub">GitHub</span></a>
             <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" rel="noopener">📖 <span class="txt" data-ar="ويكيبيديا" data-en="Wikipedia">Wikipedia</span></a>
-
-            <!-- تواصل -->
-            <a href="https://www.facebook.com/share/p/1CvCG9xehw/" target="_blank" rel="noopener">📘 <span class="txt" data-ar="فيسبوك" data-en="Facebook">Facebook</span></a>
-            <a href="https://www.instagram.com/reel/Da5zRhypJlo/?igsh=MXVsbHVzbXBsNmF3MQ==" target="_blank" rel="noopener">📷 <span class="txt" data-ar="انستجرام" data-en="Instagram">Instagram</span></a>
-            <a href="https://t.me/Jabri2025" target="_blank" rel="noopener">✈️ <span class="txt" data-ar="تلجرام" data-en="Telegram">Telegram</span></a>
-            <a href="https://t.me/Heaven_Jabri/" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="قناة الواحة" data-en="Heaven Channel">قناة الواحة</span></a>
-            <a href="https://www.threads.com/@jabri2023" target="_blank" rel="noopener">🧵 <span class="txt" data-ar="ثريدز" data-en="Threads">Threads</span></a>
-            <a href="https://chat.whatsapp.com/Haty83AA1eTKGLLXUL7QCK" target="_blank" rel="noopener">💬 <span class="txt" data-ar="واتساب" data-en="WhatsApp">WhatsApp</span></a>
-            <a href="https://ye.linkedin.com/in/abdulla-al-jabri-bb545830b" target="_blank" rel="noopener">💼 <span class="txt" data-ar="لينكدإن" data-en="LinkedIn">LinkedIn</span></a>
-            <a href="https://snapchat.com/t/uEiJqBnd" target="_blank" rel="noopener">👻 <span class="txt" data-ar="سنابشات" data-en="Snapchat">Snapchat</span></a>
-            <a href="https://links.gemspace.com/join/Jabri2024_Global" target="_blank" rel="noopener">💎 <span class="txt" data-ar="الجوهرة" data-en="GemSpace">GemSpace</span></a>
-
-            <!-- الموقع -->
             <a href="mailto:jabri62018@gmail.com">📧 <span class="txt" data-ar="البريد" data-en="Email">Email</span></a>
             <a href="Author-cv.html">📄 <span class="txt" data-ar="السيرة الذاتية" data-en="C.V">C.V</span></a>
             <a href="citations.html">♻️ <span class="txt" data-ar="الاستشهادات" data-en="Citations">Citations</span></a>
@@ -665,7 +665,6 @@
             <a href="sitemap.html">🗺️ <span class="txt" data-ar="خارطة الموقع" data-en="Sitemap">خارطة الموقع</span></a>
         </div>
 
-        <!-- الحقوق -->
         <p id="copyright">© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة</p>
 
     </footer>
@@ -675,7 +674,6 @@
     <!-- ============================================ -->
 
     <script>
-        // ====== دالة تحديث الفوتر ======
         function updateFooterLang() {
             const isEnglish = document.documentElement.lang === 'en';
             const footer = document.getElementById('site-footer');
@@ -703,7 +701,6 @@
 
         window.updateFooterLang = updateFooterLang;
 
-        // ====== دالة تبديل اللغة ======
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -728,12 +725,14 @@
 
         window.applyLanguage = applyLanguage;
 
-        // ====== تحميل اللغة المحفوظة ======
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferred-language') || 'ar';
             applyLanguage(savedLang);
         });
     </script>
+
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
 
 </body>
 </html>

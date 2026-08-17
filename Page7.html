@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- ===== حماية المحتوى + الكانونيكال الثابت ===== -->
+    <link rel="alternate" hreflang="ar" href="" />
+    <link rel="alternate" hreflang="en" href="" />
+    <link rel="canonical" href="" />
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const base = 'https://jabri-web.github.io';
+        const path = window.location.pathname;
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const arAlt = document.querySelector('link[hreflang="ar"]');
+        const enAlt = document.querySelector('link[hreflang="en"]');
+        if (canonical) canonical.href = base + path;
+        if (arAlt) arAlt.href = base + path;
+        if (enAlt) enAlt.href = base + '/en' + path;
+    });
+    </script>
+    
     <!-- ===== SEO خاص بنظرية السندباد ===== -->
     <title>نظرية السندباد الموحدة | Z+C+A=1 - واحة الجبري</title>
     <meta name="description" content="نظرية السندباد الموحدة Z+C+A=1: حل يربط بين أصفار ريمان ومسائل الألفية وبنية الكون. بحث م/ عبدالله محمد ناصر الجبري.">
     <meta name="keywords" content="نظرية السندباد, Z+C+A=1, أصفار ريمان, الرياضيات, الفيزياء النظرية, عبدالله الجبري">
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
-    <link rel="author" href="https://jabri-com.vercel.app/about.html" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/Page7.html" />
     <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved.">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
     
     <!-- ===== Open Graph ===== -->
     <meta property="og:locale" content="ar_YE">
@@ -19,12 +37,12 @@
     <meta property="og:site_name" content="واحة الجبري | نظرية السندباد">
     <meta property="og:title" content="نظرية السندباد الموحدة | Z+C+A=1">
     <meta property="og:description" content="بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة تربط بين أصفار ريمان وبنية الكون.">
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
-    <meta property="og:url" content="https://jabri-com.vercel.app/Page7.html">
+    <meta property="og:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
+    <meta property="og:url" content="https://jabri-web.github.io/Page7.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="نظرية السندباد الموحدة | Z+C+A=1">
     <meta name="twitter:description" content="بحث في الرياضيات والفيزياء النظرية - م/ عبدالله الجبري">
-    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+    <meta name="twitter:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
     
     <!-- ===== Schema.org ===== -->
     <script type="application/ld+json">
@@ -37,7 +55,7 @@
             "name": "م/ عبدالله محمد ناصر الجبري"
         },
         "datePublished": "2026",
-        "url": "https://jabri-com.vercel.app/Page7.html",
+        "url": "https://jabri-web.github.io/Page7.html",
         "description": "بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة تربط بين دالة Zx ومسائل الألفية.",
         "identifier": "10.5281/zenodo.20148344",
         "publisher": {
@@ -47,14 +65,12 @@
     }
     </script>
     
-    <!-- ===== تحميل الهيدر والفوتر العامين (مثل Page12 و Check) ===== -->
-    <script src="js/init-page-root.js" defer></script>
-    
-    <!-- ===== خطوط جوجل ===== -->
+    <!-- ===== خطوط وأيقونات ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ستايل خاص بالصفحة فقط (الباقي من الهيدر والفوتر) ===== */
+        /* ===== ستايل خاص بالصفحة فقط ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0a0a0f;
@@ -74,12 +90,102 @@
             padding: 0 20px;
             width: 100%;
         }
+
+        /* ===== الهيدر الداخلي ===== */
+        .theory-header {
+            background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+            border: 1px solid #2a2a4e;
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .theory-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(106,227,255,0.03) 0%, transparent 70%);
+            animation: rotateGlow 30s linear infinite;
+        }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .theory-header h1 {
+            font-size: 2.8rem;
+            color: #6ae3ff;
+            position: relative;
+            z-index: 1;
+        }
+        .theory-header h1 i {
+            color: #f7d44a;
+        }
+        .theory-header .sub {
+            font-size: 1.3rem;
+            color: #b0b0c8;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .theory-header .sub .highlight {
+            color: #f7d44a;
+            font-weight: bold;
+        }
+        .theory-header .equation-big {
+            font-size: 2.2rem;
+            font-family: 'Times New Roman', serif;
+            color: #f7d44a;
+            margin: 15px 0 0;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 3px;
+        }
+        .theory-header .equation-big .z { color: #6ae3ff; }
+        .theory-header .equation-big .c { color: #51cf66; }
+        .theory-header .equation-big .a { color: #ff6b6b; }
+        .tag-yemen {
+            display: inline-block;
+            background: #1a2a1a;
+            color: #8bc34a;
+            padding: 0.3rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid #2a4a2a;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== أقسام ===== */
         .section-title {
             font-size: 2rem;
             color: #6ae3ff;
-            margin: 40px 0 20px;
+            margin: 50px 0 25px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
+        .section-title i {
+            color: #f7d44a;
+        }
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            max-width: 80px;
+            background: linear-gradient(to left, #2a2a4e, transparent);
+        }
+        .section-title::after {
+            background: linear-gradient(to right, #2a2a4e, transparent);
+        }
+
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -90,7 +196,7 @@
             background: #1a1a2e;
             border: 2px solid #2a2a3e;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px 25px;
             text-decoration: none;
             color: #e0e0e0;
             transition: 0.3s;
@@ -100,106 +206,235 @@
         .card:hover {
             border-color: #6ae3ff;
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(106, 227, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(106, 227, 255, 0.15);
+            background: #1f1f36;
         }
-        .card-icon { font-size: 3rem; margin-bottom: 15px; }
-        .card h3 { color: #6ae3ff; font-size: 1.3rem; margin-bottom: 10px; }
-        .card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
-        
+        .card-icon {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .card h3 {
+            color: #6ae3ff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .card .badge-mill {
+            display: inline-block;
+            background: #2a1a1a;
+            color: #ff6b6b;
+            font-size: 0.7rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid #4a2a2a;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #b0b0c8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .card .doi-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #6ae3ff;
+            font-size: 0.8rem;
+            text-decoration: none;
+            background: #0d0d1a;
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid #2a2a4e;
+            transition: 0.2s;
+        }
+        .card .doi-link:hover {
+            background: #6ae3ff;
+            color: #000;
+        }
+
+        /* ===== زر العودة ===== */
+        .btn-home {
+            background: #6ae3ff;
+            color: #000;
+            padding: 14px 45px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-home:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(106, 227, 255, 0.3);
+        }
+        .btn-home i {
+            margin-left: 10px;
+        }
+
         .ar-text { display: inline; }
         .en-text { display: none; }
         body.en .ar-text { display: none; }
         body.en .en-text { display: inline; }
-        
+
         @media (max-width: 600px) {
-            .section-title { font-size: 1.5rem; }
+            .theory-header h1 { font-size: 1.8rem; }
+            .theory-header .equation-big { font-size: 1.5rem; }
+            .section-title { font-size: 1.4rem; }
             .cards-grid { grid-template-columns: 1fr; }
+            .page-content { margin: 20px auto; padding: 0 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== الهيدر العام (يتم تحميله بواسطة init-page-root.js) ===== -->
+    <!-- ===== الهيدر العام ===== -->
     <div id="header-placeholder"></div>
 
-    <!-- ===== محتوى الصفحة الخاص بنظرية السندباد ===== -->
+    <!-- ===== محتوى الصفحة ===== -->
     <div class="page-content">
-        
+
+        <!-- ===== الهيدر الداخلي ===== -->
+        <div class="theory-header">
+            <h1><i class="fas fa-atom"></i> نظرية السندباد الموحدة</h1>
+            <div class="sub">
+                <span class="ar-text">من أصفار <span class="highlight">ريمان</span> إلى بنية <span class="highlight">الكون</span></span>
+                <span class="en-text">From <span class="highlight">Riemann</span> zeros to the structure of the <span class="highlight">universe</span></span>
+            </div>
+            <div class="equation-big">
+                <span class="z">Z(x)</span> + <span class="c">C(x)</span> + <span class="a">A(x)</span> = 1
+            </div>
+            <div class="tag-yemen">
+                <i class="fas fa-flag"></i> الباحث اليمني · م/ عبدالله محمد ناصر الجبري
+            </div>
+        </div>
+
+        <!-- ===== محاور النظرية ===== -->
         <h2 class="section-title">
+            <i class="fas fa-cubes"></i>
             <span class="ar-text">محاور النظرية</span>
             <span class="en-text">Theory Pillars</span>
         </h2>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">🧮</div>
-                <h3>Zx - الدالة الأم</h3>
-                <p><span class="ar-text">دالة رياضية جديدة تربط بين أصفار ريمان وتوزيع الأعداد الأولية.</span><span class="en-text">A new mathematical function linking Riemann zeros and prime distribution.</span></p>
+                <span class="card-icon">🧮</span>
+                <h3>Zx — الدالة الأم</h3>
+                <p><span class="ar-text">دالة رياضية جديدة تربط بين أصفار ريمان وتوزيع الأعداد الأولية. تمثل البنية الرياضية للكون.</span><span class="en-text">A new mathematical function linking Riemann zeros and prime distribution. Represents the mathematical structure of the universe.</span></p>
+                <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" target="_blank" class="doi-link"><i class="fab fa-github"></i> المستودع</a>
             </div>
             <div class="card">
-                <div class="card-icon">🌌</div>
-                <h3>C - الثوابت الكونية</h3>
-                <p><span class="ar-text">ربط الثوابت الفيزيائية (سرعة الضوء، ثابت بلانك) بالبنية الرياضية للكون.</span><span class="en-text">Linking physical constants to the mathematical structure of the universe.</span></p>
+                <span class="card-icon">🌌</span>
+                <h3>C — الثوابت الكونية</h3>
+                <p><span class="ar-text">تربط الثوابت الفيزيائية (سرعة الضوء، ثابت بلانك، ثابت الجاذبية) بالبنية الرياضية للكون.</span><span class="en-text">Links physical constants (speed of light, Planck constant, gravitational constant) to the mathematical structure.</span></p>
+                <a href="https://github.com/Jabri-web/jabri_lab" target="_blank" class="doi-link"><i class="fab fa-github"></i> المستودع</a>
             </div>
             <div class="card">
-                <div class="card-icon">🧠</div>
-                <h3>A - الوعي والإدراك</h3>
-                <p><span class="ar-text">البعد الإنساني في المعادلة، دور المراقب في فهم الكون.</span><span class="en-text">The human dimension in the equation, the observer's role.</span></p>
+                <span class="card-icon">🧠</span>
+                <h3>A — الوعي والإدراك</h3>
+                <p><span class="ar-text">البعد الإنساني في المعادلة. دور المراقب في فهم الكون وتفسيره. الوعي جزء من المعادلة.</span><span class="en-text">The human dimension in the equation. The observer's role in understanding and interpreting the universe.</span></p>
+                <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="doi-link"><i class="fas fa-id-card"></i> ORCID</a>
             </div>
         </div>
 
+        <!-- ===== مسائل الألفية ===== -->
         <h2 class="section-title">
+            <i class="fas fa-trophy"></i>
             <span class="ar-text">مسائل الألفية</span>
             <span class="en-text">Millennium Problems</span>
         </h2>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">📈</div>
+                <span class="card-icon">📈</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
                 <h3>فرضية ريمان</h3>
-                <p><span class="ar-text">إثبات مقترح يعتمد على دالة Zx في توزيع الأصفار.</span><span class="en-text">Proposed proof based on Zx function for zero distribution.</span></p>
+                <p><span class="ar-text">إثبات مقترح يعتمد على دالة Zx في توزيع الأصفار غير البديهية لدالة زيتا.</span><span class="en-text">Proposed proof based on Zx function for the distribution of non-trivial zeros of the zeta function.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20139904" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20139904</a>
             </div>
             <div class="card">
-                <div class="card-icon">💻</div>
+                <span class="card-icon">💻</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
                 <h3>P = NP</h3>
-                <p><span class="ar-text">مقاربة جديدة لحل إشكالية التعقيد الحاسوبي.</span><span class="en-text">A new approach to the computational complexity problem.</span></p>
+                <p><span class="ar-text">مقاربة جديدة لحل إشكالية التعقيد الحاسوبي باستخدام البنية الرياضية للنظرية.</span><span class="en-text">A new approach to the computational complexity problem using the theory's mathematical framework.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20145279" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20145279</a>
             </div>
             <div class="card">
-                <div class="card-icon">🌊</div>
+                <span class="card-icon">🌊</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
                 <h3>نافيير - ستوكس</h3>
-                <p><span class="ar-text">حل لمعادلات ديناميكا الموائع باستخدام البنية الرياضية للنظرية.</span><span class="en-text">Solving fluid dynamics using the theory's mathematical framework.</span></p>
+                <p><span class="ar-text">حل لمعادلات ديناميكا الموائع باستخدام البنية الرياضية للنظرية الموحدة.</span><span class="en-text">Solving fluid dynamics equations using the unified theory's mathematical framework.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20149618" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20149618</a>
             </div>
+            <div class="card">
+                <span class="card-icon">🕳️</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
+                <h3>يانغ-ميلز (فجوة الكتلة)</h3>
+                <p><span class="ar-text">إثبات وجود فجوة كتلة في نظرية يانغ-ميلز باستخدام دالة Zx.</span><span class="en-text">Proof of the mass gap in Yang-Mills theory using the Zx function.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20148344" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20148344</a>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔮</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
+                <h3>بيرش وسوينرتون-داير</h3>
+                <p><span class="ar-text">حدسية تربط بين رتبة المنحنيات الإهليلجية وعدد الحلول.</span><span class="en-text">Conjecture linking the rank of elliptic curves to the number of solutions.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20145337" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20145337</a>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧩</span>
+                <span class="badge-mill">🏆 Millennium Prize</span>
+                <h3>حدسية هودج</h3>
+                <p><span class="ar-text">حدسية هودج في الهندسة الجبرية — مقاربة جديدة باستخدام البنية الطوبولوجية.</span><span class="en-text">Hodge conjecture in algebraic geometry — a new approach using topological structure.</span></p>
+                <a href="https://doi.org/10.5281/zenodo.20114317" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20114317</a>
+            </div>
+            
+            
+            <!-- ===== روابط الصفحات المرتبطة ===== -->
+<div class="theory-links">
+    <a href="Sindbad-theory.html" class="theory-link">
+        <i class="fas fa-book-open"></i> الشرح التفصيلي
+    </a>
+    <a href="theory-ar.html" class="theory-link">
+        <i class="fas fa-language"></i> النسخة العربية المبسطة
+    </a>
+    <a href="theory-en.html" class="theory-link">
+        <i class="fas fa-globe"></i> English Version
+    </a>
+</div>
         </div>
-        
-        <!-- رجوع للرئيسية -->
-        <div style="margin: 40px 0; text-align: center;">
-            <a href="https://jabri-com.vercel.app/" style="background: #6ae3ff; color: #000; padding: 12px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block;">🏠 العودة للواحة الرئيسية</a>
+
+
+
+
+
+        <!-- ===== زر العودة ===== -->
+        <div style="margin: 50px 0 30px; text-align: center;">
+            <a href="https://jabri-web.github.io/" class="btn-home">
+                <i class="fas fa-home"></i> العودة للواحة الرئيسية
+            </a>
         </div>
+
     </div>
 
-    <!-- ===== الفوتر العام (يتم تحميله بواسطة init-page-root.js) ===== -->
+    <!-- ===== الفوتر العام ===== -->
     <div id="footer-placeholder"></div>
 
-    <!-- ===== سكربت اللغة (إذا لم يكن موجوداً في الهيدر العام) ===== -->
+    <!-- ===== سكربت اللغة ===== -->
     <script>
-        // دالة تطبيق اللغة (مثل الموجودة في index.html)
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             document.body.classList.remove('ar', 'en');
             document.body.classList.add(lang);
             localStorage.setItem('preferred-language', lang);
-            // تحديث عداد الزوار إذا وجد
-            if (typeof updateCounterLang === 'function') updateCounterLang();
         }
-        
-        // استعادة اللغة المحفوظة
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferred-language') || 'ar';
             applyLanguage(savedLang);
         });
-        
-        // جعل الدالة عالمية
         window.applyLanguage = applyLanguage;
     </script>
+
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
 
 </body>
 </html>

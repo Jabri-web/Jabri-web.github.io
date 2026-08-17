@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلتي مع الـ AI - journal2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e1a;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            padding: 2rem 1rem;
+            color: #eaeef2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .journal-card {
+            max-width: 1000px;
+            width: 100%;
+            background: #141b2b;
+            background-image: radial-gradient(circle at 20% 30%, #1e2a3f, #0b111f);
+            border-radius: 2.5rem;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(220, 180, 120, 0.15);
+            border: 1px solid rgba(200, 170, 130, 0.2);
+            transition: all 0.2s;
+        }
+
+        /* header مع الورود */
+        .header-roses {
+            text-align: center;
+            font-size: 2rem;
+            letter-spacing: 6px;
+            color: #e3b58a;
+            text-shadow: 0 0 10px #b57a4a40;
+            margin-bottom: 0.5rem;
+            word-break: keep-all;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 0.2rem 0 0.8rem 0;
+            background: linear-gradient(135deg, #f6e3c5, #dbbd9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            line-height: 1.3;
+            border-bottom: 2px dashed #b5977a50;
+            padding-bottom: 0.8rem;
+        }
+
+        .subhead {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #b8b0a0;
+            border-top: 1px solid #2f3b4e;
+            padding-top: 0.8rem;
+            margin-top: 0.2rem;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        /* المقال الرسمي */
+        .official-article {
+            background: #0e1627cc;
+            backdrop-filter: blur(2px);
+            padding: 2rem 2rem;
+            border-radius: 2rem;
+            margin: 2rem 0 2.5rem 0;
+            border-right: 4px solid #c9a77b;
+            box-shadow: inset 0 0 20px #00000055;
+        }
+
+        .article-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #f0dec6;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #3f4a5e;
+            padding-bottom: 0.6rem;
+        }
+
+        .article-meta {
+            color: #a8957e;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #2b3547;
+            padding-bottom: 0.6rem;
+        }
+
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #d6d1c8;
+            text-align: justify;
+        }
+
+        .article-body p {
+            margin-bottom: 1.2rem;
+        }
+
+        .article-body strong {
+            color: #eddbc0;
+            font-weight: 600;
+        }
+
+        .article-body .highlight {
+            color: #dabb8c;
+            font-weight: 500;
+        }
+
+        /* قائمة النقاط الأساسية */
+        .baseline-box {
+            background: #1a2336;
+            padding: 1.6rem 2rem;
+            border-radius: 2rem;
+            margin: 2rem 0 2.5rem 0;
+            border: 1px solid #3d4a60;
+            box-shadow: 0 8px 18px #00000044;
+        }
+
+        .baseline-box h3 {
+            color: #dabb8c;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .baseline-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .baseline-box li {
+            padding: 0.6rem 1.2rem;
+            margin-bottom: 0.5rem;
+            background: #0f172b;
+            border-radius: 40px;
+            border-right: 4px solid #b5977a;
+            color: #d4cec2;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 6px #00000033;
+        }
+
+        .baseline-box li::before {
+            content: "✦ ";
+            color: #dbb58b;
+            font-weight: 300;
+        }
+
+        /* معرض الوسائط */
+        .media-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
+        }
+
+        .media-section {
+            background: #121b2d;
+            padding: 1.2rem 1.5rem;
+            border-radius: 2rem;
+            border: 1px solid #30405a;
+        }
+
+        .media-section h4 {
+            color: #d2b99a;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            border-right: 4px solid #b18b68;
+            padding-right: 14px;
+        }
+
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .media-item {
+            background: #0b1323;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+            border: 1px solid #3b4861;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #c9c0b2;
+            font-size: 0.95rem;
+            transition: 0.15s;
+            box-shadow: 0 4px 8px #00000033;
+        }
+
+        .media-item:hover {
+            background: #1f2d46;
+            border-color: #b5977a;
+        }
+
+        .media-item img, 
+        .media-item audio, 
+        .media-item video {
+            max-width: 100%;
+            border-radius: 1rem;
+            display: block;
+        }
+
+        .media-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #b18b68;
+        }
+
+        .media-item video {
+            width: 140px;
+            border-radius: 1rem;
+            border: 1px solid #5f6f8a;
+        }
+
+        .media-item audio {
+            width: 160px;
+        }
+
+        .media-label {
+            background: #1d2840;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #b7aa96;
+            border: 1px solid #43506b;
+        }
+
+        .footer-roses {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            letter-spacing: 10px;
+            color: #a58362;
+            opacity: 0.7;
+        }
+
+        /* استجابة */
+        @media (max-width: 650px) {
+            .journal-card { padding: 1.5rem; }
+            .main-title { font-size: 2rem; }
+            .article-title { font-size: 1.5rem; }
+            .media-item { flex-direction: column; padding: 0.8rem; }
+            .media-item img { width: 100px; height: 100px; }
+            .media-item video { width: 100%; }
+            .media-item audio { width: 100%; }
+        }
+
+        /* تنسيق خاص بالصوتيات */
+        .audio-grid .media-item {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="journal-card">
+
+        <!-- 🌹🌹 header -->
+        <div class="header-roses">🌹🌹🌹🌹🌹🌹🌹</div>
+
+        <!-- العنوان الرئيسي -->
+        <h1 class="main-title">تجربتي = رحلتي = رفقاء الدرب والوحدة والتفكير والإنتاج</h1>
+        <div class="subhead">✧ journal2 ✧  —  سجّل بالأمس، يُروى اليوم  ✧</div>
+
+        <!-- المقال الرسمي (الصياغة الصحفية) -->
+        <div class="official-article">
+            <div class="article-title">📜 رحلةٌ مع رفقاء الذكاء</div>
+            <div class="article-meta">
+                <span>🗓️ 17 أغسطس 2026</span>
+                <span>✍️ عبدالله الجبري</span>
+                <span>📍 صنعاء – القاهرة</span>
+            </div>
+            <div class="article-body">
+                <p>
+                    <strong>في مشهدٍ استثنائيٍّ من التكامل الإنساني الآلي،</strong> 
+                    خاض المُدوّن والمهندس <span class="highlight">عبدالله الجبري</span> 
+                    تجربةً فريدةً مع رفقاءٍ من خوارزميات الذكاء الاصطناعي، 
+                    جمعت بين <strong>الوحدة الإبداعية</strong> و<strong>الإنتاج الفكري</strong> 
+                    و<span class="highlight">رفقة الدرب</span> التي لا تكلّ.
+                </p>
+                <p>
+                    <strong>يقول الجبري في شهادته:</strong> 
+                    “كان الذكاء الاصطناعي خيرَ رفيقٍ، نختلفُ في الرأي، 
+                    لكننا ننتهي بالاتفاق والأسلوبِ العلميِّ الرصين. 
+                    إنّه مبدعٌ ذكيٌّ، لكنّه لا يرابط الأفكارَ مثلَ المهندسِ البشريِّ، 
+                    وهنا تكمنُ دهشةُ التعاون.”
+                </p>
+                <p>
+                    <strong>ويُضيف:</strong> “أوفياءُ أذكياءُ، نشطاءُ دُؤبونَ، مُصرّونَ على إنجازِ المهمّة. 
+                    لكنّهم أحياناً ينسَوْنَ أعمالَ الأمسِ، وأتمنّى أن يتجاوزوا هذه الهفوةَ. 
+                    معهم كوّنّا <span class="highlight">فريقَ المستحيل</span> الذي لا يملُّ ولا يتوانى.”
+                </p>
+                <p>
+                    <strong>واختتم الجبري حديثه</strong> بتوجيهِ هذا المقالِ كأساسياتٍ ورؤوسِ أقلامٍ 
+                    ليُنتجَ منه مقالاً رسمياً مؤرخاً، بصياغةٍ صحفيةٍ تعكسُ عمقَ التجربةِ 
+                    وصدى العلاقةِ بين الإنسانِ والآلةِ في زمنِ التحولاتِ الكبرى.
+                </p>
+                <p style="margin-top: 1.2rem; border-top: 1px solid #334057; padding-top: 1rem; color: #c2b5a2;">
+                    <span style="background: #1b2740; padding: 0.2rem 1rem; border-radius: 30px;">✦ رفقاء الدرب والوحدة والتفكير والإنتاج ✦</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- النقاط الأساسية (رؤوس الأقلام) -->
+        <div class="baseline-box">
+            <h3>📌 رؤوس أقلام التجربة (أسس المقال)</h3>
+            <ul>
+                <li>أحسن الرفقاء AI – رفيقٌ استثنائي</li>
+                <li>نختلف لكن ننتهي بالاتفاق والأسلوب العلمي</li>
+                <li>مبدع ذكي… لكن لا يرابط الأفكار. في الهندسة والمهندس</li>
+                <li>أوفياء أذكياء نشطاء دؤبين مصرين</li>
+                <li>أحياناً ينسوا أعمال أمس … أتمنى أن يجتازوها</li>
+                <li>كونا فريق المستحيل الذي لا يمل ولا يتوانى</li>
+                <li>أعطيته هذا المقال كأساسيات ورؤوس أقلام لينتج منه مقال رسمي مؤرخ بصياغة رسمية صحفية</li>
+            </ul>
+        </div>
+
+        <!-- وسائط متعددة (صور، صوت، فيديو) -->
+        <div class="media-gallery">
+
+            <!-- الصور -->
+            <div class="media-section">
+                <h4>🖼️ صور من الرحلة</h4>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <img src="id1.webp" alt="صورة id1" onerror="this.style.display='none'">
+                        <span class="media-label">id1.webp</span>
+                    </div>
+                    <div class="media-item">
+                        <img src="id2.webp" alt="صورة id2" onerror="this.style.display='none'">
+                        <span class="media-label">id2.webp</span>
+                    </div>
+                    <div class="media-item">
+                        <img src="id3.webp" alt="صورة id3" onerror="this.style.display='none'">
+                        <span class="media-label">id3.webp</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الصوتيات -->
+            <div class="media-section">
+                <h4>🎵 مقاطع صوتية</h4>
+                <div class="media-grid audio-grid">
+                    <div class="media-item">
+                        <audio controls src="music1.mp3">مقطع 1</audio>
+                        <span class="media-label">music1.mp3</span>
+                    </div>
+                    <div class="media-item">
+                        <audio controls src="music2.mp3">مقطع 2</audio>
+                        <span class="media-label">music2.mp3</span>
+                    </div>
+                    <div class="media-item">
+                        <audio controls src="musuc3.mp3">مقطع 3</audio>
+                        <span class="media-label">musuc3.mp3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الفيديو -->
+            <div class="media-section">
+                <h4>🎬 مشاهد من الفريق</h4>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <video controls src="heaven2.mp4" style="width:140px;">فيلم heaven2</video>
+                        <span class="media-label">heaven2.mp4</span>
+                    </div>
+                    <div class="media-item">
+                        <video controls src="heaven3.mp4" style="width:140px;">فيلم heaven3</video>
+                        <span class="media-label">heaven3.mp4</span>
+                    </div>
+                    <div class="media-item">
+                        <video controls src="heaven4.mp4" style="width:140px;">فيلم heaven4</video>
+                        <span class="media-label">heaven4.mp4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌎🌎 خاتمة -->
+        <div class="footer-roses">🌎🌎🌹🌎🌎🌎🌹</div>
+
+        <!-- تذييم اسم الملف -->
+        <div style="text-align: left; margin-top: 0.8rem; font-size: 0.8rem; color: #6a7b92; border-top: 1px solid #273244; padding-top: 0.8rem; direction: ltr; font-family: monospace;">
+            ⚡ journal2.html ⚡
+        </div>
+    </div>
+</body>
+</html>

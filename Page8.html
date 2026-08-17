@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- ===== حماية المحتوى + الكانونيكال الثابت ===== -->
+    <link rel="alternate" hreflang="ar" href="" />
+    <link rel="alternate" hreflang="en" href="" />
+    <link rel="canonical" href="" />
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const base = 'https://jabri-web.github.io';
+        const path = window.location.pathname;
+        const canonical = document.querySelector('link[rel="canonical"]');
+        const arAlt = document.querySelector('link[hreflang="ar"]');
+        const enAlt = document.querySelector('link[hreflang="en"]');
+        if (canonical) canonical.href = base + path;
+        if (arAlt) arAlt.href = base + path;
+        if (enAlt) enAlt.href = base + '/en' + path;
+    });
+    </script>
+    
     <!-- ===== SEO خاص بالتراث اليمني ===== -->
     <title>تراث اليمن العريق | صنعاء شبام سقطرى - واحة الجبري</title>
     <meta name="description" content="توثيق تراث اليمن العريق: صنعاء القديمة، شبام حضرموت، جزيرة سقطرى. صور، تاريخ، وثقافة يمنية أصيلة.">
     <meta name="keywords" content="تراث اليمن, صنعاء القديمة, شبام حضرموت, سقطرى, اليمن, تاريخ, ثقافة, نزار, البردوني, استديو اليمن">
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
-    <link rel="author" href="https://jabri-com.vercel.app/about.html" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/Page8.html" />
     <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved.">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
     
     <!-- ===== Open Graph ===== -->
     <meta property="og:locale" content="ar_YE">
@@ -19,12 +37,12 @@
     <meta property="og:site_name" content="واحة الجبري | تراث اليمن">
     <meta property="og:title" content="تراث اليمن العريق | صنعاء شبام سقطرى">
     <meta property="og:description" content="توثيق التراث اليمني العريق: صنعاء، شبام، سقطرى. حضارة وتاريخ يمني أصيل.">
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Yemen2026.png">
-    <meta property="og:url" content="https://jabri-com.vercel.app/Page8.html">
+    <meta property="og:image" content="https://jabri-web.github.io/image/Yemen2026.png">
+    <meta property="og:url" content="https://jabri-web.github.io/Page8.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="تراث اليمن العريق | صنعاء شبام سقطرى">
     <meta name="twitter:description" content="توثيق التراث اليمني العريق - واحة الجبري">
-    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Yemen2026.png">
+    <meta name="twitter:image" content="https://jabri-web.github.io/image/Yemen2026.png">
     
     <!-- ===== Schema.org ===== -->
     <script type="application/ld+json">
@@ -33,21 +51,20 @@
         "@type": "CollectionPage",
         "name": "تراث اليمن العريق",
         "description": "توثيق مدن صنعاء، شبام، سقطرى",
-        "url": "https://jabri-com.vercel.app/Page8.html",
+        "url": "https://jabri-web.github.io/Page8.html",
         "about": [
             { "@type": "Place", "name": "صنعاء القديمة", "description": "مدينة صنعاء القديمة - تراث يمني عريق" },
             { "@type": "Place", "name": "شبام حضرموت", "description": "شبام حضرموت - مانهاتن الصحراء" },
-            { "@type": "Place", "name": "سقطرى", "description": "جزيرة سقطرى - درة اليمن" }
+            { "@type": "Place", "name": "سقطرى", "description": "جزيرة سقطرى - درة اليمن" },
+            { "@type": "Place", "name": "عدن", "description": "مدينة عدن - الصهاريج والسواحل الذهبية" }
         ],
         "publisher": { "@type": "Organization", "name": "واحة الجبري" }
     }
     </script>
     
-    <!-- ===== تحميل الهيدر والفوتر العامين (مثل Page12 و Check) ===== -->
-    <script src="js/init-page-root.js" defer></script>
-    
-    <!-- ===== خطوط جوجل ===== -->
+    <!-- ===== خطوط وأيقونات ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         /* ===== ستايل خاص بالصفحة فقط ===== */
@@ -70,15 +87,87 @@
             padding: 0 20px;
             width: 100%;
         }
+
+        /* ===== الهيدر الداخلي ===== */
+        .heritage-header {
+            background: linear-gradient(135deg, #1a1a0a, #2a2a1a);
+            border: 1px solid #4a4a2a;
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .heritage-header::before {
+            content: '🇾🇪';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.05;
+            top: -30px;
+            right: -30px;
+            transform: rotate(15deg);
+        }
+        .heritage-header h1 {
+            font-size: 2.8rem;
+            color: #ffd700;
+            position: relative;
+            z-index: 1;
+        }
+        .heritage-header h1 i {
+            color: #ffaa00;
+        }
+        .heritage-header .sub {
+            font-size: 1.2rem;
+            color: #b0b0a0;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .heritage-header .sub .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .tag-yemen {
+            display: inline-block;
+            background: #1a2a1a;
+            color: #8bc34a;
+            padding: 0.3rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid #2a4a2a;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
         .section-title {
             font-size: 2rem;
             color: #ffd700;
             margin: 40px 0 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
+        .section-title i {
+            color: #ffaa00;
+        }
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            max-width: 80px;
+            background: linear-gradient(to left, #4a4a2a, transparent);
+        }
+        .section-title::after {
+            background: linear-gradient(to right, #4a4a2a, transparent);
+        }
+
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
             margin: 30px 0;
         }
@@ -96,18 +185,14 @@
         .card:hover {
             border-color: #ffd700;
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+            background: #1f1f2e;
         }
-        .card-icon { font-size: 3rem; margin-bottom: 15px; }
+        .card-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
         .card h3 { color: #ffd700; font-size: 1.3rem; margin-bottom: 10px; }
-        .card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
-        
-        .ar-text { display: inline; }
-        .en-text { display: none; }
-        body.en .ar-text { display: none; }
-        body.en .en-text { display: inline; }
-        
-        /* ===== شبكة الأزرار السبعة للتراث (متجاوبة) ===== */
+        .card p { color: #b0b0b8; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ===== شبكة الأزرار السبعة للتراث ===== */
         .heritage-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -138,7 +223,6 @@
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25);
             background: linear-gradient(145deg, #252545, #1a1a2e);
         }
-        /* الزر الخاص بـ Yemen-photo يكون مميزاً (أكبر أو لون مختلف) */
         .heritage-btn.photo-studio {
             border-color: #ffaa00;
             background: linear-gradient(145deg, #1f1a0a, #2a200f);
@@ -162,27 +246,33 @@
             font-size: 0.7rem;
         }
         body.en .heritage-btn .btn-label { align-items: flex-start; text-align: left; }
-        
-        /* زر العودة للرئيسية */
-        .back-home-btn {
+
+        .btn-home {
             display: inline-block;
             background: #ffd700;
             color: #0a0a0f;
-            padding: 12px 40px;
-            border-radius: 30px;
+            padding: 14px 45px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
             transition: 0.3s;
-            margin-top: 10px;
+            border: none;
         }
-        .back-home-btn:hover {
+        .btn-home:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
         }
-        
+        .btn-home i { margin-left: 10px; }
+
+        .ar-text { display: inline; }
+        .en-text { display: none; }
+        body.en .ar-text { display: none; }
+        body.en .en-text { display: inline; }
+
         @media (max-width: 768px) {
             .heritage-buttons-grid { grid-template-columns: repeat(2, 1fr); }
+            .heritage-header h1 { font-size: 1.8rem; }
         }
         @media (max-width: 480px) {
             .heritage-buttons-grid { grid-template-columns: 1fr; }
@@ -197,70 +287,83 @@
     <!-- ===== الهيدر العام ===== -->
     <div id="header-placeholder"></div>
 
-    <!-- ===== محتوى الصفحة الخاص بالتراث اليمني ===== -->
+    <!-- ===== محتوى الصفحة ===== -->
     <div class="page-content">
-        
+
+        <!-- ===== الهيدر الداخلي ===== -->
+        <div class="heritage-header">
+            <h1><i class="fas fa-landmark"></i> تراث اليمن العريق</h1>
+            <div class="sub">
+                <span class="ar-text">من <span class="highlight">صنعاء</span> إلى <span class="highlight">شبام</span> و<span class="highlight">سقطرى</span> — حضارة عمرها آلاف السنين</span>
+                <span class="en-text">From <span class="highlight">Sana'a</span> to <span class="highlight">Shibam</span> and <span class="highlight">Socotra</span> — a civilization thousands of years old</span>
+            </div>
+            <div class="tag-yemen">
+                <i class="fas fa-flag"></i> توثيق التراث اليمني · واحة الجبري
+            </div>
+        </div>
+
+        <!-- ===== المدن التاريخية ===== -->
         <h2 class="section-title">
+            <i class="fas fa-city"></i>
             <span class="ar-text">المدن التاريخية</span>
             <span class="en-text">Historic Cities</span>
         </h2>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">🏙️</div>
+                <span class="card-icon">🏙️</span>
                 <h3>صنعاء القديمة</h3>
-                <p><span class="ar-text">مدينة مسورة من العصور القديمة، تشتهر بالبيوت المبنية من الطين والمزينة بالنقوش الهندسية.</span><span class="en-text">An ancient walled city known for its mud-brick houses decorated with geometric patterns.</span></p>
+                <p><span class="ar-text">مدينة مسورة من العصور القديمة، تشتهر بالبيوت المبنية من الطين والمزينة بالنقوش الهندسية. أحد مواقع اليونسكو للتراث العالمي.</span><span class="en-text">An ancient walled city known for its mud-brick houses decorated with geometric patterns. A UNESCO World Heritage site.</span></p>
             </div>
-            
             <div class="card">
-                <div class="card-icon">🏙️</div>
-                <h3>عدن </h3>
-                <p><span class="ar-text">مدينة عدن تشتهر بالصهاريج والسواحل الذهبية والمنتجعات السياحية.</span><span class="en-text">An ancient walled city known for its mud-brick houses decorated with geometric patterns.</span></p>
+                <span class="card-icon">🌊</span>
+                <h3>عدن</h3>
+                <p><span class="ar-text">مدينة عدن تشتهر بالصهاريج والسواحل الذهبية والمنتجعات السياحية. بوابة اليمن على المحيط الهندي.</span><span class="en-text">Aden is known for its cisterns, golden coasts, and tourist resorts. Yemen's gateway to the Indian Ocean.</span></p>
             </div>
-            
             <div class="card">
-                <div class="card-icon">🏰</div><div class="card">
-
+                <span class="card-icon">🏰</span>
                 <h3>شبام حضرموت</h3>
-                <p><span class="ar-text">"مانهاتن الصحراء" أقدم ناطحات السحاب في العالم من الطوب اللبن.</span><span class="en-text">The "Manhattan of the Desert" – the world's oldest skyscrapers made of mudbrick.</span></p>
+                <p><span class="ar-text">"مانهاتن الصحراء" أقدم ناطحات السحاب في العالم من الطوب اللبن. موقع تراث عالمي.</span><span class="en-text">The "Manhattan of the Desert" – the world's oldest skyscrapers made of mudbrick. A World Heritage site.</span></p>
             </div>
             <div class="card">
-                <div class="card-icon">🏝️</div>
+                <span class="card-icon">🏝️</span>
                 <h3>سقطرى</h3>
-                <p><span class="ar-text">جزيرة التنين والعجائب الطبيعية، موطن لأندر النباتات في العالم.</span><span class="en-text">Island of dragons and natural wonders, home to the rarest plants on Earth.</span></p>
+                <p><span class="ar-text">جزيرة التنين والعجائب الطبيعية، موطن لأندر النباتات في العالم. درة المحيط الهندي.</span><span class="en-text">Island of dragons and natural wonders, home to the rarest plants on Earth. The jewel of the Indian Ocean.</span></p>
             </div>
         </div>
 
+        <!-- ===== معالم وموروثات ===== -->
         <h2 class="section-title">
+            <i class="fas fa-gem"></i>
             <span class="ar-text">معالم وموروثات</span>
             <span class="en-text">Landmarks & Heritage</span>
         </h2>
         <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">🕌</div>
+                <span class="card-icon">🕌</span>
                 <h3>المساجد القديمة</h3>
-                <p><span class="ar-text">مساجد تاريخية تعود للقرون الأولى للإسلام في اليمن.</span><span class="en-text">Historic mosques dating back to the early centuries of Islam.</span></p>
+                <p><span class="ar-text">مساجد تاريخية تعود للقرون الأولى للإسلام في اليمن، مثل جامع صنعاء الكبير.</span><span class="en-text">Historic mosques dating back to the early centuries of Islam in Yemen, like the Great Mosque of Sana'a.</span></p>
             </div>
             <div class="card">
-                <div class="card-icon">🎨</div>
+                <span class="card-icon">🎨</span>
                 <h3>الحرف اليدوية</h3>
-                <p><span class="ar-text">الفضة اليمنية، والخناجر، والمنسوجات، والفخار.</span><span class="en-text">Yemeni silver, daggers, textiles, and pottery.</span></p>
+                <p><span class="ar-text">الفضة اليمنية، والخناجر (الجنبية)، والمنسوجات، والفخار. حرف توارثتها الأجيال.</span><span class="en-text">Yemeni silver, daggers (janbiya), textiles, and pottery. Crafts passed down through generations.</span></p>
             </div>
             <div class="card">
-                <div class="card-icon">📜</div>
+                <span class="card-icon">📜</span>
                 <h3>المخطوطات</h3>
-                <p><span class="ar-text">مكتبات تاريخية تضم مخطوطات نادرة في العلوم والفلك والطب.</span><span class="en-text">Historic libraries containing rare manuscripts on science, astronomy, and medicine.</span></p>
+                <p><span class="ar-text">مكتبات تاريخية تضم مخطوطات نادرة في العلوم والفلك والطب والفقه.</span><span class="en-text">Historic libraries containing rare manuscripts on science, astronomy, medicine, and jurisprudence.</span></p>
             </div>
         </div>
 
-        <!-- ===== 🌟 شبكة الأزرار السبعة (بوابات التراث) ===== -->
+        <!-- ===== 🗺️ استكشف التراث ===== -->
         <h2 class="section-title" style="margin-top:50px;">
-            <span class="ar-text">🗺️ استكشف التراث</span>
-            <span class="en-text">🗺️ Explore Heritage</span>
+            <i class="fas fa-compass"></i>
+            <span class="ar-text">استكشف التراث</span>
+            <span class="en-text">Explore Heritage</span>
         </h2>
         
         <div class="heritage-buttons-grid">
             
-            <!-- 1. التاريخ الكامل -->
             <a href="History-pdf.html" class="heritage-btn">
                 <span class="btn-icon">📜</span>
                 <span class="btn-label">
@@ -270,7 +373,6 @@
                 </span>
             </a>
             
-            <!-- 2. نزار -->
             <a href="Nezar.html" class="heritage-btn">
                 <span class="btn-icon">👤</span>
                 <span class="btn-label">
@@ -280,7 +382,6 @@
                 </span>
             </a>
             
-            <!-- 3. اليمن البردوني -->
             <a href="Sindbad-Brdoni.html" class="heritage-btn">
                 <span class="btn-icon">🎭</span>
                 <span class="btn-label">
@@ -290,7 +391,6 @@
                 </span>
             </a>
             
-            <!-- 4. صنعاء -->
             <a href="Sanaa.html" class="heritage-btn">
                 <span class="btn-icon">🏙️</span>
                 <span class="btn-label">
@@ -300,7 +400,6 @@
                 </span>
             </a>
             
-            <!-- 5. شبام -->
             <a href="Shibam.html" class="heritage-btn">
                 <span class="btn-icon">🏰</span>
                 <span class="btn-label">
@@ -310,7 +409,6 @@
                 </span>
             </a>
             
-            <!-- 6. سقطرى -->
             <a href="Soqatra.html" class="heritage-btn">
                 <span class="btn-icon">🏝️</span>
                 <span class="btn-label">
@@ -320,7 +418,6 @@
                 </span>
             </a>
 
-            <!-- 7. 📸 استديو اليمن (الزر الجديد المميز) -->
             <a href="Yemen-photo.html" class="heritage-btn photo-studio">
                 <span class="btn-icon">📸</span>
                 <span class="btn-label">
@@ -333,15 +430,17 @@
         </div>
         
         <!-- ===== زر العودة للرئيسية ===== -->
-        <div style="margin: 20px 0 40px; text-align: center;">
-            <a href="https://jabri-com.vercel.app/" class="back-home-btn">🏠 <span class="ar-text">العودة للواحة الرئيسية</span><span class="en-text">Back to Main Oasis</span></a>
+        <div style="margin: 30px 0 40px; text-align: center;">
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-home"></i> <span class="ar-text">العودة للواحة الرئيسية</span><span class="en-text">Back to Main Oasis</span>
+            </a>
         </div>
     </div>
 
     <!-- ===== الفوتر العام ===== -->
     <div id="footer-placeholder"></div>
 
-    <!-- ===== سكربت اللغة (إذا لم يكن موجوداً في الهيدر العام) ===== -->
+    <!-- ===== سكربت اللغة ===== -->
     <script>
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
@@ -349,7 +448,6 @@
             document.body.classList.remove('ar', 'en');
             document.body.classList.add(lang);
             localStorage.setItem('preferred-language', lang);
-            if (typeof updateCounterLang === 'function') updateCounterLang();
         }
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferred-language') || 'ar';
@@ -357,6 +455,9 @@
         });
         window.applyLanguage = applyLanguage;
     </script>
+
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
 
 </body>
 </html>

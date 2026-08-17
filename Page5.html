@@ -3,73 +3,443 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jabri_Nobble - Millennium Proofs</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<title>Jabri_Nobble | بحوث الجبري</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+<!-- Font Awesome 6 Free (أيقونات) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-body{background:#0d1117;color:#c9d1d9;font-family:'Cairo',sans-serif;max-width:900px;margin:0 auto;padding:0 20px;line-height:1.8}
-header{text-align:center;padding:40px 0;border-bottom:2px solid #30363d;margin-bottom:40px}
-h1{color:#58a6ff;font-size:40px;margin:0}
-.subtitle{color:#8b949e;font-size:16px;margin-top:8px}
-.identity-box{background:linear-gradient(135deg,#161b22 0%,#1c2128 100%);border:2px solid #00ffc8;padding:30px;border-radius:12px;text-align:center;margin:30px 0;box-shadow:0 0 25px rgba(0,255,200,0.2)}
-.identity-box p{font-size:28px;color:#00ffc8;margin:0;font-weight:700}
-.doi{background:#161b22;padding:20px;border-radius:10px;margin:20px 0;border:2px solid #30363d;transition:0.3s}
-.doi:hover{border-color:#58a6ff;box-shadow:0 0 15px rgba(88,166,255,0.2)}
-.doi h3{margin:0 0 10px 0;color:#58a6ff;font-size:20px}
-.doi p{margin:5px 0;font-size:16px;color:#c9d1d9}
-.btn{display:inline-block;padding:6px 14px;background:#1f6feb;color:white;border-radius:6px;font-size:13px;margin-right:8px;margin-top:10px;font-weight:600;text-decoration:none}
-.btn:hover{background:#388bfd}
-footer{text-align:center;padding:30px 0;margin-top:50px;border-top:2px solid #30363d;color:#8b949e;font-size:14px}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: #0b0e14;
+  color: #e6edf3;
+  min-height: 100vh;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  background: #131a22;
+  padding: 40px 30px;
+  border-radius: 28px;
+  border: 1px solid #2d3748;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+/* رأس الصفحة */
+.header-icon {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 2.4rem;
+  color: #58a6ff;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #f0f6fc;
+  text-align: center;
+  letter-spacing: 1px;
+}
+h1 span {
+  color: #58a6ff;
+}
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #8b949e;
+  margin-bottom: 40px;
+  border-bottom: 1px dashed #2d3748;
+  padding-bottom: 20px;
+  line-height: 1.8;
+}
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #58a6ff;
+  margin: 40px 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-right: 5px solid #58a6ff;
+  padding-right: 18px;
+}
+.section-title i {
+  font-size: 1.7rem;
+  color: #f0883e;
+}
+/* شبكة الكروت (Cards Grid) */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  margin-top: 10px;
+}
+.card {
+  background: #1c2633;
+  border-radius: 20px;
+  padding: 24px 18px 20px;
+  border: 1px solid #2d3748;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  color: #e6edf3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #58a6ff;
+  background: #1f2a3a;
+  box-shadow: 0 12px 30px rgba(88,166,255,0.15);
+}
+.card-icon {
+  font-size: 3rem;
+  color: #58a6ff;
+  margin-bottom: 10px;
+  background: #0b141f;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid #2d3748;
+}
+.card .en-title {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #f0f6fc;
+}
+.card .ar-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #b1bac4;
+  margin-top: 4px;
+}
+.card .repo-desc {
+  font-size: 0.85rem;
+  color: #8b949e;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.badge {
+  display: inline-block;
+  background: #1f6feb;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 40px;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+.badge.p1 { background: #1f6feb; }
+.badge.p2 { background: #238636; }
+.badge.p3 { background: #a371f7; }
+.badge.p4 { background: #f9826c; }
+
+/* قائمة الأبحاث - كروت مصغرة */
+.paper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.paper-card {
+  background: #1a232f;
+  border: 1px solid #2d3748;
+  border-radius: 16px;
+  padding: 18px 14px;
+  transition: 0.2s;
+  text-align: center;
+}
+.paper-card:hover {
+  border-color: #58a6ff;
+  background: #1f2b3b;
+  transform: scale(1.02);
+}
+.paper-card i {
+  font-size: 2rem;
+  color: #f0883e;
+  margin-bottom: 6px;
+  display: block;
+}
+.paper-card .paper-name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #f0f6fc;
+}
+.paper-card .paper-sub {
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin: 4px 0 8px;
+}
+.paper-card .doi-link {
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  background: #0b141f;
+  padding: 4px 12px;
+  border-radius: 30px;
+  display: inline-block;
+  border: 1px solid #2d3748;
+  transition: 0.2s;
+}
+.paper-card .doi-link:hover {
+  background: #1f6feb;
+  color: #fff;
+  border-color: #1f6feb;
+}
+
+/* قائمة تحت التطوير */
+.dev-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.dev-tag {
+  background: #1c2633;
+  border: 1px solid #2d3748;
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-weight: 700;
+  color: #b1bac4;
+  transition: 0.2s;
+}
+.dev-tag i {
+  margin-left: 8px;
+  color: #f0883e;
+}
+.dev-tag:hover {
+  background: #2d3748;
+  border-color: #58a6ff;
+  color: #f0f6fc;
+  transform: scale(1.04);
+}
+
+/* تواصل */
+.contact-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  background: #0f1822;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid #2d3748;
+  margin-top: 16px;
+}
+.contact-box a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+.contact-box a:hover {
+  color: #f0883e;
+  transform: scale(1.05);
+}
+.contact-box i {
+  font-size: 1.8rem;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 45px;
+  color: #8b949e;
+  font-size: 0.95rem;
+  border-top: 1px solid #2d3748;
+  padding-top: 30px;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.footer-note i {
+  color: #f0883e;
+  margin: 0 6px;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 25px 15px; }
+  h1 { font-size: 2rem; }
+  .section-title { font-size: 1.3rem; }
+  .grid-cards { grid-template-columns: 1fr 1fr; }
+  .paper-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>Jabri_Nobble</h1>
-<p class="subtitle">Millennium Prize Problems - Solved</p>
-<a class="btn" href="https://github.com/jabri-web/Jabri_Nobble" target="_blank">View on GitHub</a>
-</header>
+<div class="container">
 
-<div class="identity-box">
-<p>Jabri Identity: $Z_t = Z + C + A = 1$</p>
+  <!-- أيقونات علوية -->
+  <div class="header-icon">
+    <i class="fas fa-crow"></i>
+    <i class="fas fa-atom"></i>
+    <i class="fas fa-brain"></i>
+  </div>
+
+  <h1>Jabri_<span>Nobble</span> <br><span style="font-size:1.2rem;">&#9670; بحوث الجبري &#9670;</span></h1>
+  <p class="subtitle">
+    <i class="fas fa-quote-right" style="color:#58a6ff;margin-left:10px;"></i>
+    باحث مستقل في دالة زيتا لريمان، علم الكونيات الحسابي، والفيزياء الرياضية<br>
+    <span style="color:#8b949e;font-size:0.9rem;">Independent researcher — Riemann zeta, computational cosmology & mathematical physics</span>
+  </p>
+
+  <!-- ===== القسم 1: المشاريع الرئيسية P1 → P4 ===== -->
+  <div class="section-title">
+    <i class="fas fa-flag"></i> المشاريع الرئيسية <span style="font-size:0.9rem;color:#8b949e;font-weight:400;"> P1 → P4</span>
+  </div>
+  <div class="grid-cards">
+
+    <a href="Jabri.html" class="card" target="_blank">
+      <div class="card-icon"><i class="fas fa-ship"></i></div>
+      <span class="badge p1">P1</span>
+      <span class="en-title">Yemen Sindbad</span>
+      <span class="ar-title">سندباد اليمن</span>
+      <div class="repo-desc">تراث وحكايات اليمن<br><i class="fas fa-scroll" style="color:#f0883e;"></i></div>
+    </a>
+
+    <a href="Jabr.html" class="card" target="_blank">
+      <div class="card-icon"><i class="fas fa-dove"></i></div>
+      <span class="badge p2">P2</span>
+      <span class="en-title">Yemen Bird</span>
+      <span class="ar-title">طائر اليمن</span>
+      <div class="repo-desc">خوارزميات محسّنة v1.2<br><i class="fas fa-code" style="color:#f0883e;"></i></div>
+    </a>
+
+    <a href="Baleegh.html" class="card" target="_blank">
+      <div class="card-icon"><i class="fas fa-spider"></i></div>
+      <span class="badge p3">P3</span>
+      <span class="en-title">Yemen Ankaboot</span>
+      <span class="ar-title">عنكبوت اليمن</span>
+      <div class="repo-desc">النظرية الأساسية — الدالة الأم<br><i class="fas fa-infinity" style="color:#f0883e;"></i></div>
+    </a>
+
+    <a href="Sindbad.html" class="card" target="_blank">
+      <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+      <span class="badge p4">P4</span>
+      <span class="en-title">Pages & Researches</span>
+      <span class="ar-title">الصفحات والبحوث</span>
+      <div class="repo-desc">المركز الرئيسي — كل المشاريع<br><i class="fas fa-folder-open" style="color:#f0883e;"></i></div>
+    </a>
+
+  </div>
+
+  <!-- ===== القسم 2: الأبحاث المنشورة (Jabri-Nobble) ===== -->
+  <div class="section-title" style="margin-top:50px;">
+    <i class="fas fa-file-pdf"></i> الأبحاث المنشورة <span style="font-size:0.9rem;color:#8b949e;font-weight:400;">Jabri-Nobble</span>
+  </div>
+  <div class="paper-grid">
+
+    <div class="paper-card">
+      <i class="fas fa-riemann"></i>
+      <div class="paper-name">Jabri Riemann</div>
+      <div class="paper-sub">فرضية ريمان</div>
+      <a href="https://doi.org/10.5281/zenodo.20139904" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20139904</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-code-branch"></i>
+      <div class="paper-name">Jabri P vs NP</div>
+      <div class="paper-sub">P مقابل NP</div>
+      <a href="https://doi.org/10.5281/zenodo.20145279" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20145279</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-bolt"></i>
+      <div class="paper-name">Jabri Gap</div>
+      <div class="paper-sub">فجوة كتلة يانغ-ميلز</div>
+      <a href="https://doi.org/10.5281/zenodo.20148344" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20148344</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-water"></i>
+      <div class="paper-name">Jabri Navier</div>
+      <div class="paper-sub">معادلات نافيير-ستوكس</div>
+      <a href="https://doi.org/10.5281/zenodo.20149618" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20149618</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-chart-line"></i>
+      <div class="paper-name">Jabri Birch</div>
+      <div class="paper-sub">حدسية بيرش وسوينرتون-داير</div>
+      <a href="https://doi.org/10.5281/zenodo.20145337" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20145337</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-cubes"></i>
+      <div class="paper-name">Jabri Hodge</div>
+      <div class="paper-sub">حدسية هودج</div>
+      <a href="https://doi.org/10.5281/zenodo.20114317" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20114317</a>
+    </div>
+
+    <div class="paper-card">
+      <i class="fas fa-equals"></i>
+      <div class="paper-name">Jabri Identity</div>
+      <div class="paper-sub">هوية الجبري</div>
+      <a href="https://doi.org/10.5281/zenodo.20100622" class="doi-link" target="_blank"><i class="fas fa-external-link-alt"></i> 10.5281/zenodo.20100622</a>
+    </div>
+
+  </div>
+
+  <!-- ===== القسم 3: بحوث قيد العمل (Jabri-lab) ===== -->
+  <div class="section-title" style="margin-top:50px;">
+    <i class="fas fa-flask"></i> بحوث قيد العمل <span style="font-size:0.9rem;color:#8b949e;font-weight:400;">Jabri-lab</span>
+  </div>
+  <div class="dev-list">
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-5</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-28</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Zx</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Gravity</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Spacetime</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Darkenergy</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Planck</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-Hubble</span>
+    <span class="dev-tag"><i class="fas fa-microscope"></i> Jabri-all</span>
+  </div>
+
+  <!-- ===== القسم 4: التواصل ===== -->
+  <div class="section-title" style="margin-top:50px;">
+    <i class="fas fa-envelope"></i> التواصل
+  </div>
+  <div class="contact-box">
+    <a href="mailto:jabri62018@gmail.com"><i class="fas fa-envelope"></i> jabri62018@gmail.com</a>
+    <a href="Sindbad.html" target="_blank"><i class="fas fa-globe"></i> Sindbad</a>
+    <a href="https://github.com/jabri-web" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+
+  <!-- ===== تذييل ===== -->
+  <div class="footer-note">
+    <span><i class="fas fa-robot"></i> كل الأبحاث حسابية وقابلة للتكرار</span>
+    <span><i class="fas fa-play"></i> شغلها. تحقق منها. جرب تكسرها.</span>
+    <span><i class="fas fa-code"></i> Run it. Check it. Break it.</span>
+  </div>
+
 </div>
 
-<h2 style="color:#58a6ff;border-bottom:2px solid #30363d;padding-bottom:8px">Solved - المسائل الألفية</h2>
-
-<div class="doi">
-<h3>5.1 Jabri_Riemann</h3>
-<p><b>DOI:</b> 10.5281/zenodo.20139904 / 10.5281/zenodo.20145337</p>
-<a class="btn" href="https://doi.org/10.5281/zenodo.20139904" target="_blank">DOI/الملف</a>
-</div>
-
-<div class="doi">
-<h3>5.2 Jabri_np</h3>
-<p><b>DOI:</b> 10.5281/zenodo.20145279</p>
-<a class="btn" href="https://doi.org/10.5281/zenodo.20145279" target="_blank">DOI/الملف</a>
-</div>
-
-<div class="doi">
-<h3>5.3 Jabri_gap</h3>
-<p><b>DOI:</b> 10.5281/zenodo.20148344</p>
-<a class="btn" href="https://doi.org/10.5281/zenodo.20148344" target="_blank">DOI/الملف</a>
-</div>
-
-<div class="doi">
-<h3>5.4 Jabri_Identity</h3>
-<p><b>DOI:</b> 10.5281/zenodo.20114317</p>
-<a class="btn" href="https://doi.org/10.5281/zenodo.20114317" target="_blank">DOI/الملف</a>
-</div>
-
-<div class="doi">
-<h3>5.5 Jabri_Navier</h3>
-<p><b>DOI:</b> 10.5281/zenodo.20149618</p>
-<a class="btn" href="https://doi.org/10.5281/zenodo.20149618" target="_blank">DOI/الملف</a>
-</div>
-
-<footer>
-<p>Verified 2026-06-11 by Jabri | كل الروابط شغالة | DOI: 10.5281 | لا تعديل بعد اليوم</p>
-<p>© Jabri_Nobble - MIT License - Open Access</p>
-</footer>
+<!-- الهيدر والفوتر العام (إن وجد) -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
 
 </body>
 </html>

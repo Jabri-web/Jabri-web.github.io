@@ -1,220 +1,446 @@
-<! P2 =file=Yeme-bird=index.html
-<!repo= Zx_RieOS_v1.2
-
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sindbad Yemen - Research</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{ --container-width: 400px; --bird-scale: 1.15; }
-*{box-sizing:border-box}
-body {
-  font-family: "Tajawal", Tahoma, Arial, sans-serif;
-  background: #fff;
-  color: #000;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-  overflow-x: hidden;
-}
-.wrapper{ width: var(--container-width); margin: 0 auto; }
-h1 { font-size: 28px; margin-bottom: 5px; }
-.sub { font-size: 18px; color: #555; margin-bottom: 15px; }
-.bird-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 15px 0;
-  border: 3px solid #000;
-  transition: transform 0.6s ease-in-out;
-  animation: pulse 2s infinite ease-in-out;
-  transform: scale(var(--bird-scale));
-}
-@keyframes pulse {
- 0%, 100% { transform: scale(var(--bird-scale)); }
- 50% { transform: scale(calc(var(--bird-scale) * 1.08)); }
-}
-.bar-menu { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
-.bar-menu button, .bar-menu a {
-  width: 100%;
-  padding: 14px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-  line-height: 1.4;
-  transition: 0.2s;
-}
-.bar-menu button:hover, .bar-menu a:hover { background: #333; transform: translateY(-2px); }
-.bar-menu button.exit { background: #c62828; }
-.bar-menu button.exit:hover { background: #b71c1c; }
-.en-text {display: block; font-size: 16px;}
-.ar-text {display: block; font-size: 14px; opacity: 0.85; margin-top: 3px;}
-.row-btn { display: flex; gap: 10px; }
-.row-btn a { flex: 1; }
-.section { display: none; text-align: right; background: #f5f5f5; padding: 15px; border-radius: 12px; margin: 15px 0; }
-.section.active { display: block; }
-.section h3 { margin-top: 0; text-align: center; }
-.section a { display: block; color: #0066cc; text-decoration: none; margin: 6px 0; word-break: break-all; }
-.section a:hover { text-decoration: underline; }
-.footer-info { margin-top: 30px; font-size: 14px; color: #555; display: flex; justify-content: space-between; }
-</style>
-
-<script>
-function adjustScreen(){
-  const screenWidth = window.innerWidth;
-  let containerWidth = screenWidth - 40;
-  if(containerWidth > 400) containerWidth = 400;
-  if(containerWidth < 300) containerWidth = 300;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  let birdScale = 1.12;
-  if(screenWidth < 400) birdScale = 1.25;
-  else if(screenWidth < 768) birdScale = 1.18;
-  else birdScale = 1.12;
+  <!-- SEO الأساسي - موحد -->
+  <title>واحة الجبري | Heaven Al-Jabri</title>
+  <meta name="description" content="واحة الجبري - المهندس عبدالله محمد ناصر الجبري. أرشيف تراث اليمن، محتوى تقني، سيرة ذاتية، بحوث، تواصل." />
+  <meta name="keywords" content="واحة الجبري, اليمن, الجبري, تراث اليمن, بحث, تقني, هندسة, برمجة" />
+  <meta name="author" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
+  <meta name="language" content="ar, en" />
+  <meta name="theme-color" content="#000" />
   
-  document.documentElement.style.setProperty('--container-width', containerWidth + 'px');
-  document.documentElement.style.setProperty('--bird-scale', birdScale);
-}
+  <!-- الروابط الأساسية -->
+  <link rel="canonical" href="https://jabri-com.vercel.app/Jabr.html" />
+  <link rel="icon" href="Image/favicon.ico" type="image/x-icon" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jabri-com.vercel.app/Jabr.html" />
+  <meta property="og:title" content="واحة الجبري | Heaven Al-Jabri" />
+  <meta property="og:description" content="أرشيف تراث اليمن - موقع المهندس عبدالله الجبري" />
+  <meta property="og:image" content="https://jabri-com.vercel.app/Image/Yemen-bird.png" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="واحة الجبري | Heaven Al-Jabri" />
+  <meta name="twitter:description" content="أرشيف تراث اليمن - موقع المهندس عبدالله الجبري" />
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/Image/Yemen-bird.png" />
 
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+  <!-- ستايلات الصفحة -->
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-function updateTime(){
-  const now = new Date();
-  document.getElementById('time-footer').innerText = now.toLocaleTimeString('ar-SA');
-  document.getElementById('date-footer').innerText = now.toLocaleDateString('ar-SA');
-  document.getElementById('time-visitor').innerText = now.toLocaleTimeString('ar-SA');
-  document.getElementById('date-visitor').innerText = now.toLocaleDateString('ar-SA');
-}
+    :root {
+      --container-width: 400px;
+      --bird-scale: 1.15;
+      --bg: #ffffff;
+      --text: #000;
+      --card-bg: #f5f5f5;
+      --border: #ddd;
+      --primary: #000;
+      --primary-hover: #222;
+      --danger: #c62828;
+      --danger-hover: #b71c1c;
+    }
 
-window.onload = function() {
-  adjustScreen();
-  updateTime();
-  setInterval(updateTime, 1000);
-}
-window.onresize = adjustScreen;
-</script>
+    body {
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body.en {
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* ===== WRAPPER ===== */
+    .wrapper {
+      width: var(--container-width);
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ===== LANGUAGE TOGGLE ===== */
+    .lang-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      z-index: 9999;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .lang-btn:hover {
+      background: #333;
+      transform: scale(1.03);
+    }
+
+    /* ===== OFFLINE BADGE ===== */
+    .offline-badge {
+      background: #e53935;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      animation: pulse 2.5s infinite;
+      box-shadow: 0 2px 12px rgba(229, 57, 53, 0.4);
+      display: inline-block;
+      width: fit-content;
+      margin: 0 auto 8px auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(229, 57, 53, 0); }
+    }
+
+    /* ===== HEADER ===== */
+    .site-header h1 {
+      font-size: 30px;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .site-header .sub {
+      font-size: 17px;
+      color: #333;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* ===== BIRD IMAGE ===== */
+    .bird-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 3px solid var(--primary);
+      background: #f0f0f0;
+      transition: transform 0.5s ease;
+      transform: scale(var(--bird-scale));
+      display: block;
+    }
+    .bird-img:hover {
+      transform: scale(1.25);
+    }
+
+    /* ===== NAV ===== */
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 12px 0 8px 0;
+    }
+
+    .nav-menu a,
+    .nav-menu button {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      line-height: 1.4;
+      transition: 0.15s;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu button:hover {
+      background: #2a2a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-menu .exit-btn {
+      background: var(--danger);
+    }
+    .nav-menu .exit-btn:hover {
+      background: var(--danger-hover);
+    }
+
+    .row-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .row-buttons a,
+    .row-buttons button {
+      flex: 1;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      display: none;
+      background: var(--card-bg);
+      padding: 18px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      margin: 8px 0 4px 0;
+      text-align: right;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    body.en .section {
+      text-align: left;
+    }
+    .section.active {
+      display: block;
+    }
+
+    .section h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 8px;
+    }
+
+    .section a {
+      display: block;
+      color: #0a58ca;
+      text-decoration: none;
+      margin: 8px 0;
+      word-break: break-word;
+      font-size: 15px;
+      padding: 4px 0;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+    .section a:hover {
+      text-decoration: underline;
+      color: #00337a;
+    }
+
+    .section .warning {
+      background: #fff3cd;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #856404;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-info {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #444;
+      display: flex;
+      justify-content: space-between;
+      border-top: 2px solid #ddd;
+      padding-top: 16px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ===== UTILITY ===== */
+    .ar, .en { display: inline; }
+    body.en .ar { display: none; }
+    body:not(.en) .en { display: none; }
+
+    .en-text { display: block; font-size: 16px; font-weight: 600; }
+    .ar-text { display: block; font-size: 14px; opacity: 0.9; margin-top: 2px; }
+    body.en .ar-text { display: block; }
+    body:not(.en) .en-text { display: block; }
+
+    @media (max-width: 480px) {
+      body { padding: 12px; }
+      .site-header h1 { font-size: 24px; }
+      .bird-img { width: 100px; height: 100px; }
+    }
+  </style>
 </head>
 <body>
+  
+  <div id="header-placeholder"></div>
 
-<div class="wrapper">
-  <h1>Sindbad Yemen <br> سندباد اليمن</h1>
-  <div class="sub">Eng. Jabr Abdulla Al-Jabri <br> م/ جبر عبدالله الجبري</div>
-  <img src="Image/Yemen_bird.png" alt="Yemen Bird" class="bird-img">
+  
 
-  <!-- Bar Menu -->
-  <div class="bar-menu">
-    <a href="Yemen-library.html" target="_blank">
-      <span class="en-text">Contents</span>
-      <span class="ar-text">المحتوى</span>
-    </a>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span class="ar">🇬🇧 EN</span>
+    <span class="en">🇸🇦 عربي</span>
+  </button>
 
-    <button onclick="showSection('email')">
-      <span class="en-text">Email</span>
-      <span class="ar-text">البريد</span>
-    </button>
+  <div class="wrapper">
 
-    <button onclick="showSection('social')">
-      <span class="en-text">Social Media</span>
-      <span class="ar-text">التواصل الاجتماعي</span>
-    </button>
-
-    <button onclick="showSection('visitor')">
-      <span class="en-text">Visitors</span>
-      <span class="ar-text">الزوار</span>
-    </button>
-
-    <button onclick="showSection('about')">
-      <span class="en-text">About</span>
-      <span class="ar-text">حول</span>
-    </button>
-
-    <div class="row-btn">
-      <a href="index.html">
-        <span class="en-text">Home</span>
-        <span class="ar-text">رجوع للرئيسية</span>
-      </a>
+    <div class="offline-badge">
+      <span class="ar">
+        📡 طائر اليمن- Yemen Bird</span>
+      <span class="en">
+        📡طائر اليمن- Yemen Bird</span>
     </div>
 
-    <button class="exit" onclick="history.back()">
-      <span class="en-text">Exit</span>
-      <span class="ar-text">خروج</span>
-    </button>
-  </div>
+    <header class="site-header">
+      <h1>
+        <span class="ar">واحة الجبري</span>
+        <span class="en">Heaven Al-Jabri</span>
+      </h1>
+      <div class="sub">
+        <span class="ar">م/ عبدالله محمد ناصر الجبري</span>
+        <span class="en">Eng. Abdulla Mohammed Al‑Jabri</span>
+      </div>
+    </header>
 
-  <!-- A: Email -->
-  <div id="email" class="section">
-    <h3>Email Addresses <br> الإيميلات</h3>
-    <a href="mailto:Jabri62018@gmail.com">Jabri62018@gmail.com</a>
-    <a href="mailto:Jabri62018jr@gmail.com">Jabri62018jr@gmail.com</a>
-    <a href="mailto:Jr62018jr@gmail.com">Jr62018jr@gmail.com</a>
-    <a href="mailto:AlJabriAbdulla23@gmail.com">AlJabriAbdulla23@gmail.com</a>
-    <a href="mailto:JabrAlJabri2025@gmail.com">JabrAlJabri2025@gmail.com</a>
-    <a href="mailto:NassimAbdulla113@gmail.com">NassimAbdulla113@gmail.com</a>
-  </div>
+    <img src="Image/Yemen-bird.png" alt="Heaven Al-Jabri - واحة الجبري" class="bird-img" onerror="this.style.display='none'" />
 
-  <!-- B: Social -->
-  <div id="social" class="section">
-    <h3>Social Media <br> وسائل التواصل</h3>
-    <a href="https://facebook.com/Jabri2026" target="_blank">Facebook - Jabri2026</a>
-    <a href="https://facebook.com/jabri2030" target="_blank">Facebook - jabri2030</a>
-    <a href="https://instagram.com/Jabri2025" target="_blank">Instagram</a>
-    <a href="https://t.me/Jabri2025" target="_blank">Telegram</a>
-    <a href="https://tiktok.com/@jabri2025" target="_blank">TikTok</a>
-    <a href="https://wa.me/+967773415383" target="_blank">WhatsApp</a>
-    <a href="https://youtube.com/@abdullajabri-p3w" target="_blank">YouTube</a>
-    <a href="https://drive.google.com/file/Zx_5.ipynb/view" target="_blank">Google Drive</a>
-    <a href="https://colab.research.google.com/github/Jabri-web/Zx_RieOS_v1.1/blob/main/Zx_al.ipynb" target="_blank">Colab Notebook</a>
-    <a href="https://doi.org/10.5281/zenodo.19963026" target="_blank">DOI - Zenodo</a>
-    <a href="https://links.gemspace.com/Yemen_Icon" target="_blank">GemSpace</a>
-    <a href="https://snapchat.com/jabri2025" target="_blank">Snapchat</a>
-    <a href="https://Jabri-web.github.io/" target="_blank">GitHub Pages</a>
-  </div>
+    <nav class="nav-menu" aria-label="القائمة الرئيسية">
+      <a href="Yemen-library.html">
+        <span class="en-text">📚 Contents</span>
+        <span class="ar-text">المحتوى</span>
+      </a>
+      <button onclick="showSection('email')">
+        <span class="en-text">✉️ Email</span>
+        <span class="ar-text">البريد</span>
+      </button>
+      <button onclick="showSection('social')">
+        <span class="en-text">🌐 Social Media</span>
+        <span class="ar-text">التواصل الاجتماعي</span>
+      </button>
+      <button onclick="showSection('visitor')">
+        <span class="en-text">👥 Visitors</span>
+        <span class="ar-text">الزوار</span>
+      </button>
+      <button onclick="showSection('about')">
+        <span class="en-text">ℹ️ About</span>
+        <span class="ar-text">حول</span>
+      </button>
+      <div class="row-buttons">
+        <a href="index.html">
+          <span class="en-text">🏠 Home</span>
+          <span class="ar-text">الرئيسية</span>
+        </a>
+        <button class="exit-btn" onclick="history.back()">
+          <span class="en-text">🚪 Exit</span>
+          <span class="ar-text">خروج</span>
+        </button>
+      </div>
+    </nav>
 
-  <!-- C: Visitors -->
-  <div id="visitor" class="section">
-    <h3>Visitors Stats <br> إحصائيات الزوار</h3>
-    <p>1- Counter: يمكن تفعيله عبر Statcounter أو Google Analytics</p>
-    <p>2- Links: Get URL - جاهز للإضافة</p>
-    <p>3- Time: <span id="time-visitor"></span></p>
-    <p>4- Date: <span id="date-visitor"></span></p>
-    <p>5- Like/Dislike: أضفها لاحقًا عبر Google Forms أو Firebase</p>
-  </div>
+    <!-- باقي الاقسام كما هي... -->
+    <section id="email" class="section">
+      <h3><span class="ar">📧 الإيميلات</span><span class="en">📧 Email Addresses</span></h3>
+      <a href="mailto:Jabri62018@gmail.com">Jabri62018@gmail.com</a>
+    </section>
 
-  <!-- D: About -->
-  <div id="about" class="section">
-    <h3>About <br> عن الموقع</h3>
-    <a href="yemen-photo.html" style="margin: 10px 0;">1- Yemen Photos <br> صور اليمن</a>
-    <a href="Author-cv.html" style="margin: 10px 0;">2- Author CV <br> السيرة الذاتية للمؤلف</a>
-    <p style="margin-top: 20px;">Independent Researcher - Sana'a, Yemen (2026)</p>
-    <p>Author: Eng. Jabr Abdulla Al-Jabri - م/ جبر عبدالله الجبري</p>
-  </div>
+    <section id="social" class="section"><h3>...</h3></section>
+    <section id="visitor" class="section"><h3>...</h3></section>
+    <section id="about" class="section"><h3>...</h3></section>
 
-  <!-- Footer Time/Date -->
-  <div class="footer-info">
-    <span>Time: <span id="time-footer"></span></span>
-    <span>Date: <span id="date-footer"></span></span>
+    <footer class="footer-info">
+      <span><span class="ar">🕒 الوقت:</span><span class="en">🕒 Time:</span> <span id="time-footer"></span></span>
+      <span><span class="ar">📅 التاريخ:</span><span class="en">📅 Date:</span> <span id="date-footer"></span></span>
+    </footer>
+
   </div>
-</div>
-<!-- Social Links -->
-<div style="margin:30px 0">
-  <a href="https://github.com/Jabri-web" target="_blank" style="color:#6ae3ff;margin:0 10px">GitHub</a>
-  <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#6ae3ff;margin:0 10px">ORCID</a>
-  <a href="mailto:jabri62018@gmail.com" style="color:#6ae3ff;margin:0 10px">Email</a>
-</div>
+  
+  <div id="footer-placeholder"></div>
+
+
+  <script>
+    function adjustScreen() {
+      const w = window.innerWidth;
+      let cw = Math.min(w - 40, 400);
+      if (cw < 300) cw = 300;
+      let scale = 1.15;
+      if (w < 400) scale = 1.30;
+      else if (w < 768) scale = 1.20;
+      else scale = 1.15;
+      document.documentElement.style.setProperty('--container-width', cw + 'px');
+      document.documentElement.style.setProperty('--bird-scale', scale);
+    }
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function updateTime() {
+      const now = new Date();
+      const isEn = document.body.classList.contains('en');
+      const locale = isEn ? 'en-US' : 'ar-SA';
+      const timeStr = now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const dateStr = now.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+      document.getElementById('time-footer').textContent = timeStr;
+      document.getElementById('date-footer').textContent = dateStr;
+      const tv = document.getElementById('time-visitor'); if(tv) tv.textContent = timeStr;
+      const dv = document.getElementById('date-visitor'); if(dv) dv.textContent = dateStr;
+    }
+    function toggleLang() {
+      document.body.classList.toggle('en');
+      const isEn = document.body.classList.contains('en');
+      document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+      document.documentElement.lang = isEn ? 'en' : 'ar';
+      localStorage.setItem('lang', isEn ? 'en' : 'ar');
+      updateTime();
+    }
+    window.addEventListener('DOMContentLoaded', function () {
+      if (localStorage.getItem('lang') === 'en') {
+        document.body.classList.add('en');
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      } else {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      }
+      adjustScreen();
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+    let resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(adjustScreen, 80);
+    });
+  </script>
+  
+  
+          <!--div id="header-placeholder"></div>
+    
+    
+    <!--div id="footer-placeholder"></div>
+
+
+        <!-- تحميل الهيدر والفوتر -->
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
+    
+
+
+  
 </body>
 </html>
