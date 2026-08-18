@@ -1,343 +1,108 @@
-// ================================================================
-//  init-page-root.js - الإصدار النهائي (الدرع المطلق + 404)
-//  يعيد التوجيه إلى Page11.html بعد 7 ثوانٍ
-// ================================================================
-
-(function() {
-  'use strict';
-  console.log('🛡️ [init] تفعيل الدرع المطلق (v4.1.0)...');
-
-  let splashHidden = false;
-
-  // ===== شاشة الترحيب =====
-  function createSplash() {
-    if (document.getElementById('splashScreen')) return;
-    const html = `
-      <div id="splashScreen">
-        <div class="splash-title">🌊 واحة الجبري</div>
-        <div class="splash-sub">الدالة الأم · نظرية السندباد الموحدة</div>
-        <div class="spinner"></div>
-        <style>
-          #splashScreen { position: fixed; top:0; left:0; width:100%; height:100%; background:#0a0a0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:999999; transition: opacity 0.6s ease; font-family: 'Cairo', sans-serif; }
-          #splashScreen.hidden { opacity:0; pointer-events:none; }
-          .splash-title { color:#6ae3ff; font-size:2.5rem; font-weight:900; }
-          .splash-sub { color:#888; font-size:1.1rem; margin-top:8px; }
-          .spinner { width:40px; height:40px; margin-top:30px; border:3px solid rgba(106,227,255,0.1); border-top:3px solid #6ae3ff; border-radius:50%; animation: spin 1s linear infinite; }
-          @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
-          @media (max-width:600px) { .splash-title { font-size:1.8rem; } .splash-sub { font-size:0.95rem; } }
-        </style>
-      </div>
-    `;
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    document.body.prepend(div.firstElementChild);
-  }
-
-  function hideSplash() {
-    if (splashHidden) return;
-    const el = document.getElementById('splashScreen');
-    if (el) el.classList.add('hidden');
-    splashHidden = true;
-    setTimeout(() => { if (el) el.remove(); }, 800);
-  }
-
-  function bustCache(url) {
-    const sep = url.includes('?') ? '&' : '?';
-    return url + sep + '_t=' + Date.now();
-  }
-
-  function safelyExecuteScripts(container) {
-    const scripts = container.querySelectorAll('script');
-    scripts.forEach(oldScript => {
-      try {
-        const src = oldScript.src || '';
-        const content = oldScript.textContent || '';
-        if (src) {
-          const existing = document.querySelector(`script[src="${src}"]`);
-          if (!existing) {
-            const newScript = document.createElement('script');
-            newScript.src = src;
-            newScript.async = false;
-            document.head.appendChild(newScript);
-          }
-        } else if (content.trim()) {
-          const newScript = document.createElement('script');
-          newScript.textContent = content;
-          document.head.appendChild(newScript);
-        }
-      } catch (e) {
-        console.warn('⚠️ [init] تخطي سكربت:', e.message);
-      }
-    });
-  }
-
-  function loadHeader() {
-    const placeholder = document.getElementById('header-placeholder');
-    if (!placeholder) {
-      console.warn('⚠️ [header] placeholder غير موجود');
-      setTimeout(hideSplash, 500);
-      return;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - واحة الجبري</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #0b1a2e, #1a2f44);
+      color: #f0e6d3;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
-    if (placeholder.dataset.loaded === 'true') {
-      setTimeout(hideSplash, 500);
-      return;
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 50px 40px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 215, 150, 0.2);
+      max-width: 600px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.6);
     }
-    console.log('📄 [header] جاري التحميل...');
-    fetch(bustCache('header.html'))
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
-      .then(html => {
-        placeholder.innerHTML = html;
-        placeholder.dataset.loaded = 'true';
-        safelyExecuteScripts(placeholder);
-        console.log('✅ [header] تم التحميل');
-        document.dispatchEvent(new CustomEvent('headerLoaded'));
-        setTimeout(hideSplash, 300);
-      })
-      .catch(err => {
-        console.error('❌ [header] فشل:', err);
-        placeholder.innerHTML = `<div style="color:#ff6a6a;padding:20px;text-align:center;">⚠️ فشل تحميل الهيدر</div>`;
-        setTimeout(hideSplash, 500);
-      });
-  }
-
-  function loadFooter() {
-    const placeholder = document.getElementById('footer-placeholder');
-    if (!placeholder) return;
-    if (placeholder.dataset.loaded === 'true') return;
-    console.log('📄 [footer] جاري التحميل...');
-    fetch(bustCache('footer.html'))
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
-      .then(html => {
-        placeholder.innerHTML = html;
-        placeholder.dataset.loaded = 'true';
-        safelyExecuteScripts(placeholder);
-        console.log('✅ [footer] تم التحميل');
-        document.dispatchEvent(new CustomEvent('footerLoaded'));
-      })
-      .catch(err => {
-        console.error('❌ [footer] فشل:', err);
-        placeholder.innerHTML = `<div style="color:#ff6a6a;padding:10px;text-align:center;">⚠️ فشل الفوتر</div>`;
-      });
-  }
-
-  // ===== الروابط الديناميكية =====
-  function addDynamicLinks() {
-    const currentPath = window.location.pathname;
-    const pageLinks = {
-      '/Page1.html': { prev: null, next: '/Page2.html', up: '/research.html' },
-      '/Page2.html': { prev: '/Page1.html', next: '/Page3.html', up: '/research.html' },
-      '/Page3.html': { prev: '/Page2.html', next: '/Page4.html', up: '/research.html' },
-      '/Page4.html': { prev: '/Page3.html', next: '/Page5.html', up: '/research.html' },
-      '/Page5.html': { prev: '/Page4.html', next: '/Page6.html', up: '/research.html' },
-      '/Page6.html': { prev: '/Page5.html', next: '/Page7.html', up: '/research.html' },
-      '/Page7.html': { prev: '/Page6.html', next: '/Page8.html', up: '/research.html' },
-      '/Page8.html': { prev: '/Page7.html', next: '/Page9.html', up: '/research.html' },
-      '/Page9.html': { prev: '/Page8.html', next: '/Page10.html', up: '/research.html' },
-      '/Page10.html': { prev: '/Page9.html', next: '/Page11.html', up: '/research.html' },
-      '/Page11.html': { prev: '/Page10.html', next: '/Page12.html', up: '/research.html' },
-      '/Page12.html': { prev: '/Page11.html', next: null, up: '/research.html' },
-      '/Sanaa.html': { prev: null, next: '/Shibam.html', up: '/yemen-photo.html' },
-      '/Shibam.html': { prev: '/Sanaa.html', next: '/Soqatra.html', up: '/yemen-photo.html' },
-      '/Soqatra.html': { prev: '/Shibam.html', next: null, up: '/yemen-photo.html' },
-      '/theory-ar.html': { prev: null, next: '/theory-en.html', up: '/' },
-      '/theory-en.html': { prev: '/theory-ar.html', next: null, up: '/' }
-    };
-    const links = pageLinks[currentPath];
-    if (!links) return;
-    const head = document.head;
-    if (links.prev) {
-      let link = document.querySelector('link[rel="prev"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'prev'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.prev;
+    h1 { font-size: 80px; color: #d4a373; margin-bottom: 10px; }
+    .sub { font-size: 24px; color: #e9c9a9; }
+    .visitor-box {
+      margin: 25px 0;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 60px;
+      font-size: 22px;
+      border: 1px solid #b48b5a;
+      display: inline-block;
+      padding: 10px 30px;
     }
-    if (links.next) {
-      let link = document.querySelector('link[rel="next"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'next'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.next;
+    .visitor-box span { color: #f7d44a; font-weight: bold; }
+    .note {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #bbaa99;
     }
-    if (links.up) {
-      let link = document.querySelector('link[rel="up"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'up'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.up;
+    .loader {
+      margin: 30px auto 15px;
+      width: 48px;
+      height: 48px;
+      border: 5px solid #b48b5a;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
     }
-    console.log('🔗 روابط ديناميكية مضافة لـ ' + currentPath);
-  }
-
-  // ===== ضبط Canonical =====
-  function setDynamicCanonical() {
-    const currentUrl = window.location.href.split('?')[0].split('#')[0];
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.rel = 'canonical';
-      document.head.appendChild(canonicalLink);
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #8a7a6a;
     }
-    canonicalLink.href = currentUrl;
-    console.log('🔗 Canonical: ' + currentUrl);
-  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 404</h1>
+    <div class="sub">عذرًا.. هذا الدرب غير موجود</div>
 
-  // ================================================================
-  //  🚨 كاشف 404 التلقائي + معالجته (الحصار المطلق)
-  //  يعيد التوجيه إلى Page11.html بعد 7 ثوانٍ
-  // ================================================================
+    <!-- عداد الزوار (جلب من localStorage أو بداية عشوائية) -->
+    <div class="visitor-box">
+      👥 عدد زوار الواحة: <span id="visitorCount">1</span>
+    </div>
 
-  // ===== صفحة 404 المخصصة =====
-  function show404Page() {
-    // إزالة أي محتوى موجود
-    document.body.innerHTML = '';
+    <div class="loader"></div>
+    <p style="margin-top:5px; font-size:15px; color:#bbaa88;">🎵 تشغيل نغمات السندباد...</p>
 
-    // عدد الزوار
+    <div class="note">
+      سيتم تحويلك إلى <strong>واحة الجبري</strong> بعد 7 ثوانٍ
+    </div>
+    <div class="footer">🏛️ من صنعاء إلى الكون 🇾🇪</div>
+  </div>
+
+  <script>
+    // 1) عداد الزوار (يتذكر الزائر عبر localStorage)
     let count = localStorage.getItem('jabriVisitorCount');
-    if (count === null) count = Math.floor(Math.random() * 80) + 20;
-    else count = Number(count);
+    if (count === null) {
+      count = Math.floor(Math.random() * 80) + 20;   // بداية واقعية
+    } else {
+      count = Number(count) + 1;
+    }
+    localStorage.setItem('jabriVisitorCount', count);
+    document.getElementById('visitorCount').textContent = count;
 
-    // عرض صفحة 404 المخصصة
-    const div = document.createElement('div');
-    div.id = 'jabri-404-overlay';
-    div.style.cssText = `
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: #0a0a0f; color: #f0e6d3;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      font-family: 'Cairo', sans-serif; z-index: 999999;
-      text-align: center; padding: 20px;
-      direction: rtl;
-    `;
-    div.innerHTML = `
-      <div style="max-width: 500px;">
-        <div style="font-size: 6rem; margin-bottom: 10px;">🏝️</div>
-        <h1 style="color: #6ae3ff; font-size: 5rem; margin-bottom: 10px;">404</h1>
-        <p style="color: #94a3b8; font-size: 1.3rem; margin-bottom: 10px;">عذرًا.. هذا الدرب غير موجود</p>
-        <div style="margin: 20px auto; width: 40px; height: 40px; border: 3px solid rgba(106,227,255,0.1); border-top: 3px solid #6ae3ff; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-        <div style="background: rgba(255,215,0,0.08); padding: 12px 25px; border-radius: 40px; border: 1px solid #b48b5a; display: inline-block; margin: 10px 0;">
-          👥 عدد زوار الواحة: <strong style="color: #ffd700;">${count}</strong>
-        </div>
-        <p style="color: #888; font-size: 0.9rem; margin-top: 15px;">🎵 نغمات السندباد تعزف... سيتم تحويلك إلى <strong style="color: #6ae3ff;">أحدث إصدار</strong> بعد 7 ثوانٍ</p>
-        <div style="margin-top: 15px;">
-          <a href="/Page11.html" style="display: inline-block; padding: 12px 35px; background: linear-gradient(135deg, #6ae3ff, #3b9fcb); color: #0a0a0f; border-radius: 40px; text-decoration: none; font-weight: bold; transition: 0.3s;">🚀 الذهاب إلى Page11.html</a>
-        </div>
-        <p style="color: #444; font-size: 0.7rem; margin-top: 15px;">سيتم التحويل تلقائياً خلال 7 ثوانٍ</p>
-      </div>
-      <style>
-        @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
-      </style>
-    `;
-    document.body.appendChild(div);
-
-    // ✅ التوجيه إلى Page11.html بعد 7 ثوانٍ
-    setTimeout(() => {
-      window.location.href = '/Page11.html';
-    }, 7000);
-  }
-
-  function detect404AndHandle() {
-    // 1) كشف عبر العنوان
-    const title = document.title || '';
-    const bodyText = document.body ? document.body.innerHTML : '';
-    const is404 = title.includes('404') || bodyText.includes('404') || bodyText.includes('Not Found') || bodyText.includes('الصفحة غير موجودة');
-
-    // 2) كشف عبر performance
-    let status404 = false;
+    // 2) تشغيل موسيقى خفيفة (نغم هادئ)
     try {
-      if (window.performance && window.performance.getEntries) {
-        const entries = window.performance.getEntries();
-        for (let entry of entries) {
-          if (entry.name === window.location.href && entry.responseStatus === 404) {
-            status404 = true;
-            break;
-          }
-        }
-      }
+      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+      audio.volume = 0.15;
+      audio.loop = true;
+      audio.play().catch(() => {});
     } catch(e) {}
 
-    // 3) كشف عبر XMLHttpRequest
-    if (!is404 && !status404) {
-      try {
-        const xhr = new XMLHttpRequest();
-        xhr.open('HEAD', window.location.href, false);
-        xhr.send();
-        if (xhr.status === 404) {
-          status404 = true;
-        }
-      } catch(e) {}
-    }
-
-    if (is404 || status404) {
-      console.warn('🚨 [404] تم كشف خطأ 404 - حصار فوري');
-      show404Page();
-      return true;
-    }
-    return false;
-  }
-
-  // ===== مراقبة 404 =====
-  function watchFor404() {
-    const observer = new MutationObserver(function() {
-      const bodyText = document.body ? document.body.innerText || '' : '';
-      const titleText = document.title || '';
-      if (bodyText.includes('404') || bodyText.includes('Not Found') || titleText.includes('404')) {
-        console.warn('🚨 [404] تم كشف 404 عبر المراقبة');
-        show404Page();
-        observer.disconnect();
-      }
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
-  }
-
-  // ===== دالة init الرئيسية =====
-  function init() {
-    createSplash();
-
-    // الكشف الفوري عن 404
-    if (detect404AndHandle()) {
-      return;
-    }
-
-    loadHeader();
-    loadFooter();
-
-    document.addEventListener('headerLoaded', function() {
-      setDynamicCanonical();
-      addDynamicLinks();
-    });
-
-    setTimeout(watchFor404, 100);
-
-    setTimeout(function() {
-      if (!splashHidden) {
-        console.warn('⏰ انتهاء المهلة، إخفاء الشاشة قسراً');
-        hideSplash();
-      }
-    }, 5000);
-
-    console.log('✅ init-page-root.js - النسخة النهائية (تعيد التوجيه إلى Page11.html)');
-  }
-
-  // ===== تشغيل =====
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  // ===== مراقبة تغير URL =====
-  let lastUrl = window.location.href;
-  setInterval(function() {
-    if (window.location.href !== lastUrl) {
-      lastUrl = window.location.href;
-      setTimeout(function() {
-        detect404AndHandle();
-      }, 500);
-    }
-  }, 2000);
-
-  console.log('🛡️ الدرع المطلق مفعل - يعيد التوجيه إلى Page11.html');
-  console.log('📜 الدالة الأم: Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
-  console.log('🌌 Zx = Z + C + A | Z + C + A = 1');
-  console.log('🇾🇪 من صنعاء إلى الكون');
-})();
+    // 3) التوجيه التلقائي إلى الواحة بعد 7 ثوانٍ
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 7000);
+  </script>
+</body>
+</html>
