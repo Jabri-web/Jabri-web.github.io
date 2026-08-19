@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>الدالة الأم — نظرية الجبري الموحدة</title>
+    <title>Mother Function — Al-Jabri Unified Theory</title>
     
     <!-- معلومات المؤلف والمحرر والناشر -->
     <meta name="author" content="عبدالله الجبري (Abdullah Al-Jabri)">
@@ -16,7 +16,7 @@
     <meta name="designer" content="عبدالله الجبري">
     <meta name="copyright" content="2026 © واحة الجبري - Abdullah Al-Jabri">
 
-    <!-- لغات الصفحات البديلة للسيو (لربطها مع الإنجليزية) -->
+    <!-- لغات الصفحات البديلة للسيو -->
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/theory-ar.html" />
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/theory-en.html" />
     <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/ar/theory-ar.html" />
@@ -30,7 +30,7 @@
             "author": {
                 "@type": "Person",
                 "name": "عبدالله الجبري",
-                "url": "https://jabri-com.vercel.app/ar/theory-ar.html"
+                "url": "https://jabri-com.vercel.app/en/theory-en.html"
             },
             "publisher": {
                 "@type": "Organization",
@@ -57,7 +57,7 @@
         body {
             background: #0b0e1a;
             color: #e0e8f0;
-            font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -133,7 +133,7 @@
         .header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             background: linear-gradient(135deg, #f7e05e, #d4af37, #b8860b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -142,8 +142,9 @@
         }
         .header .sub {
             font-size: 1.1rem;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             color: #94a3b8;
+            text-transform: uppercase;
             margin-top: 6px;
         }
 
@@ -191,17 +192,17 @@
         }
         .desc ul {
             list-style: none;
-            padding: 0.4rem 0.8rem 0 0;
+            padding: 0.4rem 0 0 0.8rem;
         }
         .desc ul li {
             position: relative;
-            padding-right: 1.4rem;
+            padding-left: 1.4rem;
             margin-bottom: 0.3rem;
         }
         .desc ul li::before {
-            content: '◂';
+            content: '▹';
             position: absolute;
-            right: 0;
+            left: 0;
             color: #6ae3ff;
             font-weight: 700;
         }
@@ -239,14 +240,14 @@
         }
         .card ul { list-style: none; padding: 0; }
         .card ul li {
-            padding-right: 1.2rem;
+            padding-left: 1.2rem;
             position: relative;
             margin-bottom: 0.2rem;
         }
         .card ul li::before {
             content: '✦';
             position: absolute;
-            right: 0;
+            left: 0;
             color: #6ae3ff;
             font-size: 0.8rem;
         }
@@ -314,65 +315,65 @@
         <!-- TOP NAV -->
         <div class="top-nav">
             <a href="/" class="nav-btn">
-                <span class="icon">🏡</span> العودة إلى الواحة
+                <span class="icon">🏡</span> Back to The Oasis
             </a>
-            <a href="/en/theory-en.html" class="nav-btn">
-                <span class="icon">🌐</span> English
+            <a href="/ar/theory-ar.html" class="nav-btn">
+                <span class="icon">🌐</span> العربية
             </a>
         </div>
 
         <!-- HEADER -->
         <div class="header">
-            <h1>الدالة الأم</h1>
-            <div class="sub">باحث يمني · دالة رياضية</div>
+            <h1>FROM SANA'A TO THE COSMOS</h1>
+            <div class="sub">YEMENI RESEARCHER · MATHEMATICAL FUNCTION</div>
         </div>
 
         <!-- MAIN FUNCTION -->
         <div class="eq-block">
-            <h2>الدالة الأم</h2>
+            <h2>MAIN FUNCTION</h2>
             <div class="math">
                 Z(x) = x<sup>5</sup> ln(x) · sin(2π/x) · exp(−x / x<sub>p</sub>)
             </div>
             <div class="desc">
-                <strong>المجال:</strong> <em>x &gt; 0</em>، <em>x<sub>p</sub> &gt; 0</em> — وسيط المقياس المميز
+                <strong>Domain:</strong> <em>x &gt; 0</em>, <em>x<sub>p</sub> &gt; 0</em> — characteristic scale parameter
                 <ul>
-                    <li>السلوك التذبذبي من sin(2π/x) ينتج تذبذبات متضائلة كلما زادت x</li>
-                    <li>الحد الأسي exp(−x/x<sub>p</sub>) يوفر تخميدًا للقيم الكبيرة لـ x</li>
-                    <li>المعامل x<sup>5</sup> ln(x) يضبط السعة مع نمو لوغاريتمي</li>
+                    <li>Oscillatory behavior from sin(2π/x) produces decaying oscillations as <em>x</em> increases</li>
+                    <li>Exponential term exp(−x/x<sub>p</sub>) provides damping for large <em>x</em></li>
+                    <li>Prefactor x<sup>5</sup> ln(x) modulates amplitude with logarithmic growth</li>
                 </ul>
             </div>
         </div>
 
         <!-- NORMALIZATION IDENTITY -->
         <div class="eq-block" style="border-color: #6ae3ff40;">
-            <h2>هوية التطبيع</h2>
+            <h2>NORMALIZATION IDENTITY</h2>
             <div class="math">
                 <span class="highlight">Z<sub>x</sub></span> = <span class="gold">Z</span> + <span class="gold">C</span> + <span class="gold">A</span> &nbsp;&nbsp;·&nbsp;&nbsp; <span class="highlight">Z + C + A = 1</span>
             </div>
             <div class="desc">
-                شرط الحفظ: المجموع <em>Z + C + A</em> يُطبع إلى الوحدة، مما يضمن انغلاق النظام. <em>Z<sub>x</sub></em> هو المجموع المُطبَّع.
+                Conservation condition: the sum <em>Z + C + A</em> is normalized to unity, ensuring closure of the system. <em>Z<sub>x</sub></em> is the normalized total.
             </div>
         </div>
 
         <!-- KEY FEATURES + PLOT -->
         <div class="grid-2">
             <div class="card">
-                <h3><span class="icon">⚡</span> البنية متعددة المقاييس</h3>
-                <p>تجمع بين نمو القوة x<sup>5</sup>، والعامل اللوغاريتمي ln(x)، والحد الدوري sin(2π/x) لالتقاط التذبذبات عبر المقاييس.</p>
+                <h3><span class="icon">⚡</span> Multiscale Structure</h3>
+                <p>Combines power-law growth x<sup>5</sup>, logarithmic factor ln(x), and periodic term sin(2π/x) to capture oscillations across scales.</p>
                 <br>
-                <h3><span class="icon">🌀</span> التخميد والاضمحلال</h3>
-                <p>التخميد الأسي exp(−x/x<sub>p</sub>) يضمن تقارب الدالة إلى الصفر عندما x → ∞، مما يمثل التوهين المستقر.</p>
+                <h3><span class="icon">🌀</span> Damping &amp; Decay</h3>
+                <p>Exponential damping exp(−x/x<sub>p</sub>) ensures the function converges to zero as x → ∞, modeling stable attenuation.</p>
                 <br>
-                <h3><span class="icon">🌌</span> الدور الفيزيائي</h3>
-                <p>مقترحة كدالة طيفية لنمذجة التوزيعات التذبذبية المنتظمة في الفيزياء النظرية وعلم الكونيات.</p>
+                <h3><span class="icon">🌌</span> Physical Role</h3>
+                <p>Proposed as a spectral-type function for modeling structured oscillatory distributions in theoretical physics and cosmology.</p>
                 <br>
-                <h3><span class="icon">🔗</span> التطبيع</h3>
-                <p>الشرط Z + C + A = 1 يوفر مجموعًا محفوظًا للوحدة، مفيدًا للتفسيرات الاحتمالية أو البنيوية.</p>
+                <h3><span class="icon">🔗</span> Normalization</h3>
+                <p>The condition Z + C + A = 1 provides a conserved unit sum, useful for probabilistic or structural interpretations.</p>
             </div>
             <div class="card">
-                <h3><span class="icon">📈</span> رسم توضيحي</h3>
+                <h3><span class="icon">📈</span> Illustrative Plot</h3>
                 <div class="plot-box">
-                    <div class="plot-label">Z(x) عندما x<sub>p</sub> = 2.0 — اضمحلال تذبذبي</div>
+                    <div class="plot-label">Z(x) for x<sub>p</sub> = 2.0 — Oscillatory Decay</div>
                     <svg class="plot-svg" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
                         <rect width="320" height="120" fill="#0b0e1a" rx="8" />
                         <polyline points="10,90 30,75 50,60 70,48 90,55 110,38 130,45 150,30 170,35 190,20 210,28 230,18 250,22 270,14 290,18 310,10" stroke="#6ae3ff" stroke-width="2" fill="none" opacity="0.9" />
@@ -383,20 +384,20 @@
                     </svg>
                 </div>
                 <br>
-                <h3><span class="icon">📖</span> السياق البحثي</h3>
-                <p>تستكشف هذه الصياغة دالة تذبذبية مخمدة تهدف إلى نمذجة التوزيعات الشبيهة بالطيف في علم الكونيات النظري والفيزياء الرياضية. يدمج الهيكل مكونات القوة واللوغاريتم والدورية مع الاضمحلال الأسي لتمثيل عمليات التوهين الواقعية التي لوحظت في الأنظمة التذبذبية الطبيعية. ويضمن قيد التطبيع التفسير الاحتمالي والحفظ الكلي عبر المجال المعرَّف.</p>
+                <h3><span class="icon">📖</span> Research Context</h3>
+                <p>This formulation explores a damped oscillatory function intended for modeling spectral-like distributions in theoretical cosmology and mathematical physics. The structure integrates power-law, logarithmic, and periodic components with exponential decay to represent realistic attenuation processes observed in natural oscillatory systems. The normalization constraint ensures probabilistic interpretation and total conservation across the defined domain.</p>
             </div>
         </div>
 
         <!-- FOOTER -->
         <div class="footer">
             <div>
-                <strong>المهندس عبدالله الجبري</strong> &nbsp;|&nbsp; <span class="orcid">ORCID 0009-0003-3319-3822</span>
+                <strong>Eng. Abdulla Al-Jabri</strong> &nbsp;|&nbsp; <span class="orcid">ORCID 0009-0003-3319-3822</span>
             </div>
             <div>
-                صنعاء، اليمن · بحث مستقل · 2024 · دراسة نظرية
+                Sana'a, Yemen · Independent Research · 2024 · Theoretical Study
             </div>
-            <div class="badge">⚡ من أصفار ريمان إلى بنية الكون</div>
+            <div class="badge">⚡ From Riemann zeros to structure of universe</div>
         </div>
 
     </div>
