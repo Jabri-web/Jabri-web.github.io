@@ -1,552 +1,293 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>واحة الجبري | القائمة الكاملة</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: #0a0a0f;
-    color: #fff;
-    min-height: 100vh;
-    padding: 20px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- ===== الميتادات الثابتة + الروابط الذكية ===== -->
+  <link id="linkCanon" rel="canonical" href="https://jabri-com.vercel.app/" />
+  <link id="linkAltAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/" />
+  <link id="linkAltEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
+  <link id="linkAltX" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
+
+  <title id="pageTitle">واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة</title>
+
+  <meta id="metaDesc" name="description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري" />
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri" />
+  <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+
+  <!-- ===== Open Graph ===== -->
+  <meta id="ogUrl" property="og:url" content="https://jabri-com.vercel.app/" />
+  <meta id="ogTitle" property="og:title" content="واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة" />
+  <meta id="ogDesc" property="og:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri" />
+  <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="المهندس عبدالله الجبري - واحة الجبري" />
+  <meta property="og:image:type" content="image/webp" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@JabriAbdulla1" />
+  <meta name="twitter:creator" content="@JabriAbdulla1" />
+  <meta id="twTitle" name="twitter:title" content="واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة" />
+  <meta id="twDesc" name="twitter:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري" />
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
+  <meta name="twitter:image:alt" content="المهندس عبدالله الجبري - واحة الجبري" />
+
+  <!-- ===== الروابط الاجتماعية + الأرشيف ===== -->
+  <link rel="me" href="https://github.com/jabri-web" />
+  <link rel="me" href="https://x.com/jabri_web" />
+  <link rel="me" href="https://www.youtube.com/@HeavenAlJabri" />
+  <link rel="me" href="https://www.linkedin.com/in/abdulla-al-jabri" />
+  <link rel="me" href="https://orcid.org/0009-0003-3319-3822" />
+  <link rel="me" href="https://en.wikipedia.org/wiki/User:Jabri2026" />
+  <link rel="me" href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" />
+
+  <!-- ===== JSON-LD ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://jabri-com.vercel.app/#website",
+    "url": "https://jabri-com.vercel.app/",
+    "name": "واحة الجبري",
+    "alternateName": "Heaven Al-Jabri",
+    "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله الجبري",
+    "publisher": {
+      "@type": "Person",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "alternateName": "Eng. Abdulla Mohammed Nasser Al-Jabri",
+      "url": "https://jabri-com.vercel.app/about.html",
+      "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp"
+    }
   }
-  
-  /* ===== زر القائمة (هامبرغر) ===== */
-  .menu-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 99999;
-    background: linear-gradient(135deg, #ffd700, #f0a500);
-    color: #0a0a0f;
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .menu-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
-  }
-  
-  /* ===== القائمة الجانبية ===== */
-  .side-menu {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 350px;
-    max-width: 85vw;
-    height: 100vh;
-    background: linear-gradient(180deg, #0a0a0f, #1a1a2e);
-    border-left: 2px solid #ffd700;
-    z-index: 99998;
-    padding: 80px 25px 30px;
-    overflow-y: auto;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-  }
-  .side-menu.open {
-    right: 0;
-  }
-  
-  /* ===== إغلاق القائمة ===== */
-  .menu-close {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: 2px solid #ffd700;
-    color: #ffd700;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .menu-close:hover {
-    background: #ffd700;
-    color: #0a0a0f;
-  }
-  
-  /* ===== عنوان القائمة ===== */
-  .menu-title {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #ffd700, #6ae3ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid rgba(255,215,0,0.2);
-  }
-  .menu-title small {
-    display: block;
-    font-size: 0.9rem;
-    opacity: 0.5;
-    -webkit-text-fill-color: #aaa;
-  }
-  
-  /* ===== أزرار القائمة ===== */
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
-    padding: 14px 18px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,215,0,0.15);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-    font-family: 'Cairo', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    text-align: right;
-  }
-  .menu-btn:hover {
-    background: rgba(255,215,0,0.15);
-    border-color: #ffd700;
-    transform: translateX(-5px);
-    box-shadow: 0 0 25px rgba(255,215,0,0.15);
-  }
-  .menu-btn .icon {
-    font-size: 1.5rem;
-    width: 36px;
-    text-align: center;
-  }
-  .menu-btn .badge {
-    margin-right: auto;
-    background: #ffd700;
-    color: #0a0a0f;
-    padding: 2px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 900;
-  }
-  
-  /* ===== الأزرار العلوية (ثابتة) ===== */
-  .top-buttons {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    z-index: 99997;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    pointer-events: none;
-  }
-  .top-buttons > * {
-    pointer-events: auto;
-  }
-  .top-btn-group {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .top-btn {
-    background: linear-gradient(135deg, #ffd700, #f0a500);
-    color: #0a0a0f;
-    border: none;
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 900;
-    font-family: 'Cairo', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255,215,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    height: 40px;
-    text-decoration: none;
-  }
-  .top-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(255,215,0,0.6);
-  }
-  .top-btn.icon-only {
-    width: 40px;
-    padding: 0;
-    justify-content: center;
-    font-size: 18px;
-  }
-  .top-btn .count {
-    background: #0a0a0f;
-    color: #ffd700;
-    padding: 0 8px;
-    border-radius: 12px;
-    font-size: 12px;
-  }
-  
-  /* ===== الأزرار السفلية (ثابتة) ===== */
-  .bottom-buttons {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 99997;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    direction: ltr;
-  }
-  .bottom-btn {
-    background: linear-gradient(135deg, #ffd700, #f0a500);
-    color: #0a0a0f;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 900;
-    font-family: 'Cairo', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255,215,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    min-width: 110px;
-    justify-content: center;
-  }
-  .bottom-btn:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 40px rgba(255,215,0,0.6);
-  }
-  .bottom-btn.icon-only {
-    min-width: 50px;
-    padding: 10px;
-    font-size: 20px;
-  }
-  
-  /* ===== المحتوى الرئيسي ===== */
-  .hero {
-    text-align: center;
-    padding: 100px 20px 120px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .hero h1 {
-    font-size: 2.8rem;
-    background: linear-gradient(135deg, #6ae3ff, #ffd700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero p {
-    opacity: 0.6;
-    font-size: 1.1rem;
-    margin-top: 10px;
-  }
-  
-  /* ===== تظليل الخلفية عند فتح القائمة ===== */
-  .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 99997;
-    display: none;
-    backdrop-filter: blur(4px);
-  }
-  .menu-overlay.active {
-    display: block;
-  }
-  
-  /* ===== استجابة للجوال ===== */
-  @media (max-width: 600px) {
-    .top-btn { font-size: 11px; padding: 6px 12px; height: 34px; }
-    .top-btn.icon-only { width: 34px; font-size: 15px; }
-    .side-menu { width: 300px; padding: 70px 18px 20px; }
-    .menu-btn { font-size: 0.9rem; padding: 12px 14px; }
-    .bottom-btn { font-size: 12px; padding: 8px 14px; min-width: 80px; }
-    .hero h1 { font-size: 2rem; }
-  }
-  @media (max-width: 400px) {
-    .top-buttons { gap: 5px; }
-    .top-btn { font-size: 10px; padding: 4px 10px; height: 30px; }
-    .top-btn.icon-only { width: 30px; font-size: 13px; }
-    .side-menu { width: 260px; }
-  }
-</style>
+  </script>
+
+  <!-- ===== السكربت الديناميكي ===== -->
+  <script>
+  (function() {
+    'use strict';
+    const SITE = 'https://jabri-com.vercel.app';
+    const PATH = location.pathname;
+    const PAGE = PATH.split('/').pop() || 'index.html';
+    const REAL_URL = SITE + PATH;
+    const DATA = {
+      '': { title: 'واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة', desc: 'الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري' },
+      'index.html': { title: 'واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة', desc: 'الدالة الأم Z(x) ونظرية السندباد الموحدة - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري' },
+      'about-ar.html': { title: 'عن الباحث | عبدالله الجبري - مؤسس واحة الجبري', desc: 'سيرة الباحث اليمني عبدالله محمد ناصر الجبري - مؤسس واحة الجبري ونظرية السندباد الموحدة Z+C+A=1' },
+      'research.html': { title: 'نظرية السندباد الموحدة Z+C+A=1 - واحة الجبري', desc: 'اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - نظرية موحدة للكون' },
+      'Sanaa.html': { title: 'صنعاء القديمة - تراث اليمن العريق | واحة الجبري', desc: 'توثيق صنعاء القديمة - عاصمة اليمن التاريخية - تراث اليمن العريق في واحة الجبري' },
+      'Shibam.html': { title: 'شبام حضرموت - ناطحات السحاب الطينية | واحة الجبري', desc: 'ناطحات السحاب الطينية في شبام حضرموت - تحفة معمارية يمنية - تراث اليمن العريق' },
+      'Soqatra.html': { title: 'سقطرى - جزيرة العجائب اليمنية | واحة الجبري', desc: 'جزيرة سقطرى اليمنية - عجائب الطبيعة وتراث اليمن - واحة الجبري' },
+      'journal3.html': { title: 'رسالة إلى العالم | واحة الجبري', desc: 'رسالة المهندس عبدالله الجبري إلى العالم - تراث اليمن العريق ونظرية السندباد الموحدة' },
+      'en/index.html': { title: 'Heaven Al-Jabri | Unified Sinbad Theory Z+C+A=1', desc: 'The mother function Z(x) and the Unified Sinbad Theory - Derivation of gravitational constant from pure numbers' },
+      'en/about.html': { title: 'About | Abdulla Al-Jabri - Heaven Al-Jabri', desc: 'Biography of Yemeni researcher Abdulla Al-Jabri - Founder of Heaven Al-Jabri' }
+    };
+    const meta = DATA[PAGE] || DATA[''];
+    document.title = meta.title;
+    const map = { 'metaDesc': meta.desc, 'ogTitle': meta.title, 'ogDesc': meta.desc, 'twTitle': meta.title, 'twDesc': meta.desc };
+    for (const [id, content] of Object.entries(map)) { const el = document.getElementById(id); if (el) el.content = content; }
+    document.getElementById('linkCanon').href = REAL_URL;
+    document.getElementById('linkAltAr').href = REAL_URL;
+    document.getElementById('linkAltX').href = REAL_URL;
+    document.getElementById('linkAltEn').href = PATH.includes('/en/') ? REAL_URL : SITE + '/en' + PATH;
+    document.getElementById('ogUrl').content = REAL_URL;
+    console.log('🚀 واحة الجبري | ', PAGE);
+  })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Cairo', sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; padding: 20px; }
+    .menu-toggle { position: fixed; top: 20px; right: 20px; z-index: 99999; background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border: none; border-radius: 50%; width: 56px; height: 56px; font-size: 28px; cursor: pointer; box-shadow: 0 0 30px rgba(255,215,0,0.4); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+    .menu-toggle:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(255,215,0,0.8); }
+    .side-menu { position: fixed; top: 0; right: -400px; width: 350px; max-width: 85vw; height: 100vh; background: linear-gradient(180deg, #0a0a0f, #1a1a2e); border-left: 2px solid #ffd700; z-index: 99998; padding: 80px 25px 30px; overflow-y: auto; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: -10px 0 40px rgba(0,0,0,0.8); }
+    .side-menu.open { right: 0; }
+    .menu-close { position: absolute; top: 20px; left: 20px; background: none; border: 2px solid #ffd700; color: #ffd700; border-radius: 50%; width: 44px; height: 44px; font-size: 22px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+    .menu-close:hover { background: #ffd700; color: #0a0a0f; }
+    .menu-title { text-align: center; font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, #ffd700, #6ae3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,215,0,0.2); }
+    .menu-title small { display: block; font-size: 0.9rem; opacity: 0.5; -webkit-text-fill-color: #aaa; }
+    .menu-btn { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 18px; margin-bottom: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,215,0,0.15); border-radius: 12px; color: #fff; font-size: 1rem; font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-align: right; }
+    .menu-btn:hover { background: rgba(255,215,0,0.15); border-color: #ffd700; transform: translateX(-5px); box-shadow: 0 0 25px rgba(255,215,0,0.15); }
+    .menu-btn .icon { font-size: 1.5rem; width: 36px; text-align: center; }
+    .menu-btn .badge { margin-right: auto; background: #ffd700; color: #0a0a0f; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 900; }
+    .top-buttons { position: fixed; top: 20px; left: 20px; right: 20px; z-index: 99997; display: flex; justify-content: space-between; align-items: center; gap: 10px; pointer-events: none; }
+    .top-buttons > * { pointer-events: auto; }
+    .top-btn-group { display: flex; gap: 8px; align-items: center; }
+    .top-btn { background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border: none; border-radius: 30px; padding: 8px 16px; font-size: 13px; font-weight: 900; font-family: 'Cairo', sans-serif; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255,215,0,0.3); display: flex; align-items: center; gap: 6px; white-space: nowrap; height: 40px; text-decoration: none; }
+    .top-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+    .top-btn.icon-only { width: 40px; padding: 0; justify-content: center; font-size: 18px; }
+    .top-btn .count { background: #0a0a0f; color: #ffd700; padding: 0 8px; border-radius: 12px; font-size: 12px; }
+    .bottom-buttons { position: fixed; bottom: 25px; left: 25px; z-index: 99997; display: flex; flex-direction: column; gap: 10px; direction: ltr; }
+    .bottom-btn { background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border: none; border-radius: 30px; padding: 10px 20px; font-size: 14px; font-weight: 900; font-family: 'Cairo', sans-serif; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255,215,0,0.3); display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 110px; justify-content: center; }
+    .bottom-btn:hover { transform: scale(1.07); box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+    .bottom-btn.icon-only { min-width: 50px; padding: 10px; font-size: 20px; }
+    .hero { text-align: center; padding: 100px 20px 120px; max-width: 600px; margin: 0 auto; }
+    .hero h1 { font-size: 2.8rem; background: linear-gradient(135deg, #6ae3ff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { opacity: 0.6; font-size: 1.1rem; margin-top: 10px; }
+    .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99997; display: none; backdrop-filter: blur(4px); }
+    .menu-overlay.active { display: block; }
+    @media (max-width: 600px) { .top-btn { font-size: 11px; padding: 6px 12px; height: 34px; } .top-btn.icon-only { width: 34px; font-size: 15px; } .side-menu { width: 300px; padding: 70px 18px 20px; } .menu-btn { font-size: 0.9rem; padding: 12px 14px; } .bottom-btn { font-size: 12px; padding: 8px 14px; min-width: 80px; } .hero h1 { font-size: 2rem; } }
+    @media (max-width: 400px) { .top-buttons { gap: 5px; } .top-btn { font-size: 10px; padding: 4px 10px; height: 30px; } .top-btn.icon-only { width: 30px; font-size: 13px; } .side-menu { width: 260px; } }
+  </style>
+
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- ===== تظليل الخلفية ===== -->
-<!-- ============================================================ -->
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+  <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+  <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" title="القائمة">☰</button>
 
-<!-- ============================================================ -->
-<!-- ===== زر القائمة (هامبرغر) ===== -->
-<!-- ============================================================ -->
-<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" title="القائمة">
-  ☰
-</button>
+  <div class="side-menu" id="sideMenu">
+    <button class="menu-close" onclick="closeMenu()">✕</button>
+    <div class="menu-title">🌊 واحة الجبري <small>Heaven Al-Jabri</small></div>
 
-<!-- ============================================================ -->
-<!-- ===== القائمة الجانبية ===== -->
-<!-- ============================================================ -->
-<div class="side-menu" id="sideMenu">
-  <button class="menu-close" onclick="closeMenu()">✕</button>
-  
-  <div class="menu-title">
-    🌊 واحة الجبري
-    <small>Heaven Al-Jabri</small>
+    <a href="/" class="menu-btn" onclick="closeMenu()"><span class="icon">🏠</span> الرئيسية</a>
+    <a href="/about-ar.html" class="menu-btn" onclick="closeMenu()"><span class="icon">👤</span> عن الباحث <span class="badge">السيرة</span></a>
+    <a href="/research.html" class="menu-btn" onclick="closeMenu()"><span class="icon">📐</span> نظرية السندباد <span class="badge">Z+C+A=1</span></a>
+    <a href="/theory-ar.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🧮</span> الدالة الأم Z(x)</a>
+    <a href="/Sanaa.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🏛️</span> صنعاء القديمة</a>
+    <a href="/Shibam.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🏗️</span> شبام حضرموت</a>
+    <a href="/Soqatra.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🌴</span> سقطرى</a>
+    <a href="/Yemen-library.html" class="menu-btn" onclick="closeMenu()"><span class="icon">📚</span> مكتبة التراث</a>
+    <a href="/journal3.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🌍</span> رسالة إلى العالم <span class="badge">جديد</span></a>
+    <a href="/music.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🎵</span> الموسيقى</a>
+    <a href="/visitor.html" class="menu-btn" onclick="closeMenu()"><span class="icon">👥</span> الزوار <span class="badge" id="menuVisitorCount">0</span></a>
+
+    <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+
+    <a href="https://github.com/jabri-web" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🐙</span> GitHub</a>
+    <a href="https://x.com/jabri_web" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🐦</span> X (Twitter)</a>
+    <a href="https://www.youtube.com/@HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">▶️</span> YouTube</a>
+    <a href="https://t.me/HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">💬</span> Telegram</a>
+    <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🔬</span> ORCID</a>
+    <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🌐</span> Wikipedia</a>
+    <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">📰</span> Wikibin (أرشيف)</a>
+
+    <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+
+    <button class="menu-btn" onclick="toggleLanguage(); closeMenu();"><span class="icon">🌐</span> تبديل اللغة <span class="badge" id="langBadge">🇾🇪 عربي</span></button>
+    <button class="menu-btn" onclick="toggleMusic(); closeMenu();"><span class="icon">🎵</span> تشغيل/إيقاف الموسيقى <span class="badge" id="musicBadge">🔇</span></button>
   </div>
-  
-  <!-- ===== روابط القائمة ===== -->
-  <a href="/" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🏠</span> الرئيسية
-  </a>
-  
-  <a href="/about-ar.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">👤</span> عن الباحث
-    <span class="badge">السيرة</span>
-  </a>
-  
-  <a href="/research.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">📐</span> نظرية السندباد
-    <span class="badge">Z+C+A=1</span>
-  </a>
-  
-  <a href="/theory-ar.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🧮</span> الدالة الأم Z(x)
-  </a>
-  
-  <a href="/Sanaa.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🏛️</span> صنعاء القديمة
-  </a>
-  
-  <a href="/Shibam.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🏗️</span> شبام حضرموت
-  </a>
-  
-  <a href="/Soqatra.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🌴</span> سقطرى
-  </a>
-  
-  <a href="/Yemen-library.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">📚</span> مكتبة التراث
-  </a>
-  
-  <a href="/music.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🎵</span> الموسيقى
-  </a>
-  
-  <a href="/visitor.html" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">👥</span> الزوار
-    <span class="badge" id="menuVisitorCount">0</span>
-  </a>
-  
-  <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
-  
-  <!-- ===== روابط خارجية ===== -->
-  <a href="https://github.com/jabri-web" target="_blank" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🐙</span> GitHub
-  </a>
-  
-  <a href="https://x.com/jabri_web" target="_blank" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🐦</span> X (Twitter)
-  </a>
-  
-  <a href="https://www.youtube.com/@HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">▶️</span> YouTube
-  </a>
-  
-  <a href="https://t.me/HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">💬</span> Telegram
-  </a>
-  
-  <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="menu-btn" onclick="closeMenu()">
-    <span class="icon">🔬</span> ORCID
-  </a>
-  
-  <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
-  
-  <button class="menu-btn" onclick="toggleLanguage(); closeMenu();">
-    <span class="icon">🌐</span> تبديل اللغة
-    <span class="badge" id="langBadge">🇾🇪 عربي</span>
-  </button>
-  
-  <button class="menu-btn" onclick="toggleMusic(); closeMenu();">
-    <span class="icon">🎵</span> تشغيل/إيقاف الموسيقى
-    <span class="badge" id="musicBadge">🔇</span>
-  </button>
-</div>
 
-<!-- ============================================================ -->
-<!-- ===== الأزرار العلوية (ثابتة) ===== -->
-<!-- ============================================================ -->
-<div class="top-buttons">
-  <!-- المجموعة اليمنى -->
-  <div class="top-btn-group">
-    <button class="top-btn icon-only" onclick="toggleMusic()" title="موسيقى" id="musicTopBtn">🎵</button>
-    <button class="top-btn icon-only" onclick="toggleChat()" title="محادثة">💬</button>
-    <button class="top-btn" onclick="toggleLanguage()" id="langTopBtn">
-      <span id="langTopText">🇾🇪 عربي</span>
-    </button>
+  <!-- ===== الأزرار العلوية ===== -->
+  <div class="top-buttons">
+    <div class="top-btn-group">
+      <button class="top-btn icon-only" onclick="toggleMusic()" title="موسيقى" id="musicTopBtn">🎵</button>
+      <button class="top-btn icon-only" onclick="toggleChat()" title="محادثة">💬</button>
+      <button class="top-btn" onclick="toggleLanguage()" id="langTopBtn"><span id="langTopText">🇾🇪 عربي</span></button>
+    </div>
+    <div class="top-btn" style="pointer-events:none; background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid #ffd700; box-shadow:none;">👥 <span id="visitorCountTop">0</span></div>
+    <div class="top-btn-group">
+      <a href="https://github.com/jabri-web" target="_blank" class="top-btn icon-only" title="GitHub">🐙</a>
+      <a href="https://x.com/jabri_web" target="_blank" class="top-btn icon-only" title="X">🐦</a>
+      <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="top-btn icon-only" title="YouTube">▶️</a>
+      <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" class="top-btn icon-only" title="Wikibin">📰</a>
+    </div>
   </div>
-  
-  <!-- الوسط (عداد الزوار) -->
-  <div class="top-btn" style="pointer-events:none; background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid #ffd700; box-shadow:none;">
-    👥 <span id="visitorCountTop">0</span>
+
+  <!-- ===== الأزرار السفلية ===== -->
+  <div class="bottom-buttons">
+    <button class="bottom-btn icon-only" onclick="toggleMusic()" id="musicBottomBtn" title="موسيقى">🎵</button>
+    <button class="bottom-btn" onclick="toggleChat()" title="محادثة">💬 محادثة</button>
+    <a href="/visitor.html" class="bottom-btn" title="الزوار">👥 الزوار <span id="visitorCountBottom" style="background:#0a0a0f; color:#ffd700; padding:0 10px; border-radius:12px;">0</span></a>
+    <button class="bottom-btn" onclick="toggleLanguage()" id="langBottomBtn">🌐 <span id="langBottomText">عربي</span></button>
+    <a href="https://github.com/jabri-web" target="_blank" class="bottom-btn">🐙 GitHub</a>
+    <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="bottom-btn">▶️ YouTube</a>
+    <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" class="bottom-btn">🌐 Wikipedia</a>
+    <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" class="bottom-btn">📰 Wikibin</a>
   </div>
-  
-  <!-- المجموعة اليسرى -->
-  <div class="top-btn-group">
-    <a href="https://github.com/jabri-web" target="_blank" class="top-btn icon-only" title="GitHub">🐙</a>
-    <a href="https://x.com/jabri_web" target="_blank" class="top-btn icon-only" title="X">🐦</a>
-    <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="top-btn icon-only" title="YouTube">▶️</a>
+
+  <!-- ===== المحتوى ===== -->
+  <div class="hero">
+    <h1>🌊 واحة الجبري</h1>
+    <p>Heaven Al-Jabri · نظرية السندباد الموحدة</p>
+    <p style="font-size:0.8rem; margin-top:20px; opacity:0.4;">🇾🇪 اليمن - صنعاء</p>
   </div>
-</div>
 
-<!-- ============================================================ -->
-<!-- ===== الأزرار السفلية (ثابتة) ===== -->
-<!-- ============================================================ -->
-<div class="bottom-buttons">
-  <button class="bottom-btn icon-only" onclick="toggleMusic()" id="musicBottomBtn" title="موسيقى">🎵</button>
-  <button class="bottom-btn" onclick="toggleChat()" title="محادثة">💬 محادثة</button>
-  <a href="/visitor.html" class="bottom-btn" title="الزوار">👥 الزوار <span id="visitorCountBottom" style="background:#0a0a0f; color:#ffd700; padding:0 10px; border-radius:12px;">0</span></a>
-  <button class="bottom-btn" onclick="toggleLanguage()" id="langBottomBtn">🌐 <span id="langBottomText">عربي</span></button>
-  <a href="https://github.com/jabri-web" target="_blank" class="bottom-btn">🐙 GitHub</a>
-  <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="bottom-btn">▶️ YouTube</a>
-</div>
+  <audio id="oasisMusic" src="/image/music.mp3" loop preload="auto"></audio>
 
-<!-- ============================================================ -->
-<!-- ===== المحتوى الرئيسي ===== -->
-<!-- ============================================================ -->
-<div class="hero">
-  <h1>🌊 واحة الجبري</h1>
-  <p>Heaven Al-Jabri · نظرية السندباد الموحدة</p>
-  <p style="font-size:0.8rem; margin-top:20px; opacity:0.4;">🇾🇪 اليمن - صنعاء</p>
-</div>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('menuOverlay');
+      menu.classList.toggle('open');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMenu() {
+      document.getElementById('sideMenu').classList.remove('open');
+      document.getElementById('menuOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    let currentLang = 'ar';
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = currentLang;
+      localStorage.setItem('lang', currentLang);
+      updateLangUI();
+    }
+    function updateLangUI() {
+      const isEn = currentLang === 'en';
+      document.getElementById('langTopText').textContent = isEn ? '🇬🇧 English' : '🇾🇪 عربي';
+      document.getElementById('langBottomText').textContent = isEn ? 'English' : 'عربي';
+      document.getElementById('langBadge').textContent = isEn ? '🇬🇧 English' : '🇾🇪 عربي';
+    }
+    const savedLang = localStorage.getItem('lang') || 'ar';
+    currentLang = savedLang;
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = currentLang;
+    updateLangUI();
 
-<!-- ===== مشغل الموسيقى المخفي ===== -->
-<audio id="oasisMusic" src="/image/music.mp3" loop preload="auto"></audio>
-
-<!-- ============================================================ -->
-<!-- ===== السكربتات ===== -->
-<!-- ============================================================ -->
-<script>
-// ============================================================
-// 1. القائمة
-// ============================================================
-function toggleMenu() {
-  const menu = document.getElementById('sideMenu');
-  const overlay = document.getElementById('menuOverlay');
-  menu.classList.toggle('open');
-  overlay.classList.toggle('active');
-  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-}
-function closeMenu() {
-  document.getElementById('sideMenu').classList.remove('open');
-  document.getElementById('menuOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// ============================================================
-// 2. اللغة
-// ============================================================
-let currentLang = 'ar';
-function toggleLanguage() {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  document.documentElement.lang = currentLang;
-  localStorage.setItem('lang', currentLang);
-  updateLangUI();
-}
-function updateLangUI() {
-  const isEn = currentLang === 'en';
-  document.getElementById('langTopText').textContent = isEn ? '🇬🇧 English' : '🇾🇪 عربي';
-  document.getElementById('langBottomText').textContent = isEn ? 'English' : 'عربي';
-  document.getElementById('langBadge').textContent = isEn ? '🇬🇧 English' : '🇾🇪 عربي';
-}
-
-// استعادة اللغة
-const savedLang = localStorage.getItem('lang') || 'ar';
-currentLang = savedLang;
-document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-document.documentElement.lang = currentLang;
-updateLangUI();
-
-// ============================================================
-// 3. الموسيقى
-// ============================================================
-let isMusicPlaying = false;
-function toggleMusic() {
-  const audio = document.getElementById('oasisMusic');
-  if (!audio) return;
-  if (isMusicPlaying) {
-    audio.pause();
-    isMusicPlaying = false;
-    document.getElementById('musicTopBtn').textContent = '🎵';
-    document.getElementById('musicBottomBtn').textContent = '🎵';
-    document.getElementById('musicBadge').textContent = '🔇';
-  } else {
-    audio.play().catch(() => {});
-    isMusicPlaying = true;
-    document.getElementById('musicTopBtn').textContent = '🔊';
-    document.getElementById('musicBottomBtn').textContent = '🔊';
-    document.getElementById('musicBadge').textContent = '🔊';
-  }
-}
-
-// ============================================================
-// 4. المحادثة (Chat)
-// ============================================================
-function toggleChat() {
-  alert('💬 المحادثة قيد التطوير... قريباً بإذن الله!\n\n📧 للتواصل: jabri62018@gmail.com');
-}
-
-// ============================================================
-// 5. عداد الزوار
-// ============================================================
-function updateVisitorCount() {
-  let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
-  count += 1;
-  localStorage.setItem('jabri_visitor_count', count);
-  const formatted = count.toLocaleString('ar-EG');
-  document.getElementById('visitorCountTop').textContent = formatted;
-  document.getElementById('visitorCountBottom').textContent = formatted;
-  document.getElementById('menuVisitorCount').textContent = formatted;
-}
-updateVisitorCount();
-
-// ============================================================
-// 6. إغلاق القائمة بالضغط على ESC
-// ============================================================
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeMenu();
-});
-
-console.log('🚀 واحة الجبري | القائمة الكاملة');
-console.log('🇾🇪 اليمن - صنعاء - 2026');
-console.log('🧮 Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
-console.log('📐 Z + C + A = 1');
-</script>
+    let isMusicPlaying = false;
+    function toggleMusic() {
+      const audio = document.getElementById('oasisMusic');
+      if (!audio) return;
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        document.getElementById('musicTopBtn').textContent = '🎵';
+        document.getElementById('musicBottomBtn').textContent = '🎵';
+        document.getElementById('musicBadge').textContent = '🔇';
+      } else {
+        audio.play().catch(() => {});
+        isMusicPlaying = true;
+        document.getElementById('musicTopBtn').textContent = '🔊';
+        document.getElementById('musicBottomBtn').textContent = '🔊';
+        document.getElementById('musicBadge').textContent = '🔊';
+      }
+    }
+    function toggleChat() {
+      alert('💬 المحادثة قيد التطوير... قريباً بإذن الله!\n\n📧 للتواصل: jabri62018@gmail.com');
+    }
+    function updateVisitorCount() {
+      let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
+      count += 1;
+      localStorage.setItem('jabri_visitor_count', count);
+      const formatted = count.toLocaleString('ar-EG');
+      document.getElementById('visitorCountTop').textContent = formatted;
+      document.getElementById('visitorCountBottom').textContent = formatted;
+      document.getElementById('menuVisitorCount').textContent = formatted;
+    }
+    updateVisitorCount();
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    console.log('🚀 واحة الجبري | القائمة الكاملة');
+    console.log('🇾🇪 اليمن - صنعاء - 2026');
+    console.log('🧮 Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
+    console.log('📐 Z + C + A = 1');
+  </script>
 
 </body>
 </html>
