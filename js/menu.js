@@ -1,6 +1,6 @@
 // ============================================================
 //   menu.js - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 5.0.2 - 18 أغسطس 2026
+//   الإصدار: 5.0.3 - 19 أغسطس 2026
 //   المستويات: العلوي (أساسيات) | الوسطى (نظرية) | السفلي (محادثات ديناميكي)
 //   جميع عناصر المحادثات قابلة للنقر وتفتح prompt
 // ============================================================
@@ -31,11 +31,15 @@
     // ============================================================
     const MENU_TOP = [
         { name: 'الرئيسية', nameEn: 'Home', href: `${langDir}/`, icon: '🏠' },
+        // 🎓 تمت إضافة رسالة الجامعة هنا
+        { name: 'رسالة جامعة KFUPM', nameEn: 'KFUPM Alumni Letter', href: `${langDir}/kfupm-msg.html`, icon: '🎓' },
         { name: 'صنعاء', nameEn: "Sana'a", href: `${langDir}/Sanaa.html`, icon: '🏛️' },
         { name: 'شبام', nameEn: 'Shibam', href: `${langDir}/Shibam.html`, icon: '🏗️' },
         { name: 'سقطرى', nameEn: 'Socotra', href: `${langDir}/Soqatra.html`, icon: '🌴' },
         { name: 'المجلة', nameEn: 'Journal', href: `${langDir}/journal.html`, icon: '📰' },
         { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience', href: `${langDir}/journal2.html`, icon: '🤖' },
+        { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects', href: `${langDir}/jabri-projects.html`, icon: '🤖' },
+
     ];
 
     // ============================================================
@@ -167,7 +171,7 @@
         html += `
             <div style="border-top:2px solid #ffd700; margin:12px 0 8px 0; padding-top:10px;">
                 <div style="color:#ffd700; font-size:0.7rem; font-weight:bold; text-align:center; letter-spacing:1px; margin-bottom:6px;">
-                    ⭐ ${isArabic ? 'إنجازات اليوم - 18 أغسطس 2026' : "Today's Achievements — Aug 18, 2026"}
+                    ⭐ ${isArabic ? 'إنجازات اليوم - 19 أغسطس 2026' : "Today's Achievements — Aug 19, 2026"}
                 </div>
                 <div style="display:flex; flex-direction:column; gap:4px; font-size:0.78rem; color:#ccc; padding:0 4px;">
                     <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,0.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
@@ -196,11 +200,11 @@
 
     function highlightActiveLink() {
         const links = document.querySelectorAll('#main-menu a');
-        const current = window.location.pathname.split('/').pop() || 'index.html';
+        const current = window.location.pathname.split('/').pop() || 'Page11.html';
 
         links.forEach(link => {
             const href = link.getAttribute('href').split('/').pop();
-            if (href === current || (current === '' && href === 'index.html')) {
+            if (href === current || (current === '' && href === 'Page11.html')) {
                 link.style.background = 'rgba(255, 215, 0, 0.08)';
                 link.style.borderRight = '3px solid #ffd700';
                 link.style.color = '#ffd700';
@@ -552,7 +556,7 @@
     //   🚀 التهيئة النهائية
     // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 menu.js v5.0.2 - القائمة الذكية مع المحادثات');
+        console.log('🌴 menu.js v5.0.3 - القائمة الذكية مع المحادثات + رسالة KFUPM');
 
         updateBottomMenu();
         buildMainMenu();
@@ -561,10 +565,11 @@
         initLanguageSwitcher();
         buildHamburgerMenu();
 
-        console.log('📅 18 أغسطس 2026');
+        console.log('📅 19 أغسطس 2026');
         console.log('📜 Zx = Z + C + A | Z + C + A = 1');
         console.log('🧮 Z(x) = x^5 ln(x) sin(2π/x) exp(-x/xp)');
         console.log('🇾🇪 اليمن - صنعاء');
+        console.log('🎓 رسالة جامعة KFUPM مضافة');
         console.log('💬 المحادثات:', MENU_BOTTOM.length);
     });
 
