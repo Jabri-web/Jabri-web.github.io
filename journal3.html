@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رسالة إلى العالم | واحة الجبري</title>
+  <meta name="description" content="رسالة المهندس عبدالله الجبري إلى العالم - تراث اليمن العريق ونظرية السندباد الموحدة" />
+  
+  <!-- ===== الميتادات الذكية ===== -->
+  <link id="linkCanon" rel="canonical" href="https://jabri-com.vercel.app/journal3.html" />
+  <link id="linkAltAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/journal3.html" />
+  <link id="linkAltEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/journal3.html" />
+  <link id="linkAltX" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/journal3.html" />
+
+  <meta id="ogUrl" property="og:url" content="https://jabri-com.vercel.app/journal3.html" />
+  <meta id="ogTitle" property="og:title" content="رسالة إلى العالم | واحة الجبري" />
+  <meta id="ogDesc" property="og:description" content="رسالة المهندس عبدالله الجبري إلى العالم - تراث اليمن العريق ونظرية السندباد الموحدة Z+C+A=1" />
+  <meta id="twTitle" name="twitter:title" content="رسالة إلى العالم | واحة الجبري" />
+  <meta id="twDesc" name="twitter:description" content="رسالة المهندس عبدالله الجبري إلى العالم - تراث اليمن العريق ونظرية السندباد الموحدة" />
+
+  <meta property="og:image" content="https://jabri-com.vercel.app/image/id1.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/image/id1.webp" />
+
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
+  <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0a0a0f;
+      color: #e0dcc8;
+      min-height: 100vh;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* ===== الخلفية المتحركة ===== */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 20% 50%, #1a1a2e, #0a0a0f 70%);
+      z-index: -2;
+    }
+    .bg-particles::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20% 30%, #ffd700, transparent),
+        radial-gradient(2px 2px at 40% 70%, #ffd700, transparent),
+        radial-gradient(2px 2px at 60% 20%, #ffd700, transparent),
+        radial-gradient(2px 2px at 80% 80%, #ffd700, transparent),
+        radial-gradient(1px 1px at 10% 90%, #ffd700, transparent),
+        radial-gradient(1px 1px at 90% 10%, #ffd700, transparent),
+        radial-gradient(1px 1px at 50% 50%, #6ae3ff, transparent);
+      background-size: 200px 200px;
+      opacity: 0.3;
+      animation: twinkle 8s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.6; }
+    }
+
+    /* ===== الحاوية الرئيسية ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== الهيدر ===== */
+    .header {
+      text-align: center;
+      padding: 40px 0 30px;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffd700, #6ae3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 60px rgba(255, 215, 0, 0.2);
+    }
+    .header .sub {
+      font-size: 1.2rem;
+      color: #ffd700;
+      opacity: 0.8;
+      margin-top: 8px;
+      letter-spacing: 2px;
+    }
+    .header .date {
+      font-size: 0.9rem;
+      opacity: 0.4;
+      margin-top: 5px;
+    }
+    .header .flag {
+      font-size: 2.5rem;
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* ===== المحتوى ===== */
+    .content {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 40px 35px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    .content p {
+      font-size: 1.15rem;
+      line-height: 2;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    .content .highlight {
+      color: #ffd700;
+      font-weight: 700;
+    }
+    .content .formula {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #6ae3ff;
+      padding: 20px;
+      margin: 30px 0;
+      background: rgba(106, 227, 255, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(106, 227, 255, 0.2);
+      letter-spacing: 3px;
+    }
+    .content .verse {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ffd700;
+      opacity: 0.7;
+      padding: 15px;
+      border-right: 4px solid #ffd700;
+      margin: 25px 0;
+      font-style: italic;
+    }
+
+    /* ===== الصور ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 215, 0, 0.15);
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      border-color: #ffd700;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+
+    /* ===== الفيديو ===== */
+    .video-section {
+      margin: 30px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .video-section video {
+      width: 100%;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 215, 0, 0.15);
+      background: #0a0a0f;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    /* ===== التوقيع ===== */
+    .signature {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid rgba(255, 215, 0, 0.15);
+    }
+    .signature .name {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #ffd700;
+    }
+    .signature .title {
+      font-size: 1rem;
+      opacity: 0.6;
+    }
+    .signature .social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .signature .social a {
+      color: #ffd700;
+      text-decoration: none;
+      padding: 8px 18px;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .signature .social a:hover {
+      background: #ffd700;
+      color: #0a0a0f;
+      transform: translateY(-2px);
+    }
+
+    /* ===== زر العودة ===== */
+    .back-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #ffd700, #f0a500);
+      color: #0a0a0f;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 900;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+    .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.4);
+    }
+
+    /* ===== موسيقى ===== */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 50px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    .music-player button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #ffd700;
+      transition: all 0.3s ease;
+    }
+    .music-player button:hover {
+      transform: scale(1.2);
+    }
+    .music-player .track {
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+
+    /* ===== استجابة ===== */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.8rem; }
+      .content { padding: 25px 18px; }
+      .content p { font-size: 1rem; }
+      .content .formula { font-size: 1.3rem; }
+      .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .gallery img { height: 130px; }
+      .video-section { grid-template-columns: 1fr; }
+      .music-player { bottom: 10px; right: 10px; padding: 6px 12px; }
+      .signature .name { font-size: 1.2rem; }
+    }
+    @media (max-width: 400px) {
+      .header h1 { font-size: 1.4rem; }
+      .content p { font-size: 0.9rem; }
+      .gallery img { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== خلفية متحركة ===== -->
+  <div class="bg-particles"></div>
+
+  <!-- ===== مشغل الموسيقى ===== -->
+  <div class="music-player" id="musicPlayer">
+    <button id="musicBtn" onclick="toggleMusic()">🔊</button>
+    <span class="track" id="trackName">🎵 تراث اليمن</span>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="/image/musicq1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- ===== الحاوية ===== -->
+  <div class="container">
+
+    <!-- ===== الهيدر ===== -->
+    <div class="header">
+      <span class="flag">🇾🇪</span>
+      <h1>🌍 رسالة إلى العالم</h1>
+      <p class="sub">من صنعاء إلى الكون · تراث اليمن العريق</p>
+      <p class="date">صنعاء - اليمن · 2026</p>
+    </div>
+
+    <!-- ===== المحتوى ===== -->
+    <div class="content">
+
+      <!-- الصورة الأولى -->
+      <div class="gallery">
+        <img src="/image/id1.webp" alt="صنعاء القديمة" loading="lazy" onclick="openImage(this.src)" />
+        <img src="/image/id2.webp" alt="شبام حضرموت" loading="lazy" onclick="openImage(this.src)" />
+        <img src="/image/id3.webp" alt="سقطرى" loading="lazy" onclick="openImage(this.src)" />
+        <img src="/image/id4.webp" alt="عدن" loading="lazy" onclick="openImage(this.src)" />
+        <img src="/image/id5.webp" alt="تراث اليمن" loading="lazy" onclick="openImage(this.src)" />
+      </div>
+
+      <!-- المقدمة -->
+      <div class="verse">
+        "بسم الله الرحمن الرحيم"
+      </div>
+
+      <p>
+        <span class="highlight">السلام عليكم ورحمة الله وبركاته،</span>
+      </p>
+
+      <p>
+        أنا <span class="highlight">عبدالله محمد ناصر الجبري</span>، ابن اليمن، تلك الأرض التي حملت مشعل الحضارة الإنسانية منذ فجر التاريخ. من <span class="highlight">صنعاء</span>، عاصمة الحضارة السبئية، إلى <span class="highlight">شبام حضرموت</span>، أقدم ناطحات السحاب في العالم، إلى <span class="highlight">سقطرى</span>، جزيرة العجائب التي أبهرت المستكشفين عبر العصور، ومن <span class="highlight">عدن</span> البندر العريق... أبعث إليكم هذه الرسالة.
+      </p>
+
+      <!-- نظرية السندباد -->
+      <div class="formula">
+        Z + C + A = 1
+      </div>
+
+      <p>
+        من خلال <span class="highlight">نظرية السندباد الموحدة (Z + C + A = 1)</span>، أسعى إلى تقريب المسافات بين الرياضيات والفيزياء والفلسفة. العلم لا يعرف حدوداً، ولا جنسية، ولا لوناً. <span class="highlight">الحقيقة واحدة</span>، ونحن نبحث عنها جميعاً.
+      </p>
+
+      <!-- مقطع فيديو -->
+      <div class="video-section">
+        <video controls preload="metadata" poster="/image/id1.webp">
+          <source src="/image/heaven1.mp4" type="video/mp4">
+        </video>
+        <video controls preload="metadata" poster="/image/id2.webp">
+          <source src="/image/heaven2.mp4" type="video/mp4">
+        </video>
+        <video controls preload="metadata" poster="/image/id3.webp">
+          <source src="/image/heaven3.mp4" type="video/mp4">
+        </video>
+        <video controls preload="metadata" poster="/image/id4.webp">
+          <source src="/image/heaven4.mp4" type="video/mp4">
+        </video>
+        <video controls preload="metadata" poster="/image/id5.webp">
+          <source src="/image/heaven5.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="verse">
+        "التراث ليس ماضياً، بل جسر إلى المستقبل"
+      </div>
+
+      <p>
+        التراث اليمني ليس مجرد حجارة قديمة أو مخطوطات في المتاحف. هو <span class="highlight">روح الأمة</span>، هو <span class="highlight">الهوية</span>، هو الذاكرة الجمعية لكل إنسان يعتز بجذوره. توثيقه ليس رفاهية، بل <span class="highlight">واجب إنساني</span> تجاه الأجيال القادمة.
+      </p>
+
+      <p>
+        اليمن اليوم يعاني، لكن روحه <span class="highlight">لا تنكسر</span>. شعبه <span class="highlight">صامد</span>، تراثه <span class="highlight">خالد</span>، مستقبله <span class="highlight">مشرق</span> بإذن الله. أنا أدعو كل باحث، كل مفكر، كل إنسان حر إلى <span class="highlight">الوقوف مع اليمن</span>، ليس بالسلاح، بل بالعلم، والثقافة، والوعي.
+      </p>
+
+      <div class="verse">
+        "من صنعاء إلى الكون، ومن التراث إلى المستقبل، ومن العدد الصرف إلى نظرية موحدة... واحة الجبري هي رسالة حب للعلم، للتراث، وللإنسانية."
+      </div>
+
+      <!-- ===== التوقيع ===== -->
+      <div class="signature">
+        <p class="name">م/ عبدالله محمد ناصر الجبري</p>
+        <p class="title">مؤسس واحة الجبري · باحث في الرياضيات والفيزياء النظرية</p>
+        <p style="margin-top:8px; opacity:0.4; font-size:0.9rem;">
+          صنعاء - اليمن · 2026
+        </p>
+        <div class="social">
+          <a href="https://jabri-com.vercel.app" target="_blank">🌍 الموقع</a>
+          <a href="https://github.com/jabri-web" target="_blank">🐙 GitHub</a>
+          <a href="https://x.com/jabri_web" target="_blank">🐦 X</a>
+          <a href="https://youtube.com/@HeavenAlJabri" target="_blank">▶️ YouTube</a>
+          <a href="mailto:jabri62018@gmail.com">📧 البريد</a>
+        </div>
+        <a href="/" class="back-btn">🏠 العودة إلى الرئيسية</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== السكربت ===== -->
+  <script>
+    // ============================================================
+    // 1. الموسيقى
+    // ============================================================
+    let musicIndex = 1;
+    const musicFiles = ['musicq1.mp3', 'musicq2.mp3', 'musicq3.mp3', 'musicq4.mp3', 'musicq5.mp3'];
+    const trackNames = ['🎵 تراث اليمن', '🎵 سندباد', '🎵 صنعاء', '🎵 شبام', '🎵 سقطرى'];
+    let isMusicPlaying = false;
+    const audio = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const trackName = document.getElementById('trackName');
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        musicBtn.textContent = '🔇';
+      } else {
+        audio.play().catch(() => {});
+        isMusicPlaying = true;
+        musicBtn.textContent = '🔊';
+      }
+    }
+
+    audio.addEventListener('ended', function() {
+      musicIndex = (musicIndex % 5) + 1;
+      audio.src = '/image/' + musicFiles[musicIndex - 1];
+      trackName.textContent = trackNames[musicIndex - 1];
+      audio.play().catch(() => {});
+    });
+
+    // تحميل أول مقطع
+    audio.src = '/image/' + musicFiles[0];
+    trackName.textContent = trackNames[0];
+
+    // ============================================================
+    // 2. فتح الصور بحجم كبير
+    // ============================================================
+    function openImage(src) {
+      const win = window.open('', '_blank', 'width=800,height=600');
+      if (win) {
+        win.document.write(`
+          <html dir="rtl">
+            <head><title>🌍 واحة الجبري</title></head>
+            <body style="margin:0;background:#0a0a0f;display:flex;justify-content:center;align-items:center;height:100vh;">
+              <img src="${src}" style="max-width:95%;max-height:95%;border-radius:16px;border:3px solid #ffd700;box-shadow:0 0 60px rgba(255,215,0,0.3);" />
+              <script>
+                document.addEventListener('click', function() { window.close(); });
+                document.addEventListener('keydown', function(e) { if(e.key === 'Escape') window.close(); });
+              <\/script>
+            </body>
+          </html>
+        `);
+        win.document.close();
+      }
+    }
+
+    // ============================================================
+    // 3. تشغيل/إيقاف بالمسافة
+    // ============================================================
+    document.addEventListener('keydown', function(e) {
+      if (e.key === ' ' || e.key === 'Space') {
+        e.preventDefault();
+        toggleMusic();
+      }
+    });
+
+    console.log('🌍 رسالة إلى العالم - واحة الجبري');
+    console.log('🇾🇪 اليمن - صنعاء - 2026');
+    console.log('🧮 Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
+    console.log('📐 Z + C + A = 1');
+    console.log('📁 الصور: id1.webp → id5.webp');
+    console.log('🎵 الموسيقى: musicq1.mp3 → musicq5.mp3');
+    console.log('🎬 المقاطع: heaven1.mp4 → heaven5.mp4');
+  </script>
+
+</body>
+</html>
