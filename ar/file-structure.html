@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dbase | قاعدة بيانات المشاريع 1-12 - واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a0f;color:#e0e0e0;font-family:'Tajawal',sans-serif;padding:30px 20px;min-height:100vh}
+        .container{max-width:1100px;margin:auto;background:#11131a;border-radius:16px;padding:35px;border:1px solid #1f2233}
+        h1{color:#6ae3ff;text-align:center;font-size:2rem;margin-bottom:5px}
+        h1 span{color:#00ff9d}
+        .sub{text-align:center;color:#8a8a9e;margin-bottom:30px;font-size:1.1rem}
+        
+        /* إحصائيات */
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:30px}
+        .stat-card{background:#0d0f16;border:1px solid #1f2233;border-radius:12px;padding:15px;text-align:center}
+        .stat-card .num{color:#6ae3ff;font-size:2rem;font-weight:700}
+        .stat-card .label{color:#8a8a9e;font-size:0.85rem}
+        .stat-card.highlight{border-color:#00ff9d}
+        .stat-card.highlight .num{color:#00ff9d}
+
+        /* المشاريع */
+        .project{background:#0d0f16;border:1px solid #1f2233;border-radius:12px;padding:18px 22px;margin-bottom:12px;transition:0.3s}
+        .project:hover{border-color:#6ae3ff;transform:translateX(5px)}
+        .project-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+        .project-title{color:#6ae3ff;font-size:1.1rem;font-weight:700}
+        .project-title .num{color:#484f58;font-weight:400;margin-left:8px}
+        .project-badge{font-size:0.7rem;padding:3px 12px;border-radius:20px;font-weight:700}
+        .badge-doi{background:#1f6feb;color:#fff}
+        .badge-pending{background:#f85149;color:#fff}
+        .badge-system{background:#a371f7;color:#fff}
+        .badge-verified{background:#00ff9d;color:#000}
+        .project-desc{color:#8a8a9e;font-size:0.9rem;margin:8px 0;padding-right:10px;border-right:2px solid #1f2233}
+        .project-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+        .project-links a{padding:5px 14px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;transition:0.3s;border:1px solid #1f2233;background:#11131a;color:#c9d1d9}
+        .project-links a:hover{background:#1f2233;border-color:#6ae3ff}
+        .project-links a.doi{background:#1f6feb;color:#fff;border-color:#1f6feb}
+        .project-links a.doi:hover{background:#2a7ff4}
+        .project-links a.page{background:#6ae3ff;color:#000;border-color:#6ae3ff}
+        .project-links a.page:hover{background:#4dd4ff}
+        .project-links a.github{background:#161b22;color:#fff;border-color:#30363d}
+        .project-links a.github:hover{background:#30363d}
+
+        .sub-list{margin:10px 0 5px 20px;padding-right:15px;border-right:2px solid #00ff9d33}
+        .sub-item{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:4px 0;color:#8a8a9e;font-size:0.9rem}
+        .sub-item b{color:#00ff9d;font-size:0.85rem}
+        .sub-item .doi-mini{font-size:0.7rem;padding:2px 10px;border-radius:12px;background:#1f6feb;color:#fff;text-decoration:none}
+
+        .footer{text-align:center;margin-top:35px;color:#484f58;font-size:14px;border-top:1px solid #1f2233;padding-top:25px}
+        .footer a{color:#6ae3ff;text-decoration:none}
+        .footer a:hover{text-decoration:underline}
+        .sindbad-tag{display:inline-block;background:#00ff9d22;color:#00ff9d;padding:4px 18px;border-radius:30px;font-size:0.85rem;border:1px solid #00ff9d44;margin-top:5px}
+
+        @media(max-width:600px){.container{padding:20px}.project{padding:14px 16px}}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📊 <span>Dbase</span> · المشاريع 1 → 12</h1>
+    <div class="sub">
+        قاعدة بيانات مشاريع واحة الجبري
+        <div class="sindbad-tag">🧠 Z + C + A = 1 · نظرية السندباد الموحدة</div>
+    </div>
+
+    <!-- ===== إحصائيات ===== -->
+    <div class="stats">
+        <div class="stat-card highlight"><div class="num">12</div><div class="label">📦 مشروع</div></div>
+        <div class="stat-card"><div class="num">8</div><div class="label">✅ موثق</div></div>
+        <div class="stat-card"><div class="num">2</div><div class="label">⏳ قيد النشر</div></div>
+        <div class="stat-card"><div class="num">2</div><div class="label">⚙️ نظام</div></div>
+        <div class="stat-card"><div class="num">16</div><div class="label">📄 بحث فرعي</div></div>
+    </div>
+
+    <!-- ===== 1 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">1.</span> jabri62018.github.io</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">البوابة الرئيسية لمبادرة سندباد اليمن. توثيق التراث اليمني وربطه بالهوية البحثية للجبري.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/jabri62018.github.io/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/jabri62018.github.io" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20403864" class="doi" target="_blank">DOI 10.5281/zenodo.20403864</a>
+        </div>
+    </div>
+
+    <!-- ===== 2 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">2.</span> Zx_RieOS_v1.2</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">نظام تشغيل تجريبي مبني على دالة زيتا لريمان. محاكاة توزيع الأصفار وربطها بالثوابت الكونية.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20100622" class="doi" target="_blank">DOI 10.5281/zenodo.20100622</a>
+        </div>
+    </div>
+
+    <!-- ===== 3 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">3.</span> Zx_Mother_Function_Jabri</span>
+            <span class="project-badge badge-pending">⏳ قيد النشر</span>
+        </div>
+        <div class="project-desc">الورقة الأساسية لنظرية سندس الموحدة. تطرح المعادلة Z+C+A=1 كحل يربط بين أصفار ريمان وبنية الكون.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" class="github" target="_blank">🐙 GitHub</a>
+            <a href="#" class="doi" style="background:#484f58;border-color:#484f58">DOI قريباً</a>
+        </div>
+    </div>
+
+    <!-- ===== 4 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">4.</span> Jabri-web.github.io</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">المكتب الرئيسي لواحة الجبري. يضم الأبحاث والمكتبة والصور والسيرة الذاتية. المركز الأكاديمي للمشاريع.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri-web.github.io" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20499365" class="doi" target="_blank">DOI 20499365</a>
+            <a href="https://doi.org/10.5281/zenodo.20404167" class="doi" target="_blank">DOI 20404167</a>
+        </div>
+    </div>
+
+    <!-- ===== 5 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">5.</span> Jabri_Nobble</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">حزمة أبحاث لمعالجة مسائل جائزة الألفية. تشمل إثباتات مقترحة لفرضية ريمان و P vs NP ونافيير ستوكس وهودج.</div>
+        <div class="sub-list">
+            <div class="sub-item"><b>5.1 Jabri_Riemann</b> <a href="https://doi.org/10.5281/zenodo.20139904" class="doi-mini" target="_blank">DOI 20139904</a> <a href="https://doi.org/10.5281/zenodo.20145337" class="doi-mini" target="_blank">DOI 20145337</a></div>
+            <div class="sub-item"><b>5.2 Jabri_np</b> <a href="https://doi.org/10.5281/zenodo.20145279" class="doi-mini" target="_blank">DOI 20145279</a></div>
+            <div class="sub-item"><b>5.3 Jabri_gab</b> <a href="https://doi.org/10.5281/zenodo.20148344" class="doi-mini" target="_blank">DOI 20148344</a></div>
+            <div class="sub-item"><b>5.4 Jabri_Navier</b> <a href="https://doi.org/10.5281/zenodo.20149618" class="doi-mini" target="_blank">DOI 20149618</a></div>
+            <div class="sub-item"><b>5.5 Jabri_Birch</b> <span style="color:#484f58;font-size:0.75rem;">⏳ قيد النشر</span></div>
+            <div class="sub-item"><b>5.6 Jabri_Hodge</b> <span style="color:#484f58;font-size:0.75rem;">⏳ قيد النشر</span></div>
+            <div class="sub-item"><b>5.7 Jabri_Identity</b> <a href="https://doi.org/10.5281/zenodo.20114317" class="doi-mini" target="_blank">DOI 20114317</a></div>
+        </div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Jabri_Nobble/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri_Nobble" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20148770" class="doi" target="_blank">DOI رئيسي 20148770</a>
+        </div>
+    </div>
+
+    <!-- ===== 6 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">6.</span> Jabri_lab</span>
+            <span class="project-badge badge-pending">⏳ قيد النشر</span>
+        </div>
+        <div class="project-desc">مختبر الجبري للتجارب الحاسوبية والفيزيائية. مساحة لاختبار المعادلات والمحاكاة قبل النشر الرسمي.</div>
+        <div class="sub-list">
+            <div class="sub-item"><b>6.1 Jabri_5</b> <span style="color:#484f58;font-size:0.75rem;">تجربة</span></div>
+            <div class="sub-item"><b>6.2 Jabri_28</b> <span style="color:#484f58;font-size:0.75rem;">تجربة</span></div>
+            <div class="sub-item"><b>6.3 Jabri_Gravity</b> <span style="color:#484f58;font-size:0.75rem;">الجاذبية</span></div>
+            <div class="sub-item"><b>6.4 Jabri_Spacetime</b> <span style="color:#484f58;font-size:0.75rem;">الزمكان</span></div>
+            <div class="sub-item"><b>6.5 Jabri_Darkenergy</b> <span style="color:#484f58;font-size:0.75rem;">الطاقة المظلمة</span></div>
+            <div class="sub-item"><b>6.6 Jabri_Planck</b> <span style="color:#484f58;font-size:0.75rem;">وحدات بلانك</span></div>
+            <div class="sub-item"><b>6.7 Jabri_Hubble</b> <span style="color:#484f58;font-size:0.75rem;">ثابت هابل</span></div>
+            <div class="sub-item"><b>6.8 Jabri_Periodic</b> <span style="color:#484f58;font-size:0.75rem;">الدوري</span></div>
+            <div class="sub-item"><b>6.9 Jabri_all</b> <span style="color:#484f58;font-size:0.75rem;">التجربة الشاملة</span></div>
+        </div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Jabri_lab/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri_lab" class="github" target="_blank">🐙 GitHub</a>
+            <a href="#" class="doi" style="background:#484f58;border-color:#484f58">DOI قريباً</a>
+        </div>
+    </div>
+
+    <!-- ===== 7 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">7.</span> Zx_RieOS_v1.1</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">الإصدار الأول من نظام Zx_RieOS. نواة برمجية تتعامل مع الأعداد الأولية وتوزيعها كمدخل لفهم الكون.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Zx_RieOS_v1.1/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Zx_RieOS_v1.1" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.19981688" class="doi" target="_blank">DOI 19981688</a>
+            <a href="https://doi.org/10.5281/zenodo.20070594" class="doi" target="_blank">DOI 20070594</a>
+        </div>
+    </div>
+
+    <!-- ===== 8 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">8.</span> Jabri_RiemannOS</span>
+            <span class="project-badge badge-system">⚙️ نظام</span>
+        </div>
+        <div class="project-desc">نظام تشغيل متكامل يحاول تمثيل الكون عبر نموذج رياضي مستوحى من فرضية ريمان وتوزيع الأعداد الأولية.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Jabri-RiemannOS/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri-RiemannOS" class="github" target="_blank">🐙 GitHub</a>
+            <a href="#" class="doi" style="background:#484f58;border-color:#484f58">لا يوجد DOI</a>
+        </div>
+    </div>
+
+    <!-- ===== 9 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">9.</span> Jabri_Checkout</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">بوابة دفع إلكتروني محلية. مشروع لدعم التجارة الرقمية وربطها بمنصة واحة الجبري.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Jabri_Checkout/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri_Checkout" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20513840" class="doi" target="_blank">DOI 10.5281/zenodo.20513840</a>
+        </div>
+    </div>
+
+    <!-- ===== 10 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">10.</span> Jabri-web (GitHub)</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">المستودع الرئيسي للأكواد والأصول. يحتوي على الراوتر الذي يربط بين جميع المشاريع الـ 12.</div>
+        <div class="project-links">
+            <a href="https://jabri-web.github.io/Jabri-web/" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/Jabri-web" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.20499365" class="doi" target="_blank">DOI 10.5281/zenodo.20499365</a>
+        </div>
+    </div>
+
+    <!-- ===== 11 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">11.</span> jabri-com (Vercel)</span>
+            <span class="project-badge badge-verified">✅ موثق</span>
+        </div>
+        <div class="project-desc">الموقع الرئيسي لواحة الجبري. يحتوي على الراوتر الذي يربط بين جميع المشاريع. هذا هو المركز.</div>
+        <div class="project-links">
+            <a href="https://jabri-com.vercel.app" class="page" target="_blank">🔗 الصفحة</a>
+            <a href="https://github.com/Jabri-web/jabri-com" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.21003990" class="doi" target="_blank">DOI 10.5281/zenodo.21003990</a>
+        </div>
+    </div>
+
+    <!-- ===== 12 ===== -->
+    <div class="project">
+        <div class="project-header">
+            <span class="project-title"><span class="num">12.</span> jabri (Flask)</span>
+            <span class="project-badge badge-system">⚙️ نظام</span>
+        </div>
+        <div class="project-desc">مشروع تجريبي لتطوير راوتر باستخدام Flask. يهدف لتجربة بنى تحتية جديدة. النطاق الرسمي <b style="color:#6ae3ff;">jabri.com</b></div>
+        <div class="project-links">
+            <a href="https://jabri.com" class="page" target="_blank">🌐 jabri.com</a>
+            <a href="https://github.com/Jabri-web/jabri" class="github" target="_blank">🐙 GitHub</a>
+            <a href="https://doi.org/10.5281/zenodo.21003991" class="doi" target="_blank">DOI 10.5281/zenodo.21003991</a>
+        </div>
+    </div>
+
+    <!-- ===== الفوتر ===== -->
+    <div class="footer">
+        <p>🧠 نظرية السندباد الموحدة · Z + C + A = 1</p>
+        <p style="margin-top:4px;">© 2026 م/ عبدالله محمد ناصر الجبري · جميع الحقوق محفوظة</p>
+        <p style="margin-top:6px;">
+            <a href="index.html">🏠 الرئيسية</a> ·
+            <a href="Router-all.html">🗺️ الفهرس العام</a> ·
+            <a href="https://github.com/Jabri-web">🐙 GitHub</a> ·
+            <a href="https://orcid.org/0009-0003-3319-3822">🆔 ORCID</a>
+        </p>
+        <p style="margin-top:4px;font-size:0.8rem;color:#484f58;">
+            <span class="ar">🇾🇪 من صنعاء إلى الكون</span>
+            <span class="en">🇾🇪 From Sana'a to the Universe</span>
+        </p>
+    </div>
+
+</div>
+
+
+</body>
+</html>

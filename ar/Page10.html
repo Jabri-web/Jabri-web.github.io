@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>مكتبة اليمن | Yemen Library - أوفلاين</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:0;font-family:'Tahoma','Segoe UI',sans-serif;background:#f5f7fa;color:#000;min-height:100svh;display:flex;flex-direction:column;transition:0.3s}
+body.en{direction:ltr;font-family:'Segoe UI',Tahoma}
+
+/* زر اللغة ثابت */
+.lang-btn{position:fixed;top:15px;left:15px;background:#f39c12;border:none;color:#0a3d62;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:14px;z-index:9999;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.lang-btn:hover{background:#ffb347}
+
+header{background:linear-gradient(135deg,#0a3d62,#1e6f9f);color:white;text-align:center;padding:2vh 10px;border-bottom:3px solid #f39c12}
+header img{width:75px;height:75px;border-radius:50%;border:2px solid #00ff88;display:block;margin:0 auto 1vh;background:#0a0a0a}
+h1{font-size:clamp(18px,5vw,24px);margin:0;font-weight:bold}
+header p{font-size:clamp(12px,3vw,14px);margin:1vh 0 0 0;opacity:0.9}
+
+.main{width:100%;max-width:500px;margin:0 auto;padding:2vh 20px;flex:1;display:flex;flex-direction:column;text-align:center}
+
+.offline{margin:2vh 0;padding:1.5vh;background:#ff3333;color:white;border-radius:12px;font-weight:bold;font-size:14px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 15px #ff3333}50%{box-shadow:0 0 30px #ff6666}}
+
+h2{font-size:clamp(24px,6vw,32px);margin:0}
+.subtitle{font-size:clamp(16px,4vw,20px);font-weight:bold;margin-bottom:0.5vh}
+.subtitle-en{font-size:clamp(12px,3vw,14px);color:#555;margin-bottom:4vh}
+
+.btn{display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:clamp(16px,4vw,18px);font-weight:bold;border-radius:15px;text-decoration:none;transition:0.3s}
+.btn:hover{background:#333;transform:translateY(-3px)}
+
+.btn-exit{display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#c62828;color:#fff;font-size:clamp(16px,4vw,18px);font-weight:bold;border-radius:15px;border:none;cursor:pointer;transition:0.3s}
+.btn-exit:hover{background:#e53935}
+
+#info{margin-top:2vh;padding:2vh;background:white;border-radius:12px;text-align:right;font-size:clamp(12px,3vw,14px);color:#333;line-height:1.8;border:1px solid #ddd}
+
+footer{background:#0a3d62;color:white;text-align:center;padding:2vh 10px;font-size:clamp(12px,3vw,14px);border-top:3px solid #f39c12;margin-top:auto}
+
+.ar,.en{display:inline}
+body.en .ar{display:none}
+body:not(.en) .en{display:none}
+</style>
+</head>
+<body>
+
+<button class="lang-btn" onclick="toggleLang()">
+  <span class="ar">EN</span>
+  <span class="en">عربي</span>
+</button>
+
+<header>
+  <img src="Yemen-bird.png" alt="طائر اليمن" onerror="this.style.display='none'">
+  <h1><span class="ar">الجمهورية اليمنية</span><span class="en">Republic of Yemen</span></h1>
+  <p><span class="ar">Riemann zeta & Cosmology</span><span class="en">Riemann zeta & Cosmology</span></p>
+</header>
+
+<div class="main">
+  
+  <div class="offline">
+    <span class="ar">✓ يعمل بدون انترنت - Offline Mode</span>
+    <span class="en">✓ Works Offline - الوضع الأوفلاين</span>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1vh">
+    <span style="font-size:clamp(24px,6vw,32px)">👁️</span>
+    <h2><span class="ar">سندباد اليمن</span><span class="en">Yemen Sindbad</span></h2>
+    <span style="font-size:clamp(24px,6vw,32px)">👁️</span>
+  </div>
+  
+  <div class="subtitle"><span class="ar">م/عبدالله الجبري</span><span class="en">Eng. Abdulla Al-Jabri</span></div>
+  <div class="subtitle-en"><span class="ar">Eng. Abdulla Al-Jabri</span><span class="en">م/عبدالله الجبري</span></div>
+
+  <a href="Page1.html" class="btn">
+    <span><span class="ar">سندباد اليمن</span><span class="en">Sindbad Yemen</span></span>
+    <span><span class="ar">Yemen Sindbad</span><span class="en">سندباد اليمن</span></span>
+  </a>
+
+  <a href="Page2.html" class="btn">
+    <span><span class="ar">طائر اليمن</span><span class="en">Yemen Bird</span></span>
+    <span><span class="ar">Yemen Bird</span><span class="en">طائر اليمن</span></span>
+  </a>
+
+  <a href="Page3.html" class="btn">
+    <span><span class="ar">عنكبوت اليمن</span><span class="en">Yemen Spider</span></span>
+    <span><span class="ar">Yemen Spider</span><span class="en">عنكبوت اليمن</span></span>
+  </a>
+
+  <a href="Pages-Researches.html" class="btn">
+    <span><span class="ar">صفحات وبحوث</span><span class="en">Pages & Researches</span></span>
+    <span><span class="ar">Pages & Researches</span><span class="en">صفحات وبحوث</span></span>
+  </a>
+
+  <a href="Sindbad.html" class="btn">
+    <span><span class="ar">مكتبي</span><span class="en">My Office</span></span>
+    <span><span class="ar">My Office</span><span class="en">مكتبي</span></span>
+  </a>
+
+  <button onclick="history.back()" class="btn-exit">
+    <span>🚪 <span class="ar">خروج</span><span class="en">Exit</span></span>
+    <span><span class="ar">Exit</span><span class="en">خروج</span></span>
+  </button>
+
+  <div id="info">
+    <b style="color:#0a3d62"><span class="ar">التاريخ:</span><span class="en">Date:</span></b> <span id="date">...</span><br>
+    <b style="color:#0a3d62"><span class="ar">الوقت:</span><span class="en">Time:</span></b> <span id="time">...</span><br>
+    <b style="color:#0a3d62"><span class="ar">من نحن:</span><span class="en">About:</span></b> <span class="ar">مكتبة اليمن الرقمية - أوفلاين</span><span class="en">Yemen Digital Library - Offline</span>
+  </div>
+
+</div>
+
+<footer>
+  <p style="margin:0">© 2026 Yemen Sindbad - <span class="ar">جميع الحقوق محفوظة</span><span class="en">All Rights Reserved</span></p>
+  <p style="margin:0"><span class="ar">صنع بحب في اليمن</span><span class="en">Made with Love in Yemen</span> 🇾🇪</p>
+</footer>
+
+<script>
+function toggleLang() {
+  document.body.classList.toggle('en');
+  document.documentElement.dir = document.body.classList.contains('en') ? 'ltr' : 'rtl';
+  document.documentElement.lang = document.body.classList.contains('en') ? 'en' : 'ar';
+  localStorage.setItem('lang', document.body.classList.contains('en') ? 'en' : 'ar');
+}
+if(localStorage.getItem('lang') === 'en') document.body.classList.add('en');
+
+function updateTime() {
+  const now = new Date();
+  const lang = document.body.classList.contains('en') ? 'en-US' : 'ar-EG';
+  document.getElementById('date').innerText = now.toLocaleDateString(lang);
+  document.getElementById('time').innerText = now.toLocaleTimeString(lang);
+}
+updateTime();
+setInterval(updateTime, 1000);
+</script>
+
+<script src="/js/menu.js"></script>
+
+</body>
+</html>

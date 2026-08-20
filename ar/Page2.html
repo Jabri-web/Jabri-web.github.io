@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO الأساسي - موحد -->
+  <title>واحة الجبري | Heaven Al-Jabri</title>
+  <meta name="description" content="واحة الجبري - المهندس عبدالله محمد ناصر الجبري. أرشيف تراث اليمن، محتوى تقني، سيرة ذاتية، بحوث، تواصل." />
+  <meta name="keywords" content="واحة الجبري, اليمن, الجبري, تراث اليمن, بحث, تقني, هندسة, برمجة" />
+  <meta name="author" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
+  <meta name="language" content="ar, en" />
+  <meta name="theme-color" content="#000" />
+  
+  <!-- الروابط الأساسية -->
+  <link rel="canonical" href="https://jabri-com.vercel.app/Jabr.html" />
+  <link rel="icon" href="Image/favicon.ico" type="image/x-icon" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jabri-com.vercel.app/Jabr.html" />
+  <meta property="og:title" content="واحة الجبري | Heaven Al-Jabri" />
+  <meta property="og:description" content="أرشيف تراث اليمن - موقع المهندس عبدالله الجبري" />
+  <meta property="og:image" content="https://jabri-com.vercel.app/Image/Yemen-bird.png" />
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="واحة الجبري | Heaven Al-Jabri" />
+  <meta name="twitter:description" content="أرشيف تراث اليمن - موقع المهندس عبدالله الجبري" />
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/Image/Yemen-bird.png" />
+
+  <!-- ستايلات الصفحة -->
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --container-width: 400px;
+      --bird-scale: 1.15;
+      --bg: #ffffff;
+      --text: #000;
+      --card-bg: #f5f5f5;
+      --border: #ddd;
+      --primary: #000;
+      --primary-hover: #222;
+      --danger: #c62828;
+      --danger-hover: #b71c1c;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body.en {
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* ===== WRAPPER ===== */
+    .wrapper {
+      width: var(--container-width);
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ===== LANGUAGE TOGGLE ===== */
+    .lang-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      z-index: 9999;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .lang-btn:hover {
+      background: #333;
+      transform: scale(1.03);
+    }
+
+    /* ===== OFFLINE BADGE ===== */
+    .offline-badge {
+      background: #e53935;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      animation: pulse 2.5s infinite;
+      box-shadow: 0 2px 12px rgba(229, 57, 53, 0.4);
+      display: inline-block;
+      width: fit-content;
+      margin: 0 auto 8px auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(229, 57, 53, 0); }
+    }
+
+    /* ===== HEADER ===== */
+    .site-header h1 {
+      font-size: 30px;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .site-header .sub {
+      font-size: 17px;
+      color: #333;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* ===== BIRD IMAGE ===== */
+    .bird-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 3px solid var(--primary);
+      background: #f0f0f0;
+      transition: transform 0.5s ease;
+      transform: scale(var(--bird-scale));
+      display: block;
+    }
+    .bird-img:hover {
+      transform: scale(1.25);
+    }
+
+    /* ===== NAV ===== */
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 12px 0 8px 0;
+    }
+
+    .nav-menu a,
+    .nav-menu button {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      line-height: 1.4;
+      transition: 0.15s;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu button:hover {
+      background: #2a2a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-menu .exit-btn {
+      background: var(--danger);
+    }
+    .nav-menu .exit-btn:hover {
+      background: var(--danger-hover);
+    }
+
+    .row-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .row-buttons a,
+    .row-buttons button {
+      flex: 1;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      display: none;
+      background: var(--card-bg);
+      padding: 18px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      margin: 8px 0 4px 0;
+      text-align: right;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    body.en .section {
+      text-align: left;
+    }
+    .section.active {
+      display: block;
+    }
+
+    .section h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 20px;
+      text-align: center;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 8px;
+    }
+
+    .section a {
+      display: block;
+      color: #0a58ca;
+      text-decoration: none;
+      margin: 8px 0;
+      word-break: break-word;
+      font-size: 15px;
+      padding: 4px 0;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+    .section a:hover {
+      text-decoration: underline;
+      color: #00337a;
+    }
+
+    .section .warning {
+      background: #fff3cd;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #856404;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-info {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #444;
+      display: flex;
+      justify-content: space-between;
+      border-top: 2px solid #ddd;
+      padding-top: 16px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ===== UTILITY ===== */
+    .ar, .en { display: inline; }
+    body.en .ar { display: none; }
+    body:not(.en) .en { display: none; }
+
+    .en-text { display: block; font-size: 16px; font-weight: 600; }
+    .ar-text { display: block; font-size: 14px; opacity: 0.9; margin-top: 2px; }
+    body.en .ar-text { display: block; }
+    body:not(.en) .en-text { display: block; }
+
+    @media (max-width: 480px) {
+      body { padding: 12px; }
+      .site-header h1 { font-size: 24px; }
+      .bird-img { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="header-placeholder"></div>
+
+  
+
+  <button class="lang-btn" onclick="toggleLang()">
+    <span class="ar">🇬🇧 EN</span>
+    <span class="en">🇸🇦 عربي</span>
+  </button>
+
+  <div class="wrapper">
+
+    <div class="offline-badge">
+      <span class="ar">
+        📡 طائر اليمن- Yemen Bird</span>
+      <span class="en">
+        📡طائر اليمن- Yemen Bird</span>
+    </div>
+
+    <header class="site-header">
+      <h1>
+        <span class="ar">واحة الجبري</span>
+        <span class="en">Heaven Al-Jabri</span>
+      </h1>
+      <div class="sub">
+        <span class="ar">م/ عبدالله محمد ناصر الجبري</span>
+        <span class="en">Eng. Abdulla Mohammed Al‑Jabri</span>
+      </div>
+    </header>
+
+    <img src="Image/Yemen-bird.png" alt="Heaven Al-Jabri - واحة الجبري" class="bird-img" onerror="this.style.display='none'" />
+
+    <nav class="nav-menu" aria-label="القائمة الرئيسية">
+      <a href="Yemen-library.html">
+        <span class="en-text">📚 Contents</span>
+        <span class="ar-text">المحتوى</span>
+      </a>
+      <button onclick="showSection('email')">
+        <span class="en-text">✉️ Email</span>
+        <span class="ar-text">البريد</span>
+      </button>
+      <button onclick="showSection('social')">
+        <span class="en-text">🌐 Social Media</span>
+        <span class="ar-text">التواصل الاجتماعي</span>
+      </button>
+      <button onclick="showSection('visitor')">
+        <span class="en-text">👥 Visitors</span>
+        <span class="ar-text">الزوار</span>
+      </button>
+      <button onclick="showSection('about')">
+        <span class="en-text">ℹ️ About</span>
+        <span class="ar-text">حول</span>
+      </button>
+      <div class="row-buttons">
+        <a href="index.html">
+          <span class="en-text">🏠 Home</span>
+          <span class="ar-text">الرئيسية</span>
+        </a>
+        <button class="exit-btn" onclick="history.back()">
+          <span class="en-text">🚪 Exit</span>
+          <span class="ar-text">خروج</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- باقي الاقسام كما هي... -->
+    <section id="email" class="section">
+      <h3><span class="ar">📧 الإيميلات</span><span class="en">📧 Email Addresses</span></h3>
+      <a href="mailto:Jabri62018@gmail.com">Jabri62018@gmail.com</a>
+    </section>
+
+    <section id="social" class="section"><h3>...</h3></section>
+    <section id="visitor" class="section"><h3>...</h3></section>
+    <section id="about" class="section"><h3>...</h3></section>
+
+    <footer class="footer-info">
+      <span><span class="ar">🕒 الوقت:</span><span class="en">🕒 Time:</span> <span id="time-footer"></span></span>
+      <span><span class="ar">📅 التاريخ:</span><span class="en">📅 Date:</span> <span id="date-footer"></span></span>
+    </footer>
+
+  </div>
+  
+  <div id="footer-placeholder"></div>
+
+
+  <script>
+    function adjustScreen() {
+      const w = window.innerWidth;
+      let cw = Math.min(w - 40, 400);
+      if (cw < 300) cw = 300;
+      let scale = 1.15;
+      if (w < 400) scale = 1.30;
+      else if (w < 768) scale = 1.20;
+      else scale = 1.15;
+      document.documentElement.style.setProperty('--container-width', cw + 'px');
+      document.documentElement.style.setProperty('--bird-scale', scale);
+    }
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function updateTime() {
+      const now = new Date();
+      const isEn = document.body.classList.contains('en');
+      const locale = isEn ? 'en-US' : 'ar-SA';
+      const timeStr = now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const dateStr = now.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+      document.getElementById('time-footer').textContent = timeStr;
+      document.getElementById('date-footer').textContent = dateStr;
+      const tv = document.getElementById('time-visitor'); if(tv) tv.textContent = timeStr;
+      const dv = document.getElementById('date-visitor'); if(dv) dv.textContent = dateStr;
+    }
+    function toggleLang() {
+      document.body.classList.toggle('en');
+      const isEn = document.body.classList.contains('en');
+      document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+      document.documentElement.lang = isEn ? 'en' : 'ar';
+      localStorage.setItem('lang', isEn ? 'en' : 'ar');
+      updateTime();
+    }
+    window.addEventListener('DOMContentLoaded', function () {
+      if (localStorage.getItem('lang') === 'en') {
+        document.body.classList.add('en');
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+      } else {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+      }
+      adjustScreen();
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+    let resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(adjustScreen, 80);
+    });
+  </script>
+  
+  
+          <!--div id="header-placeholder"></div>
+    
+    
+    <!--div id="footer-placeholder"></div>
+
+
+        <!-- تحميل الهيدر والفوتر -->
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
+    
+
+
+  
+</body>
+</html>

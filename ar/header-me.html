@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <!-- ====================================================================== -->
+  <!-- 1. منع الكاش + PWA -->
+  <!-- ====================================================================== -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <!-- ====================================================================== -->
+  <!-- 2. اللغات والكانونيكال والـ Sitemap -->
+  <!-- ====================================================================== -->
+  <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/" />
+  <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
+  <link rel="canonical" href="https://jabri-com.vercel.app/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  
+  <!-- ====================================================================== -->
+  <!-- 3. العنوان والوصف + Citation -->
+  <!-- ====================================================================== -->
+  <title id="pageTitle">واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة</title>
+  <meta id="pageDescription" name="description" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري">
+  <meta name="keywords" content="واحة الجبري, نظرية السندباد الموحدة, Z+C+A=1, Z(x), عبدالله الجبري, رياضيات, فيزياء نظرية, تراث اليمن, صنعاء, شبام, سقطرى">
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
+  <link rel="author" href="https://jabri-com.vercel.app/about.html" />
+
+  <!-- ====================================================================== -->
+  <!-- 4. Citation Metadata -->
+  <!-- ====================================================================== -->
+  <meta name="citation_title" content="واحة الجبري Z(x) ونظرية السندباد الموحدة Z+C+A=1" />
+  <meta name="citation_author" content="عبدالله محمد ناصر الجبري" />
+  <meta name="citation_publication_date" content="2026" />
+  <meta name="citation_journal_title" content="واحة الجبري - بحوث رياضية وفيزيائية" />
+  <meta name="citation_doi" content="10.5281/zenodo.20513840" />
+  <meta name="citation_pdf_url" content="https://doi.org/10.5281/zenodo.20513840" />
+  
+  <!-- ====================================================================== -->
+  <!-- 5. Dublin Core -->
+  <!-- ====================================================================== -->
+  <meta name="DC.title" content="واحة الجبري Z(x) - نظرية الجبري الموحدة" />
+  <meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري" />
+  <meta name="DC.subject" content="الرياضيات, الفيزياء النظرية, نظرية السندباد, تراث اليمن" />
+  <meta name="DC.description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - نظرية موحدة للكون" />
+  <meta name="DC.publisher" content="واحة الجبري" />
+  <meta name="DC.date" content="2026-08-16" />
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.format" content="text/html" />
+  <meta name="DC.language" content="ar" />
+  <meta name="DC.coverage" content="Yemen" />
+  <meta name="DC.rights" content="© 2026 م/ عبدالله محمد ناصر الجبري - CC BY 4.0" />
+  <meta name="DC.identifier" content="10.5281/zenodo.20513840" />
+  
+  <!-- ====================================================================== -->
+  <!-- 6. ملكية جوجل -->
+  <!-- ====================================================================== -->
+  <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+  
+  <!-- ====================================================================== -->
+  <!-- 7. Open Graph + Twitter -->
+  <!-- ====================================================================== -->
+  <meta property="og:locale" content="ar_YE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri - نظرية السندباد">
+  <meta property="og:title" content="واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
+  <meta property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
+  <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+  <meta property="og:image:secure_url" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="المهندس عبدالله الجبري - واحة الجبري ونظرية السندباد الموحدة">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:url" content="https://jabri-com.vercel.app/">
+  <meta property="og:updated_time" content="2026-08-16T18:20:00+03:00">
+  
+  <meta property="article:published_time" content="2026-01-01T00:00:00+03:00">
+  <meta property="article:modified_time" content="2026-08-16T18:20:00+03:00">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="نظرية السندباد">
+  <meta property="article:tag" content="الرياضيات">
+  <meta property="article:tag" content="الفيزياء">
+  <meta property="article:tag" content="تراث اليمن">
+  <meta property="article:author" content="https://jabri-com.vercel.app/about.html">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JabriAbdulla1">
+  <meta name="twitter:creator" content="@JabriAbdulla1">
+  <meta name="twitter:title" content="واحة الجبري Z(x) - نظرية الجبري الموحدة">
+  <meta name="twitter:description" content="Zx = Z + C + A | Z + C + A = 1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - تراث اليمن">
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+  <meta name="twitter:image:alt" content="المهندس عبدالله الجبري">
+  
+  <!-- ====================================================================== -->
+  <!-- 8. Facebook -->
+  <!-- ====================================================================== -->
+  <meta property="fb:app_id" content="123456789012345">
+  
+  <!-- ====================================================================== -->
+  <!-- 9. JSON-LD Schema.org كامل ومدمج -->
+  <!-- ====================================================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://jabri-com.vercel.app/#person",
+        "name": "م/ عبدالله محمد ناصر الجبري",
+        "alternateName": ["Eng. Abdulla Mohammed Nasser Al-Jabri", "Heaven Al-Jabri", "واحة الجبري", "Abdulla Al-Jabri", "سندباد اليمن"],
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "ORCID",
+          "value": "0009-0003-3319-3822",
+          "url": "https://orcid.org/0009-0003-3319-3822"
+        },
+        "url": "https://jabri-com.vercel.app/ar/about.html",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "width": 1200,
+          "height": 630
+        },
+        "jobTitle": "باحث مستقل - رياضيات وفيزياء نظرية",
+        "description": "باحث يمني مستقل، مؤسس واحة الجبري. متخصص في الرياضيات النظرية والفيزياء النظرية، ومطور نظرية السندباد الموحدة Z والدالة الأم Z(x).",
+        "nationality": "Yemeni",
+        "email": "jabri62018@gmail.com",
+        "knowsAbout": ["الرياضيات النظرية","الفيزياء النظرية","نظرية السندباد الموحدة","واحة الجبري Z(x)","تراث اليمن","توثيق التراث الرقمي"],
+        "worksFor": { "@id": "https://jabri-com.vercel.app/#org" },
+        "sameAs": [
+          "https://orcid.org/0009-0003-3319-3822",
+          "https://github.com/jabri-web",
+          "https://en.wikipedia.org/wiki/User:Jabri2026",
+          "https://www.linkedin.com/in/abdulla-al-jabri",
+          "https://x.com/jabri_web",
+          "https://scholar.google.com/citations?user=jabri",
+          "https://www.researchgate.net/profile/Abdulla-Al-Jabri",
+          "https://www.youtube.com/@HeavenAlJabri",
+          "https://t.me/HeavenAlJabri"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://jabri-com.vercel.app/#org",
+        "name": "واحة الجبري",
+        "alternateName": "Heaven Al-Jabri",
+        "description": "منصة توثيق التراث اليمني ونظرية السندباد الموحدة - الدالة الأم Z(x)",
+        "url": "https://jabri-com.vercel.app/",
+        "logo": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+        "founder": { "@id": "https://jabri-com.vercel.app/#person" },
+        "owner": { "@id": "https://jabri-com.vercel.app/#person" },
+        "sameAs": [
+          "https://github.com/jabri-web",
+          "https://www.youtube.com/@HeavenAlJabri",
+          "https://t.me/HeavenAlJabri"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://jabri-com.vercel.app/#website",
+        "url": "https://jabri-com.vercel.app/",
+        "name": "واحة الجبري | Heaven Al-Jabr - نظرية السندباد",
+        "alternateName": "Heaven Al-Jabri",
+        "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - تراث اليمن",
+        "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+        "inLanguage": ["ar", "en"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://jabri-com.vercel.app/#webpage",
+        "url": "https://jabri-com.vercel.app/",
+        "name": "الدالة الأم Z(x) - نظرية الجبري الموحدة",
+        "description": "اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون",
+        "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+        "about": { "@id": "https://jabri-com.vercel.app/#org" },
+        "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+        "publisher": { "@id": "https://jabri-com.vercel.app/#org" },
+        "inLanguage": ["ar", "en"],
+        "breadcrumb": { "@id": "https://jabri-com.vercel.app/#breadcrumb" }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://jabri-com.vercel.app/research.html/#article",
+        "name": "نظرية السندباد الموحدة Z+C+A=1",
+        "author": { "@id": "https://jabri-com.vercel.app/#person" },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-08-16",
+        "url": "https://jabri-com.vercel.app/research.html",
+        "description": "بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة تربط بين دالة Zx ومسائل الألفية.",
+        "identifier": "10.5281/zenodo.20513840",
+        "publisher": { "@id": "https://jabri-com.vercel.app/#org" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://jabri-com.vercel.app/#breadcrumb",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://jabri-com.vercel.app/"},
+          {"@type": "ListItem", "position": 2, "name": "الدالة الأم", "item": "https://jabri-com.vercel.app/theory-ar.html"}
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://jabri-com.vercel.app/#cities-list",
+        "name": "المدن اليمنية التاريخية",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "صنعاء القديمة", "item": "https://jabri-com.vercel.app/Sanaa.html"},
+          {"@type": "ListItem", "position": 2, "name": "شبام حضرموت", "item": "https://jabri-com.vercel.app/Shibam.html"},
+          {"@type": "ListItem", "position": 3, "name": "سقطرى", "item": "https://jabri-com.vercel.app/Soqatra.html"}
+        ]
+      }
+    ]
+  }
+  </script>
+  
+  <!-- ====================================================================== -->
+  <!-- 10. الروابط المساعدة + Preload + Fonts -->
+  <!-- ====================================================================== -->
+  <link rel="home" href="https://jabri-com.vercel.app/">
+  <link rel="index" href="https://jabri-com.vercel.app/">
+  <link rel="contents" href="https://jabri-com.vercel.app/#webpage">
+  <link rel="section" href="https://jabri-com.vercel.app/research.html">
+  <link rel="section" href="https://jabri-com.vercel.app/about.html">
+  <link rel="section" href="https://jabri-com.vercel.app/Yemen-library.html">
+  <link rel="collection" href="https://jabri-com.vercel.app/Sanaa.html">
+  <link rel="collection" href="https://jabri-com.vercel.app/Shibam.html">
+  <link rel="collection" href="https://jabri-com.vercel.app/Soqatra.html">
+  
+  <link rel="preload" as="image" href="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- ====================================================================== -->
+  <!-- 11. Styles -->
+  <!-- ====================================================================== -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Cairo', sans-serif; background: #0a0a0f; min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; flex-direction: column; }
+    .hero { text-align: center; padding: 20px; max-width: 600px; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(135deg, #6ae3ff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { opacity: 0.6; font-size: 1.1rem; }
+    
+    /* ===== الأزرار العلوية (أعلى الشاشة) - ذهبية بارزة ومتناسقة ===== */
+    .top-header-buttons {
+        position: fixed;
+        top: 15px;
+        left: 0;
+        right: 0;
+        z-index: 99999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        pointer-events: none;
+    }
+    .top-header-buttons > * {
+        pointer-events: auto;
+    }
+    .top-btn {
+        background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+        color: #0a0a0f !important;
+        border: 2px solid #ffd700 !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+        border-radius: 30px !important;
+        font-weight: 900 !important;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-family: 'Cairo', sans-serif;
+        backdrop-filter: blur(4px);
+        height: 44px;
+    }
+    .top-btn:hover {
+        transform: scale(1.08) !important;
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important;
+        background: linear-gradient(135deg, #ffe44d, #f5a623) !important;
+    }
+    .top-btn:active {
+        transform: scale(0.95) !important;
+    }
+    .top-btn.lang { min-width: 90px; padding: 0 16px; font-size: 13px; }
+    .top-btn.visitor { min-width: 100px; padding: 0 18px; font-size: 14px; }
+    .top-btn.music { width: 50px; padding: 0; font-size: 20px; }
+    .top-btn.chat { width: 50px; padding: 0; font-size: 20px; }
+    .top-btn.menu { width: 50px; padding: 0; font-size: 20px; }
+    .top-btn .count { font-weight: 900; font-size: 16px; color: #0a0a0f; }
+
+    /* ===== الأزرار السفلية (أسفل الشاشة) - ذهبية بارزة ومتناسقة ===== */
+    .bottom-buttons {
+        position: fixed;
+        bottom: 28px;
+        left: 28px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        direction: ltr;
+    }
+    .bottom-btn {
+        background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+        color: #0a0a0f !important;
+        border: 2px solid #ffd700 !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+        border-radius: 30px !important;
+        font-weight: 900 !important;
+        font-family: 'Cairo', sans-serif;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 22px;
+        font-size: 16px;
+        height: 50px;
+        min-width: 120px;
+        transition: all 0.3s ease !important;
+        backdrop-filter: blur(4px);
+        white-space: nowrap;
+    }
+    .bottom-btn:hover {
+        transform: scale(1.07) !important;
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important;
+        background: linear-gradient(135deg, #ffe44d, #f5a623) !important;
+    }
+    .bottom-btn:active {
+        transform: scale(0.95) !important;
+    }
+    .bottom-btn.music { font-size: 20px; min-width: 60px; padding: 0 18px; }
+    .bottom-btn.music.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important; color: #fff !important; border-color: #ff6a6a !important; box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important; }
+    .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
+
+    @media (max-width: 600px) {
+        .top-header-buttons { padding: 0 10px; }
+        .top-btn { height: 38px; }
+        .top-btn.lang { min-width: 70px; padding: 0 12px; font-size: 11px; }
+        .top-btn.visitor { min-width: 80px; padding: 0 14px; font-size: 12px; }
+        .top-btn.music { width: 40px; font-size: 17px; }
+        .top-btn.chat { width: 40px; font-size: 17px; }
+        .top-btn.menu { width: 40px; font-size: 17px; }
+        .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
+        .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 90px; }
+        .bottom-btn.music { font-size: 17px; min-width: 50px; padding: 0 14px; }
+        .hero h1 { font-size: 1.8rem; }
+    }
+    @media (max-width: 400px) {
+        .top-btn { height: 34px; }
+        .top-btn.lang { min-width: 60px; padding: 0 8px; font-size: 10px; }
+        .top-btn.visitor { min-width: 70px; padding: 0 10px; font-size: 11px; }
+        .top-btn.music { width: 36px; font-size: 15px; }
+        .top-btn.chat { width: 36px; font-size: 15px; }
+        .top-btn.menu { width: 36px; font-size: 15px; }
+        .bottom-buttons { bottom: 14px; left: 14px; gap: 8px; }
+        .bottom-btn { height: 38px; font-size: 12px; padding: 0 12px; min-width: 70px; }
+        .bottom-btn.music { font-size: 15px; min-width: 40px; padding: 0 10px; }
+    }
+    .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+    * { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+  </style>
+
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!--  الأزرار العلوية (أعلى الشاشة)                              -->
+    <!-- ============================================================ -->
+    <div class="top-header-buttons">
+        <div style="display:flex; gap:8px;">
+            <button class="top-btn menu" id="menuTopBtn" onclick="window.toggleMenu()" title="القائمة">☰</button>
+            <button class="top-btn lang" id="langTopBtn" onclick="window.toggleLang()" title="تبديل اللغة">
+                <span class="ar">🇾🇪عربي</span>
+                <span class="en">🇬🇧 EN</span>
+            </button>
+        </div>
+
+        <div class="top-btn visitor" title="الزوار">
+            <span class="ar">👥 الزوار</span>
+            <span class="en">👥 Visitors</span>
+            <span class="count" id="visitorCountTop">1</span>
+        </div>
+
+        <div style="display:flex; gap:8px;">
+            <audio id="oasisMusic" src="/image/music.mp3" loop preload="auto"></audio>
+            <button class="top-btn music" id="musicTopBtn" onclick="window.toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
+            <button class="top-btn chat" onclick="window.toggleChat()" title="المحادثة">💬</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  الهيدر / المحتوى الرئيسي                                    -->
+    <!-- ============================================================ -->
+    <div class="hero">
+        <h1>🌊 واحة الجبري</h1>
+        <p>Heaven Al-Jabri · نظرية السندباد الموحدة</p>
+        <p style="font-size:0.8rem; margin-top:20px; opacity:0.4;">
+            تمنياتي للشعب اليمني وكل صديق بالتقدم والازدهار 🇾🇪 - #عبدالله_الجبري
+        </p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  الأزرار السفلية (أسفل الشاشة)                              -->
+    <!-- ============================================================ -->
+    <div class="bottom-buttons">
+        <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
+        <a href="/music.html" class="bottom-btn music-link" title="صفحة الموسيقى">👀 🎵</a>
+        <a href="/visitor.html" class="bottom-btn visitor" title="عداد الزوار">
+            <span id="visitorText">👥 الزوار</span>
+            <span class="count" id="visitorCountBottom">1</span>
+        </a>
+        <button class="bottom-btn lang" id="langBottomBtn" onclick="window.toggleLang()" title="تبديل اللغة">
+            <span class="ar">🇾🇪 عربي</span>
+            <span class="en">🇬🇧 EN</span>
+        </button>
+        <button class="bottom-btn chat" onclick="window.toggleChat()" title="المحادثة">💬 محادثة</button>
+    </div>
+
+    <!-- ===== القائمة (تحمل من menu.js) ===== -->
+    <div id="main-menu"></div>
+
+    <!-- ===== صندوق المحادثة ===== -->
+    <div id="chatBox" style="display:none; position:fixed; bottom:100px; right:20px; width:300px; background:#1a1a2e; border:2px solid #ffd700; border-radius:12px; padding:20px; z-index:9999;">
+        <h3 style="color:#ffd700; text-align:center; margin-bottom:10px;">💬 المحادثة</h3>
+        <textarea id="chatInput" placeholder="اكتب رسالتك..." style="width:100%; height:80px; background:#0a0a0f; border:1px solid #2a2a3e; color:#fff; border-radius:6px; padding:10px; margin-bottom:10px;"></textarea>
+        <button onclick="window.sendChat()" style="width:100%; background:linear-gradient(135deg,#ffd700,#f0a500); color:#0a0a0f; border:none; padding:10px; border-radius:6px; font-weight:700; cursor:pointer;">📤 إرسال</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  سكريبتات التشغيل                                           -->
+    <!-- ============================================================ -->
+    <script>
+        // ============================================================
+        //  توحيد الدوال العامة (window.)
+        // ============================================================
+
+        // 1. تبديل اللغة
+        window.toggleLang = function() {
+            document.body.classList.toggle('en');
+            const isEn = document.body.classList.contains('en');
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+            document.documentElement.lang = isEn ? 'en' : 'ar';
+            localStorage.setItem('lang', isEn ? 'en' : 'ar');
+            window.updateLangUI();
+        };
+
+        // 2. تشغيل/إيقاف الموسيقى
+        window.toggleMusic = function() {
+            const audio = document.getElementById('oasisMusic');
+            if (!audio) return;
+            const btns = document.querySelectorAll('#musicTopBtn, #musicBottomBtn');
+            if (audio.paused) {
+                audio.play().catch(() => {});
+                btns.forEach(b => { b.textContent = '🔊'; b.classList.add('playing'); });
+            } else {
+                audio.pause();
+                btns.forEach(b => { b.textContent = '🎵'; b.classList.remove('playing'); });
+            }
+        };
+
+        // 3. فتح/إغلاق المحادثة
+        window.toggleChat = function() {
+            const box = document.getElementById('chatBox');
+            if (box) {
+                box.style.display = box.style.display === 'block' ? 'none' : 'block';
+            }
+        };
+
+        // 4. فتح/إغلاق القائمة
+        window.toggleMenu = function() {
+            const menu = document.getElementById('main-menu');
+            if (menu) {
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            }
+        };
+
+        // 5. تحديث عداد الزوار
+        window.updateVisitorUI = function() {
+            let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
+            count += 1;
+            localStorage.setItem('jabri_visitor_count', count);
+            const formatted = count.toLocaleString('ar-EG');
+            ['visitorCountTop', 'visitorCountBottom'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = formatted;
+            });
+        };
+
+        // 6. تحديث واجهة اللغة
+        window.updateLangUI = function() {
+            const isEn = document.body.classList.contains('en');
+            const topBtn = document.getElementById('langTopBtn');
+            const bottomBtn = document.getElementById('langBottomBtn');
+            if (topBtn) {
+                topBtn.innerHTML = isEn ?
+                    '<span class="ar">🇾🇪عربي</span><span class="en">🇬🇧 EN</span>' :
+                    '<span class="ar">🇾🇪عربي</span><span class="en">🇬🇧 EN</span>';
+            }
+            if (bottomBtn) {
+                bottomBtn.innerHTML = isEn ?
+                    '<span class="ar">🇾🇪عربي</span><span class="en">🇬🇧 EN</span>' :
+                    '<span class="ar">🇾🇪عربي</span><span class="en">🇬🇧 EN</span>';
+            }
+            // تحديث نصوص الزوار
+            const visitorTop = document.querySelector('.top-btn.visitor');
+            const visitorBottom = document.querySelector('.bottom-btn.visitor');
+            if (visitorTop) {
+                visitorTop.innerHTML = isEn ?
+                    '👥 Visitors <span class="count" id="visitorCountTop">' + (document.getElementById('visitorCountTop')?.textContent || '1') + '</span>' :
+                    '👥 الزوار <span class="count" id="visitorCountTop">' + (document.getElementById('visitorCountTop')?.textContent || '1') + '</span>';
+            }
+            if (visitorBottom) {
+                visitorBottom.innerHTML = isEn ?
+                    '👥 Visitors <span class="count" id="visitorCountBottom">' + (document.getElementById('visitorCountBottom')?.textContent || '1') + '</span>' :
+                    '👥 الزوار <span class="count" id="visitorCountBottom">' + (document.getElementById('visitorCountBottom')?.textContent || '1') + '</span>';
+            }
+        };
+
+        // 7. إرسال المحادثة
+        window.sendChat = function() {
+            const input = document.getElementById('chatInput');
+            if (input && input.value.trim()) {
+                alert('✅ تم إرسال رسالتك: ' + input.value);
+                input.value = '';
+                document.getElementById('chatBox').style.display = 'none';
+            }
+        };
+
+        // ============================================================
+        //  تشغيل كل شيء عند تحميل الصفحة
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // استعادة اللغة
+            const savedLang = localStorage.getItem('lang') || 'ar';
+            if (savedLang === 'en') {
+                document.body.classList.add('en');
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            } else {
+                document.body.classList.remove('en');
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            }
+            
+            // تحديث عداد الزوار
+            window.updateVisitorUI();
+            
+            // تحديث واجهة اللغة
+            window.updateLangUI();
+            
+            console.log('📅 18 أغسطس 2026');
+            console.log('📜 Zx = Z + C + A | Z + C + A = 1');
+            console.log('🧮 Z(x) = x^5 ln(x) sin(2π/x) exp(-x/xp)');
+            console.log('🇾🇪 اليمن - صنعاء');
+        });
+    </script>
+
+<!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<!-==/div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+
+</body>
+</html>

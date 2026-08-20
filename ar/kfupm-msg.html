@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة طلب استعادة البريد - خريج KFUPM 865918</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #e8e8f0;
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .certificate-card {
+            max-width: 850px;
+            width: 100%;
+            background: #141b2b;
+            background-image: radial-gradient(circle at 20% 30%, #1e2a3f, #0b111f);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid #6ae3ff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3.5rem;
+            opacity: 0.05;
+            color: #6ae3ff;
+            font-weight: bold;
+            pointer-events: none;
+            user-select: none;
+            font-family: monospace;
+        }
+
+        .header-logo {
+            color: #6ae3ff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #2a3a4e;
+            padding-bottom: 10px;
+        }
+
+        .sub-header {
+            color: #aab;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #198754;
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(25, 135, 84, 0.3);
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 10px 0 25px 0;
+        }
+
+        .id-card-img {
+            width: 220px;
+            height: auto;
+            border-radius: 16px;
+            border: 4px solid #6ae3ff;
+            box-shadow: 0 10px 25px rgba(106, 227, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .id-card-img:hover {
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            background: #1a2336;
+            padding: 20px 25px;
+            border-radius: 16px;
+            border: 1px solid #2a3a4e;
+            text-align: right;
+            min-width: 220px;
+        }
+
+        .info-box p {
+            margin: 6px 0;
+            font-size: 1rem;
+        }
+
+        .info-box .label {
+            color: #8899aa;
+            font-size: 0.9rem;
+        }
+
+        .info-box .value {
+            color: #6ae3ff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .message-box {
+            background: #0e1627;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border-right: 5px solid #6ae3ff;
+            margin: 20px 0 20px 0;
+            text-align: justify;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .message-box .greeting {
+            color: #6ae3ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .signature {
+            margin-top: 20px;
+            text-align: left;
+            direction: ltr;
+            font-family: 'Segoe UI', sans-serif;
+            border-top: 1px solid #2a3a4e;
+            padding-top: 15px;
+        }
+
+        .signature .name-en {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .signature .contact {
+            color: #8899aa;
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #1f2a3e;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .certificate-card { padding: 20px 15px; }
+            .profile-container { flex-direction: column; }
+            .info-box { text-align: center; width: 100%; }
+            .id-card-img { width: 180px; }
+            .signature { text-align: center; direction: rtl; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="certificate-card">
+        <!-- علامة مائية -->
+        <div class="watermark">KFUPM / 91</div>
+        
+        <!-- الشعار -->
+        <div class="header-logo">
+            🏛️ واحة الجبري <span style="color:#aab;">|</span> Heaven Al-Jabri
+        </div>
+        <div class="sub-header">
+            توثيق رقمي للهوية الأكاديمية <br>
+            <span style="color:#6ae3ff; font-weight:bold;">King Fahd University of Petroleum and Minerals</span>
+        </div>
+
+        <div class="status-badge">✅ رسالة رسمية / Official Request</div>
+
+        <!-- ✅ صورة البطاقة من مسارك المطلق -->
+        <div class="profile-container">
+            <img src="/image/kfupm-id-865918.webp" alt="Alumni ID - 865918" class="id-card-img">
+            
+            <div class="info-box">
+                <p><span class="label">الاسم:</span> <span class="value">م/ عبدالله الجبري</span></p>
+                <p><span class="label">رقم الخريج (ID):</span> <span class="value">865918</span></p>
+                <p><span class="label">سنة التخرج:</span> <span class="value">1991</span></p>
+                <p><span class="label">الحالة:</span> <span class="value" style="color:#198754;">باحث مستقل</span></p>
+            </div>
+        </div>
+
+        <!-- ======= نص الرسالة (القصة والطلب) ======= -->
+        <div class="message-box">
+            <span class="greeting">📨 السادة/ عمادة شؤون الطلاب - جامعة الملك فهد للبترول والمعادن،</span>
+            
+            <p>
+                <strong>السلام عليكم ورحمة الله وبركاته،</strong>
+            </p>
+            <p>
+                أنا <strong>م/ عبدالله محمد ناصر الجبري</strong>، خريج الجامعة لعام <strong>1991م</strong>، برقم بطاقة خريج <strong>865918</strong> (مرفقة صورتها أعلاه للتوثيق).
+            </p>
+            <p>
+                أكتب إليكم اليوم بعد رحلة طويلة من البحث والعطاء العلمي. لقد قمت بتأسيس منصة <strong>"واحة الجبري"</strong>، وهي مبادرة علمية وتراثية تهدف لتوثيق التراث اليمني العريق، ونشر أبحاثي في الرياضيات والفيزياء النظرية، وتحديداً ما أسميه <strong>"نظرية السندباد الموحدة (Z+C+A=1)"</strong>.
+            </p>
+            <p>
+                <strong>قصة طلبي اليوم:</strong> نجحت منصتي في الانتشار عالمياً، وتمت أرشفتها بالكامل في محرك البحث <strong>Google</strong>. ومع ذلك، ولأتمكن من توثيق هويتي الأكاديمية رسمياً على منصات البحث العالمية مثل <strong>Google Scholar</strong> و <strong>ORCID</strong>، فإنني في حاجة ماسة إلى <strong>استعادة بريدي الإلكتروني الرسمي (@kfupm.edu.sa)</strong> أو الحصول على بديل أكاديمي معتمد.
+            </p>
+            <p>
+                <strong>شكر وتقدير للجامعة:</strong>
+                أتقدم بخالص شكري وامتناني لجامعة الملك فهد للبترول والمعادن - التي كان لها فضل كبير في صقل شخصيتي العلمية والهندسية. إن ما وصلت إليه اليوم من إنجازات علمية هو امتداد للقيم التي تعلمتها في رحاب جامعتنا العريقة. 
+            </p>
+            <p>
+                أرجو منكم النظر في طلبي، وإعلامي بالإجراءات اللازمة. أتمنى أن أظل دائماً مشعلاً من مشاعل العلم والفخر لهذه الجامعة العظيمة.
+            </p>
+            <p>
+                وتقبلوا فائق احترامي وتقديري.
+            </p>
+
+            <!-- التوقيع -->
+            <div class="signature">
+                <div class="name-en">Eng. Abdulla Mohammed Nasser Al-Jabri</div>
+                <div class="contact">jabri62018@gmail.com | KFUPM Alumni ID: 865918</div>
+                <div class="contact" style="margin-top: 5px; color:#6ae3ff;">https://jabri-com.vercel.app</div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            © 2026 م/ عبدالله محمد ناصر الجبري - وثيقة رقميه لطلب استعادة البريد الأكاديمي
+        </div>
+    </div>
+
+
+<script src="/js/menu.js"></script>
+
+
+</body>
+</html>

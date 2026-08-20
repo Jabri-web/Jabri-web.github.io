@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ============================================ -->
+    <!--              HEADER (SEO + Meta)             -->
+    <!-- ============================================ -->
+
+    <!-- اللغات و الكانونيكال -->
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/mikrotik.html" />
+    <link rel="canonical" href="https://jabri-com.vercel.app/mikrotik.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- SEO أساسي -->
+    <title>شبكات المايكروتك MikroTik: الدليل الشامل 2026 | واحة الجبري</title>
+    <meta name="description" content="الدليل الشامل لشبكات المايكروتك MikroTik: شرح مفصل للمبتدئين، مميزات، إعدادات، Hotspot، VPN، التحكم بالسرعة، وأسئلة شائعة. دليل متكامل 2026.">
+    <meta name="keywords" content="مايكروتك, MikroTik, شبكات, راوتر, إدارة الشبكات, Hotspot, VPN, Bandwidth Control, شرح المايكروتك">
+    <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
+    <link rel="author" href="https://jabri-com.vercel.app/about.html" />
+
+    <!-- Dublin Core -->
+    <meta name="DC.title" content="شبكات المايكروتك MikroTik: الدليل الشامل 2026" />
+    <meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري" />
+    <meta name="DC.subject" content="شبكات, مايكروتك, MikroTik, راوتر, إدارة الشبكات" />
+    <meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري" />
+
+    <!-- ملكية جوجل (Vercel) -->
+    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-EQBMJKBC24');
+    </script>
+
+    <!-- Open Graph + Twitter -->
+    <meta property="og:locale" content="ar_YE">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
+    <meta property="og:title" content="شبكات المايكروتك MikroTik: الدليل الشامل 2026">
+    <meta property="og:description" content="الدليل الشامل لشبكات المايكروتك MikroTik: شرح مفصل للمبتدئين، مميزات، إعدادات، Hotspot، VPN، والتحكم بالسرعة.">
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+    <meta property="og:url" content="https://jabri-com.vercel.app/mikrotik.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="شبكات المايكروتك MikroTik: الدليل الشامل 2026">
+    <meta name="twitter:description" content="الدليل الشامل لشبكات المايكروتك MikroTik.">
+    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+
+    <!-- JSON-LD (المقالة) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "شبكات المايكروتك MikroTik: الدليل الشامل 2026",
+      "description": "الدليل الشامل لشبكات المايكروتك MikroTik: شرح مفصل للمبتدئين، مميزات، إعدادات، Hotspot، VPN، والتحكم بالسرعة.",
+      "author": {
+        "@type": "Person",
+        "name": "م/ عبدالله محمد ناصر الجبري"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "واحة الجبري"
+      },
+      "datePublished": "2026-07-31",
+      "dateModified": "2026-07-31",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://jabri-com.vercel.app/mikrotik.html"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jabri-com.vercel.app/image/Jabri-photo.png"
+      }
+    }
+    </script>
+
+    <!-- ============================================ -->
+    <!--              الأنماط (CSS)                   -->
+    <!-- ============================================ -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <style>
+        /* ---------- الأنماط العامة (من الموقع الرئيسي) ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #e0e0e0;
+            font-family: 'Cairo', Tahoma, Arial, sans-serif;
+            text-align: center;
+            transition: 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.en {
+            direction: ltr;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* زر تبديل اللغة (ثابت) */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            z-index: 9999;
+            display: flex;
+            gap: 4px;
+            background: #1a1a2e;
+            padding: 6px 12px;
+            border-radius: 30px;
+            border: 1px solid #2a2a4e;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        body.ar .lang-switch { left: 20px; }
+        body.en .lang-switch { right: 20px; }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            color: #8888bb;
+            padding: 6px 14px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .lang-switch button:hover {
+            color: #d0d0ea;
+            background: #2a2a4e;
+        }
+
+        .lang-switch button.active {
+            background: #6ae3ff;
+            color: #0b0b16;
+        }
+
+        .lang-switch button.active:hover {
+            background: #5ad0f0;
+        }
+
+        /* ---------- أنماط الفوتر (site-footer) ---------- */
+        #site-footer {
+            background: #0a0a0f;
+            color: #e8e8f0;
+            padding: 30px 15px;
+            border-top: 1px solid #2a2a3e;
+            font-family: 'Tajawal', Arial, sans-serif;
+            margin-top: 40px;
+        }
+
+        #site-footer a {
+            color: #6ae3ff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 8px;
+        }
+
+        #site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .footer-search {
+            text-align: center;
+            margin: 20px 0;
+            border-top: 1px solid #2a2a3e;
+            padding-top: 20px;
+        }
+
+        .footer-search a {
+            margin: 0 10px;
+        }
+
+        #copyright {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* ---------- أنماط الصفحة الخاصة (المقالة) ---------- */
+        .article-container {
+            flex: 1;
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+            width: 100%;
+            text-align: right;
+        }
+
+        .article-inner {
+            background: #12121f;
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid #2a2a4e;
+            text-align: right;
+        }
+
+        .article-inner h1 {
+            color: #6ae3ff;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .article-inner .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .article-inner h2 {
+            color: #a78bfa;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.2rem 0;
+            border-bottom: 2px solid #2a2a4e;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-inner h3 {
+            color: #6ae3ff;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .article-inner h4 {
+            color: #c0c0d0;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .article-inner p {
+            font-size: 1.05rem;
+            color: #c0c0d0;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .article-inner ul, .article-inner ol {
+            padding-right: 2rem;
+            margin: 0.8rem 0 1.5rem 0;
+        }
+
+        .article-inner li {
+            font-size: 1.05rem;
+            color: #c0c0d0;
+            line-height: 1.9;
+            margin-bottom: 0.4rem;
+        }
+
+        .article-inner li::marker {
+            color: #6ae3ff;
+        }
+
+        .article-inner .highlight-box {
+            background: #1a1a32;
+            border-right: 4px solid #6ae3ff;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .article-inner .highlight-box p {
+            margin-bottom: 0.2rem;
+        }
+
+        .article-inner table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .article-inner th {
+            background: #2a2a4e;
+            color: #6ae3ff;
+            padding: 10px 12px;
+            text-align: right;
+            border: 1px solid #2a2a4e;
+        }
+
+        .article-inner td {
+            background: #1a1a32;
+            padding: 10px 12px;
+            border: 1px solid #2a2a4e;
+            color: #c0c0d0;
+        }
+
+        .article-inner .faq-item {
+            background: #1a1a32;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #2a2a4e;
+        }
+
+        .article-inner .faq-item strong {
+            color: #6ae3ff;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .article-inner .faq-item p {
+            margin-bottom: 0;
+        }
+
+        .article-inner .back-link {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            color: #6ae3ff;
+            text-decoration: none;
+            padding: 10px 28px;
+            border: 2px solid #6ae3ff;
+            border-radius: 30px;
+            transition: 0.3s;
+            font-weight: 700;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #6ae3ff;
+            color: #0b0b16;
+            transform: scale(1.03);
+        }
+
+        .btn-primary {
+            background: #6ae3ff;
+            color: #0b0b16;
+        }
+
+        .btn-primary:hover {
+            background: #4dd4ff;
+        }
+
+        .article-inner .badge {
+            display: inline-block;
+            background: #2a2a4e;
+            color: #6ae3ff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0 4px;
+        }
+
+        /* استجابة */
+        @media (max-width: 600px) {
+            .lang-switch { top: 10px; padding: 4px 8px; }
+            body.ar .lang-switch { left: 10px; }
+            body.en .lang-switch { right: 10px; }
+            .lang-switch button { padding: 4px 10px; font-size: 0.75rem; }
+            .article-container { margin-top: 50px; }
+            .article-inner { padding: 20px; }
+            .article-inner h1 { font-size: 1.8rem; }
+            .article-inner h2 { font-size: 1.4rem; }
+            .article-inner h3 { font-size: 1.1rem; }
+            .article-inner p, .article-inner li { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!--          زر تبديل اللغة (ثابت)               -->
+    <!-- ============================================ -->
+
+    <div class="lang-switch">
+        <button id="lang-ar" class="active" onclick="window.toggleLang()">🇸🇦 عربي</button>
+        <button id="lang-en" onclick="window.toggleLang()">🇬🇧 English</button>
+    </div>
+
+    <!-- ============================================ -->
+    <!--              محتوى المقالة                   -->
+    <!-- ============================================ -->
+
+    <main class="article-container">
+
+        <div class="article-inner">
+
+            <h1>🖧 شبكات المايكروتك MikroTik: الدليل الشامل للمبتدئين 2026</h1>
+            <p class="subtitle">تعلم كل ما تحتاجه لاحتراف إدارة الشبكات والتحكم بالإنترنت باستخدام MikroTik</p>
+
+            <!-- ===== مقدمة ===== -->
+            <p>
+                مع التوسع الكبير في استخدام الإنترنت، أصبحت إدارة الشبكات والتحكم في سرعة الاتصال وحماية البيانات من أهم التحديات التي تواجه الأفراد والشركات. وهنا تبرز قوة أنظمة <strong>MikroTik المايكروتك</strong> التي تُعد واحدة من أقوى الحلول الاحترافية في عالم الشبكات.
+            </p>
+            <p>
+                سواء كنت مبتدئًا تريد فهم أساسيات الشبكات، أو صاحب شركة تبحث عن نظام قوي لإدارة الإنترنت، أو حتى مزود خدمة (ISP)، فإن MikroTik يقدم لك الأدوات الكاملة للتحكم بكل تفاصيل الشبكة.
+            </p>
+            <p>
+                في هذا الدليل الشامل، ستتعرف على كل ما تحتاجه لاحتراف MikroTik خطوة بخطوة.
+            </p>
+
+            <!-- ===== ما هي المايكروتك ===== -->
+            <h2>📌 ما هي المايكروتك MikroTik؟</h2>
+            <p>
+                شركة <strong>MikroTik</strong> هي شركة تقنية تأسست في لاتفيا، متخصصة في تطوير حلول الشبكات، خاصة أجهزة الراوتر وأنظمة إدارة الشبكات المتقدمة.
+            </p>
+            <p>
+                تعتمد منتجات MikroTik بشكل أساسي على نظام <strong>RouterOS</strong>، وهو نظام تشغيل متكامل يحول أي جهاز إلى راوتر احترافي يدعم إدارة الشبكات بشكل كامل.
+            </p>
+            <div style="text-align:center;margin:20px 0;">
+                <span class="badge">RouterOS</span>
+                <span class="badge">شبكات احترافية</span>
+                <span class="badge">تحكم كامل</span>
+            </div>
+
+            <!-- ===== لماذا المايكروتك ===== -->
+            <h2>⭐ لماذا المايكروتك MikroTik هي الخيار الأفضل؟</h2>
+
+            <h3>1. تحكم كامل بنسبة 100% في شبكة الإنترنت</h3>
+            <p>
+                يمكنك عبر MikroTik التحكم في: سرعة الإنترنت لكل مستخدم، تحديد استهلاك البيانات، حظر مواقع معينة (مثل YouTube أو الألعاب)، وجدولة الإنترنت (تشغيل/إيقاف).
+            </p>
+            <div class="highlight-box">
+                <p>✅ تحكم دقيق في السرعة والاستهلاك لكل مستخدم</p>
+                <p>✅ حظر مواقع وإدارة أوقات الاتصال</p>
+                <p>✅ مراقبة الشبكة بشكل لحظي</p>
+            </div>
+
+            <h3>2. أداء عالي مقابل سعر منخفض</h3>
+            <p>
+                مقارنة مع شركات مثل <strong>Cisco</strong> و <strong>Juniper Networks</strong>، ستجد أن MikroTik تقدم نفس الإمكانيات تقريباً ولكن بسعر أقل بكثير.
+            </p>
+
+            <h3>3. مرونة غير محدودة</h3>
+            <p>
+                تُستخدم MikroTik في: المنازل، الشركات، المقاهي، الفنادق، ومزودي الإنترنت (ISP).
+            </p>
+
+            <h3>4. دعم Hotspot احترافي</h3>
+            <p>
+                يمكنك إنشاء نظام واي فاي بصفحة تسجيل دخول (Login Page)، وبكروت إنترنت، وبمدة أو باقة محددة.
+            </p>
+
+            <h3>5. أمان قوي ومتقدم</h3>
+            <p>
+                يوفر النظام: <strong>Firewall</strong> متقدم، <strong>VPN</strong> بأنواعه، وحماية من الهجمات.
+            </p>
+
+            <!-- ===== مكونات النظام ===== -->
+            <h2>🧩 مكونات نظام MikroTik</h2>
+
+            <h3>1. الأجهزة (Hardware)</h3>
+            <p>تقدم MikroTik أجهزة متنوعة تناسب كل الاستخدامات:</p>
+            <ul>
+                <li><strong>MikroTik hAP ac²</strong> – منزلي ومتوسط</li>
+                <li><strong>MikroTik RB750Gr3</strong> – اقتصادي وقوي</li>
+                <li><strong>MikroTik CCR1009</strong> – احترافي للشركات</li>
+            </ul>
+
+            <h3>2. نظام التشغيل</h3>
+            <p>نظام <strong>RouterOS</strong> هو القلب الحقيقي، حيث يحتوي على: Routing، Firewall، VPN، Bandwidth Control، Hotspot.</p>
+
+            <h3>3. أدوات الإدارة</h3>
+            <p>يمكن التحكم في MikroTik عبر:</p>
+            <ul>
+                <li><strong>Winbox</strong> – الأكثر شيوعاً</li>
+                <li><strong>WebFig</strong> – عبر المتصفح</li>
+                <li><strong>Terminal</strong> – للمحترفين</li>
+            </ul>
+
+            <!-- ===== أساسيات الشبكات ===== -->
+            <h2>📚 أساسيات الشبكات لفهم MikroTik</h2>
+            <p>قبل البدء، من الضروري فهم هذه المفاهيم الأساسية:</p>
+
+            <h3>✔️ IP Address</h3>
+            <p>هو عنوان الجهاز داخل الشبكة مثل <code>192.168.1.1</code>، يُستخدم لتحديد موقع الجهاز والتواصل معه.</p>
+
+            <h3>✔️ DHCP</h3>
+            <p>نظام يعطي الأجهزة IP تلقائياً دون تدخل يدوي، مما يوفر الوقت ويقلل الأخطاء.</p>
+
+            <h3>✔️ NAT</h3>
+            <p>يسمح بمشاركة الإنترنت بين الأجهزة عبر ترجمة العناوين الداخلية إلى عنوان عام واحد.</p>
+
+            <h3>✔️ Firewall</h3>
+            <p>يحمي الشبكة من الاختراق عبر مراقبة حركة البيانات وتطبيق قواعد أمنية.</p>
+
+            <!-- ===== الإعداد من الصفر ===== -->
+            <h2>🛠️ كيفية إعداد MikroTik من الصفر (شرح عملي)</h2>
+
+            <h3>الخطوة 1: الدخول إلى الراوتر</h3>
+            <ul>
+                <li>افتح برنامج <strong>Winbox</strong></li>
+                <li>أدخل IP الافتراضي: <code>192.168.88.1</code></li>
+            </ul>
+
+            <h3>الخطوة 2: إعداد الإنترنت (WAN)</h3>
+            <ul>
+                <li>إذا كان الاتصال عبر <strong>PPPoE</strong>: أدخل اسم المستخدم وكلمة المرور</li>
+                <li>أو استخدم <strong>DHCP</strong> تلقائي</li>
+            </ul>
+
+            <h3>الخطوة 3: إعداد الشبكة الداخلية (LAN)</h3>
+            <ul>
+                <li>تحديد IP داخلي</li>
+                <li>تفعيل <strong>DHCP Server</strong></li>
+            </ul>
+
+            <h3>الخطوة 4: تفعيل NAT</h3>
+            <p>للسماح للأجهزة باستخدام الإنترنت عبر عنوان IP العام.</p>
+
+            <h3>الخطوة 5: تأمين الراوتر</h3>
+            <ul>
+                <li>تغيير كلمة المرور الافتراضية</li>
+                <li>تفعيل <strong>Firewall</strong></li>
+            </ul>
+
+            <!-- ===== التحكم بالسرعة ===== -->
+            <h2>⚡ التحكم في سرعة الإنترنت (Bandwidth Control)</h2>
+            <p>يمكنك تحديد سرعة لكل مستخدم، ومنع شخص من استهلاك الإنترنت بالكامل. يتم ذلك باستخدام:</p>
+            <ul>
+                <li><strong>Simple Queue</strong> – أسهل طريقة للمبتدئين</li>
+                <li><strong>Queue Tree</strong> – للمحترفين</li>
+            </ul>
+            <div class="highlight-box">
+                <p>✅ توزيع عادل للسرعة بين المستخدمين</p>
+                <p>✅ منع احتكار الاتصال</p>
+                <p>✅ تحسين أداء الشبكة بشكل ملحوظ</p>
+            </div>
+
+            <!-- ===== Hotspot ===== -->
+            <h2>📶 إنشاء نظام Hotspot احترافي</h2>
+            <p>ميزة مهمة جداً خاصة للمقاهي والفنادق:</p>
+            <ul>
+                <li>إنشاء صفحة تسجيل دخول احترافية</li>
+                <li>إنشاء كروت إنترنت وإدارة المستخدمين</li>
+                <li>تحديد الوقت أو حجم البيانات لكل مستخدم</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>مثال استخدام:</strong> مقهى يقدم بطاقة 1 جيجابايت لمدة يوم، أو 5 ساعات استخدام.</p>
+            </div>
+
+            <!-- ===== VPN ===== -->
+            <h2>🔒 إعداد VPN في MikroTik</h2>
+            <p>تدعم MikroTik بروتوكولات VPN متنوعة مثل: PPTP، L2TP، OpenVPN.</p>
+            <ul>
+                <li>استخدام VPN في العمل عن بُعد</li>
+                <li>حماية البيانات وتأمين الاتصالات</li>
+                <li>ربط الفروع والمكاتب المختلفة</li>
+            </ul>
+
+            <!-- ===== الفرق بين MikroTik و Cisco ===== -->
+            <h2>📊 الفرق بين شبكات المايكروت MikroTik و Cisco</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>العنصر</th>
+                        <th>MikroTik</th>
+                        <th>Cisco</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>السعر</td>
+                        <td>منخفض</td>
+                        <td>مرتفع</td>
+                    </tr>
+                    <tr>
+                        <td>الأداء</td>
+                        <td>قوي جداً</td>
+                        <td>قوي</td>
+                    </tr>
+                    <tr>
+                        <td>التعلم</td>
+                        <td>أسهل نسبياً</td>
+                        <td>أصعب</td>
+                    </tr>
+                    <tr>
+                        <td>مناسب للشركات</td>
+                        <td>نعم</td>
+                        <td>نعم</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ===== أخطاء شائعة ===== -->
+            <h2>⚠️ أخطاء شائعة يجب تجنبها</h2>
+            <ul>
+                <li>ترك كلمة المرور الافتراضية</li>
+                <li>عدم إعداد Firewall</li>
+                <li>فتح جميع المنافذ</li>
+                <li>عدم تحديد السرعات</li>
+            </ul>
+
+            <!-- ===== نصائح للاحتراف ===== -->
+            <h2>💡 نصائح لاحتراف MikroTik بسرعة</h2>
+            <ol>
+                <li><strong>تعلم أساسيات الشبكات جيداً</strong> – IP، Subnetting، Routing</li>
+                <li><strong>التدريب العملي أهم من القراءة</strong> – جرّب بنفسك على جهاز حقيقي</li>
+                <li><strong>استخدم بيئة افتراضية</strong> – مثل VMware أو VirtualBox للتجربة بدون مخاطر</li>
+                <li><strong>تابع الشروحات العملية بانتظام</strong> – على YouTube والمواقع المتخصصة</li>
+            </ol>
+            <div class="highlight-box">
+                <p>💪 مع الممارسة اليومية ستصبح إعدادات MikroTik أكثر وضوحاً، وستتمكن من إدارة الشبكات باحتراف وثقة.</p>
+            </div>
+
+            <!-- ===== أفضل الاستخدامات ===== -->
+            <h2>🏢 أفضل استخدامات MikroTik في المشاريع</h2>
+            <ul>
+                <li><strong>مشروع توزيع إنترنت</strong> – بكروت أو بيع باقات</li>
+                <li><strong>إدارة شبكة شركة</strong> – تحديد سرعة لكل قسم وحماية الشبكة</li>
+                <li><strong>مقاهي الإنترنت</strong> – Hotspot وإدارة المستخدمين</li>
+            </ul>
+
+            <!-- ===== مستقبل MikroTik ===== -->
+            <h2>🚀 مستقبل MikroTik في 2026 وما بعد</h2>
+            <p>
+                مع التوسع المستمر في استخدام الإنترنت والخدمات السحابية، تزداد الحاجة إلى حلول شبكية قوية وقابلة للتطوير. تواصل MikroTik تعزيز مكانتها بفضل إمكانياتها الاحترافية وأسعارها المناسبة.
+            </p>
+            <p>
+                من المتوقع أن تزداد أهمية MikroTik في مجالات: الشبكات الذكية، مزودي الإنترنت، والأمن السيبراني.
+            </p>
+
+            <!-- ===== الخاتمة ===== -->
+            <h2>🔚 الخاتمة</h2>
+            <p>
+                تُعد MikroTik واحدة من أقوى وأشهر منصات إدارة الشبكات في العالم، حيث تجمع بين الأداء القوي، والمرونة العالية، والتكلفة الاقتصادية. إن تعلم MikroTik يفتح أمامك العديد من الفرص المهنية والاستثمارية، سواء ببناء مشروع ناجح أو العمل كمسؤول شبكات محترف.
+            </p>
+
+            <!-- ===== الأسئلة الشائعة ===== -->
+            <h2>❓ الأسئلة الشائعة (FAQ)</h2>
+
+            <div class="faq-item">
+                <strong>ما هو المايكروتك؟</strong>
+                <p>هو نظام وأجهزة لإدارة الشبكات والتحكم في الإنترنت بشكل كامل.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>هل المايكروتك صعب؟</strong>
+                <p>ليس صعباً، لكنه يحتاج تعلم وتدريب.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>هل يمكن الربح من شبكات المايكروتك؟</strong>
+                <p>نعم، عبر مشاريع توزيع الإنترنت أو إدارة الشبكات.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>هل شبكات المايكروتك أفضل من Cisco؟</strong>
+                <p>ليس أفضل بشكل مطلق، لكنه أفضل من ناحية السعر مقابل الأداء.</p>
+            </div>
+
+            <!-- ===== روابط العودة ===== -->
+            <div class="back-link">
+                <a href="/index.html" class="btn">← العودة للرئيسية</a>
+                <a href="/research.html" class="btn btn-primary">🔬 استكشف الأبحاث</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ============================================ -->
+    <!--                الفوتر (التذييل)              -->
+    <!-- ============================================ -->
+
+    <footer id="site-footer">
+
+        <!-- البحث عن الباحث -->
+        <div class="footer-search">
+            <p id="searchTitle"><strong>🔍 البحث عن الباحث:</strong></p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://www.google.com/search?q=واحة+الجبري&udm=50" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="بحث عن واحة الجبري" data-en="Search Al-Jabri Oasis">بحث عن واحة الجبري</span></a>
+                <a href="https://www.google.com/search?q=واحة+الجبري+|+Heaven+Al-Jabri&udm=50" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="بحث انجليزي" data-en="Search in English">بحث انجليزي</span></a>
+                <a href="https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&udm=50" target="_blank" rel="noopener">👨‍🔬 <span class="txt" data-ar="بحث عن عبدالله الجبري" data-en="Search Abdulla Mohammed Nasser Al-Jabri">بحث عن عبدالله الجبري</span></a>
+                <a href="https://www.google.com/search?q=Eng.+Abdulla+Mohammed+Nasser+Al-Jabri&udm=50" target="_blank" rel="noopener">🔎 <span class="txt" data-ar="بحث بالانجليزي" data-en="Search in English">بحث بالانجليزي</span></a>
+            </div>
+        </div>
+
+        <!-- الروابط -->
+        <div class="footer-links">
+            <!-- أكاديمي -->
+            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">🆔 <span class="txt" data-ar="ORCID" data-en="ORCID">ORCID</span></a>
+            <a href="https://zenodo.org/records/20513840" target="_blank" rel="noopener">📊 <span class="txt" data-ar="زينودو" data-en="Zenodo">Zenodo</span></a>
+            <a href="https://overleaf.com/project" target="_blank" rel="noopener">📝 <span class="txt" data-ar="اوفرليف" data-en="Overleaf">Overleaf</span></a>
+            <a href="https://colab.research.google.com/drive/12oG9B7DgsQpTWlvfMm4awnpbt34yPv_h" target="_blank" rel="noopener">🧠 <span class="txt" data-ar="كولاب" data-en="Colab">Colab</span></a>
+
+            <!-- تطوير -->
+            <a href="https://github.com/jabri-web" target="_blank" rel="noopener">🐙 <span class="txt" data-ar="جيتهاب" data-en="GitHub">GitHub</span></a>
+            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" rel="noopener">📖 <span class="txt" data-ar="ويكيبيديا" data-en="Wikipedia">Wikipedia</span></a>
+
+            <!-- تواصل -->
+            <a href="https://www.facebook.com/share/p/1CvCG9xehw/" target="_blank" rel="noopener">📘 <span class="txt" data-ar="فيسبوك" data-en="Facebook">Facebook</span></a>
+            <a href="https://www.instagram.com/reel/Da5zRhypJlo/?igsh=MXVsbHVzbXBsNmF3MQ==" target="_blank" rel="noopener">📷 <span class="txt" data-ar="انستجرام" data-en="Instagram">Instagram</span></a>
+            <a href="https://t.me/Jabri2025" target="_blank" rel="noopener">✈️ <span class="txt" data-ar="تلجرام" data-en="Telegram">Telegram</span></a>
+            <a href="https://t.me/Heaven_Jabri/" target="_blank" rel="noopener">🏛️ <span class="txt" data-ar="قناة الواحة" data-en="Heaven Channel">قناة الواحة</span></a>
+            <a href="https://www.threads.com/@jabri2023" target="_blank" rel="noopener">🧵 <span class="txt" data-ar="ثريدز" data-en="Threads">Threads</span></a>
+            <a href="https://chat.whatsapp.com/Haty83AA1eTKGLLXUL7QCK" target="_blank" rel="noopener">💬 <span class="txt" data-ar="واتساب" data-en="WhatsApp">WhatsApp</span></a>
+            <a href="https://ye.linkedin.com/in/abdulla-al-jabri-bb545830b" target="_blank" rel="noopener">💼 <span class="txt" data-ar="لينكدإن" data-en="LinkedIn">LinkedIn</span></a>
+            <a href="https://snapchat.com/t/uEiJqBnd" target="_blank" rel="noopener">👻 <span class="txt" data-ar="سنابشات" data-en="Snapchat">Snapchat</span></a>
+            <a href="https://links.gemspace.com/join/Jabri2024_Global" target="_blank" rel="noopener">💎 <span class="txt" data-ar="الجوهرة" data-en="GemSpace">GemSpace</span></a>
+
+            <!-- الموقع -->
+            <a href="mailto:jabri62018@gmail.com">📧 <span class="txt" data-ar="البريد" data-en="Email">Email</span></a>
+            <a href="Author-cv.html">📄 <span class="txt" data-ar="السيرة الذاتية" data-en="C.V">C.V</span></a>
+            <a href="citations.html">♻️ <span class="txt" data-ar="الاستشهادات" data-en="Citations">Citations</span></a>
+            <a href="source.html">📜 <span class="txt" data-ar="المصادر" data-en="Source">Source</span></a>
+            <a href="about.html">ℹ️ <span class="txt" data-ar="عن الموقع" data-en="About">About</span></a>
+            <a href="who-we.html">👥 <span class="txt" data-ar="من نحن" data-en="Who We Are">من نحن</span></a>
+            <a href="sitemap.html">🗺️ <span class="txt" data-ar="خارطة الموقع" data-en="Sitemap">خارطة الموقع</span></a>
+        </div>
+
+        <!-- الحقوق -->
+        <p id="copyright">© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة</p>
+
+    </footer>
+
+    <!-- ============================================ -->
+    <!--                السكريبتات                    -->
+    <!-- ============================================ -->
+
+    <script>
+        // ====== دالة تحديث الفوتر ======
+        function updateFooterLang() {
+            const isEnglish = document.documentElement.lang === 'en';
+            const footer = document.getElementById('site-footer');
+            if (footer) footer.dir = isEnglish ? "ltr" : "rtl";
+
+            const searchTitle = document.getElementById('searchTitle');
+            if (searchTitle) {
+                searchTitle.innerHTML = isEnglish ?
+                    "<strong>🔍 Search for Researcher:</strong>" :
+                    "<strong>🔍 البحث عن الباحث:</strong>";
+            }
+
+            const copyright = document.getElementById('copyright');
+            if (copyright) {
+                copyright.textContent = isEnglish ?
+                    "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved" :
+                    "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
+            }
+
+            document.querySelectorAll('#site-footer .txt').forEach(el => {
+                const newText = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+                if (newText) el.textContent = newText;
+            });
+        }
+
+        window.updateFooterLang = updateFooterLang;
+
+        // ====== دالة تبديل اللغة ======
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.remove('ar', 'en');
+            document.body.classList.add(lang);
+
+            const langAr = document.getElementById('lang-ar');
+            const langEn = document.getElementById('lang-en');
+            if (langAr) langAr.classList.toggle('active', lang === 'ar');
+            if (langEn) langEn.classList.toggle('active', lang === 'en');
+
+            if (typeof updateFooterLang === 'function') updateFooterLang();
+
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        window.toggleLang = function() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            applyLanguage(newLang);
+        };
+
+        window.applyLanguage = applyLanguage;
+
+        // ====== تحميل اللغة المحفوظة ======
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language') || 'ar';
+            applyLanguage(savedLang);
+        });
+    </script>
+    
+    <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+    
+
+</body>
+</html>

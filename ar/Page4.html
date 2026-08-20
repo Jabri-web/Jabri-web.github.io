@@ -1,0 +1,99 @@
+<! From codepen main.html
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  <!-- ===== الكانونيكال الديناميكي ===== -->
+  <link rel="alternate" hreflang="ar" href="" />
+  <link rel="alternate" hreflang="en" href="" />
+  <link rel="canonical" href="" />
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const base = window.location.origin;
+      const path = window.location.pathname;
+      document.querySelector('link[rel="canonical"]').href = base + path;
+      document.querySelector('link[hreflang="ar"]').href = base + path;
+      document.querySelector('link[hreflang="en"]').href = base + '/en' + path;
+    });
+  </script>
+  
+  <!-- ===== SEO اساسي ===== -->
+  <title>Page4 | مكتبي وبحوثي - Office & Research | Eng. Abdulla Al-Jabri</title>
+  <meta name="description" content="Page4 - مكتبي وبحوثي. أبحاث ريمان ونظرية سندس والفيزياء النظرية. م/ عبدالله الجبري">
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+  <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
+</head>
+
+<body style="margin:0;padding:0;font-family:Tahoma,sans-serif;background:#f5f7fa;color:#000;min-height:100svh;display:flex;flex-direction:column">
+  <header style="background:linear-gradient(135deg,#0a3d62,#1e6f9f);color:white;text-align:center;padding:2vh 10px;border-bottom:3px solid #f39c12">
+    <img src="/image/Yemen-bird.png" alt="طائر اليمن" style="width:75px;height:75px;border-radius:50%;border:2px solid #00ff88;display:block;margin:0 auto 1vh">
+    <h1 style="font-size:5vw;max-font-size:20px;margin:0;font-weight:bold">Republic of Yemen الجمهورية اليمنية</h1>
+    <p style="font-size:3vw;max-font-size:12px;margin:1vh 0 0 0;opacity:0.9">Riemann zeta & Cosmology</p>
+  </header>
+
+  <div style="width:90%;max-width:500px;margin:0 auto;padding:2vh 0;flex:1;display:flex;flex-direction:column;text-align:center;min-height:80svh">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1vh">
+      <span style="font-size:6vw">👁️</span>
+      <h2 style="font-size:6vw;margin:0">سندباد اليمن</h2>
+      <span style="font-size:6vw">👁️</span>
+    </div>
+    <div style="font-size:4vw;font-weight:bold;margin-bottom:0.5vh">م/عبدالله الجبري</div>
+    <div style="font-size:3vw;color:#555;margin-bottom:4vh">Eng. Abdulla Al-Jabri</div>
+
+    <a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
+      <span>سندباد اليمن</span> <span>Yemen Sindbad</span>
+    </a>
+    <a href="https://jabri-web.github.io/Zx_RieOS_v1.2" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
+      <span>طائر اليمن</span> <span>Yemen Bird</span>
+    </a>
+    <a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
+      <span>عنكبوت اليمن</span> <span>Yemen Ankaboot</span>
+    </a>
+    <a href="https://jabri-web.github.io/Pages-Researches.html" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
+      <span>صفحات وبحوث</span> <span>Pages & Researches</span>
+    </a>
+    <a href="https://jabri-web.github.io/Yemen-library.html" target="_blank" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#000;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;text-decoration:none;box-sizing:border-box">
+      <span>مكتبتي</span> <span>My Library</span>
+    </a>
+
+    <!-- زر الخروج أحمر بنفس مقاس الأزرار السود -->
+    <button onclick="history.back()" style="display:flex;justify-content:space-between;align-items:center;width:100%;margin:1vh 0;padding:2vh;background:#c62828;color:#fff;font-size:4vw;font-weight:bold;border-radius:15px;border:none;cursor:pointer;box-sizing:border-box">
+      <span>🚪 Exit</span> <span>خروج</span>
+    </button>
+
+    <div id="info" style="margin-top:2vh;padding:2vh;background:white;border-radius:12px;text-align:right;font-size:3vw;color:#333;line-height:1.8;border:1px solid #ddd;box-sizing:border-box">
+      <b style="color:#0a3d62">التاريخ:</b> <span id="date">...</span><br>
+      <b style="color:#0a3d62">الوقت:</b> <span id="time">...</span><br>
+      <b style="color:#0a3d62">من نحن:</b> مكتبة اليمن الرقمية
+    </div>
+  </div>
+
+  <footer style="background:#0a3d62;color:white;text-align:center;padding:2vh 10px;font-size:3vw;border-top:3px solid #f39c12">
+    <p style="margin:0">© 2026 Yemen Sindbad - جميع الحقوق محفوظة</p>
+    <p style="margin:0">صنع بحب في اليمن 🇾🇪</p>
+  </footer>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      document.getElementById('date').innerText = now.toLocaleDateString('ar-EG');
+      document.getElementById('time').innerText = now.toLocaleTimeString('ar-EG');
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+  
+  
+  <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+  
+</body>
+</html>
