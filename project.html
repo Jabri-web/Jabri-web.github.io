@@ -115,8 +115,8 @@
     </div>
     
     <p><b>Web site: </b><a href="en-page.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
-    <p><b>Author-A: </b><a href="about.html" style="color:#00ff88">عبدالله الجبري</a></p>
-    <p><b>Author-E: </b><a href="about-en.html" style="color:#00ff88"> Abdulla Al-Jabri</a></p>
+    <p><b>Author-A: </b><a href="about-ar.html" style="color:#00ff88">عبدالله الجبري</a</p>
+    <p><b>Author-E: </b><a href="about-en.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
 
 
     <footer>
@@ -126,44 +126,9 @@
 </div>
 
 
-<script>
-    // --------------------------------------------------------------
-    // عداد بسيط باستخدام localStorage (بدون Firebase)
-    // يخزن العدد في متصفح الزائر نفسه، ولا يحتاج إنترنت
-    // --------------------------------------------------------------
-    (function() {
-        try {
-            // قراءة العدد القديم
-            let count = localStorage.getItem('jabri_visitor_count');
-            if (count === null) {
-                count = 0;
-            } else {
-                count = parseInt(count, 10);
-            }
-            
-            // زيادة العدد
-            count = count + 1;
-            
-            // حفظ العدد الجديد
-            localStorage.setItem('jabri_visitor_count', count.toString());
-            
-            // عرض العدد في الصفحة
-            const formatted = count.toLocaleString();
-            const mainDisplay = document.getElementById('visitCount');
-            const footerDisplay = document.getElementById('footerVisitCount');
-            
-            if (mainDisplay) mainDisplay.innerText = formatted;
-            if (footerDisplay) footerDisplay.innerText = formatted;
-            
-        } catch (e) {
-            // في حال حدوث خطأ نادر
-            const mainDisplay = document.getElementById('visitCount');
-            if (mainDisplay) mainDisplay.innerText = '⚠️';
-        }
-    })();
-</script>
+<!-- في كل صفحة HTML -->
 
-
+<script src="/js/menu.js"></script>
 
 </body>
 </html>

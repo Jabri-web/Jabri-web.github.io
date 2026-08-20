@@ -321,12 +321,18 @@
                 document.body.classList.add('en');
                 document.documentElement.dir = 'ltr';
                 document.documentElement.lang = 'en';
-                document.querySelectorAll('.lang-switch a').forEach(el => {
                     el.classList.toggle('active', el.textContent.includes('EN'));
                 });
             }
         });
     </script>
+
+
+<!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
 
 </body>
 </html>
