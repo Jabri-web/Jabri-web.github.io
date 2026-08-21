@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📸 معرض اليمن | PHP</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ... (نفس الـ CSS السابق) ... */
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<audio id="bgMusic" preload="auto" loop></audio>
+
+<h1>📸🎬 معرض اليمن الذكي</h1>
+<div style="display:inline-block;background:#8892bf;color:#0a0a0f;padding:4px 16px;border-radius:20px;font-size:14px;font-weight:bold;margin-bottom:10px;">🐘 PHP - قراءة تلقائية</div>
+<p id="fileCount">🔄 جارٍ تحميل الملفات...</p>
+<button class="refresh-btn" onclick="refreshGallery()">🔄 تحديث الملفات</button>
+
+<div id="galleryContainer" class="gallery"></div>
+
+<div class="separator"></div>
+
+<h1>🎬 عرض سينمائي</h1>
+
+<div class="slideshow-container" id="slideshowContainer">
+  <div class="slideshow" id="slideshow"></div>
+  <div class="slide-caption" id="slideCaption">جارِ التحميل...</div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  
+  <div class="slideshow-controls">
+    <button onclick="prevSlide()">⏮ السابق</button>
+    <span id="slideCounter">0 / 0</span>
+    <button onclick="nextSlide()">التالي ⏭</button>
+    <button onclick="toggleAutoPlay()" id="playBtn">▶ تشغيل</button>
+  </div>
+  
+  <div class="audio-control">
+    <button onclick="toggleMute()" id="muteBtn">🔊 كتم الصوت</button>
+  </div>
+
+  <div class="slideshow-actions">
+    <button onclick="downloadCurrentMedia()">📥 تحميل</button>
+    <button onclick="shareCurrentMedia()">📤 مشاركة</button>
+    <button onclick="toggleFullscreen()">⛶ شاشة كاملة</button>
+  </div>
+</div>
+
+<a href="index.html" class="btn-back">← رجوع للصفحة الرئيسية 🇾🇪</a>
+
+<script>
+// ============================================================
+// ===== 🔥 النسخة PHP - قراءة تلقائية =====
+// ============================================================
+
+const IMAGE_PATH = '/image/';
+const PHP_URL = IMAGE_PATH + 'read-folder.php';
+
+let imageFiles = [];
+let audioFiles = [];
+let videoFiles = [];
+let allMediaFiles = [];
+let slideIndex = 0;
+let autoPlayInterval = null;
+let progressInterval = null;
+
+function getCaption(fileName) {
+  let name = fileName.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+  name = name.replace(/^\d+/, '').trim();
+  return name.charAt(0).toUpperCase() + name.slice(1) || 'وسيط';
+}
+
+async function fetchFiles() {
+  try {
+    const url = PHP_URL + '?t=' + Date.now();
+    console.log('📡 جلب من:', url);
+    
+    const response = await fetch(url);
+    console.log('📡 الحالة:', response.status);
+    
+    if (response.ok) {
+      const data = await response.json();
+      console.log('✅ تم جلب:', data);
+      
+      if (data.total > 0) {
+        return data;
+      }
+    }
+  } catch (e) {
+    console.warn('⚠️ خطأ في الجلب:', e.message);
+  }
+  
+  return null;
+}
+
+function displayFiles(data) {
+  imageFiles = [];
+  audioFiles = [];
+  videoFiles = [];
+  allMediaFiles = [];
+
+  if (data.images) {
+    data.images.forEach(file => {
+      imageFiles.push({ src: IMAGE_PATH + file, caption: getCaption(file), file: file, type: 'image' });
+    });
+  }
+
+  if (data.videos) {
+    data.videos.forEach(file => {
+      videoFiles.push({ src: IMAGE_PATH + file, caption: getCaption(file), file: file, type: 'video' });
+    });
+  }
+
+  if (data.audios) {
+    data.audios.forEach(file => {
+      audioFiles.push({ src: IMAGE_PATH + file, caption: getCaption(file), file: file, type: 'audio' });
+    });
+  }
+
+  allMediaFiles = [...imageFiles, ...videoFiles];
+  
+  document.getElementById('fileCount').textContent = 
+    `📁 ${imageFiles.length} صورة | ${videoFiles.length} فيديو | ${audioFiles.length} صوت`;
+  console.log('✅ التصنيف:', imageFiles.length, 'صورة,', videoFiles.length, 'فيديو,', audioFiles.length, 'صوت');
+}
+
+// ===== باقي الدوال (نفس الكود السابق) =====
+function buildGallery() {
+  const container = document.getElementById('galleryContainer');
+  let html = '';
+
+  if (imageFiles.length) {
+    html += `<div class="category-title">🖼️ الصور (${imageFiles.length})</div>`;
+    imageFiles.forEach(item => {
+      html += `<div class="photo-card"><img src="${item.src}" alt="${item.caption}" loading="lazy"><div class="caption">${item.caption}</div></div>`;
+    });
+  }
+
+  if (videoFiles.length) {
+    html += `<div class="category-title">🎬 الفيديوهات (${videoFiles.length})</div>`;
+    videoFiles.forEach(item => {
+      html += `<div class="video-card"><video src="${item.src}" controls muted loop playsinline preload="metadata"></video><div class="caption">${item.caption}</div></div>`;
+    });
+  }
+
+  if (audioFiles.length) {
+    html += `<div class="category-title">🎵 الصوت (${audioFiles.length})</div>`;
+    audioFiles.forEach(item => {
+      html += `<div class="audio-card"><audio src="${item.src}" controls preload="metadata"></audio><div class="caption">${item.caption}</div></div>`;
+    });
+  }
+
+  container.innerHTML = html || '<p style="color:#ff6b6b;">⚠️ لا توجد ملفات</p>';
+}
+
+function buildSlideshow() {
+  const slideshowDiv = document.getElementById('slideshow');
+  slideshowDiv.innerHTML = '';
+
+  if (allMediaFiles.length === 0) {
+    slideshowDiv.innerHTML = '<p style="color:#ff6b6b;">لا توجد وسائط</p>';
+    document.getElementById('slideCaption').textContent = 'لا توجد وسائط';
+    document.getElementById('slideCounter').textContent = '0 / 0';
+    return;
+  }
+
+  allMediaFiles.forEach((item, i) => {
+    if (item.type === 'image') {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.caption;
+      img.loading = "lazy";
+      if (i === 0) img.classList.add('active');
+      slideshowDiv.appendChild(img);
+    } else if (item.type === 'video') {
+      const video = document.createElement('video');
+      video.src = item.src;
+      video.muted = true;
+      video.loop = false;
+      video.playsinline = true;
+      video.preload = 'metadata';
+      if (i === 0) video.classList.add('active');
+      slideshowDiv.appendChild(video);
+    }
+  });
+
+  showSlide(0);
+}
+
+function showSlide(index) {
+  const children = document.getElementById('slideshow').children;
+  if (!children || children.length === 0) return;
+
+  for (let i = 0; i < children.length; i++) {
+    if (children[i].tagName === 'VIDEO') {
+      children[i].pause();
+      children[i].currentTime = 0;
+    }
+    children[i].classList.remove('active');
+  }
+
+  slideIndex = (index + children.length) % children.length;
+  const current = children[slideIndex];
+  current.classList.add('active');
+
+  if (current.tagName === 'VIDEO') {
+    current.play().catch(() => {});
+  }
+
+  document.getElementById('slideCounter').textContent = `${slideIndex+1} / ${children.length}`;
+  document.getElementById('slideCaption').textContent = allMediaFiles[slideIndex]?.caption || 'بدون عنوان';
+  document.getElementById('progressFill').style.width = '0%';
+}
+
+function nextSlide() { if (allMediaFiles.length) showSlide(slideIndex + 1); }
+function prevSlide() { if (allMediaFiles.length) showSlide(slideIndex - 1); }
+
+function toggleAutoPlay() {
+  const btn = document.getElementById('playBtn');
+  const audio = document.getElementById('bgMusic');
+
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    clearInterval(progressInterval);
+    autoPlayInterval = null;
+    progressInterval = null;
+    btn.textContent = '▶ تشغيل';
+    audio.pause();
+    document.getElementById('progressFill').style.width = '0%';
+  } else {
+    autoPlayInterval = setInterval(() => {
+      if (allMediaFiles.length > 0) {
+        nextSlide();
+        document.getElementById('progressFill').style.width = '0%';
+      }
+    }, 5000);
+
+    let progress = 0;
+    progressInterval = setInterval(() => {
+      progress = Math.min(progress + 2.5, 100);
+      document.getElementById('progressFill').style.width = progress + '%';
+    }, 125);
+
+    btn.textContent = '⏸ إيقاف';
+    audio.play().catch(() => {});
+  }
+}
+
+function toggleMute() {
+  const muteBtn = document.getElementById('muteBtn');
+  const audio = document.getElementById('bgMusic');
+  audio.muted = !audio.muted;
+  muteBtn.textContent = audio.muted ? '🔇 إلغاء الكتم' : '🔊 كتم الصوت';
+}
+
+function downloadCurrentMedia() {
+  if (!allMediaFiles.length) return;
+  const item = allMediaFiles[slideIndex];
+  const link = document.createElement('a');
+  link.href = item.src;
+  link.download = item.file || 'media';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('📥 جاري التحميل...');
+}
+
+function shareCurrentMedia() {
+  if (!allMediaFiles.length) return;
+  const item = allMediaFiles[slideIndex];
+  if (navigator.share) {
+    navigator.share({
+      title: `📸 ${item.caption}`,
+      text: `شاهد ${item.caption} من معرض اليمن`,
+      url: item.src
+    }).catch(() => {});
+  } else {
+    const dummy = document.createElement('input');
+    dummy.value = item.src;
+    document.body.appendChild(dummy);
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+    showToast('📤 تم نسخ الرابط!');
+  }
+}
+
+function toggleFullscreen() {
+  const container = document.getElementById('slideshowContainer');
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    if (container.requestFullscreen) container.requestFullscreen();
+    else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+    showToast('⛶ وضع ملء الشاشة');
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    showToast('⛶ خروج من ملء الشاشة');
+  }
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+async function refreshGallery() {
+  showToast('🔄 جاري تحديث الملفات...');
+  document.getElementById('fileCount').textContent = '🔄 جارٍ التحديث...';
+  
+  const data = await fetchFiles();
+  if (data && data.total > 0) {
+    displayFiles(data);
+    buildGallery();
+    buildSlideshow();
+    
+    if (audioFiles.length > 0) {
+      const bgAudio = document.getElementById('bgMusic');
+      bgAudio.src = audioFiles[0].src;
+    }
+    showToast('✅ تم التحديث!');
+  } else {
+    showToast('⚠️ فشل التحديث!');
+  }
+}
+
+async function initApp() {
+  console.log('🚀 معرض اليمن - PHP');
+  console.log('📁 المسار:', IMAGE_PATH);
+  
+  const data = await fetchFiles();
+  if (data && data.total > 0) {
+    displayFiles(data);
+    buildGallery();
+    buildSlideshow();
+    
+    if (audioFiles.length > 0) {
+      const bgAudio = document.getElementById('bgMusic');
+      bgAudio.src = audioFiles[0].src;
+      console.log('🎵 موسيقى:', audioFiles[0].file);
+    }
+  } else {
+    document.getElementById('fileCount').textContent = '⚠️ فشل قراءة المجلد! تأكد من read-folder.php';
+  }
+}
+
+window.onload = initApp;
+console.log('🇾🇪 واحة الجبري - معرض اليمن (PHP)');
+</script>
+
+</body>
+</html>

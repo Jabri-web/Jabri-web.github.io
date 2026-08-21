@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هيكل الملفات - واحة الجبري | عبدالله الجبري</title>
+    <meta name="description" content="الهيكل الكامل لملفات ومجلدات مشروع واحة الجبري - الخريطة الرقمية للإمبراطورية المعرفية للباحث عبدالله الجبري.">
+    <link rel="canonical" href="https://jabri-com.vercel.app/file-structure.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0f;
+            color: #e8e8f0;
+            font-family: 'Cairo', 'Tajawal', 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.9;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #12121c;
+            padding: 30px 25px;
+            border-radius: 20px;
+            border: 1px solid #2a2a3e;
+            box-shadow: 0 0 40px rgba(0, 150, 255, 0.05);
+        }
+        .header-main {
+            text-align: center;
+            border-bottom: 2px solid #2a2a3e;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .header-main h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #6ae3ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header-main .sub-title {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .stats-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            background: #181825;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a3e;
+        }
+        .stat-item {
+            background: #0f0f1a;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #2a2a3e;
+        }
+        .stat-item span { color: #6ae3ff; font-weight: bold; }
+        .stat-item .num { color: #00ff88; font-size: 1.4rem; }
+        .section-block {
+            background: #181825;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            border-right: 4px solid #6ae3ff;
+        }
+        .section-block:hover { border-right-color: #00ff88; background: #1e1e2e; }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #6ae3ff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title .badge {
+            background: #2a2a3e;
+            font-size: 0.85rem;
+            color: #aaa;
+            padding: 2px 12px;
+            border-radius: 30px;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+        }
+        .file-grid li {
+            background: #0f0f1a;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #2a2a3e;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        .file-grid li .icon { margin-left: 5px; }
+        .folder-title {
+            color: #00ff88;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px dashed #2a2a3e;
+            padding-bottom: 5px;
+        }
+        .sub-note {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #2a2a3e;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            .file-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .header-main h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header class="header-main">
+            <h1>📂 هيكل الملفات - واحة الجبري</h1>
+            <p class="sub-title">🗺️ الخريطة البصرية للإمبراطورية الرقمية للباحث عبدالله الجبري</p>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 5px;">
+                الموقع الرسمي: <a href="https://jabri-com.vercel.app/" style="color:#00ff88; text-decoration:none;" target="_blank">jabri-com.vercel.app</a>
+            </p>
+        </header>
+
+        <!-- إحصائيات سريعة -->
+        <div class="stats-box">
+            <div class="stat-item">📄 الجذر: <span class="num">54</span></div>
+            <div class="stat-item">🧠 /js/: <span class="num">7</span></div>
+            <div class="stat-item">🖼️ /image/: <span class="num">37</span></div>
+            <div class="stat-item">⏳ /ar/: <span class="num">25</span> (قيد الرفع)</div>
+            <div class="stat-item">⏳ /en/: <span class="num">9</span> (قيد الرفع)</div>
+            <div class="stat-item" style="border-color:#00ff88;">📦 المجموع: <span class="num">132</span></div>
+        </div>
+
+        <!-- القسم 1: الجذر -->
+        <section class="section-block">
+            <div class="section-title">
+                📁 الجذر (Root)
+                <span class="badge">54 ملفاً</span>
+            </div>
+            <p style="color: #aaa; margin-bottom: 10px;">الملفات الرئيسية التي تشغل الموقع وتحتوي على الصفحات الأساسية.</p>
+            <ul class="file-grid">
+                <li>📄 404.html</li><li>📄 about.html</li><li>⭐ all-links.html</li>
+                <li>📄 ar-page.html</li><li>📄 contact.html</li><li>📄 Dbase-deep.html</li>
+                <li>📄 Dbase.html</li><li>📄 en-page.html</li><li>📄 FAQPage-en.html</li>
+                <li>📄 FAQPage.html</li><li>📄 file-structure.html</li><li>📄 footer.html</li>
+                <li>📄 header-me.html</li><li>📄 header.html</li><li>📄 History-pdf.html</li>
+                <li>📄 journal.html</li><li>📄 journal2.html</li><li>📄 journal3.html</li>
+                <li>📄 kfupm-msg.html</li><li>📄 magic-translator.html</li><li>📄 microtik-deep.html</li>
+                <li>📄 Nezar.html</li><li>📄 Office.html</li><li>📄 Page1.html</li>
+                <li>📄 Page10.html</li><li>📄 Page11.html</li><li>📄 Page12.html</li>
+                <li>📄 Page2.html</li><li>📄 Page4.html</li><li>📄 Page5.html</li>
+                <li>📄 Page6.html</li><li>📄 Page7.html</li><li>📄 Page8.html</li>
+                <li>📄 Page9.html</li><li>📄 Pages-Researches.html</li><li>📄 privacy-policy.html</li>
+                <li>📄 profile-en.html</li><li>📄 profile.html</li><li>📄 project-ar.html</li>
+                <li>📄 project.html</li><li>📄 research-deep.html</li><li>📄 research.html</li>
+                <li>📄 Router-all.html</li><li>📄 Sanaa.html</li><li>📄 Shibam.html</li>
+                <li>📄 Sindbad-Brdoni.html</li><li>📄 Soqatra.html</li><li>📄 source.html</li>
+                <li>📄 theory-ar.html</li><li>📄 theory-en.html</li><li>📄 visitor.html</li>
+                <li>📄 who-we.html</li><li>📄 Yemen-library.html</li><li>📄 yemen-photo.html</li>
+            </ul>
+        </section>
+
+        <!-- القسم 2: js -->
+        <section class="section-block">
+            <div class="section-title">
+                ⚙️ مجلد /js/
+                <span class="badge">7 ملفات</span>
+            </div>
+            <p style="color: #aaa; margin-bottom: 10px;">السكريبتات البرمجية المسؤولة عن التهيئة، تبديل اللغة، والقوائم.</p>
+            <ul class="file-grid">
+                <li>📄 init-page-ar.js</li><li>📄 init-page-en.js</li>
+                <li>📄 init-page-root-old.js</li><li>📄 init-page-root.js</li>
+                <li>📄 init-page.js</li><li>⭐ language-switcher.js</li>
+                <li>📄 menu.js</li>
+            </ul>
+        </section>
+
+        <!-- القسم 3: image -->
+        <section class="section-block">
+            <div class="section-title">
+                🖼️ مجلد /image/
+                <span class="badge">37 ملفاً</span>
+            </div>
+            <p style="color: #aaa; margin-bottom: 10px;">الوسائط المتعددة: صور المعادلات، فيديوهات، صور شخصية، وصور تراثية.</p>
+            <ul class="file-grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));">
+                <li>📊 Zx_Equation.png</li><li>📊 Zx_Equations.png</li><li>🚪 door.webp</li>
+                <li>🎥 heaven.mp4</li><li>🎥 heaven1.mp4</li><li>🎥 heaven2.mp4</li>
+                <li>🎥 heaven3.mp4</li><li>🎥 heaven4.mp4</li><li>🎥 heaven5.mp4</li>
+                <li>🆔 id1.webp</li><li>🆔 id2.webp</li><li>🆔 id3.webp</li>
+                <li>🧑 Jabri_photo.png</li><li>🧑 Khaled2026.png</li><li>🧑 Khaled20261.png</li>
+                <li>🧑 Khaled20264.png</li><li>🧑 Mostfa2026.png</li><li>🏛️ Sanaa2026.png</li>
+                <li>🧑 Shamlan2026.png</li><li>🏝️ Sogatra2026.png</li><li>🏝️ Soqatra2026.png</li>
+                <li>🐦 Yemen-bird.png</li><li>📸 Yemen-photo1.png</li><li>📸 Yemen-photo2.png</li>
+                <li>📸 Yemen-photo3.png</li><li>🧑 Ameen20261.png</li><li>🧑 Ameen20262.png</li>
+                <li>🧑 Ameen20263.png</li><li>🧑 Baleegh.png</li><li>🧑 Baleegh2026.png</li>
+                <li>🧑 Farah2026.png</li><li>🧑 Farah26.png</li><li>🧑 Jabr2026.png</li>
+                <li>🧑 Jabri-photo.png</li><li>🧑 Jabri-photo.webp</li><li>🧑 Jabri-photo2.webp</li>
+                <li>📄 Jabri.txt</li>
+            </ul>
+        </section>
+
+        <!-- القسم 4: المتبقي -->
+        <section class="section-block" style="border-right-color: #ffaa00;">
+            <div class="section-title">
+                ⏳ قيد الرفع (Pending)
+                <span class="badge">34 ملفاً</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+                <div>
+                    <h3 style="color: #ffaa00;">📂 /ar/ (25 ملفاً)</h3>
+                    <p style="color: #888;">النسخة العربية الكاملة من الموقع.</p>
+                </div>
+                <div>
+                    <h3 style="color: #ffaa00;">📂 /en/ (9 ملفات)</h3>
+                    <p style="color: #888;">النسخة الإنجليزية من الموقع.</p>
+                </div>
+            </div>
+            <p class="sub-note">📌 سيتم رفع هذه الملفات قريباً لإكمال الإمبراطورية الرقمية.</p>
+        </section>
+
+        <!-- رسالة لقوقل -->
+        <div style="background: #0f1a1f; border: 1px solid #00ff8844; border-radius: 16px; padding: 15px 20px; margin-top: 20px;">
+            <p style="color: #00ff88; font-weight: bold; margin-bottom: 5px;">🤖 رسالة إلى محرك بحث قوقل:</p>
+            <p style="color: #aaa; font-size: 0.95rem;">
+                هذه الصفحة <strong>/file-structure.html</strong> توضح الهيكل الكامل لملفات المشروع. وهي مرجعية لفهم تنظيم المحتوى. جميع الملفات المذكورة أعلاه هي جزء من مشروع "واحة الجبري" و"نظرية السندباد الموحدة Z+C+A=1".
+            </p>
+        </div>
+
+        <!-- الفوتر -->
+        <div class="footer-note">
+            <p>© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة</p>
+            <p style="margin-top: 5px;">
+                <a href="/all-links.html" style="color: #6ae3ff; text-decoration: none;">🗺️ خريطة المسارات الشاملة</a> |
+                <a href="/sitemap.xml" style="color: #6ae3ff; text-decoration: none;">📄 Sitemap.xml</a>
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

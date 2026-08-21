@@ -6,6 +6,22 @@
   <meta name="theme-color" content="#0a0a0f" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
+
+<!-- ===== تسريع التصفح وتنظيف الكاش ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- تسريع الاتصال بالخدمات الخارجية -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+
+
   <!-- ===== الميتادات الثابتة + الروابط الذكية ===== -->
   <link id="linkCanon" rel="canonical" href="https://jabri-com.vercel.app/" />
   <link id="linkAltAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/" />
@@ -80,7 +96,7 @@
     const DATA = {
       '': { title: 'واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة', desc: 'الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري' },
       'index.html': { title: 'واحة الجبري | Heaven Al-Jabri - نظرية السندباد الموحدة', desc: 'الدالة الأم Z(x) ونظرية السندباد الموحدة - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله الجبري' },
-      'about-ar.html': { title: 'عن الباحث | عبدالله الجبري - مؤسس واحة الجبري', desc: 'سيرة الباحث اليمني عبدالله محمد ناصر الجبري - مؤسس واحة الجبري ونظرية السندباد الموحدة Z+C+A=1' },
+      'about.html': { title: 'عن الباحث | عبدالله الجبري - مؤسس واحة الجبري', desc: 'سيرة الباحث اليمني عبدالله محمد ناصر الجبري - مؤسس واحة الجبري ونظرية السندباد الموحدة Z+C+A=1' },
       'research.html': { title: 'نظرية السندباد الموحدة Z+C+A=1 - واحة الجبري', desc: 'اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - نظرية موحدة للكون' },
       'Sanaa.html': { title: 'صنعاء القديمة - تراث اليمن العريق | واحة الجبري', desc: 'توثيق صنعاء القديمة - عاصمة اليمن التاريخية - تراث اليمن العريق في واحة الجبري' },
       'Shibam.html': { title: 'شبام حضرموت - ناطحات السحاب الطينية | واحة الجبري', desc: 'ناطحات السحاب الطينية في شبام حضرموت - تحفة معمارية يمنية - تراث اليمن العريق' },
@@ -152,7 +168,7 @@
     <div class="menu-title">🌊 واحة الجبري <small>Heaven Al-Jabri</small></div>
 
     <a href="/" class="menu-btn" onclick="closeMenu()"><span class="icon">🏠</span> الرئيسية</a>
-    <a href="/about-ar.html" class="menu-btn" onclick="closeMenu()"><span class="icon">👤</span> عن الباحث <span class="badge">السيرة</span></a>
+    <a href="/about.html" class="menu-btn" onclick="closeMenu()"><span class="icon">👤</span> عن الباحث <span class="badge">السيرة</span></a>
     <a href="/research.html" class="menu-btn" onclick="closeMenu()"><span class="icon">📐</span> نظرية السندباد <span class="badge">Z+C+A=1</span></a>
     <a href="/theory-ar.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🧮</span> الدالة الأم Z(x)</a>
     <a href="/Sanaa.html" class="menu-btn" onclick="closeMenu()"><span class="icon">🏛️</span> صنعاء القديمة</a>
@@ -166,7 +182,7 @@
     <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
 
     <a href="https://github.com/jabri-web" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🐙</span> GitHub</a>
-    <a href="https://x.com/jabri_web" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🐦</span> X (Twitter)</a>
+    <a href="https://x.com/JabriAbdulla1" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🐦</span> X (Twitter)</a>
     <a href="https://www.youtube.com/@HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">▶️</span> YouTube</a>
     <a href="https://t.me/HeavenAlJabri" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">💬</span> Telegram</a>
     <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="menu-btn" onclick="closeMenu()"><span class="icon">🔬</span> ORCID</a>
@@ -189,7 +205,7 @@
     <div class="top-btn" style="pointer-events:none; background:rgba(255,215,0,0.15); color:#ffd700; border:1px solid #ffd700; box-shadow:none;">👥 <span id="visitorCountTop">0</span></div>
     <div class="top-btn-group">
       <a href="https://github.com/jabri-web" target="_blank" class="top-btn icon-only" title="GitHub">🐙</a>
-      <a href="https://x.com/jabri_web" target="_blank" class="top-btn icon-only" title="X">🐦</a>
+      <a href="https://x.com/JabriAbdulla1" target="_blank" class="top-btn icon-only" title="X">🐦</a>
       <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="top-btn icon-only" title="YouTube">▶️</a>
       <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" class="top-btn icon-only" title="Wikibin">📰</a>
     </div>
@@ -199,10 +215,13 @@
   <div class="bottom-buttons">
     <button class="bottom-btn icon-only" onclick="toggleMusic()" id="musicBottomBtn" title="موسيقى">🎵</button>
     <button class="bottom-btn" onclick="toggleChat()" title="محادثة">💬 محادثة</button>
+    
+    <a href="/music.html" class="bottom-btn music-link" title="صفحة الموسيقى">👀 🎵</a>
+    
     <a href="/visitor.html" class="bottom-btn" title="الزوار">👥 الزوار <span id="visitorCountBottom" style="background:#0a0a0f; color:#ffd700; padding:0 10px; border-radius:12px;">0</span></a>
     <button class="bottom-btn" onclick="toggleLanguage()" id="langBottomBtn">🌐 <span id="langBottomText">عربي</span></button>
     <a href="https://github.com/jabri-web" target="_blank" class="bottom-btn">🐙 GitHub</a>
-    <a href="https://youtube.com/@HeavenAlJabri" target="_blank" class="bottom-btn">▶️ YouTube</a>
+  
     <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" class="bottom-btn">🌐 Wikipedia</a>
     <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" class="bottom-btn">📰 Wikibin</a>
   </div>
@@ -288,6 +307,16 @@
     console.log('🧮 Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
     console.log('📐 Z + C + A = 1');
   </script>
+  
+  
+  
+  <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+  
+  
 
 </body>
 </html>
