@@ -70,7 +70,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ستايل خاص بالصفحة فقط ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0a0a0f;
@@ -91,7 +90,6 @@
             width: 100%;
         }
 
-        /* ===== الهيدر الداخلي ===== */
         .theory-header {
             background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
             border: 1px solid #2a2a4e;
@@ -160,7 +158,42 @@
             z-index: 1;
         }
 
-        /* ===== أقسام ===== */
+        .theory-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            padding: 30px;
+            background: #1a1a2e;
+            border: 2px solid #2a2a4e;
+            border-radius: 20px;
+        }
+        .theory-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #0d0d1a;
+            border: 1px solid #2a2a4e;
+            border-radius: 15px;
+            padding: 18px 20px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #6ae3ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .theory-link i {
+            font-size: 1.5rem;
+            color: #f7d44a;
+        }
+        .theory-link:hover {
+            border-color: #6ae3ff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 227, 255, 0.2);
+            background: #1f1f36;
+        }
+
         .section-title {
             font-size: 2rem;
             color: #6ae3ff;
@@ -251,7 +284,6 @@
             color: #000;
         }
 
-        /* ===== زر العودة ===== */
         .btn-home {
             background: #6ae3ff;
             color: #000;
@@ -282,6 +314,7 @@
             .theory-header .equation-big { font-size: 1.5rem; }
             .section-title { font-size: 1.4rem; }
             .cards-grid { grid-template-columns: 1fr; }
+            .theory-links { grid-template-columns: 1fr; }
             .page-content { margin: 20px auto; padding: 0 12px; }
         }
     </style>
@@ -307,6 +340,48 @@
             <div class="tag-yemen">
                 <i class="fas fa-flag"></i> الباحث اليمني · م/ عبدالله محمد ناصر الجبري
             </div>
+        </div>
+
+        <!-- ===== 🔥 البوسترات الرسمية (أول ما تشوف الصفحة) 🔥 ===== -->
+        <div style="margin: 40px 0;">
+            <h2 class="section-title">
+                <i class="fas fa-image"></i>
+                <span class="ar-text">البوسترات الرسمية للنظرية</span>
+                <span class="en-text">Official Theory Posters</span>
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <!-- البوستر العربي -->
+                <img src="/image/Zx_Cosmic_Poster.png" 
+                     alt="البوستر الرسمي للنظرية - دالة الأم الكونية Z+C+A=1" 
+                     width="700" height="1200"
+                     style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
+                
+                <!-- البوستر الإنجليزي -->
+                <img src="/image/zx_cosmic_poster2.png" 
+                     alt="Unified Cosmic Parent Function - Official Theory Poster" 
+                     width="700" height="1200"
+                     style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
+            </div>
+        </div>
+
+        <!-- ===== 🔥 قسم روابط النظرية (العربي والإنجليزي) 🔥 ===== -->
+        <div class="theory-links">
+            <a href="theory-ar.html" class="theory-link">
+                <i class="fas fa-book-open"></i> 
+                <span class="ar-text">النسخة العربية المبسطة</span>
+                <span class="en-text">Arabic Version</span>
+            </a>
+            <a href="theory-en.html" class="theory-link">
+                <i class="fas fa-globe"></i> 
+                <span class="ar-text">English Version</span>
+                <span class="en-text">English Version</span>
+            </a>
+            <a href="Sindbad-theory.html" class="theory-link">
+                <i class="fas fa-file-alt"></i> 
+                <span class="ar-text">الشرح التفصيلي</span>
+                <span class="en-text">Detailed Explanation</span>
+            </a>
         </div>
 
         <!-- ===== محاور النظرية ===== -->
@@ -385,25 +460,7 @@
                 <p><span class="ar-text">حدسية هودج في الهندسة الجبرية — مقاربة جديدة باستخدام البنية الطوبولوجية.</span><span class="en-text">Hodge conjecture in algebraic geometry — a new approach using topological structure.</span></p>
                 <a href="https://doi.org/10.5281/zenodo.20114317" target="_blank" class="doi-link"><i class="fas fa-external-link-alt"></i> DOI: 10.5281/zenodo.20114317</a>
             </div>
-            
-            
-            <!-- ===== روابط الصفحات المرتبطة ===== -->
-<div class="theory-links">
-    <a href="Sindbad-theory.html" class="theory-link">
-        <i class="fas fa-book-open"></i> الشرح التفصيلي
-    </a>
-    <a href="theory-ar.html" class="theory-link">
-        <i class="fas fa-language"></i> النسخة العربية المبسطة
-    </a>
-    <a href="theory-en.html" class="theory-link">
-        <i class="fas fa-globe"></i> English Version
-    </a>
-</div>
         </div>
-
-
-
-
 
         <!-- ===== زر العودة ===== -->
         <div style="margin: 50px 0 30px; text-align: center;">

@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>الدالة الأم — نظرية الجبري الموحدة</title>
+    
+    <!-- ===== SEO Meta ===== -->
+    <title>الدالة الأم — نظرية الجبري الموحدة | واحة الجبري</title>
+    <meta name="description" content="شرح الدالة الأم Z(x) ونظرية الجبري الموحدة Z+C+A=1 مع صور وفيديو توضيحي - الباحث اليمني عبدالله الجبري" />
+    <meta name="author" content="عبدالله الجبري (Abdullah Al-Jabri)">
+    <link rel="canonical" href="https://jabri-com.vercel.app/theory-ar.html" />
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/theory-ar.html" />
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/theory-en.html" />
+
+    <!-- ===== Schema.org (ScholarlyArticle) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "الدالة الأم Z(x) ونظرية الجبري الموحدة Z+C+A=1",
+        "description": "شرح الدالة الأم Z(x) ونظرية الجبري الموحدة مع صور وفيديو توضيحي",
+        "image": [
+            "https://jabri-com.vercel.app/image/Zx_Cosmic_Poster.png",
+            "https://jabri-com.vercel.app/image/Zx_Equations.png",
+            "https://jabri-com.vercel.app/image/Zx_Eq_figure.png",
+            "https://jabri-com.vercel.app/image/theory-ar1.webp",
+            "https://jabri-com.vercel.app/image/theory-ar2.webp",
+            "https://jabri-com.vercel.app/image/theory-ar3.webp"
+        ],
+        "author": {
+            "@type": "Person",
+            "name": "عبدالله الجبري",
+            "url": "https://jabri-com.vercel.app/about.html",
+            "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "ORCID",
+                "value": "0009-0003-3319-3822"
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "واحة الجبري",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp"
+            }
+        },
+        "datePublished": "2026-08-22",
+        "dateModified": "2026-08-22",
+        "inLanguage": "ar"
+    }
+    </script>
+
+    <!-- ===== Styles ===== -->
     <style>
-        /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0b0e1a;
@@ -42,8 +89,6 @@
             pointer-events: none;
         }
         .content { position: relative; z-index: 1; }
-
-        /* ===== TOP NAV ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -76,8 +121,6 @@
             transform: scale(1.03);
         }
         .nav-btn .icon { font-size: 1.2rem; }
-
-        /* ===== HEADER ===== */
         .header {
             text-align: center;
             padding-bottom: 1.2rem;
@@ -99,8 +142,6 @@
             color: #94a3b8;
             margin-top: 6px;
         }
-
-        /* ===== MAIN FUNCTION ===== */
         .eq-block {
             background: #0f172a80;
             border: 1px solid #1e293b;
@@ -134,7 +175,6 @@
         }
         .math .highlight { color: #6ae3ff; }
         .math .gold { color: #d4af37; }
-
         .desc {
             color: #cbd5e1;
             font-size: 1rem;
@@ -158,8 +198,6 @@
             color: #6ae3ff;
             font-weight: 700;
         }
-
-        /* ===== TWO-COLUMN LAYOUT ===== */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -167,7 +205,6 @@
             margin: 1.8rem 0;
         }
         @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
-
         .card {
             background: #0f172a80;
             border: 1px solid #1e293b;
@@ -203,8 +240,6 @@
             color: #6ae3ff;
             font-size: 0.8rem;
         }
-
-        /* ===== PLOT ===== */
         .plot-box {
             background: #0b0e1a;
             border: 1px dashed #334155;
@@ -223,8 +258,6 @@
             height: auto;
             margin: 0.5rem 0;
         }
-
-        /* ===== FOOTER ===== */
         .footer {
             margin-top: 2rem;
             padding-top: 1.2rem;
@@ -250,7 +283,6 @@
             letter-spacing: 1px;
             color: #d4af37;
         }
-
         @media (max-width: 600px) {
             .header h1 { font-size: 2rem; }
             .math { font-size: 1.2rem; white-space: normal; }
@@ -269,7 +301,7 @@
             <a href="/" class="nav-btn">
                 <span class="icon">🏡</span> العودة إلى الواحة
             </a>
-            <a href="/en/theory-en.html" class="nav-btn">
+            <a href="/theory-en.html" class="nav-btn">
                 <span class="icon">🌐</span> English
             </a>
         </div>
@@ -278,6 +310,15 @@
         <div class="header">
             <h1>الدالة الأم</h1>
             <div class="sub">باحث يمني · دالة رياضية</div>
+        </div>
+
+        <!-- ⭐⭐⭐ أولاً: الغلاف الكوني الضخم ⭐⭐⭐ -->
+        <div style="margin-bottom: 2rem; text-align: center;">
+            <img src="/image/zx_cosmic_poster1.png" 
+                 alt="غلاف نظرية السندباد الموحدة - دالة الأم الكونية Z+C+A=1" 
+                 width="700" height="1200"
+                 style="width:100%; max-width:700px; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
+            <p style="margin-top:10px; color:#94a3b8; font-size:0.9rem;">الغلاف الرسمي للنظرية</p>
         </div>
 
         <!-- MAIN FUNCTION -->
@@ -337,7 +378,56 @@
                 </div>
                 <br>
                 <h3><span class="icon">📖</span> السياق البحثي</h3>
-                <p>تستكشف هذه الصياغة دالة تذبذبية مخمدة تهدف إلى نمذجة التوزيعات الشبيهة بالطيف في علم الكونيات النظري والفيزياء الرياضية. يدمج الهيكل مكونات القوة واللوغاريتم والدورية مع الاضمحلال الأسي لتمثيل عمليات التوهين الواقعية التي لوحظت في الأنظمة التذبذبية الطبيعية. ويضمن قيد التطبيع التفسير الاحتمالي والحفظ الكلي عبر المجال المعرَّف.</p>
+                <p>تستكشف هذه الصياغة دالة تذبذبية مخمدة تهدف إلى نمذجة التوزيعات الشبيهة بالطيف في علم الكونيات النظري والفيزياء الرياضية.</p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!--  صور المعادلات والرسم البياني (الأهم)       -->
+        <!-- ============================================ -->
+        <div class="eq-block" style="border-color: #6ae3ff40;">
+            <h2><span class="icon">📊</span> المعادلات والرسم البياني</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <!-- صورة المعادلات -->
+                <img src="/image/Zx_Equations.png" 
+                     alt="معادلات الدالة الأم Zx" 
+                     width="600" height="400"
+                     style="width:100%; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.5);"
+                     loading="lazy" />
+                
+                <!-- صورة الرسم البياني -->
+                <img src="/image/Zx_Eq_figure.png" 
+                     alt="الرسم البياني للدالة Zx" 
+                     width="600" height="400"
+                     style="width:100%; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.5);"
+                     loading="lazy" />
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!--  🔥 المواد الجديدة: الصور والفيديو                        -->
+        <!-- ============================================================ -->
+        <div class="eq-block" style="border-color: #ffd70040;">
+            <h2>📸 المواد التوضيحية للدالة الأم</h2>
+            
+            <!-- عرض الصور -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <img src="/image/theory-ar1.webp" alt="شرح الدالة الأم بالعربية 1" width="600" height="400" style="width:100%; border-radius: 12px; border: 1px solid #334155;" loading="lazy" />
+                <img src="/image/theory-ar2.webp" alt="شرح الدالة الأم بالعربية 2" width="600" height="400" style="width:100%; border-radius: 12px; border: 1px solid #334155;" loading="lazy" />
+                <img src="/image/theory-ar3.webp" alt="شرح الدالة الأم بالعربية 3" width="600" height="400" style="width:100%; border-radius: 12px; border: 1px solid #334155;" loading="lazy" />
+            </div>
+
+            <!-- عرض الفيديو -->
+            <div class="plot-box" style="padding: 0; overflow: hidden;">
+                <video controls 
+                       aria-label="فيديو محاكاة الدالة الأم Z(x)" 
+                       title="محاكاة الدالة الأم Z(x)"
+                       style="width: 100%; max-height: 500px; background: #000;" 
+                       poster="/image/theory-ar1.webp">
+                    <source src="/image/Zx.mp4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
             </div>
         </div>
 
@@ -347,7 +437,7 @@
                 <strong>المهندس عبدالله الجبري</strong> &nbsp;|&nbsp; <span class="orcid">ORCID 0009-0003-3319-3822</span>
             </div>
             <div>
-                صنعاء، اليمن · بحث مستقل · 2024 · دراسة نظرية
+                صنعاء، اليمن · بحث مستقل · 2026 · دراسة نظرية
             </div>
             <div class="badge">⚡ من أصفار ريمان إلى بنية الكون</div>
         </div>
@@ -355,6 +445,7 @@
     </div>
 </div>
 
+<!-- ===== ربط النظام ===== -->
 <script src="/js/init-page-root.js"></script>
 <script src="/js/menu.js"></script>
 </body>
