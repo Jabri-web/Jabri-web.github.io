@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     
-    <!-- ===== أيقونات Font Awesome ===== -->
+      <!-- ===== 1. منع الكاش ===== -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- ===== SEO الأساسي ===== -->
+    <title>📦 نظام فحص الواحة - repo9</title>
     <meta name="description" content="نظام فحص واحة الجبري - اختبار الروابط، السرعة، 404، والأداء الشامل" />
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
     
-    <!-- ===== الروابط ===== -->
     <link rel="canonical" href="https://jabri-com.vercel.app/Checkout.html" />
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Checkout.html" />
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Checkout.html" />
     
-    <!-- ===== Open Graph ===== -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="واحة الجبري | نظام الفحص" />
     <meta property="og:title" content="نظام فحص الواحة - Jabri Checkout" />
@@ -26,329 +34,73 @@
     <meta property="og:url" content="https://jabri-com.vercel.app/Checkout.html" />
 
     <style>
-        /* ===== RESET ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0f;
-            color: #e8e8f0;
-            font-family: 'Cairo', 'Tahoma', 'Segoe UI', Arial, sans-serif;
-            padding: 20px;
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+        body { background: #0a0a0f; color: #e8e8f0; font-family: 'Cairo', 'Tajawal', sans-serif; padding: 20px; line-height: 1.8; min-height: 100vh; display: flex; flex-direction: column; }
         body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
-
-        /* ===== الأزرار الثابتة ===== */
-        .lang-btn {
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            background: #6ae3ff;
-            border: none;
-            color: #0a0a0f;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            z-index: 999;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .lang-btn { position: fixed; top: 15px; left: 20px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 999; display: flex; align-items: center; gap: 8px; }
         body.en .lang-btn { left: auto; right: 20px; }
-
-        #visitorCounter {
-            position: fixed;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
-            color: #6ae3ff;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            z-index: 9999;
-            border: 1px solid #6ae3ff;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            font-family: inherit;
-        }
-
-        .music-btn-fixed {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            z-index: 99999;
-            background: linear-gradient(135deg, #6ae3ff, #3b9fcb);
-            border: none;
-            color: #0a0a0f;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(106, 227, 255, 0.4);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        #visitorCounter { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1a1a2e, #2a2a3e); color: #6ae3ff; padding: 8px 20px; border-radius: 50px; font-size: 16px; font-weight: bold; z-index: 9999; border: 1px solid #6ae3ff; display: flex; gap: 8px; align-items: center; }
+        .music-btn-fixed { position: fixed; top: 15px; right: 20px; z-index: 99999; background: linear-gradient(135deg, #6ae3ff, #3b9fcb); border: none; color: #0a0a0f; width: 50px; height: 50px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 0 20px rgba(106, 227, 255, 0.4); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
         body.en .music-btn-fixed { right: auto; left: 20px; }
         .music-btn-fixed:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(106, 227, 255, 0.7); }
-        .music-btn-fixed.playing {
-            background: linear-gradient(135deg, #ff6a6a, #cb3b3b);
-            color: #fff;
-            animation: pulse-red 1.5s infinite;
-        }
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 106, 106, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0); }
-        }
-        @media (max-width: 600px) {
-            .music-btn-fixed { width: 42px; height: 42px; font-size: 20px; top: 75px; right: 10px; }
-            body.en .music-btn-fixed { right: auto; left: 10px; }
-            .lang-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 13px; }
-            #visitorCounter { font-size: 13px; padding: 5px 14px; top: 10px; }
-        }
-
-        /* ===== الحاوية ===== */
-        .container {
-            max-width: 1200px;
-            margin: 80px auto 0;
-            flex: 1;
-            width: 100%;
-        }
-
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0a3d62, #1e6f9f);
-            border-radius: 16px;
-            margin-bottom: 30px;
-            border: 2px solid #6ae3ff;
-        }
-        .header h1 { font-size: 2.5rem; color: #fff; }
-        .header h1 i { color: #ffd700; margin: 0 10px; }
+        .music-btn-fixed.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); color: #fff; animation: pulse-red 1.5s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(255, 106, 106, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0); } }
+        @media (max-width: 600px) { .music-btn-fixed { width: 42px; height: 42px; font-size: 20px; top: 75px; right: 10px; } body.en .music-btn-fixed { right: auto; left: 10px; } .lang-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 13px; } #visitorCounter { font-size: 13px; padding: 5px 14px; top: 10px; } }
+        .container { max-width: 1200px; margin: 80px auto 0; flex: 1; width: 100%; }
+        .header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0a3d62, #1e6f9f); border-radius: 16px; margin-bottom: 30px; border: 2px solid #6ae3ff; }
+        .header h1 { font-size: 2.5rem; color: #fff; } .header h1 i { color: #ffd700; margin: 0 10px; }
         .header .subtitle { font-size: 1.3rem; font-weight: 700; color: #6ae3ff; margin: 8px 0; }
-        .header .subtitle i { margin: 0 8px; }
-
-        /* ===== البطاقات ===== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin: 30px 0;
-        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 30px 0; }
         @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
-
-        .card {
-            background: #1a1a2e;
-            border: 2px solid #2a2a3e;
-            border-radius: 16px;
-            padding: 25px;
-            transition: 0.3s;
-        }
+        .card { background: #1a1a2e; border: 2px solid #2a2a3e; border-radius: 16px; padding: 25px; transition: 0.3s; }
         .card:hover { border-color: #6ae3ff; }
-        .card h2 {
-            color: #6ae3ff;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .card h2 { color: #6ae3ff; font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .card h2 i { color: #ffd700; }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .links-grid a {
-            background: #0a0a0f;
-            color: #6ae3ff;
-            text-decoration: none;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px solid #2a2a3e;
-            text-align: center;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .links-grid a:hover {
-            border-color: #6ae3ff;
-            background: #6ae3ff;
-            color: #0a0a0f;
-        }
-        .links-grid a i { font-size: 1.1rem; }
-
-        /* ===== جدول النتائج ===== */
-        .result-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        .result-table th {
-            background: #2a2a3e;
-            color: #6ae3ff;
-            padding: 10px 15px;
-            text-align: center;
-            border: 1px solid #3a3a4e;
-        }
-        .result-table th i { margin: 0 6px; }
-        .result-table td {
-            padding: 10px 15px;
-            border: 1px solid #2a2a3e;
-            text-align: center;
-        }
-        .result-table .pass { color: #00ff88; }
-        .result-table .fail { color: #ff4444; }
-        .result-table .warn { color: #ffd700; }
-
-        /* ===== أزرار التشغيل ===== */
-        .run-btn {
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0f;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            margin: 15px 0;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .run-btn i { font-size: 1.3rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 15px; }
+        .links-grid a { background: #0a0a0f; color: #6ae3ff; text-decoration: none; padding: 10px 14px; border-radius: 8px; border: 1px solid #2a2a3e; text-align: center; transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .links-grid a:hover { border-color: #6ae3ff; background: #6ae3ff; color: #0a0a0f; }
+        .result-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+        .result-table th { background: #2a2a3e; color: #6ae3ff; padding: 10px 15px; text-align: center; border: 1px solid #3a3a4e; }
+        .result-table td { padding: 10px 15px; border: 1px solid #2a2a3e; text-align: center; }
+        .result-table .pass { color: #00ff88; } .result-table .fail { color: #ff4444; } .result-table .warn { color: #ffd700; }
+        .run-btn { background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
         .run-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
         .run-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
         .run-btn.speed { background: linear-gradient(135deg, #6ae3ff, #3b9fcb); }
-        .run-btn.speed:hover { box-shadow: 0 0 30px rgba(106, 227, 255, 0.4); }
-
         .run-btn.error { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); }
-        .run-btn.error:hover { box-shadow: 0 0 30px rgba(255, 106, 106, 0.4); }
-
         .run-btn.structure { background: linear-gradient(135deg, #00ff88, #009966); }
-        .run-btn.structure:hover { box-shadow: 0 0 30px rgba(0, 255, 136, 0.4); }
-
         .run-btn.clear { background: #2a2a3e; color: #94a3b8; }
-        .run-btn.clear:hover { background: #3a3a4e; box-shadow: 0 0 30px rgba(148, 163, 184, 0.2); }
-
-        /* ===== الفوتر ===== */
         #footer-placeholder { margin-top: 40px; }
-
-        /* ===== متفرقات ===== */
-        .ar, .en { display: inline; }
-        body.en .ar { display: none; }
-        body:not(.en) .en { display: none; }
-
-        #errorBox {
-            background: #2a0000;
-            border: 2px solid #ff4444;
-            color: #ffaaaa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: left;
-            direction: ltr;
-            font-family: monospace;
-            display: none;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #1a1a2e;
-            border-radius: 4px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-        .progress-bar .fill {
-            height: 100%;
-            background: linear-gradient(90deg, #6ae3ff, #ffd700);
-            width: 0%;
-            transition: width 0.3s;
-            border-radius: 4px;
-        }
-
-        .log-box {
-            background: #0a0a0f;
-            border: 1px solid #2a2a3e;
-            border-radius: 8px;
-            padding: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin-top: 10px;
-            direction: ltr;
-            text-align: left;
-        }
-        .log-box .log-ok { color: #00ff88; }
-        .log-box .log-fail { color: #ff4444; }
-        .log-box .log-warn { color: #ffd700; }
-        .log-box .log-info { color: #6ae3ff; }
-
-        /* ===== أيقونات الحالة ===== */
-        .status-icon { font-size: 1.2rem; }
-        .status-icon.success { color: #00ff88; }
-        .status-icon.fail { color: #ff4444; }
-        .status-icon.warn { color: #ffd700; }
-        .status-icon.info { color: #6ae3ff; }
+        .ar, .en { display: inline; } body.en .ar { display: none; } body:not(.en) .en { display: none; }
+        #errorBox { background: #2a0000; border: 2px solid #ff4444; color: #ffaaaa; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: left; direction: ltr; font-family: monospace; display: none; }
+        .progress-bar { width: 100%; height: 6px; background: #1a1a2e; border-radius: 4px; margin: 10px 0; overflow: hidden; }
+        .progress-bar .fill { height: 100%; background: linear-gradient(90deg, #6ae3ff, #ffd700); width: 0%; transition: width 0.3s; border-radius: 4px; }
+        .log-box { background: #0a0a0f; border: 1px solid #2a2a3e; border-radius: 8px; padding: 15px; max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 0.85rem; color: #94a3b8; margin-top: 10px; direction: ltr; text-align: left; }
+        .log-box .log-ok { color: #00ff88; } .log-box .log-fail { color: #ff4444; } .log-box .log-warn { color: #ffd700; } .log-box .log-info { color: #6ae3ff; }
+        .repo9-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 15px 0; }
+        .repo9-card { background: #0a0a0f; border: 1px solid #2a2a3e; border-radius: 12px; padding: 15px 10px; text-decoration: none; color: #e8e8f0; transition: 0.3s; display: block; }
+        .repo9-card:hover { border-color: #6ae3ff; transform: translateY(-4px); }
+        .repo9-card i { font-size: 2rem; display: block; margin-bottom: 6px; }
+        .repo9-card .title { font-weight: bold; font-size: 0.85rem; }
+        .repo9-card .desc { color: #94a3b8; font-size: 0.7rem; }
+        .icon-yellow { color: #ffd700; } .icon-purple { color: #a855f7; } .icon-blue { color: #6ae3ff; } .icon-green { color: #00ff88; } .icon-orange { color: #ff8800; }
+        .badge { display: inline-block; background: #00ff8820; color: #00ff88; padding: 4px 16px; border-radius: 40px; font-size: 0.75rem; border: 1px solid #00ff8840; margin-bottom: 15px; }
     </style>
 </head>
 <body>
-
-    <!-- ===== الأزرار الثابتة ===== -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="image/music.mp3" type="audio/mpeg">
-    </audio>
-    <button class="music-btn-fixed" id="musicToggle" title="🎵 تشغيل / إيقاف"><i class="fas fa-music"></i></button>
-
-    <button class="lang-btn" onclick="toggleLang()">
-        <i class="fas fa-globe"></i>
-        <span class="ar">🇬🇧 English</span>
-        <span class="en">🇾🇪 عربي</span>
-    </button>
-
-    <div id="visitorCounter">
-        <i class="fas fa-users"></i>
-        <span class="ar">زوار:</span>
-        <span class="en">Visitors:</span>
-        <span id="visitorCountDisplay">1</span>
-    </div>
+    <audio id="bgMusic" loop preload="auto"><source src="image/music.mp3" type="audio/mpeg"></audio>
+    <button class="music-btn-fixed" id="musicToggle" title="🎵 تشغيل / إيقاف">🎵<i class="fas fa-music"></i></button>
+    
+    <button class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe"></i><span class="ar">🇬🇧 English</span><span class="en">🇾🇪 عربي</span></button>
+    <div id="visitorCounter"><i class="fas fa-users"></i><span class="ar">زوار:</span><span class="en">Visitors:</span><span id="visitorCountDisplay">1</span></div>
 
     <div class="container">
         <header class="header">
             <h1><i class="fas fa-search"></i> <span class="ar">نظام فحص الواحة</span><span class="en">Jabri Checkout System</span></h1>
             <div class="subtitle"><i class="fas fa-flag"></i> <span class="ar">🇾🇪 فحص شامل للروابط، السرعة، 404، والأداء</span><span class="en">🇾🇪 Full Link, Speed, 404 & Performance Scan</span></div>
-            <p style="color: #94a3b8; margin-top: 8px;">
-                <i class="fas fa-link"></i>
-                <span class="ar">فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span>
-                <span class="en">Scan every page, link, file & repo</span>
-            </p>
+            <p style="color: #94a3b8; margin-top: 8px;"><i class="fas fa-link"></i><span class="ar">فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span><span class="en">Scan every page, link, file & repo</span></p>
         </header>
-
         <div id="errorBox"></div>
-
-        <!-- ===== أزرار التحكم ===== -->
         <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px 0;">
             <button class="run-btn" id="runFullScan"><i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span></button>
             <button class="run-btn speed" id="runSpeedTest"><i class="fas fa-bolt"></i> <span class="ar">اختبار السرعة</span><span class="en">Speed Test</span></button>
@@ -356,500 +108,83 @@
             <button class="run-btn structure" id="runStructureCheck"><i class="fas fa-folder-tree"></i> <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span></button>
             <button class="run-btn clear" id="clearLogs"><i class="fas fa-trash"></i> <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
         </div>
-
-        <!-- ===== شريط التقدم ===== -->
         <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
-
-        <!-- ===== البطاقات ===== -->
         <div class="grid-2">
-            <!-- بطاقة الصفحات -->
-            <div class="card">
-                <h2><i class="fas fa-file-alt"></i> <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2>
-                <div class="links-grid" id="pageLinks">
-                    <!-- يتم توليدها بواسطة JS -->
-                </div>
-                <div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;">
-                    <i class="fas fa-check-circle" style="color:#00ff88;"></i>
-                    <span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span>
-                    <span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span>
-                </div>
-            </div>
-
-            <!-- بطاقة الريبوهات -->
-            <div class="card">
-                <h2><i class="fas fa-folder-open"></i> <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2>
-                <div class="links-grid" id="repoLinks">
-                    <!-- يتم توليدها بواسطة JS -->
-                </div>
-                <div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;">
-                    <i class="fas fa-code-fork" style="color:#ffd700;"></i>
-                    <span class="ar">ريبوهات: <span id="repoCount">0</span></span>
-                    <span class="en">Repos: <span id="repoCountEn">0</span></span>
-                </div>
-            </div>
+            <div class="card"><h2><i class="fas fa-file-alt"></i> <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2><div class="links-grid" id="pageLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-check-circle" style="color:#00ff88;"></i><span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span><span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span></div></div>
+            <div class="card"><h2><i class="fas fa-folder-open"></i> <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2><div class="links-grid" id="repoLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-code-fork" style="color:#ffd700;"></i><span class="ar">ريبوهات: <span id="repoCount">0</span></span><span class="en">Repos: <span id="repoCountEn">0</span></span></div></div>
         </div>
-
-        <!-- ===== نتائج الفحص ===== -->
-        <div class="card" style="margin-top: 20px;">
-            <h2><i class="fas fa-chart-bar"></i> <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2>
-            <div style="overflow-x: auto;">
-                <table class="result-table" id="resultTable">
-                    <thead>
-                        <tr>
-                            <th><i class="fas fa-cube"></i> <span class="ar">العنصر</span><span class="en">Item</span></th>
-                            <th><i class="fas fa-circle"></i> <span class="ar">الحالة</span><span class="en">Status</span></th>
-                            <th><i class="fas fa-clock"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th>
-                            <th><i class="fas fa-flag-checkered"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultBody">
-                        <tr><td colspan="4" style="color:#666;"><i class="fas fa-search"></i> <span class="ar">اضغط "فحص شامل" للبدء</span><span class="en">Press "Full Scan" to start</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- ===== سجل العمليات ===== -->
-        <div class="card" style="margin-top: 20px;">
-            <h2><i class="fas fa-list"></i> <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2>
-            <div class="log-box" id="logBox">
-                <div class="log-info"><i class="fas fa-info-circle"></i> <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div>
-            </div>
-        </div>
-
-        <!-- ===== الفوتر ===== -->
+        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-toolbox"></i> <span class="ar">repo9 - أدوات الواحة</span><span class="en">repo9 - Jabri Tools</span></h2><div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div><div class="repo9-grid"><a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a><a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a><a href="Checkout.html" class="repo9-card"><i class="fas fa-search icon-blue"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a><a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a><a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a><a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a><a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a><a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a></div></div>
+        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-chart-bar"></i> <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2><div style="overflow-x: auto;"><table class="result-table" id="resultTable"><thead><tr><th><i class="fas fa-cube"></i> <span class="ar">العنصر</span><span class="en">Item</span></th><th><i class="fas fa-circle"></i> <span class="ar">الحالة</span><span class="en">Status</span></th><th><i class="fas fa-clock"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th><th><i class="fas fa-flag-checkered"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th></tr></thead><tbody id="resultBody"><tr><td colspan="4" style="color:#666;"><i class="fas fa-search"></i> <span class="ar">اضغط "فحص شامل" للبدء</span><span class="en">Press "Full Scan" to start</span></td></tr></tbody></table></div></div>
+        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-list"></i> <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2><div class="log-box" id="logBox"><div class="log-info"><i class="fas fa-info-circle"></i> <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div></div></div>
         <div id="footer-placeholder"></div>
     </div>
 
-    <!-- ====================================================================== -->
-    <!-- السكربتات المحدثة والمطورة -->
-    <!-- ====================================================================== -->
     <script>
-        // ===== توليد الروابط =====
         function generateLinks() {
-            const pageContainer = document.getElementById('pageLinks');
-            const pages = [];
-            for (let i = 1; i <= 12; i++) {
-                pages.push(`Page${i}.html`);
-            }
-            pageContainer.innerHTML = pages.map(p => 
-                `<a href="/${p}" target="_blank"><i class="fas fa-file-code"></i> ${p}</a>`
-            ).join('');
-
-            const repoContainer = document.getElementById('repoLinks');
-            const repos = [
-                'Jabri-web', 'Jabri_RiemannOS', 'Zx_Mother_Function_Jabri',
-                'Jabri_Nobble', 'Jabri_Checkout', 'Jabri_Archive'
-            ];
-            repoContainer.innerHTML = repos.map(r =>
-                `<a href="https://github.com/jabri-web/${r}" target="_blank"><i class="fab fa-github"></i> ${r}</a>`
-            ).join('');
-            document.getElementById('repoCount').innerText = repos.length;
-            document.getElementById('repoCountEn').innerText = repos.length;
+            const pageContainer = document.getElementById('pageLinks'); const pages = []; for (let i = 1; i <= 12; i++) { pages.push(`Page${i}.html`); }
+            pageContainer.innerHTML = pages.map(p => `<a href="/${p}" target="_blank"><i class="fas fa-file-code"></i> ${p}</a>`).join('');
+            document.getElementById('pageReady').innerText = 12; document.getElementById('pageReadyEn').innerText = 12;
+            const repoContainer = document.getElementById('repoLinks'); const repos = ['Jabri-web', 'Jabri_RiemannOS', 'Zx_Mother_Function_Jabri', 'Jabri_Nobble', 'Jabri_Checkout', 'Jabri_Archive'];
+            repoContainer.innerHTML = repos.map(r => `<a href="https://github.com/jabri-web/${r}" target="_blank"><i class="fab fa-github"></i> ${r}</a>`).join('');
+            document.getElementById('repoCount').innerText = repos.length; document.getElementById('repoCountEn').innerText = repos.length;
         }
-
-        // ===== تسجيل السجل =====
         function addLog(msg, type = 'info') {
-            const box = document.getElementById('logBox');
-            const icons = {
-                ok: '<i class="fas fa-check-circle" style="color:#00ff88;"></i>',
-                fail: '<i class="fas fa-times-circle" style="color:#ff4444;"></i>',
-                warn: '<i class="fas fa-exclamation-circle" style="color:#ffd700;"></i>',
-                info: '<i class="fas fa-info-circle" style="color:#6ae3ff;"></i>'
-            };
-            const cls = {
-                ok: 'log-ok',
-                fail: 'log-fail',
-                warn: 'log-warn',
-                info: 'log-info'
-            };
-            const icon = icons[type] || icons.info;
-            const time = new Date().toLocaleTimeString();
-            box.innerHTML += `<div class="${cls[type] || 'log-info'}">${icon} [${time}] ${msg}</div>`;
-            box.scrollTop = box.scrollHeight;
+            const box = document.getElementById('logBox'); const icons = { ok: '<i class="fas fa-check-circle" style="color:#00ff88;"></i>', fail: '<i class="fas fa-times-circle" style="color:#ff4444;"></i>', warn: '<i class="fas fa-exclamation-circle" style="color:#ffd700;"></i>', info: '<i class="fas fa-info-circle" style="color:#6ae3ff;"></i>' };
+            const cls = { ok: 'log-ok', fail: 'log-fail', warn: 'log-warn', info: 'log-info' }; const time = new Date().toLocaleTimeString();
+            box.innerHTML += `<div class="${cls[type] || 'log-info'}">${icons[type] || icons.info} [${time}] ${msg}</div>`; box.scrollTop = box.scrollHeight;
         }
-
-        function clearLogs() {
-            document.getElementById('logBox').innerHTML = '';
-            document.getElementById('resultBody').innerHTML = '';
-            document.getElementById('progressFill').style.width = '0%';
-            addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info');
-        }
-
-        // ===== فحص صفحة =====
-        function checkPage(url) {
-            return new Promise((resolve) => {
-                const start = performance.now();
-                fetch(url, { method: 'HEAD', cache: 'no-cache' })
-                    .then(res => {
-                        const time = Math.round(performance.now() - start);
-                        resolve({ url, status: res.status, time, ok: res.ok });
-                    })
-                    .catch(() => {
-                        const time = Math.round(performance.now() - start);
-                        resolve({ url, status: 404, time, ok: false });
-                    });
-            });
-        }
-
-        // ===== فحص هيكلة الملفات =====
+        function clearLogs() { document.getElementById('logBox').innerHTML = ''; document.getElementById('resultBody').innerHTML = ''; document.getElementById('progressFill').style.width = '0%'; addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info'); }
+        function checkPage(url) { return new Promise((resolve) => { const start = performance.now(); fetch(url, { method: 'HEAD', cache: 'no-cache' }).then(res => resolve({ url, status: res.status, time: Math.round(performance.now() - start), ok: res.ok })).catch(() => resolve({ url, status: 404, time: Math.round(performance.now() - start), ok: false })); }); }
         async function checkStructure() {
-            addLog('📂 <span class="ar">جاري التحقق من هيكلة الملفات...</span><span class="en">Checking file structure...</span>', 'info');
-            
-            try {
-                const response = await fetch('/file-structure.txt');
-                if (!response.ok) {
-                    addLog('❌ <span class="ar">تعذر العثور على ملف الهيكلة (file-structure.txt)</span><span class="en">Structure file not found (file-structure.txt)</span>', 'fail');
-                    return;
-                }
-                const text = await response.text();
-                
-                const pathRegex = /(?:[\/\w.-]+\/)*[\w.-]+\.(?:html|js|css|txt|webp|mp3|json|png|jpg|xml)/g;
-                const paths = text.match(pathRegex);
-                
-                if (!paths || paths.length === 0) {
-                    addLog('⚠️ <span class="ar">لم يتم العثور على مسارات صالحة في ملف الهيكلة.</span><span class="en">No valid paths found in structure file.</span>', 'warn');
-                    return;
-                }
-
-                const uniquePaths = [...new Set(paths)];
-                addLog(`📊 <span class="ar">تم العثور على ${uniquePaths.length} ملف في الهيكلة.</span><span class="en">Found ${uniquePaths.length} files in structure.</span>`, 'info');
-
-                let found = 0;
-                let missing = 0;
-                
-                for (const filePath of uniquePaths) {
-                    if (filePath.startsWith('http')) continue;
-                    let cleanPath = filePath.replace(/^\.\/|^\//, '');
-                    if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
-
-                    const result = await checkPage(cleanPath);
-                    
-                    if (result.ok) {
-                        found++;
-                        addLog(`✅ ${cleanPath} — موجود (${result.status})`, 'ok');
-                    } else {
-                        missing++;
-                        addLog(`❌ ${cleanPath} — مفقود (${result.status})`, 'fail');
-                    }
-                }
-
-                addLog(`📊 <span class="ar">خلاصة الهيكلة: ✅ ${found} موجود | ❌ ${missing} مفقود</span><span class="en">Structure Summary: ✅ ${found} found | ❌ ${missing} missing</span>`, missing === 0 ? 'ok' : 'fail');
-
-            } catch (error) {
-                addLog(`💥 <span class="ar">خطأ أثناء فحص الهيكلة: ${error.message}</span><span class="en">Structure check error: ${error.message}</span>`, 'fail');
-            }
+            addLog('📂 <span class="ar">جاري التحقق من هيكلة الملفات...</span><span class="en">Checking file structure...</span>', 'info'); try {
+                const response = await fetch('/file-structure.txt'); if (!response.ok) { addLog('❌ <span class="ar">تعذر العثور على ملف الهيكلة</span><span class="en">Structure file not found</span>', 'fail'); return; }
+                const text = await response.text(); const pathRegex = /(?:[\/\w.-]+\/)*[\w.-]+\.(?:html|js|css|txt|webp|mp3|json|png|jpg|xml)/g; const paths = text.match(pathRegex);
+                if (!paths || paths.length === 0) { addLog('⚠️ <span class="ar">لم يتم العثور على مسارات صالحة</span><span class="en">No valid paths found</span>', 'warn'); return; }
+                const uniquePaths = [...new Set(paths)]; addLog(`📊 <span class="ar">تم العثور على ${uniquePaths.length} ملف</span><span class="en">Found ${uniquePaths.length} files</span>`, 'info'); let found = 0, missing = 0;
+                for (const filePath of uniquePaths) { if (filePath.startsWith('http')) continue; let cleanPath = filePath.replace(/^\.\/|^\//, ''); if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath; const result = await checkPage(cleanPath);
+                    if (result.ok) { found++; addLog(`✅ ${cleanPath} — موجود (${result.status})`, 'ok'); } else { missing++; addLog(`❌ ${cleanPath} — مفقود (${result.status})`, 'fail'); } }
+                addLog(`📊 <span class="ar">خلاصة: ✅ ${found} موجود | ❌ ${missing} مفقود</span><span class="en">Summary: ✅ ${found} found | ❌ ${missing} missing</span>`, missing === 0 ? 'ok' : 'fail');
+            } catch (error) { addLog(`💥 <span class="ar">خطأ: ${error.message}</span><span class="en">Error: ${error.message}</span>`, 'fail'); }
         }
-
-        // ===== فحص شامل =====
         async function runFullScan() {
-            const btn = document.getElementById('runFullScan');
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
-            document.getElementById('resultBody').innerHTML = '';
-            clearLogs();
-            addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
-
-            const progress = document.getElementById('progressFill');
-            const results = [];
-            const pages = [];
-            for (let i = 1; i <= 12; i++) pages.push(`Page${i}.html`);
-            pages.push('theory-ar.html', 'theory-en.html', 'Checkout.html', 'Check.html', 'file-structure.html');
-
-            let completed = 0;
-            const total = pages.length;
-
-            for (const page of pages) {
-                const url = `/${page}`;
-                const result = await checkPage(url);
-                results.push(result);
-                completed++;
-                progress.style.width = `${(completed / total) * 100}%`;
-                
-                const statusText = result.ok ? '✅' : '❌';
-                const statusClass = result.ok ? 'pass' : 'fail';
-                addLog(`${statusText} ${page} — ${result.status} (${result.time}ms)`, result.ok ? 'ok' : 'fail');
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${page}</td>
-                    <td class="${statusClass}">${result.status}</td>
-                    <td>${result.time}</td>
-                    <td class="${statusClass}">${result.ok ? '<i class="fas fa-check-circle" style="color:#00ff88;"></i>' : '<i class="fas fa-times-circle" style="color:#ff4444;"></i>'}</td>
-                `;
-                document.getElementById('resultBody').appendChild(row);
-            }
-
-            const okCount = results.filter(r => r.ok).length;
-            const failCount = results.filter(r => !r.ok).length;
-            const avgTime = Math.round(results.reduce((sum, r) => sum + r.time, 0) / results.length);
-
-            addLog(`📊 <span class="ar">النتيجة النهائية: ✅ ${okCount} ناجح | ❌ ${failCount} فاشل | ⏱️ متوسط ${avgTime}ms</span><span class="en">Final: ✅ ${okCount} passed | ❌ ${failCount} failed | ⏱️ Avg ${avgTime}ms</span>`, 'info');
-
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span>';
-            progress.style.width = '100%';
+            const btn = document.getElementById('runFullScan'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
+            document.getElementById('resultBody').innerHTML = ''; clearLogs(); addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
+            const progress = document.getElementById('progressFill'); const results = []; const pages = []; for (let i = 1; i <= 12; i++) pages.push(`Page${i}.html`); pages.push('theory-ar.html', 'theory-en.html', 'Checkout.html', 'Check.html', 'file-structure.html'); let completed = 0, total = pages.length;
+            for (const page of pages) { const url = `/${page}`; const result = await checkPage(url); results.push(result); completed++; progress.style.width = `${(completed / total) * 100}%`; const statusClass = result.ok ? 'pass' : 'fail';
+                addLog(`${result.ok ? '✅' : '❌'} ${page} — ${result.status} (${result.time}ms)`, result.ok ? 'ok' : 'fail'); const row = document.createElement('tr'); row.innerHTML = `<td>${page}</td><td class="${statusClass}">${result.status}</td><td>${result.time}</td><td class="${statusClass}">${result.ok ? '<i class="fas fa-check-circle" style="color:#00ff88;"></i>' : '<i class="fas fa-times-circle" style="color:#ff4444;"></i>'}</td>`; document.getElementById('resultBody').appendChild(row); }
+            const okCount = results.filter(r => r.ok).length; const failCount = results.filter(r => !r.ok).length; const avgTime = Math.round(results.reduce((sum, r) => sum + r.time, 0) / results.length);
+            addLog(`📊 <span class="ar">النتيجة: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span><span class="en">Final: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span>`, 'info'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span>'; progress.style.width = '100%';
         }
-
-        // ===== اختبار السرعة =====
         async function runSpeedTest() {
-            const btn = document.getElementById('runSpeedTest');
-            btn.disabled = true;
-            addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info');
-
-            const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Checkout.html'];
-            const results = [];
-            for (const url of urls) {
-                const start = performance.now();
-                try {
-                    await fetch(url, { cache: 'no-cache' });
-                    const time = Math.round(performance.now() - start);
-                    results.push({ url, time, ok: true });
-                    addLog(`⚡ ${url} — ${time}ms`, 'ok');
-                } catch {
-                    const time = Math.round(performance.now() - start);
-                    results.push({ url, time, ok: false });
-                    addLog(`❌ ${url} — فشل (${time}ms)`, 'fail');
-                }
-            }
-
-            const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length);
-            const fastest = Math.min(...results.map(r => r.time));
-            const slowest = Math.max(...results.map(r => r.time));
-            addLog(`📊 <span class="ar">السرعة: المتوسط ${avg}ms | الأسرع ${fastest}ms | الأبطأ ${slowest}ms</span><span class="en">Speed: Avg ${avg}ms | Fastest ${fastest}ms | Slowest ${slowest}ms</span>`, 'info');
-            btn.disabled = false;
+            const btn = document.getElementById('runSpeedTest'); btn.disabled = true; addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info'); const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Checkout.html']; const results = [];
+            for (const url of urls) { const start = performance.now(); try { await fetch(url, { cache: 'no-cache' }); const time = Math.round(performance.now() - start); results.push({ url, time, ok: true }); addLog(`⚡ ${url} — ${time}ms`, 'ok'); }
+            catch { const time = Math.round(performance.now() - start); results.push({ url, time, ok: false }); addLog(`❌ ${url} — فشل (${time}ms)`, 'fail'); } }
+            const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length); const fastest = Math.min(...results.map(r => r.time)); const slowest = Math.max(...results.map(r => r.time));
+            addLog(`📊 <span class="ar">السرعة: المتوسط ${avg}ms | الأسرع ${fastest}ms | الأبطأ ${slowest}ms</span><span class="en">Speed: Avg ${avg}ms | Fastest ${fastest}ms | Slowest ${slowest}ms</span>`, 'info'); btn.disabled = false;
         }
-
-        // ===== فحص 404 =====
         async function run404Test() {
-            const btn = document.getElementById('run404Test');
-            btn.disabled = true;
-            addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn');
-
-            const testUrls = ['/nonexistent.html', '/fake-page', '/wrong-path', '/missing-file.js', '/invalid.css'];
-            let found404 = 0;
-            for (const url of testUrls) {
-                const result = await checkPage(url);
-                if (result.status === 404) {
-                    found404++;
-                    addLog(`🚨 404 تم كشفه: ${url}`, 'warn');
-                } else {
-                    addLog(`✅ ${url} — ${result.status}`, 'ok');
-                }
-            }
-            addLog(`📊 <span class="ar">تم كشف ${found404} من ${testUrls.length} روابط 404</span><span class="en">Found ${found404} of ${testUrls.length} 404 links</span>`, found404 > 0 ? 'warn' : 'ok');
-            btn.disabled = false;
+            const btn = document.getElementById('run404Test'); btn.disabled = true; addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn'); const testUrls = ['/nonexistent.html', '/fake-page', '/wrong-path', '/missing-file.js', '/invalid.css']; let found404 = 0;
+            for (const url of testUrls) { const result = await checkPage(url); if (result.status === 404) { found404++; addLog(`🚨 404 تم كشفه: ${url}`, 'warn'); } else { addLog(`✅ ${url} — ${result.status}`, 'ok'); } }
+            addLog(`📊 <span class="ar">تم كشف ${found404} من ${testUrls.length} روابط 404</span><span class="en">Found ${found404} of ${testUrls.length} 404 links</span>`, found404 > 0 ? 'warn' : 'ok'); btn.disabled = false;
         }
-
-        // ===== تبديل اللغة =====
-        function toggleLang() {
-            const html = document.documentElement;
-            const newLang = html.lang === 'ar' ? 'en' : 'ar';
-            html.lang = newLang;
-            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-            document.body.classList.toggle('en', newLang === 'en');
-            localStorage.setItem('preferred-language', newLang);
-        }
-
-        // ===== عداد الزوار =====
-        (function() {
-            let count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0');
-            count += 1;
-            localStorage.setItem('jabri_visitor_count_checkout', count);
-            document.getElementById('visitorCountDisplay').innerText = count;
-        })();
-
-        // ===== تشغيل الموسيقى =====
-        (function() {
-            const music = document.getElementById('bgMusic');
-            const btn = document.getElementById('musicToggle');
-            if (!music || !btn) return;
-            let isPlaying = false;
-            music.volume = 0.3;
-            btn.addEventListener('click', function() {
-                if (isPlaying) {
-                    music.pause();
-                    btn.innerHTML = '<i class="fas fa-music"></i>';
-                    btn.classList.remove('playing');
-                    isPlaying = false;
-                } else {
-                    music.play().then(() => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.classList.add('playing');
-                        isPlaying = true;
-                    }).catch(() => {});
-                }
-            });
-            document.addEventListener('click', function firstInteraction() {
-                if (!isPlaying) {
-                    music.play().then(() => {
-                        btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                        btn.classList.add('playing');
-                        isPlaying = true;
-                    }).catch(() => {});
-                }
-                document.removeEventListener('click', firstInteraction);
-            });
-        })();
-
-        // ===== ربط الأزرار =====
+        function toggleLang() { const html = document.documentElement; const newLang = html.lang === 'ar' ? 'en' : 'ar'; html.lang = newLang; html.dir = newLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', newLang === 'en'); localStorage.setItem('preferred-language', newLang); }
+        (function() { let count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0'); count += 1; localStorage.setItem('jabri_visitor_count_checkout', count); document.getElementById('visitorCountDisplay').innerText = count; })();
+        (function() { const music = document.getElementById('bgMusic'); const btn = document.getElementById('musicToggle'); if (!music || !btn) return; let isPlaying = false; music.volume = 0.3;
+            btn.addEventListener('click', function() { if (isPlaying) { music.pause(); btn.innerHTML = '<i class="fas fa-music"></i>'; btn.classList.remove('playing'); isPlaying = false; } else { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } });
+            document.addEventListener('click', function firstInteraction() { if (!isPlaying) { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } document.removeEventListener('click', firstInteraction); }); })();
         document.addEventListener('DOMContentLoaded', function() {
-            generateLinks();
-            document.getElementById('runFullScan').addEventListener('click', runFullScan);
-            document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
-            document.getElementById('run404Test').addEventListener('click', run404Test);
-            document.getElementById('runStructureCheck').addEventListener('click', checkStructure);
-            document.getElementById('clearLogs').addEventListener('click', clearLogs);
-
-            // استعادة اللغة
-            const savedLang = localStorage.getItem('preferred-language') || 'ar';
-            document.documentElement.lang = savedLang;
-            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
-            document.body.classList.toggle('en', savedLang === 'en');
-
-            console.log('🔍 نظام فحص الواحة جاهز');
-            console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات');
-            console.log('🇾🇪 من صنعاء إلى الكون');
+            generateLinks(); document.getElementById('runFullScan').addEventListener('click', runFullScan); document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
+            document.getElementById('run404Test').addEventListener('click', run404Test); document.getElementById('runStructureCheck').addEventListener('click', checkStructure); document.getElementById('clearLogs').addEventListener('click', clearLogs);
+            const savedLang = localStorage.getItem('preferred-language') || 'ar'; document.documentElement.lang = savedLang; document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', savedLang === 'en');
+            console.log('🔍 نظام فحص الواحة جاهز'); console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات'); console.log('🇾🇪 من صنعاء إلى الكون');
         });
     </script>
-
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>📦 repo9 - واحة الجبري</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Tajawal', Arial, sans-serif;
-            background: #0a0a0f;
-            color: #e8e8f0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            width: 100%;
-            background: linear-gradient(135deg, #1a1a2e, #0a0a0f);
-            border: 2px solid #6ae3ff;
-            border-radius: 24px;
-            padding: 35px 25px;
-            text-align: center;
-            box-shadow: 0 0 60px rgba(106, 227, 255, 0.05);
-        }
-        h1 { color: #6ae3ff; font-size: 2.2rem; }
-        h1 i { color: #ffd700; }
-        .subtitle { color: #94a3b8; font-size: 1rem; margin-bottom: 15px; }
-        .badge {
-            display: inline-block;
-            background: #00ff8820;
-            color: #00ff88;
-            padding: 4px 16px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            border: 1px solid #00ff8840;
-            margin-bottom: 15px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin: 15px 0;
-        }
-        .card {
-            background: #0a0a0f;
-            border: 1px solid #2a2a3e;
-            border-radius: 12px;
-            padding: 15px 10px;
-            text-decoration: none;
-            color: #e8e8f0;
-            transition: 0.3s;
-            display: block;
-        }
-        .card:hover {
-            border-color: #6ae3ff;
-            transform: translateY(-4px);
-        }
-        .card i { font-size: 2rem; display: block; margin-bottom: 6px; }
-        .card .title { font-weight: bold; font-size: 0.85rem; }
-        .card .desc { color: #94a3b8; font-size: 0.7rem; }
-        .icon-yellow { color: #ffd700; }
-        .icon-purple { color: #a855f7; }
-        .icon-blue { color: #6ae3ff; }
-        .icon-green { color: #00ff88; }
-        .icon-orange { color: #ff8800; }
-        .icon-red { color: #ff6a6a; }
-        .footer {
-            margin-top: 15px;
-            color: #4a4a5e;
-            font-size: 0.75rem;
-            border-top: 1px solid #1a1a2e;
-            padding-top: 12px;
-        }
-        .footer i { color: #ff6a6a; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1><i class="fas fa-toolbox"></i> repo9</h1>
-    <div class="subtitle">📦 أدوات ومرافق واحة الجبري</div>
-    <div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div>
-
-    <div class="grid">
-        <a href="yemen-photo2.html" class="card">
-            <i class="fas fa-images icon-yellow"></i>
-            <div class="title">📸 معرض JSON</div>
-            <div class="desc">يعمل على Vercel</div>
-        </a>
-        <a href="yemen-photo-php.html" class="card">
-            <i class="fab fa-php icon-purple"></i>
-            <div class="title">🐘 معرض PHP</div>
-            <div class="desc">قراءة تلقائية</div>
-        </a>
-        <a href="Checkout.html" class="card">
-            <i class="fas fa-search icon-blue"></i>
-            <div class="title">🔍 نظام الفحص</div>
-            <div class="desc">فحص الروابط</div>
-        </a>
-        <a href="Page9.html" class="card">
-            <i class="fas fa-file-alt icon-green"></i>
-            <div class="title">📄 Page9</div>
-            <div class="desc">الصفحة الرئيسية</div>
-        </a>
-        <a href="file-structure.html" class="card">
-            <i class="fas fa-sitemap icon-orange"></i>
-            <div class="title">🗺️ الهيكلة</div>
-            <div class="desc">خريطة الموقع</div>
-        </a>
-        <a href="all-links.html" class="card">
-            <i class="fas fa-link icon-blue"></i>
-            <div class="title">🔗 الروابط</div>
-            <div class="desc">جميع الروابط</div>
-        </a>
-        <a href="header.html" class="card">
-            <i class="fas fa-header icon-purple"></i>
-            <div class="title">📋 الهيدر</div>
-            <div class="desc">رأس الصفحة</div>
-        </a>
-        <a href="file-structure2.html" class="card">
-            <i class="fas fa-copy icon-green"></i>
-            <div class="title">📄 هيكلة 2</div>
-            <div class="desc">نسخة بديلة</div>
-        </a>
-    </div>
-
-    <div class="footer">
-        <i class="fas fa-heart"></i>
-        واحة الجبري · repo9 · 21 أغسطس 2026
-    </div>
-</div>
-
-
+    
+    <!-- في كل صفحة HTML -->
+    
+    
+    <!-- في كل صفحة HTML -->
+<script src="/js/menu.js"></script>
+    
 </body>
 </html>
