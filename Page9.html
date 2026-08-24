@@ -4,15 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    
-      <!-- ===== 1. منع الكاش ===== -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="theme-color" content="#0a0a0f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  
-    
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
@@ -85,6 +78,11 @@
         .repo9-card .desc { color: #94a3b8; font-size: 0.7rem; }
         .icon-yellow { color: #ffd700; } .icon-purple { color: #a855f7; } .icon-blue { color: #6ae3ff; } .icon-green { color: #00ff88; } .icon-orange { color: #ff8800; }
         .badge { display: inline-block; background: #00ff8820; color: #00ff88; padding: 4px 16px; border-radius: 40px; font-size: 0.75rem; border: 1px solid #00ff8840; margin-bottom: 15px; }
+        
+        /* ===== إضافة تنسيق لـ diagnose.html ===== */
+        .diagnose-btn { background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
+        .diagnose-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
+        .diagnose-btn i { color: #ffd700; }
     </style>
 </head>
 <body>
@@ -107,13 +105,26 @@
             <button class="run-btn error" id="run404Test"><i class="fas fa-exclamation-triangle"></i> <span class="ar">فحص 404</span><span class="en">404 Check</span></button>
             <button class="run-btn structure" id="runStructureCheck"><i class="fas fa-folder-tree"></i> <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span></button>
             <button class="run-btn clear" id="clearLogs"><i class="fas fa-trash"></i> <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
+            <!-- ===== زر تشخيص المستودعات ===== -->
+            <button class="diagnose-btn" onclick="window.location.href='diagnose.html'"><i class="fas fa-stethoscope"></i> <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span></button>
         </div>
         <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
         <div class="grid-2">
             <div class="card"><h2><i class="fas fa-file-alt"></i> <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2><div class="links-grid" id="pageLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-check-circle" style="color:#00ff88;"></i><span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span><span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span></div></div>
             <div class="card"><h2><i class="fas fa-folder-open"></i> <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2><div class="links-grid" id="repoLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-code-fork" style="color:#ffd700;"></i><span class="ar">ريبوهات: <span id="repoCount">0</span></span><span class="en">Repos: <span id="repoCountEn">0</span></span></div></div>
         </div>
-        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-toolbox"></i> <span class="ar">repo9 - أدوات الواحة</span><span class="en">repo9 - Jabri Tools</span></h2><div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div><div class="repo9-grid"><a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a><a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a><a href="Checkout.html" class="repo9-card"><i class="fas fa-search icon-blue"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a><a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a><a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a><a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a><a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a><a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a></div></div>
+        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-toolbox"></i> <span class="ar">repo9 - أدوات الواحة</span><span class="en">repo9 - Jabri Tools</span></h2><div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div><div class="repo9-grid">
+            <a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a>
+            <a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a>
+            <a href="Checkout.html" class="repo9-card"><i class="fas fa-search icon-blue"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a>
+            <a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a>
+            <a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a>
+            <a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a>
+            <a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a>
+            <a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a>
+            <!-- ===== إضافة رابط diagnose.html ===== -->
+            <a href="diagnose.html" class="repo9-card" style="border-color:#a855f7;"><i class="fas fa-stethoscope icon-purple"></i><div class="title">📊 Diagnose</div><div class="desc">تشخيص المستودعات</div></a>
+        </div></div>
         <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-chart-bar"></i> <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2><div style="overflow-x: auto;"><table class="result-table" id="resultTable"><thead><tr><th><i class="fas fa-cube"></i> <span class="ar">العنصر</span><span class="en">Item</span></th><th><i class="fas fa-circle"></i> <span class="ar">الحالة</span><span class="en">Status</span></th><th><i class="fas fa-clock"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th><th><i class="fas fa-flag-checkered"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th></tr></thead><tbody id="resultBody"><tr><td colspan="4" style="color:#666;"><i class="fas fa-search"></i> <span class="ar">اضغط "فحص شامل" للبدء</span><span class="en">Press "Full Scan" to start</span></td></tr></tbody></table></div></div>
         <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-list"></i> <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2><div class="log-box" id="logBox"><div class="log-info"><i class="fas fa-info-circle"></i> <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div></div></div>
         <div id="footer-placeholder"></div>
@@ -177,14 +188,11 @@
             document.getElementById('run404Test').addEventListener('click', run404Test); document.getElementById('runStructureCheck').addEventListener('click', checkStructure); document.getElementById('clearLogs').addEventListener('click', clearLogs);
             const savedLang = localStorage.getItem('preferred-language') || 'ar'; document.documentElement.lang = savedLang; document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', savedLang === 'en');
             console.log('🔍 نظام فحص الواحة جاهز'); console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات'); console.log('🇾🇪 من صنعاء إلى الكون');
+            console.log('📊 مركز تشخيص المستودعات متاح في diagnose.html');
         });
     </script>
     
-    <!-- في كل صفحة HTML -->
-    
-    
-    <!-- في كل صفحة HTML -->
-<script src="/js/menu.js"></script>
+    <script src="/js/menu.js"></script>
     
 </body>
 </html>
