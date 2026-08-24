@@ -3,9 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== تسريع التصفح وتنظيف الكاش ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- تسريع الاتصال بالخدمات الخارجية -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <title>صور وفيديوهات اليمن | معرض سينمائي</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
+
+/* تنزيل شريط التنبيه عشان الازرار العامه */
+.alert-bar{
+  margin-top: 80px; /* كان 0 خليه 80px */
+  background: linear-gradient(90deg, #ff6b6b, #4CAF50);
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
 * { box-sizing: border-box; }
 body {
   font-family: "Tajawal", Arial, sans-serif;
@@ -15,6 +41,30 @@ body {
   padding: 30px 15px;
   margin: 0;
 }
+
+/* ===== زر التنبيه الجديد ===== */
+.alert-bar{
+  background: linear-gradient(90deg, #ff6b6b, #4CAF50);
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.alert-bar a{
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 14px;
+  background: #00000040;
+  border-radius: 8px;
+  margin-right: 10px;
+  transition:.3s;
+}
+.alert-bar a:hover{
+  background: #00000070;
+  transform: scale(1.05);
+}
+
 h1 {
   color: #6ae3ff;
   margin: 30px 0 20px;
@@ -35,18 +85,18 @@ h1 {
   max-width: 1200px;
   margin: 0 auto;
 }
-.photo-card, .video-card {
+.photo-card,.video-card {
   background: #14141f;
   border: 1px solid #1f1f2e;
   border-radius: 12px;
   padding: 15px;
   transition: 0.3s;
 }
-.photo-card:hover, .video-card:hover {
+.photo-card:hover,.video-card:hover {
   border-color: #6ae3ff;
   transform: translateY(-5px);
 }
-.photo-card img, .video-card video {
+.photo-card img,.video-card video {
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -139,7 +189,7 @@ h1 {
   background: #6ae3ff;
   color: #0a0a0f;
 }
-/* --- أزرار الإجراءات الإضافية (تحميل، مشاركة، شاشة كاملة) --- */
+/* --- أزرار الإجراءات الإضافية --- */
 .slideshow-actions {
   display: flex;
   justify-content: center;
@@ -202,7 +252,7 @@ h1 {
   border-color: #6ae3ff;
   color: #6ae3ff;
 }
-/* --- تنسيق رسالة الإشعارات (مثل "تم النسخ") --- */
+/* --- تنسيق رسالة الإشعارات --- */
 .toast {
   position: fixed;
   bottom: 30px;
@@ -226,6 +276,13 @@ h1 {
 </head>
 <body>
 
+<!-- ===== شريط التنبيه الجديد ===== -->
+<div class="alert-bar">
+  🚀 تم إطلاق <b>الاستديو العام</b> الجديد!
+  <a href="yemen-photo-api.html">📸 ادخل الاستديو العام</a>
+  <span style="font-size:14px;">الان يقرأ 100+ صورة تلقائي</span>
+</div>
+
 <!-- عنصر الإشعارات المنبثق -->
 <div id="toast" class="toast"></div>
 
@@ -235,7 +292,7 @@ h1 {
 
 <!-- ===== المعرض الشبكي ===== -->
 <div class="gallery">
-  <!-- صور مع lazy loading (نفسها) -->
+  <!-- صور مع lazy loading -->
   <div class="photo-card"><img src="Image/Dar2.png" alt="Dar2" loading="lazy"><div class="caption">دار الحجر</div></div>
   <div class="photo-card"><img src="Image/Farah2026.png" alt="Farah2026" loading="lazy"><div class="caption">فرح</div></div>
   <div class="photo-card"><img src="Image/Sanaa2.png" alt="Sanaa2" loading="lazy"><div class="caption">صنعاء</div></div>
@@ -260,7 +317,7 @@ h1 {
   <div class="photo-card"><img src="Image/shmlan2025.png" alt="shmlan2025" loading="lazy"><div class="caption">2025</div></div>
   <div class="photo-card"><img src="Image/mohsen1.png" alt="mohsen1" loading="lazy"><div class="caption">محسن</div></div>
   <div class="photo-card"><img src="Image/mohsen2.png" alt="mohsen2" loading="lazy"><div class="caption">نبيل</div></div>
-  
+
   <!-- فيديوهات -->
   <div class="video-card"><video src="Image/zaml.mp4" controls muted loop playsinline preload="metadata"></video><div class="caption">زامل</div></div>
   <div class="video-card"><video src="Image/mohammed.mp4" controls muted loop playsinline preload="metadata"></video><div class="caption">زامل ياجبر</div></div>
@@ -284,24 +341,19 @@ h1 {
 <div class="slideshow-container" id="slideshowContainer">
   <div class="slideshow" id="slideshow"></div>
   <div class="slide-caption" id="slideCaption">دار الحجر</div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-  
-  <!-- أزرار التحكم الرئيسية -->
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
   <div class="slideshow-controls">
     <button onclick="prevSlide()">⏮ السابق</button>
     <span id="slideCounter">1 / 31</span>
     <button onclick="nextSlide()">التالي ⏭</button>
     <button onclick="toggleAutoPlay()" id="playBtn">▶ تشغيل</button>
   </div>
-  
-  <!-- أزرار الصوت -->
+
   <div class="audio-control">
     <button onclick="toggleMute()" id="muteBtn">🔊 كتم الصوت</button>
   </div>
 
-  <!-- ===== أزرار الإجراءات الجديدة ===== -->
   <div class="slideshow-actions">
     <button onclick="downloadCurrentImage()">📥 تحميل الصورة</button>
     <button onclick="shareCurrentImage()">📤 مشاركة</button>
@@ -312,7 +364,7 @@ h1 {
 <a href="index.html" class="btn-back">← رجوع للصفحة الرئيسية 🇾🇪</a>
 
 <script>
-// ===== البيانات (الصور والعناوين) =====
+// ===== البيانات =====
 const imageData = [
   { src: "Image/Dar2.png", caption: "دار الحجر" },
   { src: "Image/Farah2026.png", caption: "فرح" },
@@ -366,13 +418,11 @@ imageData.forEach((item, i) => {
   slideshowDiv.appendChild(img);
 });
 
-// === دوال العرض الأساسية ===
 function showSlide(index) {
   const imgs = slideshowDiv.querySelectorAll('img');
   imgs.forEach(img => img.classList.remove('active'));
   slideIndex = (index + imgs.length) % imgs.length;
   imgs[slideIndex].classList.add('active');
-  
   counterSpan.textContent = `${slideIndex+1} / ${imgs.length}`;
   captionEl.textContent = imageData[slideIndex].caption;
   progressFill.style.width = '0%';
@@ -381,138 +431,78 @@ function showSlide(index) {
 function nextSlide() { showSlide(slideIndex + 1); }
 function prevSlide() { showSlide(slideIndex - 1); }
 
-// === تشغيل وإيقاف السلايد ===
 function toggleAutoPlay() {
   const btn = document.getElementById('playBtn');
   if (autoPlayInterval) {
-    clearInterval(autoPlayInterval);
-    clearInterval(progressInterval);
-    autoPlayInterval = null;
-    progressInterval = null;
-    btn.textContent = '▶ تشغيل';
-    audio.pause();
-    progressFill.style.width = '0%';
+    clearInterval(autoPlayInterval); clearInterval(progressInterval);
+    autoPlayInterval = null; progressInterval = null;
+    btn.textContent = '▶ تشغيل'; audio.pause(); progressFill.style.width = '0%';
   } else {
-    autoPlayInterval = setInterval(() => {
-      nextSlide();
-      progressFill.style.width = '0%';
-    }, 4000);
-
-    let progress = 0;
-    progressInterval = setInterval(() => {
-      progress = Math.min(progress + 2.5, 100);
-      progressFill.style.width = progress + '%';
-    }, 100);
-
-    btn.textContent = '⏸ إيقاف';
-    audio.play().catch(() => {});
+    autoPlayInterval = setInterval(() => {nextSlide(); progressFill.style.width = '0%';}, 4000);
+    let progress = 0; progressInterval = setInterval(() => {progress = Math.min(progress + 2.5, 100); progressFill.style.width = progress + '%';}, 100);
+    btn.textContent = '⏸ إيقاف'; audio.play().catch(() => {});
   }
 }
 
-// === التحكم بالصوت ===
 let isMuted = false;
 function toggleMute() {
   const muteBtn = document.getElementById('muteBtn');
-  isMuted = !isMuted;
-  audio.muted = isMuted;
-  muteBtn.textContent = isMuted ? '🔇 إلغاء الكتم' : '🔊 كتم الصوت';
+  isMuted =!isMuted; audio.muted = isMuted;
+  muteBtn.textContent = isMuted? '🔇 إلغاء الكتم' : '🔊 كتم الصوت';
 }
 
-// ============================================================
-// ===== الميزات الجديدة: تحميل، مشاركة، شاشة كاملة =====
-// ============================================================
-
-// 1. تحميل الصورة الحالية
 function downloadCurrentImage() {
   const currentSrc = imageData[slideIndex].src;
   const link = document.createElement('a');
   link.href = currentSrc;
-  // استخراج اسم الملف من المسار
   const fileName = currentSrc.split('/').pop() || 'image.png';
   link.download = fileName;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  document.body.appendChild(link); link.click(); document.body.removeChild(link);
   showToast('📥 جاري تحميل الصورة...');
 }
 
-// 2. مشاركة الصورة الحالية
 function shareCurrentImage() {
   const currentSrc = imageData[slideIndex].src;
   const caption = imageData[slideIndex].caption;
-  const shareUrl = window.location.href + '?img=' + encodeURIComponent(currentSrc);
-  
-  // بناء الرابط الكامل للصورة (نضبطه عشان يكون رابط مباشر)
-  const fullImageUrl = currentSrc; // يفترض أنه رابط نسبي، لكنه يعمل على نفس السيرفر
-  
+  const fullImageUrl = currentSrc;
   if (navigator.share) {
-    // Web Share API (يعمل على الجوال)
-    navigator.share({
-      title: `صور اليمن - ${caption}`,
-      text: `📸 شاهد صورة ${caption} من معرض اليمن السينمائي`,
-      url: fullImageUrl
-    }).catch(() => {});
+    navigator.share({title: `صور اليمن - ${caption}`, text: `📸 شاهد صورة ${caption} من معرض اليمن السينمائي`, url: fullImageUrl}).catch(() => {});
   } else {
-    // البديل لسطح المكتب: نسخ الرابط إلى الحافظة
     const dummyInput = document.createElement('input');
-    dummyInput.value = fullImageUrl;
-    document.body.appendChild(dummyInput);
-    dummyInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummyInput);
+    dummyInput.value = fullImageUrl; document.body.appendChild(dummyInput); dummyInput.select(); document.execCommand('copy'); document.body.removeChild(dummyInput);
     showToast('📤 تم نسخ رابط الصورة إلى الحافظة!');
   }
 }
 
-// 3. وضع ملء الشاشة
 function toggleFullscreen() {
   const container = document.getElementById('slideshowContainer');
-  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-    // الدخول في وضع ملء الشاشة
-    if (container.requestFullscreen) {
-      container.requestFullscreen();
-    } else if (container.webkitRequestFullscreen) {
-      container.webkitRequestFullscreen(); // Safari
-    }
+  if (!document.fullscreenElement &&!document.webkitFullscreenElement) {
+    if (container.requestFullscreen) {container.requestFullscreen();}
+    else if (container.webkitRequestFullscreen) {container.webkitRequestFullscreen();}
     showToast('⛶ وضع ملء الشاشة');
   } else {
-    // الخروج من ملء الشاشة
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
+    if (document.exitFullscreen) {document.exitFullscreen();}
+    else if (document.webkitExitFullscreen) {document.webkitExitFullscreen();}
     showToast('⛶ خروج من ملء الشاشة');
   }
 }
 
-// === دالة عرض الإشعارات المنبثقة (Toast) ===
 function showToast(message) {
   const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('show');
-  clearTimeout(toast._timeout);
-  toast._timeout = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2500);
+  toast.textContent = message; toast.classList.add('show');
+  clearTimeout(toast._timeout); toast._timeout = setTimeout(() => {toast.classList.remove('show');}, 2500);
 }
 
-// === بدء التشغيل ===
 window.onload = function() {
   showSlide(0);
   captionEl.textContent = imageData[0].caption;
 };
 </script>
 
-
-
-<!-- في كل صفحة HTML -->
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>
 <script src="/js/init-page-root.js"></script>
 <script src="/js/menu.js"></script>
-
-
 
 </body>
 </html>

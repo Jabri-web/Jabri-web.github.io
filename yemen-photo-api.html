@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📸 معرض اليمن | API مباشر</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<style>
+:root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#8892bf}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;text-align:center;padding:20px;transition:.3s}
+body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff}
+h1{color:var(--primary)}
+.category-title{color:var(--secondary);font-size:22px;font-weight:bold;margin:30px 0 15px;border-bottom:2px solid var(--secondary);padding-bottom:10px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px}
+.photo-card,.video-card,.audio-card{background:var(--card);border-radius:12px;padding:10px;transition:.3s;cursor:pointer;border:1px solid rgba(255,255,255,0.05)}
+.photo-card:hover,.video-card:hover{transform:scale(1.03);border-color:var(--secondary)}
+img,video,audio{width:100%;border-radius:8px}
+.caption{margin-top:8px;font-size:14px;color:#aaa}
+.refresh-btn{background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;margin:10px;transition:.3s}
+.refresh-btn:hover{transform:scale(1.05)}
+.pagination{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:20px}
+.pagination button{background:var(--secondary);color:#0a0a0f;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:bold;transition:.3s}
+.pagination button:hover{transform:scale(1.05)}
+.pagination button.active{background:var(--primary);color:#fff}
+.toast{position:fixed;bottom:20px;right:20px;background:#4CAF50;color:#fff;padding:12px 20px;border-radius:8px;opacity:0;transition:.3s;z-index:999}
+.toast.show{opacity:1}
+.btn-back{display:inline-block;margin-top:30px;padding:10px 20px;background:var(--card);color:#fff;text-decoration:none;border-radius:8px;border:1px solid rgba(255,255,255,0.1)}
+.btn-back:hover{background:var(--secondary);color:#0a0a0f}
+.status-box{background:var(--card);padding:15px;border-radius:10px;margin:15px auto;max-width:600px;border:1px solid #333}
+.status-box .ok{color:#4CAF50}
+.status-box .error{color:#ff6b6b}
+.status-box .loading{color:#ffa500}
+.debug-box{background:#0d0d1a;padding:15px;border-radius:10px;margin:10px auto;max-width:600px;border:1px solid #333;text-align:left;font-size:13px;font-family:monospace;color:var(--secondary);max-height:200px;overflow:auto}
+.toolbar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:10px 0}
+.toolbar button{background:var(--card);color:var(--secondary);border:1px solid #333;padding:8px 16px;border-radius:8px;cursor:pointer;font-family:'Tajawal',sans-serif;transition:.3s}
+.toolbar button:hover{background:var(--secondary);color:#0a0a0f}
+.toolbar button.active{background:var(--secondary);color:#0a0a0f;border-color:var(--secondary)}
+.slideshow-container{max-width:800px;margin:20px auto;background:var(--card);border-radius:12px;padding:10px}
+.slideshow{position:relative;height:450px;background:#111;border-radius:8px;overflow:hidden}
+.slideshow img{position:absolute;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1s}
+.slideshow img.active{opacity:1}
+.slide-caption{margin:10px 0;color:var(--secondary)}
+.progress-bar{height:4px;background:#333;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:var(--primary);transition:width 0.1s}
+.slideshow-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:10px 0}
+.slideshow-controls button{background:var(--secondary);color:#0a0a0f;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:bold;transition:.3s}
+.slideshow-controls button:hover{transform:scale(1.05)}
+#slideCounter{background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:8px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<audio id="bgMusic" preload="auto" loop></audio>
+
+<h1>📸🎬 معرض اليمن الذكي - مباشر</h1>
+<div style="display:inline-block;background:#4CAF50;color:#fff;padding:4px 16px;border-radius:20px;font-size:14px;font-weight:bold;margin-bottom:10px;">🤖 قراءة مباشرة من GitHub</div>
+<button onclick="toggleTheme()" style="background:var(--card);color:var(--text);border:1px solid #333;padding:8px 16px;border-radius:8px;cursor:pointer;margin:5px;">🌓 وضع ليلي/نهاري</button>
+
+<div class="status-box" id="statusBox">
+    <span id="statusText">🔄 جارٍ تحميل الصفحة...</span>
+</div>
+
+<div class="debug-box" id="debugBox">
+📋 سجل التشخيص:<br>
+<span id="debugLog">⏳ في انتظار الاتصال...</span>
+</div>
+
+<div class="toolbar">
+    <button class="active" onclick="filterFiles('all')" id="filterAll">📁 الكل (<span id="countAll">0</span>)</button>
+    <button onclick="filterFiles('image')" id="filterImage">🖼️ صور (<span id="countImage">0</span>)</button>
+    <button onclick="filterFiles('video')" id="filterVideo">🎬 فيديو (<span id="countVideo">0</span>)</button>
+    <button onclick="filterFiles('audio')" id="filterAudio">🎵 صوت (<span id="countAudio">0</span>)</button>
+</div>
+
+<p id="fileCount">📄 جاري التحميل...</p>
+<button class="refresh-btn" onclick="loadPage(currentPage)">🔄 تحديث الصفحة</button>
+
+<div class="pagination" id="paginationTop"></div>
+<div id="galleryContainer" class="gallery"></div>
+<div class="pagination" id="paginationBottom"></div>
+
+<div class="slideshow-container" id="slideshowContainer">
+  <h3 style="color:var(--secondary);margin-bottom:10px;">🎬 عرض سينمائي</h3>
+  <div class="slideshow" id="slideshow"></div>
+  <div class="slide-caption" id="slideCaption">اضغط على صورة للعرض</div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="slideshow-controls">
+    <button onclick="prevSlide()">⏮ السابق</button>
+    <span id="slideCounter">0 / 0</span>
+    <button onclick="nextSlide()">التالي ⏭</button>
+    <button onclick="toggleAutoPlay()" id="playBtn">▶ تشغيل</button>
+    <button onclick="toggleMute()" id="muteBtn">🔊 كتم</button>
+    <button onclick="downloadCurrentMedia()">📥 تحميل</button>
+    <button onclick="shareCurrentMedia()">📤 مشاركة</button>
+  </div>
+</div>
+
+<a href="index.html" class="btn-back">← رجوع للصفحة الرئيسية 🇾🇪</a>
+
+<script>
+// ============================================================
+// ===== النسخة الخارقة النهائية - 100% =====
+// ============================================================
+
+const GITHUB_USER = "Jabri-web";
+const GITHUB_REPO = "jabri-com";
+const FOLDER_PATH = "image";
+const FILES_PER_PAGE = 60;
+
+const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${FOLDER_PATH}/`;
+const API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
+
+let currentPage = 1;
+let totalPages = 9999;
+let currentFiles = [];
+let currentFilter = 'all';
+let slideIndex = 0;
+let autoPlayInterval = null;
+let progressInterval = null;
+let slideshowImages = [];
+let isDark = true;
+
+function addDebug(msg) {
+    const debugLog = document.getElementById('debugLog');
+    const time = new Date().toLocaleTimeString();
+    debugLog.textContent += `\n${time} - ${msg}`;
+}
+
+function getCaption(fileName) {
+  let name = fileName.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+  name = name.replace(/^\d+/, '').trim();
+  return name.charAt(0).toUpperCase() + name.slice(1) || 'وسيط';
+}
+
+// ===== التعديل 2: حفظ الوضع الليلي =====
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.classList.toggle('light', !isDark);
+  localStorage.setItem('yemenTheme', isDark ? 'dark' : 'light');
+  showToast(isDark ? '🌙 وضع ليلي' : '☀️ وضع نهاري');
+}
+
+async function fetchPage(page) {
+  try {
+    addDebug(`🚀 جلب الصفحة ${page}...`);
+    document.getElementById('statusText').innerHTML = '🔄 <span class="loading">جارٍ جلب الصفحة ' + page + '...</span>';
+    
+    const url = `${API_URL}?per_page=${FILES_PER_PAGE}&page=${page}&t=${Date.now()}`;
+    
+    const response = await fetch(url, {cache: 'no-cache'});
+
+    if (response.status === 403) {
+      document.getElementById('statusText').innerHTML = '❌ <span class="error">Rate Limit او المستودع خاص</span>';
+      return [];
+    }
+    if (response.status === 404) {
+      document.getElementById('statusText').innerHTML = '❌ <span class="error">المجلد "'+FOLDER_PATH+'" غير موجود!</span>';
+      return [];
+    }
+    if (!response.ok) throw new Error(response.status);
+
+    const data = await response.json();
+    const fileNames = data.filter(f => f.type === 'file').map(f => f.name);
+
+    if (fileNames.length === FILES_PER_PAGE) totalPages = page + 1; 
+    else totalPages = page;
+
+    document.getElementById('statusText').innerHTML = '✅ <span class="ok">تم جلب ' + fileNames.length + ' ملف</span>';
+    return fileNames;
+
+  } catch (e) {
+    addDebug(`❌ خطأ: ${e.message}`);
+    document.getElementById('statusText').innerHTML = '⚠️ <span class="error">فشل الاتصال: ' + e.message + '</span>';
+    return [];
+  }
+}
+
+function categorizeFiles(fileNames) {
+  const images = []; const videos = []; const audios = [];
+  fileNames.forEach(file => {
+    const ext = file.split('.').pop().toLowerCase();
+    if (['png','jpg','jpeg','gif','webp','svg','bmp','ico'].includes(ext)) images.push(file);
+    else if (['mp4','webm','mov','avi','mkv','flv','wmv','m4v','3gp'].includes(ext)) videos.push(file);
+    else if (['mp3','wav','ogg','m4a','flac','aac','wma'].includes(ext)) audios.push(file);
+  });
+  return { images, videos, audios };
+}
+
+function displayFiles(fileNames, filter = 'all') {
+  const container = document.getElementById('galleryContainer');
+  const categorized = categorizeFiles(fileNames);
+  let displayNames = filter === 'all' ? fileNames : (categorized[filter+'s'] || []);
+  
+  document.getElementById('countAll').textContent = fileNames.length;
+  document.getElementById('countImage').textContent = categorized.images.length;
+  document.getElementById('countVideo').textContent = categorized.videos.length;
+  document.getElementById('countAudio').textContent = categorized.audios.length;
+  
+  slideshowImages = [];
+  
+  let html = '';
+  displayNames.forEach(file => {
+    const ext = file.split('.').pop().toLowerCase();
+    const caption = getCaption(file);
+    const src = RAW_URL + encodeURIComponent(file) + '?t=' + Date.now();
+
+    if (['png','jpg','jpeg','gif','webp','svg','bmp','ico'].includes(ext)) {
+      slideshowImages.push({ src, caption });
+      html += `<div class="photo-card" onclick="showInSlideshow(${slideshowImages.length - 1})">
+        <img src="${src}" loading="lazy" onerror="this.style.display='none'">
+        <div class="caption">${caption}</div>
+      </div>`;
+    } else if (['mp4','webm','mov','avi','mkv','flv','wmv','m4v','3gp'].includes(ext)) {
+      html += `<div class="video-card">
+        <video src="${src}" controls muted loop playsinline preload="metadata"></video>
+        <div class="caption">🎬 ${caption}</div>
+      </div>`;
+    } else if (['mp3','wav','ogg','m4a','flac','aac','wma'].includes(ext)) {
+      html += `<div class="audio-card">
+        <audio src="${src}" controls preload="metadata"></audio>
+        <div class="caption">🎵 ${caption}</div>
+      </div>`;
+    }
+  });
+  
+  container.innerHTML = html || '<p style="color:#ff6b6b;">⚠️ لا توجد ملفات</p>';
+  document.getElementById('fileCount').textContent = `📄 الصفحة ${currentPage} من ${totalPages} | ${displayNames.length} ملف`;
+  document.getElementById('slideCounter').textContent = `0 / ${slideshowImages.length}`;
+}
+
+function buildPagination() {
+  let html = '';
+  if (currentPage > 1) html += `<button onclick="loadPage(${currentPage - 1})">‹ السابقة</button>`;
+  html += `<button class="active">${currentPage}</button>`;
+  if (currentFiles.length === FILES_PER_PAGE) html += `<button onclick="loadPage(${currentPage + 1})">التالي ›</button>`;
+  document.getElementById('paginationTop').innerHTML = html;
+  document.getElementById('paginationBottom').innerHTML = html;
+}
+
+async function loadPage(page) {
+  currentPage = page;
+  document.getElementById('galleryContainer').innerHTML = '🔄 تحميل...';
+  const files = await fetchPage(page);
+  currentFiles = files;
+  displayFiles(files, currentFilter);
+  buildPagination();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  const categorized = categorizeFiles(files);
+  if(categorized.audios.length > 0){
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.src = RAW_URL + encodeURIComponent(categorized.audios[0]) + '?t=' + Date.now();
+    bgMusic.load();
+  }
+}
+
+function filterFiles(type) {
+  currentFilter = type;
+  document.querySelectorAll('.toolbar button').forEach(btn => btn.classList.remove('active'));
+  const map = { all: 'filterAll', image: 'filterImage', video: 'filterVideo', audio: 'filterAudio' };
+  document.getElementById(map[type]).classList.add('active');
+  if (currentFiles.length > 0) displayFiles(currentFiles, type);
+}
+
+// ============================================================
+// ===== عارض الشرائح مع التعديلات النهائية =====
+// ============================================================
+
+function showInSlideshow(index) {
+  if (slideshowImages.length === 0) return;
+  slideIndex = index;
+  const img = slideshowImages[index];
+  const slideshow = document.getElementById('slideshow');
+  slideshow.innerHTML = `<img src="${img.src}" class="active" onerror="this.style.display='none'">`;
+  document.getElementById('slideCaption').textContent = img.caption;
+  document.getElementById('slideCounter').textContent = `${index + 1} / ${slideshowImages.length}`;
+  document.getElementById('slideshowContainer').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===== التعديل 1: التالي يروح للصفحة الجاية =====
+function nextSlide() {
+  if (slideshowImages.length === 0) return;
+  const nextIndex = (slideIndex + 1) % slideshowImages.length;
+  
+  // لو وصلنا الاخير وفيه صفحة بعدها
+  if(nextIndex === 0 && currentFiles.length === FILES_PER_PAGE){
+    loadPage(currentPage + 1).then(() => {
+      // ننتظر شوية عشان تتجدد الصور
+      setTimeout(() => showInSlideshow(0), 500);
+    });
+  } else {
+    showInSlideshow(nextIndex);
+  }
+}
+
+function prevSlide() {
+  if (slideshowImages.length === 0) return;
+  const prevIndex = (slideIndex - 1 + slideshowImages.length) % slideshowImages.length;
+  
+  // لو في اول الصورة وفيه صفحة قبلها
+  if(prevIndex === slideshowImages.length - 1 && currentPage > 1){
+    loadPage(currentPage - 1).then(() => {
+      setTimeout(() => showInSlideshow(slideshowImages.length - 1), 500);
+    });
+  } else {
+    showInSlideshow(prevIndex);
+  }
+}
+
+function toggleAutoPlay() {
+  const btn = document.getElementById('playBtn');
+  const audio = document.getElementById('bgMusic');
+  
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    clearInterval(progressInterval);
+    autoPlayInterval = null;
+    progressInterval = null;
+    btn.textContent = '▶ تشغيل';
+    audio.pause();
+    document.getElementById('progressFill').style.width = '0%';
+  } else {
+    if (slideshowImages.length === 0) {
+      showToast('⚠️ لا توجد صور للعرض');
+      return;
+    }
+    autoPlayInterval = setInterval(() => {
+      nextSlide();
+      document.getElementById('progressFill').style.width = '0%';
+    }, 5000);
+    
+    let progress = 0;
+    progressInterval = setInterval(() => {
+      progress = Math.min(progress + 2.5, 100);
+      document.getElementById('progressFill').style.width = progress + '%';
+    }, 125);
+    
+    btn.textContent = '⏸ إيقاف';
+    audio.play().catch(() => {});
+  }
+}
+
+function toggleMute() {
+  const muteBtn = document.getElementById('muteBtn');
+  const audio = document.getElementById('bgMusic');
+  audio.muted = !audio.muted;
+  muteBtn.textContent = audio.muted ? '🔇 إلغاء الكتم' : '🔊 كتم';
+}
+
+function downloadCurrentMedia() {
+  if(slideshowImages.length === 0) return;
+  const item = slideshowImages[slideIndex];
+  const link = document.createElement('a');
+  link.href = item.src;
+  link.download = item.src.split('/').pop().split('?')[0] || 'media';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('📥 جاري التحميل...');
+}
+
+function shareCurrentMedia() {
+  if(slideshowImages.length === 0) return;
+  const item = slideshowImages[slideIndex];
+  if(navigator.share){
+    navigator.share({title: `📸 ${item.caption}`, url: item.src}).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(item.src).then(() => {
+      showToast('📤 تم نسخ الرابط!');
+    }).catch(() => {
+      const dummy = document.createElement('input');
+      dummy.value = item.src;
+      document.body.appendChild(dummy);
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      showToast('📤 تم نسخ الرابط!');
+    });
+  }
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ============================================================
+// ===== التعديل 3: مفاتيح الكيبورد =====
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  if(slideshowImages.length === 0) return;
+  if(e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  if(e.key === ' ') { e.preventDefault(); toggleAutoPlay(); }
+  if(e.key === 'Escape') { 
+    document.getElementById('slideshow').innerHTML = '';
+    document.getElementById('slideCaption').textContent = 'اضغط على صورة للعرض';
+    document.getElementById('slideCounter').textContent = '0 / 0';
+  }
+});
+
+// ============================================================
+// ===== التهيئة مع استرجاع الثيم =====
+// ============================================================
+window.onload = () => {
+  console.log('🇾🇪 معرض اليمن - النسخة الخارقة 100%');
+  console.log('🔥 الميزات: ترقيم + تصفية + عارض شرائح + كيبورد + ثيم');
+  
+  // استرجاع الثيم
+  if(localStorage.getItem('yemenTheme') === 'light'){
+    isDark = false;
+    document.body.classList.add('light');
+  }
+  
+  loadPage(1);
+};
+</script>
+</body>
+</html>
