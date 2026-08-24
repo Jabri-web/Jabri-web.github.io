@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<title>بحوث الجبري | 12 مشروع | نظرية السندباد Z+C+A=1</title>
+<title>بحوث الجبري | 12 مشروع | نظرية السندباد Z+C+A=1 | روابط و DOIs محدثة 2026</title>
 <meta name="description" content="12 مشروع بحثي لم/ عبدالله الجبري: من أصفار ريمان إلى بنية الكون. نظرية سندس الموحدة. DOI + GitHub + ملخص لكل بحث">
-<meta name="keywords" content="عبدالله الجبري, نظرية السندباد, Z+C+A=1, أصفار ريمان, مسائل الألفية, تراث اليمن">
+<meta name="keywords" content="عبدالله الجبري, نظرية السندباد, Z+C+A=1, أصفار ريمان, مسائل الألفية, تراث اليمن, Zx_RieOS_v1.2, GitHub Pages, Zenodo DOI, مشاريع بحثية, السيرة الذاتية">
 <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
 <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved.">
 <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
 <meta property="og:title" content="بحوث الجبري | 12 مشروع | نظرية السندباد Z+C+A=1">
 <meta property="og:description" content="12 مشروع بحثي لم/ عبدالله الجبري: من أصفار ريمان إلى بنية الكون.">
-<meta property="og:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
+<meta property="og:image" content="https://jabri-web.github.io/image/Jabri-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://jabri-web.github.io/research.html">
 
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
@@ -106,13 +108,29 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
 .stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;font-size:14px;color:var(--muted)}
 .stats span b{color:var(--accent)}
 
+/* ===== الجدول ===== */
+.table-wrapper{display:none;margin:20px 0 30px 0;overflow-x:auto;background:var(--card);border-radius:16px;padding:20px;border:1px solid var(--accent)}
+.table-wrapper table{width:100%;border-collapse:collapse;font-size:13px;color:var(--text);direction:ltr}
+.table-wrapper th{background:var(--accent);color:#000;padding:10px 14px;border:1px solid #333;text-align:center}
+.table-wrapper td{padding:10px 14px;border:1px solid #333;text-align:center}
+.table-wrapper td a{color:var(--accent);text-decoration:none}
+.table-wrapper td a:hover{text-decoration:underline}
+.table-wrapper .sub{padding-right:25px;color:var(--muted)}
+body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
+
+.action-buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0 30px 0}
+.action-btn{padding:12px 30px;border-radius:50px;text-decoration:none;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.action-btn:hover{transform:translateY(-3px)}
+.action-btn.pdf{background:linear-gradient(135deg,#dc3545,#b02a37);color:#fff}
+.action-btn.table{background:linear-gradient(135deg,#1a1a2e,#2a2a5e);color:#fff}
+
 /* ===== الفوتر ===== */
 .footer{text-align:center;margin-top:50px;padding:40px 20px;border-top:1px solid var(--border);color:var(--muted)}
 .footer a{color:var(--accent);text-decoration:none}
 .footer a:hover{text-decoration:underline}
 .footer-links{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:15px 0}
 
-@media (max-width:600px){.grid{grid-template-columns:1fr}.top-bar{top:10px}.lang-btn,.back-btn{padding:6px 12px;font-size:12px}.header{padding:60px 15px 30px}.header img{width:100px;height:100px}h1{font-size:1.3rem}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}.top-bar{top:10px}.lang-btn,.back-btn{padding:6px 12px;font-size:12px}.header{padding:60px 15px 30px}.header img{width:100px;height:100px}h1{font-size:1.3rem}.action-btn{padding:10px 20px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -140,6 +158,57 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
     <span>✅ <b>8</b> <span class="ar">موثق</span><span class="en">Verified</span></span>
     <span>⏳ <b>2</b> <span class="ar">قيد النشر</span><span class="en">Pending</span></span>
     <span>⚙️ <b>2</b> <span class="ar">نظام</span><span class="en">System</span></span>
+    <span>📦 <b>19</b> <span class="ar">DOI</span><span class="en">DOIs</span></span>
+  </div>
+
+  <!-- ===== أزرار الإجراءات ===== -->
+  <div class="action-buttons">
+    <a href="/data/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf" class="action-btn pdf">
+      📄 <span class="ar">تحميل السيرة الذاتية (PDF)</span><span class="en">Download CV (PDF)</span>
+    </a>
+    <button onclick="toggleTable()" class="action-btn table">
+      📊 <span class="ar">عرض جدول المشاريع والـ DOIs</span><span class="en">Show Projects & DOIs Table</span>
+    </button>
+  </div>
+
+  <!-- ===== جدول المشاريع (مخفي افتراضيًا) ===== -->
+  <div id="projectsTable" class="table-wrapper">
+    <h3 style="text-align:center;color:var(--accent);margin-bottom:16px;">
+      📚 <span class="ar">المشاريع البحثية والـ DOIs</span><span class="en">Research Projects & DOIs</span>
+    </h3>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><span class="ar">المشروع / Project</span><span class="en">Project</span></th>
+          <th>GitHub Pages</th>
+          <th>DOI Zenodo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Jabri6218.github.io</td><td><a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20403864" target="_blank">20403864</a></td></tr>
+        <tr><td>2</td><td>Zx_RieOS_v1.2</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank">20100622</a></td></tr>
+        <tr><td>3</td><td>Zx_Mother_Function_Jabri</td><td><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank">Pages</a></td><td>—</td></tr>
+        <tr><td>4</td><td>Jabri-web.github.io</td><td><a href="https://Jabri-web.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a> / <a href="https://doi.org/10.5281/zenodo.20404167" target="_blank">20404167</a></td></tr>
+        <tr><td>5</td><td>Jabri_Nobble</td><td><a href="https://jabri-web.github.io/Jabri_Nobble/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20148770" target="_blank">20148770</a></td></tr>
+        <tr><td class="sub">5.1</td><td class="sub">└─ Jabri_Riemann</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20139904" target="_blank">20139904</a> / <a href="https://doi.org/10.5281/zenodo.20145337" target="_blank">20145337</a></td></tr>
+        <tr><td class="sub">5.2</td><td class="sub">└─ Jabri_np</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20145279" target="_blank">20145279</a></td></tr>
+        <tr><td class="sub">5.3</td><td class="sub">└─ Jabri_gab</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20148344" target="_blank">20148344</a></td></tr>
+        <tr><td class="sub">5.4</td><td class="sub">└─ Jabri_Navier</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20149618" target="_blank">20149618</a></td></tr>
+        <tr><td class="sub">5.7</td><td class="sub">└─ Jabri_Identity</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20114317" target="_blank">20114317</a></td></tr>
+        <tr><td>6</td><td>Jabri_lab</td><td><a href="https://jabri-web.github.io/jabri_lab/" target="_blank">Pages</a></td><td>قيد النشر</td></tr>
+        <tr><td>7</td><td>Zx_RieOS_v1.1</td><td><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.19981688" target="_blank">19981688</a> / <a href="https://doi.org/10.5281/zenodo.20070594" target="_blank">20070594</a></td></tr>
+        <tr><td>8</td><td>Jabri_RiemannOS</td><td><a href="https://jabri-web.github.io/Jabri-RiemannOS/" target="_blank">Pages</a></td><td>—</td></tr>
+        <tr><td>9</td><td>Jabri_Checkout</td><td><a href="https://jabri-web.github.io/Jabri_Checkout/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20513840" target="_blank">20513840</a></td></tr>
+        <tr><td>10</td><td>Jabri-web</td><td><a href="https://jabri-web.github.io/Jabri-web/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a></td></tr>
+        <tr><td>11</td><td>Jabri-com</td><td><a href="https://jabri-web.github.io/jabri-com/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003990" target="_blank">21003990</a></td></tr>
+        <tr><td>12</td><td>jabri.com</td><td><a href="https://jabri-web.github.io/jabri/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">21003991</a></td></tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--muted);">
+      ✅ <span class="ar">تم التحقق 2026-08-23 بواسطة الجبري – جميع الروابط والـ DOIs محدثة</span>
+      <span class="en">Verified 2026-08-23 by Al-Jabri – All links and DOIs are updated</span>
+    </p>
   </div>
 
   <!-- البحث -->
@@ -201,7 +270,7 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
     <div class="card" data-type="verified" data-search="Jabri-web.github.io مكتب أرشيف بحوث يمن">
       <div class="card-header"><h3>4. Jabri-web.github.io</h3><span class="badge verified"><span class="ar">موثق</span><span class="en">Verified</span></span></div>
       <div class="keywords"><span class="ar">الكلمات:</span><span class="en">Keywords:</span> <span class="ar">المكتب, الأرشيف, البحوث, اليمن</span><span class="en">Office, Archive, Research, Yemen</span></div>
-      <p class="card-desc"><span class="ar">المكتب الرئيسي لواحة الجبري. يضم الأبحاث والمكتبة والصور والسيرة الذاتية. المركز الأكاديمي للمشاريع.</span><span class="en">Main Office of Heaven Al-Jabri. Includes research, library, images, and CV. Academic hub for all projects.</span></p>
+      <p class="card-desc"><span class="ar">المكتب الرئيسي لواحة الجبري. يضم البحوث والمكتبة والصور والسيرة الذاتية. المركز الأكاديمي للمشاريع.</span><span class="en">Main Office of Heaven Al-Jabri. Includes research, library, images, and CV. Academic hub for all projects.</span></p>
       <div class="btns">
         <a href="https://jabri-web.github.io/" class="btn page" target="_blank"><span class="ar">الصفحة</span><span class="en">Page</span></a>
         <a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?repo=Jabri-web.github.io&file=README.md&lang=ar" class="btn magic" target="_blank"><span class="ar">🔮 ترجمة</span><span class="en">🔮 Translate</span></a>
@@ -334,7 +403,7 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
 
   <!-- ===== الفوتر ===== -->
   <div class="footer">
-    <p><b>Verified 2026-06-11 by Jabri</b>: كل الروابط 1-12 شغالة. DOI كله 10.5281. لا تعديل بعد اليوم.</p>
+    <p><b>Verified 2026-08-23 by Jabri</b>: كل الروابط 1-12 شغالة. DOI كله 10.5281. لا تعديل بعد اليوم.</p>
     <p>CC BY 4.0 | Jabri Identity: Z + C + A = 1</p>
 
     <div class="footer-links">
@@ -358,6 +427,16 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
 
 <!-- ===== السكربتات ===== -->
 <script>
+  // ===== عرض/إخفاء الجدول =====
+  function toggleTable() {
+    const table = document.getElementById('projectsTable');
+    if (table.style.display === 'none' || table.style.display === '') {
+      table.style.display = 'block';
+    } else {
+      table.style.display = 'none';
+    }
+  }
+
   // ===== الفلترة =====
   function filter(type, e) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -403,8 +482,7 @@ body.en .sub-list{padding-left:15px;padding-right:0;border-right:none;border-lef
   console.log('✅ research.html جاهز - 12 مشروع مع DOI وفلترة النظام');
 </script>
 
-
-
+<!-- ===== الهيدر والفوتر العام ===== -->
 <script src="/js/menu.js"></script>
 
 </body>
