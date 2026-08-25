@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📸 معرض اليمن | API مباشر</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ===== تنظيف الكاش القوي ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- ===== Preconnect لتحسين السرعة ===== -->
+<link rel="preconnect" href="https://api.github.com">
+<link rel="preconnect" href="https://raw.githubusercontent.com">
+
+<script>
+// ===== تنظيف الكاش فور تحميل الصفحة =====
+(function cleanCache() {
+    try {
+        // 1. مسح localStorage
+        localStorage.removeItem('gallery_cache');
+        localStorage.removeItem('gallery_files');
+        
+        // 2. مسح sessionStorage
+        sessionStorage.clear();
+        
+        // 3. مسح Cache API (إذا كان متاح)
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                names.forEach(function(name) {
+                    if (name.includes('gallery') || name.includes('image')) {
+                        caches.delete(name);
+                    }
+                });
+            });
+        }
+        
+        // 4. مسح IndexedDB (إذا كان متاح)
+        if ('indexedDB' in window) {
+            indexedDB.databases().then(function(dbs) {
+                dbs.forEach(function(db) {
+                    if (db.name.includes('gallery') || db.name.includes('image')) {
+                        indexedDB.deleteDatabase(db.name);
+                    }
+                });
+            }).catch(function() {});
+        }
+        
+        console.log('🧹 تم تنظيف الكاش تلقائياً');
+    } catch(e) {
+        console.log('⚠️ تنظيف الكاش:', e.message);
+    }
+})();
+</script>
+
+<style>
+:root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#8892bf}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;text-align:center;padding:15px;transition:.3s}
+body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff}
+h1{color:var(--primary);font-size:1.8rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.photo-card,.video-card,.audio-card{background:var(--card);border-radius:12px;padding:8px;transition:.2s;cursor:pointer;border:1px solid rgba(255,255,255,0.05);position:relative}
+.photo-card:hover,.video-card:hover{transform:scale(1.02);border-color:var(--secondary)}
+.photo-card .photo-actions{position:absolute;top:5px;right:5px;display:flex;gap:4px;opacity:0;transition:.2s}
+.photo-card:hover .photo-actions{opacity:1}
+.photo-card .photo-actions button{background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:11px}
+.photo-card .photo-actions button:hover{background:var(--primary)}
+img,video,audio{width:100%;border-radius:8px;aspect-ratio:1;object-fit:cover;background:#111}
+.video-card video{aspect-ratio:16/9}
+.caption{margin-top:5px;font-size:12px;color:#aaa;word-break:break-word;max-height:36px;overflow:hidden}
+.refresh-btn{background:var(--primary);color:#fff;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;margin:8px;font-size:14px}
+.pagination{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:12px 0}
+.pagination button{background:var(--secondary);color:#0a0a0f;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px}
+.pagination button.active{background:var(--primary);color:#fff}
+.toast{position:fixed;bottom:20px;right:20px;background:#4CAF50;color:#fff;padding:10px 18px;border-radius:8px;opacity:0;transition:.3s;z-index:999;font-size:14px}
+.toast.show{opacity:1}
+.toolbar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:8px 0}
+.toolbar button{background:var(--card);color:var(--secondary);border:1px solid #333;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:13px}
+.toolbar button.active{background:var(--secondary);color:#0a0a0f}
+.slideshow-container{max-width:700px;margin:15px auto;background:var(--card);border-radius:12px;padding:10px}
+.slideshow{position:relative;height:350px;background:#111;border-radius:8px;overflow:hidden}
+.slideshow img{position:absolute;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 0.6s}
+.slideshow img.active{opacity:1}
+.slideshow-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:8px 0}
+.slideshow-controls button{background:var(--secondary);color:#0a0a0f;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px}
+.slideshow-controls button:hover{transform:scale(1.04)}
+.slide-caption{margin:8px 0;color:var(--secondary);font-size:0.95rem}
+.progress-bar{height:3px;background:#333;border-radius:2px;overflow:hidden;margin:4px 0}
+.progress-fill{height:100%;width:0%;background:var(--primary);transition:width 0.1s}
+.back-link{display:inline-block;margin-top:20px;padding:8px 20px;background:var(--card);color:var(--text);text-decoration:none;border-radius:8px;border:1px solid rgba(255,255,255,0.1);font-size:14px}
+.stats-bar{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;background:var(--card);padding:8px 15px;border-radius:10px;margin:8px 0;border:1px solid rgba(255,255,255,0.05);font-size:13px}
+.stats-bar span{color:var(--secondary)}
+.stats-bar span strong{color:var(--primary)}
+.loading-placeholder{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.loading-placeholder .skeleton{background:var(--card);border-radius:12px;padding:8px;aspect-ratio:1;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:0.8}}
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<audio id="bgMusic" preload="none" loop></audio>
+
+<h1>📸🎬 معرض اليمن الذكي</h1>
+<div style="display:inline-block;background:#4CAF50;color:#fff;padding:3px 14px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:8px;">⚡ سريع • كاش نظيف</div>
+<button onclick="toggleTheme()" style="background:var(--card);color:var(--text);border:1px solid #333;padding:6px 14px;border-radius:8px;cursor:pointer;margin:4px;font-size:13px;">🌓 الوضع</button>
+
+<div class="stats-bar">
+    <span>📄 <strong id="fileCount">0</strong></span>
+    <span>📖 <strong id="pageDisplay">ص1</strong></span>
+    <span>🖼️ <strong id="imgCount">0</strong></span>
+    <span>🎬 <strong id="vidCount">0</strong></span>
+    <span>🎵 <strong id="audCount">0</strong></span>
+</div>
+
+<button class="refresh-btn" onclick="loadPage(currentPage)">🔄 تحديث</button>
+<button class="refresh-btn" onclick="forceCleanRefresh()" style="background:#8892bf;">🧹 تنظيف الكاش</button>
+
+<div class="toolbar">
+    <button class="active" onclick="filterFiles('all')" id="filterAll">📁 الكل (<span id="countAll">0</span>)</button>
+    <button onclick="filterFiles('image')" id="filterImage">🖼️ صور (<span id="countImage">0</span>)</button>
+    <button onclick="filterFiles('video')" id="filterVideo">🎬 فيديو (<span id="countVideo">0</span>)</button>
+    <button onclick="filterFiles('audio')" id="filterAudio">🎵 صوت (<span id="countAudio">0</span>)</button>
+</div>
+
+<div class="pagination" id="paginationTop"></div>
+<div id="galleryContainer" class="gallery">
+    <div class="loading-placeholder">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+</div>
+<div class="pagination" id="paginationBottom"></div>
+
+<div class="slideshow-container">
+  <h3 style="color:var(--secondary);font-size:1.1rem;">🎬 عرض سينمائي</h3>
+  <div class="slideshow" id="slideshow"></div>
+  <div class="slide-caption" id="slideCaption">اضغط على صورة للعرض</div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="slideshow-controls">
+    <button onclick="prevSlide()">⏮ السابق</button>
+    <span id="slideCounter">0 / 0</span>
+    <button onclick="nextSlide()">التالي ⏭</button>
+    <button onclick="toggleAutoPlay()" id="playBtn">▶ تشغيل</button>
+    <button onclick="downloadCurrent()">📥 تحميل</button>
+    <button onclick="shareCurrent()">📤 مشاركة</button>
+  </div>
+</div>
+
+<a href="Checkout.html" class="back-link">← رجوع لنظام الفحص</a>
+
+<script>
+// ============================================================
+// ===== النسخة السريعة - مع تنظيف الكاش =====
+// ============================================================
+
+const GITHUB_USER = "Jabri-web";
+const GITHUB_REPO = "jabri-com";
+const FOLDER_PATH = "image";
+const FILES_PER_PAGE = 60;
+const CACHE_KEY = 'gallery_cache_v2';
+const CACHE_TIME_KEY = 'gallery_cache_time';
+
+const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${FOLDER_PATH}/`;
+const API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
+
+let currentPage = 1, currentFiles = [], currentFilter = 'all', slideIndex = 0, autoPlayInterval = null, progressInterval = null, slideshowImages = [], isDark = true;
+let isLoading = false;
+
+// ===== Toast =====
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2000)}
+
+// ===== تنظيف الكاش القوي =====
+function forceCleanRefresh() {
+    showToast('🧹 جاري تنظيف الكاش...');
+    try {
+        localStorage.removeItem(CACHE_KEY);
+        localStorage.removeItem(CACHE_TIME_KEY);
+        sessionStorage.clear();
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                names.forEach(function(name) { caches.delete(name); });
+            });
+        }
+        showToast('✅ تم تنظيف الكاش! جاري التحديث...');
+        setTimeout(() => loadPage(1), 500);
+    } catch(e) {
+        showToast('⚠️ خطأ: '+e.message);
+    }
+}
+
+// ===== التحميل مع كاش =====
+async function fetchPage(page) {
+    if (isLoading) return [];
+    isLoading = true;
+    
+    try {
+        // جرب الكاش أولاً
+        const cacheKey = `${CACHE_KEY}_${page}`;
+        const cached = localStorage.getItem(cacheKey);
+        const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
+        
+        // الكاش صالح لمدة 5 دقائق
+        if (cached && cacheTime && (Date.now() - parseInt(cacheTime) < 300000)) {
+            const data = JSON.parse(cached);
+            if (data && data.length > 0) {
+                console.log(`📦 استخدم الكاش للصفحة ${page}`);
+                isLoading = false;
+                return data;
+            }
+        }
+        
+        console.log(`📡 جلب الصفحة ${page}...`);
+        const url = `${API_URL}?per_page=${FILES_PER_PAGE}&page=${page}&t=${Date.now()}`;
+        const res = await fetch(url, { cache: 'no-cache' });
+        
+        if (!res.ok) {
+            if (res.status === 403) {
+                showToast('⚠️ تم تجاوز الحد! انتظر دقيقة');
+                // حاول استخدام الكاش القديم
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    if (data && data.length > 0) {
+                        isLoading = false;
+                        return data;
+                    }
+                }
+            }
+            isLoading = false;
+            return [];
+        }
+        
+        const data = await res.json();
+        const fileNames = data.filter(f => f.type === 'file').map(f => f.name);
+        
+        // احفظ في الكاش
+        if (fileNames.length > 0) {
+            localStorage.setItem(cacheKey, JSON.stringify(fileNames));
+            localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+        }
+        
+        isLoading = false;
+        return fileNames;
+        
+    } catch(e) {
+        console.error('خطأ:', e);
+        // حاول استخدام الكاش عند الفشل
+        const cached = localStorage.getItem(`${CACHE_KEY}_${page}`);
+        if (cached) {
+            const data = JSON.parse(cached);
+            if (data && data.length > 0) {
+                isLoading = false;
+                return data;
+            }
+        }
+        isLoading = false;
+        return [];
+    }
+}
+
+// ===== الباقي بنفس الشكل مع تحسينات =====
+function toggleTheme(){isDark=!isDark;document.body.classList.toggle('light',!isDark);localStorage.setItem('theme',isDark?'dark':'light')}
+
+function categorize(fileNames){
+  const images=[],videos=[],audios=[];
+  fileNames.forEach(f=>{
+    const ext=f.split('.').pop().toLowerCase();
+    if(['png','jpg','jpeg','gif','webp','svg','bmp','ico'].includes(ext)) images.push(f);
+    else if(['mp4','webm','mov','avi','mkv','flv','wmv','m4v','3gp'].includes(ext)) videos.push(f);
+    else if(['mp3','wav','ogg','m4a','flac','aac','wma'].includes(ext)) audios.push(f);
+  });
+  return {images,videos,audios};
+}
+
+function getCaption(file){
+  let name=file.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
+  name=name.replace(/^\d+/,'').trim();
+  return name.charAt(0).toUpperCase()+name.slice(1) || 'وسيط';
+}
+
+function displayFiles(fileNames,filter='all'){
+  const cat=categorize(fileNames);
+  let display=filter==='all'?fileNames:cat[filter+'s']||[];
+  
+  document.getElementById('countAll').textContent=fileNames.length;
+  document.getElementById('countImage').textContent=cat.images.length;
+  document.getElementById('countVideo').textContent=cat.videos.length;
+  document.getElementById('countAudio').textContent=cat.audios.length;
+  document.getElementById('imgCount').textContent=cat.images.length;
+  document.getElementById('vidCount').textContent=cat.videos.length;
+  document.getElementById('audCount').textContent=cat.audios.length;
+  document.getElementById('fileCount').textContent=fileNames.length;
+  document.getElementById('pageDisplay').textContent=`ص${currentPage}`;
+
+  slideshowImages=[];
+  let html='';
+  display.forEach((file,i)=>{
+    const ext=file.split('.').pop().toLowerCase();
+    const src=RAW_URL+encodeURIComponent(file)+'?t='+Date.now();
+    const caption=getCaption(file);
+    
+    if(['png','jpg','jpeg','gif','webp','svg','bmp','ico'].includes(ext)){
+      slideshowImages.push({src,caption,file});
+      html+=`<div class="photo-card" onclick="showInSlideshow(${slideshowImages.length-1})">
+        <img src="${src}" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <div class="caption">${caption}</div>
+        <div class="photo-actions">
+          <button onclick="event.stopPropagation();downloadImage('${src}','${file}')" title="تحميل"><i class="fas fa-download"></i></button>
+          <button onclick="event.stopPropagation();shareImage('${src}','${caption}')" title="مشاركة"><i class="fas fa-share-alt"></i></button>
+        </div>
+      </div>`;
+    }
+    else if(['mp4','webm','mov','avi','mkv','flv','wmv','m4v','3gp'].includes(ext)){
+      html+=`<div class="video-card"><video src="${src}" controls muted loop playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23111' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23666' font-size='20'%3E🎬%3C/text%3E%3C/svg%3E"></video><div class="caption">🎬 ${caption}</div></div>`;
+    }
+    else if(['mp3','wav','ogg','m4a','flac','aac','wma'].includes(ext)){
+      html+=`<div class="audio-card"><audio src="${src}" controls preload="none"></audio><div class="caption">🎵 ${caption}</div></div>`;
+    }
+  });
+  document.getElementById('galleryContainer').innerHTML=html||'<p style="color:#ff6b6b;">⚠️ لا توجد ملفات</p>';
+  document.getElementById('slideCounter').textContent=`0 / ${slideshowImages.length}`;
+}
+
+function buildPagination(){
+  let html='';
+  if(currentPage>1) html+=`<button onclick="loadPage(${currentPage-1})">‹</button>`;
+  html+=`<button class="active">${currentPage}</button>`;
+  if(currentFiles.length===FILES_PER_PAGE) html+=`<button onclick="loadPage(${currentPage+1})">›</button>`;
+  document.getElementById('paginationTop').innerHTML=html;
+  document.getElementById('paginationBottom').innerHTML=html;
+}
+
+async function loadPage(page){
+  if (isLoading) return;
+  currentPage=page;
+  document.getElementById('galleryContainer').innerHTML='<div class="loading-placeholder">'+'<div class="skeleton"></div>'.repeat(6)+'</div>';
+  const files=await fetchPage(page);
+  currentFiles=files;
+  displayFiles(files,currentFilter);
+  buildPagination();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function filterFiles(type){
+  currentFilter=type;
+  document.querySelectorAll('.toolbar button').forEach(b=>b.classList.remove('active'));
+  const map={all:'filterAll',image:'filterImage',video:'filterVideo',audio:'filterAudio'};
+  document.getElementById(map[type]).classList.add('active');
+  displayFiles(currentFiles,type);
+}
+
+function showInSlideshow(index){
+  if(!slideshowImages.length) return;
+  slideIndex=index;
+  const img=slideshowImages[index];
+  document.getElementById('slideshow').innerHTML=`<img src="${img.src}" class="active" loading="lazy" onerror="this.style.display='none'">`;
+  document.getElementById('slideCaption').textContent=img.caption;
+  document.getElementById('slideCounter').textContent=`${index+1} / ${slideshowImages.length}`;
+  document.getElementById('progressFill').style.width='0%';
+}
+
+function nextSlide(){
+  if(!slideshowImages.length) return;
+  const nextIndex=(slideIndex+1)%slideshowImages.length;
+  if(nextIndex===0 && currentFiles.length===FILES_PER_PAGE){
+    loadPage(currentPage+1).then(()=>{
+      setTimeout(()=>{if(slideshowImages.length) showInSlideshow(0);},300);
+    });
+  } else {
+    showInSlideshow(nextIndex);
+  }
+}
+
+function prevSlide(){
+  if(!slideshowImages.length) return;
+  const prevIndex=(slideIndex-1+slideshowImages.length)%slideshowImages.length;
+  if(prevIndex===slideshowImages.length-1 && currentPage>1){
+    loadPage(currentPage-1).then(()=>{
+      setTimeout(()=>{if(slideshowImages.length) showInSlideshow(slideshowImages.length-1);},300);
+    });
+  } else {
+    showInSlideshow(prevIndex);
+  }
+}
+
+function toggleAutoPlay(){
+  const btn=document.getElementById('playBtn');
+  if(autoPlayInterval){
+    clearInterval(autoPlayInterval);
+    clearInterval(progressInterval);
+    autoPlayInterval=null;progressInterval=null;
+    btn.textContent='▶ تشغيل';
+    document.getElementById('progressFill').style.width='0%';
+  } else {
+    if(!slideshowImages.length){showToast('⚠️ لا توجد صور');return;}
+    autoPlayInterval=setInterval(()=>{nextSlide();document.getElementById('progressFill').style.width='0%';},4000);
+    let progress=0;
+    progressInterval=setInterval(()=>{progress=Math.min(progress+2.5,100);document.getElementById('progressFill').style.width=progress+'%';},100);
+    btn.textContent='⏸ إيقاف';
+  }
+}
+
+function downloadImage(src,file){
+  const link=document.createElement('a');
+  link.href=src;
+  link.download=file || 'image';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('📥 تحميل...');
+}
+
+function shareImage(src,caption){
+  if(navigator.share){
+    navigator.share({title:`📸 ${caption}`,url:src}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(src).then(()=>showToast('📤 تم نسخ الرابط!')).catch(()=>{
+      const dummy=document.createElement('input');
+      dummy.value=src;
+      document.body.appendChild(dummy);
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      showToast('📤 تم نسخ الرابط!');
+    });
+  }
+}
+
+function downloadCurrent(){if(!slideshowImages.length)return;const img=slideshowImages[slideIndex];downloadImage(img.src,img.file)}
+function shareCurrent(){if(!slideshowImages.length)return;const img=slideshowImages[slideIndex];shareImage(img.src,img.caption)}
+
+document.addEventListener('keydown', (e) => {
+  if(slideshowImages.length === 0) return;
+  if(e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  if(e.key === ' ') { e.preventDefault(); toggleAutoPlay(); }
+  if(e.key === 'Escape') {
+    document.getElementById('slideshow').innerHTML = '';
+    document.getElementById('slideCaption').textContent = 'اضغط على صورة للعرض';
+    document.getElementById('slideCounter').textContent = '0 / 0';
+    document.getElementById('progressFill').style.width = '0%';
+  }
+});
+
+window.onload=()=>{
+  if(localStorage.getItem('theme')==='light'){isDark=false;document.body.classList.add('light')}
+  console.log('📸 معرض اليمن - نسخة سريعة مع كاش');
+  console.log('🧹 تم تنظيف الكاش تلقائياً');
+  loadPage(1);
+};
+</script>
+</body>
+</html>

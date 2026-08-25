@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌌 الوعي والوجود - رحلة كونية</title>
+<meta name="description" content="رحلة في فيزياء الكم، النسبية، والروح. اكتشف العلاقة بين العلم والإيمان في تجربة تفاعلية فريدة.">
+<meta name="keywords" content="فيزياء الكم, النسبية, الوعي, الروح, الله, الكون, الزمكان">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+<meta property="og:title" content="🌌 الوعي والوجود - رحلة كونية">
+<meta property="og:description" content="رحلة في فيزياء الكم، النسبية، والروح. تجربة تفاعلية تجمع بين العلم والإيمان.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jabri-web.github.io/Jabri-com/wonder.html">
+<link rel="canonical" href="https://jabri-web.github.io/Jabri-com/wonder.html">
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ===== منع الكاش ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#6ae3ff;--gold:#ffd700;--purple:#a855f7}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min-height:100vh;overflow-x:hidden}
+/* ===== خلفية متحركة ===== */
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--duration) infinite alternate}
+@keyframes twinkle{0%{opacity:0.2;transform:scale(0.8)}100%{opacity:1;transform:scale(1.2)}}
+.glow{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.glow-1{width:400px;height:400px;background:rgba(106,227,255,0.08);top:-100px;right:-100px;animation:float 20s infinite alternate}
+.glow-2{width:500px;height:500px;background:rgba(168,85,247,0.06);bottom:-150px;left:-150px;animation:float 25s infinite alternate-reverse}
+@keyframes float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,-50px) scale(1.2)}}
+/* ===== الحاوية ===== */
+.container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:20px}
+/* ===== الهيدر ===== */
+.header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,rgba(106,227,255,0.05),rgba(168,85,247,0.05));border-radius:20px;border:1px solid rgba(106,227,255,0.1);margin-bottom:30px;backdrop-filter:blur(10px)}
+.header h1{font-size:2.5rem;background:linear-gradient(135deg,var(--secondary),var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .subtitle{color:var(--secondary);font-size:1.1rem;margin-top:10px}
+/* ===== أزرار التنقل ===== */
+.nav-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.nav-buttons a{background:var(--card);color:var(--text);padding:8px 18px;border-radius:30px;text-decoration:none;border:1px solid rgba(255,255,255,0.05);transition:.3s;font-size:0.9rem;display:flex;align-items:center;gap:6px}
+.nav-buttons a:hover{background:var(--secondary);color:#0a0a0f;transform:translateY(-2px)}
+.nav-buttons a.gold{color:var(--gold);border-color:rgba(255,215,0,0.2)}
+.nav-buttons a.gold:hover{background:var(--gold);color:#0a0a0f}
+/* ===== البطاقات ===== */
+.card{background:var(--card);border-radius:16px;padding:25px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.05);transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);border-color:var(--secondary);box-shadow:0 8px 30px rgba(106,227,255,0.05)}
+.card .icon{font-size:2.5rem;display:block;margin-bottom:10px}
+.card h3{color:var(--secondary);font-size:1.3rem;margin-bottom:8px}
+.card p{color:#94a3b8;font-size:0.95rem;line-height:1.8}
+.card .quote{color:var(--gold);font-style:italic;font-size:1.1rem;padding:10px 20px;background:rgba(255,215,0,0.05);border-radius:8px;border-right:3px solid var(--gold);margin-top:10px}
+.card .science{background:rgba(106,227,255,0.05);padding:10px 15px;border-radius:8px;margin-top:10px;font-size:0.85rem;color:var(--secondary)}
+.card.expanded{transform:scale(1.02);border-color:var(--gold);box-shadow:0 0 40px rgba(255,215,0,0.1)}
+.card .expand-btn{position:absolute;bottom:15px;left:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:0.75rem;transition:.3s;font-family:'Tajawal',sans-serif}
+.card .expand-btn:hover{background:var(--secondary);color:#0a0a0f}
+.card .hidden-content{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.card.expanded .hidden-content{max-height:500px}
+/* ===== العداد ===== */
+.counter{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:20px 0}
+.counter-item{background:var(--card);padding:15px 25px;border-radius:12px;text-align:center;border:1px solid rgba(255,255,255,0.05);min-width:100px}
+.counter-item .num{font-size:2rem;font-weight:900;color:var(--gold)}
+.counter-item .label{color:var(--secondary);font-size:0.8rem}
+/* ===== أزرار ===== */
+.theme-toggle{position:fixed;top:20px;left:20px;z-index:999;background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:10px 16px;border-radius:30px;cursor:pointer;font-size:14px;font-family:'Tajawal',sans-serif;display:flex;align-items:center;gap:8px;transition:.3s}
+.theme-toggle:hover{background:var(--secondary);color:#0a0a0f}
+body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff}
+.jump-btn{background:linear-gradient(135deg,var(--secondary),var(--purple));color:#0a0a0f;border:none;padding:14px 35px;border-radius:40px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:.3s;font-family:'Tajawal',sans-serif;margin:10px 0}
+.jump-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(106,227,255,0.3)}
+.footer{text-align:center;padding:30px 0;color:#555;font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.05);margin-top:30px}
+.footer i{color:var(--gold)}
+@media(max-width:600px){.header h1{font-size:1.8rem}.card{padding:18px}.counter-item{min-width:70px;padding:10px 15px}.counter-item .num{font-size:1.5rem}.nav-buttons a{font-size:0.8rem;padding:6px 14px}}
+</style>
+</head>
+<body>
+
+<!-- ===== نجوم خلفية ===== -->
+<div class="stars" id="stars"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- ===== زر الوضع ===== -->
+<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">ليلي</span></button>
+
+<!-- ===== موسيقى خلفية ===== -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="image/music.mp3" type="audio/mpeg">
+</audio>
+<button onclick="toggleMusic()" style="position:fixed;bottom:20px;left:20px;z-index:999;background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:10px 14px;border-radius:50%;cursor:pointer;font-size:18px;width:50px;height:50px;transition:.3s;font-family:'Tajawal',sans-serif;" id="musicBtn">🎵</button>
+
+<div class="container">
+
+<!-- ===== الهيدر ===== -->
+<header class="header">
+    <h1>🌌 الوعي والوجود</h1>
+    <div class="subtitle">🧠 رحلة في فيزياء الكم، النسبية، والروح</div>
+    <p style="color:#94a3b8;margin-top:10px;font-size:0.9rem;">
+        <i class="fas fa-quote-right" style="color:var(--gold);"></i>
+        من يفهمني يقول ازداد إيماني أو مجنون
+        <i class="fas fa-quote-left" style="color:var(--gold);"></i>
+    </p>
+</header>
+
+<!-- ===== أزرار التنقل ===== -->
+<div class="nav-buttons">
+    <a href="gallery.html" class="gold"><i class="fas fa-images"></i> 📸 معرض اليمن</a>
+    <a href="Checkout.html"><i class="fas fa-search"></i> 🔍 نظام الفحص</a>
+    <a href="index.html"><i class="fas fa-home"></i> 🏠 الرئيسية</a>
+</div>
+
+<!-- ===== العداد ===== -->
+<div class="counter">
+    <div class="counter-item"><div class="num" id="counterVisited">0</div><div class="label"><i class="fas fa-eye"></i> زار</div></div>
+    <div class="counter-item"><div class="num" id="counterExpanded">0</div><div class="label"><i class="fas fa-expand-alt"></i> توسيع</div></div>
+    <div class="counter-item"><div class="num" id="counterTime">0</div><div class="label"><i class="fas fa-clock"></i> ثانية</div></div>
+</div>
+
+<!-- ===== زر القفز ===== -->
+<div style="text-align:center;margin:10px 0">
+    <button class="jump-btn" onclick="jumpToRandom()"><i class="fas fa-random"></i> 🌀 قفز عشوائي</button>
+</div>
+
+<!-- ===== البطاقات ===== -->
+<div id="cardsContainer">
+
+<div class="card" data-id="0">
+    <span class="icon">👤</span>
+    <h3>آدم وحواء</h3>
+    <p>رمز للوعي الإنساني الثنائي: العقل والروح، الذكر والأنثى، الفعل والاستقبال.</p>
+    <div class="quote">"أنا: آدم وزوجتي حواء... من يفهمني يقول ازداد إيماني أو مجنون."</div>
+    <div class="hidden-content">
+        <div class="science">🧠 العقل + الروح = الإنسان الكامل. كل إنسان يحمل كلا الجانبين.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="1">
+    <span class="icon">☀️</span>
+    <h3>النسبية</h3>
+    <p>كل شيء نسبي حسب المراقب. المكان ليس ثابتاً، بل يتغير بحسب من ينظر.</p>
+    <div class="quote">"الشمس: انت تراني لكني قد غيرت مكاني الذي راينني فيه."</div>
+    <div class="hidden-content">
+        <div class="science">📐 نظرية النسبية: المكان والزمان يعتمدان على سرعة المراقب. لا يوجد إطار مرجعي مطلق.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="2">
+    <span class="icon">📏</span>
+    <h3>انكماش الطول والزمن</h3>
+    <p>عند السرعات العالية، الطول ينكمش والزمن يتباطأ. الكون يتغير حسب حركتك فيه.</p>
+    <div class="quote">"الطول: انت تراني بطولي لكني انكمش."</div>
+    <div class="hidden-content">
+        <div class="science">⏱️ Length Contraction & Time Dilation: كلما زادت السرعة، قل الطول وتباطأ الزمن.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="3">
+    <span class="icon">⏳</span>
+    <h3>الزمن في النسيج الكوني</h3>
+    <p>الزمن ليس خطاً مستقيمًا، بل هو بعد رابع في نسيج الزمكان.</p>
+    <div class="quote">"الساعة: (زمن) لكني بعدي في النسيج الكوني."</div>
+    <div class="hidden-content">
+        <div class="science">🌌 Spacetime: الزمان والمكان وجهان لعملة واحدة. لا يمكن فصلهما.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="4">
+    <span class="icon">🌍</span>
+    <h3>المكان = الزمان</h3>
+    <p>المكان والزمان ليسا منفصلين، بل هما نسيج واحد: الزمكان.</p>
+    <div class="quote">"المكان: لكني (المكان والزمان = زمان)"</div>
+    <div class="hidden-content">
+        <div class="science">🌀 لا يمكنك تغيير المكان دون تغيير الزمان. هما وجهان لعملة واحدة.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="5">
+    <span class="icon">⚡</span>
+    <h3>الكتلة = طاقة مجمدة</h3>
+    <p>كل ما تراه حولك هو طاقة في شكل مادي. أنت لست جسماً، أنت طاقة.</p>
+    <div class="quote">"الكتلة: لكني طاقة مجمدة."</div>
+    <div class="hidden-content">
+        <div class="science">🔬 E = mc²: المادة هي طاقة مركزة. كل شيء في الكون طاقة.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="6">
+    <span class="icon">🌀</span>
+    <h3>التراكب الكمي</h3>
+    <p>الجسيمات يمكن أن تكون في حالتين في نفس الوقت. مثل 0 و 1 معاً.</p>
+    <div class="quote">"الجسم: اتواجد بوضعين كمومين بحالة واحدة. مثل (0/1...نعم/لا)"</div>
+    <div class="hidden-content">
+        <div class="science">🧪 Quantum Superposition: الجسيم موجود في كل الاحتمالات حتى يتم قياسه.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="7">
+    <span class="icon">👁️</span>
+    <h3>المراقب يخلق الواقع</h3>
+    <p>عندما تراقب جسماً كمياً، تنهار احتمالاته إلى حقيقة واحدة. أنت تخلق واقعك.</p>
+    <div class="quote">"القياس/ابن آدم): اقرار (استقرار/حقيقة/واقع) الجسم بوضعية ثابتة واحدة."</div>
+    <div class="hidden-content">
+        <div class="science">👀 Observer Effect: الوعي يحدد الواقع. الملاحظة تخلق الحقيقة.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="8">
+    <span class="icon">🌊</span>
+    <h3>الجاذبية = انحناء الزمكان</h3>
+    <p>الجاذبية ليست قوة، بل هي انحناء في نسيج الزمكان بسبب الكتلة.</p>
+    <div class="quote">"الجاذبية: لست طاقة بل إنحناء الزمكان."</div>
+    <div class="hidden-content">
+        <div class="science">🌀 General Relativity: الكتلة تنحني الزمكان، وهذا الانحناء هو ما نسميه الجاذبية.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+<div class="card" data-id="9" style="border-color:var(--gold);">
+    <span class="icon">🤲</span>
+    <h3 style="color:var(--gold);">المراقب الأعلى: الله</h3>
+    <p>المراقب الأعلى الذي يرى كل الاحتمالات. الأقرب إلينا من حبل الوريد.</p>
+    <div class="quote" style="border-right-color:var(--gold);color:#fff;">"لقد خلقنا الانسان ونعلم ما توسوس به نفسه ونحن أقرب اليه من حبل الوريد" — صدق الله العظيم</div>
+    <div class="hidden-content">
+        <div class="science" style="color:var(--gold);">🤲 الله هو الوعي الكلي. ليس بعيداً عنا، بل أقرب إلينا من أنفسنا.</div>
+    </div>
+    <button class="expand-btn" onclick="toggleCard(this)"><i class="fas fa-plus"></i> توسيع</button>
+</div>
+
+</div>
+
+<!-- ===== الخاتمة ===== -->
+<div class="card" style="border-color:var(--gold);background:linear-gradient(135deg,rgba(255,215,0,0.03),rgba(106,227,255,0.03));">
+    <div style="text-align:center;">
+        <span class="icon">🌟</span>
+        <h3 style="color:var(--gold);">الخلاصة</h3>
+        <p style="font-size:1.1rem;line-height:2;">
+            الكون ليس مجرد مادة، بل هو <strong style="color:var(--secondary);">نسيج من الوعي</strong>.<br>
+            والله هو <strong style="color:var(--gold);">الوعي الكلي</strong> الذي يرى كل شيء.<br>
+            <span style="color:var(--purple);">"وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ"</span>
+        </p>
+        <div style="margin-top:15px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button onclick="sharePage()" style="background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:8px 20px;border-radius:30px;cursor:pointer;font-family:'Tajawal',sans-serif;"><i class="fas fa-share-alt"></i> مشاركة</button>
+            <button onclick="window.print()" style="background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:8px 20px;border-radius:30px;cursor:pointer;font-family:'Tajawal',sans-serif;"><i class="fas fa-print"></i> طباعة</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== تذييل ===== -->
+<div class="footer">
+    <i class="fas fa-heart" style="color:var(--gold);"></i>
+    من صنعاء إلى الكون
+    <i class="fas fa-heart" style="color:var(--gold);"></i>
+</div>
+
+</div>
+
+<script>
+// ============================================================
+// ===== التطبيق التفاعلي =====
+// ============================================================
+
+// ===== عداد الزوار =====
+let visitorCount = parseInt(localStorage.getItem('visitorConsciousness') || '0');
+visitorCount++;
+localStorage.setItem('visitorConsciousness', visitorCount);
+document.getElementById('counterVisited').textContent = visitorCount;
+
+// ===== عداد التوسيع =====
+let expandCount = parseInt(localStorage.getItem('expandConsciousness') || '0');
+document.getElementById('counterExpanded').textContent = expandCount;
+
+// ===== عداد الوقت =====
+let seconds = 0;
+setInterval(() => {
+    seconds++;
+    document.getElementById('counterTime').textContent = seconds;
+}, 1000);
+
+// ===== توليد النجوم =====
+function createStars() {
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = (Math.random() * 3 + 1) + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+        star.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(star);
+    }
+}
+createStars();
+
+// ===== توسيع البطاقة =====
+function toggleCard(btn) {
+    const card = btn.closest('.card');
+    const isExpanded = card.classList.contains('expanded');
+    card.classList.toggle('expanded');
+    
+    if (!isExpanded) {
+        expandCount++;
+        localStorage.setItem('expandConsciousness', expandCount);
+        document.getElementById('counterExpanded').textContent = expandCount;
+        btn.innerHTML = '<i class="fas fa-minus"></i> طي';
+    } else {
+        btn.innerHTML = '<i class="fas fa-plus"></i> توسيع';
+    }
+}
+
+// ===== القفز العشوائي =====
+function jumpToRandom() {
+    const cards = document.querySelectorAll('.card');
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    const card = cards[randomIndex];
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    card.style.transition = 'box-shadow 0.3s';
+    card.style.boxShadow = '0 0 50px rgba(106,227,255,0.3)';
+    setTimeout(() => {
+        card.style.boxShadow = '';
+    }, 1500);
+    
+    if (!card.classList.contains('expanded')) {
+        const btn = card.querySelector('.expand-btn');
+        toggleCard(btn);
+    }
+}
+
+// ===== وضع ليلي/نهاري =====
+function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    const label = document.getElementById('themeLabel');
+    const icon = document.querySelector('.theme-toggle i');
+    if (isLight) {
+        label.textContent = 'نهاري';
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('consciousnessTheme', 'light');
+    } else {
+        label.textContent = 'ليلي';
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('consciousnessTheme', 'dark');
+    }
+}
+
+if (localStorage.getItem('consciousnessTheme') === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('themeLabel').textContent = 'نهاري';
+    document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+}
+
+// ===== موسيقى =====
+let isMusicPlaying = false;
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+function toggleMusic() {
+    if (isMusicPlaying) {
+        music.pause();
+        musicBtn.innerHTML = '🎵';
+        musicBtn.style.background = 'var(--card)';
+        isMusicPlaying = false;
+    } else {
+        music.play().catch(() => {});
+        musicBtn.innerHTML = '🔊';
+        musicBtn.style.background = 'var(--gold)';
+        musicBtn.style.color = '#0a0a0f';
+        isMusicPlaying = true;
+    }
+}
+
+// تشغيل تلقائي عند أول تفاعل
+document.addEventListener('click', function firstInteraction() {
+    if (!isMusicPlaying) {
+        music.play().catch(() => {});
+        musicBtn.innerHTML = '🔊';
+        musicBtn.style.background = 'var(--gold)';
+        musicBtn.style.color = '#0a0a0f';
+        isMusicPlaying = true;
+    }
+    document.removeEventListener('click', firstInteraction);
+}, { once: true });
+
+// ===== مشاركة =====
+function sharePage() {
+    const url = window.location.href;
+    if (navigator.share) {
+        navigator.share({
+            title: '🌌 الوعي والوجود',
+            text: 'رحلة في فيزياء الكم، النسبية، والروح',
+            url: url
+        }).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('📤 تم نسخ الرابط!');
+        }).catch(() => {
+            const dummy = document.createElement('input');
+            dummy.value = url;
+            document.body.appendChild(dummy);
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('📤 تم نسخ الرابط!');
+        });
+    }
+}
+
+// ===== اختصارات =====
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'r' || e.key === 'R') jumpToRandom();
+    if (e.key === 't' || e.key === 'T') toggleTheme();
+    if (e.key === 'm' || e.key === 'M') toggleMusic();
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.card.expanded').forEach(card => {
+            card.classList.remove('expanded');
+            const btn = card.querySelector('.expand-btn');
+            if (btn) btn.innerHTML = '<i class="fas fa-plus"></i> توسيع';
+        });
+    }
+});
+
+console.log('🌌 الوعي والوجود - النسخة الخارقة 2.0');
+console.log('⌨️ R: قفز عشوائي | T: تبديل الثيم | M: موسيقى | Esc: طي الكل');
+console.log('🇾🇪 من صنعاء إلى الكون');
+</script>
+</body>
+</html>
