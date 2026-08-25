@@ -467,50 +467,6 @@
             display: block;
         }
         
-        /* ===== CV DOWNLOAD BUTTONS ===== */
-        .cv-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin: 25px 0 20px 0;
-        }
-        
-        .cv-btn {
-            padding: 14px 34px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        
-        .cv-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-        }
-        
-        .cv-btn.ar {
-            background: linear-gradient(135deg, #1a1a2e, #2a2a5e);
-            color: #fff;
-        }
-        
-        .cv-btn.en {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #fff;
-        }
-        
-        .cv-btn.pdf {
-            background: linear-gradient(135deg, #dc3545, #b02a37);
-            color: #fff;
-        }
-        
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
@@ -563,15 +519,6 @@
             .badge-row {
                 justify-content: center;
             }
-            .cv-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cv-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 12px 20px;
-            }
         }
         
         @media print {
@@ -580,7 +527,6 @@
             .container::before { display: none; }
             .lang-switch { display: none; }
             .top-nav { display: none; }
-            .cv-buttons { display: none; }
             .profile-image img { border: 2px solid #333; }
             .profile-image::after { display: none; }
             .exp-box:hover { transform: none; }
@@ -612,14 +558,21 @@
     </nav>
 
     <!-- ========================================================== -->
-    <!-- ===== أزرار تحميل السير الذاتية ===== -->
-    <div class="cv-buttons">
-        <a href="/cv-2026a.html" class="cv-btn ar" target="_blank">
+    <!-- ===== الأزرار العلوية (المضافة) ===== -->
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
+
+        <!-- زر السيرة العربية -->
+        <a href="/cv-2026a.html" target="_blank"
+           style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 السيرة الذاتية - العربية (cv-2026a.html)
         </a>
-        <a href="/cv-2027e.html" class="cv-btn en" target="_blank">
-            📄 Curriculum Vitae - English (cv-2027e.html)
+
+        <!-- زر السيرة الإنجليزية -->
+        <a href="/cv-2026e.html" target="_blank"
+           style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+            📄 Curriculum Vitae - English (cv-2026e.html)
         </a>
+
     </div>
     <!-- ========================================================== -->
 
@@ -772,6 +725,76 @@
                 <span class="skill-tag">علاقات العملاء</span>
             </div>
         </div>
+
+        <!-- ========================================================== -->
+        <!-- ===== الأزرار السفلية (من نسخة 24-8-2026) ===== -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
+
+            <!-- زر تحميل PDF -->
+            <a href="/data/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
+               style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+                📄 تحميل السيرة الذاتية (PDF)
+            </a>
+
+            <!-- زر عرض الجدول -->
+            <button onclick="toggleTable()"
+                    style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+                📊 عرض جدول المشاريع والـ DOIs
+            </button>
+
+        </div>
+
+        <!-- ===== جدول المشاريع (مخفي افتراضيًا) ===== -->
+        <div id="projectsTable" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
+
+            <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 المشاريع البحثية والـ DOIs</h3>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; direction: ltr;">
+                <thead>
+                    <tr style="background: #1a1a2e; color: #fff;">
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">#</th>
+                        <th style="padding: 10px 14px; text-align: right; border: 1px solid #333;">المشروع / Project</th>
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">GitHub Pages</th>
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">DOI Zenodo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Jabri6218.github.io</td><td><a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20403864" target="_blank">20403864</a></td></tr>
+                    <tr><td>2</td><td>Zx_RieOS_v1.2</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank">20100622</a></td></tr>
+                    <tr><td>3</td><td>Zx_Mother_Function_Jabri</td><td><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank">Pages</a></td><td>—</td></tr>
+                    <tr><td>4</td><td>Jabri-web.github.io</td><td><a href="https://Jabri-web.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a> / <a href="https://doi.org/10.5281/zenodo.20404167" target="_blank">20404167</a></td></tr>
+                    <tr><td>5</td><td>Jabri_Nobble</td><td><a href="https://jabri-web.github.io/Jabri_Nobble/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20148770" target="_blank">20148770</a></td></tr>
+                    <tr><td>5.1</td><td>└─ Jabri_Riemann</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20139904" target="_blank">20139904</a> / <a href="https://doi.org/10.5281/zenodo.20145337" target="_blank">20145337</a></td></tr>
+                    <tr><td>5.2</td><td>└─ Jabri_np</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20145279" target="_blank">20145279</a></td></tr>
+                    <tr><td>5.3</td><td>└─ Jabri_gab</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20148344" target="_blank">20148344</a></td></tr>
+                    <tr><td>5.4</td><td>└─ Jabri_Navier</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20149618" target="_blank">20149618</a></td></tr>
+                    <tr><td>5.7</td><td>└─ Jabri_Identity</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20114317" target="_blank">20114317</a></td></tr>
+                    <tr><td>6</td><td>Jabri_lab</td><td><a href="https://jabri-web.github.io/jabri_lab/" target="_blank">Pages</a></td><td>قيد النشر</td></tr>
+                    <tr><td>7</td><td>Zx_RieOS_v1.1</td><td><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.19981688" target="_blank">19981688</a> / <a href="https://doi.org/10.5281/zenodo.20070594" target="_blank">20070594</a></td></tr>
+                    <tr><td>8</td><td>Jabri_RiemannOS</td><td><a href="https://jabri-web.github.io/Jabri-RiemannOS/" target="_blank">Pages</a></td><td>—</td></tr>
+                    <tr><td>9</td><td>Jabri_Checkout</td><td><a href="https://jabri-web.github.io/Jabri_Checkout/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20513840" target="_blank">20513840</a></td></tr>
+                    <tr><td>10</td><td>Jabri-web</td><td><a href="https://jabri-web.github.io/Jabri-web/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a></td></tr>
+                    <tr><td>11</td><td>Jabri-com</td><td><a href="https://jabri-web.github.io/jabri-com/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003990" target="_blank">21003990</a></td></tr>
+                    <tr><td>12</td><td>jabri.com</td><td><a href="https://jabri-web.github.io/jabri/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">21003991</a></td></tr>
+                </tbody>
+            </table>
+
+            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">
+                ✅ تم التحقق 2026-06-11 بواسطة الجبري – جميع الروابط والـ DOIs محدثة
+            </p>
+        </div>
+
+        <script>
+            function toggleTable() {
+                const table = document.getElementById('projectsTable');
+                if (table.style.display === 'none') {
+                    table.style.display = 'block';
+                } else {
+                    table.style.display = 'none';
+                }
+            }
+        </script>
+        <!-- ========================================================== -->
 
         <!-- ===== FOOTER ===== -->
         <div class="footer-links">
@@ -938,6 +961,76 @@
             </div>
         </div>
 
+        <!-- ========================================================== -->
+        <!-- ===== الأزرار السفلية (من نسخة 24-8-2026) ===== -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
+
+            <!-- زر تحميل PDF -->
+            <a href="/data/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
+               style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+                📄 Download CV (PDF)
+            </a>
+
+            <!-- زر عرض الجدول -->
+            <button onclick="toggleTableEn()"
+                    style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+                📊 View Projects & DOIs Table
+            </button>
+
+        </div>
+
+        <!-- ===== Projects Table (Hidden by default) ===== -->
+        <div id="projectsTableEn" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
+
+            <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 Research Projects & DOIs</h3>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; direction: ltr;">
+                <thead>
+                    <tr style="background: #1a1a2e; color: #fff;">
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">#</th>
+                        <th style="padding: 10px 14px; text-align: left; border: 1px solid #333;">Project</th>
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">GitHub Pages</th>
+                        <th style="padding: 10px 14px; text-align: center; border: 1px solid #333;">DOI Zenodo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Jabri6218.github.io</td><td><a href="https://jabri-web.github.io/jabri62018.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20403864" target="_blank">20403864</a></td></tr>
+                    <tr><td>2</td><td>Zx_RieOS_v1.2</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank">20100622</a></td></tr>
+                    <tr><td>3</td><td>Zx_Mother_Function_Jabri</td><td><a href="https://Jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank">Pages</a></td><td>—</td></tr>
+                    <tr><td>4</td><td>Jabri-web.github.io</td><td><a href="https://Jabri-web.github.io/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a> / <a href="https://doi.org/10.5281/zenodo.20404167" target="_blank">20404167</a></td></tr>
+                    <tr><td>5</td><td>Jabri_Nobble</td><td><a href="https://jabri-web.github.io/Jabri_Nobble/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20148770" target="_blank">20148770</a></td></tr>
+                    <tr><td>5.1</td><td>└─ Jabri_Riemann</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20139904" target="_blank">20139904</a> / <a href="https://doi.org/10.5281/zenodo.20145337" target="_blank">20145337</a></td></tr>
+                    <tr><td>5.2</td><td>└─ Jabri_np</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20145279" target="_blank">20145279</a></td></tr>
+                    <tr><td>5.3</td><td>└─ Jabri_gab</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20148344" target="_blank">20148344</a></td></tr>
+                    <tr><td>5.4</td><td>└─ Jabri_Navier</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20149618" target="_blank">20149618</a></td></tr>
+                    <tr><td>5.7</td><td>└─ Jabri_Identity</td><td>—</td><td><a href="https://doi.org/10.5281/zenodo.20114317" target="_blank">20114317</a></td></tr>
+                    <tr><td>6</td><td>Jabri_lab</td><td><a href="https://jabri-web.github.io/jabri_lab/" target="_blank">Pages</a></td><td>In Press</td></tr>
+                    <tr><td>7</td><td>Zx_RieOS_v1.1</td><td><a href="https://Jabri-web.github.io/Zx_RieOS_v1.1/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.19981688" target="_blank">19981688</a> / <a href="https://doi.org/10.5281/zenodo.20070594" target="_blank">20070594</a></td></tr>
+                    <tr><td>8</td><td>Jabri_RiemannOS</td><td><a href="https://jabri-web.github.io/Jabri-RiemannOS/" target="_blank">Pages</a></td><td>—</td></tr>
+                    <tr><td>9</td><td>Jabri_Checkout</td><td><a href="https://jabri-web.github.io/Jabri_Checkout/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20513840" target="_blank">20513840</a></td></tr>
+                    <tr><td>10</td><td>Jabri-web</td><td><a href="https://jabri-web.github.io/Jabri-web/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank">20499365</a></td></tr>
+                    <tr><td>11</td><td>Jabri-com</td><td><a href="https://jabri-web.github.io/jabri-com/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003990" target="_blank">21003990</a></td></tr>
+                    <tr><td>12</td><td>jabri.com</td><td><a href="https://jabri-web.github.io/jabri/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">21003991</a></td></tr>
+                </tbody>
+            </table>
+
+            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">
+                ✅ Verified 2026-06-11 by Al-Jabri – All links and DOIs are updated
+            </p>
+        </div>
+
+        <script>
+            function toggleTableEn() {
+                const table = document.getElementById('projectsTableEn');
+                if (table.style.display === 'none') {
+                    table.style.display = 'block';
+                } else {
+                    table.style.display = 'none';
+                }
+            }
+        </script>
+        <!-- ========================================================== -->
+
         <!-- ===== FOOTER ===== -->
         <div class="footer-links">
             <a href="https://jabri-com.vercel.app/">🏠 Qasis – Al-Waha</a>
@@ -980,11 +1073,17 @@
     setLanguage('ar');
 </script>
 
-<!-- ===== COUNTER SCRIPT (مثل ما عندك) ===== -->
+
+<!-- أيقونة العداد - شمال نصف المسافة -->
+<div id="visitorCounter" style="position:fixed; top:65px; left:25%; transform:translateX(-50%) scale(0.5); transform-origin:center; background:linear-gradient(135deg,#8B4513,#A0522D); color:white; padding:10px 20px; border-radius:50px; font-size:18px; font-weight:bold; box-shadow:0 4px 15px rgba(139,69,19,0.5); z-index:9999; display:flex; align-items:center; gap:8px; border:1px solid #D2B48C;">
+    <span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار:</span>
+    <span id="counterNumber">1</span>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <script>
-    // ضع بيانات Firebase الخاصة بك هنا
+    // 1. بيانات Firebase (حط بياناتك الحقيقية)
     const firebaseConfig = {
         apiKey: "AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         authDomain: "jabri-waha.firebaseapp.com",
@@ -998,34 +1097,37 @@
     const counterTextEl = document.getElementById('counterText');
     const counterNumberEl = document.getElementById('counterNumber');
     
-    // إنشاء عناصر العداد إذا لم تكن موجودة
-    if (!document.getElementById('visitorCounter')) {
-        const div = document.createElement('div');
-        div.id = 'visitorCounter';
-        div.style.cssText = 'position:fixed;top:65px;left:25%;transform:translateX(-50%) scale(0.5);transform-origin:center;background:linear-gradient(135deg,#8B4513,#A0522D);color:white;padding:10px 20px;border-radius:50px;font-size:18px;font-weight:bold;box-shadow:0 4px 15px rgba(139,69,19,0.5);z-index:9999;display:flex;align-items:center;gap:8px;border:1px solid #D2B48C;';
-        div.innerHTML = `<span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار:</span> <span id="counterNumber">1</span>`;
-        document.body.appendChild(div);
+    // دالة تحديث اللغة
+    function updateLang() {
+        const isEn = document.body.classList.contains('en');
+        counterTextEl.textContent = isEn ? counterTextEl.getAttribute('data-en') : counterTextEl.getAttribute('data-ar');
     }
     
-    const counterText = document.getElementById('counterText');
-    const counterNum = document.getElementById('counterNumber');
-    
-    function updateCounterLang() {
-        const isEn = document.body.classList.contains('show-en');
-        counterText.textContent = isEn ? counterText.getAttribute('data-en') : counterText.getAttribute('data-ar');
-    }
-    
+    // 2. استماع فوري للتغييرات (تحديث الرقم لكل الزوار لحظياً)
     counterRef.on('value', (s) => {
         const count = s.val() || 1;
-        counterNum.textContent = count.toLocaleString();
-        updateCounterLang();
+        const isEn = document.body.classList.contains('en');
+        counterNumberEl.textContent = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
+        updateLang();
     });
     
+    // 3. تسجيل الزائر الجديد فقط (الحقيقي)
     if (!sessionStorage.getItem('visited')) {
         sessionStorage.setItem('visited', 'true');
+        // لو أول زائر في التاريخ يبدا من 1، واللي بعده 2، 3، 4...
         counterRef.transaction(c => (c || 0) + 1);
     }
+    
+    // 4. ربط اللغة بزر التبديل
+    const oldToggle = window.toggleLang;
+    if (typeof oldToggle === 'function') {
+        window.toggleLang = function() {
+            oldToggle();
+            updateLang();
+        }
+    }
 </script>
+<!-- نهاية زر الزوار -->
 
 </body>
 </html>
