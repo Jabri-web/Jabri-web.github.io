@@ -3,37 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📊 Diagnose 3.0 - مركز قيادة مستودعات الجبري</title>
-<meta name="description" content="Diagnose 3.0 - مركز تشخيص وإدارة 12 مستودع GitHub للمهندس عبدالله الجبري">
-<meta property="og:title" content="📊 Diagnose 3.0 - الجبري">
-<meta property="og:description" content="مركز تشخيص وإدارة مستودعات GitHub">
-<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
+<title>📊 Diagnose 4.0 - مركز قيادة مستودعات الجبري</title>
+<meta name="description" content="Diagnose 4.0 - مركز تشخيص وإدارة 12 مستودع GitHub - مع مقارنة الإصدارات">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-/* ===== نفس الـ CSS السابق مع إضافات ===== */
+/* ===== RESET ===== */
 :root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#8892bf;--success:#4CAF50;--warning:#ffa500;--border:rgba(255,255,255,0.08)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;padding:10px;transition:.3s;min-height:100vh}
 body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
+
+/* ===== HEADER ===== */
 .header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;background:var(--card);border-radius:16px;margin-bottom:12px;border:1px solid var(--border)}
 .header h1{font-size:1.6rem;color:var(--primary)}
 .header .time{color:var(--secondary);font-size:0.8rem;font-family:monospace}
+.header .version{color:var(--secondary);font-size:0.6rem;background:rgba(255,255,255,0.05);padding:2px 10px;border-radius:20px}
+
+/* ===== TOOLBAR ===== */
 .toolbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:var(--card);border-radius:12px;margin-bottom:12px;border:1px solid var(--border);align-items:center}
 .toolbar button{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.8rem;transition:.2s}
 .toolbar button:hover{background:var(--primary);color:#fff;transform:scale(1.05)}
 .toolbar button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.toolbar button.token-btn{background:rgba(255,165,0,0.2);border-color:var(--warning);color:var(--warning)}
+.toolbar button.token-btn:hover{background:var(--warning);color:#fff}
 .toolbar .sep{color:var(--border);padding:0 4px}
+.token-status{font-size:0.65rem;padding:2px 10px;border-radius:20px;background:rgba(255,255,255,0.05)}
+.token-status.active{color:var(--success);background:rgba(76,175,80,0.15)}
+.token-status.inactive{color:var(--warning);background:rgba(255,165,0,0.10)}
+.search-box{background:var(--card);padding:8px 16px;border-radius:30px;border:1px solid var(--border);color:var(--text);width:100%;max-width:250px;font-family:'Tajawal',sans-serif}
+.search-box:focus{outline:none;border-color:var(--secondary)}
+
+/* ===== TOKEN NOTE ===== */
+.token-note{font-size:0.65rem;color:var(--warning);padding:4px 12px;margin-bottom:8px;text-align:center;background:rgba(255,165,0,0.05);border-radius:8px}
+
+/* ===== STATUSBAR ===== */
 .statusbar{background:var(--card);padding:6px 16px;border-radius:10px;border:1px solid var(--border);font-size:0.75rem;color:var(--secondary);display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:12px}
 .statusbar .highlight{color:var(--primary);font-weight:700}
+
+/* ===== CHARTS ===== */
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .chart-box{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--border)}
 .chart-box h3{color:var(--secondary);font-size:0.9rem;text-align:center;margin-bottom:8px}
 .chart-box canvas{max-height:200px;max-width:100%}
+
+/* ===== COMPARE ===== */
+.compare-box{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--border);margin-bottom:16px}
+.compare-box h3{color:var(--primary);font-size:1rem;margin-bottom:10px}
+.compare-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.compare-item{text-align:center;padding:12px;border-radius:12px}
+.compare-item.v1{background:rgba(255,107,107,0.08)}
+.compare-item.v2{background:rgba(76,175,80,0.08)}
+.compare-item .label{font-weight:700;color:var(--secondary);font-size:0.8rem}
+.compare-item .files{font-size:1.1rem;font-weight:700}
+.compare-item .size{font-size:0.85rem;color:var(--secondary)}
+.compare-vs{font-size:2rem;color:var(--warning)}
+.compare-summary{text-align:center;margin-top:10px;font-size:0.9rem;color:var(--secondary)}
+.compare-summary strong{color:var(--primary)}
+
+/* ===== STATS ===== */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
 .stat-card{background:var(--card);padding:12px 16px;border-radius:12px;border:1px solid var(--border);text-align:center}
 .stat-number{font-size:1.8rem;font-weight:900;color:var(--primary)}
 .stat-label{color:var(--secondary);font-size:0.7rem}
+
+/* ===== REPO GRID ===== */
 .repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .repo-card{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--border);transition:.2s;cursor:pointer;position:relative}
 .repo-card:hover{transform:translateY(-3px);border-color:var(--secondary)}
@@ -48,6 +82,8 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
 .status-online{background:#4CAF50;color:#fff}
 .status-offline{background:#ff6b6b;color:#fff}
 .status-unknown{background:#ffa500;color:#fff}
+
+/* ===== MODAL ===== */
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:999;justify-content:center;align-items:center;backdrop-filter:blur(8px)}
 .modal.active{display:flex}
 .modal-content{background:var(--card);border-radius:20px;padding:24px;max-width:700px;width:92%;max-height:80vh;overflow-y:auto;border:1px solid var(--border)}
@@ -57,30 +93,57 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
 .file-list li{background:rgba(255,255,255,0.03);padding:6px 12px;margin:4px 0;border-radius:6px;display:flex;justify-content:space-between;font-size:0.85rem}
 .file-list .size{color:var(--secondary);font-size:0.7rem}
 .file-list .del{background:#ff6b6b;color:#fff;border:none;padding:0 8px;border-radius:4px;cursor:pointer;font-size:0.7rem}
+.file-list .del:hover{transform:scale(1.1)}
+.upload-area{margin-top:12px;padding:12px;border:2px dashed var(--secondary);border-radius:10px;text-align:center;cursor:pointer}
+.upload-area:hover{background:rgba(136,146,191,0.05)}
+
+/* ===== BOTTOM BAR ===== */
 .bottom-bar{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:8px 16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:0.7rem;color:var(--secondary);z-index:100}
 .bottom-bar button{background:transparent;border:none;color:var(--secondary);cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.7rem;padding:4px 10px}
 .bottom-bar button:hover{color:var(--primary)}
-.search-box{background:var(--card);padding:8px 16px;border-radius:30px;border:1px solid var(--border);color:var(--text);width:100%;max-width:300px;font-family:'Tajawal',sans-serif}
-.search-box:focus{outline:none;border-color:var(--secondary)}
+
+/* ===== TOAST ===== */
 .toast{position:fixed;bottom:70px;right:20px;background:var(--card);color:#fff;padding:10px 18px;border-radius:12px;opacity:0;transition:.3s;z-index:999;border:1px solid var(--border);max-width:350px;font-size:0.9rem}
 .toast.show{opacity:1}
+
+/* ===== SPINNER ===== */
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media print{.toolbar,.bottom-bar,.toast,.modal,.search-box{display:none !important}body{background:#fff;color:#000;padding:10px}.repo-card{break-inside:avoid;border:1px solid #ddd;background:#f9f9f9}.stat-card{background:#f9f9f9;border:1px solid #ddd}.stat-number{color:#000}.charts-grid{display:none}}
-@media(max-width:600px){.header h1{font-size:1.2rem}.toolbar button{font-size:0.65rem;padding:4px 10px}.repo-grid{grid-template-columns:1fr}.charts-grid{grid-template-columns:1fr}}
+
+/* ===== PRINT ===== */
+@media print{
+.toolbar,.bottom-bar,.toast,.modal,.search-box,.charts-grid,.compare-box{display:none !important}
+body{background:#fff;color:#000;padding:10px}
+.repo-card{break-inside:avoid;border:1px solid #ddd;background:#f9f9f9}
+.stat-card{background:#f9f9f9;border:1px solid #ddd}
+.stat-number{color:#000}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+.header h1{font-size:1.2rem}
+.toolbar button{font-size:0.65rem;padding:4px 10px}
+.repo-grid{grid-template-columns:1fr}
+.charts-grid{grid-template-columns:1fr}
+.compare-grid{grid-template-columns:1fr;gap:8px}
+.compare-vs{transform:rotate(90deg)}
+}
 </style>
 </head>
 <body>
 
 <div id="toast" class="toast"></div>
 
-<!-- HEADER -->
+<!-- ===== HEADER ===== -->
 <div class="header">
-    <h1>📊 Diagnose 3.0</h1>
+    <div style="display:flex;align-items:center;gap:12px;">
+        <h1>📊 Diagnose 4.0</h1>
+        <span class="version">⚡ الجبري</span>
+    </div>
     <div class="time" id="clock">⏱️ جاري التحميل...</div>
 </div>
 
-<!-- TOOLBAR -->
+<!-- ===== TOOLBAR ===== -->
 <div class="toolbar">
     <button class="primary" onclick="scanAll()">🔄 فحص الكل</button>
     <button onclick="toggleTheme()">🌓</button>
@@ -88,14 +151,19 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
     <button onclick="exportHTML()">📄 HTML</button>
     <button onclick="exportTXT()">📤 TXT</button>
     <span class="sep">|</span>
-    <button onclick="newFolder()">📁 مجلد</button>
-    <button onclick="cleanTemp()">🧹 تنظيف</button>
-    <button onclick="clearToken()">🔑 إعادة تسجيل</button>
+    <button class="token-btn" onclick="enterToken()">🔑 إدخال Token</button>
+    <button onclick="clearToken()" style="background:rgba(255,107,107,0.15);border-color:#ff6b6b;color:#ff6b6b;">🗑️ مسح</button>
+    <span id="tokenStatus" class="token-status inactive">⚪ بدون Token</span>
     <span class="sep">|</span>
     <input class="search-box" id="searchBox" placeholder="🔍 بحث..." oninput="filterRepos(this.value)">
 </div>
 
-<!-- STATUSBAR -->
+<!-- ===== TOKEN NOTE ===== -->
+<div class="token-note">
+    ⚠️ التوكن مخزّن في متصفحك فقط. مطلوب فقط للرفع/الحذف. الفحص والعرض يعملون بدون توكن.
+</div>
+
+<!-- ===== STATUSBAR ===== -->
 <div class="statusbar">
     <span>📂 <span class="highlight" id="repoCount">0</span> مستودع</span>
     <span>📄 <span class="highlight" id="fileCount">0</span> ملف</span>
@@ -104,7 +172,7 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
     <span>🕒 <span id="lastScan">لم يتم الفحص</span></span>
 </div>
 
-<!-- CHARTS -->
+<!-- ===== CHARTS ===== -->
 <div class="charts-grid">
     <div class="chart-box">
         <h3>📊 حجم المستودعات (MB)</h3>
@@ -116,7 +184,28 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
     </div>
 </div>
 
-<!-- STATS -->
+<!-- ===== COMPARE ===== -->
+<div class="compare-box" id="compareBox">
+    <h3>🔁 مقارنة الإصدارات: Zx_RieOS</h3>
+    <div class="compare-grid">
+        <div class="compare-item v1">
+            <div class="label">📌 v1.1</div>
+            <div class="files" id="v1Files">⏳</div>
+            <div class="size" id="v1Size">جاري الفحص...</div>
+        </div>
+        <div class="compare-vs">⚡</div>
+        <div class="compare-item v2">
+            <div class="label">🚀 v1.2</div>
+            <div class="files" id="v2Files">⏳</div>
+            <div class="size" id="v2Size">جاري الفحص...</div>
+        </div>
+    </div>
+    <div class="compare-summary" id="diffSummary">
+        ⏳ افحص المستودعات أولاً
+    </div>
+</div>
+
+<!-- ===== STATS ===== -->
 <div class="stats-grid" id="statsGrid">
     <div class="stat-card"><div class="stat-number" id="totalRepos">0</div><div class="stat-label">📁 المستودعات</div></div>
     <div class="stat-card"><div class="stat-number" id="totalFiles">0</div><div class="stat-label">📄 الملفات</div></div>
@@ -124,29 +213,30 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
     <div class="stat-card"><div class="stat-number" id="totalCommits">0</div><div class="stat-label">📝 الكوميتات</div></div>
 </div>
 
-<!-- REPO GRID -->
+<!-- ===== REPO GRID ===== -->
 <div class="repo-grid" id="repoGrid">
     <p style="grid-column:1/-1;text-align:center;color:var(--secondary);padding:40px;">
         👆 اضغط <strong>"فحص الكل"</strong> لعرض المستودعات
     </p>
 </div>
 
-<!-- MODAL -->
+<!-- ===== MODAL ===== -->
 <div class="modal" id="detailModal">
     <div class="modal-content">
         <button class="close" onclick="closeModal()">✕ إغلاق</button>
         <h2 id="modalTitle">📂 المستودع</h2>
         <div id="modalBody">جاري التحميل...</div>
-        <div style="margin-top:12px;padding:12px;border:2px dashed var(--secondary);border-radius:10px;text-align:center;cursor:pointer;" onclick="document.getElementById('fileUpload').click()">
+        <div class="upload-area" onclick="document.getElementById('fileUpload').click()">
             📤 اضغط لرفع ملفات
             <input type="file" id="fileUpload" multiple style="display:none;" onchange="uploadFiles(this.files)">
         </div>
     </div>
 </div>
 
-<!-- BOTTOM BAR -->
+<!-- ===== BOTTOM BAR ===== -->
 <div class="bottom-bar">
     <button onclick="scanAll()">F3 🔄 فحص</button>
+    <button onclick="compareVersions()">F4 🔁 مقارنة</button>
     <button onclick="newFolder()">F7 📁 مجلد</button>
     <button onclick="cleanTemp()">F8 🧹 حذف</button>
     <button onclick="showHelp()">F1 ❓ مساعدة</button>
@@ -161,12 +251,12 @@ body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
 // ============================================================
 const REPOS = [
     { id: 1, name: 'jabri62018.github.io', path: 'Jabri-web/jabri62018.github.io' },
-    { id: 2, name: 'Zx_RieOS_v1.2', path: 'Jabri-web/Zx_RieOS_v1.2' },
+    { id: 2, name: 'Zx_RieOS_v1.1', path: 'Jabri-web/Zx_RieOS_v1.1' },
     { id: 3, name: 'Zx_Mother_Function_Jabri', path: 'Jabri-web/Zx_Mother_Function_Jabri' },
     { id: 4, name: 'Jabri-web.github.io', path: 'Jabri-web/Jabri-web.github.io' },
     { id: 5, name: 'Jabri_Nobble', path: 'Jabri-web/Jabri_Nobble' },
     { id: 6, name: 'Jabri_lab', path: 'Jabri-web/Jabri_lab' },
-    { id: 7, name: 'Zx_RieOS_v1.1', path: 'Jabri-web/Zx_RieOS_v1.1' },
+    { id: 7, name: 'Zx_RieOS_v1.2', path: 'Jabri-web/Zx_RieOS_v1.2' },
     { id: 8, name: 'Jabri_RiemannOS', path: 'Jabri-web/Jabri_RiemannOS' },
     { id: 9, name: 'Jabri_Checkout', path: 'Jabri-web/Jabri_Checkout' },
     { id: 10, name: 'Jabri-web', path: 'Jabri-web/Jabri-web' },
@@ -182,34 +272,82 @@ let currentRepoId = null;
 let sizeChart = null;
 let fileChart = null;
 
+// ============================================================
 // ===== TOKEN MANAGEMENT =====
+// ============================================================
 function getToken() {
-    let token = localStorage.getItem('github_token');
-    if (!token) {
-        token = prompt('🔑 أدخل GitHub Token (مرة واحدة فقط):\nاحصل عليه من github.com/settings/tokens');
-        if (token) localStorage.setItem('github_token', token);
+    return localStorage.getItem('github_token');
+}
+
+function saveToken(token) {
+    if (token) {
+        localStorage.setItem('github_token', token);
+        updateTokenStatus();
+        showToast('✅ تم حفظ التوكن', 'success');
     }
-    return token;
 }
 
 function clearToken() {
     localStorage.removeItem('github_token');
-    showToast('🔑 تم مسح الـ Token', 'info');
+    updateTokenStatus();
+    showToast('🔑 تم مسح التوكن', 'info');
 }
 
-async function fetchWithToken(url, options = {}) {
+function enterToken() {
+    const token = prompt(
+        '🔑 الصق GitHub Token الخاص بك:\n' +
+        '📍 من: github.com/settings/tokens\n' +
+        '🔒 الصلاحية المطلوبة: repo'
+    );
+    if (token && token.trim()) {
+        saveToken(token.trim());
+    } else if (token !== null) {
+        showToast('⚠️ لم يتم إدخال Token', 'warning');
+    }
+}
+
+function updateTokenStatus() {
+    const el = document.getElementById('tokenStatus');
+    const token = getToken();
+    if (token) {
+        el.textContent = '🟢 مع Token';
+        el.className = 'token-status active';
+    } else {
+        el.textContent = '⚪ بدون Token';
+        el.className = 'token-status inactive';
+    }
+}
+
+// ============================================================
+// ===== FETCH =====
+// ============================================================
+async function fetchWithToken(url, options = {}, needAuth = false) {
     const token = getToken();
     const headers = token ? { 'Authorization': `token ${token}`, ...options.headers } : options.headers || {};
-    const res = await fetch(url, { ...options, headers });
-    if (res.status === 401) {
-        localStorage.removeItem('github_token');
-        showToast('🔑 انتهت صلاحية الـ Token، أدخل واحداً جديداً', 'warning');
-        return fetchWithToken(url, options);
+    
+    try {
+        const res = await fetch(url, { ...options, headers });
+        if (needAuth && !token) {
+            showToast('⚠️ مطلوب Token للرفع/الحذف', 'warning');
+            return null;
+        }
+        if (res.status === 401) {
+            localStorage.removeItem('github_token');
+            updateTokenStatus();
+            if (needAuth) {
+                showToast('❌ التوكن غير صالح', 'error');
+                return null;
+            }
+        }
+        return res;
+    } catch(e) {
+        return null;
     }
-    return res;
 }
 
+// ============================================================
 // ===== TOAST =====
+// ============================================================
 function showToast(msg, type='info') {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -219,14 +357,18 @@ function showToast(msg, type='info') {
     t._timer = setTimeout(() => t.classList.remove('show'), 4000);
 }
 
+// ============================================================
 // ===== CLOCK =====
+// ============================================================
 function updateClock() {
     document.getElementById('clock').textContent = '⏱️ ' + new Date().toLocaleString('ar-EG');
 }
 setInterval(updateClock, 1000);
 updateClock();
 
+// ============================================================
 // ===== THEME =====
+// ============================================================
 function toggleTheme() {
     isDark = !isDark;
     document.body.classList.toggle('light', !isDark);
@@ -236,10 +378,13 @@ if (localStorage.getItem('diagnoseTheme') === 'light') {
     isDark = false; document.body.classList.add('light');
 }
 
-// ===== جلب البيانات =====
+// ============================================================
+// ===== DATA FETCHING =====
+// ============================================================
 async function fetchRepoInfo(repo) {
     try {
         const res = await fetchWithToken(`https://api.github.com/repos/${repo.path}`);
+        if (!res) return { error: 'No Response' };
         if (res.status === 403) return { error: 'Rate Limit' };
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
@@ -249,6 +394,7 @@ async function fetchRepoInfo(repo) {
 async function fetchRepoContents(repo) {
     try {
         const res = await fetchWithToken(`https://api.github.com/repos/${repo.path}/contents`);
+        if (!res) return [];
         if (res.status === 403) return [];
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
@@ -258,6 +404,7 @@ async function fetchRepoContents(repo) {
 async function fetchRealCommitCount(repoPath) {
     try {
         const res = await fetchWithToken(`https://api.github.com/repos/${repoPath}/commits?per_page=1&page=1`);
+        if (!res) return 0;
         if (!res.ok) return 0;
         const link = res.headers.get('Link');
         if (!link) return 1;
@@ -266,7 +413,9 @@ async function fetchRealCommitCount(repoPath) {
     } catch(e) { return 0; }
 }
 
-// ===== الفحص =====
+// ============================================================
+// ===== SCAN =====
+// ============================================================
 async function scanAll() {
     showToast('🔄 جاري فحص المستودعات...', 'info');
     document.getElementById('repoGrid').innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--secondary);padding:40px;"><span class="spinner"></span> جاري الفحص...</p>`;
@@ -281,7 +430,6 @@ async function scanAll() {
         const dirs = contents.filter(c => c.type === 'dir');
         const size = contents.reduce((s, c) => s + (c.size || 0), 0);
         
-        // جلب عدد الكوميتات الحقيقي
         let commitCount = 0;
         if (info.id) {
             commitCount = await fetchRealCommitCount(repo.path);
@@ -320,19 +468,24 @@ async function scanAll() {
     isScanned = true;
     renderRepos();
     renderCharts(repoStats);
+    compareVersions();
     showToast('✅ تم فحص ' + REPOS.length + ' مستودع', 'success');
 }
 
-// ===== الرسوم البيانية =====
+// ============================================================
+// ===== CHARTS =====
+// ============================================================
 function renderCharts(stats) {
     const online = stats.filter(s => s.size > 0);
     const names = online.map(s => s.name.length > 15 ? s.name.slice(0,12)+'...' : s.name);
     const sizes = online.map(s => parseFloat((s.size / (1024*1024)).toFixed(2)));
     const fileCounts = online.map(s => s.files);
     
-    // Size Chart
     const ctx1 = document.getElementById('sizeChart').getContext('2d');
     if (sizeChart) sizeChart.destroy();
+    const isLight = document.body.classList.contains('light');
+    const textColor = isLight ? '#1a1a24' : '#8892bf';
+    
     sizeChart = new Chart(ctx1, {
         type: 'bar',
         data: {
@@ -347,18 +500,14 @@ function renderCharts(stats) {
         },
         options: {
             responsive: true,
-            plugins: { legend: { labels: { color: '#8892bf' } } },
-            scales: { y: { beginAtZero: true, ticks: { color: '#8892bf' } }, x: { ticks: { color: '#8892bf' } } }
+            plugins: { legend: { labels: { color: textColor } } },
+            scales: { y: { beginAtZero: true, ticks: { color: textColor } }, x: { ticks: { color: textColor } } }
         }
     });
     
-    // File Chart (Doughnut)
     const ctx2 = document.getElementById('fileChart').getContext('2d');
     if (fileChart) fileChart.destroy();
-    const total = fileCounts.reduce((a,b) => a+b, 0);
-    const categories = {
-        images: 0, videos: 0, audio: 0, code: 0, docs: 0, other: 0
-    };
+    const categories = { images: 0, videos: 0, audio: 0, code: 0, docs: 0, other: 0 };
     REPOS.forEach(r => {
         const d = repoData[r.id];
         if (!d) return;
@@ -391,13 +540,58 @@ function renderCharts(stats) {
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'bottom', labels: { color: '#8892bf', font: { size: 11 } } }
+                legend: { position: 'bottom', labels: { color: textColor, font: { size: 11 } } }
             }
         }
     });
 }
 
-// ===== عرض المستودعات =====
+// ============================================================
+// ===== COMPARE =====
+// ============================================================
+function compareVersions() {
+    const v1 = repoData[2]; // Zx_RieOS_v1.1 (id=2)
+    const v2 = repoData[7]; // Zx_RieOS_v1.2 (id=7)
+    
+    if (!v1 || !v2 || !v1.files || !v2.files) {
+        document.getElementById('v1Files').textContent = '❌ غير موجود';
+        document.getElementById('v1Size').textContent = 'لم يتم الفحص';
+        document.getElementById('v2Files').textContent = '❌ غير موجود';
+        document.getElementById('v2Size').textContent = 'لم يتم الفحص';
+        document.getElementById('diffSummary').innerHTML = '⚠️ افحص المستودعات أولاً';
+        return;
+    }
+    
+    const f1 = v1.files.length, s1 = v1.size;
+    const f2 = v2.files.length, s2 = v2.size;
+    const c1 = v1.commitCount || 0, c2 = v2.commitCount || 0;
+    
+    document.getElementById('v1Files').textContent = `📄 ${f1} ملف`;
+    document.getElementById('v1Size').textContent = `💾 ${formatSize(s1)} | 📝 ${c1.toLocaleString()}`;
+    document.getElementById('v2Files').textContent = `📄 ${f2} ملف`;
+    document.getElementById('v2Size').textContent = `💾 ${formatSize(s2)} | 📝 ${c2.toLocaleString()}`;
+    
+    const diffFiles = f2 - f1;
+    const diffSize = s2 - s1;
+    const diffCommits = c2 - c1;
+    
+    let emoji = '➖';
+    let status = '✨ متطابقان';
+    if (diffFiles > 0 || diffSize > 0) { emoji = '📈'; status = '🚀 تطور ملحوظ!'; }
+    else if (diffFiles < 0 || diffSize < 0) { emoji = '📉'; status = '⚠️ تراجع ملحوظ!'; }
+    
+    document.getElementById('diffSummary').innerHTML = `
+        ${emoji} <strong>الفرق:</strong>
+        ${diffFiles !== 0 ? `📄 ${diffFiles > 0 ? '+' : ''}${diffFiles} ملف` : ''}
+        ${diffSize !== 0 ? ` | 💾 ${diffSize > 0 ? '+' : ''}${formatSize(Math.abs(diffSize))}` : ''}
+        ${diffCommits !== 0 ? ` | 📝 ${diffCommits > 0 ? '+' : ''}${diffCommits} كوميت` : ''}
+        &nbsp;— <strong>${status}</strong>
+    `;
+}
+
+// ============================================================
+// ===== RENDER REPOS =====
+// ============================================================
 function renderRepos(filter = '') {
     const grid = document.getElementById('repoGrid');
     const filtered = REPOS.filter(r => {
@@ -444,7 +638,9 @@ function renderRepos(filter = '') {
 
 function filterRepos(val) { currentFilter = val; renderRepos(val); }
 
-// ===== التفاصيل =====
+// ============================================================
+// ===== DETAIL =====
+// ============================================================
 async function showDetail(id) {
     const d = repoData[id];
     if (!d) return;
@@ -475,13 +671,20 @@ async function showDetail(id) {
 
 function closeModal() { document.getElementById('detailModal').classList.remove('active'); }
 
-// ===== حذف ملف =====
+// ============================================================
+// ===== DELETE FILE =====
+// ============================================================
 async function deleteFile(repoPath, fileName) {
-    if (!confirm(`⚠️ حذف "${fileName}"؟`)) return;
+    if (!getToken()) {
+        showToast('⚠️ مطلوب Token للحذف. اضغط "إدخال Token"', 'warning');
+        return;
+    }
+    if (!confirm(`⚠️ حذف "${fileName}" نهائياً؟`)) return;
     showToast(`🗑️ جاري حذف ${fileName}...`, 'info');
     try {
         const shaRes = await fetchWithToken(`https://api.github.com/repos/${repoPath}/contents/${fileName}`);
-        if (!shaRes.ok) throw new Error('SHA');
+        if (!shaRes) { showToast('❌ فشل جلب معلومات الملف', 'error'); return; }
+        if (!shaRes.ok) { showToast('❌ الملف غير موجود', 'error'); return; }
         const shaData = await shaRes.json();
         const token = getToken();
         const delRes = await fetch(`https://api.github.com/repos/${repoPath}/contents/${fileName}`, {
@@ -490,12 +693,18 @@ async function deleteFile(repoPath, fileName) {
             body: JSON.stringify({ message: `حذف ${fileName}`, sha: shaData.sha })
         });
         if (delRes.ok) { showToast('✅ تم الحذف', 'success'); scanAll(); }
-        else showToast('❌ فشل', 'error');
-    } catch(e) { showToast('❌ خطأ', 'error'); }
+        else { showToast('❌ فشل الحذف', 'error'); }
+    } catch(e) { showToast('❌ خطأ: ' + e.message, 'error'); }
 }
 
-// ===== رفع ملف =====
+// ============================================================
+// ===== UPLOAD FILE =====
+// ============================================================
 async function uploadFiles(files) {
+    if (!getToken()) {
+        showToast('⚠️ مطلوب Token للرفع. اضغط "إدخال Token"', 'warning');
+        return;
+    }
     if (!currentRepoId) { showToast('⚠️ افتح مستودعاً أولاً', 'warning'); return; }
     const repo = REPOS.find(r => r.id === currentRepoId);
     if (!repo) return;
@@ -505,30 +714,35 @@ async function uploadFiles(files) {
         try {
             const reader = new FileReader();
             reader.onload = async (e) => {
-                const content = btoa(e.target.result);
+                // ===== الترميز العربي =====
+                const content = btoa(unescape(encodeURIComponent(e.target.result)));
                 const res = await fetch(`https://api.github.com/repos/${repo.path}/contents/${file.name}`, {
                     method: 'PUT',
                     headers: { 'Authorization': `token ${token}` },
                     body: JSON.stringify({ message: `رفع ${file.name}`, content })
                 });
                 if (res.ok) { showToast(`✅ ${file.name}`, 'success'); scanAll(); }
-                else showToast(`❌ ${file.name}`, 'error');
+                else { showToast(`❌ ${file.name}`, 'error'); }
             };
             reader.readAsBinaryString(file);
         } catch(e) { showToast(`❌ ${file.name}`, 'error'); }
     }
 }
 
-// ===== أدوات =====
+// ============================================================
+// ===== TOOLS =====
+// ============================================================
 function openRepo(path) { window.open(`https://github.com/${path}`, '_blank'); }
 function deleteRepo(id) {
-    if (!confirm(`⚠️ حذف "${REPOS.find(r=>r.id===id)?.name}"؟`)) return;
+    if (!confirm(`⚠️ حذف "${REPOS.find(r=>r.id===id)?.name}" من القائمة؟`)) return;
     const idx = REPOS.findIndex(r => r.id === id);
     if (idx !== -1) { REPOS.splice(idx, 1); delete repoData[id]; renderRepos(currentFilter); showToast('🗑️ تم الحذف', 'success'); }
 }
 function newFolder() { showToast('📁 مجلد جديد - سيتم إضافته قريباً', 'info'); }
 function cleanTemp() { showToast('🧹 تم تنظيف الملفات المؤقتة', 'success'); }
-function showHelp() { showToast('❓ Diagnose 3.0 - مثل Norton Commander لكن مع رسوم بيانية!', 'info'); }
+function showHelp() { 
+    showToast('❓ Diagnose 4.0\nF1=مساعدة | F3=فحص | F4=مقارنة | F7=مجلد | F8=حذف', 'info'); 
+}
 
 function printReport() {
     if (!isScanned) { showToast('⚠️ افحص أولاً', 'warning'); return; }
@@ -547,7 +761,7 @@ function exportHTML() {
 
 function exportTXT() {
     if (!isScanned) { showToast('⚠️ افحص أولاً', 'warning'); return; }
-    let report = '📊 تقرير Diagnose 3.0\n' + '='.repeat(50) + '\n' + new Date().toLocaleString() + '\n\n';
+    let report = '📊 تقرير Diagnose 4.0\n' + '='.repeat(50) + '\n' + new Date().toLocaleString() + '\n\n';
     REPOS.forEach(r => {
         const d = repoData[r.id];
         if (!d) return;
@@ -568,19 +782,26 @@ function formatSize(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 }
 
-// ===== اختصارات =====
+// ============================================================
+// ===== KEYBOARD SHORTCUTS =====
+// ============================================================
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
     if (e.key === 'F3') { e.preventDefault(); scanAll(); }
+    if (e.key === 'F4') { e.preventDefault(); compareVersions(); }
     if (e.key === 'F7') { e.preventDefault(); newFolder(); }
     if (e.key === 'F8') { e.preventDefault(); cleanTemp(); }
     if (e.key === 'F1') { e.preventDefault(); showHelp(); }
-    if (e.key === 'r' || e.key === 'R') { if (!e.ctrlKey) scanAll(); }
 });
 
-console.log('🇾🇪 Diagnose 3.0 - Norton Commander مع رسوم بيانية');
-console.log('📌 F1=مساعدة | F3=فحص | F7=مجلد | F8=حذف | ESC=إغلاق');
-console.log('🔑 Token مخزن محلياً - ادخله مرة واحدة');
+// ============================================================
+// ===== INIT =====
+// ============================================================
+updateTokenStatus();
+console.log('🇾🇪 Diagnose 4.0 - Norton Commander للويب');
+console.log('📌 F1=مساعدة | F3=فحص | F4=مقارنة | F7=مجلد | F8=حذف');
+console.log('📌 Token اختياري - فقط للرفع/الحذف');
+console.log('📌 الترميز العربي مدعوم ✅');
 </script>
 </body>
 </html>
