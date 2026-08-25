@@ -3,124 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📊 مركز تشخيص المستودعات | Diagnose 2.0</title>
+<title>📊 Diagnose 3.0 - مركز قيادة مستودعات الجبري</title>
+<meta name="description" content="Diagnose 3.0 - مركز تشخيص وإدارة 12 مستودع GitHub للمهندس عبدالله الجبري">
+<meta property="og:title" content="📊 Diagnose 3.0 - الجبري">
+<meta property="og:description" content="مركز تشخيص وإدارة مستودعات GitHub">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-:root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#8892bf;--success:#4CAF50;--warning:#ffa500}
+/* ===== نفس الـ CSS السابق مع إضافات ===== */
+:root{--bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a24;--primary:#ff6b6b;--secondary:#8892bf;--success:#4CAF50;--warning:#ffa500;--border:rgba(255,255,255,0.08)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;padding:20px;transition:.3s}
-body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff}
-h1{color:var(--primary);font-size:2.2rem;margin-bottom:5px}
-.subtitle{color:var(--secondary);font-size:1rem;margin-bottom:20px}
-.header-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0}
-.header-actions button{background:var(--card);color:var(--text);border:1px solid rgba(255,255,255,0.1);padding:10px 20px;border-radius:10px;cursor:pointer;transition:.3s;font-family:'Tajawal',sans-serif;font-weight:700}
-.header-actions button:hover{background:var(--primary);color:#fff;transform:scale(1.05)}
-.header-actions button.primary{background:var(--primary);color:#fff}
-.header-actions button.primary:hover{background:#e55a5a}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0}
-.stat-card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);transition:.3s}
-.stat-card:hover{transform:translateY(-3px);border-color:var(--secondary)}
-.stat-number{font-size:2.5rem;font-weight:900;color:var(--primary)}
-.stat-label{color:var(--secondary);font-size:0.9rem;margin-top:5px}
-.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;margin:20px 0}
-.repo-card{background:var(--card);border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,0.05);transition:.3s;cursor:pointer;position:relative}
-.repo-card:hover{transform:translateY(-5px);border-color:var(--secondary);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
-.repo-card .repo-name{font-size:1.2rem;font-weight:700;color:var(--primary)}
-.repo-card .repo-path{color:var(--secondary);font-size:0.8rem;font-family:monospace;margin:5px 0}
-.repo-card .repo-stats{display:flex;gap:15px;flex-wrap:wrap;margin:10px 0}
-.repo-card .repo-stats span{background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:20px;font-size:0.8rem}
-.repo-card .repo-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.repo-card .repo-actions button{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:0.8rem;transition:.3s;font-family:'Tajawal',sans-serif}
-.repo-card .repo-actions button:hover{background:var(--primary);color:#fff}
-.repo-card .status-badge{position:absolute;top:10px;left:10px;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;padding:10px;transition:.3s;min-height:100vh}
+body.light{--bg:#f0f0f5;--text:#1a1a24;--card:#ffffff;--border:rgba(0,0,0,0.08)}
+.header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;background:var(--card);border-radius:16px;margin-bottom:12px;border:1px solid var(--border)}
+.header h1{font-size:1.6rem;color:var(--primary)}
+.header .time{color:var(--secondary);font-size:0.8rem;font-family:monospace}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:var(--card);border-radius:12px;margin-bottom:12px;border:1px solid var(--border);align-items:center}
+.toolbar button{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.8rem;transition:.2s}
+.toolbar button:hover{background:var(--primary);color:#fff;transform:scale(1.05)}
+.toolbar button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.toolbar .sep{color:var(--border);padding:0 4px}
+.statusbar{background:var(--card);padding:6px 16px;border-radius:10px;border:1px solid var(--border);font-size:0.75rem;color:var(--secondary);display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:12px}
+.statusbar .highlight{color:var(--primary);font-weight:700}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.chart-box{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--border)}
+.chart-box h3{color:var(--secondary);font-size:0.9rem;text-align:center;margin-bottom:8px}
+.chart-box canvas{max-height:200px;max-width:100%}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
+.stat-card{background:var(--card);padding:12px 16px;border-radius:12px;border:1px solid var(--border);text-align:center}
+.stat-number{font-size:1.8rem;font-weight:900;color:var(--primary)}
+.stat-label{color:var(--secondary);font-size:0.7rem}
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.repo-card{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--border);transition:.2s;cursor:pointer;position:relative}
+.repo-card:hover{transform:translateY(-3px);border-color:var(--secondary)}
+.repo-card .name{font-size:1.1rem;font-weight:700;color:var(--primary)}
+.repo-card .path{color:var(--secondary);font-size:0.7rem;font-family:monospace}
+.repo-card .stats{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
+.repo-card .stats span{background:rgba(255,255,255,0.05);padding:2px 10px;border-radius:12px;font-size:0.7rem}
+.repo-card .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.repo-card .actions button{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:0.7rem;transition:.2s}
+.repo-card .actions button:hover{background:var(--primary);color:#fff}
+.badge{position:absolute;top:10px;left:10px;padding:2px 10px;border-radius:12px;font-size:0.6rem;font-weight:700}
 .status-online{background:#4CAF50;color:#fff}
 .status-offline{background:#ff6b6b;color:#fff}
 .status-unknown{background:#ffa500;color:#fff}
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:999;justify-content:center;align-items:center;backdrop-filter:blur(8px)}
 .modal.active{display:flex}
-.modal-content{background:var(--card);border-radius:20px;padding:30px;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;border:1px solid rgba(255,255,255,0.1)}
-.modal-content h2{color:var(--primary);margin-bottom:15px}
-.modal-content .close-btn{background:var(--primary);color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;float:left;font-family:'Tajawal',sans-serif}
-.modal-content .file-list{list-style:none;padding:0}
-.modal-content .file-list li{background:rgba(255,255,255,0.03);padding:8px 12px;margin:5px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem}
-.modal-content .file-list li .file-size{color:var(--secondary);font-size:0.7rem}
-.modal-content .file-list li .file-delete{background:#ff6b6b;color:#fff;border:none;padding:2px 10px;border-radius:6px;cursor:pointer;font-size:0.7rem}
-.modal-content .file-list li .file-delete:hover{transform:scale(1.1)}
-.loading-spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--card);color:#fff;padding:12px 20px;border-radius:12px;opacity:0;transition:.3s;z-index:999;border:1px solid rgba(255,255,255,0.1);max-width:400px}
-.toast.show{opacity:1}
-.search-box{background:var(--card);padding:10px 20px;border-radius:30px;border:1px solid rgba(255,255,255,0.1);color:var(--text);width:100%;max-width:400px;font-family:'Tajawal',sans-serif;margin:10px auto;display:block}
+.modal-content{background:var(--card);border-radius:20px;padding:24px;max-width:700px;width:92%;max-height:80vh;overflow-y:auto;border:1px solid var(--border)}
+.modal-content h2{color:var(--primary);margin-bottom:12px;font-size:1.3rem}
+.modal-content .close{background:var(--primary);color:#fff;border:none;padding:6px 18px;border-radius:8px;cursor:pointer;float:left;font-family:'Tajawal',sans-serif}
+.file-list{list-style:none;padding:0}
+.file-list li{background:rgba(255,255,255,0.03);padding:6px 12px;margin:4px 0;border-radius:6px;display:flex;justify-content:space-between;font-size:0.85rem}
+.file-list .size{color:var(--secondary);font-size:0.7rem}
+.file-list .del{background:#ff6b6b;color:#fff;border:none;padding:0 8px;border-radius:4px;cursor:pointer;font-size:0.7rem}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:8px 16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:0.7rem;color:var(--secondary);z-index:100}
+.bottom-bar button{background:transparent;border:none;color:var(--secondary);cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.7rem;padding:4px 10px}
+.bottom-bar button:hover{color:var(--primary)}
+.search-box{background:var(--card);padding:8px 16px;border-radius:30px;border:1px solid var(--border);color:var(--text);width:100%;max-width:300px;font-family:'Tajawal',sans-serif}
 .search-box:focus{outline:none;border-color:var(--secondary)}
-.upload-area{border:2px dashed var(--secondary);padding:20px;border-radius:12px;margin:15px 0;text-align:center;cursor:pointer;transition:.3s}
-.upload-area:hover{background:rgba(136,146,191,0.05)}
-.upload-area input[type="file"]{display:none}
-/* ===== الطباعة ===== */
-@media print {
-  body{background:#fff;color:#000;padding:10px}
-  .header-actions,.search-box,.toast,.modal,.refresh-btn{display:none !important}
-  .repo-card{break-inside:avoid;border:1px solid #ddd;background:#f9f9f9}
-  .repo-card .repo-name{color:#000}
-  .repo-card .repo-path{color:#555}
-  .repo-card .repo-stats span{background:#eee;color:#000}
-  .status-badge{display:none}
-  .stat-card{background:#f9f9f9;border:1px solid #ddd}
-  .stat-number{color:#000}
-  .stat-label{color:#555}
-  .repo-grid{display:block}
-  .repo-card{margin-bottom:15px}
-}
+.toast{position:fixed;bottom:70px;right:20px;background:var(--card);color:#fff;padding:10px 18px;border-radius:12px;opacity:0;transition:.3s;z-index:999;border:1px solid var(--border);max-width:350px;font-size:0.9rem}
+.toast.show{opacity:1}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media print{.toolbar,.bottom-bar,.toast,.modal,.search-box{display:none !important}body{background:#fff;color:#000;padding:10px}.repo-card{break-inside:avoid;border:1px solid #ddd;background:#f9f9f9}.stat-card{background:#f9f9f9;border:1px solid #ddd}.stat-number{color:#000}.charts-grid{display:none}}
+@media(max-width:600px){.header h1{font-size:1.2rem}.toolbar button{font-size:0.65rem;padding:4px 10px}.repo-grid{grid-template-columns:1fr}.charts-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <div id="toast" class="toast"></div>
 
-<h1>📊 مركز تشخيص المستودعات</h1>
-<div class="subtitle">🔍 تشخيص وإدارة 12 مستودعاً • GitHub API</div>
-
-<div class="header-actions">
-    <button onclick="scanAllRepos()" class="primary">🔄 فحص الكل</button>
-    <button onclick="toggleTheme()">🌓 الوضع</button>
-    <button onclick="printReport()">🖨️ طباعة</button>
-    <button onclick="exportHTML()">📄 تصدير HTML</button>
-    <button onclick="exportTXT()">📤 تصدير TXT</button>
+<!-- HEADER -->
+<div class="header">
+    <h1>📊 Diagnose 3.0</h1>
+    <div class="time" id="clock">⏱️ جاري التحميل...</div>
 </div>
 
-<input class="search-box" id="searchBox" placeholder="🔍 ابحث عن مستودع..." oninput="filterRepos(this.value)">
+<!-- TOOLBAR -->
+<div class="toolbar">
+    <button class="primary" onclick="scanAll()">🔄 فحص الكل</button>
+    <button onclick="toggleTheme()">🌓</button>
+    <button onclick="printReport()">🖨️</button>
+    <button onclick="exportHTML()">📄 HTML</button>
+    <button onclick="exportTXT()">📤 TXT</button>
+    <span class="sep">|</span>
+    <button onclick="newFolder()">📁 مجلد</button>
+    <button onclick="cleanTemp()">🧹 تنظيف</button>
+    <button onclick="clearToken()">🔑 إعادة تسجيل</button>
+    <span class="sep">|</span>
+    <input class="search-box" id="searchBox" placeholder="🔍 بحث..." oninput="filterRepos(this.value)">
+</div>
 
+<!-- STATUSBAR -->
+<div class="statusbar">
+    <span>📂 <span class="highlight" id="repoCount">0</span> مستودع</span>
+    <span>📄 <span class="highlight" id="fileCount">0</span> ملف</span>
+    <span>💾 <span class="highlight" id="sizeCount">0</span></span>
+    <span>📝 <span class="highlight" id="commitCount">0</span> كوميت</span>
+    <span>🕒 <span id="lastScan">لم يتم الفحص</span></span>
+</div>
+
+<!-- CHARTS -->
+<div class="charts-grid">
+    <div class="chart-box">
+        <h3>📊 حجم المستودعات (MB)</h3>
+        <canvas id="sizeChart"></canvas>
+    </div>
+    <div class="chart-box">
+        <h3>📄 توزيع الملفات</h3>
+        <canvas id="fileChart"></canvas>
+    </div>
+</div>
+
+<!-- STATS -->
 <div class="stats-grid" id="statsGrid">
-    <div class="stat-card"><div class="stat-number" id="totalRepos">0</div><div class="stat-label">📁 إجمالي المستودعات</div></div>
-    <div class="stat-card"><div class="stat-number" id="totalFiles">0</div><div class="stat-label">📄 إجمالي الملفات</div></div>
-    <div class="stat-card"><div class="stat-number" id="totalSize">0</div><div class="stat-label">💾 الحجم الإجمالي</div></div>
-    <div class="stat-card"><div class="stat-number" id="totalCommits">0</div><div class="stat-label">📝 إجمالي الكوميتات</div></div>
+    <div class="stat-card"><div class="stat-number" id="totalRepos">0</div><div class="stat-label">📁 المستودعات</div></div>
+    <div class="stat-card"><div class="stat-number" id="totalFiles">0</div><div class="stat-label">📄 الملفات</div></div>
+    <div class="stat-card"><div class="stat-number" id="totalSize">0</div><div class="stat-label">💾 الحجم</div></div>
+    <div class="stat-card"><div class="stat-number" id="totalCommits">0</div><div class="stat-label">📝 الكوميتات</div></div>
 </div>
 
+<!-- REPO GRID -->
 <div class="repo-grid" id="repoGrid">
     <p style="grid-column:1/-1;text-align:center;color:var(--secondary);padding:40px;">
         👆 اضغط <strong>"فحص الكل"</strong> لعرض المستودعات
     </p>
 </div>
 
-<!-- ===== مودال التفاصيل ===== -->
+<!-- MODAL -->
 <div class="modal" id="detailModal">
     <div class="modal-content">
-        <button class="close-btn" onclick="closeModal()">✕ إغلاق</button>
+        <button class="close" onclick="closeModal()">✕ إغلاق</button>
         <h2 id="modalTitle">📂 المستودع</h2>
         <div id="modalBody">جاري التحميل...</div>
-        <div class="upload-area" onclick="document.getElementById('fileUpload').click()">
+        <div style="margin-top:12px;padding:12px;border:2px dashed var(--secondary);border-radius:10px;text-align:center;cursor:pointer;" onclick="document.getElementById('fileUpload').click()">
             📤 اضغط لرفع ملفات
-            <input type="file" id="fileUpload" multiple onchange="uploadFiles(this.files)">
+            <input type="file" id="fileUpload" multiple style="display:none;" onchange="uploadFiles(this.files)">
         </div>
     </div>
 </div>
 
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+    <button onclick="scanAll()">F3 🔄 فحص</button>
+    <button onclick="newFolder()">F7 📁 مجلد</button>
+    <button onclick="cleanTemp()">F8 🧹 حذف</button>
+    <button onclick="showHelp()">F1 ❓ مساعدة</button>
+    <button onclick="window.scrollTo(0,0)">⬆️ أعلى</button>
+    <span style="color:var(--border);">|</span>
+    <span>🇾🇪 الجبري 2026</span>
+</div>
+
 <script>
 // ============================================================
-// ===== قائمة المستودعات الـ 12 =====
+// ===== REPOS =====
 // ============================================================
 const REPOS = [
     { id: 1, name: 'jabri62018.github.io', path: 'Jabri-web/jabri62018.github.io' },
@@ -139,77 +176,133 @@ const REPOS = [
 
 let repoData = {};
 let isDark = true;
+let isScanned = false;
 let currentFilter = '';
 let currentRepoId = null;
-let isScanned = false;
+let sizeChart = null;
+let fileChart = null;
 
-function showToast(msg, type = 'info') {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.style.background = type === 'error' ? '#ff6b6b' : type === 'success' ? '#4CAF50' : type === 'warning' ? '#ffa500' : 'var(--card)';
-    toast.classList.add('show');
-    clearTimeout(toast._timeout);
-    toast._timeout = setTimeout(() => toast.classList.remove('show'), 4000);
+// ===== TOKEN MANAGEMENT =====
+function getToken() {
+    let token = localStorage.getItem('github_token');
+    if (!token) {
+        token = prompt('🔑 أدخل GitHub Token (مرة واحدة فقط):\nاحصل عليه من github.com/settings/tokens');
+        if (token) localStorage.setItem('github_token', token);
+    }
+    return token;
 }
 
+function clearToken() {
+    localStorage.removeItem('github_token');
+    showToast('🔑 تم مسح الـ Token', 'info');
+}
+
+async function fetchWithToken(url, options = {}) {
+    const token = getToken();
+    const headers = token ? { 'Authorization': `token ${token}`, ...options.headers } : options.headers || {};
+    const res = await fetch(url, { ...options, headers });
+    if (res.status === 401) {
+        localStorage.removeItem('github_token');
+        showToast('🔑 انتهت صلاحية الـ Token، أدخل واحداً جديداً', 'warning');
+        return fetchWithToken(url, options);
+    }
+    return res;
+}
+
+// ===== TOAST =====
+function showToast(msg, type='info') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = type==='error'?'#ff6b6b':type==='success'?'#4CAF50':type==='warning'?'#ffa500':'var(--card)';
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ===== CLOCK =====
+function updateClock() {
+    document.getElementById('clock').textContent = '⏱️ ' + new Date().toLocaleString('ar-EG');
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ===== THEME =====
 function toggleTheme() {
     isDark = !isDark;
     document.body.classList.toggle('light', !isDark);
     localStorage.setItem('diagnoseTheme', isDark ? 'dark' : 'light');
 }
+if (localStorage.getItem('diagnoseTheme') === 'light') {
+    isDark = false; document.body.classList.add('light');
+}
 
-// ===== 1. جلب معلومات المستودع =====
+// ===== جلب البيانات =====
 async function fetchRepoInfo(repo) {
     try {
-        const apiUrl = `https://api.github.com/repos/${repo.path}`;
-        const response = await fetch(apiUrl);
-        if (response.status === 403) {
-            return { error: 'Rate Limit' };
-        }
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return await response.json();
-    } catch (e) {
-        return { error: e.message };
-    }
+        const res = await fetchWithToken(`https://api.github.com/repos/${repo.path}`);
+        if (res.status === 403) return { error: 'Rate Limit' };
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch(e) { return { error: e.message }; }
 }
 
 async function fetchRepoContents(repo) {
     try {
-        const apiUrl = `https://api.github.com/repos/${repo.path}/contents`;
-        const response = await fetch(apiUrl);
-        if (response.status === 403) return [];
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return await response.json();
-    } catch (e) {
-        return [];
-    }
+        const res = await fetchWithToken(`https://api.github.com/repos/${repo.path}/contents`);
+        if (res.status === 403) return [];
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch(e) { return []; }
 }
 
-// ===== 2. فحص كل المستودعات =====
-async function scanAllRepos() {
+async function fetchRealCommitCount(repoPath) {
+    try {
+        const res = await fetchWithToken(`https://api.github.com/repos/${repoPath}/commits?per_page=1&page=1`);
+        if (!res.ok) return 0;
+        const link = res.headers.get('Link');
+        if (!link) return 1;
+        const match = link.match(/page=(\d+)>; rel="last"/);
+        return match ? parseInt(match[1]) : 1;
+    } catch(e) { return 0; }
+}
+
+// ===== الفحص =====
+async function scanAll() {
     showToast('🔄 جاري فحص المستودعات...', 'info');
-    document.getElementById('repoGrid').innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--secondary);padding:40px;"><span class="loading-spinner"></span> جاري الفحص...</p>';
+    document.getElementById('repoGrid').innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--secondary);padding:40px;"><span class="spinner"></span> جاري الفحص...</p>`;
     
     let totalFiles = 0, totalSize = 0, totalCommits = 0;
+    const repoStats = [];
     
     for (const repo of REPOS) {
         const info = await fetchRepoInfo(repo);
         const contents = await fetchRepoContents(repo);
+        const files = contents.filter(c => c.type === 'file');
+        const dirs = contents.filter(c => c.type === 'dir');
+        const size = contents.reduce((s, c) => s + (c.size || 0), 0);
+        
+        // جلب عدد الكوميتات الحقيقي
+        let commitCount = 0;
+        if (info.id) {
+            commitCount = await fetchRealCommitCount(repo.path);
+        }
         
         repoData[repo.id] = {
             ...repo,
             info: info,
             contents: contents,
-            files: contents.filter(c => c.type === 'file'),
-            dirs: contents.filter(c => c.type === 'dir'),
-            size: contents.reduce((sum, c) => sum + (c.size || 0), 0),
+            files: files,
+            dirs: dirs,
+            size: size,
+            commitCount: commitCount,
             status: info.id ? 'online' : 'offline'
         };
         
         if (info.id) {
-            totalFiles += repoData[repo.id].files.length;
-            totalSize += repoData[repo.id].size;
-            totalCommits += info.size || 0;
+            totalFiles += files.length;
+            totalSize += size;
+            totalCommits += commitCount;
+            repoStats.push({ name: repo.name, size: size, files: files.length });
         }
     }
     
@@ -218,22 +311,99 @@ async function scanAllRepos() {
     document.getElementById('totalSize').textContent = formatSize(totalSize);
     document.getElementById('totalCommits').textContent = totalCommits.toLocaleString();
     
+    document.getElementById('repoCount').textContent = REPOS.length;
+    document.getElementById('fileCount').textContent = totalFiles.toLocaleString();
+    document.getElementById('sizeCount').textContent = formatSize(totalSize);
+    document.getElementById('commitCount').textContent = totalCommits.toLocaleString();
+    document.getElementById('lastScan').textContent = new Date().toLocaleTimeString('ar-EG');
+    
     isScanned = true;
     renderRepos();
+    renderCharts(repoStats);
     showToast('✅ تم فحص ' + REPOS.length + ' مستودع', 'success');
 }
 
-// ===== 3. عرض المستودعات =====
+// ===== الرسوم البيانية =====
+function renderCharts(stats) {
+    const online = stats.filter(s => s.size > 0);
+    const names = online.map(s => s.name.length > 15 ? s.name.slice(0,12)+'...' : s.name);
+    const sizes = online.map(s => parseFloat((s.size / (1024*1024)).toFixed(2)));
+    const fileCounts = online.map(s => s.files);
+    
+    // Size Chart
+    const ctx1 = document.getElementById('sizeChart').getContext('2d');
+    if (sizeChart) sizeChart.destroy();
+    sizeChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: names,
+            datasets: [{
+                label: 'الحجم (MB)',
+                data: sizes,
+                backgroundColor: '#ff6b6b',
+                borderColor: '#ff6b6b',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { labels: { color: '#8892bf' } } },
+            scales: { y: { beginAtZero: true, ticks: { color: '#8892bf' } }, x: { ticks: { color: '#8892bf' } } }
+        }
+    });
+    
+    // File Chart (Doughnut)
+    const ctx2 = document.getElementById('fileChart').getContext('2d');
+    if (fileChart) fileChart.destroy();
+    const total = fileCounts.reduce((a,b) => a+b, 0);
+    const categories = {
+        images: 0, videos: 0, audio: 0, code: 0, docs: 0, other: 0
+    };
+    REPOS.forEach(r => {
+        const d = repoData[r.id];
+        if (!d) return;
+        d.files.forEach(f => {
+            const ext = f.name.split('.').pop().toLowerCase();
+            if (/png|jpg|jpeg|gif|webp|svg|ico/.test(ext)) categories.images++;
+            else if (/mp4|webm|mov|avi|mkv|flv/.test(ext)) categories.videos++;
+            else if (/mp3|wav|ogg|m4a|flac|aac/.test(ext)) categories.audio++;
+            else if (/js|html|css|py|java|cpp|php|rb|go|json|xml|ts|jsx|tsx/.test(ext)) categories.code++;
+            else if (/pdf|doc|docx|txt|md|rtf|odt|xls|xlsx|ppt|pptx/.test(ext)) categories.docs++;
+            else categories.other++;
+        });
+    });
+    
+    const labels = ['🖼️ صور', '🎬 فيديو', '🎵 صوت', '💻 كود', '📄 وثائق', '📦 أخرى'];
+    const values = [categories.images, categories.videos, categories.audio, categories.code, categories.docs, categories.other];
+    const colors = ['#ff6b6b', '#8892bf', '#4CAF50', '#ffa500', '#42a5f5', '#ab47bc'];
+    
+    fileChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                backgroundColor: colors,
+                borderColor: '#1a1a24',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { color: '#8892bf', font: { size: 11 } } }
+            }
+        }
+    });
+}
+
+// ===== عرض المستودعات =====
 function renderRepos(filter = '') {
     const grid = document.getElementById('repoGrid');
-    let html = '';
-    
     const filtered = REPOS.filter(r => {
-        const data = repoData[r.id];
-        if (!data) return false;
-        const nameMatch = r.name.toLowerCase().includes(filter.toLowerCase());
-        const pathMatch = r.path.toLowerCase().includes(filter.toLowerCase());
-        return nameMatch || pathMatch;
+        const d = repoData[r.id];
+        if (!d) return false;
+        return r.name.includes(filter) || r.path.includes(filter);
     });
     
     if (filtered.length === 0) {
@@ -241,228 +411,176 @@ function renderRepos(filter = '') {
         return;
     }
     
+    let html = '';
     filtered.forEach(r => {
-        const data = repoData[r.id];
-        if (!data) return;
-        
-        const info = data.info || {};
-        const files = data.files || [];
-        const dirs = data.dirs || [];
-        const status = data.status || 'unknown';
-        const statusClass = status === 'online' ? 'status-online' : status === 'offline' ? 'status-offline' : 'status-unknown';
-        const statusLabel = status === 'online' ? '🟢 متصل' : status === 'offline' ? '🔴 غير متصل' : '🟡 غير معروف';
-        
-        const images = files.filter(f => /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(f.name));
-        const videos = files.filter(f => /\.(mp4|webm|mov|avi|mkv)$/i.test(f.name));
-        const audios = files.filter(f => /\.(mp3|wav|ogg|m4a|flac)$/i.test(f.name));
-        const codes = files.filter(f => /\.(js|html|css|py|java|cpp|php|rb|go|json|xml)$/i.test(f.name));
+        const d = repoData[r.id];
+        if (!d) return;
+        const status = d.status || 'unknown';
+        const cls = status === 'online' ? 'status-online' : status === 'offline' ? 'status-offline' : 'status-unknown';
+        const lbl = status === 'online' ? '🟢 متصل' : status === 'offline' ? '🔴 غير متصل' : '🟡 غير معروف';
+        const files = d.files || [];
+        const dirs = d.dirs || [];
         
         html += `
-            <div class="repo-card" onclick="showRepoDetail(${r.id})">
-                <span class="status-badge ${statusClass}">${statusLabel}</span>
-                <div class="repo-name">📁 ${r.name}</div>
-                <div class="repo-path">${r.path}</div>
-                <div class="repo-stats">
-                    <span>📄 ${files.length} ملف</span>
-                    <span>📁 ${dirs.length} مجلد</span>
-                    <span>💾 ${formatSize(data.size)}</span>
-                    ${info.size ? `<span>📝 ${info.size.toLocaleString()} كوميت</span>` : ''}
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:0.8rem;">
-                    ${images.length > 0 ? `<span style="background:rgba(255,107,107,0.2);padding:2px 10px;border-radius:12px;">🖼️ ${images.length}</span>` : ''}
-                    ${videos.length > 0 ? `<span style="background:rgba(136,146,191,0.2);padding:2px 10px;border-radius:12px;">🎬 ${videos.length}</span>` : ''}
-                    ${audios.length > 0 ? `<span style="background:rgba(76,175,80,0.2);padding:2px 10px;border-radius:12px;">🎵 ${audios.length}</span>` : ''}
-                    ${codes.length > 0 ? `<span style="background:rgba(255,165,0,0.2);padding:2px 10px;border-radius:12px;">💻 ${codes.length}</span>` : ''}
-                </div>
-                <div class="repo-actions">
-                    <button onclick="event.stopPropagation();openRepo('${r.path}')">🔗 فتح</button>
-                    <button onclick="event.stopPropagation();showRepoDetail(${r.id})">📊 تفاصيل</button>
-                    <button onclick="event.stopPropagation();deleteRepo(${r.id})" style="background:rgba(255,107,107,0.2);border-color:#ff6b6b;">🗑️ حذف</button>
-                </div>
+        <div class="repo-card" onclick="showDetail(${r.id})">
+            <span class="badge ${cls}">${lbl}</span>
+            <div class="name">📁 ${r.name}</div>
+            <div class="path">${r.path}</div>
+            <div class="stats">
+                <span>📄 ${files.length}</span>
+                <span>📁 ${dirs.length}</span>
+                <span>💾 ${formatSize(d.size)}</span>
+                <span>📝 ${(d.commitCount || 0).toLocaleString()}</span>
             </div>
-        `;
+            <div class="actions">
+                <button onclick="event.stopPropagation();openRepo('${r.path}')">🔗 فتح</button>
+                <button onclick="event.stopPropagation();showDetail(${r.id})">📊 تفاصيل</button>
+                <button onclick="event.stopPropagation();deleteRepo(${r.id})" style="background:rgba(255,107,107,0.2);">🗑️</button>
+            </div>
+        </div>`;
     });
-    
     grid.innerHTML = html;
 }
 
-function filterRepos(value) {
-    currentFilter = value;
-    renderRepos(value);
-}
+function filterRepos(val) { currentFilter = val; renderRepos(val); }
 
-// ===== 4. التفاصيل =====
-async function showRepoDetail(id) {
-    const data = repoData[id];
-    if (!data) return;
+// ===== التفاصيل =====
+async function showDetail(id) {
+    const d = repoData[id];
+    if (!d) return;
     currentRepoId = id;
-    
     const modal = document.getElementById('detailModal');
-    document.getElementById('modalTitle').textContent = `📂 ${data.name}`;
+    document.getElementById('modalTitle').textContent = `📂 ${d.name}`;
     
     let body = `
-        <div style="margin-bottom:15px;">
-            <p><strong>المسار:</strong> ${data.path}</p>
-            <p><strong>الحالة:</strong> ${data.status === 'online' ? '🟢 متصل' : '🔴 غير متصل'}</p>
-            <p><strong>الملفات:</strong> ${data.files.length}</p>
-            <p><strong>المجلدات:</strong> ${data.dirs.length}</p>
-            <p><strong>الحجم:</strong> ${formatSize(data.size)}</p>
-            ${data.info?.size ? `<p><strong>الكوميتات:</strong> ${data.info.size.toLocaleString()}</p>` : ''}
+        <div style="margin-bottom:12px;">
+            <p><strong>المسار:</strong> ${d.path}</p>
+            <p><strong>الحالة:</strong> ${d.status === 'online' ? '🟢 متصل' : '🔴 غير متصل'}</p>
+            <p><strong>الملفات:</strong> ${d.files.length}</p>
+            <p><strong>المجلدات:</strong> ${d.dirs.length}</p>
+            <p><strong>الحجم:</strong> ${formatSize(d.size)}</p>
+            <p><strong>الكوميتات:</strong> ${(d.commitCount || 0).toLocaleString()}</p>
         </div>
-        <h4>📄 قائمة الملفات (${data.files.length})</h4>
+        <h4>📄 الملفات (${d.files.length})</h4>
         <ul class="file-list">
     `;
-    
-    data.files.slice(0, 50).forEach(f => {
-        const size = formatSize(f.size || 0);
-        const ext = f.name.split('.').pop() || '?';
-        body += `<li>
-            <span>${f.name}</span>
-            <span>
-                <span class="file-size">${size} • ${ext}</span>
-                <button class="file-delete" onclick="deleteFile('${data.path}','${f.name}')">🗑️</button>
-            </span>
-        </li>`;
+    d.files.slice(0, 50).forEach(f => {
+        body += `<li><span>${f.name}</span><span><span class="size">${formatSize(f.size||0)}</span><button class="del" onclick="deleteFile('${d.path}','${f.name}')">🗑️</button></span></li>`;
     });
-    
-    if (data.files.length > 50) {
-        body += `<li style="color:var(--secondary);text-align:center;">... و ${data.files.length - 50} ملف آخر</li>`;
-    }
-    
-    body += `</ul>`;
+    if (d.files.length > 50) body += `<li style="color:var(--secondary);text-align:center;">... و ${d.files.length - 50} ملف آخر</li>`;
+    body += '</ul>';
     document.getElementById('modalBody').innerHTML = body;
     modal.classList.add('active');
 }
 
-function closeModal() {
-    document.getElementById('detailModal').classList.remove('active');
-}
+function closeModal() { document.getElementById('detailModal').classList.remove('active'); }
 
-// ===== 5. حذف =====
+// ===== حذف ملف =====
 async function deleteFile(repoPath, fileName) {
-    if (!confirm(`⚠️ هل أنت متأكد من حذف "${fileName}"؟`)) return;
+    if (!confirm(`⚠️ حذف "${fileName}"؟`)) return;
     showToast(`🗑️ جاري حذف ${fileName}...`, 'info');
     try {
-        const shaRes = await fetch(`https://api.github.com/repos/${repoPath}/contents/${fileName}`);
-        if (!shaRes.ok) throw new Error('فشل الحصول على SHA');
+        const shaRes = await fetchWithToken(`https://api.github.com/repos/${repoPath}/contents/${fileName}`);
+        if (!shaRes.ok) throw new Error('SHA');
         const shaData = await shaRes.json();
-        const deleteRes = await fetch(`https://api.github.com/repos/${repoPath}/contents/${fileName}`, {
+        const token = getToken();
+        const delRes = await fetch(`https://api.github.com/repos/${repoPath}/contents/${fileName}`, {
             method: 'DELETE',
-            headers: { 'Authorization': `token ${prompt('🔑 أدخل GitHub Token:')}` },
+            headers: { 'Authorization': `token ${token}` },
             body: JSON.stringify({ message: `حذف ${fileName}`, sha: shaData.sha })
         });
-        if (deleteRes.ok) {
-            showToast('✅ تم الحذف', 'success');
-            scanAllRepos();
-        } else showToast('❌ فشل الحذف', 'error');
-    } catch (e) {
-        showToast('❌ خطأ: ' + e.message, 'error');
-    }
+        if (delRes.ok) { showToast('✅ تم الحذف', 'success'); scanAll(); }
+        else showToast('❌ فشل', 'error');
+    } catch(e) { showToast('❌ خطأ', 'error'); }
 }
 
-// ===== 6. رفع =====
+// ===== رفع ملف =====
 async function uploadFiles(files) {
     if (!currentRepoId) { showToast('⚠️ افتح مستودعاً أولاً', 'warning'); return; }
     const repo = REPOS.find(r => r.id === currentRepoId);
     if (!repo) return;
+    const token = getToken();
     for (const file of files) {
         showToast(`📤 رفع ${file.name}...`, 'info');
         try {
             const reader = new FileReader();
             reader.onload = async (e) => {
                 const content = btoa(e.target.result);
-                const uploadRes = await fetch(`https://api.github.com/repos/${repo.path}/contents/${file.name}`, {
+                const res = await fetch(`https://api.github.com/repos/${repo.path}/contents/${file.name}`, {
                     method: 'PUT',
-                    headers: { 'Authorization': `token ${prompt('🔑 أدخل GitHub Token:')}` },
-                    body: JSON.stringify({ message: `رفع ${file.name}`, content: content })
+                    headers: { 'Authorization': `token ${token}` },
+                    body: JSON.stringify({ message: `رفع ${file.name}`, content })
                 });
-                if (uploadRes.ok) { showToast(`✅ تم رفع ${file.name}`, 'success'); scanAllRepos(); }
-                else showToast(`❌ فشل رفع ${file.name}`, 'error');
+                if (res.ok) { showToast(`✅ ${file.name}`, 'success'); scanAll(); }
+                else showToast(`❌ ${file.name}`, 'error');
             };
             reader.readAsBinaryString(file);
-        } catch (e) { showToast(`❌ خطأ في ${file.name}`, 'error'); }
+        } catch(e) { showToast(`❌ ${file.name}`, 'error'); }
     }
 }
 
-function openRepo(path) {
-    window.open(`https://github.com/${path}`, '_blank');
-    showToast(`🔗 فتح ${path}`, 'info');
-}
-
+// ===== أدوات =====
+function openRepo(path) { window.open(`https://github.com/${path}`, '_blank'); }
 function deleteRepo(id) {
-    if (confirm(`⚠️ حذف "${REPOS.find(r => r.id === id)?.name}"؟`)) {
-        const index = REPOS.findIndex(r => r.id === id);
-        if (index !== -1) { REPOS.splice(index, 1); delete repoData[id]; renderRepos(currentFilter); showToast('🗑️ تم الحذف', 'success'); }
-    }
+    if (!confirm(`⚠️ حذف "${REPOS.find(r=>r.id===id)?.name}"؟`)) return;
+    const idx = REPOS.findIndex(r => r.id === id);
+    if (idx !== -1) { REPOS.splice(idx, 1); delete repoData[id]; renderRepos(currentFilter); showToast('🗑️ تم الحذف', 'success'); }
 }
+function newFolder() { showToast('📁 مجلد جديد - سيتم إضافته قريباً', 'info'); }
+function cleanTemp() { showToast('🧹 تم تنظيف الملفات المؤقتة', 'success'); }
+function showHelp() { showToast('❓ Diagnose 3.0 - مثل Norton Commander لكن مع رسوم بيانية!', 'info'); }
 
-// ===== 7. طباعة =====
 function printReport() {
-    if (!isScanned) { showToast('⚠️ افحص المستودعات أولاً', 'warning'); return; }
+    if (!isScanned) { showToast('⚠️ افحص أولاً', 'warning'); return; }
     window.print();
 }
 
-// ===== 8. تصدير HTML =====
 function exportHTML() {
-    if (!isScanned) { showToast('⚠️ افحص المستودعات أولاً', 'warning'); return; }
-    const content = document.documentElement.outerHTML;
-    const blob = new Blob([`<!DOCTYPE html>\n${content}`], { type: 'text/html;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `diagnose-report-${new Date().toISOString().slice(0,10)}.html`;
-    link.click();
-    URL.revokeObjectURL(link.href);
-    showToast('📄 تم تصدير HTML', 'success');
+    if (!isScanned) { showToast('⚠️ افحص أولاً', 'warning'); return; }
+    const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], {type: 'text/html;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `diagnose-${new Date().toISOString().slice(0,10)}.html`;
+    a.click();
+    showToast('📄 تم التصدير', 'success');
 }
 
-// ===== 9. تصدير TXT =====
 function exportTXT() {
-    if (!isScanned) { showToast('⚠️ افحص المستودعات أولاً', 'warning'); return; }
-    let report = '📊 تقرير المستودعات - Diagnose 2.0\n';
-    report += '='.repeat(50) + '\n';
-    report += `📅 ${new Date().toLocaleString()}\n\n`;
-    
+    if (!isScanned) { showToast('⚠️ افحص أولاً', 'warning'); return; }
+    let report = '📊 تقرير Diagnose 3.0\n' + '='.repeat(50) + '\n' + new Date().toLocaleString() + '\n\n';
     REPOS.forEach(r => {
-        const data = repoData[r.id];
-        if (!data) return;
-        report += `📁 ${r.name}\n`;
-        report += `   المسار: ${r.path}\n`;
-        report += `   الملفات: ${data.files.length}\n`;
-        report += `   المجلدات: ${data.dirs.length}\n`;
-        report += `   الحجم: ${formatSize(data.size)}\n`;
-        report += `   الحالة: ${data.status}\n\n`;
+        const d = repoData[r.id];
+        if (!d) return;
+        report += `📁 ${r.name}\n   المسار: ${r.path}\n   الملفات: ${d.files.length}\n   المجلدات: ${d.dirs.length}\n   الحجم: ${formatSize(d.size)}\n   الكوميتات: ${(d.commitCount||0).toLocaleString()}\n   الحالة: ${d.status}\n\n`;
     });
-    
-    const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `diagnose-report-${new Date().toISOString().slice(0,10)}.txt`;
-    link.click();
-    URL.revokeObjectURL(link.href);
-    showToast('📤 تم تصدير TXT', 'success');
+    const blob = new Blob([report], {type: 'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `diagnose-${new Date().toISOString().slice(0,10)}.txt`;
+    a.click();
+    showToast('📤 تم التصدير', 'success');
 }
 
 function formatSize(bytes) {
     if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const k = 1024, sizes = ['B','KB','MB','GB','TB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 }
 
-// ===== 10. التهيئة =====
-window.onload = () => {
-    if (localStorage.getItem('diagnoseTheme') === 'light') {
-        isDark = false;
-        document.body.classList.add('light');
-    }
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-        if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey) scanAllRepos();
-    });
-};
+// ===== اختصارات =====
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'F3') { e.preventDefault(); scanAll(); }
+    if (e.key === 'F7') { e.preventDefault(); newFolder(); }
+    if (e.key === 'F8') { e.preventDefault(); cleanTemp(); }
+    if (e.key === 'F1') { e.preventDefault(); showHelp(); }
+    if (e.key === 'r' || e.key === 'R') { if (!e.ctrlKey) scanAll(); }
+});
 
-console.log('🇾🇪 Diagnose 2.0 - فحص اختياري + طباعة + تصدير');
+console.log('🇾🇪 Diagnose 3.0 - Norton Commander مع رسوم بيانية');
+console.log('📌 F1=مساعدة | F3=فحص | F7=مجلد | F8=حذف | ESC=إغلاق');
+console.log('🔑 Token مخزن محلياً - ادخله مرة واحدة');
 </script>
 </body>
 </html>

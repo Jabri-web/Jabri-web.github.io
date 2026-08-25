@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV – Eng. Abdulla Al-Jabri</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f0ede7;
+            color: #1e2a3a;
+            padding: 30px 15px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+            padding: 40px 35px;
+            border-top: 8px solid #7f4f24;
+        }
+        h1, h2, h3 { color: #2d1f12; }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed #d4c5a0;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #7f4f24, #b8863d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subhead { font-size: 1.1rem; color: #5d4a34; font-weight: 500; }
+        .badge {
+            background: #e8e0d2;
+            padding: 6px 22px;
+            border-radius: 40px;
+            color: #3b2a1c;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 40px;
+        }
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            font-size: 1.5rem;
+            border-left: 6px solid #b8863d;
+            padding-left: 15px;
+            margin-bottom: 18px;
+            color: #2d1f12;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-label { font-weight: 700; color: #5d4030; }
+        .info-value { color: #1e2a3a; }
+        .card {
+            background: #faf8f3;
+            padding: 18px 20px;
+            border-radius: 18px;
+            margin-bottom: 16px;
+            border-left: 5px solid #b8863d;
+        }
+        .card h3 { font-size: 1.2rem; color: #7f4f24; }
+        .meta { font-size: 0.9rem; color: #6b5a48; margin: 5px 0 10px; }
+        ul { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: #ede7db;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+        .stat-item { flex: 1; min-width: 80px; text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 800; color: #7f4f24; }
+        .stat-label { font-size: 0.8rem; color: #3b2a1c; }
+        .footer {
+            text-align: center;
+            border-top: 2px dashed #d4c5a0;
+            padding-top: 25px;
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #5d4a34;
+        }
+        @media (max-width: 700px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 10px; }
+            .header { flex-direction: column; align-items: start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🧠 Abdulla Mohammed Nasser Al-Jabri</h1>
+            <div class="subhead">From Sana'a to the Universe • 25 years in Information Systems</div>
+        </div>
+        <div class="badge">🇾🇪 Jabri</div>
+    </div>
+
+    <div class="grid-2">
+        <div class="section">
+            <h2>📋 Profile</h2>
+            <div class="info-row"><span class="info-label">Full Name</span><span class="info-value">Abdulla Mohammed Nasser Al-Jabri</span></div>
+            <div class="info-row"><span class="info-label">Nickname</span><span class="info-value">Jabri</span></div>
+            <div class="info-row"><span class="info-label">Birth Date</span><span class="info-value">Jan 15, 1968</span></div>
+            <div class="info-row"><span class="info-label">Birthplace</span><span class="info-value">Anss, Dhamar, Yemen</span></div>
+            <div class="info-row"><span class="info-label">Residence</span><span class="info-value">Sana'a, Yemen</span></div>
+            <div class="info-row"><span class="info-label">Nationality</span><span class="info-value">Yemeni</span></div>
+            <div class="info-row"><span class="info-label">Languages</span><span class="info-value">Arabic (native), English (fluent)</span></div>
+        </div>
+        <div class="section">
+            <h2>📞 Contact</h2>
+            <div class="info-row"><span class="info-label">📧 Email</span><span class="info-value">jabri62018@gmail.com</span></div>
+            <div class="info-row"><span class="info-label">📱 Mobile</span><span class="info-value">+967 770577182</span></div>
+            <div class="info-row"><span class="info-label">🌐 Website</span><span class="info-value">jabri-com.vercel.app</span></div>
+            <div class="info-row"><span class="info-label">🐙 GitHub</span><span class="info-value">github.com/jabri-com</span></div>
+            <div class="info-row"><span class="info-label">🆔 ORCID</span><span class="info-value">0009-0003-3319-3822</span></div>
+            <div class="info-row"><span class="info-label">🌐 Wikipedia</span><span class="info-value">User:Jabri2026</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎓 Education</h2>
+        <div class="card">
+            <div class="info-row"><span class="info-label">1986–1991</span><span class="info-value">B.Sc. Computer Engineering – KFUPM, Saudi Arabia</span></div>
+            <div class="info-row"><span class="info-label">GPA</span><span class="info-value">3.2 / 4.0</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💼 Professional Experience</h2>
+        <div class="card">
+            <h3>🖥️ Network & IT Analyst</h3>
+            <div class="meta">ITT – Systems & Communications | 2002 – Present</div>
+            <ul>
+                <li>Network systems analysis and design</li>
+                <li>IT infrastructure management</li>
+                <li>Integrated technical solutions development</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🛢️ Systems Analyst / Programmer / DBA</h3>
+            <div class="meta">Yemen Hunt Oil Company (YHOC) | 1996 – 2002</div>
+            <ul>
+                <li>Database systems analysis and development</li>
+                <li>Internal application programming</li>
+                <li>Operational support in Sana'a & Ma'rib</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔬 Research & Scientific Work</h2>
+        <div class="card">
+            <h3>📚 Founder & Platform</h3>
+            <p>Founder of <strong>"Wahat Al-Jabri"</strong> – a digital scientific & cultural platform integrating science, heritage, culture, and tourism.</p>
+        </div>
+        <div class="card">
+            <h3>🌌 Scientific Theories</h3>
+            <ul>
+                <li><strong>Unified Sinbad Theory:</strong> theoretical physics framework with equation <code>Z + C + A = 1</code></li>
+                <li><strong>Mother function Z(x):</strong> <code>Z(x) = x⁵ · ln(x) · sin(2π/x) · exp(-x/xp)</code></li>
+                <li>Derives gravitational constant <code>G = 6.67430 × 10⁻¹¹</code> from pure numbers</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>📝 Digital Projects</h3>
+            <ul>
+                <li>Zx_RieOS: experimental operating system</li>
+                <li>Published research: Riemann hypothesis, gravity, dark energy, spacetime</li>
+                <li>Documented with DOIs via Zenodo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🛠️ Technical Skills</h2>
+        <div class="info-row"><span class="info-label">Networking</span><span class="info-value">Network analysis, infrastructure design, systems management</span></div>
+        <div class="info-row"><span class="info-label">Databases</span><span class="info-value">DBA, development & administration</span></div>
+        <div class="info-row"><span class="info-label">Programming</span><span class="info-value">Systems development, multi-language</span></div>
+        <div class="info-row"><span class="info-label">Theory</span><span class="info-value">Theoretical physics, mathematics, numerical analysis</span></div>
+        <div class="info-row"><span class="info-label">Platforms</span><span class="info-value">GitHub, Zenodo, Vercel, Wikipedia</span></div>
+    </div>
+
+    <div class="section">
+        <h2>🏆 Key Achievements</h2>
+        <div class="stats">
+            <div class="stat-item"><span class="stat-num">2026</span><div class="stat-label">Founded Wahat Al-Jabri</div></div>
+            <div class="stat-item"><span class="stat-num">2026</span><div class="stat-label">Published Unified Sinbad Theory</div></div>
+            <div class="stat-item"><span class="stat-num">2026</span><div class="stat-label">Derived gravitational constant</div></div>
+            <div class="stat-item"><span class="stat-num">12</span><div class="stat-label">Scientific & heritage pages</div></div>
+            <div class="stat-item"><span class="stat-num">API</span><div class="stat-label">Yemen Smart Gallery</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Vision & Mission</h2>
+        <div class="card"><strong>Vision:</strong> Build a bridge between science, culture, and heritage – presenting an integrated vision that merges authenticity of the past with modernity of the future.</div>
+        <div class="card"><strong>Mission:</strong> Document Yemeni identity scientifically and culturally, and spread knowledge through "Wahat Al-Jabri" – a platform that blends scientific research, heritage, and tourism.</div>
+    </div>
+
+    <div class="section">
+        <h2>📅 Timeline</h2>
+        <div class="info-row"><span class="info-label">1968</span><span class="info-value">Born in Anss, Dhamar</span></div>
+        <div class="info-row"><span class="info-label">1986–1991</span><span class="info-value">B.Sc. Computer Engineering at KFUPM</span></div>
+        <div class="info-row"><span class="info-label">1996–2002</span><span class="info-value">Yemen Hunt Oil Company</span></div>
+        <div class="info-row"><span class="info-label">2002–Present</span><span class="info-value">ITT – Systems & Communications</span></div>
+        <div class="info-row"><span class="info-label">2026</span><span class="info-value">Founded Wahat Al-Jabri & published Unified Theory</span></div>
+    </div>
+
+    <div class="footer">
+        Generated by Wahat Al-Jabri Smart Documentation System<br />
+        📅 25 August 2026 &nbsp;•&nbsp; 🇾🇪 From Sana'a to the Universe
+    </div>
+</div>
+</body>
+</html>
