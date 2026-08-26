@@ -39,6 +39,10 @@
         { name: 'المجلة', nameEn: 'Journal', href: `${langDir}/journal.html`, icon: '📰' },
         { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience', href: `${langDir}/journal2.html`, icon: '🤖' },
         { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects', href: `${langDir}/jabri-projects.html`, icon: '🤖' },
+        { name: 'الفاحص', nameEn: 'diagnose', href: `${langDir}/diagnose.html`, icon: '🤖' },
+        
+         { name: 'واتساب الواحة', nameEn: 'WhatsUp Waha', href: `${langDir}/publish/publish.html`, icon: '🤖' },
+
         { name: 'رسالة من صنعاء', nameEn: 'Sanaa msg', href: `${langDir}/journal3.html`, icon: '🤖' },
 
 
