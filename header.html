@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   
+  
+  <meta charset="UTF-8">
+  <title>واحة الجبري</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00d4ff">
+
+  
   <!-- ===== 1. منع الكاش ===== -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -495,6 +502,64 @@
   
   <script src="/js/init-page-root.js"></script>
   <script src="/js/menu.js"></script>
+
+
+
+
+
+<script>
+// ===== تشغيل الصوت تلقائي بعد اول تفاعل =====
+(function() {
+  const audio = document.getElementById('oasisMusic');
+  if (!audio) return;
+
+  let musicPlayed = false;
+
+  function playMusic() {
+    if (musicPlayed) return;
+    musicPlayed = true;
+    
+    // إزالة المستمعين فوراً لمنع أي تنفيذ إضافي
+    document.removeEventListener('click', playMusic);
+    document.removeEventListener('touchstart', playMusic);
+    
+    audio.volume = 1;
+    audio.play().then(() => {
+      document.querySelectorAll('#musicTopBtn, #musicBottomBtn').forEach(b => {
+        b.textContent = '🔊'; 
+        b.classList.add('playing');
+      });
+      console.log('🎵 تم تشغيل الموسيقى تلقائياً');
+    }).catch(err => {
+      // إذا فشل التشغيل، نسمح للمستخدم بتشغيلها يدوياً لاحقاً
+      musicPlayed = false; // نعيد العلم للخلف ليتسنى للمستخدم تشغيلها لاحقاً
+      console.log('لم يتم تشغيل الصوت تلقائياً:', err);
+    });
+  }
+
+  document.addEventListener('click', playMusic);
+  document.addEventListener('touchstart', playMusic);
+
+  // دالة التبديل اليدوي (تم تعديلها قليلاً)
+  window.toggleMusic = function() {
+    if (!audio) return;
+    const btns = document.querySelectorAll('#musicTopBtn, #musicBottomBtn');
+    if (audio.paused) {
+      audio.play().then(() => {
+        btns.forEach(b => { b.textContent = '🔊'; b.classList.add('playing'); });
+        musicPlayed = true; // نؤكد أن الموسيقى مشغلة
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      btns.forEach(b => { b.textContent = '🎵'; b.classList.remove('playing'); });
+    }
+  };
+})();
+</script>
+
+
+
+
 
 </body>
 </html>
