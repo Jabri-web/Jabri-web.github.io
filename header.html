@@ -11,8 +11,6 @@
   <meta name="theme-color" content="#0a0a0f">
   <meta name="apple-mobile-web-app-capable" content="yes">
   
-
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,10 +25,7 @@
       "url": "https://jabri-com.vercel.app"
     }
   }
-</script>
-  
-  
-  
+  </script>
   
   <!-- ===== 2. اللغات والكانونيكال ===== -->
   <link id="linkCanon" rel="canonical" href="https://jabri-com.vercel.app/" />
@@ -144,6 +139,44 @@
     .top-btn.lang { width: 60px; padding: 0; font-size: 11px; }
     .top-btn.visitor { width: auto; padding: 0 14px; font-size: 12px; }
 
+    /* ===== الأزرار الوسطى (Share, Like, Dislike) ===== */
+    .middle-buttons {
+        position: fixed;
+        top: 75px;
+        left: 20px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+    }
+    .middle-buttons > * { pointer-events: auto; }
+    .middle-btn {
+        background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+        color: #0a0a0f !important;
+        border: 2px solid #ffd700 !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+        border-radius: 50% !important;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease !important;
+        font-family: 'Cairo', sans-serif;
+        backdrop-filter: blur(4px);
+    }
+    .middle-btn:hover {
+        transform: scale(1.12) !important;
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important;
+    }
+    .middle-btn:active {
+        transform: scale(0.92) !important;
+    }
+
     /* ===== القائمة الجانبية ===== */
     .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99997; display: none; backdrop-filter: blur(4px); }
     .menu-overlay.active { display: block; }
@@ -156,11 +189,7 @@
     .menu-btn .icon { font-size: 1.5rem; width: 36px; text-align: center; }
     .menu-btn .badge { margin-right: auto; background: #ffd700; color: #0a0a0f; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 900; }
 
-
-
-
-
-    /* ===== الأزرار السفلية (أسفل الشاشة) - ذهبية بارزة ومتناسقة ===== */
+    /* ===== الأزرار السفلية ===== */
     .bottom-buttons {
         position: fixed;
         bottom: 28px;
@@ -206,6 +235,7 @@
     .bottom-btn.music.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important; color: #fff !important; border-color: #ff6a6a !important; box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important; }
     .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
 
+    /* ===== التجاوب ===== */
     @media (max-width: 600px) {
         .top-header-buttons { padding: 0 10px; }
         .top-btn { height: 38px; }
@@ -214,12 +244,14 @@
         .top-btn.music { width: 40px; font-size: 17px; }
         .top-btn.chat { width: 40px; font-size: 17px; }
         .top-btn.menu { width: 40px; font-size: 17px; }
+        
+        .middle-buttons { top: 65px; left: 10px; gap: 6px; }
+        .middle-btn { width: 40px !important; height: 40px !important; font-size: 17px !important; }
+        
         .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
         .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
         .bottom-btn.music { font-size: 17px; min-width: 100px; padding: 0 14px; }
         .bottom-btn.lang { min-width: 100px; padding: 0 12px; font-size: 11px; }
-
-        .hero h1 { font-size: 1.8rem; }
     }
     @media (max-width: 400px) {
         .top-btn { height: 34px; }
@@ -228,6 +260,10 @@
         .top-btn.music { width: 36px; font-size: 15px; }
         .top-btn.chat { width: 36px; font-size: 15px; }
         .top-btn.menu { width: 36px; font-size: 15px; }
+        
+        .middle-buttons { top: 55px; left: 8px; gap: 5px; }
+        .middle-btn { width: 36px !important; height: 36px !important; font-size: 15px !important; }
+        
         .bottom-buttons { bottom: 14px; left: 14px; gap: 8px; }
         .bottom-btn { height: 38px; font-size: 12px; padding: 0 12px; min-width: 100px; }
         .bottom-btn.music { font-size: 15px; min-width: 100px; padding: 0 10px; }
@@ -235,10 +271,6 @@
     .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
     * { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
   </style>
-
-
-
-
 
   <!-- ===== 11. Dynamic Meta + Schema ===== -->
   <script>
@@ -266,7 +298,6 @@
     
     document.getElementById('linkCanon').href = REAL_URL;
     
-    // ===== Schema Dynamics =====
     const schema = {
       "@context": "https://schema.org",
       "@type": "ScholarlyArticle",
@@ -312,6 +343,13 @@
       <button class="top-btn music" id="musicTopBtn" onclick="window.toggleMusic()" title="موسيقى">🎵</button>
       <button class="top-btn chat" onclick="window.toggleChat()" title="محادثة">💬</button>
     </div>
+  </div>
+
+  <!-- ===== الأزرار الوسطى (Share - Like - Dislike) ===== -->
+  <div class="middle-buttons">
+    <button class="middle-btn share" onclick="window.sharePage()" title="مشاركة">📤</button>
+    <button class="middle-btn like" onclick="window.likePage()" title="أعجبني">👍</button>
+    <button class="middle-btn dislike" onclick="window.dislikePage()" title="لم يعجبني">👎</button>
   </div>
 
   <!-- ===== القائمة الجانبية ===== -->
@@ -406,6 +444,35 @@
       document.getElementById('visitorCountBottom').textContent = count;
     };
 
+    // ===== الأزرار الوسطى =====
+    window.sharePage = function() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          text: '🌹 واحة الجبري | نظرية السندباد الموحدة Z+C+A=1',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href)
+          .then(() => alert('✅ تم نسخ الرابط!'))
+          .catch(() => alert('📋 الرابط: ' + window.location.href));
+      }
+    };
+
+    window.likePage = function() {
+      let likes = parseInt(localStorage.getItem('jabri_likes') || '0', 10);
+      likes += 1;
+      localStorage.setItem('jabri_likes', likes);
+      alert('👍 شكراً لإعجابك! (' + likes + ')');
+    };
+
+    window.dislikePage = function() {
+      let dislikes = parseInt(localStorage.getItem('jabri_dislikes') || '0', 10);
+      dislikes += 1;
+      localStorage.setItem('jabri_dislikes', dislikes);
+      alert('👎 تم تسجيل رأيك!');
+    };
+
     document.addEventListener('DOMContentLoaded', function() {
       const savedLang = localStorage.getItem('lang') || 'ar';
       if (savedLang === 'en') {
@@ -418,7 +485,7 @@
         document.documentElement.lang = 'ar';
       }
       window.updateVisitorCount();
-      console.log('🚀 واحة الجبري | القائمة الكاملة');
+      console.log('🚀 واحة الجبري | القائمة الكاملة مع الأزرار الوسطى');
     });
   </script>
 
