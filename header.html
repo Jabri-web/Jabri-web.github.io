@@ -195,6 +195,11 @@
     .menu-btn:hover { background: rgba(255,215,0,0.15); border-color: #ffd700; transform: translateX(-5px); }
     .menu-btn .icon { font-size: 1.5rem; width: 36px; text-align: center; }
     .menu-btn .badge { margin-right: auto; background: #ffd700; color: #0a0a0f; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 900; }
+    .menu-btn .badge-new { background: #00ff88; color: #0a0a0f; padding: 2px 12px; border-radius: 20px; font-size: 0.65rem; font-weight: 900; animation: pulse-badge 2s ease-in-out infinite; }
+    @keyframes pulse-badge {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
 
     /* ===== الأزرار السفلية ===== */
     .bottom-buttons {
@@ -364,6 +369,8 @@
   <div class="side-menu" id="sideMenu">
     <button class="menu-close" onclick="window.closeMenu()">✕</button>
     <div class="menu-title">🌊 واحة الجبري</div>
+    
+    <!-- ===== القسم الأساسي ===== -->
     <a href="/" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏠</span> الرئيسية</a>
     <a href="/about.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👤</span> عن الباحث</a>
     <a href="/research.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">📐</span> نظرية السندباد</a>
@@ -374,12 +381,34 @@
     <a href="/journal3.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🌍</span> رسالة إلى العالم</a>
     <a href="/music.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🎵</span> الموسيقى</a>
     <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👥</span> الزوار</a>
+    
     <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+    
+    <!-- ===== 🆕 قسم التطبيقات الجديدة ===== -->
+    <div style="color:#00ff88; font-size:0.7rem; font-weight:700; letter-spacing:1px; margin-bottom:8px; padding-right:14px;">
+        ⚡ تطبيقات جديدة
+    </div>
+    
+    <a href="/game/game-auto.html" class="menu-btn" onclick="window.closeMenu()">
+        <span class="icon">🎮</span> مركز الألعاب
+        <span class="badge-new">🆕</span>
+    </a>
+    
+    <a href="/publish/publish-auto.html" class="menu-btn" onclick="window.closeMenu()">
+        <span class="icon">📤</span> المنشورات
+        <span class="badge-new">🆕</span>
+    </a>
+    
+    <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+    
+    <!-- ===== روابط خارجية ===== -->
     <a href="https://github.com/jabri-web" target="_blank" class="menu-btn"><span class="icon">🐙</span> GitHub</a>
     <a href="https://x.com/JabriAbdulla1" target="_blank" class="menu-btn"><span class="icon">🐦</span> X</a>
     <a href="https://www.youtube.com/@HeavenAlJabri" target="_blank" class="menu-btn"><span class="icon">▶️</span> YouTube</a>
     <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="menu-btn"><span class="icon">🔬</span> ORCID</a>
+    
     <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+    
     <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();"><span class="icon">🌐</span> تبديل اللغة</button>
     <button class="menu-btn" onclick="window.toggleMusic(); window.closeMenu();"><span class="icon">🎵</span> الموسيقى</button>
   </div>
@@ -503,7 +532,11 @@
   <script src="/js/init-page-root.js"></script>
   <script src="/js/menu.js"></script>
 
-
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
 
 
 
@@ -556,7 +589,6 @@
   };
 })();
 </script>
-
 
 
 
