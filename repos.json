@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import json
+import os
+from collections import defaultdict
+
+# بيانات المستودعات
+with open('repos.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+repos = data['repos']
+custom = data['custom']
+
+categories = defaultdict(list)
+
+# معالجة المستودعات
+for name, cats in repos.items():
+    if cats is None:
+        cats = ['Other']
+    for cat in cats:
+        categories[cat].append({
+            'name': name,
+            'html_url': f'https://github.com/square/{name}',
+            'homepage': f'https://square.github.io/{name}/',
+            'description': f'{name} - مكتبة من Square'
+        })
+
+# معالجة المستودعات المخصصة
+for item in custom:
+    cats = item.get('categories', ['Other'])
+    for cat in cats:
+        categories[cat].append({
+            'name': item['name'],
+            'html_url': item.get('html_url', '#'),
+            'homepage': item.get('homepage', ''),
+            'description': item.get('description', '')
+        })
+
+# توليد HTML
+html = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Square Repos - Al-Jabri Oasis</title>
+</head>
+<body>
+    <h1>🏗️ مستودعات Square</h1>
+'''
+
+for cat, repos_list in sorted(categories.items()):
+    html += f'<h2>{cat} ({len(repos_list)})</h2><ul>'
+    for repo in sorted(repos_list, key=lambda x: x['name']):
+        html += f'<li><a href="{repo["html_url"]}">{repo["name"]}</a></li>'
+    html += '</ul>'
+
+html += '</body></html>'
+
+with open('square-repos.html', 'w', encoding='utf-8') as f:
+    f.write(html)
+
+print(f'✅ تم إنشاء square-repos.html مع {sum(len(v) for v in categories.values())} مستودع')

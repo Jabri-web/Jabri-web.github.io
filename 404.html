@@ -25,6 +25,8 @@
       border: 1px solid rgba(255, 215, 150, 0.2);
       max-width: 600px;
       box-shadow: 0 30px 50px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 1;
     }
     h1 { font-size: 80px; color: #d4a373; margin-bottom: 10px; }
     .sub { font-size: 24px; color: #e9c9a9; }
@@ -59,6 +61,23 @@
       font-size: 14px;
       color: #8a7a6a;
     }
+    .btn-home {
+      display: inline-block;
+      background: #d4a373;
+      color: #0b1a2e;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 2px solid #f7d44a;
+      margin: 15px 0;
+    }
+    .btn-home:hover {
+      transform: scale(1.05);
+      background: #f7d44a;
+      box-shadow: 0 0 30px rgba(215, 170, 70, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -66,7 +85,6 @@
     <h1>🌿 404</h1>
     <div class="sub">عذرًا.. هذا الدرب غير موجود</div>
 
-    <!-- عداد الزوار (جلب من localStorage أو بداية عشوائية) -->
     <div class="visitor-box">
       👥 عدد زوار الواحة: <span id="visitorCount">1</span>
     </div>
@@ -77,21 +95,24 @@
     <div class="note">
       سيتم تحويلك إلى <strong>واحة الجبري</strong> بعد 7 ثوانٍ
     </div>
+
+    <a href="/" class="btn-home">🏠 العودة إلى الواحة</a>
+
     <div class="footer">🏛️ من صنعاء إلى الكون 🇾🇪</div>
   </div>
 
   <script>
-    // 1) عداد الزوار (يتذكر الزائر عبر localStorage)
+    // 1) عداد الزوار
     let count = localStorage.getItem('jabriVisitorCount');
     if (count === null) {
-      count = Math.floor(Math.random() * 80) + 20;   // بداية واقعية
+      count = Math.floor(Math.random() * 80) + 20;
     } else {
       count = Number(count) + 1;
     }
     localStorage.setItem('jabriVisitorCount', count);
     document.getElementById('visitorCount').textContent = count;
 
-    // 2) تشغيل موسيقى خفيفة (نغم هادئ)
+    // 2) تشغيل موسيقى
     try {
       const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
       audio.volume = 0.15;
@@ -99,18 +120,35 @@
       audio.play().catch(() => {});
     } catch(e) {}
 
-    // 3) التوجيه التلقائي إلى الواحة بعد 7 ثوانٍ
+    // 3) التوجيه بعد 7 ثواني
     setTimeout(() => {
       window.location.href = '/';
     }, 7000);
+
+    // 4) تحميل القائمة الجانبية (بدون init-page-root)
+    document.addEventListener('DOMContentLoaded', function() {
+      // نضيف عنصر main-menu لو مو موجود
+      if (!document.getElementById('main-menu')) {
+        const menuDiv = document.createElement('div');
+        menuDiv.id = 'main-menu';
+        menuDiv.style.display = 'none';
+        document.body.appendChild(menuDiv);
+      }
+
+      // نحمّل menu.js
+      const script = document.createElement('script');
+      script.src = '/js/menu.js';
+      script.onload = function() {
+        // ننتظر شوية عشان يتشغل
+        setTimeout(() => {
+          if (typeof window.buildHamburgerMenu === 'function') {
+            window.buildHamburgerMenu();
+            window.buildMainMenu();
+          }
+        }, 100);
+      };
+      document.head.appendChild(script);
+    });
   </script>
-  
-  
-  <!-- في كل صفحة HTML -->
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<script src="/js/init-page-root.js"></script>
-<script src="/js/menu.js"></script>
-  
 </body>
 </html>

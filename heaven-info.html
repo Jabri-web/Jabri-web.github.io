@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📦 معلومات المشروع - واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: #161b22;
+            border-radius: 20px;
+            padding: 35px 40px;
+            border: 1px solid #30363d;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .project-card .icon {
+            font-size: 60px;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .project-card h1 {
+            color: #ffd700;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .project-card .sub {
+            text-align: center;
+            color: #8b949e;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .project-card .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0 20px;
+        }
+        .project-card .badge-row .badge {
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+        }
+        .project-card .badge-row .badge.gem {
+            background: rgba(106, 227, 255, 0.1);
+            border-color: rgba(106, 227, 255, 0.2);
+            color: #6ae3ff;
+        }
+        .project-card .badge-row .badge.version {
+            background: rgba(0, 255, 128, 0.1);
+            border-color: rgba(0, 255, 128, 0.2);
+            color: #00ff88;
+        }
+        .section {
+            background: #161b22;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 16px;
+            border: 1px solid #30363d;
+        }
+        .section h3 {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 14px;
+        }
+        .section .item .label {
+            color: #8b949e;
+        }
+        .section .item .value {
+            color: #e6edf3;
+            font-weight: 500;
+        }
+        .gem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .gem-grid .gem-item {
+            background: rgba(255,255,255,0.03);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+        }
+        .gem-grid .gem-item .gname {
+            color: #6ae3ff;
+        }
+        .gem-grid .gem-item .gver {
+            color: #8b949e;
+            font-size: 12px;
+        }
+        .btn-home {
+            display: inline-block;
+            background: #ffd700;
+            color: #0d1117;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-home:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+        .text-center {
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .project-card { padding: 20px; }
+            .section { padding: 15px; }
+            .gem-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="project-card">
+            <span class="icon">📦</span>
+            <h1>معلومات المشروع</h1>
+            <div class="sub">Jekyll · Ruby · GitHub Pages</div>
+
+            <div class="badge-row">
+                <span class="badge">🔧 Jekyll 4.1.1</span>
+                <span class="badge gem">💎 Ruby 2.7+</span>
+                <span class="badge version">📌 Bundler 1.17.3</span>
+                <span class="badge">🔄 html-proofer</span>
+            </div>
+
+            <div class="text-center">
+                <a href="/" class="btn-home">🏠 العودة إلى الواحة</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>⚙️ بيئة التشغيل</h3>
+            <div class="item">
+                <span class="label">📦 مدير الحزم</span>
+                <span class="value">Bundler 1.17.3</span>
+            </div>
+            <div class="item">
+                <span class="label">💎 Ruby Platform</span>
+                <span class="value">ruby (>= 2.5.0)</span>
+            </div>
+            <div class="item">
+                <span class="label">📁 عدد الجيمات</span>
+                <span class="value" id="gemCount">0</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>📚 الجيمات الأساسية (Core Gems)</h3>
+            <div class="gem-grid" id="coreGems"></div>
+        </div>
+
+        <div class="section">
+            <h3>🔗 جميع الجيمات</h3>
+            <div class="gem-grid" id="allGems"></div>
+        </div>
+
+        <div class="section">
+            <h3>📊 إحصائيات</h3>
+            <div class="item">
+                <span class="label">📦 إجمالي الجيمات</span>
+                <span class="value" id="totalGems">0</span>
+            </div>
+            <div class="item">
+                <span class="label">🔗 عدد التبعيات</span>
+                <span class="value" id="totalDeps">0</span>
+            </div>
+            <div class="item">
+                <span class="label">📅 آخر تحديث</span>
+                <span class="value" id="lastUpdate">2026-08-30</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const gemData = [
+            { name: "addressable", version: "2.7.0" },
+            { name: "colorator", version: "1.1.0" },
+            { name: "concurrent-ruby", version: "1.1.7" },
+            { name: "em-websocket", version: "0.5.2" },
+            { name: "ethon", version: "0.12.0" },
+            { name: "eventmachine", version: "1.2.7" },
+            { name: "ffi", version: "1.13.1" },
+            { name: "forwardable-extended", version: "2.6.0" },
+            { name: "html-proofer", version: "3.16.0" },
+            { name: "http_parser.rb", version: "0.6.0" },
+            { name: "i18n", version: "1.8.5" },
+            { name: "jekyll", version: "4.1.1" },
+            { name: "jekyll-sass-converter", version: "2.1.0" },
+            { name: "jekyll-watch", version: "2.2.1" },
+            { name: "kramdown", version: "2.3.1" },
+            { name: "kramdown-parser-gfm", version: "1.1.0" },
+            { name: "liquid", version: "4.0.3" },
+            { name: "listen", version: "3.2.1" },
+            { name: "mercenary", version: "0.4.0" },
+            { name: "mini_portile2", version: "2.5.1" },
+            { name: "nokogiri", version: "1.11.4" },
+            { name: "nokogumbo", version: "2.0.2" },
+            { name: "parallel", version: "1.19.2" },
+            { name: "pathutil", version: "0.16.2" },
+            { name: "public_suffix", version: "4.0.6" },
+            { name: "racc", version: "1.5.2" },
+            { name: "rainbow", version: "3.0.0" },
+            { name: "rb-fsevent", version: "0.10.4" },
+            { name: "rb-inotify", version: "0.10.1" },
+            { name: "rexml", version: "3.2.5" },
+            { name: "rouge", version: "3.23.0" },
+            { name: "safe_yaml", version: "1.0.5" },
+            { name: "sassc", version: "2.4.0" },
+            { name: "terminal-table", version: "1.8.0" },
+            { name: "typhoeus", version: "1.4.0" },
+            { name: "unicode-display_width", version: "1.7.0" },
+            { name: "yell", version: "2.2.2" }
+        ];
+
+        const coreGems = ["jekyll", "html-proofer", "nokogiri", "sassc", "kramdown", "liquid"];
+
+        function renderGems() {
+            document.getElementById('totalGems').textContent = gemData.length;
+            document.getElementById('gemCount').textContent = gemData.length;
+
+            const coreContainer = document.getElementById('coreGems');
+            const coreList = gemData.filter(g => coreGems.includes(g.name));
+            coreContainer.innerHTML = coreList.map(g => `
+                <div class="gem-item">
+                    <span class="gname">${g.name}</span>
+                    <span class="gver">${g.version}</span>
+                </div>
+            `).join('');
+
+            const allContainer = document.getElementById('allGems');
+            allContainer.innerHTML = gemData.map(g => `
+                <div class="gem-item">
+                    <span class="gname">${g.name}</span>
+                    <span class="gver">${g.version}</span>
+                </div>
+            `).join('');
+
+            const deps = gemData.filter(g => !coreGems.includes(g.name));
+            document.getElementById('totalDeps').textContent = deps.length;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderGems);
+    </script>
+
+    <!-- ====== ربط القائمة الجانبية ====== -->
+    <div id="main-menu" style="display:none;"></div>
+    <script src="/js/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.buildHamburgerMenu === 'function') {
+                setTimeout(() => {
+                    window.buildHamburgerMenu();
+                    window.buildMainMenu();
+                }, 150);
+            }
+        });
+    </script>
+</body>
+</html>

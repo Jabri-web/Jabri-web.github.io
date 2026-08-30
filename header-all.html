@@ -142,8 +142,47 @@
         transition: all 0.3s ease !important; text-decoration: none;
     }
     .top-btn:hover { transform: scale(1.08) !important; box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important; }
-    .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
-    .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
+    .top-btn.menu, .top-btn.music, .top-btn.chat { width: 44px; padding: 0; font-size: 18px; }
+    .top-btn.lang { width: 60px; padding: 0; font-size: 11px; }
+    .top-btn.visitor { width: auto; padding: 0 14px; font-size: 12px; }
+
+    /* ===== الأزرار الوسطى (Share, Like, Dislike) ===== */
+    .middle-buttons {
+        position: fixed;
+        top: 75px;
+        left: 20px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+    }
+    .middle-buttons > * { pointer-events: auto; }
+    .middle-btn {
+        background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+        color: #0a0a0f !important;
+        border: 2px solid #ffd700 !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+        border-radius: 50% !important;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease !important;
+        font-family: 'Cairo', sans-serif;
+        backdrop-filter: blur(4px);
+    }
+    .middle-btn:hover {
+        transform: scale(1.12) !important;
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important;
+    }
+    .middle-btn:active {
+        transform: scale(0.92) !important;
+    }
 
     /* ===== القائمة الجانبية ===== */
     .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99997; display: none; backdrop-filter: blur(4px); }
@@ -213,21 +252,33 @@
         .top-header-buttons { padding: 0 10px; }
         .top-btn { height: 38px; }
         .top-btn.lang { min-width: 70px; padding: 0 12px; font-size: 11px; }
+        .top-btn.visitor { min-width: 80px; padding: 0 14px; font-size: 12px; }
+        .top-btn.music { width: 40px; font-size: 17px; }
+        .top-btn.chat { width: 40px; font-size: 17px; }
         .top-btn.menu { width: 40px; font-size: 17px; }
+        
+        .middle-buttons { top: 65px; left: 10px; gap: 6px; }
+        .middle-btn { width: 40px !important; height: 40px !important; font-size: 17px !important; }
         
         .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
         .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
-        .bottom-btn.music { font-size: 17px; min-width: 60px; padding: 0 14px; }
+        .bottom-btn.music { font-size: 17px; min-width: 100px; padding: 0 14px; }
         .bottom-btn.lang { min-width: 100px; padding: 0 12px; font-size: 11px; }
     }
     @media (max-width: 400px) {
         .top-btn { height: 34px; }
         .top-btn.lang { min-width: 70px; padding: 0 8px; font-size: 10px; }
+        .top-btn.visitor { min-width: 70px; padding: 0 10px; font-size: 11px; }
+        .top-btn.music { width: 36px; font-size: 15px; }
+        .top-btn.chat { width: 36px; font-size: 15px; }
         .top-btn.menu { width: 36px; font-size: 15px; }
+        
+        .middle-buttons { top: 55px; left: 8px; gap: 5px; }
+        .middle-btn { width: 36px !important; height: 36px !important; font-size: 15px !important; }
         
         .bottom-buttons { bottom: 14px; left: 14px; gap: 8px; }
         .bottom-btn { height: 38px; font-size: 12px; padding: 0 12px; min-width: 100px; }
-        .bottom-btn.music { font-size: 15px; min-width: 60px; padding: 0 10px; }
+        .bottom-btn.music { font-size: 15px; min-width: 100px; padding: 0 10px; }
     }
     .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
     * { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
@@ -283,11 +334,8 @@
 </head>
 <body>
 
-  <!-- ============================================================ -->
-  <!-- ===== الأزرار العلوية (فقط: قائمة + لغة) ===== -->
-  <!-- ============================================================ -->
+  <!-- ===== الأزرار العلوية ===== -->
   <div class="top-header-buttons">
-    <!-- المجموعة: قائمة + لغة -->
     <div style="display:flex; gap:8px;">
       <button class="top-btn menu" id="menuTopBtn" onclick="window.toggleMenu()" title="القائمة">☰</button>
       <button class="top-btn lang" id="langTopBtn" onclick="window.toggleLang()" title="تبديل اللغة">
@@ -296,13 +344,27 @@
       </button>
     </div>
 
-    <!-- الجهة اليسرى فارغة (حذفنا مشاركة + إعجاب + عدم إعجاب) -->
-    <div style="display:flex; gap:8px;"></div>
+    <div class="top-btn visitor" title="الزوار">
+      <span class="ar">👥 الزوار</span>
+      <span class="en">👥 Visitors</span>
+      <span class="count" id="visitorCountTop">1</span>
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <audio id="oasisMusic" src="/image/music.mp3" loop preload="auto"></audio>
+      <button class="top-btn music" id="musicTopBtn" onclick="window.toggleMusic()" title="موسيقى">🎵</button>
+      <button class="top-btn chat" onclick="window.toggleChat()" title="محادثة">💬</button>
+    </div>
   </div>
 
-  <!-- ============================================================ -->
+  <!-- ===== الأزرار الوسطى (Share - Like - Dislike) ===== -->
+  <div class="middle-buttons">
+    <button class="middle-btn share" onclick="window.sharePage()" title="مشاركة">📤</button>
+    <button class="middle-btn like" onclick="window.likePage()" title="أعجبني">👍</button>
+    <button class="middle-btn dislike" onclick="window.dislikePage()" title="لم يعجبني">👎</button>
+  </div>
+
   <!-- ===== القائمة الجانبية ===== -->
-  <!-- ============================================================ -->
   <div class="menu-overlay" id="menuOverlay" onclick="window.closeMenu()"></div>
   <div class="side-menu" id="sideMenu">
     <button class="menu-close" onclick="window.closeMenu()">✕</button>
@@ -351,9 +413,7 @@
     <button class="menu-btn" onclick="window.toggleMusic(); window.closeMenu();"><span class="icon">🎵</span> الموسيقى</button>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- ===== الأزرار السفلية (كلها تبقى) ===== -->
-  <!-- ============================================================ -->
+  <!-- ===== الأزرار السفلية ===== -->
   <div class="bottom-buttons">
     <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
     <a href="/music.html" class="bottom-btn music-link">👀 🎵</a>
@@ -368,9 +428,7 @@
     <button class="bottom-btn chat" onclick="window.toggleChat()">💬 محادثة</button>
   </div>
 
-  <!-- ============================================================ -->
   <!-- ===== السكربت الرئيسي ===== -->
-  <!-- ============================================================ -->
   <script>
     // ===== توحيد الدوال على window =====
     window.toggleLang = function() {
@@ -381,14 +439,8 @@
       document.documentElement.lang = next === 'en' ? 'en' : 'ar';
       localStorage.setItem('lang', next);
       
-      const langTop = document.getElementById('langTopBtn');
-      if (langTop) {
-        langTop.innerHTML = next === 'en' ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>' : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
-      }
-      const langBottom = document.getElementById('langBottomBtn');
-      if (langBottom) {
-        langBottom.innerHTML = next === 'en' ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>' : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
-      }
+      document.getElementById('langTopBtn').innerHTML = next === 'en' ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>' : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
+      document.getElementById('langBottomBtn').innerHTML = next === 'en' ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>' : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
     };
 
     window.toggleMusic = function() {
@@ -397,14 +449,10 @@
       const btns = document.querySelectorAll('#musicTopBtn, #musicBottomBtn');
       if (audio.paused) {
         audio.play().catch(() => {});
-        btns.forEach(b => { 
-          if (b) { b.textContent = '🔊'; b.classList.add('playing'); }
-        });
+        btns.forEach(b => { b.textContent = '🔊'; b.classList.add('playing'); });
       } else {
         audio.pause();
-        btns.forEach(b => { 
-          if (b) { b.textContent = '🎵'; b.classList.remove('playing'); }
-        });
+        btns.forEach(b => { b.textContent = '🎵'; b.classList.remove('playing'); });
       }
     };
 
@@ -415,27 +463,50 @@
     window.toggleMenu = function() {
       const menu = document.getElementById('sideMenu');
       const overlay = document.getElementById('menuOverlay');
-      if (menu && overlay) {
-        menu.classList.toggle('open');
-        overlay.classList.toggle('active');
-      }
+      menu.classList.toggle('open');
+      overlay.classList.toggle('active');
     };
 
     window.closeMenu = function() {
-      const menu = document.getElementById('sideMenu');
-      const overlay = document.getElementById('menuOverlay');
-      if (menu) menu.classList.remove('open');
-      if (overlay) overlay.classList.remove('active');
+      document.getElementById('sideMenu').classList.remove('open');
+      document.getElementById('menuOverlay').classList.remove('active');
     };
 
     window.updateVisitorCount = function() {
       let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
       count += 1;
       localStorage.setItem('jabri_visitor_count', count);
-      const topEl = document.getElementById('visitorCountTop');
-      const bottomEl = document.getElementById('visitorCountBottom');
-      if (topEl) topEl.textContent = count;
-      if (bottomEl) bottomEl.textContent = count;
+      document.getElementById('visitorCountTop').textContent = count;
+      document.getElementById('visitorCountBottom').textContent = count;
+    };
+
+    // ===== الأزرار الوسطى =====
+    window.sharePage = function() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          text: '🌹 واحة الجبري | نظرية السندباد الموحدة Z+C+A=1',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href)
+          .then(() => alert('✅ تم نسخ الرابط!'))
+          .catch(() => alert('📋 الرابط: ' + window.location.href));
+      }
+    };
+
+    window.likePage = function() {
+      let likes = parseInt(localStorage.getItem('jabri_likes') || '0', 10);
+      likes += 1;
+      localStorage.setItem('jabri_likes', likes);
+      alert('👍 شكراً لإعجابك! (' + likes + ')');
+    };
+
+    window.dislikePage = function() {
+      let dislikes = parseInt(localStorage.getItem('jabri_dislikes') || '0', 10);
+      dislikes += 1;
+      localStorage.setItem('jabri_dislikes', dislikes);
+      alert('👎 تم تسجيل رأيك!');
     };
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -450,74 +521,77 @@
         document.documentElement.lang = 'ar';
       }
       window.updateVisitorCount();
-      console.log('🚀 واحة الجبري | الأزرار العلوية: قائمة + لغة فقط');
+      console.log('🚀 واحة الجبري | القائمة الكاملة مع الأزرار الوسطى');
     });
   </script>
 
-  <!-- ============================================================ -->
-  <!-- ===== Placeholders + Scripts ===== -->
-  <!-- ============================================================ -->
+  <!-- ===== Placeholders ===== -->
   <div id="header-placeholder"></div>
   <div id="footer-placeholder"></div>
   
   <script src="/js/init-page-root.js"></script>
   <script src="/js/menu.js"></script>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
+
+
+<script>
+// ===== تشغيل الصوت تلقائي بعد اول تفاعل =====
+(function() {
+  const audio = document.getElementById('oasisMusic');
+  if (!audio) return;
+
+  let musicPlayed = false;
+
+  function playMusic() {
+    if (musicPlayed) return;
+    musicPlayed = true;
+    
+    // إزالة المستمعين فوراً لمنع أي تنفيذ إضافي
+    document.removeEventListener('click', playMusic);
+    document.removeEventListener('touchstart', playMusic);
+    
+    audio.volume = 1;
+    audio.play().then(() => {
+      document.querySelectorAll('#musicTopBtn, #musicBottomBtn').forEach(b => {
+        b.textContent = '🔊'; 
+        b.classList.add('playing');
+      });
+      console.log('🎵 تم تشغيل الموسيقى تلقائياً');
+    }).catch(err => {
+      // إذا فشل التشغيل، نسمح للمستخدم بتشغيلها يدوياً لاحقاً
+      musicPlayed = false; // نعيد العلم للخلف ليتسنى للمستخدم تشغيلها لاحقاً
+      console.log('لم يتم تشغيل الصوت تلقائياً:', err);
+    });
+  }
+
+  document.addEventListener('click', playMusic);
+  document.addEventListener('touchstart', playMusic);
+
+  // دالة التبديل اليدوي (تم تعديلها قليلاً)
+  window.toggleMusic = function() {
+    if (!audio) return;
+    const btns = document.querySelectorAll('#musicTopBtn, #musicBottomBtn');
+    if (audio.paused) {
+      audio.play().then(() => {
+        btns.forEach(b => { b.textContent = '🔊'; b.classList.add('playing'); });
+        musicPlayed = true; // نؤكد أن الموسيقى مشغلة
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      btns.forEach(b => { b.textContent = '🎵'; b.classList.remove('playing'); });
     }
-  </script>
+  };
+})();
+</script>
 
-  <script>
-    // ===== تشغيل الصوت تلقائي بعد اول تفاعل =====
-    (function() {
-      const audio = document.getElementById('oasisMusic');
-      if (!audio) return;
 
-      let musicPlayed = false;
 
-      function playMusic() {
-        if (musicPlayed) return;
-        musicPlayed = true;
-        
-        document.removeEventListener('click', playMusic);
-        document.removeEventListener('touchstart', playMusic);
-        
-        audio.volume = 1;
-        audio.play().then(() => {
-          document.querySelectorAll('#musicTopBtn, #musicBottomBtn').forEach(b => {
-            if (b) { b.textContent = '🔊'; b.classList.add('playing'); }
-          });
-          console.log('🎵 تم تشغيل الموسيقى تلقائياً');
-        }).catch(err => {
-          musicPlayed = false;
-          console.log('لم يتم تشغيل الصوت تلقائياً:', err);
-        });
-      }
-
-      document.addEventListener('click', playMusic);
-      document.addEventListener('touchstart', playMusic);
-
-      window.toggleMusic = function() {
-        if (!audio) return;
-        const btns = document.querySelectorAll('#musicTopBtn, #musicBottomBtn');
-        if (audio.paused) {
-          audio.play().then(() => {
-            btns.forEach(b => { 
-              if (b) { b.textContent = '🔊'; b.classList.add('playing'); }
-            });
-            musicPlayed = true;
-          }).catch(() => {});
-        } else {
-          audio.pause();
-          btns.forEach(b => { 
-            if (b) { b.textContent = '🎵'; b.classList.remove('playing'); }
-          });
-        }
-      };
-    })();
-  </script>
 
 </body>
 </html>

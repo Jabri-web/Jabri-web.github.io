@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🗂️ مستكشف المستودعات - واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* رأس الصفحة */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background: #161b22;
+            border-radius: 16px;
+            border: 1px solid #30363d;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #ffd700;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header .stats {
+            color: #8b949e;
+            font-size: 14px;
+        }
+        .header .stats span {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        /* شريط البحث والفلتر */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        .filters input,
+        .filters select {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            flex: 1;
+            min-width: 150px;
+        }
+        .filters input:focus,
+        .filters select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+        }
+        .filters .filter-btns {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .filters .filter-btns button {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #30363d;
+            background: transparent;
+            color: #8b949e;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .filters .filter-btns button:hover {
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+        .filters .filter-btns button.active {
+            background: #ffd700;
+            color: #0d1117;
+            border-color: #ffd700;
+            font-weight: bold;
+        }
+        /* شبكة المستودعات */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .repo-card {
+            background: #161b22;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid #30363d;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .repo-card:hover {
+            border-color: #ffd700;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.06);
+        }
+        .repo-card .name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .repo-card .name .lang-icon {
+            font-size: 14px;
+        }
+        .repo-card .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 8px 0;
+        }
+        .repo-card .categories .cat {
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.12);
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+        }
+        .repo-card .categories .cat.other {
+            background: rgba(139, 148, 158, 0.15);
+            color: #8b949e;
+            border-color: #30363d;
+        }
+        .repo-card .desc {
+            color: #8b949e;
+            font-size: 13px;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+        .repo-card .meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            padding-top: 10px;
+        }
+        .repo-card .meta a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .repo-card .meta a:hover {
+            text-decoration: underline;
+        }
+        /* رسالة فارغة */
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8b949e;
+            font-size: 18px;
+        }
+        .empty span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        /* عداد التحميل */
+        .loader {
+            text-align: center;
+            padding: 40px;
+            color: #ffd700;
+            font-size: 18px;
+        }
+        /* استجابة */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 20px; }
+            .repo-grid { grid-template-columns: 1fr; }
+            .filters { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- رأس الصفحة -->
+        <div class="header">
+            <h1>🗂️ مستكشف المستودعات</h1>
+            <div class="stats">
+                📦 <span id="totalRepos">0</span> مستودع &nbsp;|&nbsp; 🏷️ <span id="totalCats">0</span> تصنيف
+            </div>
+        </div>
+
+        <!-- فلتر وبحث -->
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="🔍 ابحث عن مستودع..." oninput="applyFilters()" />
+            <select id="categoryFilter" onchange="applyFilters()">
+                <option value="all">📂 جميع التصنيفات</option>
+            </select>
+            <div class="filter-btns" id="quickFilters">
+                <button class="active" data-filter="all" onclick="setQuickFilter('all')">الكل</button>
+                <button data-filter="Android" onclick="setQuickFilter('Android')">📱 Android</button>
+                <button data-filter="iOS" onclick="setQuickFilter('iOS')">🍎 iOS</button>
+                <button data-filter="Go" onclick="setQuickFilter('Go')">🐹 Go</button>
+                <button data-filter="JavaScript" onclick="setQuickFilter('JavaScript')">🟨 JS</button>
+                <button data-filter="Ruby" onclick="setQuickFilter('Ruby')">💎 Ruby</button>
+                <button data-filter="Kotlin" onclick="setQuickFilter('Kotlin')">🟣 Kotlin</button>
+                <button data-filter="Java" onclick="setQuickFilter('Java')">☕ Java</button>
+            </div>
+        </div>
+
+        <!-- شبكة المستودعات -->
+        <div class="repo-grid" id="repoGrid">
+            <div class="loader">⏳ جارٍ التحميل...</div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  البيانات المضمنة
+        // ============================================================
+        const REPO_DATA = {
+            "repos": {
+                "Aardvark": ["iOS"],
+                "Ackbar": ["iOS"],
+                "android-times-square": ["Android"],
+                "anvil": ["Android", "Kotlin"],
+                "assertj-android": ["Android"],
+                "beancounter": ["Go"],
+                "border_patrol": ["Ruby"],
+                "cane": ["Ruby"],
+                "certigo": ["Go"],
+                "certstrap": ["Go"],
+                "Cleanse": ["iOS"],
+                "crossfilter": ["JavaScript"],
+                "cube": ["JavaScript"],
+                "cubism": ["JavaScript"],
+                "ETL": ["Ruby"],
+                "fdoc": ["Ruby"],
+                "field-kit": ["JavaScript"],
+                "ghostunnel": ["Go"],
+                "go-jose": ["Go"],
+                "gssh": ["Go"],
+                "JavaPoet": ["Java"],
+                "jetpack": ["Ruby"],
+                "jirafy": ["Other"],
+                "js-jose": ["JavaScript"],
+                "Keywhiz": ["Java"],
+                "KotlinPoet": ["Kotlin"],
+                "leakcanary": ["Android", "Kotlin"],
+                "LGTM": ["JavaScript"],
+                "metrics": ["Go"],
+                "moshi": ["Android", "Java"],
+                "okhttp": ["Android", "Java", "Kotlin"],
+                "okio": ["Android", "Java", "Kotlin"],
+                "p2": ["Other"],
+                "picasso": ["Android"],
+                "pollexor": ["Android", "Java"],
+                "PonyDebugger": ["iOS"],
+                "rack-servlet": ["Java"],
+                "rails-auth": ["Ruby"],
+                "retrofit": ["Android", "Java", "Kotlin"],
+                "seismic": ["Android"],
+                "shift": ["Other"],
+                "shuttle": ["Other"],
+                "spacecommander": ["iOS"],
+                "spoon": ["Android"],
+                "sqldelight": ["Android", "iOS", "Kotlin"],
+                "squalor": ["Go"],
+                "subzero": ["C", "Java", "Go"],
+                "SuperDelegate": ["iOS"],
+                "tape": ["Android"],
+                "toggle": null,
+                "Valet": ["iOS"],
+                "wire": ["Android", "Java", "Kotlin"],
+                "workflow": ["Android", "iOS", "Kotlin"]
+            },
+            "custom": [{
+                "name": "es6-module-transpiler",
+                "homepage": "http://esnext.github.io/es6-module-transpiler/",
+                "html_url": "https://github.com/esnext/es6-module-transpiler",
+                "description": "Tomorrow’s JavaScript module syntax today",
+                "categories": ["JavaScript"]
+            }]
+        };
+
+        // ============================================================
+        //  تحويل البيانات إلى قائمة موحدة
+        // ============================================================
+        let allRepos = [];
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function loadData() {
+            // المستودعات الأساسية
+            for (const [name, categories] of Object.entries(REPO_DATA.repos)) {
+                if (categories === null) {
+                    allRepos.push({ name, categories: ['Other'], isCustom: false });
+                } else {
+                    allRepos.push({ name, categories: categories.length ? categories : ['Other'], isCustom: false });
+                }
+            }
+
+            // المستودعات المخصصة
+            for (const item of REPO_DATA.custom) {
+                allRepos.push({
+                    name: item.name,
+                    categories: item.categories || ['Other'],
+                    description: item.description || '',
+                    homepage: item.homepage || '',
+                    html_url: item.html_url || '',
+                    isCustom: true
+                });
+            }
+
+            // تحديث الإحصائيات
+            const allCats = new Set();
+            allRepos.forEach(r => r.categories.forEach(c => allCats.add(c)));
+            document.getElementById('totalRepos').textContent = allRepos.length;
+            document.getElementById('totalCats').textContent = allCats.size;
+
+            // تعبئة قائمة التصنيفات
+            const catSelect = document.getElementById('categoryFilter');
+            const sortedCats = Array.from(allCats).sort();
+            sortedCats.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat;
+                opt.textContent = cat;
+                catSelect.appendChild(opt);
+            });
+
+            renderRepos(allRepos);
+        }
+
+        // ============================================================
+        //  عرض المستودعات
+        // ============================================================
+        function renderRepos(repos) {
+            const grid = document.getElementById('repoGrid');
+
+            if (repos.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty" style="grid-column:1/-1;">
+                        <span>🔍</span>
+                        لا توجد مستودعات تطابق البحث
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            for (const repo of repos) {
+                const catHtml = repo.categories.map(c => 
+                    `<span class="cat ${c === 'Other' ? 'other' : ''}">${c}</span>`
+                ).join('');
+
+                const icon = repo.categories.includes('Android') ? '📱' :
+                             repo.categories.includes('iOS') ? '🍎' :
+                             repo.categories.includes('Go') ? '🐹' :
+                             repo.categories.includes('JavaScript') ? '🟨' :
+                             repo.categories.includes('Ruby') ? '💎' :
+                             repo.categories.includes('Kotlin') ? '🟣' :
+                             repo.categories.includes('Java') ? '☕' : '📦';
+
+                const customBadge = repo.isCustom ? 
+                    '<span style="font-size:10px;background:#ffd70020;color:#ffd700;padding:0 8px;border-radius:8px;">✨ مخصص</span>' : '';
+
+                const descHtml = repo.description ? 
+                    `<div class="desc">${repo.description}</div>` : '';
+
+                const linksHtml = repo.html_url ? 
+                    `<a href="${repo.html_url}" target="_blank">🔗 GitHub</a>` : '';
+                const homeHtml = repo.homepage ? 
+                    `<a href="${repo.homepage}" target="_blank">🌐 Homepage</a>` : '';
+
+                html += `
+                    <div class="repo-card">
+                        <div class="name">
+                            <span class="lang-icon">${icon}</span>
+                            ${repo.name} ${customBadge}
+                        </div>
+                        <div class="categories">${catHtml}</div>
+                        ${descHtml}
+                        <div class="meta">
+                            <span>${linksHtml} ${homeHtml}</span>
+                            <span>${repo.isCustom ? '⭐' : ''}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        // ============================================================
+        //  الفلترة والبحث
+        // ============================================================
+        function applyFilters() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+            const catFilter = document.getElementById('categoryFilter').value;
+
+            let filtered = allRepos.filter(repo => {
+                // فلتر البحث
+                if (search && !repo.name.toLowerCase().includes(search)) {
+                    return false;
+                }
+                // فلتر التصنيف
+                if (catFilter !== 'all' && !repo.categories.includes(catFilter)) {
+                    return false;
+                }
+                // فلتر سريع
+                if (currentFilter !== 'all' && !repo.categories.includes(currentFilter)) {
+                    return false;
+                }
+                return true;
+            });
+
+            renderRepos(filtered);
+        }
+
+        function setQuickFilter(filter) {
+            currentFilter = filter;
+            // تحديث الأزرار
+            document.querySelectorAll('#quickFilters button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            // إعادة تعيين select
+            document.getElementById('categoryFilter').value = 'all';
+            applyFilters();
+        }
+
+        // ============================================================
+        //  التشغيل
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            // ربط البحث والفلتر
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        });
+    </script>
+</body>
+</html>
