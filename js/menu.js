@@ -1,13 +1,13 @@
 // ============================================================
 //   menu.js - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 5.0.6 - 29 أغسطس 2026 - ثنائي اللغة + روابط مطلقة
-//   🎮 دعم مركز الألعاب
+//   الإصدار: 5.0.7 - 30 أغسطس 2026 - ثنائي اللغة + روابط مطلقة
+//   🎮 دعم مركز الألعاب + ويكيبيديا + تنزيلات مباشرة
 // ============================================================
 
 (function() {
     'use strict';
 
-    const SITE_URL = 'https://jabri-web.github.io/Jabri-com'; // غيره لدومينك
+    const SITE_URL = 'https://jabri-web.github.io/Jabri-com';
     const currentPath = window.location.pathname;
     let langDir = '';
     let isArabic = true;
@@ -20,7 +20,7 @@
         langDir = '/en';
         isArabic = false;
     } else {
-        langDir = ''; // الافتراضي عربي
+        langDir = '';
         isArabic = true;
     }
 
@@ -36,6 +36,7 @@
         { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects Index', href: `${SITE_URL}${langDir}/jabri-projects.html`, icon: '📦' },
         { name: 'الفاحص', nameEn: 'Diagnose', href: `${SITE_URL}${langDir}/diagnose.html`, icon: '🔍' },
         { name: 'واتساب الواحة', nameEn: 'Waha WhatsApp', href: `${SITE_URL}${langDir}/publish/publish.html`, icon: '💬' },
+        { name: 'مستكشف الواحة', nameEn: 'Explore', href: `${SITE_URL}${langDir}/current-auto.html`, icon: '🗂️' },
         { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', href: `${SITE_URL}${langDir}/journal3.html`, icon: '✉️' },
         { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', href: `${SITE_URL}${langDir}/z-lab.html`, icon: '🧮' },
         { name: 'حاسبة النظرية الموحدة', nameEn: 'Unified Theory Calculator', href: `${SITE_URL}${langDir}/unified-calc.html`, icon: '🌌' },
@@ -121,12 +122,15 @@
         
         const isChatItem = item.isChat === true;
         const isDownloadItem = item.isDownload === true;
+        const isWikiItem = item.isWiki === true;
         const onClick = isChatItem ? ` onclick="window.openChatPrompt(); return false;"` : 
-                        isDownloadItem ? ` onclick="window.downloadWaha('${item.type}'); return false;"` : '';
-        const cursor = (isChatItem || isDownloadItem) ? 'cursor:pointer;' : '';
+                        isDownloadItem ? ` onclick="window.downloadWaha('${item.type}'); return false;"` :
+                        isWikiItem ? ` onclick="window.openWiki(); return false;"` : '';
+        const cursor = (isChatItem || isDownloadItem || isWikiItem) ? 'cursor:pointer;' : '';
+        const target = item.external ? ' target="_blank" rel="noopener"' : '';
         
         return `
-            <a href="${item.href}"${onClick} style="color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.85rem;${activeStyle}${cursor}">
+            <a href="${item.href}"${target}${onClick} style="color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.85rem;${activeStyle}${cursor}">
                 <span style="font-size:1rem;">${item.icon || '📄'}</span> ${isArabic ? item.name : item.nameEn}
             </a>
         `;
@@ -147,7 +151,7 @@
         MENU_TOP.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // قسم الألعاب (جديد)
+        // قسم الألعاب
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(0,255,128,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#00ff88; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🎮 ${isArabic ? 'مركز الألعاب' : 'Games Hub'}</div>`;
         GAMES.forEach(item => { html += buildMenuItem(item); });
@@ -159,11 +163,38 @@
         MENU_MIDDLE.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // قسم التنزيلات
+        // ======== قسم التنزيلات (محدث) ========
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
-        html += buildMenuItem({ name: 'تنزيل APK', nameEn: 'Download APK', href: '#', icon: '📱', isDownload: true, type: 'apk' });
-        html += buildMenuItem({ name: 'تنزيل ZIP', nameEn: 'Download ZIP', href: '#', icon: '📦', isDownload: true, type: 'zip' });
+        html += buildMenuItem({ 
+            name: '📱 تنزيل APK', 
+            nameEn: '📱 Download APK', 
+            href: '#', 
+            icon: '📱', 
+            isDownload: true, 
+            type: 'apk' 
+        });
+        html += buildMenuItem({ 
+            name: '📦 تنزيل ZIP', 
+            nameEn: '📦 Download ZIP', 
+            href: '#', 
+            icon: '📦', 
+            isDownload: true, 
+            type: 'zip' 
+        });
+        html += `</div>`;
+
+        // ======== قسم ويكيبيديا (جديد) ========
+        html += `<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2); padding-bottom:8px; margin-bottom:10px;">`;
+        html += `<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📖 ${isArabic ? 'ويكيبيديا' : 'Wikipedia'}</div>`;
+        html += buildMenuItem({
+            name: '📖 عربي - ويكيبيديا',
+            nameEn: '📖 English - Wikipedia',
+            href: 'https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html',
+            icon: '📖',
+            isWiki: true,
+            external: true
+        });
         html += `</div>`;
 
         // قسم المحادثات
@@ -270,6 +301,14 @@
         html += `<div onclick="window.downloadWaha('zip')" style="color:#fff;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.82rem;border-bottom:1px solid rgba(255,106,106,0.03);">
                     <span>📦</span> ${isArabic ? 'تنزيل ZIP' : 'Download ZIP'}
                  </div>`;
+        html += `</div>`;
+
+        // ويكيبيديا
+        html += `<div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">`;
+        html += `<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📖 ${isArabic ? 'ويكيبيديا' : 'Wikipedia'}</div>`;
+        html += `<a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" rel="noopener" style="color:#6ae3ff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;font-size:0.82rem;border-bottom:1px solid rgba(106,227,255,0.03);">
+                    <span>📖</span> ${isArabic ? 'عربي - ويكيبيديا' : 'English - Wikipedia'}
+                 </a>`;
         html += `</div>`;
 
         // المحادثات
@@ -414,16 +453,22 @@
         }
     };
 
+    window.openWiki = function() {
+        window.open('https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html', '_blank');
+    };
+
     window.downloadWaha = function(type) {
-        const defaultName = type === 'apk' ? 'Waha-AlJabri.apk' : 'Waha-AlJabri.zip';
-        const folder = prompt(isArabic ? '📁 ادخل اسم المجلد للحفظ:' : '📁 Enter folder name to save:', 'Download');
+        const defaultName = type === 'apk' ? 'jabri-heaven-v2.0.apk' : 'jabri-heaven-v2.0.zip';
+        const folder = prompt(isArabic ? '📁 ادخل اسم المجلد للحفظ:' : '📁 Enter folder name to save:', '11-Jabri-com/apk');
         if (folder === null) return;
         const filename = prompt(isArabic ? '📝 ادخل اسم الملف:' : '📝 Enter file name:', defaultName);
         if (filename === null) return;
 
+        // روابط التنزيل حسب النوع
+        const baseDownloadUrl = 'https://jabri-web.github.io/Jabri-com/11-Jabri-com/apk';
         const downloadUrl = type === 'apk' 
-            ? 'https://github.com/jabri-web/Jabri-com/releases/download/v1.0/Waha-AlJabri.apk' 
-            : 'https://github.com/jabri-web/Jabri-com/archive/refs/heads/main.zip';
+            ? `${baseDownloadUrl}/jabri-heaven-v2.0.apk`
+            : `${baseDownloadUrl}/jabri-heaven-v2.0.zip`;
 
         const a = document.createElement('a');
         a.href = downloadUrl;
@@ -451,9 +496,10 @@
         updateBottomMenu();
         buildMainMenu();
         buildHamburgerMenu();
-        console.log('🌴 menu.js v5.0.6 - Bilingual + Absolute Links + Games Hub');
-        console.log('📅 29 أغسطس 2026');
-        console.log('🎮 مركز الألعاب متاح!');
+        console.log('🌴 menu.js v5.0.7 - Bilingual + Wikipedia + Downloads');
+        console.log('📅 30 أغسطس 2026');
+        console.log('📖 Wikipedia link added');
+        console.log('⬇️ APK & ZIP downloads with custom folder/filename');
     });
 
     window.updateChatMenu = updateBottomMenu;
