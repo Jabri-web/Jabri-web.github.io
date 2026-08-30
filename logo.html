@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>واحة الجبري - تراث اليمن العريق</title>
+    <!-- ===== خطوط محلية بدون Cloudflare ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ===== Font Awesome محلي ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== الأساسيات ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== الوضع الليلي (افتراضي) ===== */
+        body {
+            font-family: 'Cairo', 'Amiri', 'Arial', sans-serif;
+            background: #0a0f0d;
+            color: #f5efe6;
+            transition: 0.4s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== الوضع النهاري ===== */
+        body.day {
+            background: #f5efe6;
+            color: #1a1a1a;
+        }
+
+        body.day .top-bar {
+            background: rgba(245, 239, 230, 0.95);
+            border-bottom: 2px solid rgba(201, 168, 76, 0.3);
+        }
+
+        body.day .top-bar .brand .name {
+            color: #8a6d2b;
+        }
+
+        body.day .top-bar .brand .name small {
+            color: #8a7a6a;
+        }
+
+        body.day .top-actions a {
+            color: #333;
+        }
+
+        body.day .hero-section {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        body.day .hero-title {
+            color: #1a1a1a;
+        }
+
+        body.day .hero-sub {
+            color: #8a6d2b;
+        }
+
+        body.day .hero-philosophy {
+            background: rgba(255, 255, 255, 0.7);
+            border-right-color: #c9a84c;
+        }
+
+        body.day .hero-philosophy p {
+            color: #333;
+        }
+
+        body.day .hero-mission {
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+        }
+
+        body.day .brand-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(201, 168, 76, 0.15);
+        }
+
+        body.day .brand-card .card-name {
+            color: #1a1a1a;
+        }
+
+        body.day .brand-card:hover {
+            border-color: rgba(201, 168, 76, 0.5);
+        }
+
+        body.day .bottom-bar {
+            background: rgba(245, 239, 230, 0.92);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        body.day .bottom-bar .btn-b {
+            color: #444;
+        }
+
+        body.day .bottom-bar .btn-b.active {
+            background: #c9a84c;
+            color: #fff;
+        }
+
+        body.day .video-timer {
+            background: rgba(245, 239, 230, 0.85);
+            color: #8a6d2b;
+        }
+
+        body.day .sound-btn {
+            background: rgba(245, 239, 230, 0.85);
+            color: #8a6d2b;
+        }
+
+        body.day .sound-btn:hover {
+            background: #c9a84c;
+            color: #fff;
+        }
+
+        body.day .hero-badge {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.25);
+        }
+
+        body.day .settings-box {
+            background: #f5efe6;
+            color: #1a1a1a;
+        }
+
+        /* ===== الوضع الليلي (افتراضي) ===== */
+        body.night {
+            background: #0a0f0d;
+            color: #f5efe6;
+        }
+
+        body.night .top-bar {
+            background: rgba(10, 15, 13, 0.95);
+            border-bottom: 2px solid rgba(201, 168, 76, 0.25);
+        }
+
+        body.night .top-bar .brand .name {
+            color: #c9a84c;
+        }
+
+        body.night .top-bar .brand .name small {
+            color: #b8a07c;
+        }
+
+        body.night .top-actions a {
+            color: #eee;
+        }
+
+        body.night .hero-section {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.night .hero-title {
+            color: #f5efe6;
+        }
+
+        body.night .hero-sub {
+            color: #c9a84c;
+        }
+
+        body.night .hero-philosophy {
+            background: rgba(10, 15, 13, 0.6);
+            border-right-color: #c9a84c;
+        }
+
+        body.night .hero-philosophy p {
+            color: #ddd;
+        }
+
+        body.night .hero-mission {
+            background: rgba(0, 0, 0, 0.3);
+            color: #ddd;
+        }
+
+        body.night .brand-card {
+            background: rgba(10, 15, 13, 0.8);
+            border-color: rgba(201, 168, 76, 0.1);
+        }
+
+        body.night .brand-card .card-name {
+            color: #f5efe6;
+        }
+
+        body.night .brand-card:hover {
+            border-color: rgba(201, 168, 76, 0.3);
+        }
+
+        body.night .bottom-bar {
+            background: rgba(10, 15, 13, 0.92);
+            border-color: rgba(201, 168, 76, 0.12);
+        }
+
+        body.night .bottom-bar .btn-b {
+            color: #ccc;
+        }
+
+        body.night .bottom-bar .btn-b.active {
+            background: #c9a84c;
+            color: #0a0f0d;
+        }
+
+        body.night .video-timer {
+            background: rgba(0, 0, 0, 0.7);
+            color: #c9a84c;
+        }
+
+        body.night .sound-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: #c9a84c;
+        }
+
+        body.night .sound-btn:hover {
+            background: #c9a84c;
+            color: #0a0f0d;
+        }
+
+        body.night .hero-badge {
+            background: rgba(201, 168, 76, 0.08);
+            border-color: rgba(201, 168, 76, 0.15);
+        }
+
+        body.night .settings-box {
+            background: #1a1a1a;
+            color: #f5efe6;
+        }
+
+        /* ===== إجبار العرض على Desktop (افتراضي) ===== */
+        body {
+            min-width: 1024px;
+            overflow-x: auto;
+        }
+
+        body .main-content {
+            min-width: 1024px;
+        }
+
+        body .brand-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        body .bottom-bar {
+            min-width: 500px;
+        }
+
+        /* ===== وضع Phone ===== */
+        body.device-phone {
+            min-width: unset;
+            overflow-x: hidden;
+        }
+
+        body.device-phone .main-content {
+            min-width: unset;
+        }
+
+        body.device-phone .brand-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        body.device-phone .bottom-bar {
+            min-width: unset;
+            width: 96%;
+        }
+
+        body.device-phone .hero-title {
+            font-size: 36px;
+        }
+
+        body.device-phone .hero-sub {
+            font-size: 15px;
+        }
+
+        body.device-phone .hero-formula {
+            font-size: 20px;
+            padding: 6px 14px;
+        }
+
+        body.device-phone .hero-formula .v {
+            font-size: 24px;
+        }
+
+        body.device-phone .hero-formula .r {
+            font-size: 30px;
+        }
+
+        /* ===== فيديو الخلفية ===== */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        /* ===== الشريط العلوي ===== */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+            backdrop-filter: blur(14px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .top-bar .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .top-bar .brand .icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #c9a84c, #e8c96e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #0a0f0d;
+        }
+
+        .top-bar .brand .name {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .top-bar .brand .name small {
+            display: block;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .top-actions a {
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 25px;
+            font-size: 12px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+        }
+
+        .top-actions a:hover {
+            background: #c9a84c;
+            color: #0a0f0d !important;
+            transform: scale(1.05);
+        }
+
+        .top-actions .btn-google {
+            border: 1px solid #ea4335;
+            color: #ea4335;
+        }
+        .top-actions .btn-google:hover {
+            background: #ea4335;
+            color: #fff !important;
+        }
+
+        .top-actions .btn-signup {
+            border: 1px solid #5a7a6a;
+            color: #5a7a6a;
+        }
+        .top-actions .btn-signup:hover {
+            background: #5a7a6a;
+            color: #fff !important;
+        }
+
+        .top-actions .btn-exit {
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+        }
+        .top-actions .btn-exit:hover {
+            background: #ff6b6b;
+            color: #0a0f0d !important;
+        }
+
+        .top-actions .btn-lang {
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+        .top-actions .btn-lang:hover {
+            background: #ffd700;
+            color: #0a0f0d !important;
+        }
+
+        .top-actions .btn-settings {
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: #c9a84c;
+        }
+        .top-actions .btn-settings:hover {
+            background: #c9a84c;
+            color: #0a0f0d !important;
+        }
+
+        /* ===== المحتوى الرئيسي ===== */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            padding-top: 76px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ===== قسم البطل ===== */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px 20px;
+            min-height: 55vh;
+            width: 100%;
+            max-width: 1024px;
+            backdrop-filter: blur(3px);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 18px;
+            border-radius: 50px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 900;
+            text-shadow: 0 0 50px rgba(201, 168, 76, 0.15);
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: #c9a84c;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 6px 0 18px;
+        }
+
+        .hero-philosophy {
+            max-width: 500px;
+            margin: 8px auto;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border-right: 3px solid #c9a84c;
+        }
+
+        .hero-philosophy p {
+            font-size: 14px;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hero-philosophy p i {
+            color: #c9a84c;
+        }
+
+        .hero-formula {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 20px;
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 12px;
+            font-size: 26px;
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+            margin: 15px 0 18px;
+        }
+
+        .hero-formula .b { color: #c9a84c; opacity: 0.5; }
+        .hero-formula .v { font-size: 30px; }
+        .hero-formula .v:nth-child(2) { color: #c9a84c; }
+        .hero-formula .v:nth-child(4) { color: #2d8f5c; }
+        .hero-formula .v:nth-child(6) { color: #e8c96e; }
+        .hero-formula .p { color: #666; font-size: 24px; }
+        .hero-formula .e { color: #666; font-size: 26px; }
+        .hero-formula .r { color: #c9a84c; font-size: 36px; animation: glow 2s ease-in-out infinite; }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.2); transform: scale(1); }
+            50% { text-shadow: 0 0 60px rgba(201, 168, 76, 0.5); transform: scale(1.05); }
+        }
+
+        .hero-mission {
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 30px;
+        }
+
+        .hero-mission i {
+            color: #c9a84c;
+            margin: 0 5px;
+        }
+
+        .hero-mission .emoji {
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* ===== شبكة البراند ===== */
+        .brand-grid {
+            display: grid;
+            gap: 15px;
+            max-width: 1024px;
+            margin: 10px auto 20px;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .brand-card {
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            border-radius: 16px;
+            padding: 18px 15px;
+            text-align: center;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .brand-card:hover {
+            border-color: rgba(201, 168, 76, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.05);
+        }
+
+        .brand-card .card-icon {
+            font-size: 28px;
+            color: #c9a84c;
+            margin-bottom: 6px;
+        }
+
+        .brand-card .card-name {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .brand-card .card-sub {
+            font-size: 11px;
+            color: #b8a07c;
+            letter-spacing: 2px;
+        }
+
+        .brand-card .card-formula {
+            font-size: 14px;
+            color: #c9a84c;
+            font-family: 'Times New Roman', serif;
+            margin-top: 4px;
+            opacity: 0.6;
+        }
+
+        .brand-card:nth-child(2) .card-icon { color: #2d8f5c; }
+        .brand-card:nth-child(3) .card-icon { color: #e8c96e; }
+        .brand-card:nth-child(4) .card-icon { color: #ffd700; }
+
+        /* ===== الأزرار السفلية ===== */
+        .bottom-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(12px);
+            padding: 6px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .bottom-bar .btn-b {
+            padding: 5px 14px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bottom-bar .btn-b:hover {
+            background: #c9a84c;
+            color: #0a0f0d !important;
+            border-color: #c9a84c;
+        }
+
+        .bottom-bar .btn-b.active {
+            background: #c9a84c;
+            color: #0a0f0d !important;
+            border-color: #c9a84c;
+        }
+
+        .bottom-bar .btn-b i {
+            font-size: 12px;
+        }
+
+        /* ===== زر الصوت ===== */
+        .sound-btn {
+            position: fixed;
+            bottom: 75px;
+            right: 20px;
+            z-index: 50;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 7px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(8px);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sound-btn:hover {
+            background: #c9a84c;
+            color: #0a0f0d !important;
+        }
+
+        /* ===== عداد الفيديو ===== */
+        .video-timer {
+            position: fixed;
+            bottom: 75px;
+            left: 20px;
+            z-index: 50;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 5px 12px;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-timer .progress {
+            width: 70px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-timer .progress .fill {
+            height: 100%;
+            width: 0%;
+            background: #c9a84c;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        /* ===== إعدادات الشاشة المنبثقة ===== */
+        .settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings-overlay.active {
+            display: flex;
+        }
+
+        .settings-box {
+            border: 2px solid #c9a84c;
+            border-radius: 20px;
+            padding: 35px 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .settings-box h2 {
+            color: #c9a84c;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .settings-box h3 {
+            font-size: 14px;
+            color: #b8a07c;
+            margin: 15px 0 8px;
+        }
+
+        .settings-box .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .settings-box .btn-setting {
+            padding: 10px 20px;
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px;
+            background: transparent;
+            color: #c9a84c;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .settings-box .btn-setting:hover {
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        .settings-box .btn-setting.active {
+            background: #c9a84c;
+            color: #0a0f0d;
+            border-color: #c9a84c;
+        }
+
+        .settings-box .btn-close {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: #c9a84c;
+            border: none;
+            border-radius: 30px;
+            color: #0a0f0d;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .settings-box .btn-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+        }
+
+        /* ===== توافق الجوال ===== */
+        @media (max-width: 820px) {
+            body {
+                min-width: unset;
+                overflow-x: hidden;
+            }
+            body .main-content {
+                min-width: unset;
+            }
+            body .brand-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            body .bottom-bar {
+                min-width: unset;
+                width: 96%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 30px;
+            }
+            .hero-sub {
+                font-size: 13px;
+                letter-spacing: 2px;
+            }
+            .hero-formula {
+                font-size: 16px;
+                padding: 5px 10px;
+            }
+            .hero-formula .v {
+                font-size: 20px;
+            }
+            .hero-formula .r {
+                font-size: 24px;
+            }
+            .brand-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                padding: 0 10px;
+            }
+            .brand-card {
+                padding: 12px 8px;
+            }
+            .brand-card .card-name {
+                font-size: 12px;
+            }
+            .settings-box {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="night device-desktop">
+
+    <!-- ===== فيديو الخلفية ===== -->
+    <video class="bg-video" id="bgVideo" autoplay muted playsinline poster="oasis-poster.jpg">
+        <source src="waha-ar.mp4" type="video/mp4" id="videoSource" />
+    </video>
+
+    <!-- ===== موسيقى خلفية ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="sanaani.mp3" type="audio/mpeg" />
+        <source src="hadrami.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- ===== الشريط العلوي ===== -->
+    <header class="top-bar">
+        <div class="brand">
+            <div class="icon"><i class="fas fa-palm-tree"></i></div>
+            <div class="name">
+                واحة الجبري
+                <small>✦ تراث اليمن العريق ✦</small>
+            </div>
+        </div>
+        <div class="top-actions">
+            <a class="btn-google"><i class="fab fa-google"></i> Google</a>
+            <a class="btn-signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+            <a class="btn-exit"><i class="fas fa-power-off"></i> Exit</a>
+            <a class="btn-lang" id="langToggle"><i class="fas fa-globe"></i> <span id="langLabel">عربي</span></a>
+            <a class="btn-settings" id="settingsToggle"><i class="fas fa-cog"></i> <span id="settingsLabel">إعدادات</span></a>
+        </div>
+    </header>
+
+    <!-- ===== المحتوى ===== -->
+    <div class="main-content">
+
+        <!-- ===== قسم البطل ===== -->
+        <section class="hero-section">
+            <div class="hero-badge">
+                <i class="fas fa-scroll"></i>
+                <span>واحة الجبري</span>
+                <i class="fas fa-scroll"></i>
+            </div>
+
+            <h1 class="hero-title">
+                واحة <span>الجبري</span>
+            </h1>
+            <p class="hero-sub">تراث اليمن العريق</p>
+
+            <div class="hero-philosophy">
+                <p><i class="fas fa-seedling"></i> من أصفار ريحان إلى بنية الكون</p>
+                <p><i class="fas fa-gem"></i> نظرية السندباد الموحدة</p>
+            </div>
+
+            <div class="hero-formula">
+                <span class="b">[</span>
+                <span class="v">Z</span>
+                <span class="p">+</span>
+                <span class="v">C</span>
+                <span class="p">+</span>
+                <span class="v">A</span>
+                <span class="b">]</span>
+                <span class="e">=</span>
+                <span class="r">1</span>
+            </div>
+
+            <div class="hero-mission">
+                <i class="fas fa-quote-right"></i>
+                نستكشف الماضي لنفهم الحاضر.. ونبني المستقبل
+                <i class="fas fa-quote-left"></i>
+                <span class="emoji">😊😊</span>
+            </div>
+        </section>
+
+        <!-- ===== شبكة البراند ===== -->
+        <div class="brand-grid">
+            <div class="brand-card" data-page="oasis-home.html">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <div class="card-name">واحة الجبري</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="heaven-info.html">
+                <div class="card-icon"><i class="fas fa-tree"></i></div>
+                <div class="card-name">Heaven Al-Jabri</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="aljabri-saga.html">
+                <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                <div class="card-name">واقعة الجبرى</div>
+                <div class="card-sub">تراث اليمن العربي</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="arab-unity.html">
+                <div class="card-icon"><i class="fas fa-unity"></i></div>
+                <div class="card-name">الوحدة العربية</div>
+                <div class="card-sub">تراث اليمن العربي</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== الأزرار السفلية ===== -->
+    <div class="bottom-bar">
+        <a class="btn-b" data-action="chat"><i class="fas fa-comment-dots"></i> محادثة</a>
+        <a class="btn-b" data-action="lang"><i class="fas fa-language"></i> عربي</a>
+        <a class="btn-b" data-action="visitors"><i class="fas fa-users"></i> زوار <span id="visitorsCount">1,247</span></a>
+        <a class="btn-b" data-action="music"><i class="fas fa-music"></i> موسيقى</a>
+        <a class="btn-b" data-action="institute"><i class="fas fa-info-circle"></i> المؤسسي</a>
+        <a class="btn-b active" data-action="listen"><i class="fas fa-play"></i> استمع الآن</a>
+    </div>
+
+    <!-- ===== زر الصوت ===== -->
+    <button class="sound-btn" id="soundBtn">
+        <i class="fas fa-volume-mute"></i> <span id="soundText">تشغيل الصوت</span>
+    </button>
+
+    <!-- ===== عداد الفيديو ===== -->
+    <div class="video-timer">
+        <span id="timeDisplay">00:00 / 00:45</span>
+        <div class="progress">
+            <div class="fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- ===== إعدادات الشاشة ===== -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-box">
+            <h2>⚙️ إعدادات العرض</h2>
+
+            <h3>📱 نوع الجهاز</h3>
+            <div class="btn-group">
+                <button class="btn-setting active" id="desktopBtn" onclick="setDevice('desktop')">🖥️ Desktop</button>
+                <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 Phone</button>
+            </div>
+
+            <h3>🌓 وضع الشاشة</h3>
+            <div class="btn-group">
+                <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ نهاري</button>
+                <button class="btn-setting active" id="nightBtn" onclick="setMode('night')">🌙 ليلي</button>
+            </div>
+
+            <h3 id="currentStatus" style="color: #c9a84c; margin-top: 15px;">Desktop 🖥️ · ليلي 🌙</h3>
+
+            <button class="btn-close" onclick="closeSettings()">✕ إغلاق</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== جافا سكريبت ===== -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== العناصر =====
+            const video = document.getElementById('bgVideo');
+            const videoSource = document.getElementById('videoSource');
+            const soundBtn = document.getElementById('soundBtn');
+            const soundText = document.getElementById('soundText');
+            const progressFill = document.getElementById('progressFill');
+            const timeDisplay = document.getElementById('timeDisplay');
+            const langToggle = document.getElementById('langToggle');
+            const langLabel = document.getElementById('langLabel');
+            const settingsToggle = document.getElementById('settingsToggle');
+            const settingsOverlay = document.getElementById('settingsOverlay');
+            const currentStatus = document.getElementById('currentStatus');
+            const bgMusic = document.getElementById('bgMusic');
+
+            let isSoundOn = false;
+            let isMusicPlaying = false;
+            let currentLang = 'ar';
+            let currentDevice = 'desktop';
+            let currentMode = 'night';
+
+            // ===== المحتوى =====
+            const content = {
+                ar: {
+                    sound: 'تشغيل الصوت',
+                    soundOff: 'كتم الصوت',
+                    langLabel: 'عربي',
+                    settingsLabel: 'إعدادات',
+                    badge: 'واحة الجبري',
+                    title: 'واحة <span>الجبري</span>',
+                    subtitle: 'تراث اليمن العريق',
+                    philosophy1: 'من أصفار ريحان إلى بنية الكون',
+                    philosophy2: 'نظرية السندباد الموحدة',
+                    mission: 'نستكشف الماضي لنفهم الحاضر.. ونبني المستقبل',
+                    brand1: 'واحة الجبري',
+                    brand2: 'Heaven Al-Jabri',
+                    brand3: 'واقعة الجبرى',
+                    brand4: 'الوحدة العربية',
+                    chat: 'محادثة',
+                    visitors: 'زوار',
+                    music: 'موسيقى',
+                    institute: 'المؤسسي',
+                    listen: 'استمع الآن',
+                    videoFile: 'waha-ar.mp4',
+                    deviceDesktop: 'Desktop 🖥️',
+                    devicePhone: 'Phone 📱',
+                    modeDay: 'نهاري ☀️',
+                    modeNight: 'ليلي 🌙'
+                },
+                en: {
+                    sound: 'Unmute',
+                    soundOff: 'Mute',
+                    langLabel: 'English',
+                    settingsLabel: 'Settings',
+                    badge: 'Al-Jabri Oasis',
+                    title: 'Al-Jabri <span>Oasis</span>',
+                    subtitle: "Yemen's Ancient Heritage",
+                    philosophy1: 'From Zero Basil to Universe Structure',
+                    philosophy2: 'Unified Sindbad Theory',
+                    mission: "Exploring the past to understand the present.. and build the future",
+                    brand1: 'Al-Jabri Oasis',
+                    brand2: 'Heaven Al-Jabri',
+                    brand3: 'Al-Jabri Saga',
+                    brand4: 'Arab Unity',
+                    chat: 'Chat',
+                    visitors: 'Visitors',
+                    music: 'Music',
+                    institute: 'Institute',
+                    listen: 'Listen Now',
+                    videoFile: 'waha-en.mp4',
+                    deviceDesktop: 'Desktop 🖥️',
+                    devicePhone: 'Phone 📱',
+                    modeDay: 'Day ☀️',
+                    modeNight: 'Night 🌙'
+                }
+            };
+
+            // ===== تبديل اللغة =====
+            function setLanguage(lang) {
+                currentLang = lang;
+                const data = content[lang];
+
+                langLabel.textContent = data.langLabel;
+                document.getElementById('settingsLabel').textContent = data.settingsLabel;
+
+                document.querySelector('.hero-badge span').textContent = data.badge;
+                document.querySelector('.hero-title').innerHTML = data.title;
+                document.querySelector('.hero-sub').textContent = data.subtitle;
+                document.querySelectorAll('.hero-philosophy p')[0].innerHTML = '<i class="fas fa-seedling"></i> ' + data
+                .philosophy1;
+                document.querySelectorAll('.hero-philosophy p')[1].innerHTML = '<i class="fas fa-gem"></i> ' + data
+                .philosophy2;
+                document.querySelector('.hero-mission').innerHTML =
+                    '<i class="fas fa-quote-right"></i> ' + data.mission +
+                    ' <i class="fas fa-quote-left"></i> <span class="emoji">😊😊</span>';
+
+                document.querySelectorAll('.brand-card')[0].querySelector('.card-name').textContent = data.brand1;
+                document.querySelectorAll('.brand-card')[1].querySelector('.card-name').textContent = data.brand2;
+                document.querySelectorAll('.brand-card')[2].querySelector('.card-name').textContent = data.brand3;
+                document.querySelectorAll('.brand-card')[3].querySelector('.card-name').textContent = data.brand4;
+
+                const btnLabels = [data.chat, data.visitors, data.music, data.institute, data.listen];
+                document.querySelectorAll('.btn-b').forEach((btn, i) => {
+                    if (i < btnLabels.length) {
+                        const icon = btn.querySelector('i');
+                        const text = btnLabels[i];
+                        btn.innerHTML = icon.outerHTML + ' ' + text;
+                    }
+                });
+
+                // تحديث زر "استمع الآن"
+                const listenBtn = document.querySelectorAll('.btn-b')[5];
+                if (listenBtn) {
+                    listenBtn.innerHTML = '<i class="fas fa-play"></i> ' + data.listen;
+                }
+
+                if (isSoundOn) {
+                    soundBtn.innerHTML = '<i class="fas fa-volume-up"></i> ' + data.soundOff;
+                } else {
+                    soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i> ' + data.sound;
+                }
+
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = lang;
+
+                const currentTime = video.currentTime;
+                videoSource.src = data.videoFile;
+                video.load();
+                video.currentTime = currentTime;
+                video.play().catch(function() {});
+
+                updateStatusText();
+            }
+
+            // ===== تحديث نص الحالة =====
+            function updateStatusText() {
+                const data = content[currentLang];
+                const deviceText = currentDevice === 'desktop' ? data.deviceDesktop : data.devicePhone;
+                const modeText = currentMode === 'day' ? data.modeDay : data.modeNight;
+                currentStatus.textContent = deviceText + ' · ' + modeText;
+            }
+
+            // ===== إعدادات الجهاز =====
+            function setDevice(device) {
+                currentDevice = device;
+                document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
+                document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
+
+                document.body.classList.remove('device-desktop', 'device-phone');
+                document.body.classList.add('device-' + device);
+                updateStatusText();
+            }
+
+            // ===== إعدادات الوضع =====
+            function setMode(mode) {
+                currentMode = mode;
+                document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
+                document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
+
+                document.body.classList.remove('day', 'night');
+                document.body.classList.add(mode);
+                updateStatusText();
+            }
+
+            // ===== فتح/غلق الإعدادات =====
+            function openSettings() {
+                settingsOverlay.classList.add('active');
+            }
+
+            function closeSettings() {
+                settingsOverlay.classList.remove('active');
+            }
+
+            // ===== تنسيق الوقت =====
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+            }
+
+            // ===== أحداث الفيديو =====
+            video.addEventListener('timeupdate', function() {
+                const current = video.currentTime;
+                const duration = video.duration || 45;
+                const percent = (current / duration) * 100;
+                progressFill.style.width = Math.min(percent, 100) + '%';
+                timeDisplay.textContent = formatTime(Math.floor(current)) + ' / ' + formatTime(Math.floor(duration));
+            });
+
+            // ===== زر الصوت =====
+            soundBtn.addEventListener('click', function() {
+                const data = content[currentLang];
+                if (isSoundOn) {
+                    video.muted = true;
+                    bgMusic.muted = true;
+                    soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i> ' + data.sound;
+                    isSoundOn = false;
+                } else {
+                    video.muted = false;
+                    bgMusic.muted = false;
+                    soundBtn.innerHTML = '<i class="fas fa-volume-up"></i> ' + data.soundOff;
+                    isSoundOn = true;
+                }
+            });
+
+            // ===== تبديل اللغة =====
+            langToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+            // ===== إعدادات الشاشة =====
+            settingsToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                openSettings();
+            });
+
+            // ===== إغلاق الإعدادات =====
+            settingsOverlay.addEventListener('click', function(e) {
+                if (e.target === this) closeSettings();
+            });
+
+            // ===== أزرار الإعدادات =====
+            window.setDevice = setDevice;
+            window.setMode = setMode;
+            window.closeSettings = closeSettings;
+
+            // ===== الأزرار السفلية =====
+            document.querySelectorAll('.btn-b').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.dataset.action;
+
+                    if (action === 'music') {
+                        if (isMusicPlaying) {
+                            bgMusic.pause();
+                            this.innerHTML = '<i class="fas fa-music"></i> ' + (currentLang === 'ar' ? 'موسيقى' :
+                                'Music');
+                            this.classList.remove('active');
+                            isMusicPlaying = false;
+                        } else {
+                            bgMusic.volume = 0.3;
+                            bgMusic.play().catch(function() {
+                                alert('🎵 سيتم تشغيل الموسيقى بعد تفاعلك مع الصفحة');
+                            });
+                            this.innerHTML = '<i class="fas fa-music"></i> ' + (currentLang === 'ar' ?
+                                '⏸ إيقاف' : '⏸ Stop');
+                            this.classList.add('active');
+                            isMusicPlaying = true;
+                        }
+                        return;
+                    }
+
+                    if (action === 'listen') {
+                        const data = content[currentLang];
+                        alert('🎧 ' + (currentLang === 'ar' ? 'يتم تشغيل الموسيقى التراثية...' :
+                            'Playing traditional music...'));
+                        return;
+                    }
+
+                    const actions = {
+                        'chat': currentLang === 'ar' ? '💬 مرحباً! كيف يمكننا مساعدتك؟' :
+                            '💬 Hello! How can we help you?',
+                        'lang': currentLang === 'ar' ? '🌍 اللغة: عربي' : '🌍 Language: English',
+                        'visitors': currentLang === 'ar' ? '👥 عدد الزوار المتصلين: 1,247' :
+                            '👥 Online visitors: 1,247',
+                        'institute': currentLang === 'ar' ?
+                            '🏛️ واحة الجبري - مؤسسة تراثية\nللاستفسارات: info@aljabri.com' :
+                            '🏛️ Al-Jabri Oasis - Heritage Institute\nInquiries: info@aljabri.com'
+                    };
+
+                    if (actions[action]) {
+                        alert(actions[action]);
+                    }
+                });
+            });
+
+            // ===== بطاقات البراند =====
+            document.querySelectorAll('.brand-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const page = this.dataset.page || 'index.html';
+                    alert('🌴 توجيه إلى: ' + page + '\n(سيتم التفعيل قريباً)');
+                    // window.location.href = page;
+                });
+            });
+
+            // ===== عداد الزوار =====
+            let visitorsCount = 1247;
+            setInterval(() => {
+                visitorsCount += Math.random() > 0.6 ? 1 : 0;
+                const visitorsSpan = document.getElementById('visitorsCount');
+                if (visitorsSpan) {
+                    visitorsSpan.textContent = visitorsCount.toLocaleString();
+                }
+            }, 10000);
+
+            // ===== بدء التشغيل =====
+            // تعيين القيم الافتراضية: Desktop + Night
+            document.body.classList.add('night', 'device-desktop');
+            document.getElementById('nightBtn').classList.add('active');
+            document.getElementById('desktopBtn').classList.add('active');
+            document.getElementById('dayBtn').classList.remove('active');
+            document.getElementById('phoneBtn').classList.remove('active');
+            currentStatus.textContent = 'Desktop 🖥️ · ليلي 🌙';
+
+            setLanguage('ar');
+            video.play().catch(function() {});
+
+            console.log('🌴 واحة الجبري v3.0 - الإعدادات الافتراضية: Desktop + Night');
+            console.log('👤 المصمم: م / عبدالرحمن الجبري');
+
+        })();
+    </script>
+
+</body>
+</html>
