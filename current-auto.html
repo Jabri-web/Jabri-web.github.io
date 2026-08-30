@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🗂️ مستكشف الواحة</title>
+    <!-- Google Font: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* التقسيم العلوي/السفلي */
+        .split-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* النصف العلوي - قائمة الملفات */
+        .file-list {
+            height: 50vh;
+            overflow-y: auto;
+            padding: 20px;
+            border-bottom: 3px solid #ffd700;
+            background: #161b22;
+        }
+        .file-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .file-list::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        .file-list::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
+        }
+
+        /* النصف السفلي - المعاينة */
+        .preview-area {
+            height: 50vh;
+            background: #0d1117;
+        }
+        .preview-area iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #fff;
+        }
+
+        /* رأس القائمة */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+        .header h2 {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 22px;
+        }
+        .header .badge {
+            background: #ffd700;
+            color: #0d1117;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .header .actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .header .actions button {
+            background: #ffd700;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .header .actions button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* مربع البحث */
+        .search-box {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        /* عنصر الملف */
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+        .file-item:hover {
+            background: #21262d;
+            border-color: #ffd70040;
+        }
+        .file-item.active {
+            background: #ffd70015;
+            border-color: #ffd700;
+        }
+        .file-item .name {
+            font-size: 16px;
+            font-weight: 400;
+            color: #e6edf3;
+        }
+        .file-item .name::before {
+            content: "📄 ";
+        }
+        .file-item .copy-btn {
+            background: transparent;
+            border: 1px solid #30363d;
+            color: #aaa;
+            padding: 2px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+        }
+        .file-item .copy-btn:hover {
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+
+        /* رسالة "لا توجد ملفات" */
+        .empty-msg {
+            text-align: center;
+            color: #8b949e;
+            padding: 30px 0;
+            font-size: 18px;
+        }
+
+        /* شريط التحميل المؤقت */
+        .loader {
+            text-align: center;
+            padding: 20px;
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 600px) {
+            .header h2 {
+                font-size: 18px;
+            }
+            .file-item .name {
+                font-size: 14px;
+            }
+            .file-list {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-layout">
+
+        <!-- ===== النصف العلوي: قائمة الملفات ===== -->
+        <div class="file-list" id="fileList">
+            <div class="header">
+                <h2>🗂️ مستكشف الملفات</h2>
+                <div class="actions">
+                    <span class="badge" id="fileCount">0</span>
+                    <button onclick="discoverFiles()">🔄 تحديث</button>
+                </div>
+            </div>
+
+            <!-- مربع البحث -->
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 ابحث عن ملف..." oninput="filterFiles()" />
+
+            <!-- الحاوية التي ستعرض الملفات -->
+            <div id="filesContainer">
+                <div class="loader">⏳ جارٍ التحميل...</div>
+            </div>
+        </div>
+
+        <!-- ===== النصف السفلي: المعاينة ===== -->
+        <div class="preview-area">
+            <iframe id="previewFrame" src="about:blank"></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        // === إعدادات ===
+        const REPO_OWNER = 'Jabri-web';
+        const REPO_NAME = 'Jabri-web.github.io';
+        const BRANCH = 'main'; // أو 'master'
+        const BASE_URL = `https://${REPO_OWNER}.github.io/`;
+        const EXCLUDED_FILE = 'current-auto.html'; // الملف المستثنى من القائمة
+
+        let allFiles = [];
+
+        // === جلب الملفات من GitHub API ===
+        async function discoverFiles() {
+            const container = document.getElementById('filesContainer');
+            container.innerHTML = '<div class="loader">⏳ جارٍ التحميل...</div>';
+
+            try {
+                const url =
+                    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents?ref=${BRANCH}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('GitHub API error');
+
+                const data = await response.json();
+
+                // تصفية ملفات .html فقط واستثناء الملف الحالي
+                const htmlFiles = data
+                    .filter(item => item.type === 'file' && item.name.endsWith('.html'))
+                    .filter(item => item.name !== EXCLUDED_FILE)
+                    .map(item => item.name)
+                    .sort((a, b) => a.localeCompare(b, 'ar'));
+
+                allFiles = htmlFiles;
+                renderFiles(allFiles);
+
+                // تحديث العداد
+                document.getElementById('fileCount').textContent = allFiles.length;
+
+            } catch (error) {
+                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل: ${error.message}</div>`;
+                console.error(error);
+            }
+        }
+
+        // === عرض الملفات في القائمة ===
+        function renderFiles(files) {
+            const container = document.getElementById('filesContainer');
+
+            if (!files || files.length === 0) {
+                container.innerHTML = '<div class="empty-msg">📭 لا توجد ملفات HTML</div>';
+                return;
+            }
+
+            let html = '';
+            files.forEach(name => {
+                const activeClass = (name === getCurrentFile()) ? 'active' : '';
+                html += `
+                    <div class="file-item ${activeClass}" onclick="previewFile('${name}')">
+                        <span class="name">${name}</span>
+                        <button class="copy-btn" onclick="event.stopPropagation(); copyLink('${name}')">📋 نسخ</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // === فلتر البحث ===
+        function filterFiles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allFiles.filter(name => name.toLowerCase().includes(query));
+            renderFiles(filtered);
+        }
+
+        // === معاينة الملف في iframe ===
+        function previewFile(filename) {
+            const frame = document.getElementById('previewFrame');
+            frame.src = BASE_URL + filename;
+
+            // تحديث الحالة النشطة
+            document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+            const items = document.querySelectorAll('.file-item');
+            for (let item of items) {
+                if (item.querySelector('.name').textContent === filename) {
+                    item.classList.add('active');
+                    break;
+                }
+            }
+
+            // حفظ آخر ملف مفتوح
+            localStorage.setItem('lastPreview', filename);
+        }
+
+        // === نسخ الرابط ===
+        function copyLink(filename) {
+            const link = BASE_URL + filename;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ تم نسخ الرابط:\n' + link);
+            }).catch(() => {
+                // طريقة بديلة للنسخ
+                const input = document.createElement('input');
+                input.value = link;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                alert('✅ تم نسخ الرابط:\n' + link);
+            });
+        }
+
+        // === استعادة آخر ملف مفتوح ===
+        function getCurrentFile() {
+            return localStorage.getItem('lastPreview') || '';
+        }
+
+        // === تحميل آخر ملف عند بدء الصفحة ===
+        window.onload = function() {
+            discoverFiles().then(() => {
+                const last = getCurrentFile();
+                if (last && allFiles.includes(last)) {
+                    previewFile(last);
+                } else if (allFiles.length > 0) {
+                    // معاينة أول ملف تلقائياً
+                    previewFile(allFiles[0]);
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
