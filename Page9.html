@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta name="theme-color" content="#0a0a0f">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,8 +27,91 @@
     <meta property="og:url" content="https://jabri-com.vercel.app/Checkout.html" />
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; color: #e8e8f0; font-family: 'Cairo', 'Tajawal', sans-serif; padding: 20px; line-height: 1.8; min-height: 100vh; display: flex; flex-direction: column; }
+        /* ===== إجبار العرض على Desktop ===== */
+        html {
+            min-width: 1200px;
+            overflow-x: auto;
+        }
+
+        body {
+            min-width: 1200px;
+            overflow-x: auto;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            padding: 20px;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== وضع Phone (يُفعّل من الإعدادات) ===== */
+        body.device-phone {
+            min-width: unset;
+            overflow-x: hidden;
+        }
+
+        body.device-phone .container {
+            max-width: 100%;
+            padding: 0 10px;
+        }
+
+        body.device-phone .grid-2 {
+            grid-template-columns: 1fr;
+        }
+
+        body.device-phone .header h1 {
+            font-size: 1.8rem;
+        }
+
+        body.device-phone .repo9-grid {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+
+        body.device-phone .bottom-bar {
+            min-width: unset;
+            width: 96%;
+        }
+
+        /* ===== منع تصغير الشاشة ===== */
+        @media (max-width: 1199px) {
+            html, body {
+                min-width: 1200px;
+                overflow-x: auto;
+            }
+        }
+
+        /* ===== تصحيح للجوال مع إجبار Desktop ===== */
+        @media (max-width: 820px) {
+            html, body {
+                min-width: 1200px;
+                overflow-x: auto;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .repo9-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .lang-btn {
+                top: 15px;
+                left: 15px;
+            }
+            .music-btn-fixed {
+                top: 15px;
+                right: 15px;
+            }
+            #visitorCounter {
+                top: 15px;
+                font-size: 14px;
+                padding: 6px 16px;
+            }
+        }
+
         body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
         .lang-btn { position: fixed; top: 15px; left: 20px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 999; display: flex; align-items: center; gap: 8px; }
         body.en .lang-btn { left: auto; right: 20px; }
@@ -76,21 +159,159 @@
         .repo9-card i { font-size: 2rem; display: block; margin-bottom: 6px; }
         .repo9-card .title { font-weight: bold; font-size: 0.85rem; }
         .repo9-card .desc { color: #94a3b8; font-size: 0.7rem; }
-        .icon-yellow { color: #ffd700; } .icon-purple { color: #a855f7; } .icon-blue { color: #6ae3ff; } .icon-green { color: #00ff88; } .icon-orange { color: #ff8800; }
+        .icon-yellow { color: #ffd700; } .icon-purple { color: #a855f7; } .icon-blue { color: #6ae3ff; } .icon-green { color: #00ff88; } .icon-orange { color: #ff8800; } .icon-red { color: #ff4444; }
         .badge { display: inline-block; background: #00ff8820; color: #00ff88; padding: 4px 16px; border-radius: 40px; font-size: 0.75rem; border: 1px solid #00ff8840; margin-bottom: 15px; }
         
-        /* ===== إضافة تنسيق لـ diagnose.html ===== */
         .diagnose-btn { background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
         .diagnose-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
         .diagnose-btn i { color: #ffd700; }
+        
+        .explore-btn { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); color: #fff; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
+        .explore-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 106, 106, 0.4); }
+        .explore-btn i { color: #ffd700; }
+
+        /* ===== إعدادات الشاشة ===== */
+        .settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings-overlay.active {
+            display: flex;
+        }
+
+        .settings-box {
+            background: #1a1a2e;
+            border: 2px solid #6ae3ff;
+            border-radius: 20px;
+            padding: 35px 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp 0.4s ease;
+            color: #e8e8f0;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .settings-box h2 {
+            color: #6ae3ff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .settings-box h3 {
+            font-size: 14px;
+            color: #94a3b8;
+            margin: 15px 0 8px;
+        }
+
+        .settings-box .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .settings-box .btn-setting {
+            padding: 10px 20px;
+            border: 2px solid rgba(106, 227, 255, 0.3);
+            border-radius: 12px;
+            background: transparent;
+            color: #6ae3ff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .settings-box .btn-setting:hover {
+            background: rgba(106, 227, 255, 0.1);
+        }
+
+        .settings-box .btn-setting.active {
+            background: #6ae3ff;
+            color: #0a0a0f;
+            border-color: #6ae3ff;
+        }
+
+        .settings-box .btn-close {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: #6ae3ff;
+            border: none;
+            border-radius: 30px;
+            color: #0a0a0f;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .settings-box .btn-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(106, 227, 255, 0.3);
+        }
+
+        .settings-btn {
+            border: 1px solid rgba(106, 227, 255, 0.2);
+            color: #6ae3ff !important;
+        }
+        .settings-btn:hover {
+            background: #6ae3ff;
+            color: #0a0a0f !important;
+        }
     </style>
 </head>
 <body>
+
     <audio id="bgMusic" loop preload="auto"><source src="image/music.mp3" type="audio/mpeg"></audio>
     <button class="music-btn-fixed" id="musicToggle" title="🎵 تشغيل / إيقاف">🎵<i class="fas fa-music"></i></button>
     
     <button class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe"></i><span class="ar">🇬🇧 English</span><span class="en">🇾🇪 عربي</span></button>
+    
+    <button class="lang-btn settings-btn" onclick="openSettings()" style="position:fixed; top:65px; left:20px; background:transparent; border:1px solid #6ae3ff; color:#6ae3ff; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:13px; z-index:999; display:flex; align-items:center; gap:6px;">
+        <i class="fas fa-cog"></i> <span class="ar">إعدادات</span><span class="en">Settings</span>
+    </button>
+
     <div id="visitorCounter"><i class="fas fa-users"></i><span class="ar">زوار:</span><span class="en">Visitors:</span><span id="visitorCountDisplay">1</span></div>
+
+    <!-- ===== إعدادات الشاشة ===== -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-box">
+            <h2>⚙️ <span class="ar">إعدادات العرض</span><span class="en">Display Settings</span></h2>
+
+            <h3>📱 <span class="ar">نوع الجهاز</span><span class="en">Device</span></h3>
+            <div class="btn-group">
+                <button class="btn-setting active" id="desktopBtn" onclick="setDevice('desktop')">🖥️ Desktop</button>
+                <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 Phone</button>
+            </div>
+
+            <h3>🌓 <span class="ar">وضع الشاشة</span><span class="en">Mode</span></h3>
+            <div class="btn-group">
+                <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ <span class="ar">نهاري</span><span class="en">Day</span></button>
+                <button class="btn-setting active" id="nightBtn" onclick="setMode('night')">🌙 <span class="ar">ليلي</span><span class="en">Night</span></button>
+            </div>
+
+            <h3 id="currentStatus" style="color: #6ae3ff; margin-top: 15px;">Desktop 🖥️ · 🌙 Night</h3>
+
+            <button class="btn-close" onclick="closeSettings()">✕ <span class="ar">إغلاق</span><span class="en">Close</span></button>
+        </div>
+    </div>
 
     <div class="container">
         <header class="header">
@@ -105,8 +326,16 @@
             <button class="run-btn error" id="run404Test"><i class="fas fa-exclamation-triangle"></i> <span class="ar">فحص 404</span><span class="en">404 Check</span></button>
             <button class="run-btn structure" id="runStructureCheck"><i class="fas fa-folder-tree"></i> <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span></button>
             <button class="run-btn clear" id="clearLogs"><i class="fas fa-trash"></i> <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
-            <!-- ===== زر تشخيص المستودعات ===== -->
-            <button class="diagnose-btn" onclick="window.location.href='diagnose.html'"><i class="fas fa-stethoscope"></i> <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span></button>
+            
+            <!-- ===== زر Diagnose ===== -->
+            <button class="diagnose-btn" onclick="window.location.href='diagnose.html'">
+                <i class="fas fa-stethoscope"></i> <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span>
+            </button>
+            
+            <!-- ===== زر Explore (current-auto.html) ===== -->
+            <button class="explore-btn" onclick="window.location.href='current-auto.html'">
+                <i class="fas fa-compass"></i> <span class="ar">🧭 المستكشف</span><span class="en">🧭 Explore</span>
+            </button>
         </div>
         <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
         <div class="grid-2">
@@ -114,36 +343,30 @@
             <div class="card"><h2><i class="fas fa-folder-open"></i> <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2><div class="links-grid" id="repoLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-code-fork" style="color:#ffd700;"></i><span class="ar">ريبوهات: <span id="repoCount">0</span></span><span class="en">Repos: <span id="repoCountEn">0</span></span></div></div>
         </div>
         <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-toolbox"></i> <span class="ar">repo9 - أدوات الواحة</span><span class="en">repo9 - Jabri Tools</span></h2><div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div><div class="repo9-grid">
-            
-            
-            
-            
             <a href="https://jabri-web.vercel.app/publish/publish.html" class="repo9-card" style="border-color: #25D366; background: #0a0a0f;">
-    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 2rem; display: block; margin-bottom: 6px;"></i>
-    <div class="title" style="color: #25D366;">💬 واتساب الواحة</div>
-    <div class="desc" style="color: #94a3b8;">نشر المنشورات</div>
-</a>
+                <i class="fab fa-whatsapp" style="color: #25D366; font-size: 2rem; display: block; margin-bottom: 6px;"></i>
+                <div class="title" style="color: #25D366;">💬 واتساب الواحة</div>
+                <div class="desc" style="color: #94a3b8;">نشر المنشورات</div>
+            </a>
             <a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a>
             <a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a>
-            
             <a href="yemen-photo-api.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض API</div><div class="desc">قراءة تلقائية</div></a>
-
-
-            <a href="yemen-photo.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض اليمن </div><div class="desc">قراءة تقائمة</div></a>
-
-            <a href="gallery.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">
-            معرض
-           Gallery</div><div class="desc">قراءة تقائمة</div></a>
-
-            
+            <a href="yemen-photo.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض اليمن</div><div class="desc">قراءة تقائمة</div></a>
+            <a href="gallery.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">معرض Gallery</div><div class="desc">قراءة تقائمة</div></a>
             <a href="diagnose.html" class="repo9-card"><i class="fas fa-search icon-blue"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a>
             <a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a>
             <a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a>
             <a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a>
             <a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a>
             <a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a>
-            <!-- ===== إضافة رابط diagnose.html ===== -->
             <a href="diagnose.html" class="repo9-card" style="border-color:#a855f7;"><i class="fas fa-stethoscope icon-purple"></i><div class="title">📊 Diagnose</div><div class="desc">تشخيص المستودعات</div></a>
+            
+            <!-- ===== رابط current-auto.html ===== -->
+            <a href="current-auto.html" class="repo9-card" style="border-color:#ff6a6a;">
+                <i class="fas fa-compass icon-red"></i>
+                <div class="title" style="color:#ff6a6a;">🧭 المستكشف</div>
+                <div class="desc">استكشاف الواحة</div>
+            </a>
         </div></div>
         <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-chart-bar"></i> <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2><div style="overflow-x: auto;"><table class="result-table" id="resultTable"><thead><tr><th><i class="fas fa-cube"></i> <span class="ar">العنصر</span><span class="en">Item</span></th><th><i class="fas fa-circle"></i> <span class="ar">الحالة</span><span class="en">Status</span></th><th><i class="fas fa-clock"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th><th><i class="fas fa-flag-checkered"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th></tr></thead><tbody id="resultBody"><tr><td colspan="4" style="color:#666;"><i class="fas fa-search"></i> <span class="ar">اضغط "فحص شامل" للبدء</span><span class="en">Press "Full Scan" to start</span></td></tr></tbody></table></div></div>
         <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-list"></i> <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2><div class="log-box" id="logBox"><div class="log-info"><i class="fas fa-info-circle"></i> <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div></div></div>
@@ -151,6 +374,53 @@
     </div>
 
     <script>
+        // ===== إعدادات الجهاز =====
+        let currentDevice = 'desktop';
+        let currentMode = 'night';
+
+        function setDevice(device) {
+            currentDevice = device;
+            document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
+            document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
+            document.body.classList.remove('device-desktop', 'device-phone');
+            document.body.classList.add('device-' + device);
+            updateStatus();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
+            document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
+            
+            if (mode === 'day') {
+                document.body.style.background = '#f5efe6';
+                document.body.style.color = '#1a1a1a';
+            } else {
+                document.body.style.background = '#0a0a0f';
+                document.body.style.color = '#e8e8f0';
+            }
+            updateStatus();
+        }
+
+        function updateStatus() {
+            const deviceText = currentDevice === 'desktop' ? 'Desktop 🖥️' : 'Phone 📱';
+            const modeText = currentMode === 'day' ? '☀️ Day' : '🌙 Night';
+            document.getElementById('currentStatus').textContent = deviceText + ' · ' + modeText;
+        }
+
+        function openSettings() {
+            document.getElementById('settingsOverlay').classList.add('active');
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsOverlay').classList.remove('active');
+        }
+
+        document.getElementById('settingsOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeSettings();
+        });
+
+        // ===== الوظائف الأساسية =====
         function generateLinks() {
             const pageContainer = document.getElementById('pageLinks'); const pages = []; for (let i = 1; i <= 12; i++) { pages.push(`Page${i}.html`); }
             pageContainer.innerHTML = pages.map(p => `<a href="/${p}" target="_blank"><i class="fas fa-file-code"></i> ${p}</a>`).join('');
@@ -159,13 +429,17 @@
             repoContainer.innerHTML = repos.map(r => `<a href="https://github.com/jabri-web/${r}" target="_blank"><i class="fab fa-github"></i> ${r}</a>`).join('');
             document.getElementById('repoCount').innerText = repos.length; document.getElementById('repoCountEn').innerText = repos.length;
         }
+
         function addLog(msg, type = 'info') {
             const box = document.getElementById('logBox'); const icons = { ok: '<i class="fas fa-check-circle" style="color:#00ff88;"></i>', fail: '<i class="fas fa-times-circle" style="color:#ff4444;"></i>', warn: '<i class="fas fa-exclamation-circle" style="color:#ffd700;"></i>', info: '<i class="fas fa-info-circle" style="color:#6ae3ff;"></i>' };
             const cls = { ok: 'log-ok', fail: 'log-fail', warn: 'log-warn', info: 'log-info' }; const time = new Date().toLocaleTimeString();
             box.innerHTML += `<div class="${cls[type] || 'log-info'}">${icons[type] || icons.info} [${time}] ${msg}</div>`; box.scrollTop = box.scrollHeight;
         }
+
         function clearLogs() { document.getElementById('logBox').innerHTML = ''; document.getElementById('resultBody').innerHTML = ''; document.getElementById('progressFill').style.width = '0%'; addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info'); }
+
         function checkPage(url) { return new Promise((resolve) => { const start = performance.now(); fetch(url, { method: 'HEAD', cache: 'no-cache' }).then(res => resolve({ url, status: res.status, time: Math.round(performance.now() - start), ok: res.ok })).catch(() => resolve({ url, status: 404, time: Math.round(performance.now() - start), ok: false })); }); }
+
         async function checkStructure() {
             addLog('📂 <span class="ar">جاري التحقق من هيكلة الملفات...</span><span class="en">Checking file structure...</span>', 'info'); try {
                 const response = await fetch('/file-structure.txt'); if (!response.ok) { addLog('❌ <span class="ar">تعذر العثور على ملف الهيكلة</span><span class="en">Structure file not found</span>', 'fail'); return; }
@@ -177,6 +451,7 @@
                 addLog(`📊 <span class="ar">خلاصة: ✅ ${found} موجود | ❌ ${missing} مفقود</span><span class="en">Summary: ✅ ${found} found | ❌ ${missing} missing</span>`, missing === 0 ? 'ok' : 'fail');
             } catch (error) { addLog(`💥 <span class="ar">خطأ: ${error.message}</span><span class="en">Error: ${error.message}</span>`, 'fail'); }
         }
+
         async function runFullScan() {
             const btn = document.getElementById('runFullScan'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
             document.getElementById('resultBody').innerHTML = ''; clearLogs(); addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
@@ -186,6 +461,7 @@
             const okCount = results.filter(r => r.ok).length; const failCount = results.filter(r => !r.ok).length; const avgTime = Math.round(results.reduce((sum, r) => sum + r.time, 0) / results.length);
             addLog(`📊 <span class="ar">النتيجة: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span><span class="en">Final: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span>`, 'info'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span>'; progress.style.width = '100%';
         }
+
         async function runSpeedTest() {
             const btn = document.getElementById('runSpeedTest'); btn.disabled = true; addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info'); const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Checkout.html']; const results = [];
             for (const url of urls) { const start = performance.now(); try { await fetch(url, { cache: 'no-cache' }); const time = Math.round(performance.now() - start); results.push({ url, time, ok: true }); addLog(`⚡ ${url} — ${time}ms`, 'ok'); }
@@ -193,22 +469,46 @@
             const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length); const fastest = Math.min(...results.map(r => r.time)); const slowest = Math.max(...results.map(r => r.time));
             addLog(`📊 <span class="ar">السرعة: المتوسط ${avg}ms | الأسرع ${fastest}ms | الأبطأ ${slowest}ms</span><span class="en">Speed: Avg ${avg}ms | Fastest ${fastest}ms | Slowest ${slowest}ms</span>`, 'info'); btn.disabled = false;
         }
+
         async function run404Test() {
             const btn = document.getElementById('run404Test'); btn.disabled = true; addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn'); const testUrls = ['/nonexistent.html', '/fake-page', '/wrong-path', '/missing-file.js', '/invalid.css']; let found404 = 0;
             for (const url of testUrls) { const result = await checkPage(url); if (result.status === 404) { found404++; addLog(`🚨 404 تم كشفه: ${url}`, 'warn'); } else { addLog(`✅ ${url} — ${result.status}`, 'ok'); } }
             addLog(`📊 <span class="ar">تم كشف ${found404} من ${testUrls.length} روابط 404</span><span class="en">Found ${found404} of ${testUrls.length} 404 links</span>`, found404 > 0 ? 'warn' : 'ok'); btn.disabled = false;
         }
+
         function toggleLang() { const html = document.documentElement; const newLang = html.lang === 'ar' ? 'en' : 'ar'; html.lang = newLang; html.dir = newLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', newLang === 'en'); localStorage.setItem('preferred-language', newLang); }
+
         (function() { let count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0'); count += 1; localStorage.setItem('jabri_visitor_count_checkout', count); document.getElementById('visitorCountDisplay').innerText = count; })();
+
         (function() { const music = document.getElementById('bgMusic'); const btn = document.getElementById('musicToggle'); if (!music || !btn) return; let isPlaying = false; music.volume = 0.3;
             btn.addEventListener('click', function() { if (isPlaying) { music.pause(); btn.innerHTML = '<i class="fas fa-music"></i>'; btn.classList.remove('playing'); isPlaying = false; } else { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } });
             document.addEventListener('click', function firstInteraction() { if (!isPlaying) { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } document.removeEventListener('click', firstInteraction); }); })();
+
         document.addEventListener('DOMContentLoaded', function() {
-            generateLinks(); document.getElementById('runFullScan').addEventListener('click', runFullScan); document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
-            document.getElementById('run404Test').addEventListener('click', run404Test); document.getElementById('runStructureCheck').addEventListener('click', checkStructure); document.getElementById('clearLogs').addEventListener('click', clearLogs);
-            const savedLang = localStorage.getItem('preferred-language') || 'ar'; document.documentElement.lang = savedLang; document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', savedLang === 'en');
-            console.log('🔍 نظام فحص الواحة جاهز'); console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات'); console.log('🇾🇪 من صنعاء إلى الكون');
+            generateLinks(); 
+            document.getElementById('runFullScan').addEventListener('click', runFullScan); 
+            document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
+            document.getElementById('run404Test').addEventListener('click', run404Test); 
+            document.getElementById('runStructureCheck').addEventListener('click', checkStructure); 
+            document.getElementById('clearLogs').addEventListener('click', clearLogs);
+            
+            // استعادة اللغة المحفوظة
+            const savedLang = localStorage.getItem('preferred-language') || 'ar'; 
+            document.documentElement.lang = savedLang; 
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr'; 
+            document.body.classList.toggle('en', savedLang === 'en');
+            
+            // تعيين الوضع الافتراضي: Desktop + Night
+            document.body.classList.add('device-desktop');
+            setMode('night');
+            setDevice('desktop');
+            
+            console.log('🔍 نظام فحص الواحة جاهز'); 
+            console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات'); 
+            console.log('🇾🇪 من صنعاء إلى الكون');
             console.log('📊 مركز تشخيص المستودعات متاح في diagnose.html');
+            console.log('🧭 المستكشف متاح في current-auto.html');
+            console.log('🖥️ الإعدادات الافتراضية: Desktop + Night');
         });
     </script>
     
