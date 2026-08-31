@@ -36,7 +36,7 @@
         { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects Index', href: `${SITE_URL}${langDir}/jabri-projects.html`, icon: '📦' },
         { name: 'الفاحص', nameEn: 'Diagnose', href: `${SITE_URL}${langDir}/diagnose.html`, icon: '🔍' },
         { name: 'واتساب الواحة', nameEn: 'Waha WhatsApp', href: `${SITE_URL}${langDir}/publish/publish.html`, icon: '💬' },
-        { name: 'مستكشف الواحة', nameEn: 'Explore', href: `${SITE_URL}${langDir}/current-auto.html`, icon: '🗂️' },
+        { name: 'مستكشف الواحة', nameEn: 'Explore', href: `${SITE_URL}${langDir}/explore.html`, icon: '🗂️' },
         { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', href: `${SITE_URL}${langDir}/journal3.html`, icon: '✉️' },
         { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', href: `${SITE_URL}${langDir}/z-lab.html`, icon: '🧮' },
         { name: 'حاسبة النظرية الموحدة', nameEn: 'Unified Theory Calculator', href: `${SITE_URL}${langDir}/unified-calc.html`, icon: '🌌' },
