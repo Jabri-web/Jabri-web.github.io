@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🗂️ مستكشف الواحة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== جميع الستايلات ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .split-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .file-list {
+            height: 50vh;
+            overflow-y: auto;
+            padding: 20px;
+            border-bottom: 3px solid #ffd700;
+            background: #161b22;
+        }
+        .file-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .file-list::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        .file-list::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
+        }
+        .preview-area {
+            height: 50vh;
+            background: #0d1117;
+            position: relative;
+        }
+        .preview-area iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+        .header h2 {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 22px;
+        }
+        .header .badge {
+            background: #ffd700;
+            color: #0d1117;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .header .actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header .actions button {
+            background: #ffd700;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .header .actions button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        .back-btn {
+            background: #1f6feb !important;
+            color: white !important;
+            padding: 6px 18px !important;
+            font-size: 15px !important;
+            display: none;
+        }
+        .back-btn:hover {
+            box-shadow: 0 0 20px rgba(31, 111, 235, 0.6) !important;
+        }
+        .back-btn.show {
+            display: inline-block;
+        }
+        .path-display {
+            background: #21262d;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #ffd700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            border: 1px solid #30363d;
+        }
+        .path-display .path-icon {
+            font-size: 18px;
+        }
+        .path-display .path-text {
+            color: #e6edf3;
+            font-weight: 400;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            padding: 4px 0;
+        }
+        .file-card {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #21262d;
+            border: 1px solid #30363d;
+            gap: 8px;
+        }
+        .file-card:hover {
+            background: #30363d;
+            border-color: #ffd70040;
+            transform: translateY(-2px);
+        }
+        .file-card.active {
+            background: #ffd70015;
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+        }
+        .file-card.folder-card {
+            border-color: #1f6feb;
+            background: #1f6feb10;
+        }
+        .file-card.folder-card:hover {
+            background: #1f6feb20;
+            border-color: #1f6feb;
+            transform: translateY(-2px) scale(1.02);
+        }
+        .file-card .icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .file-card .name {
+            font-size: 14px;
+            font-weight: 400;
+            color: #e6edf3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+        .file-card .ext {
+            font-size: 10px;
+            background: #0d1117;
+            padding: 0 6px;
+            border-radius: 4px;
+            color: #8b949e;
+            flex-shrink: 0;
+        }
+        .file-card .copy-btn {
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+        .file-card .copy-btn:hover {
+            color: #ffd700;
+            background: #30363d;
+        }
+        .category-section {
+            margin-bottom: 12px;
+        }
+        .category-title {
+            color: #ffd700;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 6px 0 8px 0;
+            border-bottom: 1px dashed #30363d;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-title .count {
+            color: #8b949e;
+            font-weight: 400;
+            font-size: 13px;
+            background: #21262d;
+            padding: 0 12px;
+            border-radius: 12px;
+        }
+        .empty-msg {
+            text-align: center;
+            color: #8b949e;
+            padding: 30px 0;
+            font-size: 18px;
+        }
+        .loader {
+            text-align: center;
+            padding: 20px;
+            color: #ffd700;
+            font-size: 18px;
+        }
+        .stats {
+            display: flex;
+            gap: 15px;
+            padding: 8px 0 12px 0;
+            font-size: 14px;
+            color: #8b949e;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #30363d;
+            margin-bottom: 12px;
+        }
+        .stats span {
+            background: #21262d;
+            padding: 2px 12px;
+            border-radius: 12px;
+        }
+        .preview-notice {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #21262d;
+            color: #8b949e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid #30363d;
+            pointer-events: none;
+        }
+        @media (max-width: 600px) {
+            .header h2 {
+                font-size: 18px;
+            }
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+            .file-list {
+                padding: 12px;
+            }
+            .stats {
+                font-size: 12px;
+                gap: 8px;
+            }
+            .file-card .name {
+                font-size: 13px;
+            }
+            .path-display {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+            .back-btn {
+                font-size: 13px !important;
+                padding: 4px 14px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-layout">
+
+        <div class="file-list" id="fileList">
+            <div class="header">
+                <h2>🗂️ مستكشف الواحة</h2>
+                <div class="actions">
+                    <span class="badge" id="fileCount">0</span>
+                    <button onclick="discoverFiles()">🔄 تحديث</button>
+                    <button class="back-btn" id="backBtn" onclick="goBack()">↩ رجوع</button>
+                </div>
+            </div>
+
+            <div class="path-display" id="pathDisplay">
+                <span class="path-icon">📂</span>
+                <span class="path-text" id="currentPath">الجذر /</span>
+            </div>
+
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 ابحث عن ملف..." oninput="filterFiles()" />
+
+            <div class="stats" id="fileStats">
+                <span>📊 المجموع: <span id="totalFiles">0</span></span>
+                <span>📄 HTML: <span id="htmlFiles">0</span></span>
+                <span>📝 نصية: <span id="textFiles">0</span></span>
+                <span>📦 أخرى: <span id="otherFiles">0</span></span>
+                <span>📁 مجلدات: <span id="folderCount">0</span></span>
+            </div>
+
+            <div id="filesContainer">
+                <div class="loader">⏳ جارٍ التحميل...</div>
+            </div>
+        </div>
+
+        <div class="preview-area">
+            <iframe id="previewFrame" src="about:blank"></iframe>
+            <div class="preview-notice">📺 معاينة</div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===== الإعدادات =====
+        const REPO_OWNER = 'Jabri-web';
+        const REPO_NAME = 'Jabri-web.github.io';
+        const BRANCH = 'main';
+        const GITHUB_API = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
+        const VERCEl_BASE = `https://jabri-com.vercel.app/`; // للمعاينة فقط
+        const EXCLUDED_FILE = 'current-auto.html';
+
+        let allItems = [];
+        let currentPath = '';
+        let pathHistory = [];
+
+        // ===== جلب المجلدات والملفات من GitHub API (مضمون 100%) =====
+        async function discoverFiles(path = '') {
+            const container = document.getElementById('filesContainer');
+            container.innerHTML = '<div class="loader">⏳ جارٍ التحميل...</div>';
+
+            try {
+                const apiPath = path ? `/${path}` : '';
+                const url = `${GITHUB_API}${apiPath}?ref=${BRANCH}`;
+                
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('GitHub API error');
+
+                const data = await response.json();
+
+                // مجلدات
+                const folders = data
+                    .filter(item => item.type === 'dir')
+                    .map(item => ({
+                        name: item.name,
+                        type: 'folder',
+                        path: item.path
+                    }))
+                    .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+
+                // ملفات
+                const files = data
+                    .filter(item => item.type === 'file' && item.name !== EXCLUDED_FILE)
+                    .map(item => ({
+                        name: item.name,
+                        type: 'file',
+                        path: item.path
+                    }))
+                    .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+
+                allItems = [...folders, ...files];
+                currentPath = path;
+                updatePathDisplay();
+                renderItems(allItems);
+                updateStats();
+
+                document.getElementById('fileCount').textContent = allItems.length;
+
+                const backBtn = document.getElementById('backBtn');
+                if (pathHistory.length > 0 || path) {
+                    backBtn.classList.add('show');
+                } else {
+                    backBtn.classList.remove('show');
+                }
+
+                resetPreview();
+
+            } catch (error) {
+                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل: ${error.message}</div>`;
+                console.error(error);
+            }
+        }
+
+        function resetPreview() {
+            const frame = document.getElementById('previewFrame');
+            frame.src = 'about:blank';
+            frame.srcdoc = '';
+        }
+
+        function updatePathDisplay() {
+            const pathElement = document.getElementById('currentPath');
+            if (!currentPath) {
+                pathElement.textContent = 'الجذر /';
+            } else {
+                const parts = currentPath.split('/');
+                const displayPath = parts.join(' / ');
+                pathElement.textContent = `📁 ${displayPath}`;
+            }
+        }
+
+        function updateStats() {
+            const files = allItems.filter(item => item.type === 'file');
+            const folders = allItems.filter(item => item.type === 'folder');
+            
+            const htmlFiles = files.filter(f => f.name.endsWith('.html'));
+            const textFiles = files.filter(f => 
+                f.name.endsWith('.txt') || f.name.endsWith('.json') || f.name.endsWith('.md') || 
+                f.name.endsWith('.xml') || f.name.endsWith('.css') || f.name.endsWith('.js')
+            );
+            const otherFiles = files.filter(f => 
+                !f.name.endsWith('.html') && 
+                !f.name.endsWith('.txt') && !f.name.endsWith('.json') && !f.name.endsWith('.md') && 
+                !f.name.endsWith('.xml') && !f.name.endsWith('.css') && !f.name.endsWith('.js')
+            );
+
+            document.getElementById('totalFiles').textContent = allItems.length;
+            document.getElementById('htmlFiles').textContent = htmlFiles.length;
+            document.getElementById('textFiles').textContent = textFiles.length;
+            document.getElementById('otherFiles').textContent = otherFiles.length;
+            document.getElementById('folderCount').textContent = folders.length;
+        }
+
+        function getFileType(name) {
+            if (name.endsWith('.html')) return { type: 'html', icon: '🌐', label: 'HTML' };
+            if (name.endsWith('.json')) return { type: 'json', icon: '📋', label: 'JSON' };
+            if (name.endsWith('.txt')) return { type: 'text', icon: '📝', label: 'TXT' };
+            if (name.endsWith('.md')) return { type: 'markdown', icon: '📓', label: 'MD' };
+            if (name.endsWith('.css')) return { type: 'css', icon: '🎨', label: 'CSS' };
+            if (name.endsWith('.js')) return { type: 'javascript', icon: '⚡', label: 'JS' };
+            if (name.endsWith('.xml')) return { type: 'xml', icon: '📰', label: 'XML' };
+            return { type: 'other', icon: '📎', label: 'ملف' };
+        }
+
+        function renderItems(items) {
+            const container = document.getElementById('filesContainer');
+
+            if (!items || items.length === 0) {
+                container.innerHTML = '<div class="empty-msg">📭 لا توجد عناصر</div>';
+                return;
+            }
+
+            const folders = items.filter(item => item.type === 'folder');
+            const files = items.filter(item => item.type === 'file');
+
+            const htmlFiles = files.filter(f => f.name.endsWith('.html'));
+            const textFiles = files.filter(f => 
+                f.name.endsWith('.txt') || f.name.endsWith('.json') || f.name.endsWith('.md') || 
+                f.name.endsWith('.xml') || f.name.endsWith('.css') || f.name.endsWith('.js')
+            );
+            const otherFiles = files.filter(f => 
+                !f.name.endsWith('.html') && 
+                !f.name.endsWith('.txt') && !f.name.endsWith('.json') && !f.name.endsWith('.md') && 
+                !f.name.endsWith('.xml') && !f.name.endsWith('.css') && !f.name.endsWith('.js')
+            );
+
+            let html = '';
+
+            if (folders.length > 0) {
+                html += `<div class="category-section">
+                    <div class="category-title">📁 مجلدات <span class="count">${folders.length}</span></div>
+                    <div class="files-grid">`;
+                folders.forEach(item => {
+                    html += createFolderCard(item);
+                });
+                html += `</div></div>`;
+            }
+
+            if (htmlFiles.length > 0) {
+                html += `<div class="category-section">
+                    <div class="category-title">🌐 صفحات HTML <span class="count">${htmlFiles.length}</span></div>
+                    <div class="files-grid">`;
+                htmlFiles.forEach(item => {
+                    html += createFileCard(item);
+                });
+                html += `</div></div>`;
+            }
+
+            if (textFiles.length > 0) {
+                html += `<div class="category-section">
+                    <div class="category-title">📝 ملفات نصية <span class="count">${textFiles.length}</span></div>
+                    <div class="files-grid">`;
+                textFiles.forEach(item => {
+                    html += createFileCard(item);
+                });
+                html += `</div></div>`;
+            }
+
+            if (otherFiles.length > 0) {
+                html += `<div class="category-section">
+                    <div class="category-title">📦 ملفات أخرى <span class="count">${otherFiles.length}</span></div>
+                    <div class="files-grid">`;
+                otherFiles.forEach(item => {
+                    html += createFileCard(item);
+                });
+                html += `</div></div>`;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function createFolderCard(item) {
+            return `
+                <div class="file-card folder-card" onclick="enterFolder('${item.path}')">
+                    <span class="icon">📁</span>
+                    <span class="name" title="${item.name}">${item.name}</span>
+                    <span class="ext">مجلد</span>
+                    <button class="copy-btn" onclick="event.stopPropagation(); copyLink('${item.path}')" title="نسخ الرابط">📋</button>
+                </div>
+            `;
+        }
+
+        function createFileCard(item) {
+            const fileInfo = getFileType(item.name);
+            const icon = fileInfo.icon;
+            const ext = item.name.split('.').pop().toUpperCase();
+            const activeClass = (item.name === getCurrentFile()) ? 'active' : '';
+            
+            return `
+                <div class="file-card ${activeClass}" onclick="previewFile('${item.path}')">
+                    <span class="icon">${icon}</span>
+                    <span class="name" title="${item.name}">${item.name}</span>
+                    <span class="ext">${ext}</span>
+                    <button class="copy-btn" onclick="event.stopPropagation(); copyLink('${item.path}')" title="نسخ الرابط">📋</button>
+                </div>
+            `;
+        }
+
+        function enterFolder(path) {
+            pathHistory.push(currentPath);
+            discoverFiles(path);
+        }
+
+        function goBack() {
+            if (pathHistory.length > 0) {
+                const previousPath = pathHistory.pop();
+                discoverFiles(previousPath);
+            } else if (currentPath) {
+                discoverFiles('');
+            }
+        }
+
+        function filterFiles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allItems.filter(item => 
+                item.name.toLowerCase().includes(query)
+            );
+            renderItems(filtered);
+        }
+
+        // ===== المعاينة: HTML من Vercel، والنصية من GitHub Raw =====
+        function previewFile(filepath) {
+            const frame = document.getElementById('previewFrame');
+            
+            frame.src = 'about:blank';
+            frame.srcdoc = '';
+
+            setTimeout(() => {
+                if (filepath.endsWith('.html')) {
+                    // ✅ HTML من Vercel (يعمل في اليمن)
+                    frame.src = VERCEl_BASE + filepath;
+                } else {
+                    // ✅ النصية من GitHub Raw (مباشر وسريع)
+                    const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${filepath}`;
+                    fetch(rawUrl)
+                        .then(res => {
+                            if (!res.ok) throw new Error('Network response was not ok');
+                            return res.text();
+                        })
+                        .then(content => {
+                            frame.srcdoc = `
+                                <html dir="rtl">
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <style>
+                                            body{font-family:'Tajawal',sans-serif;padding:20px;background:#fff;color:#333;direction:rtl;}
+                                            pre{white-space:pre-wrap;word-wrap:break-word;font-size:14px;line-height:1.6;background:#f5f5f5;padding:15px;border-radius:8px;}
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <h4>📄 ${filepath}</h4>
+                                        <pre>${escapeHtml(content)}</pre>
+                                    </body>
+                                </html>
+                            `;
+                        })
+                        .catch(() => {
+                            frame.srcdoc = createErrorPage(filepath, 'لا يمكن تحميل هذا الملف');
+                        });
+                }
+            }, 100);
+
+            // تحديث الحالة النشطة
+            document.querySelectorAll('.file-card').forEach(el => el.classList.remove('active'));
+            const items = document.querySelectorAll('.file-card');
+            const fileName = filepath.split('/').pop();
+            for (let item of items) {
+                if (item.querySelector('.name')?.textContent === fileName) {
+                    item.classList.add('active');
+                    break;
+                }
+            }
+
+            localStorage.setItem('lastPreview', filepath);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function createErrorPage(filename, message) {
+            return `
+                <html>
+                    <head><style>body{font-family:'Tajawal',sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:#f5f5f5;color:#333;}</style></head>
+                    <body>
+                        <div style="text-align:center;padding:20px;">
+                            <h2>⚠️ ${filename}</h2>
+                            <p style="color:#666;">${message}</p>
+                        </div>
+                    </body>
+                </html>
+            `;
+        }
+
+        function copyLink(filepath) {
+            const link = VERCEl_BASE + filepath;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ تم نسخ الرابط:\n' + link);
+            }).catch(() => {
+                const input = document.createElement('input');
+                input.value = link;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                alert('✅ تم نسخ الرابط:\n' + link);
+            });
+        }
+
+        function getCurrentFile() {
+            const last = localStorage.getItem('lastPreview') || '';
+            return last.split('/').pop();
+        }
+
+        window.onload = function() {
+            discoverFiles().then(() => {
+                const last = getCurrentFile();
+                if (last) {
+                    const exists = allItems.some(item => item.name === last);
+                    if (exists) {
+                        const item = allItems.find(i => i.name === last);
+                        if (item) previewFile(item.path);
+                    }
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
