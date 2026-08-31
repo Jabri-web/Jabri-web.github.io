@@ -38,16 +38,16 @@
         { name: 'واتساب الواحة', nameEn: 'Waha WhatsApp', href: `${SITE_URL}${langDir}/publish/publish.html`, icon: '💬' },
         { name: 'مستكشف الواحة', nameEn: 'Explore', href: `${SITE_URL}${langDir}/explore.html`, icon: '🗂️' },
         { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', href: `${SITE_URL}${langDir}/journal3.html`, icon: '✉️' },
-        { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', href: `${SITE_URL}${langDir}/z-lab.html`, icon: '🧮' },
+        { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', href: `${SITE_URL}${langDir}/Pages-Researches.html`, icon: '🧮' },
         { name: 'حاسبة النظرية الموحدة', nameEn: 'Unified Theory Calculator', href: `${SITE_URL}${langDir}/unified-calc.html`, icon: '🌌' },
-        { name: 'معرض صنعاء', nameEn: 'Sanaa Gallery', href: `${SITE_URL}${langDir}/gallery-sanaa.html`, icon: '🖼️' },
-        { name: '🎮 مركز الألعاب', nameEn: '🎮 Games Hub', href: `${SITE_URL}${langDir}/game/`, icon: '🎮' },
+        { name: 'معرض صنعاء', nameEn: 'Sanaa Gallery', href: `${SITE_URL}${langDir}/gallery.html`, icon: '🖼️' },
+        { name: '🎮 مركز الألعاب', nameEn: '🎮 Games Hub', href: `${SITE_URL}${langDir}/game/game-auto.html`, icon: '🎮' },
     ];
 
     const MENU_MIDDLE = [
         { name: 'البحوث', nameEn: 'Research', href: `${SITE_URL}${langDir}/research.html`, icon: '🔬' },
         { name: 'الدالة الأم Z(x)', nameEn: 'Mother Function Z(x)', href: `${SITE_URL}${langDir}/theory-ar.html`, icon: '📐' },
-        { name: 'نظرية السندباد الموحدة', nameEn: 'Sinbad Unified Theory', href: `${SITE_URL}${langDir}/unified-theory.html`, icon: '🌌' },
+        { name: 'نظرية السندباد الموحدة', nameEn: 'Sinbad Unified Theory', href: `${SITE_URL}${langDir}/Sindbad-theory.html`, icon: '🌌' },
         { name: 'المكتبة', nameEn: 'Library', href: `${SITE_URL}${langDir}/Office.html`, icon: '📚' },
     ];
 
