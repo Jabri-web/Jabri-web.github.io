@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🗂️ مستكشف الواحة + المحرر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Tajawal', sans-serif;background: #0d1117;color: #e6edf3;height: 100vh;overflow: hidden;}
+        .split-layout {display: flex;flex-direction: column;height: 100vh;}
+        .file-list {height: 50vh;overflow-y: auto;padding: 20px;border-bottom: 3px solid #ffd700;background: #161b22;}
+        .file-list::-webkit-scrollbar {width: 6px;}
+        .file-list::-webkit-scrollbar-track {background: #0d1117;}
+        .file-list::-webkit-scrollbar-thumb {background: #ffd700;border-radius: 10px;}
+        
+        .preview-area, .editor-area {height: 50vh;background: #0d1117;position: relative;}
+        .preview-area iframe {width: 100%;height: 100%;border: none;background: #fff;}
+        .preview-notice {position: absolute;bottom: 10px;left: 10px;background: rgba(0,0,0,0.7);color: #ffd700;padding: 4px 12px;border-radius: 20px;font-size: 12px;}
+        
+        /* ===== عناصر المحرر ===== */
+        .editor-area {display: none; flex-direction: column; padding: 10px;}
+        .editor-area.show {display: flex;}
+        .editor-title {width: 100%;background: #161b22;border: 1px solid #30363d;border-radius: 8px;padding: 10px;color: #ffd700;font-size: 18px;font-weight: 700;font-family: 'Tajawal';margin-bottom: 10px;outline: none;}
+        .editor-body {flex: 1;width: 100%;background: #161b22;border: 1px solid #30363d;border-radius: 8px;padding: 10px;color: #e6edf3;font-family: 'Tajawal';resize: none;outline: none;line-height: 1.8;}
+        .editor-toolbar {display: flex;gap: 10px;margin-top: 10px;}
+        .editor-toolbar button {flex:1;padding: 8px;border: none;border-radius: 6px;font-weight: 700;font-family: 'Tajawal';cursor: pointer;}
+        .save-btn {background: #1f6feb;color: white;}
+        .preview-btn {background: #2d8a4e;color: white;}
+        .back-btn-editor {background: #30363d;color: #e6edf3; flex: 0.5;}
+        
+        .header {display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;gap: 10px;margin-bottom: 15px;padding-bottom: 10px;border-bottom: 1px solid #30363d;}
+        .header h2 {color: #ffd700;font-weight: 700;font-size: 22px;}
+        .header .badge {background: #ffd700;color: #0d1117;padding: 4px 12px;border-radius: 20px;font-weight: 700;font-size: 14px;}
+        .header .actions {display: flex;gap: 8px;align-items: center;}
+        .header .actions button {background: #ffd700;border: none;padding: 6px 14px;border-radius: 6px;font-weight: 700;cursor: pointer;font-family: 'Tajawal', sans-serif;transition: 0.2s;font-size: 14px;}
+        .header .actions button:hover {transform: scale(1.05);box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);}
+        .back-btn {background: #1f6feb !important;color: white !important;display: none;}
+        .back-btn.show {display: inline-block;}
+        .path-display {background: #21262d;padding: 8px 16px;border-radius: 8px;font-size: 15px;color: #ffd700;margin-bottom: 12px;border: 1px solid #30363d;}
+        .search-box {width: 100%;padding: 10px 16px;border-radius: 8px;border: 1px solid #30363d;background: #0d1117;color: #e6edf3;font-family: 'Tajawal', sans-serif;font-size: 16px;margin-bottom: 12px;}
+        .stats {display: flex;gap: 10px;padding: 8px 0 12px 0;font-size: 13px;color: #8b949e;flex-wrap: wrap;border-bottom: 1px solid #30363d;margin-bottom: 12px;}
+        .stats span {background: #21262d;padding: 2px 10px;border-radius: 12px;}
+        
+        .file-item {display: flex;justify-content: space-between;align-items: center;padding: 10px 14px;margin-bottom: 4px;border-radius: 8px;cursor: pointer;transition: 0.2s;background: #21262d;border: 1px solid #30363d;position: relative;}
+        .file-item:hover {background: #30363d;border-color: #ffd70040;}
+        .file-item.active {background: #ffd70015;border-color: #ffd700;}
+        .file-item.folder {background: #1f6feb10;border-color: #1f6feb;}
+        .file-item .name {font-size: 15px;font-weight: 400;color: #e6edf3;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .file-item .ext {font-size: 10px;background: #0d1117;padding: 0 6px;border-radius: 4px;color: #8b949e;}
+        .file-item .more-btn {background: transparent;border: none;color: #aaa;padding: 2px 8px;border-radius: 4px;cursor: pointer;font-size: 18px;}
+        .file-item .more-btn:hover {color: #ffd700;}
+        
+        .empty-msg {text-align: center;color: #8b949e;padding: 30px 0;font-size: 18px;}
+        .loader {text-align: center;padding: 20px;color: #ffd700;font-size: 18px;}
+    </style>
+</head>
+<body>
+    <div class="split-layout">
+        <div class="file-list" id="fileList">
+            <div class="header">
+                <h2>🗂️ مستكشف الواحة</h2>
+                <div class="actions">
+                    <span class="badge" id="fileCount">0</span>
+                    <button onclick="newPost()">✨ جديد</button>
+                    <button onclick="discoverFiles()">🔄 تحديث</button>
+                    <button class="back-btn" id="backBtn" onclick="goBack()">↩ رجوع</button>
+                </div>
+            </div>
+            <div class="path-display" id="currentPath">📂 الجذر /</div>
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 ابحث عن ملف..." oninput="filterFiles()" />
+            
+            <div class="stats">
+                <span>📊 الكل: <span id="total">0</span></span>
+                <span>📁 مجلدات: <span id="folders">0</span></span>
+                <span>🌐 HTML: <span id="html">0</span></span>
+            </div>
+
+            <div id="filesContainer"><div class="loader">⏳ جارٍ التحميل...</div></div>
+        </div>
+        
+        <!-- المعاينة الافتراضية -->
+        <div class="preview-area" id="previewArea">
+            <iframe id="previewFrame" src="about:blank"></iframe>
+            <div class="preview-notice">📺 معاينة من Vercel</div>
+        </div>
+
+        <!-- المحرر (يظهر فقط عند الضغط على جديد أو تعديل) -->
+        <div class="editor-area" id="editorArea">
+            <input type="text" class="editor-title" id="editorTitle" placeholder="عنوان المنشور..." />
+            <textarea class="editor-body" id="editorBody" placeholder="اكتب محتوى منشورك هنا..."></textarea>
+            <div class="editor-toolbar">
+                <button class="save-btn" onclick="savePost()">💾 حفظ</button>
+                <button class="preview-btn" onclick="previewPost()">👁️ معاينة</button>
+                <button class="back-btn-editor" onclick="closeEditor()">↩ رجوع</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== الإعدادات =====
+        const REPO_OWNER = 'Jabri-web';
+        const REPO_NAME = 'Jabri-web.github.io';
+        const BRANCH = 'main';
+        const GITHUB_API = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
+        const VERCEl_BASE = 'https://jabri-com.vercel.app/';
+        const EXCLUDED_FILE = 'explore.html';
+
+        let allItems = [];
+        let currentPath = '';
+        let pathHistory = [];
+        let selectedItem = null;
+        let currentEditingFile = '';
+
+        // ===== جلب الملفات =====
+        async function discoverFiles(path = '') {
+            const container = document.getElementById('filesContainer');
+            container.innerHTML = '<div class="loader">⏳ جارٍ التحميل...</div>';
+            try {
+                const apiPath = path ? `/${path}` : '';
+                const response = await fetch(`${GITHUB_API}${apiPath}?ref=${BRANCH}`);
+                const data = await response.json();
+
+                const folders = data.filter(i => i.type === 'dir').map(i => ({...i, type:'folder'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+                const files = data.filter(i => i.type === 'file' && i.name !== EXCLUDED_FILE).map(i => ({...i, type:'file'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+                
+                allItems = [...folders, ...files];
+                currentPath = path;
+                updatePath();
+                renderItems(allItems);
+                updateStats();
+
+                document.getElementById('fileCount').textContent = allItems.length;
+                document.getElementById('backBtn').classList.toggle('show', pathHistory.length > 0 || path);
+                document.getElementById('previewFrame').src = 'about:blank';
+
+            } catch (error) {
+                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل</div>`;
+                console.error(error);
+            }
+        }
+
+        function updatePath() {
+            document.getElementById('currentPath').textContent = currentPath ? `📂 ${currentPath.split('/').join(' / ')}` : '📂 الجذر /';
+        }
+
+        function updateStats() {
+            const folders = allItems.filter(i=>i.type==='folder').length;
+            const html = allItems.filter(i=>i.type==='file' && i.name.endsWith('.html')).length;
+            document.getElementById('total').textContent = allItems.length;
+            document.getElementById('folders').textContent = folders;
+            document.getElementById('html').textContent = html;
+        }
+
+        // ===== عرض الملفات والمجلدات =====
+        function renderItems(items) {
+            const container = document.getElementById('filesContainer');
+            if(!items.length) {container.innerHTML = '<div class="empty-msg">📭 فاضي</div>'; return;}
+            let html = '';
+            items.forEach((item, index) => {
+                const itemId = `item-${Date.now()}-${index}`;
+                if(item.type === 'folder'){
+                    html += `<div class="file-item folder" id="${itemId}" data-path="${item.path}" data-name="${item.name}" data-type="folder" onclick="handleItemClick(event, '${item.path}', 'folder')">
+                        <span class="name">📁 ${item.name}</span>
+                        <span class="ext">مجلد</span>
+                        <button class="more-btn" onclick="event.stopPropagation(); showContextMenu(event, '${item.path}', '${item.name}', 'folder')">⋯</button>
+                    </div>`;
+                } else {
+                    const ext = item.name.split('.').pop().toUpperCase();
+                    html += `<div class="file-item" id="${itemId}" data-path="${item.path}" data-name="${item.name}" data-type="file" onclick="handleItemClick(event, '${item.path}', 'file')">
+                        <span class="name">📄 ${item.name}</span>
+                        <span class="ext">${ext}</span>
+                        <button class="more-btn" onclick="event.stopPropagation(); showContextMenu(event, '${item.path}', '${item.name}', 'file')">⋯</button>
+                    </div>`;
+                }
+            });
+            container.innerHTML = html;
+        }
+
+        // ===== التعامل مع النقر على العنصر =====
+        function handleItemClick(event, path, type) {
+            if (type === 'folder') {
+                enterFolder(path);
+            } else {
+                closeEditor();
+                previewFile(path);
+            }
+        }
+
+        // ===== التنقل =====
+        function enterFolder(path) {pathHistory.push(currentPath); discoverFiles(path);}
+        function goBack() {discoverFiles(pathHistory.pop() || '');}
+
+        // ===== البحث =====
+        function filterFiles() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            renderItems(allItems.filter(i => i.name.toLowerCase().includes(q)));
+        }
+
+        // ===== المعاينة من Vercel =====
+        function previewFile(filepath) {
+            const frame = document.getElementById('previewFrame');
+            const fullUrl = VERCEl_BASE + filepath;
+            frame.src = fullUrl;
+
+            document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+            const items = document.querySelectorAll('.file-item');
+            for (let item of items) {
+                if (item.dataset.path === filepath) {
+                    item.classList.add('active');
+                    break;
+                }
+            }
+            localStorage.setItem('lastPreview', filepath);
+        }
+
+        // ==========================================
+        // ===== (الجديد) وظائف المحرر =====
+        // ==========================================
+
+        function openEditor() {
+            document.getElementById('previewArea').style.display = 'none';
+            document.getElementById('editorArea').classList.add('show');
+        }
+
+        function closeEditor() {
+            document.getElementById('editorArea').classList.remove('show');
+            document.getElementById('previewArea').style.display = 'block';
+        }
+
+        function newPost() {
+            currentEditingFile = '';
+            document.getElementById('editorTitle').value = '';
+            document.getElementById('editorBody').value = '# اكتب منشورك هنا...';
+            openEditor();
+        }
+
+        function savePost() {
+            const title = document.getElementById('editorTitle').value.trim() || 'بدون عنوان';
+            const content = document.getElementById('editorBody').value;
+            
+            const slug = title.replace(/\s+/g, '-').replace(/[^\w\u0600-\u06FF-]/g, '');
+            const fileName = `${slug}.txt`;
+
+            // الحفظ في LocalStorage (حفظ محلي، يمكن لاحقاً تغييره لحفظ GitHub)
+            localStorage.setItem(`draft_${fileName}`, content);
+            alert(`✅ تم حفظ "${title}" محلياً في المتصفح`);
+            closeEditor();
+        }
+
+        function previewPost() {
+            const title = document.getElementById('editorTitle').value || 'بدون عنوان';
+            const content = document.getElementById('editorBody').value;
+            
+            const frame = document.getElementById('previewFrame');
+            frame.srcdoc = `<html dir="rtl"><head><style>body{font-family:sans-serif;padding:20px;line-height:1.8}</style></head><body><h1>${title}</h1><pre style="white-space:pre-wrap">${content}</pre></body></html>`;
+            
+            closeEditor();
+        }
+
+        // ===== نسخ الرابط =====
+        function copyLink(p){
+            navigator.clipboard.writeText(`${VERCEl_BASE}${p}`).then(()=>{
+                alert('✅ تم نسخ رابط Vercel');
+            }).catch(()=>{alert('❌ فشل النسخ')})
+        }
+
+        // ===== القائمة المنسدلة =====
+        function showContextMenu(event, path, name, type) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const menu = document.getElementById('contextMenu');
+            selectedItem = { path, name, type };
+            
+            let x = event.clientX;
+            let y = event.clientY;
+            
+            const menuWidth = 200;
+            const menuHeight = 320;
+            if (x + menuWidth > window.innerWidth) x = window.innerWidth - menuWidth - 10;
+            if (y + menuHeight > window.innerHeight) y = window.innerHeight - menuHeight - 10;
+            
+            menu.style.left = x + 'px';
+            menu.style.top = y + 'px';
+            menu.classList.add('show');
+        }
+
+        function hideContextMenu() {
+            document.getElementById('contextMenu').classList.remove('show');
+        }
+
+        function menuAction(action) {
+            if (!selectedItem) return;
+            const { path, name, type } = selectedItem;
+            
+            switch(action) {
+                case 'edit':
+                    if (type === 'file') {
+                        openEditor();
+                        document.getElementById('editorTitle').value = name;
+                        document.getElementById('editorBody').value = '...محتوى الملف...';
+                    }
+                    break;
+                case 'copy':
+                    copyLink(path);
+                    break;
+                default: break;
+            }
+            hideContextMenu();
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.context-menu') && !e.target.closest('.more-btn')) {
+                hideContextMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideContextMenu();
+        });
+
+        // ===== تحميل الصفحة =====
+        window.onload = () => discoverFiles();
+    </script>
+</body>
+</html>
