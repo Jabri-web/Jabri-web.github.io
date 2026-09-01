@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واحة الجبري | Journal 4 - خوارزمية الواحد</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            direction: rtl;
+        }
+        h1 {
+            color: #e0c097;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+       .input-container {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #e0c097;
+            outline: none;
+            width: 150px;
+            background-color: #16213e;
+            color: white;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            background-color: #e0c097;
+            color: #1a1a2e;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ffffff;
+        }
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 600px;
+            background-color: #16213e;
+            box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+        }
+        th {
+            background-color: #0f3460;
+            color: #e0c097;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        tr:nth-child(even) {
+            background-color: #1a1a2e;
+        }
+       .result-box {
+            background-color: #0f3460;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 20px 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e0c097;
+        }
+        #graphCanvas {
+            background-color: #0f3460;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏛️ واحة الجبري - خوارزمية الواحد</h1>
+    <p class="subtitle">(الزوجي = n/2... الفردي = 3n+1) - عودة جميع الأرقام إلى الواحد الأحد</p>
+
+    <div class="input-container">
+        <input type="number" id="numberInput" placeholder="أدخل الرقم" min="1">
+        <button onclick="runAlgorithm()">ابحث</button>
+    </div>
+
+    <div id="outputArea"></div>
+
+    <canvas id="graphCanvas" width="800" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawGraph(sequence) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#e0c097';
+            ctx.fillStyle = '#e0c097';
+            ctx.lineWidth = 2;
+
+            const padding = 50;
+            const maxVal = Math.max(...sequence);
+            const stepX = (canvas.width - 2 * padding) / (sequence.length - 1);
+
+            // رسم المحاور
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+
+            // رسم المسار
+            ctx.beginPath();
+            for (let i = 0; i < sequence.length; i++) {
+                let x = padding + i * stepX;
+                let y = canvas.height - padding - (sequence[i] / maxVal) * (canvas.height - 2 * padding);
+
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+
+                // رسم النقطة
+                ctx.fillRect(x - 3, y - 3, 6, 6);
+
+                // كتابة الرقم
+                ctx.font = "12px Arial";
+                ctx.fillText(sequence[i], x - 10, y - 10);
+            }
+            ctx.stroke();
+
+            // عنوان
+            ctx.font = "16px 'Segoe UI'";
+            ctx.fillText("مسار العودة إلى الواحد", canvas.width / 2 - 80, 30);
+        }
+
+        function runAlgorithm() {
+            let n = parseInt(document.getElementById('numberInput').value);
+            const outputArea = document.getElementById('outputArea');
+
+            if (isNaN(n) || n < 1) {
+                outputArea.innerHTML = "<p>الرجاء إدخال رقم صحيح أكبر من صفر.</p>";
+                return;
+            }
+
+            let i = 0;
+            let j = 0;
+            let currentN = n;
+            let sequence = [currentN]; // لحفظ المسار للرسم
+            let resultHTML = "";
+
+            resultHTML += "<table>";
+            resultHTML += "<tr><th>N</th><th>i</th><th>j</th><th>K(i)</th><th>K(j)</th></tr>";
+
+            while (currentN > 1) {
+                let k_i = "x";
+                let k_j = "x";
+                let n_before = currentN;
+
+                if (currentN % 2 === 0) {
+                    i++;
+                    k_i = currentN / 2;
+                    currentN = k_i;
+                } else {
+                    j++;
+                    k_j = (3 * currentN) + 1;
+                    currentN = k_j;
+                }
+                sequence.push(currentN);
+                resultHTML += `<tr><td>${n_before}</td><td>${i}</td><td>${j}</td><td>${k_i}</td><td>${k_j}</td></tr>`;
+            }
+
+            resultHTML += "</table>";
+            resultHTML += `<div class="result-box">الوصول إلى الواحد الأحد: 1</div>`;
+            outputArea.innerHTML = resultHTML;
+
+            drawGraph(sequence); // ارسم بعد الجدول
+        }
+    </script>
+
+</body>
+</html>
