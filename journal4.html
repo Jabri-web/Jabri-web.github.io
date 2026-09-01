@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واحة الجبري | Journal 4 - المعادلة المحرمة</title>
+    <title>واحة الجبري | Journal 4 - شجرة التوحيد</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +16,7 @@
         }
         h1 { color: #e0c097; margin-bottom: 5px; }
         p.subtitle { color: #aaa; margin-bottom: 30px; }
-       .input-container { margin-bottom: 20px; }
+      .input-container { margin-bottom: 20px; }
         input {
             padding: 10px; font-size: 18px; border-radius: 5px;
             border: 1px solid #e0c097; outline: none; width: 150px;
@@ -54,7 +54,7 @@
         }
         tr:nth-child(even) { background-color: #1a1a2e; }
 
-       .result-box {
+      .result-box {
             background-color: #0f3460;
             padding: 15px;
             border-radius: 8px;
@@ -64,8 +64,8 @@
             font-weight: bold;
             color: #e0c097;
         }
-       .result-note {
-            color:#aaa; font-size:14px; margin-top:10px; margin-bottom:30px;
+      .result-note {
+            color:#aaa; font-size:16px; margin-top:10px; margin-bottom:30px; /* كبرته */
         }
 
         #graphCanvas {
@@ -75,8 +75,8 @@
             box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
         }
 
-        /* تنسيق قسم المعادلة المحرمة */
-       .forbidden-equation {
+        /* تنسيق قسم شجرة التوحيد */
+      .unity-tree {
             margin-top: 50px;
             padding: 30px;
             background: linear-gradient(145deg, #0f3460, #16213e);
@@ -87,7 +87,7 @@
             margin-right: auto;
             box-shadow: 0 0 20px rgba(224, 192, 151, 0.3);
         }
-       .forbidden-equation h2 {
+      .unity-tree h2 {
             color: #e0c097;
             font-size: 28px;
             margin-bottom: 20px;
@@ -95,23 +95,24 @@
             padding-bottom: 10px;
             display: inline-block;
         }
-       .equation-display {
-            font-size: 48px; /* كبرتها */
+      .equation-display {
+            font-size: 48px; /* كبيرة */
             font-weight: bold;
             color: #e0c097; /* ذهبي */
-            margin-bottom: 30px;
+            margin: 20px 0;
             text-shadow: 0 0 15px rgba(224, 192, 151, 0.7);
             letter-spacing: 5px;
         }
-       .quotes {
+      .tree-icon { font-size: 60px; margin-bottom: 10px; } /* ايقونة الشجرة */
+      .quotes {
             text-align: right;
             font-size: 18px;
             line-height: 2;
             color: #ddd;
         }
-       .quote-1 { color: #e0c097; font-weight: bold; margin-bottom: 15px; }
-       .quote-2 { margin-bottom: 15px; }
-       .quote-3 { font-style: italic; color: #fff; border-right: 3px solid #e0c097; padding-right: 10px; }
+      .quote-1 { color: #e0c097; font-weight: bold; margin-bottom: 15px; }
+      .quote-2 { margin-bottom: 15px; }
+      .quote-3 { font-style: italic; color: #fff; border-right: 3px solid #e0c097; padding-right: 10px; }
     </style>
 </head>
 <body>
@@ -128,9 +129,11 @@
 
     <canvas id="graphCanvas" width="900" height="400"></canvas>
 
-    <!-- قسم المعادلة المحرمة -->
-    <div class="forbidden-equation">
-        <h2>🔒 المعادلة المحرمة</h2>
+    <!-- قسم شجرة التوحيد -->
+    <div class="unity-tree">
+        <h2>🌳 شجرة التوحيد تنتهي بواحد</h2>
+
+        <div class="tree-icon">🌳</div>
 
         <div class="equation-display">
             Z + C + A = 1
@@ -138,21 +141,23 @@
 
         <div class="quotes">
             <div class="quote-1">
-                "هي ليست محرمة. هي تذكير. <br>
+                "كما للشجرة جذر واحد... فللكون رب واحد.<br>
                 Z = الزمان، C = المكان، A = الإنسان.<br>
-                ومجموعهم لا يكتمل إلا بالواحد الأحد. فكيف تكون محرمة وهي توصل للـ 1؟"
+                وكل الفروع مهما تشعبت تعود للجذر: 1"
             </div>
 
             <div class="quote-2">
-                "محرمة عند من؟ عند الذي خاف من الواحد. الرياضيات لا تحرم، الرياضيات تكشف. هذه المعادلة تقول: مهما اختلفت المتغيرات، النهاية واحدة."
+                "انظر للخوارزمية: آلاف الأرقام تدخل... وكلها تخرج من باب واحد.
+                هذه ليست مصادفة. هذه فطرة."
             </div>
 
             <div class="quote-2">
-                "سمحوا لأنها حق. والباطل هو الذي يخاف من 1."
+                "سمحوا بنشرها لأنها حق. والحق لا يُحجب."
             </div>
 
             <div class="quote-3">
-                "المحرمة؟ هي التي جمعت الزمان والمكان والإنسان... وأسجدتهم جميعاً عند عتبة: 1"
+                "شجرة التوحيد؟ هي التي غرسها الواحد...
+                فسقتها الرياضيات... وأثمرت: 1"
             </div>
         </div>
     </div>
@@ -171,31 +176,26 @@
             const maxVal = Math.max(...sequence);
             const stepX = (canvas.width - 2 * padding) / (sequence.length - 1);
 
-            // رسم المحاور
             ctx.beginPath();
             ctx.moveTo(padding, padding);
             ctx.lineTo(padding, canvas.height - padding);
             ctx.lineTo(canvas.width - padding, canvas.height - padding);
             ctx.stroke();
 
-            // رسم المسار
             ctx.beginPath();
             for (let i = 0; i < sequence.length; i++) {
                 let x = padding + i * stepX;
-                // scale لوغاريتمي عشان الارقام الكبيرة
                 let logVal = Math.log10(sequence[i] + 1);
                 let logMax = Math.log10(maxVal + 1);
                 let y = canvas.height - padding - (logVal / logMax) * (canvas.height - 2 * padding);
 
                 if (i === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
-
-                ctx.fillRect(x - 3, y - 3, 6, 6); // النقطة
+                ctx.fillRect(x - 3, y - 3, 6, 6);
             }
             ctx.stroke();
-
             ctx.font = "16px 'Segoe UI'";
-            ctx.fillText("مسار العودة إلى الواحد", canvas.width / 2 - 80, 30);
+            ctx.fillText("مسار العودة إلى الواحد - جذر الشجرة", canvas.width / 2 - 100, 30);
         }
 
         function runAlgorithm() {
@@ -210,13 +210,14 @@
             let i = 0;
             let j = 0;
             let currentN = n;
-            let sequence = [currentN]; // لحفظ المسار
+            let sequence = [currentN];
             let resultHTML = "";
 
             resultHTML += "<table>";
             resultHTML += "<tr><th>N</th><th>i</th><th>j</th><th>K(i)</th><th>K(j)</th></tr>";
 
             while (currentN > 1) {
+                let n_before = currentN; // لحفظ الرقم قبل التغيير
                 let k_i = "x";
                 let k_j = "x";
 
@@ -230,15 +231,15 @@
                     currentN = k_j;
                 }
                 sequence.push(currentN);
-                resultHTML += `<tr><td>${currentN}</td><td>${i}</td><td>${j}</td><td>${k_i}</td><td>${k_j}</td></tr>`;
+                resultHTML += `<tr><td>${n_before}</td><td>${i}</td><td>${j}</td><td>${k_i}</td><td>${k_j}</td></tr>`;
             }
 
             resultHTML += "</table>";
-            resultHTML += `<div class="result-box">الوصول إلى الواحد: 1</div>`;
-            resultHTML += `<p class="result-note">كما ترى، كل مسارات 3n+1 تعود إلى 1... تماماً كما Z + C + A</p>`;
+            resultHTML += `<div class="result-box">الوصول إلى الجذر: 1</div>`;
+            resultHTML += `<p class="result-note">كما ترى، كل فروع 3n+1 تعود للجذر 1... تماماً كما Z + C + A</p>`;
             outputArea.innerHTML = resultHTML;
 
-            drawGraph(sequence); // ارسم
+            drawGraph(sequence);
         }
     </script>
 
