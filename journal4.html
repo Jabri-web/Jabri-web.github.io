@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واحة الجبري | Journal 4 - خوارزمية الواحد</title>
+    <title>واحة الجبري | Journal 4 - المعادلة المحرمة</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,48 +14,27 @@
             margin: 0;
             direction: rtl;
         }
-        h1 {
-            color: #e0c097;
-            margin-bottom: 5px;
-        }
-        p.subtitle {
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-       .input-container {
-            margin-bottom: 20px;
-        }
+        h1 { color: #e0c097; margin-bottom: 5px; }
+        p.subtitle { color: #aaa; margin-bottom: 30px; }
+       .input-container { margin-bottom: 20px; }
         input {
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 5px;
-            border: 1px solid #e0c097;
-            outline: none;
-            width: 150px;
-            background-color: #16213e;
-            color: white;
-            text-align: center;
+            padding: 10px; font-size: 18px; border-radius: 5px;
+            border: 1px solid #e0c097; outline: none; width: 150px;
+            background-color: #16213e; color: white; text-align: center;
         }
         button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
-            border: none;
-            background-color: #e0c097;
-            color: #1a1a2e;
-            font-weight: bold;
-            cursor: pointer;
-            margin-right: 10px;
+            padding: 10px 20px; font-size: 18px; border-radius: 5px;
+            border: none; background-color: #e0c097; color: #1a1a2e;
+            font-weight: bold; cursor: pointer; margin-right: 10px;
             transition: 0.3s;
         }
-        button:hover {
-            background-color: #ffffff;
-        }
+        button:hover { background-color: #ffffff; }
+
         table {
             margin: 30px auto;
             border-collapse: collapse;
-            width: 80%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 700px;
             background-color: #16213e;
             box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
             border-radius: 8px;
@@ -73,9 +52,8 @@
             color: #e0c097;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        tr:nth-child(even) {
-            background-color: #1a1a2e;
-        }
+        tr:nth-child(even) { background-color: #1a1a2e; }
+
        .result-box {
             background-color: #0f3460;
             padding: 15px;
@@ -86,12 +64,54 @@
             font-weight: bold;
             color: #e0c097;
         }
+       .result-note {
+            color:#aaa; font-size:14px; margin-top:10px; margin-bottom:30px;
+        }
+
         #graphCanvas {
             background-color: #0f3460;
             border-radius: 8px;
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
         }
+
+        /* تنسيق قسم المعادلة المحرمة */
+       .forbidden-equation {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(145deg, #0f3460, #16213e);
+            border: 1px solid #e0c097;
+            border-radius: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 20px rgba(224, 192, 151, 0.3);
+        }
+       .forbidden-equation h2 {
+            color: #e0c097;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0c097;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+       .equation-display {
+            font-size: 48px; /* كبرتها */
+            font-weight: bold;
+            color: #e0c097; /* ذهبي */
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(224, 192, 151, 0.7);
+            letter-spacing: 5px;
+        }
+       .quotes {
+            text-align: right;
+            font-size: 18px;
+            line-height: 2;
+            color: #ddd;
+        }
+       .quote-1 { color: #e0c097; font-weight: bold; margin-bottom: 15px; }
+       .quote-2 { margin-bottom: 15px; }
+       .quote-3 { font-style: italic; color: #fff; border-right: 3px solid #e0c097; padding-right: 10px; }
     </style>
 </head>
 <body>
@@ -106,7 +126,36 @@
 
     <div id="outputArea"></div>
 
-    <canvas id="graphCanvas" width="800" height="400"></canvas>
+    <canvas id="graphCanvas" width="900" height="400"></canvas>
+
+    <!-- قسم المعادلة المحرمة -->
+    <div class="forbidden-equation">
+        <h2>🔒 المعادلة المحرمة</h2>
+
+        <div class="equation-display">
+            Z + C + A = 1
+        </div>
+
+        <div class="quotes">
+            <div class="quote-1">
+                "هي ليست محرمة. هي تذكير. <br>
+                Z = الزمان، C = المكان، A = الإنسان.<br>
+                ومجموعهم لا يكتمل إلا بالواحد الأحد. فكيف تكون محرمة وهي توصل للـ 1؟"
+            </div>
+
+            <div class="quote-2">
+                "محرمة عند من؟ عند الذي خاف من الواحد. الرياضيات لا تحرم، الرياضيات تكشف. هذه المعادلة تقول: مهما اختلفت المتغيرات، النهاية واحدة."
+            </div>
+
+            <div class="quote-2">
+                "سمحوا لأنها حق. والباطل هو الذي يخاف من 1."
+            </div>
+
+            <div class="quote-3">
+                "المحرمة؟ هي التي جمعت الزمان والمكان والإنسان... وأسجدتهم جميعاً عند عتبة: 1"
+            </div>
+        </div>
+    </div>
 
     <script>
         const canvas = document.getElementById('graphCanvas');
@@ -133,21 +182,18 @@
             ctx.beginPath();
             for (let i = 0; i < sequence.length; i++) {
                 let x = padding + i * stepX;
-                let y = canvas.height - padding - (sequence[i] / maxVal) * (canvas.height - 2 * padding);
+                // scale لوغاريتمي عشان الارقام الكبيرة
+                let logVal = Math.log10(sequence[i] + 1);
+                let logMax = Math.log10(maxVal + 1);
+                let y = canvas.height - padding - (logVal / logMax) * (canvas.height - 2 * padding);
 
                 if (i === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
 
-                // رسم النقطة
-                ctx.fillRect(x - 3, y - 3, 6, 6);
-
-                // كتابة الرقم
-                ctx.font = "12px Arial";
-                ctx.fillText(sequence[i], x - 10, y - 10);
+                ctx.fillRect(x - 3, y - 3, 6, 6); // النقطة
             }
             ctx.stroke();
 
-            // عنوان
             ctx.font = "16px 'Segoe UI'";
             ctx.fillText("مسار العودة إلى الواحد", canvas.width / 2 - 80, 30);
         }
@@ -164,7 +210,7 @@
             let i = 0;
             let j = 0;
             let currentN = n;
-            let sequence = [currentN]; // لحفظ المسار للرسم
+            let sequence = [currentN]; // لحفظ المسار
             let resultHTML = "";
 
             resultHTML += "<table>";
@@ -173,7 +219,6 @@
             while (currentN > 1) {
                 let k_i = "x";
                 let k_j = "x";
-                let n_before = currentN;
 
                 if (currentN % 2 === 0) {
                     i++;
@@ -185,14 +230,15 @@
                     currentN = k_j;
                 }
                 sequence.push(currentN);
-                resultHTML += `<tr><td>${n_before}</td><td>${i}</td><td>${j}</td><td>${k_i}</td><td>${k_j}</td></tr>`;
+                resultHTML += `<tr><td>${currentN}</td><td>${i}</td><td>${j}</td><td>${k_i}</td><td>${k_j}</td></tr>`;
             }
 
             resultHTML += "</table>";
-            resultHTML += `<div class="result-box">الوصول إلى الواحد الأحد: 1</div>`;
+            resultHTML += `<div class="result-box">الوصول إلى الواحد: 1</div>`;
+            resultHTML += `<p class="result-note">كما ترى، كل مسارات 3n+1 تعود إلى 1... تماماً كما Z + C + A</p>`;
             outputArea.innerHTML = resultHTML;
 
-            drawGraph(sequence); // ارسم بعد الجدول
+            drawGraph(sequence); // ارسم
         }
     </script>
 
