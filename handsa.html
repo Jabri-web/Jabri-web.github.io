@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هندسة الأعداد اليمنية | واحة الجبري</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: #e0d4a4;
+    font-family: 'Tajawal', sans-serif;
+    padding: 20px;
+    line-height: 1.9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    max-width: 950px;
+    margin: auto;
+    background: rgba(10,10,10,0.9);
+    padding: 40px 30px;
+    border-radius: 25px;
+    border: 1px solid rgba(212,175,55,0.2);
+    box-shadow: 0 0 80px rgba(212,175,55,0.1);
+  }
+  h1 {
+    color: #D4AF37;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 40px rgba(212,175,55,0.3);
+    margin-bottom: 5px;
+  }
+  .sub {
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+  }
+  .intro {
+    border: 2px solid #D4AF37;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(212,175,55,0.07);
+    text-align: center;
+    font-size: 1.15em;
+    margin-bottom: 30px;
+    color: #d4c8a0;
+    box-shadow: inset 0 0 50px rgba(212,175,55,0.03);
+  }
+  .intro strong { color: #D4AF37; }
+  .graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 15px;
+  }
+  svg {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(212,175,55,0.15));
+  }
+  .relation-text {
+    text-align: center;
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+  .relation-text .z { color: #D4AF37; font-weight: 700; }
+  .relation-text .c { color: #00ff88; font-weight: 700; }
+  .relation-text .a { color: #cc44ff; font-weight: 700; }
+  .equation {
+    font-size: 2em;
+    text-align: center;
+    color: #fff;
+    margin: 10px 0 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #D4AF37, #f5e56b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section {
+    margin: 40px 0 35px;
+    background: rgba(255,255,255,0.02);
+    padding: 20px 25px;
+    border-radius: 16px;
+    border-right: 3px solid #D4AF37;
+  }
+  .section h2 {
+    color: #D4AF37;
+    font-size: 1.5em;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 span { font-size: 1.2em; }
+  .key-box {
+    background: rgba(212,175,55,0.08);
+    padding: 20px;
+    border-radius: 14px;
+    border-right: 4px solid #D4AF37;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.1em;
+    color: #d4c8a0;
+  }
+  .key-box strong { color: #D4AF37; }
+  .freq {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  .freq div {
+    background: #121212;
+    padding: 14px 22px;
+    border-radius: 14px;
+    border: 1px solid rgba(212,175,55,0.2);
+    text-align: center;
+    min-width: 110px;
+    flex: 1;
+    transition: all 0.3s ease;
+  }
+  .freq div:hover {
+    border-color: #D4AF37;
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(212,175,55,0.1);
+  }
+  .freq .hz { font-size: 1.4em; font-weight: 700; color: #D4AF37; }
+  .freq .label { font-size: 0.85em; color: #aaa; }
+  .testimonial {
+    background: rgba(212,175,55,0.05);
+    padding: 20px 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(212,175,55,0.15);
+    margin: 35px 0;
+    color: #c0b890;
+  }
+  .testimonial .from {
+    color: #D4AF37;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .formula-box {
+    text-align: center;
+    font-size: 1.6em;
+    padding: 15px;
+    background: rgba(212,175,55,0.05);
+    border-radius: 16px;
+    border: 1px dashed rgba(212,175,55,0.3);
+    margin: 20px 0;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .formula-box small { font-size: 0.5em; color: #888; display: block; margin-top: 5px; }
+  footer {
+    text-align: center;
+    margin-top: 45px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212,175,55,0.1);
+    color: #666;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+  footer a { color: #D4AF37; text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 20px 15px; }
+    h1 { font-size: 1.8em; }
+    .intro { font-size: 1em; padding: 15px; }
+    .equation { font-size: 1.4em; }
+    .section { padding: 15px; }
+    .freq div { min-width: 80px; padding: 10px 12px; }
+    .formula-box { font-size: 1.2em; }
+    .key-box { font-size: 0.95em; padding: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🌊 هندسة الأعداد اليمنية</h1>
+  <div class="sub">Yemeni Number Geometry</div>
+
+  <div class="intro">
+    كيف تتنقل الروح بين <strong>الصورة</strong> و <strong>الظل</strong> عبر دوران <strong>180°</strong>.<br>
+    هذا هو الأساس الرياضي لنظرية <strong>Z(x) = Z + C + A = 1</strong>
+  </div>
+
+  <!-- ===== الرسمة ===== -->
+  <div class="graphic">
+    <svg width="440" height="440" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+      <!-- الدائرة الخارجية -->
+      <circle cx="220" cy="220" r="180" stroke="#D4AF37" stroke-width="2" fill="none" stroke-dasharray="8,8" opacity="0.5"/>
+
+      <!-- ===== المثلث 369 (الخلفية) ===== -->
+      <polygon points="220,70 120,310 320,310" stroke="#D4AF37" stroke-width="2.5" fill="none" opacity="0.35"/>
+      
+      <!-- أرقام المثلث -->
+      <text x="220" y="100" fill="#D4AF37" font-size="28" text-anchor="middle" font-weight="900" opacity="0.8">369</text>
+      <text x="140" y="285" fill="#D4AF37" font-size="28" text-anchor="middle" font-weight="900" opacity="0.7">123</text>
+      <text x="300" y="285" fill="#D4AF37" font-size="28" text-anchor="middle" font-weight="900" opacity="0.7">789</text>
+
+      <!-- ===== خطوط من 369 للمستطيلين ===== -->
+      <line x1="170" y1="200" x2="120" y2="190" stroke="#D4AF37" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,4"/>
+      <line x1="270" y1="200" x2="320" y2="190" stroke="#D4AF37" stroke-width="1.5" opacity="0.3" stroke-dasharray="4,4"/>
+      <text x="220" y="130" fill="#D4AF37" font-size="11" text-anchor="middle" opacity="0.5">المصدر</text>
+
+      <!-- ===== المستطيل 1 = الصورة (أخضر) ===== -->
+      <rect x="90" y="140" width="110" height="150" stroke="#00ff88" stroke-width="3" fill="none" rx="10" opacity="0.9"/>
+      <text x="145" y="220" fill="#00ff88" font-size="26" text-anchor="middle" font-weight="700">124</text>
+      <text x="145" y="255" fill="#00ff88" font-size="13" text-anchor="middle" opacity="0.7">الصورة · C</text>
+
+      <!-- ===== المستطيل 2 = الظل (بنفسجي) ===== -->
+      <rect x="240" y="140" width="110" height="150" stroke="#cc44ff" stroke-width="3" fill="none" rx="10" opacity="0.9"/>
+      <text x="295" y="220" fill="#cc44ff" font-size="26" text-anchor="middle" font-weight="700">578</text>
+      <text x="295" y="255" fill="#cc44ff" font-size="13" text-anchor="middle" opacity="0.7">الظل · A</text>
+
+      <!-- ===== نقطة م = الوعي ===== -->
+      <circle cx="220" cy="220" r="11" fill="#D4AF37"/>
+      <text x="235" y="215" fill="#D4AF37" font-size="20" font-weight="900">م</text>
+      <text x="220" y="280" fill="#D4AF37" font-size="11" text-anchor="middle" opacity="0.6">نقطة الوحدة</text>
+
+      <!-- ===== سهم 180 درجة ===== -->
+      <path d="M 220 40 A 180 180 0 1 1 219 40" stroke="#fff" stroke-width="2" fill="none" stroke-dasharray="6,6" opacity="0.25"/>
+      <text x="220" y="30" fill="#fff" text-anchor="middle" font-size="20" opacity="0.4">180°</text>
+
+      <!-- ===== الترددات ===== -->
+      <text x="70" y="350" fill="#D4AF37" font-size="16" opacity="0.6">174Hz</text>
+      <text x="330" y="350" fill="#D4AF37" font-size="16" opacity="0.6">285Hz</text>
+      <text x="220" y="400" fill="#D4AF37" font-size="16" text-anchor="middle" opacity="0.6">396Hz</text>
+    </svg>
+
+    <div class="relation-text">
+      <span class="z">المثلث 369</span> يولد 
+      <span class="c">المستطيل 124</span> و 
+      <span class="a">المستطيل 578</span>
+      <br>
+      <span style="font-size:0.85em; opacity:0.6;">لا يوجد مستطيلين بدون مثلث — المثلث هو المصدر</span>
+    </div>
+  </div>
+
+  <!-- ===== معادلة أويلر ===== -->
+  <div class="equation">e<sup>iπ</sup> + 1 = 0</div>
+
+  <!-- ===== الخلاصة الرئيسية ===== -->
+  <div class="key-box">
+    <strong>المستطيلان لا يكتملان إلا بالمثلث.</strong><br>
+    <span style="color:#D4AF37;">3-6-9</span> هي البصيرة التي ترى 
+    <span style="color:#00ff88;">الصورة</span> و 
+    <span style="color:#cc44ff;">الظل</span> معاً.<br>
+    و <strong>180 درجة</strong> هي الدوران الذي ينقلك بينهم.
+  </div>
+
+  <!-- ===== القسم الأول ===== -->
+  <div class="section">
+    <h2><span>🔮</span> 1. سلسلة الصورة والظل</h2>
+    <p><strong style="color:#00ff88;">المستطيل 1 = 1248</strong> : الصورة — الحياة الظاهرة — المادة (C)</p>
+    <p><strong style="color:#cc44ff;">المستطيل 2 = 578</strong> : ظل الصورة — الحياة الباطنة — الروح (A)</p>
+    <p>لتنتقل بينهم تحتاج <strong style="color:#D4AF37;">دوران 180 درجة</strong>. موت رمزي وولادة جديدة.</p>
+  </div>
+
+  <!-- ===== القسم الثاني ===== -->
+  <div class="section">
+    <h2><span>🌀</span> 2. مثلث البصيرة 3-6-9</h2>
+    <p>الأرقام التي لا تظهر في الدوامة لأنها تحكمها من الخارج. سر نيكولا تيسلا.</p>
+    <div class="freq">
+      <div><span class="hz">174 Hz</span><br><span class="label">تحرير الخوف</span></div>
+      <div><span class="hz">285 Hz</span><br><span class="label">شفاء الأنسجة</span></div>
+      <div><span class="hz">396 Hz</span><br><span class="label">الاتصال بالكون</span></div>
+    </div>
+  </div>
+
+  <!-- ===== القسم الثالث ===== -->
+  <div class="section">
+    <h2><span>⚖️</span> 3. معادلة الوحدة</h2>
+    <div class="formula-box">
+      Z + C + A = 1
+      <small>Z = 369 (البصيرة) · C = 124 (المادة) · A = 578 (الروح)</small>
+    </div>
+  </div>
+
+  <!-- ===== شهادة قارئ ===== -->
+  <div class="testimonial">
+    <p style="font-style:italic; font-size:1.05em;">
+      “هندسة الأعداد اليمنية: كيف تتنقل الروح بين الصورة والظل عبر دوران 180 درجة.<br>
+      هذا هو الأساس الرياضي لنظرية Z(x).”
+    </p>
+    <div class="from">— قارئ من واحة الجبري</div>
+  </div>
+
+  <footer>
+    ✍ <strong>#عبدالله_الجبري</strong> | صنعاء — اليمن<br>
+    1 نوفمبر 2024م &nbsp;·&nbsp; <a href="https://t.me/Jabri2025" target="_blank">قناة التليجرام</a>
+  </footer>
+
+</div>
+</body>
+</html>
