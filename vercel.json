@@ -1,39 +1,19 @@
 {
-  "version": 2,
-  "name": "waha-al-jabri",
-  "builds": [
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "*.htm", "use": "@vercel/static" },
-    { "src": "Image/**", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/Sindbad-theory", "dest": "/Sindbad-theory.html" },
-    { "src": "/calculator", "dest": "/calculator.html" },
-    { "src": "/journal4", "dest": "/journal4.html" },
-    { "src": "/theory-ar", "dest": "/theory-ar.html" },
-    { "src": "/theory-en", "dest": "/theory-en.htm" },
-    { "src": "/about", "dest": "/about.html" },
-    { "src": "/research", "dest": "/research.html" },
-    { "src": "/citations", "dest": "/citations.html" },
-    { "src": "/Dbase", "dest": "/Dbase.html" },
-    { "src": "/char-balance", "dest": "/char-balance.html" },
-    { "src": "/poster", "dest": "/poster.html" },
-    { "src": "/Image/(.*)", "dest": "/Image/$1" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        }
       ]
-    },
+    }
+  ],
+  "rewrites": [
     {
-      "source": "/Image/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
+      "source": "/en/(.*)",
+      "destination": "/$1"
     }
   ]
 }

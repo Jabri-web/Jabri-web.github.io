@@ -1,322 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <!-- ============================================ -->
-    <!--  👑 الأولوية القصوى – قلب النظرية           -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/Sindbad-theory.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  ⭐ الأولوية العالية – الركائز الأساسية      -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/char-balance.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/calculator.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/journal4.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/theory-ar.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/theory-en.htm</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/poster.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/citations.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Dbase.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/wonder.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/yemen-photo.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/gallery.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  📚 الصفحات الأساسية – الهوية والبحث        -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/about.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/about-en.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/research.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Author-cv.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/who-we.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/project.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/about-waha.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  🇾🇪 المحتوى اليمني – الهوية الوطنية         -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/Sanaa.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Shibam.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Soqatra.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Yemen-library.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Router-all.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  🔧 التقنية والأدوات                        -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/Check.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/microtik-deep.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  📖 سلسلة الصفحات 1-12 (الموسوعة)           -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/Page1.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page2.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page3.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page4.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page5.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page6.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page7.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page8.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page9.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page10.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page11.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/Page12.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  🆘 المساعدة والدعم                         -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/FAQPage.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/contact.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/privacy-policy.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  🛠️ الأدوات الداخلية (أولوية منخفضة)        -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/diagnose.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/yemen-photo-api.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/404.html</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
-
-    <!-- ============================================ -->
-    <!--  📋 الملفات النظامية                        -->
-    <!-- ============================================ -->
-    <url>
-        <loc>https://jabri-com.vercel.app/sitemap.xml</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
-    <url>
-        <loc>https://jabri-com.vercel.app/robots.txt</loc>
-        <lastmod>2026-09-03</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
-
-</urlset>
+{
+"version": 2,
+"name": "waha-al-jabri",
+"builds": [
+{ "src": "*.html", "use": "@vercel/static" },
+{ "src": "*.htm", "use": "@vercel/static" },
+{ "src": "image/**", "use": "@vercel/static" },
+{ "src": "Image/**", "use": "@vercel/static" },
+{ "src": "ar/**", "use": "@vercel/static" },
+{ "src": "en/**", "use": "@vercel/static" }
+],
+"routes": [
+{ "src": "/", "dest": "/index.html" },
+{ "src": "/Sindbad-theory", "dest": "/Sindbad-theory.html" },
+{ "src": "/calculator", "dest": "/calculator.html" },
+{ "src": "/journal4", "dest": "/journal4.html" },
+{ "src": "/theory-ar", "dest": "/theory-ar.html" },
+{ "src": "/theory-en", "dest": "/theory-en.htm" },
+{ "src": "/about", "dest": "/about.html" },
+{ "src": "/research", "dest": "/research.html" },
+{ "src": "/citations", "dest": "/citations.html" },
+{ "src": "/Dbase", "dest": "/Dbase.html" },
+{ "src": "/char-balance", "dest": "/char-balance.html" },
+{ "src": "/poster", "dest": "/poster.html" },
+{ "src": "/image/(.*)", "dest": "/image/$1" },
+{ "src": "/Image/(.*)", "dest": "/Image/$1" },
+{ "src": "/ar/(.*)", "dest": "/ar/$1" },
+{ "src": "/en/(.*)", "dest": "/en/$1" }
+],
+"headers": [
+{
+"source": "/(.*)",
+"headers": [
+{ "key": "X-Content-Type-Options", "value": "nosniff" },
+{ "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+]
+},
+{
+"source": "/(image|Image)/(.*)",
+"headers": [
+{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+]
+}
+]
+}
