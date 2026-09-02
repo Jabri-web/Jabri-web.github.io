@@ -16,7 +16,7 @@
         }
         h1 { color: #e0c097; margin-bottom: 5px; }
         p.subtitle { color: #aaa; margin-bottom: 30px; }
-      .input-container { margin-bottom: 20px; }
+        .input-container { margin-bottom: 20px; }
         input {
             padding: 10px; font-size: 18px; border-radius: 5px;
             border: 1px solid #e0c097; outline: none; width: 150px;
@@ -26,7 +26,7 @@
             padding: 10px 20px; font-size: 18px; border-radius: 5px;
             border: none; background-color: #e0c097; color: #1a1a2e;
             font-weight: bold; cursor: pointer; margin-right: 10px;
-            transition: 0.3s;
+            transition: 0.3s; margin-top: 10px;
         }
         button:hover { background-color: #ffffff; }
 
@@ -54,7 +54,7 @@
         }
         tr:nth-child(even) { background-color: #1a1a2e; }
 
-      .result-box {
+        .result-box {
             background-color: #0f3460;
             padding: 15px;
             border-radius: 8px;
@@ -64,19 +64,23 @@
             font-weight: bold;
             color: #e0c097;
         }
-      .result-note {
-            color:#aaa; font-size:16px; margin-top:10px; margin-bottom:30px; /* كبرته */
+        .result-note {
+            color:#aaa; font-size:16px; margin-top:10px; margin-bottom:30px;
         }
 
-        #graphCanvas {
+        /* تنسيق حاوية الرسم ليتكيف مع الشاشة */
+        .canvas-container {
+            width: 95%;
+            max-width: 900px;
+            margin: 20px auto;
             background-color: #0f3460;
             border-radius: 8px;
-            margin-top: 20px;
+            padding: 10px;
             box-shadow: 0 0 15px rgba(224, 192, 151, 0.2);
         }
 
         /* تنسيق قسم شجرة التوحيد */
-      .unity-tree {
+        .unity-tree {
             margin-top: 50px;
             padding: 30px;
             background: linear-gradient(145deg, #0f3460, #16213e);
@@ -87,7 +91,7 @@
             margin-right: auto;
             box-shadow: 0 0 20px rgba(224, 192, 151, 0.3);
         }
-      .unity-tree h2 {
+        .unity-tree h2 {
             color: #e0c097;
             font-size: 28px;
             margin-bottom: 20px;
@@ -95,24 +99,24 @@
             padding-bottom: 10px;
             display: inline-block;
         }
-      .equation-display {
-            font-size: 48px; /* كبيرة */
+        .equation-display {
+            font-size: 48px;
             font-weight: bold;
-            color: #e0c097; /* ذهبي */
+            color: #e0c097;
             margin: 20px 0;
             text-shadow: 0 0 15px rgba(224, 192, 151, 0.7);
             letter-spacing: 5px;
         }
-      .tree-icon { font-size: 60px; margin-bottom: 10px; } /* ايقونة الشجرة */
-      .quotes {
+        .tree-icon { font-size: 60px; margin-bottom: 10px; }
+        .quotes {
             text-align: right;
             font-size: 18px;
             line-height: 2;
             color: #ddd;
         }
-      .quote-1 { color: #e0c097; font-weight: bold; margin-bottom: 15px; }
-      .quote-2 { margin-bottom: 15px; }
-      .quote-3 { font-style: italic; color: #fff; border-right: 3px solid #e0c097; padding-right: 10px; }
+        .quote-1 { color: #e0c097; font-weight: bold; margin-bottom: 15px; }
+        .quote-2 { margin-bottom: 15px; }
+        .quote-3 { font-style: italic; color: #fff; border-right: 3px solid #e0c097; padding-right: 10px; }
     </style>
 </head>
 <body>
@@ -120,41 +124,41 @@
     <h1>🏛️ واحة الجبري - خوارزمية الواحد</h1>
     <p class="subtitle">(الزوجي = n/2... الفردي = 3n+1) - عودة جميع الأرقام إلى الواحد الأحد</p>
 
+<div style="margin-top: 15px; margin-bottom: 25px;">
+    <a href="calculator.html" style="text-decoration: none; background-color: #0f3460; color: #e0c097; padding: 10px 20px; border-radius: 5px; border: 1px solid #e0c097; font-weight: bold; transition: 0.3s;">🔗 الانتقال إلى حاسبة النظرية الموحدة</a>
+</div>
+
+
     <div class="input-container">
         <input type="number" id="numberInput" placeholder="أدخل الرقم" min="1">
         <button onclick="runAlgorithm()">ابحث</button>
+        <button onclick="downloadGraph()" style="background-color: #444; color: white;">📥 تحميل الرسم</button>
     </div>
 
     <div id="outputArea"></div>
 
-    <canvas id="graphCanvas" width="900" height="400"></canvas>
+    <div class="canvas-container">
+        <canvas id="graphCanvas"></canvas>
+    </div>
 
     <!-- قسم شجرة التوحيد -->
     <div class="unity-tree">
         <h2>🌳 شجرة التوحيد تنتهي بواحد</h2>
-
         <div class="tree-icon">🌳</div>
-
-        <div class="equation-display">
-            Z + C + A = 1
-        </div>
-
+        <div class="equation-display">Z + C + A = 1</div>
         <div class="quotes">
             <div class="quote-1">
                 "كما للشجرة جذر واحد... فللكون رب واحد.<br>
                 Z = الزمان، C = المكان، A = الإنسان.<br>
                 وكل الفروع مهما تشعبت تعود للجذر: 1"
             </div>
-
             <div class="quote-2">
                 "انظر للخوارزمية: آلاف الأرقام تدخل... وكلها تخرج من باب واحد.
                 هذه ليست مصادفة. هذه فطرة."
             </div>
-
             <div class="quote-2">
                 "سمحوا بنشرها لأنها حق. والحق لا يُحجب."
             </div>
-
             <div class="quote-3">
                 "شجرة التوحيد؟ هي التي غرسها الواحد...
                 فسقتها الرياضيات... وأثمرت: 1"
@@ -166,7 +170,15 @@
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
 
+        // دالة لضبط حجم الرسم حسب الشاشة
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth - 20;
+            canvas.height = canvas.width * 0.5; // نسبة الارتفاع للعرض
+        }
+
         function drawGraph(sequence) {
+            resizeCanvas(); // إعادة ضبط الحجم قبل الرسم
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = '#e0c097';
             ctx.fillStyle = '#e0c097';
@@ -192,6 +204,14 @@
                 if (i === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
                 ctx.fillRect(x - 3, y - 3, 6, 6);
+
+                // طباعة الرقم فقط عند القمم العالية لتجنب التزاحم
+                if (i > 0 && i < sequence.length - 1) {
+                    if (sequence[i] > sequence[i-1] && sequence[i] > sequence[i+1]) {
+                        ctx.font = "12px 'Segoe UI'";
+                        ctx.fillText(sequence[i], x - 10, y - 10);
+                    }
+                }
             }
             ctx.stroke();
             ctx.font = "16px 'Segoe UI'";
@@ -217,7 +237,7 @@
             resultHTML += "<tr><th>N</th><th>i</th><th>j</th><th>K(i)</th><th>K(j)</th></tr>";
 
             while (currentN > 1) {
-                let n_before = currentN; // لحفظ الرقم قبل التغيير
+                let n_before = currentN;
                 let k_i = "x";
                 let k_j = "x";
 
@@ -240,6 +260,13 @@
             outputArea.innerHTML = resultHTML;
 
             drawGraph(sequence);
+        }
+
+        function downloadGraph() {
+            const link = document.createElement('a');
+            link.download = 'Jabri_Unity_Tree.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         }
     </script>
 

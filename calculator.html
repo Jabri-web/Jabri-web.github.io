@@ -74,15 +74,21 @@
     <h1>🌌 حاسبة النظرية الموحدة</h1>
     <h3>Zx = Z + C + A = 1</h3>
 
+
+<div style="margin-top: 15px; margin-bottom: 25px;">
+  <a href="journal4.html" style="text-decoration: none; background-color: #0f3460; color: #e0c097; padding: 10px 20px; border-radius: 5px; border: 1px solid #e0c097; font-weight: bold; transition: 0.3s;">🌳 العودة إلى شجرة التوحيد (Journal 4)</a>
+</div>
+
     <div class="input-group">
         <label for="xInput">أدخل أقصى قيمة (x):</label><br>
         <input type="number" id="xInput" value="5" step="0.1" min="0.1">
         <button onclick="runCalculator()">🚀 احسب وارسم</button>
+        <button onclick="downloadImage()" style="background-color: #444; color: white; margin-top: 5px;">📥 تحميل الرسم</button>
     </div>
 
     <div class="canvas-container">
         <h3 style="color:white;">📈 الرسم البياني</h3>
-        <canvas id="myCanvas" width="500" height="350" style="width: 100%; background: #000;"></canvas>
+        <canvas id="myCanvas" style="width: 100%; background: #000;"></canvas>
     </div>
 
     <table>
@@ -155,8 +161,13 @@
         function drawGraph(xLabels, zData, cData, aData, totalData) {
             var canvas = document.getElementById('myCanvas');
             var ctx = canvas.getContext('2d');
-            var W = canvas.width;
-            var H = canvas.height;
+            
+            // جعل الرسم يتكيف مع الشاشة
+            var W = canvas.parentElement.clientWidth - 20;
+            var H = W * 0.6; // نسبة الطول للعرض
+            canvas.width = W;
+            canvas.height = H;
+            
             ctx.clearRect(0, 0, W, H);
 
             // المحاور
@@ -216,7 +227,19 @@
             ctx.fillText('Values', 15, H / 2);
         }
 
-        // (تم حذف window.onload نهائياً) -> يعمل فقط عند الضغط على الزر
+        // زر تحميل الرسم
+        function downloadImage() {
+            var canvas = document.getElementById('myCanvas');
+            var link = document.createElement('a');
+            link.download = 'Jabri_Unified_Theory.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // تشغيل تلقائي عند فتح الصفحة
+        window.onload = function() {
+            runCalculator();
+        };
     </script>
 </body>
 </html>
