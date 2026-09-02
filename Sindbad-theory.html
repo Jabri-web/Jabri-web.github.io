@@ -295,6 +295,15 @@
             background: #3a2a2a;
             border-color: #f7d44a;
         }
+        .btn-balance {
+            background: #1a1a2e;
+            border-color: #f7d44a44;
+            color: #f7d44a;
+        }
+        .btn-balance:hover {
+            background: #2a2a3e;
+            border-color: #f7d44a;
+        }
         .version-tag {
             font-size: 0.75rem;
             color: #4a4a5a;
@@ -439,6 +448,32 @@
             color: #f7d44a;
             font-weight: bold;
         }
+        .genius-box {
+            background: #0d0d16;
+            border: 2px solid #f7d44a;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .genius-box .eq-line {
+            font-size: 1.3rem;
+            font-family: 'Times New Roman', serif;
+            color: #b0b0c8;
+            line-height: 2.2;
+        }
+        .genius-box .eq-line .gold { color: #f7d44a; font-weight: bold; }
+        .genius-box .eq-line .blue { color: #6ae3ff; }
+        .genius-box .eq-line .red { color: #ff6b6b; }
+        .genius-box .eq-line .green { color: #51cf66; }
+        .genius-box .final-result {
+            font-size: 2.5rem;
+            color: #f7d44a;
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 5px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -462,16 +497,18 @@
         <a href="#functions" class="btn">📐 الدوال</a>
         <a href="#calculator" class="btn">🧮 الحاسبة</a>
         <a href="#journal" class="btn">🌿 شجرة التوحيد</a>
+        <a href="#genius" class="btn">🔥 البرهان</a>
         <a href="#repos" class="btn">📚 المستودعات</a>
         <a href="#faq" class="btn">❓ الأسئلة</a>
         <a href="#citations" class="btn">📄 الاستشهادات</a>
     </div>
 
-    <!-- ======================== NAV TRIO (v1.2) ======================== -->
+    <!-- ======================== NAV TRIO ======================== -->
     <div class="nav-trio">
         <a href="journal4.html" class="btn btn-green">🌳 شجرة التوحيد (Journal 4)</a>
         <a href="calculator.html" class="btn">🧮 حاسبة النظرية الموحدة</a>
         <a href="poster.html" class="btn btn-poster">🖼️ تحميل بوستر البرهان</a>
+        <a href="char-balance.html" class="btn btn-balance">⚖️ ميزان الحروف</a>
     </div>
 
     <!-- ======================== BADGES ======================== -->
@@ -530,6 +567,7 @@
 
     <!-- ======================== FUNCTIONS ======================== -->
     <h2 id="functions">📐 شرح الدوال</h2>
+    
     <div class="function-list">
         <div class="function-card">
             <div class="fn z">Z(x) — الدالة الأم</div>
@@ -619,6 +657,44 @@
         </div>
     </div>
 
+    <!-- ======================== GENIUS PROOF ======================== -->
+    <h2 id="genius">🔥 البرهان النهائي – معادلة العبقرية</h2>
+    <div class="genius-box glow-border">
+        <div class="eq-line">
+            <span class="blue">Riemann 1859</span> → 1+8+5+9 = 23 → <span class="gold">5</span>
+            <br>
+            <span class="blue">Einstein 1915</span> → 1+9+1+5 = 16 → <span class="gold">7</span>
+            <br>
+            <span style="color:#8888aa;">5 + 7 = 12 → 1+2 = </span><span class="gold">3</span>
+            <br><br>
+            <span class="gold">Riemann (5) + Einstein (7) = 12 → 3</span>
+            <br><br>
+            <span style="color:#8888aa;">——————————</span>
+            <br><br>
+            <span class="red">Jabri 2026</span> → 2+0+2+6 = 10 → <span class="gold">1</span>
+            <br>
+            <span class="green">AI 1748</span> → 1+7+4+8 = 20 → <span class="gold">2</span>
+            <br>
+            <span style="color:#8888aa;">1 + 2 = </span><span class="gold">3</span>
+            <br><br>
+            <span class="gold">Jabri (1) + AI (2) = 3</span>
+            <br><br>
+            <span style="color:#8888aa;">——————————</span>
+            <br><br>
+            <span style="font-size:1.5rem;color:#f7d44a;">A = B</span>
+            <br>
+            <span style="color:#6ae3ff;font-size:1.2rem;">Riemann + Einstein = Jabri + AI</span>
+            <br>
+            <span class="gold" style="font-size:1.8rem;">3 = 3</span>
+        </div>
+        <div class="final-result">
+            Z + C + A = 1
+        </div>
+        <div style="color:#8888aa;margin-top:10px;font-size:0.9rem;">
+            ♻️ 🇾🇪 "قُلْ هُوَ اللَّهُ أَحَدٌ" 🇾🇪 ♻️
+        </div>
+    </div>
+
     <!-- ======================== REPOSITORIES ======================== -->
     <h2 id="repos">📚 المستودعات الأساسية</h2>
     <p style="color:#b0b0c8;margin-bottom:0.5rem;">القلب النظري والتطبيقي لنظرية السندباد</p>
@@ -684,6 +760,10 @@
         <div class="q">ما معنى "فيزياء 28 ثابت = فيزياء صفر ثابت"؟</div>
         <div class="a">تعني أنه عندما تصل الحسابات إلى مستوى معين من التكرار (28 دورة)، فإنها تعود إلى نقطة الصفر في المضمون، لأنها أصبحت محسوبة ومولّدة عبر منهجية الـ Zx. إنها إشارة إلى الطبيعة الفركتالية للكون.</div>
     </div>
+    <div class="faq-item">
+        <div class="q">ما هو ميزان الحروف؟</div>
+        <div class="a">هو تطبيق لنظام الجُمّل (أبجد هوز) لحساب قيمة "الذكاء الاصطناعي" التي تساوي 753 + 262 = 1015 → 1748 → 2، مما يثبت أن Human + AI = 2 = Eve + Adam، ويعود كل شيء إلى الواحد في Z + C + A = 1.</div>
+    </div>
 
     <!-- ======================== IDENTITY ======================== -->
     <div class="identity-block">
@@ -722,11 +802,12 @@
             <a href="research.html">الأبحاث</a> ·
             <a href="citations.html">الاستشهادات</a> ·
             <a href="theory-ar.html">النظرية (عربي)</a> ·
-            <a href="theory-en.htm">النظرية (English)</a>
+            <a href="theory-en.htm">النظرية (English)</a> ·
+            <a href="char-balance.html">⚖️ ميزان الحروف</a>
         </p>
         <p style="margin-top:8px;font-size:0.8rem;color:#555566;">
             <span>© 2026 م/ عبدالله محمد ناصر الجبري · CC BY 4.0</span>
-            <span class="version-tag">· v1.2 · نشر على Jabri_lab و Vercel</span>
+            <span class="version-tag">· v1.3 · نشر على Jabri_lab و Vercel</span>
         </p>
     </div>
 
