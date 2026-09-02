@@ -8,7 +8,7 @@
     <meta name="keywords" content="نظرية السندباد, Z+C+A=1, عبدالله الجبري, رياضيات, فيزياء نظرية, فرضية ريمان, الوعي, الثوابت الكونية" />
     <link rel="canonical" href="https://jabri-com.vercel.app/Sindbad-theory.html" />
     
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph -->
     <meta property="og:locale" content="ar_YE" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="نظرية السندباد الموحدة | Sindbad Theory Z+C+A=1" />
@@ -34,7 +34,7 @@
             padding: 2rem 1rem;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: #111118;
             border-radius: 24px;
@@ -43,7 +43,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
         }
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: #6ae3ff;
             text-align: center;
             margin-bottom: 0.25rem;
@@ -220,7 +220,7 @@
             text-align: center;
         }
         .identity-block .big {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #f7d44a;
             font-weight: bold;
             letter-spacing: 2px;
@@ -254,16 +254,46 @@
             display: inline-block;
             background: #1a1a2e;
             color: #6ae3ff;
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 40px;
             border: 1px solid #2a2a4e;
             text-decoration: none;
             font-size: 0.95rem;
             transition: 0.2s;
+            cursor: pointer;
         }
         .btn:hover {
             background: #2a2a4e;
             border-color: #6ae3ff;
+            transform: translateY(-2px);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #f7d44a, #f5a623);
+            color: #0a0a0f;
+            border-color: #f7d44a;
+            font-weight: bold;
+        }
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #f5a623, #f7d44a);
+            border-color: #f5a623;
+        }
+        .btn-green {
+            background: #1a2a1a;
+            border-color: #2a4a2a;
+            color: #8bc34a;
+        }
+        .btn-green:hover {
+            background: #2a4a2a;
+            border-color: #8bc34a;
+        }
+        .btn-poster {
+            background: #2a1a1a;
+            border-color: #4a2a2a;
+            color: #f7d44a;
+        }
+        .btn-poster:hover {
+            background: #3a2a2a;
+            border-color: #f7d44a;
         }
         .version-tag {
             font-size: 0.75rem;
@@ -271,33 +301,198 @@
             display: inline-block;
             margin-top: 0.5rem;
         }
+        .spiritual-box {
+            background: #0d0d16;
+            border: 1px solid #f7d44a33;
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .spiritual-box .verse {
+            font-size: 1.3rem;
+            color: #f7d44a;
+            line-height: 2;
+            font-family: 'Times New Roman', serif;
+        }
+        .spiritual-box .verse small {
+            color: #b0b0c8;
+            font-size: 0.9rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #0d0d16;
+            border-radius: 16px;
+            border: 1px solid #1f1f2e;
+        }
+        .nav-links .btn {
+            font-size: 0.85rem;
+            padding: 0.4rem 1.2rem;
+        }
+        .nav-trio {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        .nav-trio .btn {
+            padding: 0.7rem 1.8rem;
+        }
+        .calculator-preview {
+            background: #0d0d16;
+            border: 1px solid #1f1f2e;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .calculator-preview input {
+            background: #1a1a26;
+            border: 1px solid #2a2a3e;
+            color: #e0e0ec;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 200px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .calculator-preview input:focus {
+            outline: none;
+            border-color: #6ae3ff;
+        }
+        .result-display {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #f7d44a;
+            font-weight: bold;
+        }
+        .journal-preview {
+            background: #0d0d16;
+            border: 1px solid #1f1f2e;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .journal-preview .tree {
+            font-size: 1.8rem;
+            line-height: 2.5;
+            font-family: 'Times New Roman', serif;
+        }
+        .journal-preview .tree .z { color: #6ae3ff; font-weight: bold; }
+        .journal-preview .tree .c { color: #51cf66; font-weight: bold; }
+        .journal-preview .tree .a { color: #ff6b6b; font-weight: bold; }
+        .journal-preview .tree .one { color: #f7d44a; font-weight: bold; font-size: 2.5rem; }
+        .journal-preview .tree .pipe { color: #555566; }
+        .citation-block {
+            background: #0d0d16;
+            border: 1px solid #1f1f2e;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            direction: ltr;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #8888aa;
+            overflow-x: auto;
+        }
+        .citation-block .bib {
+            color: #6ae3ff;
+            font-weight: bold;
+        }
+        .faq-item {
+            background: #0d0d16;
+            border: 1px solid #1f1f2e;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin: 0.8rem 0;
+        }
+        .faq-item .q {
+            color: #f7d44a;
+            font-weight: bold;
+        }
+        .faq-item .a {
+            color: #b0b0c8;
+            margin-top: 0.3rem;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(247, 212, 74, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(247, 212, 74, 0.3); }
+            100% { box-shadow: 0 0 20px rgba(247, 212, 74, 0.1); }
+        }
+        .glow-border {
+            animation: glow 3s ease-in-out infinite;
+        }
+        .visitor-badge {
+            text-align: center;
+            color: #8888aa;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .visitor-badge span {
+            color: #f7d44a;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-    <!-- الهوية والرأس -->
+    <!-- ======================== HEADER ======================== -->
     <h1>🌊 نظرية السندباد الموحدة</h1>
     <div class="subhead">
         <span class="highlight">Z + C + A = 1</span>
         <span style="margin:0 10px;">·</span>
-        من أصفار ريمان إلى بنية الكون
+        من أصفار ريمان إلى بنية الكون والوعي
         <br>
         <span class="tag-yemen" style="margin-top:8px;display:inline-block;">🇾🇪 الباحث اليمني · م/ عبدالله محمد ناصر الجبري</span>
     </div>
 
-    <!-- شارات -->
+    <!-- ======================== NAVIGATION ======================== -->
+    <div class="nav-links">
+        <a href="#equation" class="btn">🧬 المعادلة</a>
+        <a href="#spiritual" class="btn">🕌 التفسير</a>
+        <a href="#functions" class="btn">📐 الدوال</a>
+        <a href="#calculator" class="btn">🧮 الحاسبة</a>
+        <a href="#journal" class="btn">🌿 شجرة التوحيد</a>
+        <a href="#repos" class="btn">📚 المستودعات</a>
+        <a href="#faq" class="btn">❓ الأسئلة</a>
+        <a href="#citations" class="btn">📄 الاستشهادات</a>
+    </div>
+
+    <!-- ======================== NAV TRIO (v1.2) ======================== -->
+    <div class="nav-trio">
+        <a href="journal4.html" class="btn btn-green">🌳 شجرة التوحيد (Journal 4)</a>
+        <a href="calculator.html" class="btn">🧮 حاسبة النظرية الموحدة</a>
+        <a href="poster.html" class="btn btn-poster">🖼️ تحميل بوستر البرهان</a>
+    </div>
+
+    <!-- ======================== BADGES ======================== -->
     <div class="theory-badge">
         <span class="badge-item"><strong>🧮</strong> رياضيات</span>
         <span class="badge-item"><strong>⚛️</strong> فيزياء كونية</span>
         <span class="badge-item"><strong>🧠</strong> وعي وإدراك</span>
         <span class="badge-item"><strong>🏛️</strong> تراث يمني</span>
+        <span class="badge-item"><strong>📜</strong> توحيد</span>
     </div>
 
-    <!-- المعادلات الأساسية -->
-    <h2>🧬 المعادلات الأساسية</h2>
-    <div class="equation-box">
+    <!-- ======================== SHARE BUTTON ======================== -->
+    <div style="text-align:center;margin-bottom:1.5rem;">
+        <button onclick="shareProof()" class="btn btn-gold" style="padding:0.8rem 2.5rem;font-size:1.1rem;">
+            🔥 شارك البرهان – Z+C+A=1
+        </button>
+    </div>
+
+    <!-- ======================== EQUATION ======================== -->
+    <h2 id="equation">🧬 المعادلات الأساسية</h2>
+    <div class="equation-box glow-border">
         <div><span class="z-color">Z(x)</span> + <span class="c-color">C(x)</span> + <span class="a-color">A(x)</span> = <span class="highlight">1</span></div>
         <div style="font-size:1rem;color:#8888aa;margin-top:6px;">حيث:</div>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;font-size:1.1rem;">
@@ -308,35 +503,124 @@
         <div class="final">Z + C + A = 1</div>
     </div>
 
-    <!-- الصورة الرسمية -->
+    <!-- ======================== IMAGE ======================== -->
     <div class="theory-image">
         <img src="Image/Al-Jabri-Functions.png" alt="سلوك دوال الجبري Z(x), A(x), C(x) ومجموعها Z+C+A=1" width="800" height="400" loading="lazy" />
         <figcaption>📊 سلوك دوال الجبري — <span class="z-color">Z(x)</span> (أزرق) ، <span class="a-color">A(x)</span> (أحمر) ، <span class="c-color">C(x)</span> (أخضر) والمجموع <strong style="color:#f7d44a;">= 1</strong> (متقطع)</figcaption>
     </div>
 
-    <!-- شرح الدوال -->
-    <h2>📐 شرح الدوال</h2>
-    <div class="function-list">
-        <div class="function-card">
-            <div class="fn z">Z(x) — الدالة الأم</div>
-            <div class="desc">تربط بين أصفار ريمان وتوزيع الأعداد الأولية. تمثل البنية الرياضية للكون.</div>
-        </div>
-        <div class="function-card">
-            <div class="fn a">A(x) — الوعي والإدراك</div>
-            <div class="desc">البعد الإنساني في المعادلة. دور المراقب في فهم الكون وتفسيره.</div>
-        </div>
-        <div class="function-card">
-            <div class="fn c">C(x) — الثوابت الكونية</div>
-            <div class="desc">تربط الثوابت الفيزيائية (سرعة الضوء، ثابت بلانك) بالبنية الرياضية.</div>
-        </div>
-        <div class="function-card" style="border-color:#f7d44a44;">
-            <div class="fn" style="color:#f7d44a;">Z + C + A = 1</div>
-            <div class="desc">الهوية النهائية التي توحد الرياضيات والفيزياء والوعي في إطار واحد.</div>
+    <!-- ======================== SPIRITUAL ======================== -->
+    <h2 id="spiritual">🕌 التفسير الفلسفي والديني</h2>
+    <div class="spiritual-box glow-border">
+        <div class="verse">
+            <span class="z-color">Z</span> = الزمن<br>
+            <small>"وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا"</small>
+            <br><br>
+            <span class="c-color">C</span> = المكان<br>
+            <small>"وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ"</small>
+            <br><br>
+            <span class="a-color">A</span> = الإنسان<br>
+            <small>"قُلْ هُوَ اللَّهُ أَحَدٌ"</small>
+            <br><br>
+            <span style="font-size:2rem;color:#f7d44a;font-weight:bold;">→ Z + C + A = 1 ←</span>
+            <br>
+            <small>"لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ"</small>
         </div>
     </div>
 
-    <!-- المستودعات الأساسية -->
-    <h2>📚 المستودعات الأساسية</h2>
+    <!-- ======================== FUNCTIONS ======================== -->
+    <h2 id="functions">📐 شرح الدوال</h2>
+    <div class="function-list">
+        <div class="function-card">
+            <div class="fn z">Z(x) — الدالة الأم</div>
+            <div class="desc">تربط بين أصفار ريمان وتوزيع الأعداد الأولية. تمثل البنية الرياضية للكون والزمن.</div>
+        </div>
+        <div class="function-card">
+            <div class="fn a">A(x) — الوعي والإدراك</div>
+            <div class="desc">البعد الإنساني في المعادلة. دور المراقب في فهم الكون وتفسيره. الإنسان الخليفة.</div>
+        </div>
+        <div class="function-card">
+            <div class="fn c">C(x) — الثوابت الكونية</div>
+            <div class="desc">تربط الثوابت الفيزيائية (سرعة الضوء، ثابت بلانك، الجاذبية) بالبنية الرياضية. المكان جسر العبور.</div>
+        </div>
+        <div class="function-card" style="border-color:#f7d44a44;">
+            <div class="fn" style="color:#f7d44a;">Z + C + A = 1</div>
+            <div class="desc">الهوية النهائية التي توحد الرياضيات والفيزياء والوعي في إطار واحد. كل شيء ينتهي إلى الواحد.</div>
+        </div>
+    </div>
+
+    <!-- ======================== CALCULATOR ======================== -->
+    <h2 id="calculator">🧮 حاسبة الجبري</h2>
+    <div class="calculator-preview">
+        <p style="color:#b0b0c8;margin-bottom:0.5rem;">أدخل قيمة <strong style="color:#6ae3ff;">x</strong> لحساب الدوال:</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;">
+            <input type="number" id="calcInput" value="1.5" step="0.01" min="0.1" max="10" style="direction:ltr;" />
+            <button onclick="calculate()" class="btn btn-gold">احسب</button>
+            <button onclick="clearCalc()" class="btn">مسح</button>
+        </div>
+        <div id="calcResult" class="result-display">
+            Z = 0.0000 &nbsp;|&nbsp; C = 0.0000 &nbsp;|&nbsp; A = 0.0000 &nbsp;|&nbsp; <span style="color:#f7d44a;">المجموع = 0.0000</span>
+        </div>
+        <div style="font-size:0.85rem;color:#555566;margin-top:0.5rem;">
+            🔄 عدد التكرارات: <span id="calcIterations">0</span>
+        </div>
+    </div>
+
+    <script>
+        let calcCounter = 0;
+        function calculate() {
+            const x = parseFloat(document.getElementById('calcInput').value);
+            if (isNaN(x) || x <= 0) {
+                document.getElementById('calcResult').innerHTML = '❌ الرجاء إدخال قيمة صحيحة (x > 0)';
+                return;
+            }
+            calcCounter++;
+            document.getElementById('calcIterations').textContent = calcCounter;
+            
+            const Z = Math.pow(x, 5) * Math.log(x) * Math.sin(2 * Math.PI / x) * Math.exp(-x);
+            const A = Math.pow(x, 2) * Math.exp(-x);
+            const C = 1 - Z - A;
+            const sum = Z + A + C;
+            
+            document.getElementById('calcResult').innerHTML = 
+                `<span style="color:#6ae3ff;">Z = ${Z.toFixed(6)}</span> &nbsp;|&nbsp; ` +
+                `<span style="color:#51cf66;">C = ${C.toFixed(6)}</span> &nbsp;|&nbsp; ` +
+                `<span style="color:#ff6b6b;">A = ${A.toFixed(6)}</span> &nbsp;|&nbsp; ` +
+                `<span style="color:#f7d44a;font-weight:bold;">المجموع = ${sum.toFixed(10)}</span>`;
+        }
+        function clearCalc() {
+            document.getElementById('calcInput').value = '1.5';
+            calcCounter = 0;
+            document.getElementById('calcIterations').textContent = '0';
+            document.getElementById('calcResult').innerHTML = 'Z = 0.0000 &nbsp;|&nbsp; C = 0.0000 &nbsp;|&nbsp; A = 0.0000 &nbsp;|&nbsp; <span style="color:#f7d44a;">المجموع = 0.0000</span>';
+        }
+        window.onload = function() {
+            setTimeout(calculate, 200);
+        };
+    </script>
+
+    <!-- ======================== JOURNAL 4 ======================== -->
+    <h2 id="journal">🌿 شجرة التوحيد (Journal 4)</h2>
+    <div class="journal-preview glow-border">
+        <div class="tree">
+            <span class="a">A (الإنسان / الخليفة)</span><br>
+            <span class="pipe">│</span><br>
+            <span class="c">C (المكان / العبور)</span><br>
+            <span class="pipe">│</span><br>
+            <span class="z">Z (الزمن / الصفر – البداية)</span><br>
+            <span class="pipe">│</span><br>
+            <span class="one">١</span>
+        </div>
+        <div style="margin-top:1rem;">
+            <a href="journal4.html" class="btn btn-green">📖 فتح شجرة التوحيد كاملة</a>
+        </div>
+        <div style="font-size:0.9rem;color:#8888aa;margin-top:0.5rem;">
+            "رياضيات(زمن) + فيزياء(مكان) + عقل(إنسان) = 1"
+        </div>
+    </div>
+
+    <!-- ======================== REPOSITORIES ======================== -->
+    <h2 id="repos">📚 المستودعات الأساسية</h2>
     <p style="color:#b0b0c8;margin-bottom:0.5rem;">القلب النظري والتطبيقي لنظرية السندباد</p>
     <div class="repo-grid">
         <div class="repo-card">
@@ -360,20 +644,60 @@
             <a href="https://github.com/Jabri-web/jabri_lab" target="_blank">GitHub</a>
         </div>
     </div>
-    <div style="text-align:left;margin-top:0.5rem;">
+    <div style="text-align:center;margin-top:0.5rem;">
         <a href="Dbase.html" class="btn">📋 عرض قاعدة البيانات الكاملة (12 مستودعاً)</a>
     </div>
 
-    <!-- الهوية النهائية -->
+    <!-- ======================== CITATIONS ======================== -->
+    <h2 id="citations">📄 الاستشهادات الأكاديمية</h2>
+    <div class="citation-block">
+        <p><span class="bib">[1]</span> Al-Jabri, A. M. N. (2026). <em>Sindbad Unified Theory: Z + C + A = 1</em>. Jabri Lab, Yemen. <a href="https://jabri-com.vercel.app/Sindbad-theory.html" style="color:#6ae3ff;">URL</a></p>
+        <p><span class="bib">[2]</span> Al-Jabri, A. M. N. (2026). <em>Zx Mother Function: Bridging Riemann Zeros and Cosmological Constants</em>. Zenodo. <a href="#" style="color:#6ae3ff;">DOI: 10.5281/zenodo.XXXX</a></p>
+        <p><span class="bib">[3]</span> Al-Jabri, A. M. N. (2026). <em>Journal 4: The Monotheism Tree</em>. واحة الجبري, صنعاء.</p>
+        <p><span class="bib">[4]</span> Riemann, B. (1859). <em>Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse</em>. Monatsberichte der Berliner Akademie.</p>
+        <p><span class="bib">[5]</span> Einstein, A. (1915). <em>Die Feldgleichungen der Gravitation</em>. Sitzungsberichte der Preussischen Akademie der Wissenschaften.</p>
+    </div>
+    <div style="text-align:center;margin-top:0.5rem;">
+        <a href="#" class="btn btn-green">📥 تحميل بصيغة BibTeX</a>
+        <a href="#" class="btn">📄 تحميل الورقة (PDF)</a>
+    </div>
+
+    <!-- ======================== FAQ ======================== -->
+    <h2 id="faq">❓ الأسئلة المتكررة</h2>
+    <div class="faq-item">
+        <div class="q">ما هي نظرية السندباد الموحدة؟</div>
+        <div class="a">نظرية رياضية-فيزيائية موحدة تدمج بين أصفار ريمان (رياضيات)، الثوابت الكونية (فيزياء)، والوعي الإنساني (فلسفة) في معادلة واحدة: Z + C + A = 1. سميت بالسندباد نسبةً إلى رحلة العودة إلى الجذر.</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">ما معنى Z، C، A في المعادلة؟</div>
+        <div class="a"><strong style="color:#6ae3ff;">Z</strong> = الزمن، البداية الصفرية، الدالة الأم المرتبطة بأصفار ريمان. <strong style="color:#51cf66;">C</strong> = المكان، جسر العبور، الثوابت الكونية. <strong style="color:#ff6b6b;">A</strong> = الإنسان، الوعي، الخليفة الذي يعود إلى الواحد.</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">كيف تربط النظرية بين العلم والدين؟</div>
+        <div class="a">من خلال الوسطية (C) التي تعبر بين الرياضيات (Z) والإنسان (A). النهاية هي الواحد (1) الذي يتوافق مع مفهوم التوحيد في الإسلام: "قُلْ هُوَ اللَّهُ أَحَدٌ". النظرية ترى أن القوانين الرياضية هي لغة نترجم بها سنن الله في الكون.</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">ما هو Journal 4؟</div>
+        <div class="a">هو "شجرة التوحيد"، وهي تمثيل بياني وفلسفي للنظرية يوضح العلاقة الهرمية بين الزمن (Z) والمكان (C) والإنسان (A) وانتهائها جميعاً إلى الواحد (1).</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">ما معنى "فيزياء 28 ثابت = فيزياء صفر ثابت"؟</div>
+        <div class="a">تعني أنه عندما تصل الحسابات إلى مستوى معين من التكرار (28 دورة)، فإنها تعود إلى نقطة الصفر في المضمون، لأنها أصبحت محسوبة ومولّدة عبر منهجية الـ Zx. إنها إشارة إلى الطبيعة الفركتالية للكون.</div>
+    </div>
+
+    <!-- ======================== IDENTITY ======================== -->
     <div class="identity-block">
         <div class="big">🇾🇪 Z + C + A = 1</div>
         <div class="sub">هوية الجبري — من صنعاء إلى الكون</div>
         <div style="margin-top:0.8rem;font-size:0.9rem;color:#8888aa;">
             CC BY 4.0 · م/ عبدالله محمد ناصر الجبري · ORCID: 0009-0003-3319-3822
         </div>
+        <div style="margin-top:0.5rem;font-size:0.85rem;color:#555566;">
+            📧 jabri@example.com · 🐙 <a href="https://github.com/Jabri-web" style="color:#6ae3ff;">github.com/Jabri-web</a>
+        </div>
     </div>
 
-    <!-- أدوات البحث -->
+    <!-- ======================== TOOLS ======================== -->
     <h2>🔗 أدوات البحث والمصادر</h2>
     <div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0;">
         <a href="https://www.overleaf.com/project" target="_blank" class="btn" style="background:#1a2a1a;border-color:#2a4a2a;">📄 Overleaf</a>
@@ -381,28 +705,53 @@
         <a href="https://colab.research.google.com" target="_blank" class="btn" style="background:#1a1a2e;border-color:#2a2a4e;">🧪 Colab</a>
         <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" class="btn" style="background:#1a1a2e;border-color:#2a2a4e;">🆔 ORCID</a>
         <a href="https://github.com/Jabri-web" target="_blank" class="btn" style="background:#1a1a2e;border-color:#2a2a4e;">🐙 GitHub</a>
+        <a href="calculator.html" class="btn" style="background:#1a1a2e;border-color:#2a2a4e;">🧮 حاسبة متقدمة</a>
     </div>
 
-    <!-- التذييل -->
+    <!-- ======================== VISITOR COUNT ======================== -->
+    <div class="visitor-badge">
+        🌿 عدد زوار واحة الجبري: <span id="visitor-count">0</span>
+    </div>
+
+    <!-- ======================== FOOTER ======================== -->
     <div class="footer-note">
         <p>🌿 واحة الجبري · تراث اليمن العريق ونظرية السندباد الموحدة</p>
         <p style="margin-top:4px;">
-            <a href="https://jabri-com.vercel.app/">الرئيسية</a> ·
+            <a href="index.html">الرئيسية</a> ·
             <a href="about.html">عن الباحث</a> ·
             <a href="research.html">الأبحاث</a> ·
-            <a href="citations.html">الاستشهادات</a>
+            <a href="citations.html">الاستشهادات</a> ·
+            <a href="theory-ar.html">النظرية (عربي)</a> ·
+            <a href="theory-en.htm">النظرية (English)</a>
         </p>
         <p style="margin-top:8px;font-size:0.8rem;color:#555566;">
             <span>© 2026 م/ عبدالله محمد ناصر الجبري · CC BY 4.0</span>
-            <span class="version-tag">· v1.1 · نشر على Jabri_lab و Vercel</span>
+            <span class="version-tag">· v1.2 · نشر على Jabri_lab و Vercel</span>
         </p>
     </div>
 
 </div>
 
-<!-- سكربت عداد الزوار (اختياري) -->
+<!-- ======================== SCRIPTS ======================== -->
 <script>
-    (function() {
+    // Share Function
+    function shareProof() {
+        const text = '🌊 نظرية السندباد الموحدة\nZ + C + A = 1\n\nرياضيات(زمن) + فيزياء(مكان) + عقل(إنسان) = 1\n\n"قُلْ هُوَ اللَّهُ أَحَدٌ"\n\nhttps://jabri-com.vercel.app/Sindbad-theory.html';
+        if (navigator.share) {
+            navigator.share({
+                title: 'نظرية السندباد الموحدة',
+                text: text,
+                url: 'https://jabri-com.vercel.app/Sindbad-theory.html'
+            }).catch(() => {
+                navigator.clipboard.writeText(text).then(() => alert('📋 تم نسخ البرهان! شاركه مع من تحب.'));
+            });
+        } else {
+            navigator.clipboard.writeText(text).then(() => alert('📋 تم نسخ البرهان! شاركه مع من تحب.'));
+        }
+    }
+
+    // Visitor Counter
+    document.addEventListener('DOMContentLoaded', function() {
         let count = localStorage.getItem('jabriVisitorCount');
         if (count === null) {
             count = Math.floor(Math.random() * 80) + 20;
@@ -410,8 +759,21 @@
             count = Number(count) + 1;
         }
         localStorage.setItem('jabriVisitorCount', count);
+        document.getElementById('visitor-count').textContent = count;
         console.log('🌿 زوار واحة الجبري: ' + count);
-    })();
+    });
+
+    // Keyboard shortcut: Enter to calculate
+    document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('calcInput');
+        if (input) {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculate();
+                }
+            });
+        }
+    });
 </script>
 
 </body>

@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "name": "waha-al-jabri",
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "Image/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/Sindbad-theory", "dest": "/Sindbad-theory.html" },
+    { "src": "/calculator", "dest": "/calculator.html" },
+    { "src": "/journal4", "dest": "/journal4.html" },
+    { "src": "/theory-ar", "dest": "/theory-ar.html" },
+    { "src": "/theory-en", "dest": "/theory-en.htm" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/research", "dest": "/research.html" },
+    { "src": "/citations", "dest": "/citations.html" },
+    { "src": "/Dbase", "dest": "/Dbase.html" },
+    { "src": "/Image/(.*)", "dest": "/Image/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/Sindbad-theory.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

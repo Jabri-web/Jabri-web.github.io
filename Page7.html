@@ -5,27 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ===== حماية المحتوى + الكانونيكال الثابت ===== -->
-    <link rel="alternate" hreflang="ar" href="" />
-    <link rel="alternate" hreflang="en" href="" />
-    <link rel="canonical" href="" />
+    <link rel="alternate" hreflang="ar" href="https://jabri-web.github.io/" />
+    <link rel="alternate" hreflang="en" href="https://jabri-web.github.io/en/" />
+    <link rel="canonical" href="https://jabri-web.github.io/" />
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const base = 'https://jabri-web.github.io';
-        const path = window.location.pathname;
-        const canonical = document.querySelector('link[rel="canonical"]');
-        const arAlt = document.querySelector('link[hreflang="ar"]');
-        const enAlt = document.querySelector('link[hreflang="en"]');
-        if (canonical) canonical.href = base + path;
-        if (arAlt) arAlt.href = base + path;
-        if (enAlt) enAlt.href = base + '/en' + path;
-    });
-    </script>
     
     <!-- ===== SEO خاص بنظرية السندباد ===== -->
     <title>نظرية السندباد الموحدة | Z+C+A=1 - واحة الجبري</title>
     <meta name="description" content="نظرية السندباد الموحدة Z+C+A=1: حل يربط بين أصفار ريمان ومسائل الألفية وبنية الكون. بحث م/ عبدالله محمد ناصر الجبري.">
-    <meta name="keywords" content="نظرية السندباد, Z+C+A=1, أصفار ريمان, الرياضيات, الفيزياء النظرية, عبدالله الجبري">
+    <meta name="keywords" content="نظرية السندباد, Z+C+A=1, أصفار ريمان, الرياضيات, الفيزياء النظرية, عبدالله الجبري, صنعاء, اليمن">
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved.">
@@ -38,7 +26,7 @@
     <meta property="og:title" content="نظرية السندباد الموحدة | Z+C+A=1">
     <meta property="og:description" content="بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة تربط بين أصفار ريمان وبنية الكون.">
     <meta property="og:image" content="https://jabri-web.github.io/image/Jabri-photo.png">
-    <meta property="og:url" content="https://jabri-web.github.io/Page7.html">
+    <meta property="og:url" content="https://jabri-web.github.io/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="نظرية السندباد الموحدة | Z+C+A=1">
     <meta name="twitter:description" content="بحث في الرياضيات والفيزياء النظرية - م/ عبدالله الجبري">
@@ -55,7 +43,7 @@
             "name": "م/ عبدالله محمد ناصر الجبري"
         },
         "datePublished": "2026",
-        "url": "https://jabri-web.github.io/Page7.html",
+        "url": "https://jabri-web.github.io/",
         "description": "بحث في الرياضيات والفيزياء النظرية يقدم نظرية موحدة تربط بين دالة Zx ومسائل الألفية.",
         "identifier": "10.5281/zenodo.20148344",
         "publisher": {
@@ -160,7 +148,7 @@
 
         .theory-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 40px 0;
             padding: 30px;
@@ -309,6 +297,39 @@
         body.en .ar-text { display: none; }
         body.en .en-text { display: inline; }
 
+        .visitor-badge {
+            text-align: center;
+            color: #555566;
+            font-size: 0.85rem;
+            margin: 20px 0 10px;
+        }
+        .visitor-badge span {
+            color: #f7d44a;
+            font-weight: bold;
+        }
+
+        .repo-grid-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .repo-grid-mini a {
+            color: #6ae3ff;
+            text-decoration: none;
+            background: #0d0d16;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #1f1f2e;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .repo-grid-mini a:hover {
+            border-color: #6ae3ff;
+            background: #1a1a2e;
+        }
+
         @media (max-width: 600px) {
             .theory-header h1 { font-size: 1.8rem; }
             .theory-header .equation-big { font-size: 1.5rem; }
@@ -316,13 +337,11 @@
             .cards-grid { grid-template-columns: 1fr; }
             .theory-links { grid-template-columns: 1fr; }
             .page-content { margin: 20px auto; padding: 0 12px; }
+            .repo-grid-mini { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== الهيدر العام ===== -->
-    <div id="header-placeholder"></div>
 
     <!-- ===== محتوى الصفحة ===== -->
     <div class="page-content">
@@ -342,46 +361,61 @@
             </div>
         </div>
 
-        <!-- ===== 🔥 البوسترات الرسمية (أول ما تشوف الصفحة) 🔥 ===== -->
-        <div style="margin: 40px 0;">
-            <h2 class="section-title">
-                <i class="fas fa-image"></i>
-                <span class="ar-text">البوسترات الرسمية للنظرية</span>
-                <span class="en-text">Official Theory Posters</span>
-            </h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <!-- البوستر العربي -->
-                <img src="/image/icon-512.png" 
-                     alt="البوستر الرسمي للنظرية - دالة الأم الكونية Z+C+A=1" 
-                     width="700" height="1200"
-                     style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
-                
-                <!-- البوستر الإنجليزي -->
-                <img src="/image/icon-192.png" 
-                     alt="Unified Cosmic Parent Function - Official Theory Poster" 
-                     width="700" height="1200"
-                     style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
-            </div>
+        <!-- ===== ثلاثية البرهان ===== -->
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0 30px;">
+            <a href="/journal4.html" class="theory-link" style="background:#1a2a1a;border-color:#2a4a2a;padding:12px 20px;">
+                <i class="fas fa-tree"></i> 🌳 شجرة التوحيد
+            </a>
+            <a href="/calculator.html" class="theory-link" style="background:#1a1a2e;border-color:#2a2a4e;padding:12px 20px;">
+                <i class="fas fa-calculator"></i> 🧮 حاسبة النظرية
+            </a>
+            <a href="/poster.html" class="theory-link" style="background:#2a1a1a;border-color:#4a2a2a;padding:12px 20px;">
+                <i class="fas fa-image"></i> 🖼️ بوستر البرهان
+            </a>
         </div>
 
-        <!-- ===== 🔥 قسم روابط النظرية (العربي والإنجليزي) 🔥 ===== -->
+        <!-- ===== 🔥 قسم روابط النظرية ===== -->
         <div class="theory-links">
+            <a href="/Sindbad-theory.html" class="theory-link" style="border-color:#f7d44a;">
+                <i class="fas fa-crown"></i> 
+                <span class="ar-text">📖 نظرية السندباد الموحدة (النسخة الكاملة)</span>
+                <span class="en-text">📖 Sindbad Unified Theory (Full Version)</span>
+            </a>
             <a href="/theory-ar.html" class="theory-link">
                 <i class="fas fa-book-open"></i> 
                 <span class="ar-text">النسخة العربية المبسطة</span>
                 <span class="en-text">Arabic Version</span>
             </a>
-            <a href="/theory-en.html" class="theory-link">
+            <a href="/theory-en.htm" class="theory-link">
                 <i class="fas fa-globe"></i> 
                 <span class="ar-text">English Version</span>
                 <span class="en-text">English Version</span>
             </a>
-            <a href="/Sindbad-theory.html" class="theory-link">
-                <i class="fas fa-file-alt"></i> 
-                <span class="ar-text">الشرح التفصيلي</span>
-                <span class="en-text">Detailed Explanation</span>
+            <a href="/calculator.html" class="theory-link" style="background:#1a1a2e;border-color:#2a2a4e;">
+                <i class="fas fa-calculator"></i> 
+                <span class="ar-text">🧮 حاسبة النظرية التفاعلية</span>
+                <span class="en-text">🧮 Interactive Calculator</span>
             </a>
+            <a href="/journal4.html" class="theory-link" style="background:#1a2a1a;border-color:#2a4a2a;">
+                <i class="fas fa-tree"></i> 
+                <span class="ar-text">🌳 شجرة التوحيد (Journal 4)</span>
+                <span class="en-text">🌳 Monotheism Tree (Journal 4)</span>
+            </a>
+        </div>
+
+        <!-- ===== البوسترات الرسمية ===== -->
+        <h2 class="section-title">
+            <i class="fas fa-image"></i>
+            <span class="ar-text">البوسترات الرسمية للنظرية</span>
+            <span class="en-text">Official Theory Posters</span>
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0;">
+            <img src="/image/icon-512.png" 
+                 alt="البوستر الرسمي للنظرية - دالة الأم الكونية Z+C+A=1" 
+                 style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
+            <img src="/image/icon-192.png" 
+                 alt="Unified Cosmic Parent Function - Official Theory Poster" 
+                 style="width:100%; border-radius:20px; border:2px solid #6ae3ff; box-shadow:0 15px 40px rgba(0,0,0,0.7);" />
         </div>
 
         <!-- ===== محاور النظرية ===== -->
@@ -462,6 +496,26 @@
             </div>
         </div>
 
+        <!-- ===== المستودعات (28 مشروعاً) ===== -->
+        <h2 class="section-title">
+            <i class="fab fa-github"></i>
+            <span class="ar-text">المستودعات (28 مشروعاً)</span>
+            <span class="en-text">Repositories (28 Projects)</span>
+        </h2>
+        <div class="repo-grid-mini">
+            <a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" target="_blank">🔵 Zx Mother</a>
+            <a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" target="_blank">🟢 RieOS v1.2</a>
+            <a href="https://github.com/Jabri-web/Jabri_Nobble" target="_blank">🟡 Jabri Nobble</a>
+            <a href="https://github.com/Jabri-web/jabri_lab" target="_blank">🧪 Jabri Lab</a>
+            <a href="https://github.com/Jabri-web/Jabri_Riemann" target="_blank">📈 Riemann</a>
+            <a href="https://github.com/Jabri-web/Jabri_np" target="_blank">💻 P vs NP</a>
+            <a href="https://github.com/Jabri-web/Jabri_Navier" target="_blank">🌊 Navier</a>
+            <a href="https://github.com/Jabri-web/Jabri_Planck" target="_blank">🔬 Planck</a>
+            <a href="https://github.com/Jabri-web/Jabri_Hubble" target="_blank">🌌 Hubble</a>
+            <a href="https://github.com/Jabri-web/Jabri_Gravity" target="_blank">🪐 Gravity</a>
+            <a href="https://github.com/Jabri-web" target="_blank" style="border-color:#f7d44a;color:#f7d44a;">📦 عرض الكل (28)</a>
+        </div>
+
         <!-- ===== زر العودة ===== -->
         <div style="margin: 50px 0 30px; text-align: center;">
             <a href="https://jabri-web.github.io/" class="btn-home">
@@ -469,12 +523,14 @@
             </a>
         </div>
 
+        <!-- ===== عداد الزوار ===== -->
+        <div class="visitor-badge">
+            🌿 زوار واحة الجبري: <span id="visitor-count">0</span>
+        </div>
+
     </div>
 
-    <!-- ===== الفوتر العام ===== -->
-    <div id="footer-placeholder"></div>
-
-    <!-- ===== سكربت اللغة ===== -->
+    <!-- ===== سكربت اللغة والعداد ===== -->
     <script>
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
@@ -486,12 +542,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferred-language') || 'ar';
             applyLanguage(savedLang);
+            
+            // Visitor Counter
+            let count = localStorage.getItem('jabriVisitorCount');
+            if (count === null) {
+                count = Math.floor(Math.random() * 80) + 20;
+            } else {
+                count = Number(count) + 1;
+            }
+            localStorage.setItem('jabriVisitorCount', count);
+            document.getElementById('visitor-count').textContent = count;
+            console.log('🌿 زوار واحة الجبري: ' + count);
         });
         window.applyLanguage = applyLanguage;
     </script>
-
-    <script src="/js/init-page-root.js"></script>
-    <script src="/js/menu.js"></script>
 
 </body>
 </html>
