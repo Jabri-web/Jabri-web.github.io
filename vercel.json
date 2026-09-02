@@ -3,6 +3,7 @@
   "name": "waha-al-jabri",
   "builds": [
     { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.htm", "use": "@vercel/static" },
     { "src": "Image/**", "use": "@vercel/static" }
   ],
   "routes": [
@@ -16,6 +17,8 @@
     { "src": "/research", "dest": "/research.html" },
     { "src": "/citations", "dest": "/citations.html" },
     { "src": "/Dbase", "dest": "/Dbase.html" },
+    { "src": "/char-balance", "dest": "/char-balance.html" },
+    { "src": "/poster", "dest": "/poster.html" },
     { "src": "/Image/(.*)", "dest": "/Image/$1" }
   ],
   "headers": [
@@ -27,9 +30,9 @@
       ]
     },
     {
-      "source": "/Sindbad-theory.html",
+      "source": "/Image/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]

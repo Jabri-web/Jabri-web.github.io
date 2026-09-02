@@ -2,14 +2,29 @@ User-agent: *
 Allow: /
 Disallow: /private/
 Disallow: /temp/
+Disallow: /backup/
+Disallow: /.*\.log$
 
 Sitemap: https://jabri-com.vercel.app/sitemap.xml
 
-# Allow Google to crawl all theory pages
+# Googlebot specific
 User-agent: Googlebot
 Allow: /
 Allow: /Sindbad-theory.html
+Allow: /Sindbad-theory
 Allow: /calculator.html
+Allow: /calculator
 Allow: /journal4.html
+Allow: /journal4
+Allow: /char-balance.html
+Allow: /char-balance
 Allow: /theory-ar.html
+Allow: /theory-ar
 Allow: /theory-en.htm
+Allow: /theory-en
+Allow: /poster.html
+Allow: /poster
+Allow: /Image/
+Allow: /image/
+Disallow: /private/
+Disallow: /temp/
