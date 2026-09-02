@@ -4,6 +4,8 @@
   "builds": [
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "*.htm", "use": "@vercel/static" },
+    { "src": "*.xml", "use": "@vercel/static" },
+    { "src": "*.txt", "use": "@vercel/static" },
     { "src": "image/**", "use": "@vercel/static" },
     { "src": "Image/**", "use": "@vercel/static" },
     { "src": "ar/**", "use": "@vercel/static" },
@@ -22,6 +24,8 @@
     { "src": "/Dbase", "dest": "/Dbase.html" },
     { "src": "/char-balance", "dest": "/char-balance.html" },
     { "src": "/poster", "dest": "/poster.html" },
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
     { "src": "/image/(.*)", "dest": "/image/$1" },
     { "src": "/Image/(.*)", "dest": "/Image/$1" },
     { "src": "/ar/(.*)", "dest": "/ar/$1" },
@@ -64,13 +68,20 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Robots-Tag", "value": "index, follow" }
       ]
     },
     {
       "source": "/(image|Image)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(sitemap.xml|robots.txt)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
