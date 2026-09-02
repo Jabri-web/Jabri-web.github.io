@@ -1,19 +1,77 @@
 {
+  "version": 2,
+  "name": "waha-al-jabri",
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.htm", "use": "@vercel/static" },
+    { "src": "image/**", "use": "@vercel/static" },
+    { "src": "Image/**", "use": "@vercel/static" },
+    { "src": "ar/**", "use": "@vercel/static" },
+    { "src": "en/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/Sindbad-theory", "dest": "/Sindbad-theory.html" },
+    { "src": "/calculator", "dest": "/calculator.html" },
+    { "src": "/journal4", "dest": "/journal4.html" },
+    { "src": "/theory-ar", "dest": "/theory-ar.html" },
+    { "src": "/theory-en", "dest": "/theory-en.htm" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/research", "dest": "/research.html" },
+    { "src": "/citations", "dest": "/citations.html" },
+    { "src": "/Dbase", "dest": "/Dbase.html" },
+    { "src": "/char-balance", "dest": "/char-balance.html" },
+    { "src": "/poster", "dest": "/poster.html" },
+    { "src": "/image/(.*)", "dest": "/image/$1" },
+    { "src": "/Image/(.*)", "dest": "/Image/$1" },
+    { "src": "/ar/(.*)", "dest": "/ar/$1" },
+    { "src": "/en/(.*)", "dest": "/en/$1" },
+    { "src": "/about-waha", "dest": "/about-waha.html" },
+    { "src": "/about-en", "dest": "/about-en.html" },
+    { "src": "/Author-cv", "dest": "/Author-cv.html" },
+    { "src": "/who-we", "dest": "/who-we.html" },
+    { "src": "/project", "dest": "/project.html" },
+    { "src": "/wonder", "dest": "/wonder.html" },
+    { "src": "/yemen-photo", "dest": "/yemen-photo.html" },
+    { "src": "/gallery", "dest": "/gallery.html" },
+    { "src": "/Sanaa", "dest": "/Sanaa.html" },
+    { "src": "/Shibam", "dest": "/Shibam.html" },
+    { "src": "/Soqatra", "dest": "/Soqatra.html" },
+    { "src": "/Yemen-library", "dest": "/Yemen-library.html" },
+    { "src": "/Router-all", "dest": "/Router-all.html" },
+    { "src": "/Check", "dest": "/Check.html" },
+    { "src": "/microtik-deep", "dest": "/microtik-deep.html" },
+    { "src": "/Page1", "dest": "/Page1.html" },
+    { "src": "/Page2", "dest": "/Page2.html" },
+    { "src": "/Page3", "dest": "/Page3.html" },
+    { "src": "/Page4", "dest": "/Page4.html" },
+    { "src": "/Page5", "dest": "/Page5.html" },
+    { "src": "/Page6", "dest": "/Page6.html" },
+    { "src": "/Page7", "dest": "/Page7.html" },
+    { "src": "/Page8", "dest": "/Page8.html" },
+    { "src": "/Page9", "dest": "/Page9.html" },
+    { "src": "/Page10", "dest": "/Page10.html" },
+    { "src": "/Page11", "dest": "/Page11.html" },
+    { "src": "/Page12", "dest": "/Page12.html" },
+    { "src": "/FAQPage", "dest": "/FAQPage.html" },
+    { "src": "/contact", "dest": "/contact.html" },
+    { "src": "/privacy-policy", "dest": "/privacy-policy.html" },
+    { "src": "/diagnose", "dest": "/diagnose.html" },
+    { "src": "/yemen-photo-api", "dest": "/yemen-photo-api.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
-    }
-  ],
-  "rewrites": [
+    },
     {
-      "source": "/en/(.*)",
-      "destination": "/$1"
+      "source": "/(image|Image)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     }
   ]
 }
