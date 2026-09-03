@@ -275,6 +275,90 @@
             background: #6ae3ff;
             color: #0a0a0f !important;
         }
+
+        /* ===== زر فتح الملف - المستخدم يكتب اسم الملف ===== */
+        .file-open-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #0a0a0f;
+            border: 2px solid #ffd700;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .file-open-wrapper .file-label {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .file-open-wrapper .file-label i {
+            font-size: 1.2rem;
+        }
+        .file-open-wrapper input {
+            flex: 1;
+            min-width: 200px;
+            background: #1a1a2e;
+            border: 1px solid #3a3a4e;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e8e8f0;
+            font-size: 0.95rem;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: 0.3s;
+            direction: ltr;
+        }
+        .file-open-wrapper input:focus {
+            border-color: #6ae3ff;
+        }
+        .file-open-wrapper input::placeholder {
+            color: #555;
+        }
+        .file-open-btn {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0f;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .file-open-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+        .file-open-btn i { font-size: 1rem; }
+        .file-open-btn .fa-chevron-left { font-size: 14px; }
+        body.en .file-open-btn .fa-chevron-left { transform: rotate(180deg); }
+        .file-open-wrapper .full-url {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .file-open-wrapper .full-url .url-val {
+            color: #6ae3ff;
+            font-family: monospace;
+            background: #1a1a2e;
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: 1px solid #2a2a3e;
+            direction: ltr;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -320,6 +404,28 @@
             <p style="color: #94a3b8; margin-top: 8px;"><i class="fas fa-link"></i><span class="ar">فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span><span class="en">Scan every page, link, file & repo</span></p>
         </header>
         <div id="errorBox"></div>
+
+        <!-- ===== زر فتح الملف - المستخدم يكتب اسم الملف ===== -->
+        <div class="file-open-wrapper">
+            <div class="file-label">
+                <i class="fas fa-file-code"></i>
+                <span class="ar">📂 فتح ملف:</span>
+                <span class="en">📂 Open File:</span>
+            </div>
+            <input type="text" id="filePathInput" placeholder="logo.html" value="logo.html" dir="ltr">
+            <button class="file-open-btn" id="fileOpenBtn">
+                <i class="fas fa-external-link-alt"></i>
+                <span class="ar">فتح</span>
+                <span class="en">Open</span>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="full-url">
+                <i class="fas fa-link"></i>
+                <span class="ar">الرابط:</span><span class="en">URL:</span>
+                <span class="url-val" id="fullUrlDisplay">https://jabri-com.vercel.app/logo.html</span>
+            </div>
+        </div>
+
         <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px 0;">
             <button class="run-btn" id="runFullScan"><i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span></button>
             <button class="run-btn speed" id="runSpeedTest"><i class="fas fa-bolt"></i> <span class="ar">اختبار السرعة</span><span class="en">Speed Test</span></button>
@@ -327,16 +433,15 @@
             <button class="run-btn structure" id="runStructureCheck"><i class="fas fa-folder-tree"></i> <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span></button>
             <button class="run-btn clear" id="clearLogs"><i class="fas fa-trash"></i> <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
             
-            <!-- ===== زر Diagnose ===== -->
             <button class="diagnose-btn" onclick="window.location.href='diagnose.html'">
                 <i class="fas fa-stethoscope"></i> <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span>
             </button>
             
-            <!-- ===== زر Explore (current-auto.html) ===== -->
             <button class="explore-btn" onclick="window.location.href='current-auto.html'">
                 <i class="fas fa-compass"></i> <span class="ar">🧭 المستكشف</span><span class="en">🧭 Explore</span>
             </button>
         </div>
+
         <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
         <div class="grid-2">
             <div class="card"><h2><i class="fas fa-file-alt"></i> <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2><div class="links-grid" id="pageLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-check-circle" style="color:#00ff88;"></i><span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span><span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span></div></div>
@@ -360,8 +465,6 @@
             <a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a>
             <a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a>
             <a href="diagnose.html" class="repo9-card" style="border-color:#a855f7;"><i class="fas fa-stethoscope icon-purple"></i><div class="title">📊 Diagnose</div><div class="desc">تشخيص المستودعات</div></a>
-            
-            <!-- ===== رابط current-auto.html ===== -->
             <a href="current-auto.html" class="repo9-card" style="border-color:#ff6a6a;">
                 <i class="fas fa-compass icon-red"></i>
                 <div class="title" style="color:#ff6a6a;">🧭 المستكشف</div>
@@ -484,7 +587,47 @@
             btn.addEventListener('click', function() { if (isPlaying) { music.pause(); btn.innerHTML = '<i class="fas fa-music"></i>'; btn.classList.remove('playing'); isPlaying = false; } else { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } });
             document.addEventListener('click', function firstInteraction() { if (!isPlaying) { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } document.removeEventListener('click', firstInteraction); }); })();
 
+        // ===== زر فتح الملف - المستخدم يكتب اسم الملف =====
         document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('filePathInput');
+            const urlDisplay = document.getElementById('fullUrlDisplay');
+            const openBtn = document.getElementById('fileOpenBtn');
+            const BASE_URL = 'https://jabri-com.vercel.app/';
+
+            // تحديث العرض عند تغيير المدخل
+            input.addEventListener('input', function() {
+                const val = this.value.trim() || '';
+                if (val) {
+                    urlDisplay.textContent = BASE_URL + val;
+                } else {
+                    urlDisplay.textContent = BASE_URL;
+                }
+            });
+
+            // عند الضغط على زر الفتح
+            openBtn.addEventListener('click', function() {
+                const val = input.value.trim() || '';
+                let fullUrl = BASE_URL;
+                if (val) {
+                    fullUrl = BASE_URL + val;
+                }
+                urlDisplay.textContent = fullUrl;
+                
+                // تسجيل في السجل
+                addLog(`📂 <span class="ar">جاري فتح: ${fullUrl}</span><span class="en">Opening: ${fullUrl}</span>`, 'info');
+                
+                // فتح الصفحة في نافذة جديدة
+                window.open(fullUrl, '_blank');
+            });
+
+            // عند الضغط على Enter في حقل الإدخال
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    openBtn.click();
+                }
+            });
+
             generateLinks(); 
             document.getElementById('runFullScan').addEventListener('click', runFullScan); 
             document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
@@ -509,6 +652,7 @@
             console.log('📊 مركز تشخيص المستودعات متاح في diagnose.html');
             console.log('🧭 المستكشف متاح في current-auto.html');
             console.log('🖥️ الإعدادات الافتراضية: Desktop + Night');
+            console.log('📂 زر فتح الملف: يكتب المستخدم اسم الملف ويفتح الرابط الكامل');
         });
     </script>
     
