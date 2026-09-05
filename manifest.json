@@ -1,11 +1,14 @@
-{
-  "name": "Heaven Al-Jabri",
-  "short_name": "Al-Jabri",
-  "start_url": "/Header.html",
-  "scope": "/",
+{}{
+  "name": "Heaven Al-Jabri | واحة الجبري",
+  "short_name": "واحة الجبري",
+  "description": "تطبيق واحة الجبري - موسيقى باب اليمن الأصيلة ونظرية السندباد الموحدة Z+C+A=1",
+  "start_url": "/logo.html",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#ffd700",
+  "background_color": "#0A0A0F",
+  "theme_color": "#c9a84c",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
   "icons": [
     {
       "src": "/icon-192.png",
