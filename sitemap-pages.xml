@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 👑 الأولوية القصوى -->
+  <url><loc>https://jabri-com.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Sindbad-theory.html</loc><priority>1.0</priority></url>
+  <url><loc>https://jabri-com.vercel.app/research.html</loc><priority>1.0</priority></url>
+
+  <!-- ⭐ الأولوية العالية: قواعد البيانات 1-12 -->
+  <url><loc>https://jabri-com.vercel.app/Page1.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page2.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page3.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page4.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page5.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page6.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page7.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page8.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page9.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page10.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page11.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Page12.html</loc><priority>0.9</priority></url>
+
+  <!-- ⭐ الأولوية العالية: الأبحاث والمحتوى الرئيسي -->
+  <url><loc>https://jabri-com.vercel.app/research-deep.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/citations.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/yemen-photo.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Dbase.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/about.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/ar/about.html</loc><priority>0.9</priority></url>
+  <url><loc>https://jabri-com.vercel.app/en/about.html</loc><priority>0.9</priority></url>
+
+  <!-- 📄 الصفحات الأساسية (بدون تكرار) -->
+  <url><loc>https://jabri-com.vercel.app/Author-cv.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/who-we.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/project.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Office.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Yemen-library.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Pages-Researches.html</loc><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Sindbad-Brdoni.html</loc><priority>0.8</priority></url>
+
+  <!-- 🇾🇪 المحتوى اليمني والمواقع -->
+  <url><loc>https://jabri-com.vercel.app/Sanaa.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Shibam.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Soqatra.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Router-all.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/History-pdf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/microtik-deep.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/FAQPage.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Nezar.html</loc><priority>0.7</priority></url>
+
+  <!-- 💻 التقنية والأنظمة -->
+  <url><loc>https://jabri-com.vercel.app/Check.html</loc><priority>0.7</priority></url>
+
+  <!-- 🆘 المساعدة والقوانين -->
+  <url><loc>https://jabri-com.vercel.app/contact.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/privacy-policy.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/404.html</loc><priority>0.5</priority></url>
+
+  <!-- 📱 صفحات اللغة (النسخ الموحدة) -->
+  <url><loc>https://jabri-com.vercel.app/ar/index.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/en/index.html</loc><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/source.html</loc><priority>0.6</priority></url>
+
+</urlset>
