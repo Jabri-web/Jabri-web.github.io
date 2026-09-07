@@ -34,8 +34,8 @@
     {
       "@context": "https://schema.org",
       "@type": "VideoObject",
-      "name": "تراث اليمن - واحة الجبري - heaven3",
-      "description": "فيديو تراثي يمني من واحة الجبري، يعكس جمال وعمق الحضارة اليمنية. جزء من رحلة عبدالله الجبري مع رفقاء الذكاء.",
+      "name": "فيديو تراث اليمن - واحة الجبري | Yemen Heritage - heaven3",
+      "description": "فيديو تراثي يمني من واحة الجبري، يعكس جمال وعمق الحضارة اليمنية. Yemeni heritage video from Al-Jabri Oasis.",
       "thumbnailUrl": "https://jabri-com.vercel.app/image/oasis-poster.jpg",
       "contentUrl": "https://jabri-com.vercel.app/image/heaven3.mp4",
       "embedUrl": "https://jabri-com.vercel.app/ar/journal2.html",
@@ -76,7 +76,7 @@
       },
       "video": {
         "@type": "VideoObject",
-        "name": "تراث اليمن - واحة الجبري - heaven3",
+        "name": "فيديو تراث اليمن - واحة الجبري | Yemen Heritage - heaven3",
         "contentUrl": "https://jabri-com.vercel.app/image/heaven3.mp4",
         "thumbnailUrl": "https://jabri-com.vercel.app/image/oasis-poster.jpg"
       }
@@ -84,6 +84,7 @@
     </script>
 
     <style>
+        /* ===== كل الـ CSS كما هو ===== */
         * {
             margin: 0;
             padding: 0;
@@ -481,9 +482,11 @@
                     <video 
                         controls 
                         src="/image/heaven3.mp4" 
+                        name="فيديو تراث اليمن - heaven3 | Yemen Heritage Video"
                         title="فيديو تراث اليمن - واحة الجبري - heaven3"
+                        aria-label="فيديو تراث اليمن - واحة الجبري - heaven3"
                         poster="/oasis-poster.jpg"
-                        itemprop="contentUrl"
+                        itemprop="name contentUrl"
                         style="width:100%; max-width:600px; border-radius:1.5rem; border:2px solid #c9a77b; box-shadow:0 10px 40px rgba(0,0,0,0.6);">
                         فيلم heaven3 - تراث اليمن
                     </video>
@@ -522,15 +525,15 @@
                 <h4>🎵 مقاطع صوتية</h4>
                 <div class="media-grid audio-grid">
                     <div class="media-item">
-                        <audio controls src="/image/taizi.mp3">مقطع 1</audio>
-                        <span class="media-label">music1.mp3</span>
+                        <audio controls src="/image/taizi.mp3" title="مقطع صوتي - تعزي">مقطع 1</audio>
+                        <span class="media-label">taizi.mp3</span>
                     </div>
                     <div class="media-item">
-                        <audio controls src="/image/music2.mp3">مقطع 2</audio>
+                        <audio controls src="/image/music2.mp3" title="مقطع صوتي - موسيقى">مقطع 2</audio>
                         <span class="media-label">music2.mp3</span>
                     </div>
                     <div class="media-item">
-                        <audio controls src="/image/hadrami.mp3">مقطع 3</audio>
+                        <audio controls src="/image/hadrami.mp3" title="مقطع صوتي - حضرمي">مقطع 3</audio>
                         <span class="media-label">hadrami.mp3</span>
                     </div>
                 </div>
@@ -542,7 +545,14 @@
                 <div class="media-grid">
                     <!-- فيديو 1: sanaani1.mp4 -->
                     <div class="media-item" style="opacity:0.8;">
-                        <video controls src="/image/sanaani1.mp4" title="فيديو إضافي - sanaani1" style="width:120px;">
+                        <video 
+                            controls 
+                            src="/image/sanaani1.mp4" 
+                            name="فيديو إضافي - صنعاني 1"
+                            title="فيديو إضافي - sanaani1 - تراث اليمن"
+                            aria-label="فيديو إضافي - sanaani1"
+                            itemprop="name"
+                            style="width:120px;">
                             فيلم sanaani1
                         </video>
                         <span class="media-label">sanaani1.mp4 <span style="color:#888;">(إضافي)</span></span>
@@ -550,7 +560,14 @@
                     
                     <!-- فيديو 2: sanaani.mp4 -->
                     <div class="media-item" style="opacity:0.8;">
-                        <video controls src="/image/sanaani.mp4" title="فيديو إضافي - sanaani" style="width:120px;">
+                        <video 
+                            controls 
+                            src="/image/sanaani.mp4" 
+                            name="فيديو إضافي - صنعاني"
+                            title="فيديو إضافي - sanaani - تراث اليمن"
+                            aria-label="فيديو إضافي - sanaani"
+                            itemprop="name"
+                            style="width:120px;">
                             فيلم sanaani
                         </video>
                         <span class="media-label">sanaani.mp4 <span style="color:#888;">(إضافي)</span></span>
@@ -558,7 +575,14 @@
                     
                     <!-- فيديو 3: Zamel2.mp4 -->
                     <div class="media-item" style="opacity:0.8;">
-                        <video controls src="/image/Zamel2.mp4" title="فيديو إضافي - Zamel2" style="width:120px;">
+                        <video 
+                            controls 
+                            src="/image/Zamel2.mp4" 
+                            name="فيديو إضافي - زامل 2"
+                            title="فيديو إضافي - Zamel2 - تراث اليمن"
+                            aria-label="فيديو إضافي - Zamel2"
+                            itemprop="name"
+                            style="width:120px;">
                             فيلم Zamel2
                         </video>
                         <span class="media-label">Zamel2.mp4 <span style="color:#888;">(إضافي)</span></span>
