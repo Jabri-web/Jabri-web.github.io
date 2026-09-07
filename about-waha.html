@@ -4,16 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عن الواحة | واحة الجبري</title>
-    <meta name="description" content="واحة الجبري - منصة علمية، ثقافية، تراثية، سياحية. توثيق التراث اليمني ونظرية السندباد الموحدة.">
-    <link rel="canonical" href="https://jabri-com.vercel.app/about.html">
+    <meta name="description" content="واحة الجبري - منصة علمية، ثقافية، تراثية، سياحية. تحميل تطبيق واحة الجبري نسخة 4">
+    <link rel="canonical" href="https://jabri-com.vercel.app/about-waha.html">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cairo', 'Tahoma', sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; }
         
+        /* ✅ زر التحميل الجديد - اول الصفحة */
+        .download-section {
+            max-width: 1000px;
+            margin: 1.5rem auto 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #0a0a0f;
+            padding: 18px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: 3px solid #ffd700;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+        .download-btn .icon { font-size: 1.6rem; }
+
         .about-container {
             max-width: 1000px;
-            margin: 2rem auto;
+            margin: 1.5rem auto 2rem auto;
             padding: 2.5rem;
             background: #141b2b;
             background-image: radial-gradient(circle at 20% 30%, #1e2a3f, #0b111f);
@@ -53,156 +85,66 @@
             text-align: center;
             transition: 0.3s;
         }
-        .about-card:hover {
-            border-color: #ffd700;
-            transform: translateY(-4px);
-        }
+        .about-card:hover { border-color: #ffd700; transform: translateY(-4px); }
         .about-card .icon { font-size: 2.5rem; }
         .about-card h3 { color: #ffd700; margin: 0.5rem 0; }
         .about-card p { color: #b8b0a0; font-size: 0.9rem; line-height: 1.6; }
         
-        .about-text {
-            color: #d6d1c8;
-            line-height: 2;
-            font-size: 1.05rem;
-            text-align: justify;
-            margin: 1.5rem 0;
-        }
+        .about-text { color: #d6d1c8; line-height: 2; font-size: 1.05rem; text-align: justify; margin: 1.5rem 0; }
         .about-text .highlight { color: #dabb8c; font-weight: 500; }
         
-        .signature {
-            text-align: center;
-            color: #a8957e;
-            font-size: 0.95rem;
-            border-top: 1px solid #2f3b4e;
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-        }
+        .signature { text-align: center; color: #a8957e; font-size: 0.95rem; border-top: 1px solid #2f3b4e; padding-top: 1.5rem; margin-top: 1.5rem; }
         .signature .roses { font-size: 1.8rem; letter-spacing: 8px; color: #a58362; }
         
-        @media (max-width: 650px) {
-            .about-container { padding: 1.5rem; margin: 1rem; }
-            .about-container h1 { font-size: 2rem; }
-            .about-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 400px) {
-            .about-grid { grid-template-columns: 1fr; }
-        }
-        
-        
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-    }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 0;
-        background-color: #fff;
-        border-bottom: 2px solid #ddd;
-        flex-wrap: wrap;
-    }
-    
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    /* ✅ الصورة أصبحت أصغر */
-    .logo img {
-        width: 60px;
-        height: auto;
-        border-radius: 50%;
-    }
-    
-    .logo h1 {
-        font-size: 24px;
-        color: #333;
-    }
-    
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 16px;
-        padding: 8px 12px;
-        border-radius: 5px;
-        transition: 0.3s;
-    }
-    
-    nav a:hover {
-        background-color: #007bff;
-        color: #fff;
-    }
-    
-    nav a.active {
-        background-color: #007bff;
-        color: #fff;
-    }
-    
-    /* للجوال */
-    @media (max-width: 768px) {
+        /* ✅ رجعت كل اكواد الهيدر والازرار القديمة */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            background-color: #fff;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
         }
-        
-        nav {
-            width: 100%;
-            justify-content: flex-start;
-        }
-        
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { width: 60px; height: auto; border-radius: 50%; }
+        .logo h1 { font-size: 24px; color: #333; }
+        nav { display: flex; flex-wrap: wrap; gap: 15px; }
         nav a {
-            font-size: 14px;
-            padding: 6px 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
+        nav a:hover { background-color: #007bff; color: #fff; }
+        nav a.active { background-color: #007bff; color: #fff; }
         
-        .logo img {
-            width: 50px;
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            nav { width: 100%; justify-content: flex-start; }
+            nav a { font-size: 14px; padding: 6px 10px; }
+            .logo img { width: 50px; }
+            .about-container { padding: 1.5rem; margin: 1rem; }
         }
-    }
-    
-    @media (max-width: 480px) {
-        .logo img {
-            width: 40px;
+        @media (max-width: 480px) {
+            .logo img { width: 40px; }
+            .logo h1 { font-size: 18px; }
+            nav a { font-size: 12px; padding: 4px 8px; }
         }
-        
-        .logo h1 {
-            font-size: 18px;
-        }
-        
-        nav a {
-            font-size: 12px;
-            padding: 4px 8px;
-        }
-    }
-        
-        
-        
     </style>
 </head>
 <body>
+
+    <!-- ✅ زر التحميل اول شي -->
+    <div class="download-section">
+        <a href="/apk/Jabri-heaven-v4.apk" download="واحة الجبري نسخة 4.apk" class="download-btn">
+            <span class="icon">📲</span>
+            تحميل: واحة الجبري نسخة 4
+        </a>
+    </div>
 
     <div id="header-placeholder"></div>
 
@@ -214,7 +156,7 @@
             <div class="about-card">
                 <div class="icon">🔬</div>
                 <h3>علمية</h3>
-                <p>الدالة الأم Z(x) · نظرية السندباد الموحدة Zx = Z + C + A · أبحاث رياضية وفيزيائية</p>
+                <p>الدالة الأم Z(x) · نظرية السندباد الموحدة Zx = Z + C + A · بحوث رياضية وفيزيائية</p>
             </div>
             <div class="about-card">
                 <div class="icon">📜</div>
@@ -241,44 +183,43 @@
                 <span class="highlight">عبدالله محمد ناصر الجبري</span> 
                 لتكون جسراً بين الماضي والحاضر، وبين اليمن والعالم.
             </p>
-            <p style="margin-top: 1rem;">
-                من <span class="highlight">الدالة الأم Z(x)</span> التي تستخلص ثابت الجاذبية من الأعداد الصرفة،
-                إلى <span class="highlight">نظرية السندباد الموحدة Zx = Z + C + A</span>،
-                مروراً بتوثيق <span class="highlight">تراث اليمن</span> في صنعاء وشبام وسقطرى،
-                نسعى إلى تقديم رؤية متكاملة تجمع بين أصالة الماضي وحداثة المستقبل.
-            </p>
         </div>
         
-        
-            <div class="container">
-        <header>
-            <div class="logo">
-                <img src="/image/Jabri-photo.webp" alt="Heaven Al-Jabri Logo">
-                <h1>🏛️ Heaven Al-Jabri</h1>
-            </div>
-            <nav>
-                <a href="/index.html">Home</a>
-                <a href="/en/about.html" class="active">About</a>
-                <a href="/Page11.html">Heaven Al-Jabri</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/research.html">Research</a>
-                <a href="/ar/about.html">عن عربي</a>
-                <a href="/profile.html">بروفايل عربي</a>
-                <a href="/profile.html">Profile</a>
-                <a href="/Author-cv.html">C.V</a>
-            </nav>
-        </header>
-    </div>
+        <!-- ✅ رجعت الهيدر والازرار كلها -->
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <img src="/assets/image/Jabri-photo.png" alt="Heaven Al-Jabri Logo" onerror="this.src='https://avatars.githubusercontent.com/u/200000000?v=4'">
+                    <h1>🏛️ Heaven Al-Jabri</h1>
+                </div>
+                <nav>
+                    <a href="/index.html">Home</a>
+                    <a href="/en/about.html" class="active">About</a>
+                    <a href="/Page11.html">Heaven Al-Jabri</a>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/research.html">Research</a>
+                    <a href="/ar/about.html">عن عربي</a>
+                    <a href="/profile.html">بروفايل عربي</a>
+                    <a href="/profile.html">Profile</a>
+                    <a href="/Author-cv.html">C.V</a>
+                    <a href="/wonder.html">Life</a>
+                    <a href="taraif.html">Joke</a>
+                    <a href="all-links.html">Links</a>
+                    <a href="/Check.html">Check</a>
+                    <a href="/dashboard.html">Dashoard</a>
+                    <a href="/founder.html">Founder</a>
+                </nav>
+            </header>
+        </div>
 
         <div class="signature">
-            <div class="roses">🌎🌎🌹🌎🌎🌎🌹</div>
+            <div class="roses">🌎🌹🌎🌹</div>
             <p>© 2026 م – واحة الجبري | عبدالله محمد ناصر الجبري</p>
             <p style="font-size: 0.8rem; color: #5a6a7a;">من صنعاء إلى الكون · اليمن الحضارة والتاريخ</p>
         </div>
     </div>
 
     <div id="footer-placeholder"></div>
-
     <script src="/js/init-page-root.js"></script>
     <script src="/js/menu.js"></script>
 
