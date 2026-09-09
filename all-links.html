@@ -186,6 +186,27 @@
         }
     </style>
 </head>
+
+<!-- إحصائية الروابط -->
+<div style="background:#0f1a1f;border-radius:12px;padding:15px;margin-bottom:25px;text-align:center;border:1px solid #2a2a3e;">
+    <p style="color:#00ff88;">
+        📊 إجمالي الروابط في هذه الصفحة:
+        <span id="linkCount" style="font-size:1.5rem;font-weight:bold;">0</span>
+    </p>
+    <p style="color:#666;font-size:0.8rem;">✅ الروابط الخارجية + الداخلية + وسائل التواصل</p>
+</div>
+
+<script>
+    // عد الروابط تلقائياً
+    document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a[href]');
+        document.getElementById('linkCount').textContent = allLinks.length;
+        console.log(`✅ تم العثور على ${allLinks.length} رابط في الخريطة`);
+    });
+</script>
+
+
+
 <body>
     <div class="container">
 

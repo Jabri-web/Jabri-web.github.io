@@ -1,14 +1,18 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام + CSS الكامل -->
-<!-- ========================================================== -->
+<!-- header.html - الهيدر العام الكامل + CSS + JavaScript -->
+// ========================================================== -->
 
-<!-- ===== وسوم السيو (SEO) ===== -->
+<!-- ===== وسوم السيو الأساسية ===== -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0f">
-<link rel="manifest" href="/manifest.json">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+
+<!-- ===== منع التخزين المؤقت (Cache Control) ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, private" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
 
 <!-- ===== العنوان والوصف (سيتم تحديثه من init-page-root.js) ===== -->
 <title id="dynamicTitle">واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة</title>
@@ -18,12 +22,29 @@
 <meta id="dynamicOgTitle" property="og:title" content="واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
 <meta id="dynamicOgDescription" property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
 <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jabri-com.vercel.app/">
+<meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta name="twitter:title" content="واحة الجبري - نظرية السندباد الموحدة">
+<meta name="twitter:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري">
 
 <!-- ===== Canonical (سيتم تحديثه من init-page-root.js) ===== -->
 <link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/" />
+
+<!-- ===== رابط Manifest للتطبيق ===== -->
+
+<!-- ===== رابط Manifest للتطبيق ===== -->
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<!-- ===== أيقونات PNG لجوجل والواتساب ===== -->
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 
 <!-- ===== Schema.org (السيو المكثف) ===== -->
 <script type="application/ld+json">
@@ -38,7 +59,15 @@
       "url": "https://jabri-com.vercel.app/about.html",
       "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
       "jobTitle": "باحث ومبرمج ومؤسس",
-      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري."
+      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+      "sameAs": [
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://github.com/Jabri-web",
+        "https://zenodo.org/records/20513840",
+        "https://www.facebook.com/share/p/1CvCG9xehw/",
+        "https://www.instagram.com/reel/Da5zRhypJlo/",
+        "https://t.me/Heaven_Jabri/"
+      ]
     },
     {
       "@type": "Organization",
@@ -78,18 +107,19 @@
 <!-- CSS الكامل (الهيدر + الواحة) -->
 <!-- ========================================================== -->
 <style>
+    /* ===== إعادة التعيين ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; }
     body { min-height: 100vh; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
 
-    /* ===== إعادة الخلفية الداكنة ===== */
+    /* ===== الخلفيات ===== */
     body.night { background: #0a0f0d; color: #f5efe6; }
     body.day { background: #f5efe6; color: #1a1a1a; }
 
-    /* ===== الفيديو والخلفية ===== */
-    .bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.3; }
+    /* ===== الفيديو الخلفي ===== */
+    .bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.3; pointer-events: none; }
 
-    /* ===== الهيدر ===== */
+    /* ===== الهيدر العلوي ===== */
     .top-header-buttons {
         position: fixed; top: 15px; left: 0; right: 0; z-index: 99999;
         display: flex; justify-content: space-between; align-items: center; gap: 10px;
@@ -118,7 +148,7 @@
     .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
     .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
-    /* ===== المحتوى الرئيسي للواحة ===== */
+    /* ===== المحتوى الرئيسي ===== */
     .main-content { position: relative; z-index: 10; padding-top: 76px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
     .hero-section { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 30px 20px 20px; min-height: 55vh; width: 100%; max-width: 1024px; backdrop-filter: blur(3px); }
     .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 5px 18px; border-radius: 50px; font-size: 11px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
@@ -176,7 +206,7 @@
     .menu-btn i { margin-left: 10px; color: #c9a84c; }
     body.en .menu-btn i { margin-left: 0; margin-right: 10px; }
 
-    /* ===== الإعدادات وتسجيل الدخول ===== */
+    /* ===== الإعدادات ===== */
     .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; }
     .settings-overlay.active { display: flex; }
     .settings-box { border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8); animation: slideUp 0.4s ease; }
@@ -210,19 +240,25 @@
     .login-modal .modal-content .user-status { text-align: center; padding: 15px; border-radius: 8px; margin: 10px 0; background: rgba(106, 227, 255, 0.1); border: 1px solid rgba(106, 227, 255, 0.2); color: #6ae3ff; }
     .login-modal .modal-content .logout-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #ff6b6b; color: #fff; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
 
+    /* ===== التجاوب مع الشاشات الصغيرة ===== */
     @media (max-width: 600px) {
         .top-header-buttons { padding: 0 10px; }
-        .top-btn { height: 38px; }
-        .top-btn.lang { min-width: 70px; padding: 0 12px; font-size: 11px; }
+        .top-btn { height: 38px; font-size: 11px; padding: 0 12px; }
+        .top-btn.lang { min-width: 60px; }
         .top-btn.menu { width: 40px; font-size: 17px; }
         .hero-title { font-size: 36px; }
         .brand-grid { grid-template-columns: 1fr 1fr; }
         .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
         .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
+        .side-menu { width: 300px; }
     }
 </style>
 
-<!-- ===== الهيدر (Header Buttons) ===== -->
+<!-- ========================================================== -->
+<!-- الهيكل (HTML) -->
+<!-- ========================================================== -->
+
+<!-- ===== الهيدر العلوي ===== -->
 <div class="top-header-buttons">
     <div style="display:flex; gap:8px;">
         <button class="top-btn menu" onclick="window.toggleMenu()" title="القائمة">☰</button>
@@ -242,18 +278,22 @@
 <div class="side-menu" id="sideMenu">
     <button class="menu-close" onclick="window.closeMenu()">✕</button>
     <div class="menu-title">🌊 واحة الجبري</div>
-    <a href="/" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏠</span> الرئيسية</a>
-    <a href="/about-waha.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👤</span> عن واحة الجبري</a>
-    <a href="/about.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👤</span> عن الباحث</a>
-    <a href="/Sindbad-theory.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">📐</span> نظرية السندباد</a>
-    <a href="/theory-ar.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🧮</span> الدالة الأم Z(x)</a>
-    <a href="/Sanaa.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏛️</span> صنعاء القديمة</a>
-    <a href="/Shibam.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏗️</span> شبام حضرموت</a>
-    <a href="/Soqatra.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🌴</span> سقطرى</a>
-    <a href="/music.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🎵</span> الموسيقى</a>
-    <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👥</span> الزوار</a>
+    
+    <a href="/" class="menu-btn" onclick="window.closeMenu()">🏠 الرئيسية</a>
+    <a href="/about.html" class="menu-btn" onclick="window.closeMenu()">👤 عن الباحث</a>
+    <a href="/theory-ar.html" class="menu-btn" onclick="window.closeMenu()">🧮 الدالة الأم Z(x)</a>
+    <a href="/research.html" class="menu-btn" onclick="window.closeMenu()">🔬 البحوث العلمية</a>
+    <a href="/journal.html" class="menu-btn" onclick="window.closeMenu()">📓 المجلة العلمية</a>
+    <a href="/project.html" class="menu-btn" onclick="window.closeMenu()">📁 المشاريع البرمجية</a>
+    <a href="/all-links.html" class="menu-btn" onclick="window.closeMenu()">🗺️ خريطة المسارات</a>
+    <a href="/Sanaa.html" class="menu-btn" onclick="window.closeMenu()">🏛️ صنعاء القديمة</a>
+    <a href="/Shibam.html" class="menu-btn" onclick="window.closeMenu()">🏗️ شبام حضرموت</a>
+    <a href="/Soqatra.html" class="menu-btn" onclick="window.closeMenu()">🌴 سقطرى</a>
+    <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()">👥 الزوار</a>
+    <a href="/contact.html" class="menu-btn" onclick="window.closeMenu()">📞 اتصل بنا</a>
+    
     <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
-    <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();"><span class="icon">🌐</span> تبديل اللغة</button>
+    <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();">🌐 تبديل اللغة</button>
 </div>
 
 <!-- ===== نافذة تسجيل الدخول ===== -->
@@ -263,18 +303,22 @@
         <div id="loginTitle" style="text-align:center; margin-bottom:20px; font-size:1.5rem; font-weight:900; color:#c9a84c;">🔐 تسجيل الدخول</div>
         
         <div id="loginOptions">
-            <button class="login-option" id="googleLoginBtn">الدخول عبر Google</button>
-            <button class="login-option" id="localLoginToggle" onclick="document.getElementById('localLoginForm').classList.toggle('active')">الدخول المحلي (اسم مستخدم وكلمة مرور)</button>
+            <button class="login-option google" onclick="googleLogin()">
+                <i class="fab fa-google"></i> الدخول عبر Google
+            </button>
+            <button class="login-option local" onclick="document.getElementById('localLoginForm').classList.toggle('active')">
+                <i class="fas fa-key"></i> الدخول المحلي
+            </button>
         </div>
 
         <div class="local-login-form" id="localLoginForm">
             <input type="text" id="localUsername" placeholder="اسم المستخدم" />
             <input type="password" id="localPassword" placeholder="كلمة المرور" />
-            <button class="submit-btn" id="localLoginBtn" onclick="localLogin()">تسجيل الدخول</button>
+            <button class="submit-btn" onclick="localLogin()">تسجيل الدخول</button>
         </div>
 
         <div id="userStatus" style="display:none; text-align:center;">
-            <div id="userNameText"></div>
+            <div id="userNameText" style="color:#6ae3ff; font-size:1.1rem;"></div>
             <div id="userRoleText" style="color:#888; font-size:0.8rem;"></div>
         </div>
 
@@ -285,15 +329,15 @@
 <!-- ===== نافذة الإعدادات ===== -->
 <div class="settings-overlay" id="settingsOverlay">
     <div class="settings-box">
-        <div style="text-align:center; margin-bottom:15px; font-weight:900; color:#c9a84c;">⚙️ الإعدادات</div>
+        <div style="text-align:center; margin-bottom:15px; font-size:1.5rem; font-weight:900; color:#c9a84c;">⚙️ الإعدادات</div>
         
-        <div style="margin:10px 0; font-weight:700;">الوضع:</div>
+        <div style="margin:10px 0; font-weight:700; color:#b8a07c;">الوضع:</div>
         <div class="btn-group">
             <button class="btn-setting" id="nightBtn" onclick="setMode('night')">🌙 ليلي</button>
             <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ نهاري</button>
         </div>
 
-        <div style="margin:10px 0; font-weight:700;">الجهاز:</div>
+        <div style="margin:10px 0; font-weight:700; color:#b8a07c;">الجهاز:</div>
         <div class="btn-group">
             <button class="btn-setting" id="desktopBtn" onclick="setDevice('desktop')">💻 كمبيوتر</button>
             <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 جوال</button>
@@ -308,3 +352,246 @@
     <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
     <button class="bottom-btn chat" onclick="window.toggleChat()">💬 محادثة</button>
 </div>
+
+<!-- ===== مشغل الموسيقى الخلفي ===== -->
+<audio id="bgMusic" loop preload="none">
+    <source src="/image/heaven.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ========================================================== -->
+<!-- الجافاسكربت الكامل -->
+<!-- ========================================================== -->
+<script>
+    // ==========================================
+    // تهيئة المتغيرات العامة
+    // ==========================================
+    let isPlaying = false;
+    let currentUser = null;
+
+    // ==========================================
+    // دالة تبديل اللغة
+    // ==========================================
+    window.toggleLang = function() {
+        const isEnglish = document.documentElement.lang === 'en';
+        const newLang = isEnglish ? 'ar' : 'en';
+        document.documentElement.lang = newLang;
+        document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+        
+        // تحديث زر اللغة
+        const btn = document.getElementById('langTopBtn');
+        if (btn) {
+            btn.innerHTML = newLang === 'ar' ? '🇾🇪 عربي' : '🇬🇧 English';
+        }
+        
+        // حفظ التفضيل
+        localStorage.setItem('preferred-lang', newLang);
+        
+        // إعادة تحميل الصفحة لتطبيق التغييرات
+        window.location.reload();
+    };
+
+    // ==========================================
+    // دالة القائمة الجانبية
+    // ==========================================
+    window.toggleMenu = function() {
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('menuOverlay');
+        menu.classList.toggle('open');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    };
+
+    window.closeMenu = function() {
+        document.getElementById('sideMenu').classList.remove('open');
+        document.getElementById('menuOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // ==========================================
+    // دالة الإعدادات
+    // ==========================================
+    function openSettings() {
+        document.getElementById('settingsOverlay').classList.add('active');
+    }
+
+    function closeSettings() {
+        document.getElementById('settingsOverlay').classList.remove('active');
+    }
+
+    function setMode(mode) {
+        document.body.className = mode;
+        localStorage.setItem('theme-mode', mode);
+        // تحديث الأزرار
+        document.querySelectorAll('.btn-setting').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(mode + 'Btn').classList.add('active');
+        closeSettings();
+    }
+
+    function setDevice(device) {
+        if (device === 'desktop') {
+            document.body.classList.remove('phone-mode');
+        } else {
+            document.body.classList.add('phone-mode');
+        }
+        localStorage.setItem('device-mode', device);
+        document.querySelectorAll('.btn-setting').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(device + 'Btn').classList.add('active');
+    }
+
+    // ==========================================
+    // دالة تسجيل الدخول
+    // ==========================================
+    function openLoginModal() {
+        document.getElementById('loginModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        checkLoginStatus();
+    }
+
+    function closeLoginModalFn() {
+        document.getElementById('loginModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function googleLogin() {
+        // هنا يمكن إضافة Google OAuth
+        alert('🚧 جاري تطوير ميزة الدخول عبر Google');
+    }
+
+    function localLogin() {
+        const username = document.getElementById('localUsername').value.trim();
+        const password = document.getElementById('localPassword').value.trim();
+        
+        if (!username || !password) {
+            alert('❌ يرجى إدخال اسم المستخدم وكلمة المرور');
+            return;
+        }
+        
+        // التحقق من بيانات الدخول (مثال بسيط)
+        if (username === 'admin' && password === '123456') {
+            currentUser = { name: 'مدير النظام', role: 'admin' };
+            updateLoginUI();
+            alert('✅ تم تسجيل الدخول بنجاح!');
+            closeLoginModalFn();
+        } else {
+            alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+        }
+    }
+
+    function logout() {
+        currentUser = null;
+        updateLoginUI();
+        alert('✅ تم تسجيل الخروج بنجاح');
+        closeLoginModalFn();
+    }
+
+    function checkLoginStatus() {
+        if (currentUser) {
+            updateLoginUI();
+        }
+    }
+
+    function updateLoginUI() {
+        const userStatus = document.getElementById('userStatus');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginOptions = document.getElementById('loginOptions');
+        
+        if (currentUser) {
+            userStatus.style.display = 'block';
+            document.getElementById('userNameText').textContent = '👤 ' + currentUser.name;
+            document.getElementById('userRoleText').textContent = '🔑 ' + (currentUser.role === 'admin' ? 'مدير' : 'مستخدم');
+            logoutBtn.style.display = 'block';
+            loginOptions.style.display = 'none';
+            document.getElementById('localLoginForm').classList.remove('active');
+        } else {
+            userStatus.style.display = 'none';
+            logoutBtn.style.display = 'none';
+            loginOptions.style.display = 'block';
+        }
+    }
+
+    // ==========================================
+    // دالة الموسيقى
+    // ==========================================
+    window.toggleMusic = function() {
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBottomBtn');
+        if (isPlaying) {
+            audio.pause();
+            btn.classList.remove('playing');
+            btn.textContent = '🎵';
+        } else {
+            audio.play().catch(() => {});
+            btn.classList.add('playing');
+            btn.textContent = '⏸️';
+        }
+        isPlaying = !isPlaying;
+    };
+
+    // ==========================================
+    // دالة المحادثة
+    // ==========================================
+    window.toggleChat = function() {
+        alert('💬 نافذة المحادثة قيد التطوير');
+    };
+
+    // ==========================================
+    // إغلاق النوافذ عند الضغط على Escape
+    // ==========================================
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMenu();
+            closeSettings();
+            closeLoginModalFn();
+        }
+    });
+
+    // ==========================================
+    // إغلاق النوافذ عند الضغط خارجها
+    // ==========================================
+    document.getElementById('settingsOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeSettings();
+    });
+
+    document.getElementById('loginModal').addEventListener('click', function(e) {
+        if (e.target === this) closeLoginModalFn();
+    });
+
+    // ==========================================
+    // تحميل التفضيلات المحفوظة
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', function() {
+        // استعادة الوضع
+        const savedMode = localStorage.getItem('theme-mode') || 'night';
+        setMode(savedMode);
+        
+        // استعادة الجهاز
+        const savedDevice = localStorage.getItem('device-mode') || 'desktop';
+        setDevice(savedDevice);
+        
+        // استعادة اللغة
+        const savedLang = localStorage.getItem('preferred-lang') || 'ar';
+        if (savedLang !== document.documentElement.lang) {
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            const btn = document.getElementById('langTopBtn');
+            if (btn) {
+                btn.innerHTML = savedLang === 'ar' ? '🇾🇪 عربي' : '🇬🇧 English';
+            }
+        }
+        
+        console.log('🌊 واحة الجبري - الهيدر تم تحميله بنجاح');
+        console.log('📅 التاريخ:', new Date().toLocaleDateString('ar-EG'));
+    });
+
+    // ==========================================
+    // Service Worker
+    // ==========================================
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('✅ Service Worker مسجل'))
+            .catch(err => console.log('❌ خطأ في تسجيل Service Worker:', err));
+    }
+</script>
+<!-- ========================================================== -->
+<!-- نهاية header.html -->
+<!-- ========================================================== -->
