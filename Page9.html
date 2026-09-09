@@ -15,16 +15,16 @@
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
     
-    <link rel="canonical" href="https://jabri-com.vercel.app/Checkout.html" />
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Checkout.html" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Checkout.html" />
+    <link rel="canonical" href="https://jabri-com.vercel.app/Page9.html" />
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Check.html" />
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Check.html" />
     
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="واحة الجبري | نظام الفحص" />
     <meta property="og:title" content="نظام فحص الواحة - Jabri Checkout" />
     <meta property="og:description" content="فحص شامل للروابط، السرعة، 404، وأداء واحة الجبري" />
     <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/Checkout.html" />
+    <meta property="og:url" content="https://jabri-com.vercel.app/Page9.html" />
 
     <style>
         /* ===== إجبار العرض على Desktop ===== */
@@ -566,7 +566,7 @@
         }
 
         async function runSpeedTest() {
-            const btn = document.getElementById('runSpeedTest'); btn.disabled = true; addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info'); const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Checkout.html']; const results = [];
+            const btn = document.getElementById('runSpeedTest'); btn.disabled = true; addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info'); const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Check.html']; const results = [];
             for (const url of urls) { const start = performance.now(); try { await fetch(url, { cache: 'no-cache' }); const time = Math.round(performance.now() - start); results.push({ url, time, ok: true }); addLog(`⚡ ${url} — ${time}ms`, 'ok'); }
             catch { const time = Math.round(performance.now() - start); results.push({ url, time, ok: false }); addLog(`❌ ${url} — فشل (${time}ms)`, 'fail'); } }
             const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length); const fastest = Math.min(...results.map(r => r.time)); const slowest = Math.max(...results.map(r => r.time));
