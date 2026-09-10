@@ -1,11 +1,20 @@
 // ================================================================
-//  init-page-root.js - الإصدار النهائي (الدرع المطلق + 404)
-//  يحاصر 404 في كل الأحوال
+//  init-page-root.js - v5.1 (APK Ready)
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] تفعيل الدرع المطلق (v4.0.0)...');
+  console.log('🛡️ [init] تفعيل الدرع المطلق (v5.1.0 - APK Ready)...');
+
+  // ✅ كشف البيئة
+  const IS_APK = window.location.protocol === 'file:' || 
+                 navigator.userAgent.includes('wv') ||
+                 (!window.location.hostname.includes('vercel') && 
+                  !window.location.hostname.includes('github') &&
+                  window.location.protocol !== 'http:' && 
+                  window.location.protocol !== 'https:');
+
+  console.log('🌍 [init] البيئة:', IS_APK ? '📱 APK' : '🌐 Web');
 
   let splashHidden = false;
 
@@ -14,8 +23,8 @@
     if (document.getElementById('splashScreen')) return;
     const html = `
       <div id="splashScreen">
-        <div class="splash-title">🌊 واحة الجبري</div>
-        <div class="splash-sub">الدالة الأم · نظرية السندباد الموحدة</div>
+        <div class="splash-title">واحة الجبري</div>
+        <div class="splash-sub">تراث اليمن العريق · نظرية السندباد الموحدة</div>
         <div class="spinner"></div>
         <style>
           #splashScreen { position: fixed; top:0; left:0; width:100%; height:100%; background:#0a0a0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:999999; transition: opacity 0.6s ease; font-family: 'Cairo', sans-serif; }
@@ -42,134 +51,156 @@
   }
 
   function bustCache(url) {
+    if (IS_APK) return url;
     const sep = url.includes('?') ? '&' : '?';
     return url + sep + '_t=' + Date.now();
   }
 
   function safelyExecuteScripts(container) {
-    const scripts = container.querySelectorAll('script');
+    const scripts = Array.from(container.querySelectorAll('script'));
     scripts.forEach(oldScript => {
       try {
-        const src = oldScript.src || '';
-        const content = oldScript.textContent || '';
-        if (src) {
-          const existing = document.querySelector(`script[src="${src}"]`);
-          if (!existing) {
-            const newScript = document.createElement('script');
-            newScript.src = src;
-            newScript.async = false;
-            document.head.appendChild(newScript);
-          }
-        } else if (content.trim()) {
-          const newScript = document.createElement('script');
-          newScript.textContent = content;
-          document.head.appendChild(newScript);
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        if (oldScript.src) {
+          newScript.src = bustCache(oldScript.src);
+        } else {
+          newScript.textContent = oldScript.textContent;
         }
+        document.head.appendChild(newScript);
+        oldScript.remove();
       } catch (e) {
         console.warn('⚠️ [init] تخطي سكربت:', e.message);
       }
     });
   }
 
-  function loadHeader() {
-    const placeholder = document.getElementById('header-placeholder');
+  // ================================================================
+  //  ✅ تحميل HTML مع XHR + timeout
+  // ================================================================
+  function loadHTMLFile(placeholder, filename, onSuccess, onFail) {
     if (!placeholder) {
-      console.warn('⚠️ [header] placeholder غير موجود');
-      setTimeout(hideSplash, 500);
+      if (onFail) onFail(new Error('placeholder not found'));
       return;
     }
     if (placeholder.dataset.loaded === 'true') {
-      setTimeout(hideSplash, 500);
+      if (onSuccess) onSuccess();
       return;
     }
-    console.log('📄 [header] جاري التحميل...');
-    fetch(bustCache('header.html'))
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
-      .then(html => {
-        placeholder.innerHTML = html;
-        placeholder.dataset.loaded = 'true';
-        safelyExecuteScripts(placeholder);
-        console.log('✅ [header] تم التحميل');
+
+    console.log(`📄 [${filename}] جاري التحميل...`);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', bustCache(filename), true);
+    xhr.timeout = 5000;
+    
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status === 0) {
+          try {
+            placeholder.innerHTML = xhr.responseText;
+            placeholder.dataset.loaded = 'true';
+            safelyExecuteScripts(placeholder);
+            console.log(`✅ [${filename}] تم التحميل عبر XHR`);
+            if (onSuccess) onSuccess();
+          } catch(e) {
+            console.error(`❌ [${filename}] خطأ في المعالجة:`, e);
+            if (onFail) onFail(e);
+          }
+        } else {
+          console.error(`❌ [${filename}] فشل XHR: HTTP ${xhr.status}`);
+          if (onFail) onFail(new Error('HTTP ' + xhr.status));
+        }
+      }
+    };
+    
+    xhr.ontimeout = function() {
+      console.error(`⏰ [${filename}] انتهت المهلة`);
+      if (onFail) onFail(new Error('Timeout'));
+    };
+    
+    xhr.onerror = function() {
+      console.error(`❌ [${filename}] خطأ في الشبكة`);
+      if (onFail) onFail(new Error('Network error'));
+    };
+    
+    xhr.send();
+  }
+
+  function loadHeader() {
+    const placeholder = document.getElementById('header-placeholder');
+    loadHTMLFile(
+      placeholder, 
+      'header.html',
+      () => {
         document.dispatchEvent(new CustomEvent('headerLoaded'));
         setTimeout(hideSplash, 300);
-      })
-      .catch(err => {
-        console.error('❌ [header] فشل:', err);
-        placeholder.innerHTML = `<div style="color:#ff6a6a;padding:20px;text-align:center;">⚠️ فشل تحميل الهيدر</div>`;
+      },
+      (err) => {
+        console.warn('⚠️ [header] تخطي التحميل:', err.message);
         setTimeout(hideSplash, 500);
-      });
+      }
+    );
   }
 
   function loadFooter() {
     const placeholder = document.getElementById('footer-placeholder');
-    if (!placeholder) return;
-    if (placeholder.dataset.loaded === 'true') return;
-    console.log('📄 [footer] جاري التحميل...');
-    fetch(bustCache('footer.html'))
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
-      .then(html => {
-        placeholder.innerHTML = html;
-        placeholder.dataset.loaded = 'true';
-        safelyExecuteScripts(placeholder);
-        console.log('✅ [footer] تم التحميل');
+    loadHTMLFile(
+      placeholder, 
+      'footer.html',
+      () => {
         document.dispatchEvent(new CustomEvent('footerLoaded'));
-      })
-      .catch(err => {
-        console.error('❌ [footer] فشل:', err);
-        placeholder.innerHTML = `<div style="color:#ff6a6a;padding:10px;text-align:center;">⚠️ فشل الفوتر</div>`;
-      });
+      },
+      (err) => {
+        console.warn('⚠️ [footer] تخطي التحميل:', err.message);
+      }
+    );
   }
 
   // ===== الروابط الديناميكية =====
   function addDynamicLinks() {
     const currentPath = window.location.pathname;
+    const currentFile = currentPath.split('/').pop() || 'index.html';
+    
     const pageLinks = {
-      '/Page1.html': { prev: null, next: '/Page2.html', up: '/research.html' },
-      '/Page2.html': { prev: '/Page1.html', next: '/Page3.html', up: '/research.html' },
-      '/Page3.html': { prev: '/Page2.html', next: '/Page4.html', up: '/research.html' },
-      '/Page4.html': { prev: '/Page3.html', next: '/Page5.html', up: '/research.html' },
-      '/Page5.html': { prev: '/Page4.html', next: '/Page6.html', up: '/research.html' },
-      '/Page6.html': { prev: '/Page5.html', next: '/Page7.html', up: '/research.html' },
-      '/Page7.html': { prev: '/Page6.html', next: '/Page8.html', up: '/research.html' },
-      '/Page8.html': { prev: '/Page7.html', next: '/Page9.html', up: '/research.html' },
-      '/Page9.html': { prev: '/Page8.html', next: '/Page10.html', up: '/research.html' },
-      '/Page10.html': { prev: '/Page9.html', next: '/Page11.html', up: '/research.html' },
-      '/Page11.html': { prev: '/Page10.html', next: '/Page12.html', up: '/research.html' },
-      '/Page12.html': { prev: '/Page11.html', next: null, up: '/research.html' },
-      '/Sanaa.html': { prev: null, next: '/Shibam.html', up: '/yemen-photo.html' },
-      '/Shibam.html': { prev: '/Sanaa.html', next: '/Soqatra.html', up: '/yemen-photo.html' },
-      '/Soqatra.html': { prev: '/Shibam.html', next: null, up: '/yemen-photo.html' },
-      '/theory-ar.html': { prev: null, next: '/theory-en.html', up: '/' },
-      '/theory-en.html': { prev: '/theory-ar.html', next: null, up: '/' }
+      'Page1.html': { prev: null, next: 'Page2.html', up: 'research.html' },
+      'Page2.html': { prev: 'Page1.html', next: 'Page3.html', up: 'research.html' },
+      'Page3.html': { prev: 'Page2.html', next: 'Page4.html', up: 'research.html' },
+      'Page4.html': { prev: 'Page3.html', next: 'Page5.html', up: 'research.html' },
+      'Page5.html': { prev: 'Page4.html', next: 'Page6.html', up: 'research.html' },
+      'Page6.html': { prev: 'Page5.html', next: 'Page7.html', up: 'research.html' },
+      'Page7.html': { prev: 'Page6.html', next: 'Page8.html', up: 'research.html' },
+      'Page8.html': { prev: 'Page7.html', next: 'Page9.html', up: 'research.html' },
+      'Page9.html': { prev: 'Page8.html', next: 'Page10.html', up: 'research.html' },
+      'Page10.html': { prev: 'Page9.html', next: 'Page11.html', up: 'research.html' },
+      'Page11.html': { prev: 'Page10.html', next: 'Page12.html', up: 'research.html' },
+      'Page12.html': { prev: 'Page11.html', next: null, up: 'research.html' },
+      'Sanaa.html': { prev: null, next: 'Shibam.html', up: 'yemen-photo.html' },
+      'Shibam.html': { prev: 'Sanaa.html', next: 'Soqatra.html', up: 'yemen-photo.html' },
+      'Soqatra.html': { prev: 'Shibam.html', next: null, up: 'yemen-photo.html' }
     };
-    const links = pageLinks[currentPath];
+    
+    const links = pageLinks[currentFile];
     if (!links) return;
     const head = document.head;
-    if (links.prev) {
-      let link = document.querySelector('link[rel="prev"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'prev'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.prev;
-    }
-    if (links.next) {
-      let link = document.querySelector('link[rel="next"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'next'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.next;
-    }
-    if (links.up) {
-      let link = document.querySelector('link[rel="up"]');
-      if (!link) { link = document.createElement('link'); link.rel = 'up'; head.appendChild(link); }
-      link.href = 'https://jabri-com.vercel.app' + links.up;
-    }
-    console.log('🔗 روابط ديناميكية مضافة لـ ' + currentPath);
+    
+    ['prev', 'next', 'up'].forEach(rel => {
+      if (links[rel]) {
+        let link = document.querySelector(`link[rel="${rel}"]`);
+        if (!link) { 
+          link = document.createElement('link'); 
+          link.rel = rel; 
+          head.appendChild(link); 
+        }
+        link.href = IS_APK ? links[rel] : 'https://jabri-com.vercel.app/' + links[rel];
+      }
+    });
+    
+    console.log('🔗 روابط ديناميكية مضافة لـ ' + currentFile);
   }
 
-  // ===== ضبط Canonical =====
   function setDynamicCanonical() {
     const currentUrl = window.location.href.split('?')[0].split('#')[0];
     let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -179,170 +210,78 @@
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.href = currentUrl;
-    console.log('🔗 Canonical: ' + currentUrl);
   }
 
-  // ================================================================
-  //  🚨 كاشف 404 التلقائي + معالجته (الحصار المطلق)
-  // ================================================================
-
+  // ===== كاشف 404 (فقط على الويب) =====
   function detect404AndHandle() {
-    // 1) كشف عبر العنوان
-    const title = document.title || '';
-    const bodyText = document.body ? document.body.innerHTML : '';
-    const is404 = title.includes('404') || bodyText.includes('404') || bodyText.includes('Not Found') || bodyText.includes('الصفحة غير موجودة');
-
-    // 2) كشف عبر performance
-    let status404 = false;
-    try {
-      if (window.performance && window.performance.getEntries) {
-        const entries = window.performance.getEntries();
-        for (let entry of entries) {
-          if (entry.name === window.location.href && entry.responseStatus === 404) {
-            status404 = true;
-            break;
-          }
-        }
-      }
-    } catch(e) {}
-
-    // 3) كشف عبر XMLHttpRequest (في حالة فشل التحميل)
-    if (!is404 && !status404) {
-      try {
-        const xhr = new XMLHttpRequest();
-        xhr.open('HEAD', window.location.href, false);
-        xhr.send();
-        if (xhr.status === 404) {
-          status404 = true;
-        }
-      } catch(e) {}
+    if (IS_APK) {
+      console.log('⏭️ [404] تم تخطي كاشف 404 (بيئة APK)');
+      return;
     }
 
-    // 4) كشف عبر كائن document (حالة الاستجابة)
-    try {
-      if (document.readyState === 'complete' && document.documentElement && document.documentElement.outerHTML) {
-        const htmlContent = document.documentElement.outerHTML;
-        if (htmlContent.includes('404') || htmlContent.includes('Not Found')) {
-          // تم الكشف
+    const is404 = document.title.includes('404') || 
+                  document.body.innerHTML.includes('404 Not Found') ||
+                  document.body.innerHTML.includes('Page Not Found');
+
+    let status404 = false;
+    if (window.performance && window.performance.getEntries) {
+      const entries = window.performance.getEntries();
+      for (let entry of entries) {
+        if (entry.name === window.location.href && entry.responseStatus === 404) {
+          status404 = true;
+          break;
         }
       }
-    } catch(e) {}
+    }
 
     if (is404 || status404) {
-      console.warn('🚨 [404] تم كشف خطأ 404 - حصار فوري');
+      console.warn('🚨 [404] تم كشف خطأ 404');
       handle404Error();
-      return true;
     }
-    return false;
   }
 
   function handle404Error() {
-    // منع التكرار
     if (sessionStorage.getItem('jabri404Handled')) return;
     sessionStorage.setItem('jabri404Handled', 'true');
 
-    // إخفاء السبلاش
     hideSplash();
 
-    // إزالة أي محتوى موجود
-    document.body.innerHTML = '';
-
-    // تشغيل موسيقى
-    try {
-      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-      audio.volume = 0.15;
-      audio.loop = true;
-      audio.play().catch(() => {});
-    } catch(e) {}
-
-    // عدد الزوار
     let count = localStorage.getItem('jabriVisitorCount');
     if (count === null) count = Math.floor(Math.random() * 80) + 20;
     else count = Number(count);
 
-    // عرض صفحة 404 مخصصة
     const div = document.createElement('div');
     div.id = 'jabri-404-overlay';
     div.style.cssText = `
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: #0a0a0f; color: #f0e6d3;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      font-family: 'Cairo', sans-serif; z-index: 999999;
-      text-align: center; padding: 20px;
-      direction: rtl;
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: #0b1a2e; color: #f0e6d3; padding: 20px 30px;
+      border-radius: 40px; border: 1px solid #b48b5a;
+      font-size: 20px; z-index: 999999;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      text-align: center; font-family: 'Cairo', sans-serif;
+      backdrop-filter: blur(12px); direction: rtl;
+      max-width: 90%;
     `;
     div.innerHTML = `
-      <div style="max-width: 500px;">
-        <div style="font-size: 6rem; margin-bottom: 10px;">🏝️</div>
-        <h1 style="color: #ffd700; font-size: 2.5rem; margin-bottom: 10px;">عذرًا، هذا الدرب غير موجود</h1>
-        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 20px;">في واحة الجبري، كل درب يؤدي إلى الحكمة... لكن هذا الدرب لم يُخلق بعد</p>
-        <div style="background: #1e293b80; padding: 20px; border-radius: 16px; border: 1px solid #d4af3740; margin-bottom: 20px;">
-          <p style="color: #6ae3ff; font-size: 1rem;">🌌 الدالة الأم: Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)</p>
-          <p style="color: #ffd700; font-size: 1rem;">🔗 Zx = Z + C + A | Z + C + A = 1</p>
-          <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">👥 الزوار: <strong style="color: #6affb5;">${count}</strong></p>
-        </div>
-        <a href="/" style="display: inline-block; padding: 14px 40px; background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border-radius: 40px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: 0.3s; border: none; cursor: pointer;" 
-           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-          🏠 العودة إلى الواحة
-        </a>
-        <p style="color: #666; font-size: 0.8rem; margin-top: 20px;">🎵 نغمات السندباد تعزف لك...</p>
-        <p style="color: #444; font-size: 0.7rem; margin-top: 10px;">سيتم تحويلك تلقائيًا خلال 10 ثوانٍ</p>
-      </div>
+      🏝️ عذرًا، هذا الدرب غير موجود في واحة الجبري.<br>
+      🌊 سيتم تحويلك إلى <strong>الواحة الرئيسية</strong> بعد 7 ثوانٍ<br>
+      👥 عدد الزوار: <strong>${count}</strong>
     `;
-    document.body.appendChild(div);
+    document.body.prepend(div);
 
-    // التوجيه إلى الواحة بعد 10 ثوانٍ
     setTimeout(() => {
-      window.location.href = '/';
-    }, 10000);
+      window.location.href = 'index.html';
+    }, 7000);
   }
 
-  // ===== المراقبة المستمرة للـ 404 =====
-  function watchFor404() {
-    // مراقبة التغييرات في DOM
-    const observer = new MutationObserver(function() {
-      const bodyText = document.body ? document.body.innerText || '' : '';
-      const titleText = document.title || '';
-      if (bodyText.includes('404') || bodyText.includes('Not Found') || titleText.includes('404')) {
-        console.warn('🚨 [404] تم كشف 404 عبر المراقبة');
-        handle404Error();
-        observer.disconnect();
-      }
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
-
-    // مراقبة تغيير عنوان الصفحة
-    const titleObserver = new MutationObserver(function() {
-      if (document.title && document.title.includes('404')) {
-        console.warn('🚨 [404] تم كشف 404 عبر عنوان الصفحة');
-        handle404Error();
-        titleObserver.disconnect();
-      }
-    });
-    const titleElement = document.querySelector('title');
-    if (titleElement) {
-      titleObserver.observe(titleElement, { characterData: true, subtree: true });
-    }
-
-    // مراقبة أخطاء fetch
-    const originalFetch = window.fetch;
-    window.fetch = function(...args) {
-      return originalFetch.apply(this, args).catch(function(err) {
-        console.warn('🚨 [fetch] خطأ في الطلب:', err);
-        return Promise.reject(err);
-      });
-    };
-  }
-
-  // ===== دالة init الرئيسية =====
+  // ===== init الرئيسية =====
   function init() {
     createSplash();
-
-    // الكشف الفوري عن 404
-    if (detect404AndHandle()) {
-      return; // توقف التنفيذ إذا تم كشف 404
+    
+    if (!IS_APK) {
+      setTimeout(detect404AndHandle, 500);
     }
-
+    
     loadHeader();
     loadFooter();
 
@@ -351,40 +290,19 @@
       addDynamicLinks();
     });
 
-    // المراقبة المستمرة
-    setTimeout(watchFor404, 100);
-
-    // مهلة أمان لإخفاء السبلاش
     setTimeout(function() {
       if (!splashHidden) {
         console.warn('⏰ انتهاء المهلة، إخفاء الشاشة قسراً');
         hideSplash();
       }
-    }, 5000);
-
-    console.log('✅ init-page-root.js - النسخة النهائية مع حصار 404');
+    }, IS_APK ? 2000 : 5000);
   }
 
-  // ===== تشغيل =====
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 
-  // ===== حماية إضافية: إعادة الكشف عند تغيير URL =====
-  let lastUrl = window.location.href;
-  setInterval(function() {
-    if (window.location.href !== lastUrl) {
-      lastUrl = window.location.href;
-      setTimeout(function() {
-        detect404AndHandle();
-      }, 500);
-    }
-  }, 2000);
-
-  console.log('🛡️ الدرع المطلق مفعل - يحاصر 404 في كل الأحوال');
-  console.log('📜 الدالة الأم: Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
-  console.log('🌌 Zx = Z + C + A | Z + C + A = 1');
-  console.log('🇾🇪 من صنعاء إلى الكون');
+  console.log('✅ init-page-root.js جاهز (v5.1 - APK Ready)');
 })();

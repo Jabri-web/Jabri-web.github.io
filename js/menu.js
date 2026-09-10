@@ -1,64 +1,78 @@
 // ============================================================
-//   menu.js - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 5.0.7 - 30 أغسطس 2026 - ثنائي اللغة + روابط مطلقة
-//   🎮 دعم مركز الألعاب + ويكيبيديا + تنزيلات مباشرة
+//   menu.js - v6.0 (APK + Web Ready)
 // ============================================================
 
 (function() {
     'use strict';
 
-    const SITE_URL = 'https://jabri-web.github.io/Jabri-com';
+    // ============================================================
+    //   🌍 كشف البيئة
+    // ============================================================
+    const IS_APK = window.location.protocol === 'file:' || 
+                   navigator.userAgent.includes('wv') ||
+                   (!window.location.hostname.includes('vercel') && 
+                    !window.location.hostname.includes('github') &&
+                    window.location.protocol !== 'http:' && 
+                    window.location.protocol !== 'https:');
+
+    console.log('🌍 [menu.js] البيئة:', IS_APK ? '📱 APK' : '🌐 Web');
+
+    const SITE_URL = IS_APK ? '.' : 'https://jabri-web.github.io/Jabri-com';
+    
     const currentPath = window.location.pathname;
     let langDir = '';
     let isArabic = true;
 
-    // تحديد اللغة من الرابط
     if (currentPath.startsWith('/ar/')) {
         langDir = '/ar';
         isArabic = true;
     } else if (currentPath.startsWith('/en/')) {
         langDir = '/en';
         isArabic = false;
-    } else {
-        langDir = '';
-        isArabic = true;
+    }
+
+    // ✅ دالة بناء الروابط
+    function buildUrl(path) {
+        if (IS_APK) {
+            return path.replace(/^\//, '');
+        }
+        return `${SITE_URL}${langDir}${path}`;
     }
 
     const MENU_TOP = [
-        { name: 'الرئيسية', nameEn: 'Home', href: `${SITE_URL}${langDir}/`, icon: '🏠' },
-        { name: 'رسالة جامعة KFUPM', nameEn: 'KFUPM Alumni Letter', href: `${SITE_URL}${langDir}/kfupm-msg.html`, icon: '🎓' },
-        { name: 'صنعاء', nameEn: "Sana'a", href: `${SITE_URL}${langDir}/Sanaa.html`, icon: '🏛️' },
-        { name: 'شبام', nameEn: 'Shibam', href: `${SITE_URL}${langDir}/Shibam.html`, icon: '🏗️' },
-        { name: 'سقطرى', nameEn: 'Socotra', href: `${SITE_URL}${langDir}/Soqatra.html`, icon: '🌴' },
-        { name: 'هندسة اعداد', nameEn: 'Number Engineering', href: `${SITE_URL}${langDir}/handsa.html`, icon: '🧮' },
-        { name: 'المجلة', nameEn: 'Journal', href: `${SITE_URL}${langDir}/journal.html`, icon: '📰' },
-        { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience', href: `${SITE_URL}${langDir}/journal2.html`, icon: '🤖' },
-        { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects Index', href: `${SITE_URL}${langDir}/jabri-projects.html`, icon: '📦' },
-        { name: 'الفاحص', nameEn: 'Diagnose', href: `${SITE_URL}${langDir}/diagnose.html`, icon: '🔍' },
-        { name: 'واتساب الواحة', nameEn: 'Waha WhatsApp', href: `${SITE_URL}${langDir}/publish/publish.html`, icon: '💬' },
-        { name: 'مستكشف الواحة', nameEn: 'Explore', href: `${SITE_URL}${langDir}/explore.html`, icon: '🗂️' },
-        { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', href: `${SITE_URL}${langDir}/journal3.html`, icon: '✉️' },
-        { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', href: `${SITE_URL}${langDir}/Pages-Researches.html`, icon: '🧮' },
-        { name: 'حاسبة النظرية الموحدة', nameEn: 'Unified Theory Calculator', href: `${SITE_URL}${langDir}/unified-calc.html`, icon: '🌌' },
-        { name: 'معرض صنعاء', nameEn: 'Sanaa Gallery', href: `${SITE_URL}${langDir}/gallery.html`, icon: '🖼️' },
-        { name: '🎮 مركز الألعاب', nameEn: '🎮 Games Hub', href: `${SITE_URL}${langDir}/game/game-auto.html`, icon: '🎮' },
+        { name: 'الرئيسية', nameEn: 'Home', path: '/', icon: '🏠' },
+        { name: 'رسالة جامعة KFUPM', nameEn: 'KFUPM Alumni Letter', path: '/kfupm-msg.html', icon: '🎓' },
+        { name: 'صنعاء', nameEn: "Sana'a", path: '/Sanaa.html', icon: '🏛️' },
+        { name: 'شبام', nameEn: 'Shibam', path: '/Shibam.html', icon: '🏗️' },
+        { name: 'سقطرى', nameEn: 'Socotra', path: '/Soqatra.html', icon: '🌴' },
+        { name: 'هندسة اعداد', nameEn: 'Number Engineering', path: '/handsa.html', icon: '🧮' },
+        { name: 'المجلة', nameEn: 'Journal', path: '/journal.html', icon: '📰' },
+        { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience', path: '/journal2.html', icon: '🤖' },
+        { name: 'فهرس مشاريع الجبري', nameEn: 'Jabri Projects Index', path: '/jabri-projects.html', icon: '📦' },
+        { name: 'الفاحص', nameEn: 'Diagnose', path: '/diagnose.html', icon: '🔍' },
+        { name: 'واتساب الواحة', nameEn: 'Waha WhatsApp', path: '/publish/publish.html', icon: '💬' },
+        { name: 'مستكشف الواحة', nameEn: 'Explore', path: '/explore.html', icon: '🗂️' },
+        { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', path: '/journal3.html', icon: '✉️' },
+        { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', path: '/Pages-Researches.html', icon: '🧮' },
+        { name: 'حاسبة النظرية الموحدة', nameEn: 'Unified Theory Calculator', path: '/unified-calc.html', icon: '🌌' },
+        { name: 'معرض صنعاء', nameEn: 'Sanaa Gallery', path: '/gallery.html', icon: '🖼️' },
+        { name: '🎮 مركز الألعاب', nameEn: '🎮 Games Hub', path: '/game/game-auto.html', icon: '🎮' },
     ];
 
     const MENU_MIDDLE = [
-        { name: 'البحوث', nameEn: 'Research', href: `${SITE_URL}${langDir}/research.html`, icon: '🔬' },
-        { name: 'الدالة الأم Z(x)', nameEn: 'Mother Function Z(x)', href: `${SITE_URL}${langDir}/theory-ar.html`, icon: '📐' },
-        { name: 'نظرية السندباد الموحدة', nameEn: 'Sinbad Unified Theory', href: `${SITE_URL}${langDir}/Sindbad-theory.html`, icon: '🌌' },
-        { name: 'المكتبة', nameEn: 'Library', href: `${SITE_URL}${langDir}/Office.html`, icon: '📚' },
+        { name: 'البحوث', nameEn: 'Research', path: '/research.html', icon: '🔬' },
+        { name: 'الدالة الأم Z(x)', nameEn: 'Mother Function Z(x)', path: '/theory-ar.html', icon: '📐' },
+        { name: 'نظرية السندباد الموحدة', nameEn: 'Sinbad Unified Theory', path: '/Sindbad-theory.html', icon: '🌌' },
+        { name: 'المكتبة', nameEn: 'Library', path: '/Office.html', icon: '📚' },
     ];
 
-    // ألعاب مركز الألعاب
     const GAMES = [
-        { name: '♟️ الشطرنج', nameEn: '♟️ Chess', href: `${SITE_URL}${langDir}/game/chess.html`, icon: '♟️' },
-        { name: '❌⭕ تيك تاك تو', nameEn: '❌⭕ Tic Tac Toe', href: `${SITE_URL}${langDir}/game/tic-tac-toe.html`, icon: '❌' },
-        { name: '🧠 لعبة الذاكرة', nameEn: '🧠 Memory Game', href: `${SITE_URL}${langDir}/game/memory.html`, icon: '🧠' },
-        { name: '🧩 سودوكو', nameEn: '🧩 Sudoku', href: `${SITE_URL}${langDir}/game/sudoku.html`, icon: '🧩' },
-        { name: '🎯 ألغاز الصور', nameEn: '🎯 Picture Puzzle', href: `${SITE_URL}${langDir}/game/puzzle.html`, icon: '🎯' },
-        { name: '🪢 الرجل المشنوق', nameEn: '🪢 Hangman', href: `${SITE_URL}${langDir}/game/hangman.html`, icon: '🪢' },
+        { name: '♟️ الشطرنج', nameEn: '♟️ Chess', path: '/game/chess.html', icon: '♟️' },
+        { name: '❌⭕ تيك تاك تو', nameEn: '❌⭕ Tic Tac Toe', path: '/game/tic-tac-toe.html', icon: '❌' },
+        { name: '🧠 لعبة الذاكرة', nameEn: '🧠 Memory Game', path: '/game/memory.html', icon: '🧠' },
+        { name: '🧩 سودوكو', nameEn: '🧩 Sudoku', path: '/game/sudoku.html', icon: '🧩' },
+        { name: '🎯 ألغاز الصور', nameEn: '🎯 Picture Puzzle', path: '/game/puzzle.html', icon: '🎯' },
+        { name: '🪢 الرجل المشنوق', nameEn: '🪢 Hangman', path: '/game/hangman.html', icon: '🪢' },
     ];
 
     let MENU_BOTTOM = [];
@@ -69,7 +83,7 @@
     function getChatHistory() {
         try {
             const chats = JSON.parse(localStorage.getItem('jabri_chat_history') || '[]');
-            return chats.slice(0, 10);
+            return Array.isArray(chats) ? chats.slice(0, 10) : [];
         } catch(e) {
             return [];
         }
@@ -91,33 +105,38 @@
     };
 
     function updateBottomMenu() {
-        const chatHistory = getChatHistory();
-        MENU_BOTTOM = chatHistory.map((chat) => {
-            const summary = chat.message.length > 30 ? chat.message.substring(0, 30) + '...' : chat.message;
-            return {
-                name: `💬 ${summary}`,
-                nameEn: `💬 ${summary}`,
-                href: '#',
-                icon: '💬',
-                isChat: true,
-                chatData: chat
-            };
-        });
+        try {
+            const chatHistory = getChatHistory();
+            MENU_BOTTOM = chatHistory.map((chat) => {
+                const summary = chat.message.length > 30 ? chat.message.substring(0, 30) + '...' : chat.message;
+                return {
+                    name: `💬 ${summary}`,
+                    nameEn: `💬 ${summary}`,
+                    href: '#',
+                    icon: '💬',
+                    isChat: true,
+                    chatData: chat
+                };
+            });
 
-        if (MENU_BOTTOM.length === 0) {
-            MENU_BOTTOM = [
-                { name: '💬 اضغط هنا لبدء المحادثة', nameEn: '💬 Click here to start chatting', href: '#', icon: '💬', isChat: true },
-            ];
+            if (MENU_BOTTOM.length === 0) {
+                MENU_BOTTOM = [
+                    { name: '💬 اضغط هنا لبدء المحادثة', nameEn: '💬 Click here to start chatting', href: '#', icon: '💬', isChat: true },
+                ];
+            }
+            buildDropdownMenu();
+            buildMainMenu();
+        } catch(e) {
+            console.warn('⚠️ [menu] فشل تحديث القائمة:', e);
         }
-        buildDropdownMenu();
-        buildMainMenu();
     }
 
     // ============================================================
     //   بناء عناصر القائمة
     // ============================================================
     function buildMenuItem(item) {
-        const isActive = window.location.pathname.includes(item.href.split('/').pop()) && item.href !== '#';
+        const finalHref = item.href || buildUrl(item.path || '/');
+        const isActive = !IS_APK && window.location.pathname.includes(finalHref.split('/').pop()) && finalHref !== '#';
         const activeStyle = isActive ? 'background:rgba(255,215,0,0.08);border-right:3px solid #ffd700;' : '';
         
         const isChatItem = item.isChat === true;
@@ -130,7 +149,7 @@
         const target = item.external ? ' target="_blank" rel="noopener"' : '';
         
         return `
-            <a href="${item.href}"${target}${onClick} style="color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.85rem;${activeStyle}${cursor}">
+            <a href="${finalHref}"${target}${onClick} style="color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.85rem;${activeStyle}${cursor}">
                 <span style="font-size:1rem;">${item.icon || '📄'}</span> ${isArabic ? item.name : item.nameEn}
             </a>
         `;
@@ -145,46 +164,36 @@
 
         let html = '';
 
-        // قسم الأساسيات
+        // الأساسيات
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,215,0,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ffd700; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 ${isArabic ? 'الأساسيات' : 'Essentials'}</div>`;
         MENU_TOP.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // قسم الألعاب
+        // الألعاب
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(0,255,128,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#00ff88; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🎮 ${isArabic ? 'مركز الألعاب' : 'Games Hub'}</div>`;
         GAMES.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // قسم النظرية
+        // النظرية
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 ${isArabic ? 'النظرية' : 'Theory'}</div>`;
         MENU_MIDDLE.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // ======== قسم التنزيلات (محدث) ========
+        // التنزيلات (مخفية في APK)
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
-        html += buildMenuItem({ 
-            name: '📱 تنزيل APK', 
-            nameEn: '📱 Download APK', 
-            href: '#', 
-            icon: '📱', 
-            isDownload: true, 
-            type: 'apk' 
-        });
-        html += buildMenuItem({ 
-            name: '📦 تنزيل ZIP', 
-            nameEn: '📦 Download ZIP', 
-            href: '#', 
-            icon: '📦', 
-            isDownload: true, 
-            type: 'zip' 
-        });
+        if (!IS_APK) {
+            html += buildMenuItem({ name: '📱 تنزيل APK', nameEn: '📱 Download APK', href: '#', icon: '📱', isDownload: true, type: 'apk' });
+            html += buildMenuItem({ name: '📦 تنزيل ZIP', nameEn: '📦 Download ZIP', href: '#', icon: '📦', isDownload: true, type: 'zip' });
+        } else {
+            html += `<div style="color:#888; font-size:0.75rem; padding:6px 12px; text-align:center;">✅ ${isArabic ? 'أنت تستخدم التطبيق بالفعل' : 'You are already using the app'}</div>`;
+        }
         html += `</div>`;
 
-        // ======== قسم ويكيبيديا (جديد) ========
+        // ويكيبيديا
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📖 ${isArabic ? 'ويكيبيديا' : 'Wikipedia'}</div>`;
         html += buildMenuItem({
@@ -197,7 +206,7 @@
         });
         html += `</div>`;
 
-        // قسم المحادثات
+        // المحادثات
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">💬 ${isArabic ? 'آخر المحادثات' : 'Recent Chats'} <span style="font-size:0.6rem; opacity:0.6;">(${MENU_BOTTOM.length})</span></div>`;
         MENU_BOTTOM.forEach(item => { html += buildMenuItem(item); });
@@ -206,9 +215,7 @@
         // إنجازات اليوم
         const today = new Date();
         const dateStr = today.toLocaleDateString(isArabic ? 'ar-EG' : 'en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+            year: 'numeric', month: 'long', day: 'numeric'
         });
         
         html += `
@@ -245,11 +252,11 @@
         `;
 
         nav.innerHTML = html;
-        highlightActiveLink();
+        if (!IS_APK) highlightActiveLink();
     }
 
     // ============================================================
-    //   القائمة المنسدلة (Dropdown)
+    //   القائمة المنسدلة
     // ============================================================
     function buildDropdownMenu() {
         const dropdown = document.getElementById('menu-dropdown');
@@ -257,8 +264,8 @@
 
         let html = `
             <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
-                <a href="${SITE_URL}/ar/" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇾🇪 عربي</a>
-                <a href="${SITE_URL}/en/" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇬🇧 English</a>
+                <a href="${IS_APK ? 'index.html' : SITE_URL + '/ar/'}" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇾🇪 عربي</a>
+                <a href="${IS_APK ? 'index.html' : SITE_URL + '/en/'}" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇬🇧 English</a>
             </div>
         `;
 
@@ -266,7 +273,7 @@
         html += `<div style="border-bottom:2px solid rgba(255,215,0,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#ffd700; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 ${isArabic ? 'الأساسيات' : 'Essentials'}</div>`;
         MENU_TOP.forEach(item => {
-            html += `<a href="${item.href}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            html += `<a href="${buildUrl(item.path)}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
                         <span style="font-size:0.9rem;">${item.icon}</span> ${isArabic ? item.name : item.nameEn}
                      </a>`;
         });
@@ -276,7 +283,7 @@
         html += `<div style="border-bottom:2px solid rgba(0,255,128,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#00ff88; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🎮 ${isArabic ? 'مركز الألعاب' : 'Games Hub'}</div>`;
         GAMES.forEach(item => {
-            html += `<a href="${item.href}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(0,255,128,0.03);font-size:0.82rem;">
+            html += `<a href="${buildUrl(item.path)}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(0,255,128,0.03);font-size:0.82rem;">
                         <span style="font-size:0.9rem;">${item.icon}</span> ${isArabic ? item.name : item.nameEn}
                      </a>`;
         });
@@ -286,22 +293,24 @@
         html += `<div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 ${isArabic ? 'النظرية' : 'Theory'}</div>`;
         MENU_MIDDLE.forEach(item => {
-            html += `<a href="${item.href}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
+            html += `<a href="${buildUrl(item.path)}" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
                         <span style="font-size:0.9rem;">${item.icon}</span> ${isArabic ? item.name : item.nameEn}
                      </a>`;
         });
         html += `</div>`;
 
         // التنزيلات
-        html += `<div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;">`;
-        html += `<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
-        html += `<div onclick="window.downloadWaha('apk')" style="color:#fff;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.82rem;border-bottom:1px solid rgba(255,106,106,0.03);">
-                    <span>📱</span> ${isArabic ? 'تنزيل APK' : 'Download APK'}
-                 </div>`;
-        html += `<div onclick="window.downloadWaha('zip')" style="color:#fff;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.82rem;border-bottom:1px solid rgba(255,106,106,0.03);">
-                    <span>📦</span> ${isArabic ? 'تنزيل ZIP' : 'Download ZIP'}
-                 </div>`;
-        html += `</div>`;
+        if (!IS_APK) {
+            html += `<div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;">`;
+            html += `<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
+            html += `<div onclick="window.downloadWaha('apk')" style="color:#fff;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.82rem;border-bottom:1px solid rgba(255,106,106,0.03);">
+                        <span>📱</span> ${isArabic ? 'تنزيل APK' : 'Download APK'}
+                     </div>`;
+            html += `<div onclick="window.downloadWaha('zip')" style="color:#fff;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.82rem;border-bottom:1px solid rgba(255,106,106,0.03);">
+                        <span>📦</span> ${isArabic ? 'تنزيل ZIP' : 'Download ZIP'}
+                     </div>`;
+            html += `</div>`;
+        }
 
         // ويكيبيديا
         html += `<div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">`;
@@ -347,7 +356,7 @@
     }
 
     // ============================================================
-    //   القائمة汉堡 (Hamburger Menu)
+    //   القائمة汉堡
     // ============================================================
     function buildHamburgerMenu() {
         const oldMenu = document.getElementById('hamburger-menu');
@@ -398,6 +407,7 @@
             border-radius: 16px !important;
             padding: 18px 16px !important;
             min-width: 300px !important;
+            max-width: 90vw !important;
             max-height: 70vh !important;
             overflow-y: auto !important;
             z-index: 9998 !important;
@@ -458,13 +468,17 @@
     };
 
     window.downloadWaha = function(type) {
+        if (IS_APK) {
+            alert(isArabic ? '✅ أنت تستخدم التطبيق بالفعل!' : '✅ You are already using the app!');
+            return;
+        }
+        
         const defaultName = type === 'apk' ? 'jabri-heaven-v2.0.apk' : 'jabri-heaven-v2.0.zip';
         const folder = prompt(isArabic ? '📁 ادخل اسم المجلد للحفظ:' : '📁 Enter folder name to save:', '11-Jabri-com/apk');
         if (folder === null) return;
         const filename = prompt(isArabic ? '📝 ادخل اسم الملف:' : '📝 Enter file name:', defaultName);
         if (filename === null) return;
 
-        // روابط التنزيل حسب النوع
         const baseDownloadUrl = 'https://jabri-web.github.io/Jabri-com/11-Jabri-com/apk';
         const downloadUrl = type === 'apk' 
             ? `${baseDownloadUrl}/jabri-heaven-v2.0.apk`
@@ -483,23 +497,17 @@
     };
 
     // ============================================================
-    //   تحديث تلقائي
-    // ============================================================
-    setInterval(() => {
-        updateBottomMenu();
-    }, 30000);
-
-    // ============================================================
     //   🚀 التشغيل
     // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
-        updateBottomMenu();
-        buildMainMenu();
-        buildHamburgerMenu();
-        console.log('🌴 menu.js v5.0.7 - Bilingual + Wikipedia + Downloads');
-        console.log('📅 30 أغسطس 2026');
-        console.log('📖 Wikipedia link added');
-        console.log('⬇️ APK & ZIP downloads with custom folder/filename');
+        try {
+            updateBottomMenu();
+            buildMainMenu();
+            buildHamburgerMenu();
+            console.log('🌴 menu.js v6.0.0 - ' + (IS_APK ? '📱 APK Mode' : '🌐 Web Mode'));
+        } catch(e) {
+            console.error('❌ [menu] خطأ في التشغيل:', e);
+        }
     });
 
     window.updateChatMenu = updateBottomMenu;
