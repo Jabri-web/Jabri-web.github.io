@@ -1,78 +1,87 @@
-const CACHE_NAME = 'heaven-aljabri-v4';
+// ================================================================
+//   service-worker.js - v5 (مبسّط: index + header فقط)
+// ================================================================
+
+const CACHE_NAME = 'heaven-aljabri-v5';
 
 const FILES_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/logo.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/image/Jabri-photo.webp',
-  '/music.mp3',
-  '/Sindbad-Brdoni.html',
-  '/Nezar.html',
-  '/offline.html',
-  '/Page1.html',
-  '/Page2.html',
-  '/Page11.html',
-  '/Page12.html',
-  '/Yemen-library.html',
-  '/Router-all.html',
-  '/Dbase.html',
-  '/research.html',
-  '/Pages-Researches.html',
-  '/Office.html',
-  '/Check.html',
-  '/about.html',
-  '/about-ar.html',
-  '/about-en.html',
-  '/about-waha.html',
-  '/Author-cv.html',
-  '/cv-2026a.html',
-  '/cv-2026e.html',
-  '/profile.html',
-  '/profile-en.html',
-  '/all-links.html',
-  '/theory-ar.html',
-  '/theory-en.html',
-  '/Sanaa.html',
-  '/Shibam.html',
-  '/Soqatra.html',
-  '/contact.html',
-  '/privacy-policy.html',
-  '/sitemap.xml',
-  '/robots.txt',
-  '/js/init-page-root.js',
-  '/js/menu.js',
-  '/favicon.ico'
+  './',
+  'index.html',
+  'header.html'
 ];
 
+// ================================================================
+//   التثبيت
+// ================================================================
 self.addEventListener('install', event => {
+  console.log('📦 [SW v5] بدء التثبيت...');
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.all(
+        FILES_TO_CACHE.map(url => {
+          return cache.add(url).then(() => {
+            console.log(`✅ [SW] تم تخزين: ${url}`);
+          }).catch(err => {
+            console.warn(`⚠️ [SW] فشل تخزين: ${url}`, err.message);
+          });
+        })
+      );
+    }).then(() => {
+      console.log('✅ [SW v5] تم التثبيت');
+      return self.skipWaiting();
+    })
   );
-  self.skipWaiting();
 });
 
+// ================================================================
+//   التفعيل
+// ================================================================
 self.addEventListener('activate', event => {
+  console.log('🔄 [SW v5] بدء التفعيل...');
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    ).then(() => {
-      self.clients.matchAll().then(clients => {
-        clients.forEach(client => {
-          client.postMessage({ type: 'UPDATE_AVAILABLE', version: CACHE_NAME });
-        });
-      });
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => {
+          console.log(`🗑️ [SW] حذف الكاش القديم: ${k}`);
+          return caches.delete(k);
+        })
+      );
+    }).then(() => {
+      console.log('✅ [SW v5] تم التفعيل');
+      return self.clients.claim();
     })
   );
-  self.clients.claim();
 });
 
+// ================================================================
+//   الجلب (Fetch)
+// ================================================================
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+  
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request).catch(() => caches.match('/offline.html'));
+    caches.match(event.request).then(cachedResponse => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200 &&
+            event.request.url.startsWith('http')) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          if (event.request.mode === 'navigate') {
+            return caches.match('index.html');
+          }
+        });
     })
   );
 });
+
+console.log('🌴 [SW v5] جاهز — index.html + header.html فقط');
