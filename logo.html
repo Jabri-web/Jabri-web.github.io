@@ -742,6 +742,45 @@
     }
     </script>
     
+    
+    
+    <!-- السكربتات -->
+<script src="js/init-page-root.js"></script>
+<script src="js/menu.js"></script>
+
+<!-- SW Registration (نسخة واحدة فقط) -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => {
+                    reg.addEventListener('updatefound', () => {
+                        const newWorker = reg.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' &&
+                                navigator.serviceWorker.controller) {
+                                if (confirm('يتوفر تحديث جديد لواحة الجبري. هل تريد التحديث الآن؟')) {
+                                    newWorker.postMessage({ action: 'skipWaiting' });
+                                }
+                            }
+                        });
+                    });
+                })
+                .catch(err => console.error('❌ [SW] فشل:', err));
+        });
+        
+        let refreshing;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
+    }
+</script>
+    
+    
+    
+    
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     

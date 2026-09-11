@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- إشارة لجوجل بأن الموقع يحتوي على بحث علمي -->
-<meta name="citation_title" content="نظرية السندباد الموحدة Z+C+A=1" />
-<meta name="citation_author" content="عبدالله محمد ناصر الجبري" />
-<meta name="citation_publication_date" content="2026" />
+    <meta name="citation_title" content="نظرية السندباد الموحدة Z+C+A=1" />
+    <meta name="citation_author" content="عبدالله محمد ناصر الجبري" />
+    <meta name="citation_publication_date" content="2026" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ============================================ -->
-    <!--              HEADER (SEO + Meta)             -->
-    <!-- ============================================ -->
-
-    <!-- ✅ السماح بالفهرسة (حذفنا noindex) -->
+    <!-- ✅ السماح بالفهرسة -->
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- ✅ الكونيكال الصحيح (يشير لـ Page4) -->
     <link rel="canonical" href="https://jabri-com.vercel.app/Page4.html" />
 
-    <!-- اللغات -->
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
+    <!-- ❌ حذفنا hreflang (كانت تشير إلى / بشكل خاطئ) -->
 
     <!-- SEO أساسي -->
     <title>واحة الجبري | Heaven Al-Jabri - المكتبة والبحوث (Page4)</title>
@@ -30,16 +22,13 @@
     <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
     <link rel="author" href="https://jabri-com.vercel.app/about.html" />
 
-    <!-- Dublin Core -->
     <meta name="DC.title" content="واحة الجبري | Heaven Al-Jabri" />
     <meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري" />
     <meta name="DC.subject" content="تراث اليمن, الرياضيات, الفيزياء النظرية" />
     <meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري" />
 
-    <!-- ملكية جوجل -->
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -48,7 +37,6 @@
         gtag('config', 'G-EQBMJKBC24');
     </script>
 
-    <!-- Open Graph + Twitter -->
     <meta property="og:locale" content="ar_YE">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
@@ -62,7 +50,6 @@
     <meta name="twitter:description" content="تراث اليمن العريق وأبحاث الرياضيات والفيزياء">
     <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
 
-    <!-- JSON-LD (البيانات المنظمة) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -154,182 +141,38 @@
     }
     </script>
 
-    <!-- الأنماط -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0a0a0f;
-            color: #e0e0e0;
-            font-family: 'Cairo', Tahoma, Arial, sans-serif;
-            text-align: center;
-            transition: 0.3s;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        body.en {
-            direction: ltr;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        /* زر تبديل اللغة */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            z-index: 9999;
-            display: flex;
-            gap: 4px;
-            background: #1a1a2e;
-            padding: 6px 12px;
-            border-radius: 30px;
-            border: 1px solid #2a2a4e;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e0e0e0; font-family: 'Cairo', Tahoma, Arial, sans-serif; text-align: center; transition: 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
+        .lang-switch { position: fixed; top: 20px; z-index: 9999; display: flex; gap: 4px; background: #1a1a2e; padding: 6px 12px; border-radius: 30px; border: 1px solid #2a2a4e; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         body.ar .lang-switch { left: 20px; }
         body.en .lang-switch { right: 20px; }
-
-        .lang-switch button {
-            background: none;
-            border: none;
-            color: #8888bb;
-            padding: 6px 14px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .lang-switch button:hover {
-            color: #d0d0ea;
-            background: #2a2a4e;
-        }
-
-        .lang-switch button.active {
-            background: #6ae3ff;
-            color: #0b0b16;
-        }
-
-        .lang-switch button.active:hover {
-            background: #5ad0f0;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            background: linear-gradient(135deg, #0a3d62 0%, #1e6f9f 100%);
-            padding: 60px 20px;
-            border-bottom: 3px solid #6ae3ff;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('Image/Yemen2026.png') center/cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #6ae3ff;
-            box-shadow: 0 0 20px rgba(106, 227, 255, 0.5);
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .header .subtitle {
-            font-size: 1.2rem;
-            color: #b8e8ff;
-            margin: 5px 0;
-        }
-
-        .header .equation {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6ae3ff;
-            margin-top: 15px;
-        }
-
-        /* ===== MAIN ===== */
-        .container {
-            flex: 1;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #6ae3ff;
-            margin: 40px 0 20px;
-            text-align: center;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .card {
-            background: #1a1a2e;
-            border: 2px solid #2a2a3e;
-            border-radius: 15px;
-            padding: 25px;
-            text-decoration: none;
-            color: #e0e0e0;
-            transition: 0.3s;
-            display: block;
-            text-align: center;
-        }
-
-        .card:hover {
-            border-color: #6ae3ff;
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(106, 227, 255, 0.2);
-        }
-
+        .lang-switch button { background: none; border: none; color: #8888bb; padding: 6px 14px; border-radius: 25px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; font-family: inherit; }
+        .lang-switch button:hover { color: #d0d0ea; background: #2a2a4e; }
+        .lang-switch button.active { background: #6ae3ff; color: #0b0b16; }
+        .header { background: linear-gradient(135deg, #0a3d62 0%, #1e6f9f 100%); padding: 60px 20px; border-bottom: 3px solid #6ae3ff; position: relative; overflow: hidden; text-align: center; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('Image/Yemen2026.png') center/cover; opacity: 0.1; z-index: 0; }
+        .header-content { position: relative; z-index: 1; }
+        .header img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #6ae3ff; box-shadow: 0 0 20px rgba(106, 227, 255, 0.5); margin-bottom: 20px; }
+        .header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .header .subtitle { font-size: 1.2rem; color: #b8e8ff; margin: 5px 0; }
+        .header .equation { font-size: 1.5rem; font-weight: bold; color: #6ae3ff; margin-top: 15px; }
+        .container { flex: 1; max-width: 1200px; margin: 40px auto; padding: 0 20px; width: 100%; }
+        .section-title { font-size: 2rem; color: #6ae3ff; margin: 40px 0 20px; text-align: center; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 30px 0; }
+        .card { background: #1a1a2e; border: 2px solid #2a2a3e; border-radius: 15px; padding: 25px; text-decoration: none; color: #e0e0e0; transition: 0.3s; display: block; text-align: center; }
+        .card:hover { border-color: #6ae3ff; transform: translateY(-8px); box-shadow: 0 10px 30px rgba(106, 227, 255, 0.2); }
         .card-icon { font-size: 3rem; margin-bottom: 15px; }
         .card h3 { color: #6ae3ff; font-size: 1.3rem; margin-bottom: 10px; }
         .card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
-
-        /* ===== اللغة ===== */
         .ar-text { display: inline; }
         .en-text { display: none; }
         body.en .ar-text { display: none; }
         body.en .en-text { display: inline; }
-
-        /* ===== متفرقات ===== */
         @media (max-width: 600px) {
             .lang-switch { top: 10px; padding: 4px 8px; }
             body.ar .lang-switch { left: 10px; }
@@ -343,13 +186,11 @@
 </head>
 <body>
 
-    <!-- زر تبديل اللغة -->
     <div class="lang-switch">
         <button id="lang-ar" class="active" onclick="window.toggleLang()">🇸🇦 عربي</button>
         <button id="lang-en" onclick="window.toggleLang()">🇬🇧 English</button>
     </div>
 
-    <!-- الهيدر -->
     <header class="header">
         <div class="header-content">
             <img src="Image/Jabri-photo.png" alt="م/ عبدالله الجبري">
@@ -369,10 +210,8 @@
         </div>
     </header>
 
-    <!-- المحتوى -->
     <main class="container">
 
-        <!-- قسم المشاريع -->
         <h2 class="section-title">
             <span class="ar-text">المشاريع والبوابات</span>
             <span class="en-text">Projects & Portals</span>
@@ -411,7 +250,6 @@
             </a>
         </div>
 
-        <!-- قسم تراث اليمن -->
         <h2 class="section-title">
             <span class="ar-text">تراث اليمن</span>
             <span class="en-text">Yemen Heritage</span>
@@ -432,7 +270,6 @@
             </a>
         </div>
 
-        <!-- قسم المشاريع 1→12 -->
         <h2 class="section-title">
             <span class="ar-text">سندباد اليمن - البوابة العامة 1→12</span>
             <span class="en-text">Yemen Sindbad - Main Gateway 1→12</span>
@@ -489,7 +326,6 @@
             </div>
         </div>
 
-        <!-- قسم السيرة الذاتية -->
         <div style="max-width: 900px; margin: 30px auto;">
             <div style="background: #1a1a1a; border-radius: 12px; border: 2px solid #333; padding: 15px;">
                 <div style="font-size: 18px; font-weight: bold; color: #ff3333; text-align: center; margin-bottom: 12px;">
@@ -504,7 +340,6 @@
                     <span class="ar-text">السيرة بالانجليزية</span>
                     <span class="en-text">English CV</span>
                 </a>
-                
                 <a href="/logo.html" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 10px 0; padding: 18px; background: #000; color: #fff; font-size: 16px; font-weight: bold; border-radius: 12px; text-decoration: none; transition: 0.3s; border: 2px solid #333;">
                     <span class="ar-text">الواحة</span>
                     <span class="en-text">Jabri heaven</span>
@@ -514,14 +349,12 @@
 
     </main>
 
-    <!-- ===== الفوتر (مبسط) ===== -->
     <footer id="site-footer" style="background:#0a0a0f;color:#e8e8f0;padding:30px 15px;border-top:1px solid #2a2a3e;">
       <p id="copyright" style="margin-top:20px;color:#666;font-size:14px;text-align:center;">
         © 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة
       </p>
     </footer>
 
-    <!-- سكريبت تبديل اللغة -->
     <script>
         function applyLanguage(lang) {
             document.documentElement.lang = lang;
@@ -543,7 +376,6 @@
         });
     </script>
 
-    <!-- ===== السطور الأربعة الأخيرة ===== -->
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/init-page-root.js"></script>
