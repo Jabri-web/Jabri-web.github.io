@@ -346,7 +346,7 @@
         <!-- وسائط متعددة (صور، صوت، فيديو) -->
         <div class="media-gallery">
 
-            <!-- الصور (تمت إضافة `/` قبل المسار) -->
+            <!-- الصور -->
             <div class="media-section">
                 <h4>🖼️ صور من الرحلة</h4>
                 <div class="media-grid">
@@ -365,7 +365,7 @@
                 </div>
             </div>
 
-            <!-- الصوتيات (تم إصلاح الأخطاء الإملائية والمسافات وإضافة `/`) -->
+            <!-- الصوتيات -->
             <div class="media-section">
                 <h4>🎵 مقاطع صوتية</h4>
                 <div class="media-grid audio-grid">
@@ -384,12 +384,12 @@
                 </div>
             </div>
 
-            <!-- الفيديو (تمت إضافة `/` قبل المسار) -->
+            <!-- الفيديو -->
             <div class="media-section">
                 <h4>🎬 مشاهد من الفريق</h4>
                 <div class="media-grid">
                     <div class="media-item">
-                        <video controls src="/image/sanaani.mp4" style="width:140px;">فيلم heaven2</video>
+                        <video controls src="/image/heaven2.mp4" style="width:140px;">فيلم heaven2</video>
                         <span class="media-label">heaven2.mp4</span>
                     </div>
                     <div class="media-item">
@@ -397,7 +397,7 @@
                         <span class="media-label">heaven3.mp4</span>
                     </div>
                     <div class="media-item">
-                        <video controls src="/image/sanaani1.mp4" style="width:140px;">فيلم heaven4</video>
+                        <video controls src="/image/sanaani.mp4" style="width:140px;">فيلم heaven4</video>
                         <span class="media-label">heaven4.mp4</span>
                     </div>
                 </div>
@@ -416,104 +416,95 @@
 
 <script src="/js/menu.js"></script>
     
-
+<!-- القائمة Hamburger Menu -->
 <div id="hamburger-menu" style="position: fixed !important; top: 75px !important; right: 20px !important; z-index: 9999999 !important; cursor: pointer !important; background: linear-gradient(135deg, rgb(255, 215, 0), rgb(240, 165, 0)) !important; color: rgb(10, 10, 15) !important; padding: 8px 14px !important; border-radius: 10px !important; font-size: 13px !important; font-weight: bold !important; box-shadow: rgba(255, 215, 0, 0.3) 0px 0px 20px !important; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; backdrop-filter: blur(6px) !important; border: 1px solid rgba(255, 215, 0, 0.2) !important; font-family: Cairo, Tahoma, sans-serif !important; user-select: none !important;">
-            <div style="display:flex;flex-direction:column;gap:3px;width:20px;height:14px;justify-content:center;flex-shrink:0;">
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-            </div>
-            <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">القائمة</span>
-        </div><div id="menu-dropdown" style="display: none !important; position: fixed !important; top: 125px !important; right: 20px !important; background: rgba(10, 10, 20, 0.97) !important; backdrop-filter: blur(16px) !important; border: 2px solid rgb(255, 215, 0) !important; border-radius: 16px !important; padding: 18px 16px !important; min-width: 300px !important; max-height: 70vh !important; overflow-y: auto !important; box-shadow: rgba(0, 0, 0, 0.9) 0px 15px 50px !important; z-index: 9999998 !important; flex-direction: column !important; gap: 2px !important; direction: rtl !important; font-family: Cairo, Tahoma, sans-serif !important;">
-            <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
-                <a href="/" style="color:#ffd700; padding:4px 14px; border:1px solid #ffd700; border-radius:8px; text-decoration:none; font-weight:bold; background:rgba(255,215,0,0.12); transition:0.3s; font-size:0.85rem;">🇾🇪 عربي</a>
-                <a href="/en/" style="color:#888; padding:4px 14px; border:1px solid #444; border-radius:8px; text-decoration:none; font-weight:bold; background:transparent; transition:0.3s; font-size:0.85rem;">🇬🇧 English</a>
-            </div>
-        <div style="border-bottom:2px solid rgba(255,215,0,0.15); padding-bottom:6px; margin-bottom:8px;"><div style="color:#ffd700; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 الأساسيات</div>
-                <a href="/ar/" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🏠</span> الرئيسية
-                </a>
-            
-                <a href="/ar/kfupm-msg.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🎓</span> رسالة جامعة KFUPM
-                </a>
-            
-                <a href="/ar/gallery.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📸</span> 📸 معرض اليمن
-                </a>
-            
-                <a href="/ar/diagnose.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📊</span> 📊 تشخيص المستودعات
-                </a>
-            
-                <a href="/ar/wonder.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🌌</span> 🌌 رحلة الوعي
-                </a>
-            
-                <a href="/ar/Sanaa.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🏛️</span> صنعاء
-                </a>
-            
-                <a href="/ar/Shibam.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🏗️</span> شبام
-                </a>
-            
-                <a href="/ar/Soqatra.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🌴</span> سقطرى
-                </a>
-            
-                <a href="/ar/journal.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📰</span> المجلة
-                </a>
-            
-                <a href="/ar/journal2.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🤖</span> تجربتي مع الـ AI
-                </a>
-            
-                <a href="/ar/jabri-projects.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🤖</span> فهرس مشاريع الجبري
-                </a>
-            
-                <a href="/ar/journal3.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📜</span> رسالة من صنعاء
-                </a>
-            
-                <a href="/ar/Checkout.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🔍</span> 🔍 نظام الفحص
-                </a>
-            </div><div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;"><div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 النظرية</div>
-                <a href="/ar/research.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🔬</span> البحوث
-                </a>
-            
-                <a href="/ar/theory-ar.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📐</span> الدالة الأم Z(x)
-                </a>
-            
-                <a href="/ar/unified-theory.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">🌌</span> نظرية السندباد الموحدة
-                </a>
-            
-                <a href="/ar/Office.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
-                    <span style="font-size:0.9rem;">📚</span> المكتبة
-                </a>
-            </div><div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;"><div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">💬 آخر المحادثات <span style="font-size:0.6rem; opacity:0.6;">(1)</span></div>
-                    <div onclick="window.openChatPrompt(); return false;" style="padding:4px 10px; border-radius:6px; border-bottom:1px solid rgba(255,106,106,0.05); font-size:0.75rem; color:#ccc; display:flex; justify-content:space-between; align-items:center; cursor:pointer; transition:0.3s;">
-                        <span style="flex:1;">💬 💬 اضغط هنا لبدء المحادثة</span>
-                        <span style="font-size:0.6rem; color:#666; margin-right:8px;"></span>
-                    </div>
-                </div>
-            <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
-            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                <span style="font-size:0.9rem;">🌐</span> Wikipedia
-            </a>
-            <a href="https://github.com/jabri-com" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
-                <span style="font-size:0.9rem;">🐙</span> GitHub
-            </a>
-            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;font-size:0.82rem;">
-                <span style="font-size:0.9rem;">🆔</span> ORCID
-            </a>
+    <div style="display:flex;flex-direction:column;gap:3px;width:20px;height:14px;justify-content:center;flex-shrink:0;">
+        <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
+        <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
+        <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
+    </div>
+    <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">القائمة</span>
+</div>
+
+<div id="menu-dropdown" style="display: none !important; position: fixed !important; top: 125px !important; right: 20px !important; background: rgba(10, 10, 20, 0.97) !important; backdrop-filter: blur(16px) !important; border: 2px solid rgb(255, 215, 0) !important; border-radius: 16px !important; padding: 18px 16px !important; min-width: 300px !important; max-height: 70vh !important; overflow-y: auto !important; box-shadow: rgba(0, 0, 0, 0.9) 0px 15px 50px !important; z-index: 9999998 !important; flex-direction: column !important; gap: 2px !important; direction: rtl !important; font-family: Cairo, Tahoma, sans-serif !important;">
+    <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
+        <a href="/" style="color:#ffd700; padding:4px 14px; border:1px solid #ffd700; border-radius:8px; text-decoration:none; font-weight:bold; background:rgba(255,215,0,0.12); transition:0.3s; font-size:0.85rem;">🇾🇪 عربي</a>
+        <a href="/en/" style="color:#888; padding:4px 14px; border:1px solid #444; border-radius:8px; text-decoration:none; font-weight:bold; background:transparent; transition:0.3s; font-size:0.85rem;">🇬🇧 English</a>
+    </div>
+    <div style="border-bottom:2px solid rgba(255,215,0,0.15); padding-bottom:6px; margin-bottom:8px;">
+        <div style="color:#ffd700; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 الأساسيات</div>
+        <a href="/ar/" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🏠</span> الرئيسية
+        </a>
+        <a href="/ar/kfupm-msg.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🎓</span> رسالة جامعة KFUPM
+        </a>
+        <a href="/ar/gallery.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📸</span> 📸 معرض اليمن
+        </a>
+        <a href="/ar/diagnose.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📊</span> 📊 تشخيص المستودعات
+        </a>
+        <a href="/ar/wonder.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🌌</span> 🌌 رحلة الوعي
+        </a>
+        <a href="/ar/Sanaa.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🏛️</span> صنعاء
+        </a>
+        <a href="/ar/Shibam.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🏗️</span> شبام
+        </a>
+        <a href="/ar/Soqatra.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🌴</span> سقطرى
+        </a>
+        <a href="/ar/journal.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📰</span> المجلة
+        </a>
+        <a href="/ar/journal2.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🤖</span> تجربتي مع الـ AI
+        </a>
+        <a href="/ar/jabri-projects.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🤖</span> فهرس مشاريع الجبري
+        </a>
+        <a href="/ar/journal3.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📜</span> رسالة من صنعاء
+        </a>
+        <a href="/ar/Checkout.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🔍</span> 🔍 نظام الفحص
+        </a>
+    </div>
+    <div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">
+        <div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 النظرية</div>
+        <a href="/ar/research.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🔬</span> البحوث
+        </a>
+        <a href="/ar/theory-ar.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📐</span> الدالة الأم Z(x)
+        </a>
+        <a href="/ar/unified-theory.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">🌌</span> نظرية السندباد الموحدة
+        </a>
+        <a href="/ar/Office.html" style="color:#fff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">
+            <span style="font-size:0.9rem;">📚</span> المكتبة
+        </a>
+    </div>
+    <div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;">
+        <div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">💬 آخر المحادثات <span style="font-size:0.6rem; opacity:0.6;">(1)</span></div>
+        <div onclick="window.openChatPrompt(); return false;" style="padding:4px 10px; border-radius:6px; border-bottom:1px solid rgba(255,106,106,0.05); font-size:0.75rem; color:#ccc; display:flex; justify-content:space-between; align-items:center; cursor:pointer; transition:0.3s;">
+            <span style="flex:1;">💬 💬 اضغط هنا لبدء المحادثة</span>
+            <span style="font-size:0.6rem; color:#666; margin-right:8px;"></span>
         </div>
-        
-        
-        </body></html>
+    </div>
+    <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
+    <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+        <span style="font-size:0.9rem;">🌐</span> Wikipedia
+    </a>
+    <a href="https://github.com/jabri-com" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
+        <span style="font-size:0.9rem;">🐙</span> GitHub
+    </a>
+    <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;font-size:0.82rem;">
+        <span style="font-size:0.9rem;">🆔</span> ORCID
+    </a>
+</div>
+
+</body></html>
