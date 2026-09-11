@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوستر البرهان | نظرية السندباد الموحدة Z+C+A=1</title>
+    <meta name="description" content="البوسترات الرسمية ورسومات دالة Zx لنظرية السندباد الموحدة - م/ عبدالله محمد ناصر الجبري">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0f;
+            color: #e0e0e0;
+            font-family: 'Cairo', Tahoma, Arial, sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-content {
+            flex: 1;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* ===== الهيدر ===== */
+        .poster-header {
+            background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+            border: 1px solid #2a2a4e;
+            border-radius: 24px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
+        }
+        .poster-header h1 {
+            font-size: 2.5rem;
+            color: #6ae3ff;
+        }
+        .poster-header h1 i { color: #f7d44a; }
+        .poster-header p {
+            color: #b0b0c8;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .poster-header .equation {
+            font-size: 1.8rem;
+            font-family: 'Times New Roman', serif;
+            color: #f7d44a;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+        .poster-header .equation .z { color: #6ae3ff; }
+        .poster-header .equation .c { color: #51cf66; }
+        .poster-header .equation .a { color: #ff6b6b; }
+
+        /* ===== عناوين الأقسام ===== */
+        .section-title {
+            font-size: 1.8rem;
+            color: #6ae3ff;
+            margin: 50px 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .section-title i { color: #f7d44a; }
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            max-width: 100px;
+            background: linear-gradient(to left, #2a2a4e, transparent);
+        }
+        .section-title::after {
+            background: linear-gradient(to right, #2a2a4e, transparent);
+        }
+
+        /* ===== الفيديو ===== */
+        .video-container {
+            background: #1a1a2e;
+            border: 2px solid #2a2a4e;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .video-container:hover {
+            border-color: #6ae3ff;
+            box-shadow: 0 10px 30px rgba(106, 227, 255, 0.15);
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            border: 2px solid #6ae3ff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            background: #000;
+        }
+        .video-container .video-caption {
+            margin-top: 15px;
+            color: #6ae3ff;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .video-container .video-caption i {
+            color: #f7d44a;
+            margin-left: 8px;
+        }
+        .video-container .video-desc {
+            color: #b0b0c8;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        /* ===== البوسترات (شبكة) ===== */
+        .posters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .poster-item {
+            background: #1a1a2e;
+            border: 2px solid #2a2a4e;
+            border-radius: 20px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .poster-item:hover {
+            border-color: #6ae3ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(106, 227, 255, 0.15);
+        }
+        .poster-item img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #2a2a4e;
+            display: block;
+        }
+        .poster-item .poster-label {
+            margin-top: 12px;
+            color: #6ae3ff;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        /* ===== زر العودة ===== */
+        .btn-back {
+            background: #6ae3ff;
+            color: #000;
+            padding: 14px 45px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: 0.3s;
+            margin: 50px 0 30px;
+        }
+        .btn-back:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(106, 227, 255, 0.3);
+        }
+        .btn-back i { margin-left: 10px; }
+
+        /* ===== الجوال ===== */
+        @media (max-width: 600px) {
+            .poster-header h1 { font-size: 1.7rem; }
+            .poster-header .equation { font-size: 1.3rem; }
+            .section-title { font-size: 1.3rem; }
+            .posters-grid { grid-template-columns: 1fr; }
+            .page-content { margin: 20px auto; padding: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-content">
+
+        <!-- ===== الهيدر ===== -->
+        <div class="poster-header">
+            <h1><i class="fas fa-image"></i> بوستر البرهان</h1>
+            <p>البوسترات الرسمية ورسومات دالة <strong>Zx</strong> للنظرية الموحدة</p>
+            <div class="equation">
+                <span class="z">Z(x)</span> + <span class="c">C(x)</span> + <span class="a">A(x)</span> = 1
+            </div>
+        </div>
+
+        <!-- ===== قسم الفيديو ===== -->
+        <h2 class="section-title">
+            <i class="fas fa-video"></i> رسومات دالة Zx
+        </h2>
+        <div class="video-container">
+            <video controls preload="metadata" poster="/image/theory-ar.webp">
+                <source src="/image/Zx.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="video-caption">
+                <i class="fas fa-play-circle"></i> رسومات الدالة الأم Zx
+            </div>
+            <div class="video-desc">
+                محاكاة بصرية لتوزيع أصفار ريمان وبنية الدالة Zx في المستوى المركب
+            </div>
+        </div>
+
+        <!-- ===== قسم البوسترات ===== -->
+        <h2 class="section-title">
+            <i class="fas fa-images"></i> البوسترات الرسمية
+        </h2>
+        <div class="posters-grid">
+            <div class="poster-item">
+                <img src="/image/theory-ar.webp" alt="البوستر الرسمي للنظرية - النسخة العربية">
+                <div class="poster-label">🇾🇪 النسخة العربية</div>
+            </div>
+            <div class="poster-item">
+                <img src="/image/theory-en.webp" alt="Official Theory Poster - English Version">
+                <div class="poster-label">🇬🇧 English Version</div>
+            </div>
+            <div class="poster-item">
+                <img src="/image/oasis-poster2.jpg" alt="بوستر واحة الجبري">
+                <div class="poster-label">🌿 واحة الجبري</div>
+            </div>
+            <div class="poster-item">
+                <img src="/image/Zx_Equations.png" alt="معادلات دالة Zx">
+                <div class="poster-label">🧮 معادلات Zx</div>
+            </div>
+            <div class="poster-item">
+                <img src="/image/Zx_Eq_figure.png" alt="شكل معادلات Zx">
+                <div class="poster-label">📐 شكل معادلات Zx</div>
+            </div>
+        </div>
+
+        <!-- ===== زر العودة ===== -->
+        <a href="/Page7.html" class="btn-back">
+            <i class="fas fa-arrow-right"></i> العودة لصفحة النظرية
+        </a>
+
+    </div>
+
+</body>
+</html>
