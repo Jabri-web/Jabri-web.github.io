@@ -19,34 +19,52 @@
             padding: 30px 20px;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
+
+        /* بطاقة المشروع */
         .project-card {
-            background: #161b22;
-            border-radius: 20px;
-            padding: 35px 40px;
-            border: 1px solid #30363d;
+            background: linear-gradient(145deg, #161b22, #1c2333);
+            border-radius: 24px;
+            padding: 40px 45px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
             margin-bottom: 25px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(255,215,0,0.03), transparent 60%);
+            pointer-events: none;
         }
         .project-card .icon {
-            font-size: 60px;
+            font-size: 70px;
             text-align: center;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            position: relative;
         }
         .project-card h1 {
             color: #ffd700;
-            font-size: 32px;
+            font-size: 36px;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            position: relative;
+            text-shadow: 0 0 40px rgba(255,215,0,0.1);
         }
         .project-card .sub {
             text-align: center;
             color: #8b949e;
-            font-size: 16px;
+            font-size: 17px;
             margin-bottom: 20px;
+            position: relative;
         }
         .project-card .badge-row {
             display: flex;
@@ -54,47 +72,69 @@
             justify-content: center;
             gap: 10px;
             margin: 15px 0 20px;
+            position: relative;
         }
         .project-card .badge-row .badge {
-            padding: 6px 18px;
-            border-radius: 20px;
+            padding: 8px 20px;
+            border-radius: 30px;
             font-size: 13px;
             font-weight: bold;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.15);
             color: #ffd700;
+            transition: 0.3s;
+        }
+        .project-card .badge-row .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.1);
         }
         .project-card .badge-row .badge.gem {
-            background: rgba(106, 227, 255, 0.1);
-            border-color: rgba(106, 227, 255, 0.2);
+            background: rgba(106, 227, 255, 0.08);
+            border-color: rgba(106, 227, 255, 0.15);
             color: #6ae3ff;
         }
         .project-card .badge-row .badge.version {
-            background: rgba(0, 255, 128, 0.1);
-            border-color: rgba(0, 255, 128, 0.2);
+            background: rgba(0, 255, 128, 0.08);
+            border-color: rgba(0, 255, 128, 0.15);
             color: #00ff88;
         }
+        .project-card .badge-row .badge.ruby {
+            background: rgba(255, 0, 0, 0.08);
+            border-color: rgba(255, 0, 0, 0.15);
+            color: #ff4444;
+        }
+
+        /* الأقسام */
         .section {
             background: #161b22;
-            border-radius: 16px;
-            padding: 20px 25px;
+            border-radius: 18px;
+            padding: 22px 28px;
             margin-bottom: 16px;
             border: 1px solid #30363d;
+            transition: 0.3s;
+        }
+        .section:hover {
+            border-color: rgba(255, 215, 0, 0.1);
         }
         .section h3 {
             color: #ffd700;
-            font-size: 18px;
-            margin-bottom: 12px;
+            font-size: 19px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,215,0,0.05);
+            padding-bottom: 10px;
         }
         .section .item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
             font-size: 14px;
+        }
+        .section .item:last-child {
+            border-bottom: none;
         }
         .section .item .label {
             color: #8b949e;
@@ -103,20 +143,36 @@
             color: #e6edf3;
             font-weight: 500;
         }
+        .section .item .value.gold {
+            color: #ffd700;
+        }
+        .section .item .value.gem-name {
+            color: #6ae3ff;
+        }
+        .section .item .value.version {
+            color: #00ff88;
+        }
+
+        /* شبكة الجيمات */
         .gem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 8px;
             margin-top: 8px;
         }
         .gem-grid .gem-item {
-            background: rgba(255,255,255,0.03);
-            padding: 6px 12px;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            padding: 8px 14px;
+            border-radius: 10px;
             font-size: 13px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.04);
             display: flex;
             justify-content: space-between;
+            transition: 0.2s;
+        }
+        .gem-grid .gem-item:hover {
+            background: rgba(255,215,0,0.04);
+            border-color: rgba(255,215,0,0.08);
         }
         .gem-grid .gem-item .gname {
             color: #6ae3ff;
@@ -125,34 +181,63 @@
             color: #8b949e;
             font-size: 12px;
         }
+        .gem-grid .gem-item .gver.gold {
+            color: #ffd700;
+        }
+
+        /* زر العودة */
         .btn-home {
             display: inline-block;
-            background: #ffd700;
+            background: linear-gradient(135deg, #ffd700, #f0a500);
             color: #0d1117;
-            padding: 12px 30px;
+            padding: 13px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
             margin-top: 10px;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
         }
         .btn-home:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
         }
         .text-center {
             text-align: center;
         }
+
+        /* شريط التقدم */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #30363d;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #f0a500);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        /* استجابة */
         @media (max-width: 600px) {
             .project-card { padding: 20px; }
-            .section { padding: 15px; }
+            .section { padding: 15px 18px; }
             .gem-grid { grid-template-columns: 1fr; }
+            .project-card h1 { font-size: 26px; }
+            .project-card .badge-row .badge { font-size: 11px; padding: 5px 12px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
 
+        <!-- ====== البطاقة الرئيسية ====== -->
         <div class="project-card">
             <span class="icon">📦</span>
             <h1>معلومات المشروع</h1>
@@ -160,9 +245,10 @@
 
             <div class="badge-row">
                 <span class="badge">🔧 Jekyll 4.1.1</span>
-                <span class="badge gem">💎 Ruby 2.7+</span>
+                <span class="badge ruby">💎 Ruby 2.7+</span>
                 <span class="badge version">📌 Bundler 1.17.3</span>
-                <span class="badge">🔄 html-proofer</span>
+                <span class="badge gem">🔄 html-proofer</span>
+                <span class="badge">🌐 GitHub Pages</span>
             </div>
 
             <div class="text-center">
@@ -170,11 +256,12 @@
             </div>
         </div>
 
+        <!-- ====== بيئة التشغيل ====== -->
         <div class="section">
             <h3>⚙️ بيئة التشغيل</h3>
             <div class="item">
                 <span class="label">📦 مدير الحزم</span>
-                <span class="value">Bundler 1.17.3</span>
+                <span class="value gold">Bundler 1.17.3</span>
             </div>
             <div class="item">
                 <span class="label">💎 Ruby Platform</span>
@@ -182,25 +269,56 @@
             </div>
             <div class="item">
                 <span class="label">📁 عدد الجيمات</span>
-                <span class="value" id="gemCount">0</span>
+                <span class="value gold" id="gemCount">0</span>
+            </div>
+            <div class="item">
+                <span class="label">📊 نسبة التغطية</span>
+                <span class="value" id="coverage">100%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="fill" id="coverageBar" style="width:100%;"></div>
             </div>
         </div>
 
+        <!-- ====== الجيمات الأساسية ====== -->
         <div class="section">
-            <h3>📚 الجيمات الأساسية (Core Gems)</h3>
+            <h3>⭐ الجيمات الأساسية (Core Gems)</h3>
             <div class="gem-grid" id="coreGems"></div>
         </div>
 
+        <!-- ====== جميع الجيمات ====== -->
         <div class="section">
             <h3>🔗 جميع الجيمات</h3>
             <div class="gem-grid" id="allGems"></div>
         </div>
 
+        <!-- ====== دعم المتصفحات ====== -->
         <div class="section">
-            <h3>📊 إحصائيات</h3>
+            <h3>🌐 دعم المتصفحات</h3>
+            <div class="item">
+                <span class="label">📱 Touch</span>
+                <span class="value" id="supportTouch">⏳ جارِ الفحص...</span>
+            </div>
+            <div class="item">
+                <span class="label">🎨 3D Transforms</span>
+                <span class="value" id="support3d">⏳ جارِ الفحص...</span>
+            </div>
+            <div class="item">
+                <span class="label">✨ CSS Transitions</span>
+                <span class="value" id="supportTransitions">⏳ جارِ الفحص...</span>
+            </div>
+            <div class="item">
+                <span class="label">🔤 Web Fonts</span>
+                <span class="value" id="supportFonts">⏳ جارِ الفحص...</span>
+            </div>
+        </div>
+
+        <!-- ====== الإحصائيات ====== -->
+        <div class="section">
+            <h3>📊 إحصائيات المشروع</h3>
             <div class="item">
                 <span class="label">📦 إجمالي الجيمات</span>
-                <span class="value" id="totalGems">0</span>
+                <span class="value gold" id="totalGems">0</span>
             </div>
             <div class="item">
                 <span class="label">🔗 عدد التبعيات</span>
@@ -208,13 +326,24 @@
             </div>
             <div class="item">
                 <span class="label">📅 آخر تحديث</span>
-                <span class="value" id="lastUpdate">2026-08-30</span>
+                <span class="value gold" id="lastUpdate">2026-08-30</span>
+            </div>
+            <div class="item">
+                <span class="label">🏷️ الإصدار</span>
+                <span class="value gold">v2.0.0</span>
+            </div>
+            <div class="item">
+                <span class="label">🧑‍💻 المطور</span>
+                <span class="value gold">عبدالله محمد ناصر الجبري</span>
             </div>
         </div>
 
     </div>
 
     <script>
+        // ============================================================
+        //  بيانات Gemfile.lock
+        // ============================================================
         const gemData = [
             { name: "addressable", version: "2.7.0" },
             { name: "colorator", version: "1.1.0" },
@@ -257,19 +386,24 @@
 
         const coreGems = ["jekyll", "html-proofer", "nokogiri", "sassc", "kramdown", "liquid"];
 
+        // ============================================================
+        //  عرض البيانات
+        // ============================================================
         function renderGems() {
             document.getElementById('totalGems').textContent = gemData.length;
             document.getElementById('gemCount').textContent = gemData.length;
 
+            // الجيمات الأساسية
             const coreContainer = document.getElementById('coreGems');
             const coreList = gemData.filter(g => coreGems.includes(g.name));
             coreContainer.innerHTML = coreList.map(g => `
                 <div class="gem-item">
-                    <span class="gname">${g.name}</span>
-                    <span class="gver">${g.version}</span>
+                    <span class="gname">⭐ ${g.name}</span>
+                    <span class="gver gold">${g.version}</span>
                 </div>
             `).join('');
 
+            // جميع الجيمات
             const allContainer = document.getElementById('allGems');
             allContainer.innerHTML = gemData.map(g => `
                 <div class="gem-item">
@@ -278,11 +412,73 @@
                 </div>
             `).join('');
 
+            // التبعيات
             const deps = gemData.filter(g => !coreGems.includes(g.name));
             document.getElementById('totalDeps').textContent = deps.length;
+
+            // التغطية
+            const coverage = Math.round((coreGems.length / gemData.length) * 100);
+            document.getElementById('coverage').textContent = coverage + '%';
+            document.getElementById('coverageBar').style.width = coverage + '%';
         }
 
-        document.addEventListener('DOMContentLoaded', renderGems);
+        // ============================================================
+        //  عرض دعم المتصفحات
+        // ============================================================
+        function showBrowserSupport() {
+            const isModernizr = typeof Modernizr !== 'undefined';
+            
+            const support = {
+                touch: isModernizr ? Modernizr.touch : false,
+                transforms3d: isModernizr ? Modernizr.csstransforms3d : false,
+                transitions: isModernizr ? Modernizr.csstransitions : false,
+                fontface: isModernizr ? Modernizr.fontface : false
+            };
+
+            const elements = {
+                touch: document.getElementById('supportTouch'),
+                transforms3d: document.getElementById('support3d'),
+                transitions: document.getElementById('supportTransitions'),
+                fontface: document.getElementById('supportFonts')
+            };
+
+            for (const [key, el] of Object.entries(elements)) {
+                const val = support[key];
+                el.textContent = val ? '✅ مدعوم' : '❌ غير مدعوم';
+                el.style.color = val ? '#00ff88' : '#ff6a6a';
+            }
+        }
+
+        // ============================================================
+        //  التشغيل
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderGems();
+
+            // فحص Modernizr
+            if (typeof Modernizr !== 'undefined') {
+                showBrowserSupport();
+            } else {
+                // انتظار تحميل Modernizr
+                const checkInterval = setInterval(function() {
+                    if (typeof Modernizr !== 'undefined') {
+                        showBrowserSupport();
+                        clearInterval(checkInterval);
+                    }
+                }, 100);
+
+                // مهلة 5 ثواني
+                setTimeout(function() {
+                    clearInterval(checkInterval);
+                    if (typeof Modernizr === 'undefined') {
+                        document.getElementById('supportTouch').textContent = '⚠️ غير متاح';
+                        document.getElementById('support3d').textContent = '⚠️ غير متاح';
+                        document.getElementById('supportTransitions').textContent = '⚠️ غير متاح';
+                        document.getElementById('supportFonts').textContent = '⚠️ غير متاح';
+                    }
+                }, 5000);
+            }
+        });
     </script>
 
     <!-- ====== ربط القائمة الجانبية ====== -->

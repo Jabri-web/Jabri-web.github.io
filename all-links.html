@@ -8,182 +8,34 @@
     <meta name="keywords" content="عبدالله الجبري,واحة الجبري,نظرية السندباد,التراث اليمني,خريطة الموقع,قوقل,zenodo,github">
     <link rel="canonical" href="https://jabri-com.vercel.app/all-links.html">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #0a0a0f;
-            color: #e8e8f0;
-            font-family: 'Cairo', 'Tajawal', 'Segoe UI', Arial, sans-serif;
-            padding: 20px;
-            line-height: 1.8;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: #12121c;
-            padding: 30px 25px;
-            border-radius: 20px;
-            border: 1px solid #2a2a3e;
-            box-shadow: 0 0 40px rgba(0, 150, 255, 0.05);
-        }
-        .header-main {
-            text-align: center;
-            border-bottom: 2px solid #2a2a3e;
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-        }
-        .header-main h1 {
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #6ae3ff, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .header-main .sub-title {
-            color: #aaa;
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-        .header-main .official-site {
-            color: #6ae3ff;
-            font-size: 1.2rem;
-            margin-top: 8px;
-            word-break: break-all;
-        }
-        .header-main .official-site a {
-            color: #00ff88;
-            text-decoration: none;
-        }
-        .section-block {
-            background: #181825;
-            border-radius: 16px;
-            padding: 20px 25px;
-            margin-bottom: 25px;
-            border-right: 4px solid #6ae3ff;
-            transition: 0.2s;
-        }
-        .section-block:hover {
-            border-right-color: #00ff88;
-            background: #1e1e2e;
-        }
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #6ae3ff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .section-title .badge {
-            background: #2a2a3e;
-            font-size: 0.9rem;
-            color: #aaa;
-            padding: 2px 12px;
-            border-radius: 30px;
-        }
-        .sub-section {
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-        .sub-section h3 {
-            color: #00ff88;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            border-bottom: 1px dashed #2a2a3e;
-            padding-bottom: 5px;
-        }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 10px 15px;
-            list-style: none;
-            padding: 0;
-        }
-        .links-grid li {
-            background: #0f0f1a;
-            padding: 8px 15px;
-            border-radius: 30px;
-            border: 1px solid #2a2a3e;
-            transition: 0.2s;
-            text-align: center;
-        }
-        .links-grid li:hover {
-            border-color: #6ae3ff;
-            background: #1a1a2e;
-            transform: translateX(-5px);
-        }
-        .links-grid a {
-            color: #e8e8f0;
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .links-grid a:hover {
-            color: #6ae3ff;
-        }
-        .links-grid a .link-url {
-            color: #666;
-            font-size: 0.7rem;
-            direction: ltr;
-            unicode-bidi: embed;
-            background: #1a1a2a;
-            padding: 0 8px;
-            border-radius: 10px;
-        }
-        .inline-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 15px;
-            list-style: none;
-            padding: 0;
-        }
-        .inline-list li {
-            background: #0f0f1a;
-            padding: 5px 15px;
-            border-radius: 20px;
-            border: 1px solid #2a2a3e;
-        }
-        .inline-list a {
-            color: #6ae3ff;
-            text-decoration: none;
-        }
-        .inline-list a:hover {
-            color: #00ff88;
-            text-decoration: underline;
-        }
-        .count-note {
-            color: #888;
-            font-size: 0.85rem;
-            margin-right: 10px;
-        }
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #2a2a3e;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .footer-note strong {
-            color: #aaa;
-        }
-        @media (max-width: 600px) {
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            .header-main h1 {
-                font-size: 1.6rem;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e8e8f0; font-family: 'Cairo', 'Tajawal', 'Segoe UI', Arial, sans-serif; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1100px; margin: 0 auto; background: #12121c; padding: 30px 25px; border-radius: 20px; border: 1px solid #2a2a3e; box-shadow: 0 0 40px rgba(0, 150, 255, 0.05); }
+        .header-main { text-align: center; border-bottom: 2px solid #2a2a3e; padding-bottom: 25px; margin-bottom: 30px; }
+        .header-main h1 { font-size: 2.2rem; background: linear-gradient(135deg, #6ae3ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header-main .sub-title { color: #aaa; font-size: 1.1rem; margin-top: 10px; }
+        .header-main .official-site { color: #6ae3ff; font-size: 1.2rem; margin-top: 8px; word-break: break-all; }
+        .header-main .official-site a { color: #00ff88; text-decoration: none; }
+        .section-block { background: #181825; border-radius: 16px; padding: 20px 25px; margin-bottom: 25px; border-right: 4px solid #6ae3ff; transition: 0.2s; }
+        .section-block:hover { border-right-color: #00ff88; background: #1e1e2e; }
+        .section-title { font-size: 1.8rem; font-weight: bold; margin-bottom: 15px; color: #6ae3ff; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .section-title .badge { background: #2a2a3e; font-size: 0.9rem; color: #aaa; padding: 2px 12px; border-radius: 30px; }
+        .sub-section { margin-top: 15px; margin-bottom: 10px; }
+        .sub-section h3 { color: #00ff88; font-size: 1.3rem; margin-bottom: 10px; border-bottom: 1px dashed #2a2a3e; padding-bottom: 5px; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px 15px; list-style: none; padding: 0; }
+        .links-grid li { background: #0f0f1a; padding: 8px 15px; border-radius: 30px; border: 1px solid #2a2a3e; transition: 0.2s; text-align: center; }
+        .links-grid li:hover { border-color: #6ae3ff; background: #1a1a2e; transform: translateX(-5px); }
+        .links-grid a { color: #e8e8f0; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .links-grid a:hover { color: #6ae3ff; }
+        .links-grid a .link-url { color: #666; font-size: 0.7rem; direction: ltr; unicode-bidi: embed; background: #1a1a2a; padding: 0 8px; border-radius: 10px; }
+        .inline-list { display: flex; flex-wrap: wrap; gap: 8px 15px; list-style: none; padding: 0; }
+        .inline-list li { background: #0f0f1a; padding: 5px 15px; border-radius: 20px; border: 1px solid #2a2a3e; }
+        .inline-list a { color: #6ae3ff; text-decoration: none; }
+        .inline-list a:hover { color: #00ff88; text-decoration: underline; }
+        .count-note { color: #888; font-size: 0.85rem; margin-right: 10px; }
+        .footer-note { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #2a2a3e; color: #666; font-size: 0.9rem; }
+        .footer-note strong { color: #aaa; }
+        @media (max-width: 600px) { .links-grid { grid-template-columns: 1fr; } .header-main h1 { font-size: 1.6rem; } }
     </style>
 </head>
 
@@ -197,7 +49,6 @@
 </div>
 
 <script>
-    // عد الروابط تلقائياً
     document.addEventListener('DOMContentLoaded', function() {
         const allLinks = document.querySelectorAll('a[href]');
         document.getElementById('linkCount').textContent = allLinks.length;
@@ -205,12 +56,10 @@
     });
 </script>
 
-
-
 <body>
     <div class="container">
 
-        <!-- HEADER: رسالة الباحث للعالم وقوقل -->
+        <!-- HEADER -->
         <header class="header-main">
             <h1>📡 رسالة الباحث عبدالله الجبري للعالم - قوقل</h1>
             <p class="sub-title">🏛️ الخريطة الرقمية الشاملة لمسارات "واحة الجبري" و "نظرية السندباد الموحدة"</p>
@@ -222,7 +71,7 @@
             </p>
         </header>
 
-        <!-- القسم A: مواقع خارجية لعمل الواحة -->
+        <!-- القسم A: مواقع خارجية -->
         <section class="section-block">
             <div class="section-title">
                 🌐 A- مواقع خارجية لعمل الواحة
@@ -247,7 +96,7 @@
                 📱 B- مواقع التواصل الاجتماعي
                 <span class="badge">16 منصة</span>
             </div>
-            <p style="color: #aaa; margin-bottom: 10px;">📌 جميع المنصات الرقمية للباحث عبدالله الجبري (الإمبراطورية الرقمية)</p>
+            <p style="color: #aaa; margin-bottom: 10px;">📌 جميع المنصات الرقمية للباحث عبدالله الجبري</p>
             <ul class="links-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                 <li><a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">🆔 ORCID</a></li>
                 <li><a href="https://zenodo.org/records/20513840" target="_blank" rel="noopener">📊 Zenodo</a></li>
@@ -269,76 +118,159 @@
             <p style="color: #555; font-size: 0.8rem; margin-top: 10px; text-align: left;">✅ إجمالي 16 منصة تشمل الأكاديمية، البرمجية، والتواصل الاجتماعي.</p>
         </section>
 
-        <!-- القسم C: الروابط الداخلية في الواحة (تم دمجه وتنظيمه) -->
+        <!-- القسم C: الروابط الداخلية (تم التحديث) -->
         <section class="section-block">
             <div class="section-title">
                 🏡 C- الروابط الداخلية في واحة الجبري
                 <span class="badge">التصنيف الموضوعي الشامل</span>
             </div>
 
-            <!-- 1- النظرية -->
+            <!-- 1- الصفحات الأساسية -->
             <div class="sub-section">
-                <h3>🧮 1- نظرية السندباد الموحدة (قلب المشروع)</h3>
+                <h3>🏠 1- الصفحات الأساسية (Pages 1-12 + Logo)</h3>
                 <ul class="inline-list">
-                    <li><a href="/theory.html">🌌 الصفحة الرئيسية للنظرية</a></li>
+                    <li><a href="/">🏠 الرئيسية (Home)</a></li>
+                    <li><a href="/Page1.html">📄 Page 1</a></li>
+                    <li><a href="/Page2.html">📄 Page 2</a></li>
+                    <li><a href="/Page3.html">📄 Page 3</a></li>
+                    <li><a href="/Page4.html">📄 Page 4</a></li>
+                    <li><a href="/Page5.html">📄 Page 5</a></li>
+                    <li><a href="/Page6.html">📄 Page 6</a></li>
+                    <li><a href="/Page7.html">📄 Page 7</a></li>
+                    <li><a href="/Page8.html">📄 Page 8</a></li>
+                    <li><a href="/Page9.html">📄 Page 9</a></li>
+                    <li><a href="/Page10.html">📄 Page 10</a></li>
+                    <li><a href="/Page11.html">📄 Page 11</a></li>
+                    <li><a href="/Page12.html">📄 Page 12</a></li>
+                    <li><a href="/logo.html">🔑 Logo</a></li>
+                </ul>
+            </div>
+
+            <!-- 2- النظرية -->
+            <div class="sub-section">
+                <h3>🧮 2- نظرية السندباد الموحدة (قلب المشروع)</h3>
+                <ul class="inline-list">
+                    <li><a href="/Sindbad-theory.html">🌌 الصفحة الرئيسية للنظرية</a></li>
                     <li><a href="/theory-ar.html">🇾🇪 النسخة العربية</a></li>
-                    <li><a href="/theory-en.html">🇬🇧 النسخة الإنجليزية (English)</a></li>
+                    <li><a href="/theory-en.html">🇬🇧 النسخة الإنجليزية</a></li>
+                    <li><a href="/Sindbad-Brdoni.html">📖 سندباد البردوني</a></li>
+                    <li><a href="/calculator.html">🧮 حاسبة السندباد</a></li>
                     <li><a href="https://www.google.com/search?q=Z(x)+%3D+x%5E5+ln(x)+sin(2%CF%80%2Fx)+exp(-x%2Fxp)&udm=50" target="_blank">📐 معادلة Z(x) في قوقل</a></li>
                     <li><a href="https://www.google.com/search?q=Z+%2B+C+%2B+A+%3D+1&udm=50" target="_blank">⚖️ Z+C+A=1 في قوقل</a></li>
                 </ul>
             </div>
 
-            <!-- 2- البحوث -->
+            <!-- 3- البحوث والمجلات -->
             <div class="sub-section">
-                <h3>🔬 2- البحوث والمجلات العلمية</h3>
+                <h3>🔬 3- البحوث والمجلات العلمية</h3>
                 <ul class="inline-list">
                     <li><a href="/research.html">📄 صفحة البحوث الرئيسية</a></li>
                     <li><a href="/research-deep.html">🧠 البحوث العميقة (Deep Research)</a></li>
-                    <li><a href="/journal.html">📓 المجلة العلمية (العدد الرئيسي)</a></li>
-                    <li><a href="/journal2.html">📓 المجلة - العدد الثاني</a></li>
-                    <li><a href="/journal3.html">📓 المجلة - العدد الثالث</a></li>
+                    <li><a href="/Pages-Researchs.html">📚 صفحات البحوث</a></li>
+                    <li><a href="/Journal.html">📓 المجلة العلمية (العدد الرئيسي)</a></li>
+                    <li><a href="/Journal2.html">📓 المجلة - العدد الثاني</a></li>
+                    <li><a href="/Journal3.html">📓 المجلة - العدد الثالث</a></li>
+                    <li><a href="/Journal4.html">📓 المجلة - العدد الرابع</a></li>
+                    <li><a href="/citations.html">♻️ الاستشهادات</a></li>
+                    <li><a href="/source.html">📜 المصادر</a></li>
                 </ul>
             </div>
 
-            <!-- 3- الرسائل -->
+            <!-- 4- الرسائل والمراسلات -->
             <div class="sub-section">
-                <h3>✉️ 3- الرسائل والمراسلات العلمية</h3>
+                <h3>✉️ 4- الرسائل والمراسلات العلمية</h3>
                 <ul class="inline-list">
                     <li><a href="/kfupm-msg.html">🎓 رسالة الباحث إلى جامعة KFUPM</a></li>
-                    <li><a href="/press-release.html">📰 البيان الصحفي الموحد (2026)</a></li>
-                    <li><a href="https://jabri-com.vercel.app/" target="_blank">📬 رسالة الباحث للعالم وقوقل</a></li>
+                    <li><a href="/contact.html">📞 اتصل بنا</a></li>
+                    <li><a href="/who-we.html">👥 من نحن</a></li>
                 </ul>
-                <p style="color: #888; font-size: 0.8rem; margin-top: 5px;">📌 تشمل المراسلات الأكاديمية والبيانات الرسمية.</p>
             </div>
 
-            <!-- 4- السيرة الذاتية -->
+            <!-- 5- السيرة الذاتية -->
             <div class="sub-section">
-                <h3>👤 4- السيرة الذاتية والتعريف (Profile)</h3>
+                <h3>👤 5- السيرة الذاتية والتعريف (Profile)</h3>
                 <ul class="inline-list">
                     <li><a href="/about.html">ℹ️ عن الباحث (About)</a></li>
                     <li><a href="/about-ar.html">🇾🇪 عن الباحث (عربي)</a></li>
                     <li><a href="/about-en.html">🇬🇧 About (English)</a></li>
+                    <li><a href="/about-waha.html">🌳 عن الواحة (About Waha)</a></li>
                     <li><a href="/Author-cv.html">📄 السيرة الذاتية (CV)</a></li>
-                    <li><a href="/profile-ar.html">👤 الملف الشخصي (عربي)</a></li>
+                    <li><a href="/author-history.html">📜 تاريخ المؤلف</a></li>
+                    <li><a href="/profile.html">👤 الملف الشخصي</a></li>
                     <li><a href="/profile-en.html">👤 Profile (English)</a></li>
+                    <li><a href="/founder.html">👑 المؤسس (Founder)</a></li>
+                    <li><a href="/CV-2026A.html">📄 CV 2026 (عربي)</a></li>
+                    <li><a href="/CV-2026E.html">📄 CV 2026 (إنجليزي)</a></li>
                 </ul>
             </div>
 
-            <!-- 5- مشاريع و بوابات إضافية -->
+            <!-- 6- التراث اليمني -->
             <div class="sub-section">
-                <h3>📁 5- المشاريع والبوابات الإضافية</h3>
+                <h3>🇾🇪 6- التراث اليمني والثقافة</h3>
                 <ul class="inline-list">
-                    <li><a href="/project.html">📁 المشاريع البرمجية</a></li>
-                    <li><a href="/contact.html">📞 اتصل بنا</a></li>
-                    <li><a href="/who-we.html">👥 من نحن</a></li>
-                    <li><a href="/citations.html">♻️ الاستشهادات</a></li>
-                    <li><a href="/source.html">📜 المصادر</a></li>
-                    <li><a href="/sitemap.xml">🗺️ Sitemap.xml</a></li>
-                    <li><a href="/index.html">🏠 الرئيسية (Home)</a></li>
-                    <li><a href="/ar-page.html">🌊 واحة الجبري (تجربة عربي)</a></li>
-                    <li><a href="/en-page.html">🌊 Heaven Al-Jabri (تجربة EN)</a></li>
+                    <li><a href="/Sanaa.html">🏛️ صنعاء</a></li>
+                    <li><a href="/Shibam.html">🏗️ شبام</a></li>
+                    <li><a href="/Soqatra.html">🌴 سقطرى</a></li>
+                    <li><a href="/Yemen-library.html">📚 مكتبة اليمن</a></li>
+                    <li><a href="/wonder.html">🌌 رحلة الوعي</a></li>
+                    <li><a href="/gallery.html">📸 معرض اليمن</a></li>
+                    <li><a href="/taraif.html">🎭 الطرائف</a></li>
+                    <li><a href="/handsa.html">🎨 هندسة</a></li>
+                    <li><a href="/heaven-info.html">🏛️ معلومات الواحة</a></li>
+                    <li><a href="/History-pdf.html">📜 التاريخ (PDF)</a></li>
+                    <li><a href="/yemen-photo.html">📷 صور اليمن</a></li>
+                    <li><a href="/yemen-photo2.html">📷 صور اليمن 2</a></li>
+                    <li><a href="/yemen-photo-api.html">📷 صور اليمن (API)</a></li>
+                    <li><a href="/yemen-photo-php.html">📷 صور اليمن (PHP)</a></li>
                 </ul>
             </div>
+
+            <!-- 7- المشاريع والأدوات -->
+            <div class="sub-section">
+                <h3>📁 7- المشاريع والأدوات التقنية</h3>
+                <ul class="inline-list">
+                    <li><a href="/project.html">📁 المشاريع البرمجية</a></li>
+                    <li><a href="/project-ar.html">🇾🇪 المشاريع (عربي)</a></li>
+                    <li><a href="/Dbase.html">🗄️ قاعدة البيانات</a></li>
+                    <li><a href="/Dbase-deep.html">🗄️ قاعدة البيانات (عميق)</a></li>
+                    <li><a href="/explore.html">🔍 استكشاف</a></li>
+                    <li><a href="/dashboard.html">📊 لوحة التحكم</a></li>
+                    <li><a href="/microtik.html">📡 مايكروتك</a></li>
+                    <li><a href="/microtik-deep.html">📡 مايكروتك (عميق)</a></li>
+                    <li><a href="/magic-translator.html">🪄 المترجم السحري</a></li>
+                    <li><a href="/Nezar.html">📜 نزار</a></li>
+                </ul>
+            </div>
+
+            <!-- 8- الملفات النظامية -->
+            <div class="sub-section">
+                <h3>⚙️ 8- الملفات النظامية والمساندة</h3>
+                <ul class="inline-list">
+                    <li><a href="/all-links.html">🗺️ خريطة المسارات (هذه الصفحة)</a></li>
+                    <li><a href="/sitemap.xml">🗺️ Sitemap.xml</a></li>
+                    <li><a href="/robots.txt">🤖 Robots.txt</a></li>
+                    <li><a href="/404.html">🚫 صفحة الخطأ 404</a></li>
+                    <li><a href="/offline.html">📴 صفحة عدم الاتصال</a></li>
+                    <li><a href="/privacy-policy.html">🔒 سياسة الخصوصية</a></li>
+                    <li><a href="/Check.html">🔍 نظام الفحص</a></li>
+                    <li><a href="/current-auto.html">⚡ التيار التلقائي</a></li>
+                    <li><a href="/char-balance.html">⚖️ توازن الأحرف</a></li>
+                    <li><a href="/file-structure.html">📂 هيكل الملفات</a></li>
+                    <li><a href="/file-structure2.html">📂 هيكل الملفات 2</a></li>
+                    <li><a href="/FAQ-Page.html">❓ الأسئلة الشائعة</a></li>
+                    <li><a href="/FAQ-Page-en.html">❓ FAQ (English)</a></li>
+                </ul>
+            </div>
+
+            <!-- 9- صفحات فرعية -->
+            <div class="sub-section">
+                <h3>📂 9- صفحات فرعية (مجلدات)</h3>
+                <ul class="inline-list">
+                    <li><a href="/publish/publish.html">📤 النشر (Publish)</a></li>
+                    <li><a href="/game-auto.html">🎮 اللعبة التلقائية</a></li>
+                </ul>
+            </div>
+
         </section>
 
         <!-- تنبيه للمستخدم ومحركات البحث -->
@@ -350,7 +282,7 @@
             </p>
         </div>
 
-        <!-- ====== الفوتر العام (تم إزالة التكرار منه) ====== -->
+        <!-- ====== الفوتر العام ====== -->
         <footer id="site-footer" style="background:#0a0a0f;color:#e8e8f0;padding:30px 15px;border-top:1px solid #2a2a3e;font-family:'Cairo','Tajawal',Arial,sans-serif; margin-top: 20px; border-radius: 16px;">
   
             <!-- البحث عن الباحث -->
@@ -367,7 +299,7 @@
               </nav>
             </section>
             
-            <!-- الروابط الرئيسية (شريط الفوتر السريع) -->
+            <!-- الروابط الرئيسية -->
             <nav aria-label="الروابط الرئيسية">
               <ul style="list-style:none;padding:0;margin:15px 0;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
                 
@@ -408,22 +340,6 @@
               </ul>
             </nav>
             
-            <!-- روابط تجريبية إضافية -->
-            <div style="text-align:center;margin:10px 0;font-size:0.9rem;color:#888;">
-              <p><b>📌 روابط الموقع:</b></p>
-              <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-                <a href="/ar-page.html" style="color:#00ff88;text-decoration:none;">🌊 واحة الجبري (تجربة)</a>
-                <a href="/en-page.html" style="color:#00ff88;text-decoration:none;">🌊 Heaven Al-Jabri (تجربة)</a>
-                <a href="https://jabri-com.vercel.app" style="color:#00ff88;text-decoration:none;">🏛️ الموقع الرئيسي</a>
-                <a href="https://jabricom.vercel.app" style="color:#00ff88;text-decoration:none;">🏛️ واحة الجبري</a>
-                <a href="/Page4-old.html" style="color:#00ff88;text-decoration:none;">📜 البوابة القديمة</a>
-                <a href="/about.html" style="color:#00ff88;text-decoration:none;">👤 عبدالله الجبري</a>
-                <a href="/about-ar.html" style="color:#00ff88;text-decoration:none;">🇾🇪 عبدالله الجبري (عربي)</a>
-                <a href="/about-en.html" style="color:#00ff88;text-decoration:none;">🇬🇧 Abdulla Al-Jabri (English)</a>
-                <a href="https://github.com/Jabri-web" style="color:#00ff88;text-decoration:none;">🐙 GitHub</a>
-              </div>
-            </div>
-            
             <!-- الحقوق -->
             <p id="copyright" style="margin-top:20px;color:#666;font-size:14px;text-align:center;">
               © 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة
@@ -431,7 +347,7 @@
             
           </footer>
           
-          <!-- ====== سكريبت تحديث الفوتر ====== -->
+          <!-- سكريبت تحديث الفوتر -->
           <script>
             function updateFooterLang() {
               const isEnglish = document.documentElement.lang === 'en';
@@ -459,7 +375,7 @@
             window.updateFooterLang = updateFooterLang;
             document.addEventListener('DOMContentLoaded', updateFooterLang);
             document.addEventListener('footerLoaded', updateFooterLang);
-            console.log('✅ all-links.html - النسخة النهائية الموحدة');
+            console.log('✅ all-links.html - النسخة النهائية الموحدة (89 رابط)');
           </script>
 
     </div>
