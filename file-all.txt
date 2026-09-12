@@ -1,88 +1,239 @@
-# اسم الملف المجلد المخصص الرابط الكامل (URL)
-1 index.html (الرئيسية) / (الجذر) https://jabri-com.vercel.app/
-2-13 Page1.html إلى Page12.html / (الجذر) https://jabri-com.vercel.app/Page1.html ... إلخ
-14 logo.html / (الجذر) https://jabri-com.vercel.app/logo.html
-15 404.html / (الجذر) https://jabri-com.vercel.app/404.html
-16 about-ar.html / (الجذر) https://jabri-com.vercel.app/about-ar.html
-17 about-en.html / (الجذر) https://jabri-com.vercel.app/about-en.html
-18 about-waha.html / (الجذر) https://jabri-com.vercel.app/about-waha.html
-19 about.html / (الجذر) https://jabri-com.vercel.app/about.html
-20 all-links.html / (الجذر) https://jabri-com.vercel.app/all-links.html
-21 Author-cv.html / (الجذر) https://jabri-com.vercel.app/Author-cv.html
-22 author-history.html / (الجذر) https://jabri-com.vercel.app/author-history.html
+# ═══════════════════════════════════════════════════════════
+# قائمة ملفات موقع jabri-com.vercel.app
+# التاريخ: 2026-09-12
+# الإجمالي: ~92 ملف
+# ═══════════════════════════════════════════════════════════
 
-22 catalog.html / (الجذر) https://jabri-com.vercel.app/catalog.html
 
-23 calculator.html / (الجذر) https://jabri-com.vercel.app/calculator.html
-24 char-balance.html / (الجذر) https://jabri-com.vercel.app/char-balance.html
-25 Check.html / (الجذر) https://jabri-com.vercel.app/Check.html
-26 citations.html / (الجذر) https://jabri-com.vercel.app/citations.html
-27 contact.html / (الجذر) https://jabri-com.vercel.app/contact.html
-28 current-auto.html / (الجذر) https://jabri-com.vercel.app/current-auto.html
-29 CV-2026A.html / (الجذر) https://jabri-com.vercel.app/CV-2026A.html
-30 CV-2026E.html / (الجذر) https://jabri-com.vercel.app/CV-2026E.html
-31 dashboard.html / (الجذر) https://jabri-com.vercel.app/dashboard.html
-32 Dbase-deep.html / (الجذر) https://jabri-com.vercel.app/Dbase-deep.html
-33 Dbase.html / (الجذر) https://jabri-com.vercel.app/Dbase.html
+# ─────────────────────────────────────────────
+# 1. الصفحات الرئيسية (Main Pages)
+# ─────────────────────────────────────────────
+index.html
+logo.html
+catalog.html
+all-links.html
 
-22 diagnose.html / (الجذر) https://jabri-com.vercel.app/diagmose.html
 
-34 explore.html / (الجذر) https://jabri-com.vercel.app/explore.html
-35 FAQ-Page-en.html / (الجذر) https://jabri-com.vercel.app/FAQ-Page-en.html
-36 FAQ-Page.html / (الجذر) https://jabri-com.vercel.app/FAQ-Page.html
-37 file-structure.html / (الجذر) https://jabri-com.vercel.app/file-structure.html
-38 file-structure2.html / (الجذر) https://jabri-com.vercel.app/file-structure2.html
-39 footer.html / (الجذر) https://jabri-com.vercel.app/footer.html
-40 founder.html / (الجذر) https://jabri-com.vercel.app/founder.html
-41 gallery.html / (الجذر) https://jabri-com.vercel.app/gallery.html
-42 handsa.html / (الجذر) https://jabri-com.vercel.app/handsa.html
-43 header.html / (الجذر) https://jabri-com.vercel.app/header.html
-44 heaven-info.html / (الجذر) https://jabri-com.vercel.app/heaven-info.html
-45 hero.html / (الجذر) https://jabri-com.vercel.app/hero.html
-46 History-pdf.html / (الجذر) https://jabri-com.vercel.app/History-pdf.html
-47-50 Journal.html إلى Journal4.html / (الجذر) https://jabri-com.vercel.app/Journal.html ... إلخ
-51 kfupm-msg.html / (الجذر) https://jabri-com.vercel.app/kfupm-msg.html
-52 music.html / (الجذر) https://jabri-com.vercel.app/music.html
-53 Office.html / (الجذر) https://jabri-com.vercel.app/Office.html
-54 offline.html / (الجذر) https://jabri-com.vercel.app/offline.html
-55 Pages-Researchs.html / (الجذر) https://jabri-com.vercel.app/Pages-Researchs.html
-56 poster.html / (الجذر) https://jabri-com.vercel.app/poster.html
-57 privacy-policy.html / (الجذر) https://jabri-com.vercel.app/privacy-policy.html
-58 profile-en.html / (الجذر) https://jabri-com.vercel.app/profile-en.html
-59 profile.html / (الجذر) https://jabri-com.vercel.app/profile.html
-60 project-ar.html / (الجذر) https://jabri-com.vercel.app/project-ar.html
-61 project.html / (الجذر) https://jabri-com.vercel.app/project.html
-62 repos-auto.html / (الجذر) https://jabri-com.vercel.app/repos-auto.html
-63 repos-sqr.html / (الجذر) https://jabri-com.vercel.app/repos-sqr.html
-64 research-deep.html / (الجذر) https://jabri-com.vercel.app/research-deep.html
-65 research.html / (الجذر) https://jabri-com.vercel.app/research.html
-66 Router-all.html / (الجذر) https://jabri-com.vercel.app/Router-all.html
-67 Sanaa.html / (الجذر) https://jabri-com.vercel.app/Sanaa.html
-68 Shibam.html / (الجذر) https://jabri-com.vercel.app/Shibam.html
-69 Sindbad-Brdoni.html / (الجذر) https://jabri-com.vercel.app/Sindbad-Brdoni.html
-70 Sindbad-theory.html / (الجذر) https://jabri-com.vercel.app/Sindbad-theory.html
-71 Soqatra.html / (الجذر) https://jabri-com.vercel.app/Soqatra.html
-72 source.html / (الجذر) https://jabri-com.vercel.app/source.html
-73 taraif.html / (الجذر) https://jabri-com.vercel.app/taraf.html
-74 theory-ar.html / (الجذر) https://jabri-com.vercel.app/theory-ar.html
-75 theory-en.html / (الجذر) https://jabri-com.vercel.app/theory-en.html
-76 visitor.html / (الجذر) https://jabri-com.vercel.app/visitor.html
-77 who-we.html / (الجذر) https://jabri-com.vercel.app/who-we.html
-78 wonder.html / (الجذر) https://jabri-com.vercel.app/wonder.html
-79 Yemen-library.html / (الجذر) https://jabri-com.vercel.app/Yemen-library.html
-80 yemen-photo.html / (الجذر) https://jabri-com.vercel.app/yemen-photo.html
-81 yemen-photo2.html / (الجذر) https://jabri-com.vercel.app/yemen-photo2.html
-82 yemen-photo-api.html / (الجذر) https://jabri-com.vercel.app/yemen-photo-api.html
-83 yemen-photo-php.html / (الجذر) https://jabri-com.vercel.app/yemen-photo-php.html
-84 microtik.html / (الجذر) https://jabri-com.vercel.app/microtik.html
-85 microtik-deep.html / (الجذر) https://jabri-com.vercel.app/microtik-deep.html
-86 magic-translator.html / (الجذر) https://jabri-com.vercel.app/magic-translator.html
-87 publish.html /publish/ https://jabri-com.vercel.app/publish/publish.html
-88 game-auto.html /game/ https://jabri-com.vercel.app/game/game-auto.html
-89 Nezar.html / (الجذر) https://jabri-com.vercel.app/Nezar.html
-90 manifest.json / (الجذر) https://jabri-com.vercel.app/manifest.json
-91 robots.txt / (الجذر) https://jabri-com.vercel.app/robots.txt
-92 sw.js / (الجذر) https://jabri-com.vercel.app/sw.js
-93 vercel.json / (الجذر) https://jabri-com.vercel.app/vercel.json
-94 init-page-root.js /js/ https://jabri-com.vercel.app/js/init-page-root.js
-95 menu.js /js/ https://jabri-com.vercel.app/js/menu.js
+# ─────────────────────────────────────────────
+# 2. صفحات Page 1-12 (بأحرف كبيرة P)
+# ─────────────────────────────────────────────
+Page1.html
+Page2.html
+Page3.html
+Page4.html
+Page5.html
+Page6.html
+Page7.html
+Page8.html
+Page9.html
+Page10.html
+Page11.html
+Page12.html
+
+
+# ─────────────────────────────────────────────
+# 3. صفحات About (نبذة)
+# ─────────────────────────────────────────────
+about.html
+about-ar.html
+about-en.html
+about-waha.html
+
+
+# ─────────────────────────────────────────────
+# 4. المؤلف والسيرة الذاتية (Author & CV)
+# ─────────────────────────────────────────────
+Author-cv.html
+author-history.html
+cv-2026a.html
+cv-2026e.html
+founder.html
+profile.html
+profile-en.html
+
+
+# ─────────────────────────────────────────────
+# 5. النظرية الموحدة (Theory)
+# ─────────────────────────────────────────────
+theory-ar.html
+theory-en.html
+Sindbad-theory.html
+Sindbad-Brdoni.html
+
+
+# ─────────────────────────────────────────────
+# 6. البحث العلمي (Research)
+# ─────────────────────────────────────────────
+research.html
+research-deep.html
+Pages-Researches.html
+
+
+# ─────────────────────────────────────────────
+# 7. التراث اليمني (Yemeni Heritage)
+# ─────────────────────────────────────────────
+Sanaa.html
+Shibam.html
+Soqatra.html
+Yemen-library.html
+gallery.html
+yemen-photo.html
+yemen-photo2.html
+yemen-photo-api.html
+yemen-photo-php.html
+
+
+# ─────────────────────────────────────────────
+# 8. المجلات (Journals)
+# ─────────────────────────────────────────────
+journal.html
+journal2.html
+journal3.html
+journal4.html
+History-pdf.html
+
+
+# ─────────────────────────────────────────────
+# 9. الأدوات (Tools)
+# ─────────────────────────────────────────────
+calculator.html
+handsa.html
+char-balance.html
+Check.html
+magic-translator.html
+diagnose.html
+
+
+# ─────────────────────────────────────────────
+# 10. قواعد البيانات والشبكة (Databases & Network)
+# ─────────────────────────────────────────────
+Dbase.html
+Dbase-deep.html
+microtik.html
+microtik-deep.html
+
+
+# ─────────────────────────────────────────────
+# 11. المكتبة والمحتوى (Library & Content)
+# ─────────────────────────────────────────────
+Office.html
+source.html
+citations.html
+music.html
+taraif.html
+Nezar.html
+wonder.html
+heaven-info.html
+visitor.html
+who-we.html
+project.html
+project-ar.html
+poster.html
+bazar.html
+
+
+# ─────────────────────────────────────────────
+# 12. التواصل والنظام (Contact & System)
+# ─────────────────────────────────────────────
+contact.html
+FAQPage.html
+FAQPage-en.html
+privacy-policy.html
+404.html
+offline.html
+dashboard.html
+
+
+# ─────────────────────────────────────────────
+# 13. أدوات المطور (Developer Tools)
+# ─────────────────────────────────────────────
+file-structure.html
+file-structure2.html
+Router-all.html
+repos-auto.html
+repos-sqr.html
+current-auto.html
+
+
+# ─────────────────────────────────────────────
+# 14. المتنوع (Miscellaneous)
+# ─────────────────────────────────────────────
+kfupm-msg.html
+explore.html
+
+
+# ─────────────────────────────────────────────
+# 15. الأجزاء (Partials — لا تُفهرس)
+# ─────────────────────────────────────────────
+header.html
+footer.html
+hero.html
+
+
+# ═══════════════════════════════════════════════════════════
+# المجلدات الفرعية (Subfolders)
+# ═══════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────
+# 16. مجلد /ar/ (النسخة العربية)
+# ─────────────────────────────────────────────
+ar/index.html
+ar/about.html
+ar/contact.html
+ar/journal.html
+
+
+# ─────────────────────────────────────────────
+# 17. مجلد /en/ (النسخة الإنجليزية)
+# ─────────────────────────────────────────────
+en/index.html
+en/about.html
+en/contact.html
+en/journal.html
+
+
+# ─────────────────────────────────────────────
+# 18. مجلد /game/ (الألعاب)
+# ─────────────────────────────────────────────
+game/game-auto.html
+
+
+# ─────────────────────────────────────────────
+# 19. مجلد /publish/ (النشر)
+# ─────────────────────────────────────────────
+publish/publish.html
+
+
+# ─────────────────────────────────────────────
+# 20. مجلد /js/ (الجافاسكريبت)
+# ─────────────────────────────────────────────
+js/init-page-root.js
+js/menu.js
+
+
+# ═══════════════════════════════════════════════════════════
+# ملفات النظام (System Files — في الجذر)
+# ═══════════════════════════════════════════════════════════
+manifest.json
+robots.txt
+sitemap.xml
+sw.js
+vercel.json
+
+
+# ═══════════════════════════════════════════════════════════
+# الإحصائيات
+# ═══════════════════════════════════════════════════════════
+# صفحات HTML في الجذر: ~75
+# صفحات /ar/: 4
+# صفحات /en/: 4
+# صفحات /game/: 1
+# صفحات /publish/: 1
+# ملفات JS: 2
+# ملفات النظام: 5
+# ─────────────────────────────────
+# الإجمالي: ~92 ملف
+#
+# يُفهرس في Sitemap: ~75 صفحة HTML
+# لا يُفهرس: الأجزاء + ملفات النظام + JS
+# ═══════════════════════════════════════════════════════════
