@@ -1,0 +1,88 @@
+# اسم الملف المجلد المخصص الرابط الكامل (URL)
+1 index.html (الرئيسية) / (الجذر) https://jabri-com.vercel.app/
+2-13 Page1.html إلى Page12.html / (الجذر) https://jabri-com.vercel.app/Page1.html ... إلخ
+14 logo.html / (الجذر) https://jabri-com.vercel.app/logo.html
+15 404.html / (الجذر) https://jabri-com.vercel.app/404.html
+16 about-ar.html / (الجذر) https://jabri-com.vercel.app/about-ar.html
+17 about-en.html / (الجذر) https://jabri-com.vercel.app/about-en.html
+18 about-waha.html / (الجذر) https://jabri-com.vercel.app/about-waha.html
+19 about.html / (الجذر) https://jabri-com.vercel.app/about.html
+20 all-links.html / (الجذر) https://jabri-com.vercel.app/all-links.html
+21 Author-cv.html / (الجذر) https://jabri-com.vercel.app/Author-cv.html
+22 author-history.html / (الجذر) https://jabri-com.vercel.app/author-history.html
+
+22 catalog.html / (الجذر) https://jabri-com.vercel.app/catalog.html
+
+23 calculator.html / (الجذر) https://jabri-com.vercel.app/calculator.html
+24 char-balance.html / (الجذر) https://jabri-com.vercel.app/char-balance.html
+25 Check.html / (الجذر) https://jabri-com.vercel.app/Check.html
+26 citations.html / (الجذر) https://jabri-com.vercel.app/citations.html
+27 contact.html / (الجذر) https://jabri-com.vercel.app/contact.html
+28 current-auto.html / (الجذر) https://jabri-com.vercel.app/current-auto.html
+29 CV-2026A.html / (الجذر) https://jabri-com.vercel.app/CV-2026A.html
+30 CV-2026E.html / (الجذر) https://jabri-com.vercel.app/CV-2026E.html
+31 dashboard.html / (الجذر) https://jabri-com.vercel.app/dashboard.html
+32 Dbase-deep.html / (الجذر) https://jabri-com.vercel.app/Dbase-deep.html
+33 Dbase.html / (الجذر) https://jabri-com.vercel.app/Dbase.html
+
+22 diagnose.html / (الجذر) https://jabri-com.vercel.app/diagmose.html
+
+34 explore.html / (الجذر) https://jabri-com.vercel.app/explore.html
+35 FAQ-Page-en.html / (الجذر) https://jabri-com.vercel.app/FAQ-Page-en.html
+36 FAQ-Page.html / (الجذر) https://jabri-com.vercel.app/FAQ-Page.html
+37 file-structure.html / (الجذر) https://jabri-com.vercel.app/file-structure.html
+38 file-structure2.html / (الجذر) https://jabri-com.vercel.app/file-structure2.html
+39 footer.html / (الجذر) https://jabri-com.vercel.app/footer.html
+40 founder.html / (الجذر) https://jabri-com.vercel.app/founder.html
+41 gallery.html / (الجذر) https://jabri-com.vercel.app/gallery.html
+42 handsa.html / (الجذر) https://jabri-com.vercel.app/handsa.html
+43 header.html / (الجذر) https://jabri-com.vercel.app/header.html
+44 heaven-info.html / (الجذر) https://jabri-com.vercel.app/heaven-info.html
+45 hero.html / (الجذر) https://jabri-com.vercel.app/hero.html
+46 History-pdf.html / (الجذر) https://jabri-com.vercel.app/History-pdf.html
+47-50 Journal.html إلى Journal4.html / (الجذر) https://jabri-com.vercel.app/Journal.html ... إلخ
+51 kfupm-msg.html / (الجذر) https://jabri-com.vercel.app/kfupm-msg.html
+52 music.html / (الجذر) https://jabri-com.vercel.app/music.html
+53 Office.html / (الجذر) https://jabri-com.vercel.app/Office.html
+54 offline.html / (الجذر) https://jabri-com.vercel.app/offline.html
+55 Pages-Researchs.html / (الجذر) https://jabri-com.vercel.app/Pages-Researchs.html
+56 poster.html / (الجذر) https://jabri-com.vercel.app/poster.html
+57 privacy-policy.html / (الجذر) https://jabri-com.vercel.app/privacy-policy.html
+58 profile-en.html / (الجذر) https://jabri-com.vercel.app/profile-en.html
+59 profile.html / (الجذر) https://jabri-com.vercel.app/profile.html
+60 project-ar.html / (الجذر) https://jabri-com.vercel.app/project-ar.html
+61 project.html / (الجذر) https://jabri-com.vercel.app/project.html
+62 repos-auto.html / (الجذر) https://jabri-com.vercel.app/repos-auto.html
+63 repos-sqr.html / (الجذر) https://jabri-com.vercel.app/repos-sqr.html
+64 research-deep.html / (الجذر) https://jabri-com.vercel.app/research-deep.html
+65 research.html / (الجذر) https://jabri-com.vercel.app/research.html
+66 Router-all.html / (الجذر) https://jabri-com.vercel.app/Router-all.html
+67 Sanaa.html / (الجذر) https://jabri-com.vercel.app/Sanaa.html
+68 Shibam.html / (الجذر) https://jabri-com.vercel.app/Shibam.html
+69 Sindbad-Brdoni.html / (الجذر) https://jabri-com.vercel.app/Sindbad-Brdoni.html
+70 Sindbad-theory.html / (الجذر) https://jabri-com.vercel.app/Sindbad-theory.html
+71 Soqatra.html / (الجذر) https://jabri-com.vercel.app/Soqatra.html
+72 source.html / (الجذر) https://jabri-com.vercel.app/source.html
+73 taraif.html / (الجذر) https://jabri-com.vercel.app/taraf.html
+74 theory-ar.html / (الجذر) https://jabri-com.vercel.app/theory-ar.html
+75 theory-en.html / (الجذر) https://jabri-com.vercel.app/theory-en.html
+76 visitor.html / (الجذر) https://jabri-com.vercel.app/visitor.html
+77 who-we.html / (الجذر) https://jabri-com.vercel.app/who-we.html
+78 wonder.html / (الجذر) https://jabri-com.vercel.app/wonder.html
+79 Yemen-library.html / (الجذر) https://jabri-com.vercel.app/Yemen-library.html
+80 yemen-photo.html / (الجذر) https://jabri-com.vercel.app/yemen-photo.html
+81 yemen-photo2.html / (الجذر) https://jabri-com.vercel.app/yemen-photo2.html
+82 yemen-photo-api.html / (الجذر) https://jabri-com.vercel.app/yemen-photo-api.html
+83 yemen-photo-php.html / (الجذر) https://jabri-com.vercel.app/yemen-photo-php.html
+84 microtik.html / (الجذر) https://jabri-com.vercel.app/microtik.html
+85 microtik-deep.html / (الجذر) https://jabri-com.vercel.app/microtik-deep.html
+86 magic-translator.html / (الجذر) https://jabri-com.vercel.app/magic-translator.html
+87 publish.html /publish/ https://jabri-com.vercel.app/publish/publish.html
+88 game-auto.html /game/ https://jabri-com.vercel.app/game/game-auto.html
+89 Nezar.html / (الجذر) https://jabri-com.vercel.app/Nezar.html
+90 manifest.json / (الجذر) https://jabri-com.vercel.app/manifest.json
+91 robots.txt / (الجذر) https://jabri-com.vercel.app/robots.txt
+92 sw.js / (الجذر) https://jabri-com.vercel.app/sw.js
+93 vercel.json / (الجذر) https://jabri-com.vercel.app/vercel.json
+94 init-page-root.js /js/ https://jabri-com.vercel.app/js/init-page-root.js
+95 menu.js /js/ https://jabri-com.vercel.app/js/menu.js
