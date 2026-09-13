@@ -1,3 +1,288 @@
+
+___ databases_____
+1. jabri62018.github.io ← البوابة الرئيسية
+2. Zx_RieOS_v1.2 ← الإصدار الذهبي النهائي
+3. Zx_Mother_Function_Jabri ← الدالة الأم (الأصل)
+4. Jabri-web.github.io ← الواجهة الثانية
+__________________
+5. Jabri_Nobble ← الحزمة الكبرى (6 مفاهيم):
+5.1- Jabri_Riemann ← إثبات ريمان
+5.2- Jabri_np ← P vs NP
+5.3- Jabri_gab ← الفجوة (Gap)
+5.4- Jabri_Navier ← معادلات نافييه-ستوكس
+5.5- Jabri_Birch ← حدسية بيرش-سوينرتون-داير
+5.6- Jabri_Hodge ← حدسية هودج
+5.7- Jabri_Identity ← الهوية Z_t = 1
+_________________
+6. Jabri_lab ← المختبر الرئيسي (9 أقسام):
+6.1- Jabri_5 ← معامل 5
+6.2- Jabri_28 ← معامل 28
+6.3- Jabri_Gravity ← الجاذبية
+6.4- Jabri_Spacetime ← الزمكان
+6.5- Jabri_Darkenergy ← الطاقة المظلمة
+6.6- Jabri_Planck ← بلانك
+6.7- Jabri_Hubble ← هابل
+6.8- Jabri_Periodic ← الدورية
+6.9- Jabri_all ← الكل
+____________________
+7. Zx_RieOS_v1.1 ← الإصدار السابق
+8. Jabri_RiemannOS ← نظام ريمان
+9. Jabri_Checkout ← نقطة التحقق
+
+10- Jabri-web.... Router
+11- jabri-com ← النشر
+12- jabri.com... hyper Router
+
+_______eof()________
+
+
+# 🌊 واحة الجبري | Heaven Al-Jabri - خريطة الإمبراطورية الرقمية
+
+> **👤 الباحث:** م/ عبدالله محمد ناصر الجبري (Eng. Abdulla Mohammed Nasser Al-Jabri)
+> **📍 الموقع:** صنعاء – اليمن
+> **🔗 رابط الموقع:** [https://jabri-com.vercel.app](https://jabri-com.vercel.app)
+> **📊 ORCID:** [0009-0003-3319-3822](https://orcid.org/0009-0003-3319-3822)
+
+---
+
+## 🧭 الطبقة 1: البوابات والواجهات (Gateway Layer)
+| # | المشروع | الدور | الرابط المباشر |
+|---|---------|-------|----------------|
+| 1 | `jabri62018.github.io` | **البوابة الرئيسية** | [زيارة](https://jabri62018.github.io) |
+| 4 | `Jabri-web.github.io` | **الواجهة الثانية** | [زيارة](https://Jabri-web.github.io) |
+| 10 | `Jabri-web` | **Router الرئيسي** | [زيارة](https://jabri-web.vercel.app) |
+| 11 | `jabri-com` | **النشر على Vercel** | [زيارة](https://jabri-com.vercel.app) |
+| 12 | `jabri.com` | **Hyper Router** | [زيارة](https://jabri.com) |
+
+---
+
+## 🧠 الطبقة 2: النواة ونظام التشغيل (Core OS Layer)
+| # | المشروع | الدور | الرابط المباشر |
+|---|---------|-------|----------------|
+| 3 | `Zx-Mother-Function-Jabri` | **الدالة الأم Z(x)** | [زيارة](https://github.com/Jabri-web/Zx_Mother_Function_Jabri) |
+| 8 | `Jabri-RiemannOS` | **نظام ريمان النظري** | [زيارة](https://github.com/Jabri-web/Jabri-RiemannOS) |
+| 2 | `Zx-RieOS-v1.2` | **الذهبي النهائي** | [زيارة](https://github.com/Jabri-web/Zx_RieOS_v1.2) |
+| 7 | `Zx-RieOS-v1.1` | **الإصدار السابق** | [زيارة](https://github.com/Jabri-web/Zx_RieOS_v1.1) |
+
+---
+
+## 🏆 الطبقة 3: الحزمة الكبرى - مسائل الألفية (Jabri-Nobble)
+> **📦 المستودع الأم:** [github.com/Jabri-web/Jabri_Nobble](https://github.com/Jabri-web/Jabri_Nobble)
+
+| # | المشروع | المسألة | الرابط المباشر |
+|---|---------|---------|----------------|
+| 5.1 | `Jabri-Riemann` | فرضية ريمان | [زيارة](https://github.com/Jabri-web/Jabri_Riemann) |
+| 5.2 | `Jabri-np` | P vs NP | [زيارة](https://github.com/Jabri-web/Jabri_np) |
+| 5.3 | `Jabri-gab` | الفجوة (Gap) | [زيارة](https://github.com/Jabri-web/Jabri_gab) |
+| 5.4 | `Jabri-Navier` | معادلات نافييه-ستوكس | [زيارة](https://github.com/Jabri-web/Jabri_Navier) |
+| 5.5 | `Jabri-Birch` | بيرش-سوينرتون-داير | [زيارة](https://github.com/Jabri-web/Jabri_Birch) |
+| 5.6 | `Jabri-Hodge` | حدسية هودج | [زيارة](https://github.com/Jabri-web/Jabri_Hodge) |
+| 5.7 | `Jabri-Identity` | **الهوية Z_t = 1** (جوهر النظرية) | [زيارة](https://github.com/Jabri-web/Jabri_Identity) |
+
+---
+
+## 🧪 الطبقة 4: مختبر الفيزياء والكون (Jabri-Lab)
+> **📦 المستودع الأم:** [github.com/Jabri-web/Jabri_lab](https://github.com/Jabri-web/Jabri_lab)
+
+| # | المشروع | التخصص | الرابط المباشر |
+|---|---------|--------|----------------|
+| 6.1 | `Jabri-5` | معامل 5 | [زيارة](https://github.com/Jabri-web/Jabri_5) |
+| 6.2 | `Jabri-28` | معامل 28 | [زيارة](https://github.com/Jabri-web/Jabri_28) |
+| 6.3 | `Jabri-Gravity` | الجاذبية | [زيارة](https://github.com/Jabri-web/Jabri_Gravity) |
+| 6.4 | `Jabri-Spacetime` | الزمكان | [زيارة](https://github.com/Jabri-web/Jabri_Spacetime) |
+| 6.5 | `Jabri-Darkenergy` | الطاقة المظلمة | [زيارة](https://github.com/Jabri-web/Jabri_Darkenergy) |
+| 6.6 | `Jabri-Planck` | ثابت بلانك | [زيارة](https://github.com/Jabri-web/Jabri_Planck) |
+| 6.7 | `Jabri-Hubble` | ثابت هابل | [زيارة](https://github.com/Jabri-web/Jabri_Hubble) |
+| 6.8 | `Jabri-Periodic` | الدورية | [زيارة](https://github.com/Jabri-web/Jabri_Periodic) |
+| 6.9 | `Jabri-all` | الدمج الكلي | [زيارة](https://github.com/Jabri-web/Jabri_all) |
+
+---
+
+## 🛠️ الطبقة 5: الأدوات والتشخيص (Tools Layer)
+| # | المشروع | الدور | الرابط المباشر |
+|---|---------|-------|----------------|
+| 9 | `Jabri-Checkout` | **نقطة التحقق** - فحص وتشخيص النظام | [زيارة](https://jabri-checkout.vercel.app) |
+
+---
+
+## 🚀 التوصيات التنفيذية (تنفيذ فوري)
+
+1. **README موحد**: هذا الملف هو الفهرس الرسمي. ضعه في `jabri62018.github.io` وسيفهرس المحتوى تلقائياً.
+2. **التسمية**: تم استخدام `-` بدلاً من `_` في جميع الأسماء لجعل الروابط أكثر توافقاً مع محركات البحث (SEO-Friendly).
+3. **الربط**: تأكد من ربط جميع الروابط أعلاه بمشاريع GitHub الفعلية، وسيعمل هذا الملف كخريطة إرشادية لجوجل.
+
+---
+
+## 📞 تواصل مع الباحث
+- **📧 البريد:** [jabri62018@gmail.com](mailto:jabri62018@gmail.com)
+- **🐙 GitHub:** [https://github.com/jabri-web](https://github.com/jabri-web)
+- **🆔 ORCID:** [https://orcid.org/0009-0003-3319-3822](https://orcid.org/0009-0003-3319-3822)
+
+> **© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة.**
+
+________________________
+           JABRI-WEB GITHUB ORGANIZATION MAP
+           Author: Eng. Abdulla Mohammed Nasser Al-Jabri
+           Identity: Z + C + A = 1
+           Verified: 2026-06-09
+
+
+📁 Jabri-web/ <-- Organization Root
+│
+├── 1. Jabri6218.github.io
+│ DOI: 10.5281/zenodo.20403864
+│ Pages: https://jabri-web.github.io/jabri62018.github.io/
+│ Desc: Main Portal Index - Central hub for all projects
+│
+├── 2. Zx-RieOS-v1.2
+│ DOI: 10.5281/zenodo.20100622 [x2]
+│ Pages: https://jabri-web.github.io/Zx_RieOS_v1.2/
+│ Desc: Experimental OS based on Zx Function & Riemann Zeros
+│
+├── 3. Zx-Mother-Function-Jabri
+│ DOI: -
+│ Pages: https://jabri-web.github.io/Zx_Mother_Function_Jabri/
+│ Desc: Core Zx Mother Function Implementation
+│
+├── 4. Jabri-web.github.io
+│ DOI: 10.5281/zenodo.20499365 / 10.5281/zenodo.20404167
+│ Pages: https://jabri-web.github.io/
+│ Desc: Secondary Main Portal
+│
+├── 5. Jabri-Nobble
+│ DOI: 10.5281/zenodo.20148770
+│ Pages: https://jabri-web.github.io/Jabri_Nobble/
+│ Desc: Millennium Problems Research Suite
+│ │
+│ ├── 5-1. Jabri-Riemann
+│ │ DOI: 10.5281/zenodo.20139904 / 10.5281/zenodo.20145337
+│ │ Desc: Riemann Hypothesis Module
+│ │
+│ ├── 5-2. Jabri-np
+│ │ DOI: 10.5281/zenodo.20145279
+│ │ Desc: P vs NP Module
+│ │
+│ ├── 5-3. Jabri-gab
+│ │ DOI: 10.5281/zenodo.20148344
+│ │ Desc: Hodge Conjecture Module
+│ │
+│ ├── 5-4. Jabri-Navier
+│ │ DOI: 10.5281/zenodo.20149618
+│ │ Desc: Navier-Stokes Module
+│ │
+│ ├── 5-5. Jabri-Birch
+│ │ DOI: -
+│ │ Desc: Birch and Swinnerton-Dyer Module
+│ │
+│ ├── 5-6. Jabri-Hodge
+│ │ DOI: -
+│ │ Desc: Hodge Conjecture Module
+│ │
+│ └── 5-7. Jabri-S-care [Jabri-Identity]
+│ DOI: 10.5281/zenodo.20114317
+│ Desc: Al-Jabri Identity Module Z+C+A=1
+│
+├── 6. Jabri-lab
+│ DOI: Publishing
+│ Pages: https://jabri-web.github.io/jabri_lab/
+│ Desc: Digital Laboratory for Experiments
+│ │
+│ ├── 6-1. Jabri-5
+│ ├── 6-2. Jabri-28
+│ ├── 6-3. Jabri-Gravity
+│ ├── 6-4. Jabri-Spacetime
+│ ├── 6-5. Jabri-DarkEnergy
+│ ├── 6-6. Jabri-Planck
+│ ├── 6-7. Jabri-Hubble
+│ ├── 6-8. Jabri-Periodic
+│ └── 6-9. Jabri-all
+│
+├── 7. Zx-RieOS-v1.1
+│ DOI: 10.5281/zenodo.19981688 / 10.5281/zenodo.20070594
+│ Pages: https://jabri-web.github.io/Zx_RieOS_v1.1/
+│ Desc: Previous version of RieOS
+│
+├── 8. Jabri-RiemannOS
+│ DOI: -
+│ Pages: https://jabri-web.github.io/Jabri-RiemannOS/
+│ Desc: Dedicated Riemann OS
+│
+├── 9. Jabri-Checkout
+│ DOI: 10.5281/zenodo.20513840
+│ Pages: https://jabri-web.github.io/Jabri_Checkout/
+│ Desc: Checkout and Validation System
+│
+├── 10. Jabri-web [ROUTER FOR GITHUB]
+│ DOI: -
+│ Pages: https://github.com/Jabri-web
+│ Desc: Main GitHub Organization Router - Gateway to all 1-9 repos
+│
+├── 11. jabri-com [ROUTER FOR AL-WAHA & VERCEL]
+│ DOI: -
+│ Pages: https://jabri-com.vercel.app
+│ Desc: Main Website Router - Al-Waha Platform with AR/EN versions
+│
+└── 12. jabri.com [ROUTER FOR 10++ 11]
+    DOI: -
+    Pages: https://jabri.com
+    Desc: Master Domain Router - Redirects to GitHub Org + Al-Waha
+
+REQUIREMENTS FOR EACH REPO:
+1. README.md + README-AR.md
+2. ABOUT.md + ABOUT-AR.md <-- with language switch bar
+3. Link to main website: https://jabri-com.vercel.app
+4. License: CC BY 4.0
+
+__________________
+
+
+المستودع الاسم الدور
+1 jabri62018.github.io البوابة الرئيسية P1
+2 Zx_RieOS_v1.2 نظام RieOS الإصدار 1.2
+3 Zx_Mother_Function_Jabri دالة Zx الأم (القلب النظري)
+4 Jabri-web.github.io المركز التنظيمي
+5 Jabri_Nobble مجموعة أبحاث مسائل الألفية
+6 Jabri_lab المختبر الرقمي (9 مشاريع)
+7 Zx_RieOS_v1.1 نظام RieOS الإصدار 1.1
+8 Jabri_RiemannOS إطار مخصص لفرضية ريمان
+9 Jabri_Checkout نظام التحقق والاختبار
+10 Jabri-web راوتر GitHub الرئيسي
+11 jabri-com راوتر Vercel البديل
+12 jabri.com HyperRouter النهائي
+___________________
+
+📁/root of each repo
+├── 📁 ar/ (Arabic - main)
+│ ├── 📄 index.html
+│ ├── 📄 about.html
+│ └── 📄 contact.html
+├── 📁 en/ (English)
+│ ├── 📄 index.html
+│ ├── 📄 about.html
+│ └── 📄 contact.html
+├── 📄 header.html (Arabic header)
+├── 📄 header-en.html (English header)
+├── 📄 footer.html (Arabic footer)
+├── 📄 footer-en.html (English footer)
+├── 📁 js/
+│ ├── 📄 init-page.js (Arabic)
+│ └── 📄 init-page-en.js (English)
+└── 📁 image/
+├── 📄 Jabri-photo.png
+└── 📄 Yemen2026.png
+
+
+_______المجلدات_____folder;
+/ .....root 98% of files
+ar/.....Arabic files
+en/.....English files
+js/....
+publish/..
+game/..
+image/.. all multimedia
+
+_______files_______
+
 # ═══════════════════════════════════════════════════════════
 # قائمة ملفات موقع jabri-com.vercel.app
 # التاريخ: 2026-09-12
@@ -17,6 +302,7 @@ all-links.html
 # ─────────────────────────────────────────────
 # 2. صفحات Page 1-12 (بأحرف كبيرة P)
 # ─────────────────────────────────────────────
+/....root
 Page1.html
 Page2.html
 Page3.html
@@ -34,6 +320,7 @@ Page12.html
 # ─────────────────────────────────────────────
 # 3. صفحات About (نبذة)
 # ─────────────────────────────────────────────
+/..root
 about.html
 about-ar.html
 about-en.html
@@ -43,6 +330,7 @@ about-waha.html
 # ─────────────────────────────────────────────
 # 4. المؤلف والسيرة الذاتية (Author & CV)
 # ─────────────────────────────────────────────
+/...root
 Author-cv.html
 author-history.html
 cv-2026a.html
@@ -55,6 +343,7 @@ profile-en.html
 # ─────────────────────────────────────────────
 # 5. النظرية الموحدة (Theory)
 # ─────────────────────────────────────────────
+/....root
 theory-ar.html
 theory-en.html
 Sindbad-theory.html
@@ -64,6 +353,7 @@ Sindbad-Brdoni.html
 # ─────────────────────────────────────────────
 # 6. البحث العلمي (Research)
 # ─────────────────────────────────────────────
+/...root
 research.html
 research-deep.html
 Pages-Researches.html
@@ -72,6 +362,7 @@ Pages-Researches.html
 # ─────────────────────────────────────────────
 # 7. التراث اليمني (Yemeni Heritage)
 # ─────────────────────────────────────────────
+/....root
 Sanaa.html
 Shibam.html
 Soqatra.html
@@ -86,6 +377,7 @@ yemen-photo-php.html
 # ─────────────────────────────────────────────
 # 8. المجلات (Journals)
 # ─────────────────────────────────────────────
+/...root:
 journal.html
 journal2.html
 journal3.html
@@ -96,6 +388,7 @@ History-pdf.html
 # ─────────────────────────────────────────────
 # 9. الأدوات (Tools)
 # ─────────────────────────────────────────────
+/...root:
 calculator.html
 handsa.html
 char-balance.html
@@ -107,6 +400,7 @@ diagnose.html
 # ─────────────────────────────────────────────
 # 10. قواعد البيانات والشبكة (Databases & Network)
 # ─────────────────────────────────────────────
+/...root:
 Dbase.html
 Dbase-deep.html
 microtik.html
@@ -116,6 +410,7 @@ microtik-deep.html
 # ─────────────────────────────────────────────
 # 11. المكتبة والمحتوى (Library & Content)
 # ─────────────────────────────────────────────
+/..root:
 Office.html
 source.html
 citations.html
@@ -129,12 +424,13 @@ who-we.html
 project.html
 project-ar.html
 poster.html
-bazar.html
+bazar.html..(not yet)
 
 
 # ─────────────────────────────────────────────
 # 12. التواصل والنظام (Contact & System)
 # ─────────────────────────────────────────────
+/..root:
 contact.html
 FAQPage.html
 FAQPage-en.html
@@ -147,6 +443,7 @@ dashboard.html
 # ─────────────────────────────────────────────
 # 13. أدوات المطور (Developer Tools)
 # ─────────────────────────────────────────────
+/...root:
 file-structure.html
 file-structure2.html
 Router-all.html
@@ -158,6 +455,7 @@ current-auto.html
 # ─────────────────────────────────────────────
 # 14. المتنوع (Miscellaneous)
 # ─────────────────────────────────────────────
+/...root:
 kfupm-msg.html
 explore.html
 
@@ -165,6 +463,7 @@ explore.html
 # ─────────────────────────────────────────────
 # 15. الأجزاء (Partials — لا تُفهرس)
 # ─────────────────────────────────────────────
+/..root;general files
 header.html
 footer.html
 hero.html
@@ -207,13 +506,15 @@ publish/publish.html
 # ─────────────────────────────────────────────
 # 20. مجلد /js/ (الجافاسكريبت)
 # ─────────────────────────────────────────────
+js/...general files;
 js/init-page-root.js
 js/menu.js
 
 
 # ═══════════════════════════════════════════════════════════
 # ملفات النظام (System Files — في الجذر)
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════
+/..root:system general files:
 manifest.json
 robots.txt
 sitemap.xml

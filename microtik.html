@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>إدارة MikroTik عن بُعد باستخدام Tailscale | شبكة العنكبوت</title>
+    <meta name="description" content="دليل شامل لإدارة أجهزة MikroTik عن بُعد باستخدام Tailscale – شبكة WireGuard متشابكة مع اجتياز NAT تلقائي ووصول قائم على الهوية." />
+    <meta name="keywords" content="MikroTik, Tailscale, إدارة الشبكات, VPN, WireGuard, CGNAT, شبكة العنكبوت, بليغ" />
+    <link rel="canonical" href="https://baleegh.vercel.app/blog/tailscale-mikrotik.html" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="إدارة MikroTik عن بُعد باستخدام Tailscale" />
+    <meta property="og:description" content="دليل شامل لإدارة أجهزة MikroTik عن بُعد باستخدام Tailscale – شبكة WireGuard متشابكة." />
+    <meta property="og:image" content="https://baleegh.vercel.app/images/blog-tailscale.jpg" />
+    <meta property="og:url" content="https://baleegh.vercel.app/blog/tailscale-mikrotik.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org (Article) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "إدارة MikroTik عن بُعد باستخدام Tailscale",
+        "description": "دليل شامل لإدارة أجهزة MikroTik عن بُعد باستخدام Tailscale – شبكة WireGuard متشابكة مع اجتياز NAT تلقائي.",
+        "author": {
+            "@type": "Person",
+            "name": "بليغ عبدالله الجبري",
+            "url": "https://baleegh.vercel.app/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "شبكة العنكبوت",
+            "url": "https://baleegh.vercel.app/"
+        },
+        "datePublished": "2026-07-30",
+        "dateModified": "2026-07-30",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://baleegh.vercel.app/blog/tailscale-mikrotik.html"
+        }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ===== نفس تنسيقات موقع بليغ مع بعض الإضافات ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Tajawal', sans-serif;
+            padding: 20px;
+            line-height: 1.9;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #111;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+        }
+        h1 { color: #FFD700; font-size: 2.2rem; margin-bottom: 0.5rem; }
+        h2 { color: #FFD700; font-size: 1.8rem; margin: 2rem 0 1rem 0; border-right: 4px solid #FFD700; padding-right: 15px; }
+        h3 { color: #FFA500; font-size: 1.3rem; margin: 1.5rem 0 0.8rem 0; }
+        p, li { color: #ccc; font-size: 1.05rem; margin-bottom: 1rem; }
+        ul, ol { padding-right: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code {
+            background: #1a1a1a;
+            color: #FFA500;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            direction: ltr;
+            display: inline-block;
+            margin: 5px 0;
+            border: 1px solid #2a2a2a;
+            font-size: 0.95rem;
+        }
+        pre {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 15px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+            color: #0f0;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #8B4513;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 2px solid #FFD700;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #FFD700;
+            color: #0a0a0a;
+            border-color: #8B4513;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .highlight-box {
+            background: #1a1a1a;
+            border-right: 4px solid #FFD700;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #2a2a2a;
+            padding: 10px 15px;
+            text-align: right;
+        }
+        th {
+            background: #1a1a1a;
+            color: #FFD700;
+        }
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            code { font-size: 0.85rem; padding: 2px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- الهيدر -->
+    <header style="text-align:center; border-bottom: 2px solid #222; padding-bottom: 20px; margin-bottom: 25px;">
+        <img src="https://jabri-com.vercel.app/image/Baleegh2026.png" alt="شبكة العنكبوت" style="width:80px; border-radius:50%; border:2px solid #FFD700;">
+        <h1 style="margin-top:10px;">🕸️ شبكة العنكبوت</h1>
+        <p style="color:#aaa;">نظام إدارة الشبكة عن بعد – حلول احترافية للميكروتيك</p>
+        <nav style="margin-top:15px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+            <a href="/" style="color:#FFD700; text-decoration:none;">الرئيسية</a>
+            <a href="/blog.html" style="color:#FFD700; text-decoration:none;">📖 المدونة</a>
+            <a href="/about.html" style="color:#FFD700; text-decoration:none;">عن الشبكة</a>
+        </nav>
+    </header>
+
+    <!-- المقال -->
+    <main>
+        <article>
+            <h1>🚀 إدارة MikroTik عن بُعد باستخدام Tailscale</h1>
+            <div class="meta">
+                <span>📅 30 يوليو 2026</span> &nbsp;|&nbsp; <span>⏱️ 5 دقائق قراءة</span> &nbsp;|&nbsp; <span>🏷️ MikroTik, VPN, شبكات</span>
+            </div>
+
+            <p>
+                في عالم إدارة الشبكات، يبقى التحدي الأكبر هو <strong>الوصول الآمن والموثوق إلى أجهزة MikroTik عن بُعد</strong>، خاصة عندما تكون خلف عناوين IP خاصة (NAT) أو شبكات CGNAT. الحل التقليدي يتطلب عناوين IP عامة، أو إعادة توجيه منافذ، أو تكوين VPN معقد.
+            </p>
+            <p>
+                هنا يأتي دور <strong>Tailscale</strong> – وهي طبقة تحكم ذكية مبنية فوق <strong>WireGuard</strong>، تجعل إنشاء شبكات VPN خاصة (Tailnet) أمراً سهلاً مثل تسجيل الدخول بحساب Google، وتدير توزيع المفاتيح واجتياز NAT تلقائياً.
+            </p>
+
+            <div class="highlight-box">
+                <p style="margin:0; color:#FFD700;"><strong>✨ الخلاصة:</strong> مع Tailscale، يمكنك إدارة أي موجه MikroTik عن بُعد وكأنك أمامه مباشرة، بدون IP عام، بدون إعادة توجيه منافذ، وبدون تكوين يدوي معقد.</p>
+            </div>
+
+            <h2>🧠 كيف يعمل Tailscale مع MikroTik؟</h2>
+            <p>
+                يضع Tailscale طبقة تحكم فوق WireGuard، فيؤتمت توزيع المفاتيح، واكتشاف النظراء، واجتياز NAT. يدعمه MikroTik أصلياً على <strong>RouterOS 7.11+</strong> عبر حزمة رسمية، مما يعني أنك تستطيع إدخال موجه إلى Tailnet، والإعلان عن شبكة LAN الفرعية الخاصة به، والوصول إلى كل جهاز خلفه من أي نظير آخر في Tailnet.
+            </p>
+            <ul>
+                <li><strong>Tailnet</strong>: شبكتك الخاصة من الأجهزة المصرح بها.</li>
+                <li><strong>طبقة التحكم</strong>: تعالج المصادقة وتبادل المفاتيح والعمليات الإدارية.</li>
+                <li><strong>DERP</strong>: شبكة مرحلات Tailscale المشفرة، تُستخدم فقط عند فشل الاتصال المباشر.</li>
+                <li><strong>النظراء</strong>: كل جهاز في Tailnet (خادم، حاسوب، MikroTik، هاتف).</li>
+                <li><strong>مسارات الشبكات الفرعية</strong>: يستطيع نظير أن يعلن عن شبكة كاملة (مثل 192.168.88.0/24) عبر نفسه، فتصبح الأجهزة غير المثبّت عليها Tailscale خلف ذلك النظير قابلة للوصول.</li>
+            </ul>
+
+            <h2>🔐 نموذج الأمان</h2>
+            <p>
+                أمان نقل Tailscale هو نفس أمان WireGuard: تشفير حديث (ChaCha20-Poly1305)، وسطح هجوم صغير. التحكم في الوصول قائم على الهوية – تمنح أو ترفض ACLs الوصول حسب المستخدم أو المجموعة أو وسم الجهاز بدلاً من IP. تُلغى الأجهزة المفقودة أو المخترقة فوراً من وحدة التحكم الإدارية، وتوفر السجلات ومسارات التدقيق الرؤية اللازمة لمراجعات الامتثال.
+            </p>
+            <div class="highlight-box">
+                <p style="margin:0; color:#FFD700;">💡 نصيحة: فعّل المصادقة متعددة العوامل (MFA) على موفر الهوية، وعرّف ACLs قبل إضافة العديد من الأجهزة – كلاهما أسهل بكثير في ضبطه مبكراً من تعديله لاحقاً.</p>
+            </div>
+
+            <h2>🛠️ دليل التثبيت خطوة بخطوة</h2>
+
+            <h3>الخطوة 1: ثبّت Tailscale على خادم أو محطة عمل</h3>
+            <p>على خادم Linux (Ubuntu/Debian):</p>
+            <pre>
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --authkey &lt;AUTHKEY&gt;
+tailscale status
+            </pre>
+            <p>بمجرد تشغيل نظير واحد على الأقل، يصبح لديك Tailnet لإضافة MikroTik إليه.</p>
+
+            <h3>الخطوة 2: ثبّت حزمة Tailscale على MikroTik (RouterOS 7.11+)</h3>
+            <ul>
+                <li>نزّل <code>tailscale-7.x-&lt;arch&gt;.npk</code> من صفحة تنزيلات MikroTik.</li>
+                <li>ارفع <code>.npk</code> إلى الموجه (Winbox → Files → سحب وإفلات).</li>
+                <li>أعد تشغيل الموجه ليتم تحميل الحزمة.</li>
+            </ul>
+
+            <h3>الخطوة 3: صادق الموجه</h3>
+            <p>في طرفية Winbox:</p>
+            <pre>/tailscale up</pre>
+            <p>يطبع الموجه رابط مصادقة. افتحه في متصفح، سجّل الدخول بموفر الهوية، واعتمد الجهاز في وحدة التحكم الإدارية في Tailscale. تحقق:</p>
+            <pre>/tailscale status</pre>
+            <p>عندما تُظهر الحالة <code>connected</code>، يكون MikroTik على Tailnet ولديه عنوان <code>100.x.x.x</code> يمكنك إرسال ping إليه من أي نظير آخر.</p>
+
+            <h3>الخطوة 4: أعلن عن شبكة LAN الفرعية</h3>
+            <p>لجعل الأجهزة على شبكة LAN الخاصة بالموجه (مثلاً <code>192.168.88.0/24</code>) قابلة للوصول:</p>
+            <pre>
+/ip route add dst-address=192.168.88.0/24 gateway=tailscale0
+/tailscale up --advertise-routes=192.168.88.0/24
+            </pre>
+            <p>ثم افتح وحدة التحكم الإدارية في Tailscale واعتمد المسار المُعلن – هذه عملية ذات خطوتين متعمدة بحيث لا يستطيع موجه أن يبدأ في الإعلان عن شبكة فرعية عامة بصمت دون مراجعة المشغل.</p>
+
+            <h3>الخطوة 5: استخدم Tailnet</h3>
+            <p>الآن يمكنك SSH إلى مضيف خلف MikroTik مباشرة:</p>
+            <pre>ssh admin@100.x.x.x</pre>
+            <p>أو استخدم MagicDNS لتخطّي البحث عن IP بالكامل:</p>
+            <pre>ping mikrotik.yourtailnet.ts.net</pre>
+            <p>تجعل مسارات الشبكة الفرعية كاميرات IP، ووحدات NAS، و VLAN الإدارة، وأي جهاز LAN آخر قابلاً للوصول دون إعادة توجيه منافذ لكل خدمة.</p>
+
+            <h2>📊 مقارنة مع حلول VPN الأخرى</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الحل</th>
+                        <th>الأساس</th>
+                        <th>سهولة الإعداد</th>
+                        <th>الأداء</th>
+                        <th>الأنسب لـ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tailscale</strong></td>
+                        <td>WireGuard + طبقة تحكم</td>
+                        <td>سهل جداً</td>
+                        <td>عالٍ</td>
+                        <td>الفرق والمزودون والبنية التحتية المختلطة</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WireGuard (يدوي)</strong></td>
+                        <td>WireGuard</td>
+                        <td>متوسط</td>
+                        <td>عالٍ جداً</td>
+                        <td>عمليات النشر الصغرى والتحكم الذاتي</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OpenVPN / IPsec</strong></td>
+                        <td>TLS / IPsec</td>
+                        <td>معقد</td>
+                        <td>متوسط</td>
+                        <td>الأجهزة القديمة ومتطلبات PKI الدقيقة</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ZeroTier</strong></td>
+                        <td>بروتوكول شبكة متشابكة مخصص</td>
+                        <td>سهل</td>
+                        <td>عالٍ</td>
+                        <td>الشبكات المتشابكة بلا هوية</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>📌 أفضل الممارسات</h2>
+            <ul>
+                <li><strong>فعّل ACLs مبكراً</strong> بقواعد أقل الامتيازات. تبسّط الوسوم والمجموعات السياسة كلما نما Tailnet.</li>
+                <li><strong>استخدم MagicDNS</strong> لتجنب تشتيت عناوين IP في الوثائق. الأسماء أسهل في الإلغاء وإعادة الربط.</li>
+                <li><strong>افرض MFA</strong> على موفر الهوية – أمن Tailnet لا يتجاوز أمن طبقة الهوية تحته.</li>
+                <li><strong>حافظ على تحديث الموجه وحزمة Tailscale.</strong> كلاهما يُحدَّث بجداول مستقلة، والتأخر في أي منهما انتهاك للتكوين الدفاعي.</li>
+                <li><strong>دقّق قائمة الأجهزة</strong> شهرياً وألغِ الأجهزة التي تجاوزت عمرها في الأسطول.</li>
+            </ul>
+
+            <h2>🏁 الخاتمة</h2>
+            <p>
+                يحدّث Tailscale الوصول عن بُعد بدمج أداء WireGuard مع طبقة تحكم تزيل معظم الإعداد اليدوي. لأساطيل MikroTik، إنها طريقة عملية وعالية الأداء لإدارة الموجهات وشبكات LAN الخاصة بها دون عناوين IP عامة أو أنفاق مصنوعة يدوياً.
+            </p>
+            <p>
+                إذا كنت تفضّل تخطي تثبيتات الوكيل لكل جهاز واعتمادات المسارات بالكامل، فإن <strong>شبكة العنكبوت</strong> تقدم حلولاً متكاملة للإدارة عن بُعد، مع دعم فني ومراقبة مركزية.
+            </p>
+
+            <div style="text-align:center; margin-top:30px;">
+                <a href="/contact.html" class="btn">📞 تواصل معنا للحصول على استشارة مجانية</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-bottom:15px;">
+            <a href="/">🏠 الرئيسية</a>
+            <a href="/blog.html">📖 المدونة</a>
+            <a href="ar/about.html">ℹ️ عن الشبكة</a>
+            <a href="https://jabri-com.vercel.app/" target="_blank">♻️ واحة الجبري</a>
+            <a href="/sitemap.xml">🗺️ خريطة الموقع</a>
+        </div>
+        <p style="color:#666;">🇾🇪 شبكة العنكبوت – حلول احترافية لإدارة الشبكات © 2026</p>
+        <p style="font-size:0.8rem; color:#444;">مطور بواسطة: بليغ عبدالله الجبري</p>
+    </footer>
+
+</div>
+
+
+
+    <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+
+
+</body>
+</html>
