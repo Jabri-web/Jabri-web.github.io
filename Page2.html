@@ -1,155 +1,433 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ==========================================================
+     Page2.html — طائر اليمن | Yemen Bird
+     واحة الجبري — م/ عبدالله محمد ناصر الجبري
+     ========================================================== -->
 
-    <!-- ============================================ -->
-    <!--          الكونيكال الصحيح (Vercel)            -->
-    <!-- ============================================ -->
-    <link rel="canonical" href="https://jabri-com.vercel.app/Page2.html" />
+<!-- ===== الأساسيات ===== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U">
 
-    <!-- ============================================ -->
-    <!--          السماح بالفهرسة (index)              -->
-    <!-- ============================================ -->
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+<!-- ===== منع التخزين المؤقت ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, private">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
 
-    <!-- ============================================ -->
-    <!--              SEO الأساسي                      -->
-    <!-- ============================================ -->
-    <title>طائر اليمن | Yemen Bird - واحة الجبري</title>
-    <meta name="description" content="طائر اليمن - Yemen Bird. صفحة مخصصة لطائر اليمن ضمن واحة الجبري للمهندس عبدالله محمد ناصر الجبري." />
-    <meta name="keywords" content="طائر اليمن, Yemen Bird, واحة الجبري, عبدالله الجبري" />
-    <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
+<!-- ===== SEO الأساسي ===== -->
+<title>طائر اليمن | Yemen Bird — واحة الجبري</title>
+<meta name="description" content="طائر اليمن — Yemen Bird. صفحة مخصصة لطائر اليمن ضمن واحة الجبري للباحث م/ عبدالله محمد ناصر الجبري. استكشف سندباد اليمن، عنكبوت اليمن، والمكتبة الرئيسية.">
+<meta name="keywords" content="طائر اليمن, Yemen Bird, واحة الجبري, عبدالله الجبري, سندباد اليمن, عنكبوت اليمن">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Al-Jabri">
+<link rel="author" href="https://jabri-com.vercel.app/about.html">
 
-    <!-- ============================================ -->
-    <!--              Open Graph (Vercel فقط)          -->
-    <!-- ============================================ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/Page2.html" />
-    <meta property="og:title" content="طائر اليمن | Yemen Bird - واحة الجبري" />
-    <meta property="og:description" content="صفحة طائر اليمن - واحة الجبري" />
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Yemen-bird.png" />
+<!-- ===== Dublin Core ===== -->
+<meta name="DC.title" content="طائر اليمن | Yemen Bird">
+<meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري">
+<meta name="DC.subject" content="طائر اليمن, تراث اليمن, واحة الجبري">
+<meta name="DC.language" content="ar">
+<meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري">
 
-    <!-- ============================================ -->
-    <!--              الأنماط (CSS)                    -->
-    <!-- ============================================ -->
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: #ffffff;
-            color: #000;
-            padding: 20px;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .wrapper {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .site-header h1 { font-size: 30px; margin-bottom: 2px; }
-        .site-header .sub { font-size: 17px; color: #333; margin-top: 4px; }
-        .bird-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 10px auto;
-            border: 3px solid #000;
-        }
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 12px 0;
-        }
-        .nav-menu a, .nav-menu button {
-            width: 100%;
-            padding: 14px 18px;
-            background: #000;
-            color: #fff;
-            border: none;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            transition: 0.2s;
-        }
-        .nav-menu a:hover, .nav-menu button:hover {
-            background: #2a2a2a;
-            transform: translateY(-2px);
-        }
-        .section {
-            display: none;
-            background: #f5f5f5;
-            padding: 18px 16px;
-            border-radius: 18px;
-            border: 1px solid #ddd;
-            margin: 8px 0;
-            text-align: right;
-        }
-        .section.active { display: block; }
-        .section h3 { margin-bottom: 14px; font-size: 20px; text-align: center; }
-        .section a { display: block; color: #0a58ca; text-decoration: none; margin: 8px 0; }
-        .footer-info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #444;
-            display: flex;
-            justify-content: space-between;
-            border-top: 2px solid #ddd;
-            padding-top: 16px;
-        }
-        .ar { display: inline; }
-        .en { display: none; }
-        body.en .ar { display: none; }
-        body.en .en { display: inline; }
-    </style>
+<!-- ===== Canonical & Hreflang ===== -->
+<link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/Page2.html">
+<link id="hreflangAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Page2.html">
+<link id="hreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Page2.html">
+<link id="hreflangX" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/Page2.html">
+
+<!-- ===== Open Graph ===== -->
+<meta property="og:locale" content="ar_YE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
+<meta property="og:title" content="طائر اليمن | Yemen Bird — واحة الجبري">
+<meta property="og:description" content="صفحة طائر اليمن — استكشف عوالم واحة الجبري: سندباد اليمن، عنكبوت اليمن، والمكتبة.">
+<meta property="og:url" content="https://jabri-com.vercel.app/Page2.html">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Yemen-bird.png">
+<meta property="og:image:alt" content="طائر اليمن — Yemen Bird">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- ===== Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="طائر اليمن | Yemen Bird — واحة الجبري">
+<meta name="twitter:description" content="صفحة طائر اليمن ضمن واحة الجبري">
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Yemen-bird.png">
+<meta name="twitter:image:alt" content="طائر اليمن">
+
+<!-- ===== الأيقونات والمانيفست ===== -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
+
+<!-- ===== الخطوط ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ===== Schema.org JSON-LD ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jabri-com.vercel.app/#jabri",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "alternateName": ["Heaven Al-Jabri", "Eng. Abdulla Al-Jabri", "سندباد اليمن"],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": "0009-0003-3319-3822",
+        "url": "https://orcid.org/0009-0003-3319-3822"
+      },
+      "url": "https://jabri-com.vercel.app/about.html",
+      "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+      "jobTitle": "Independent Researcher in Mathematics & Theoretical Physics",
+      "nationality": "Yemeni",
+      "email": "mailto:jabri62018@gmail.com",
+      "sameAs": [
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://github.com/Jabri-web",
+        "https://github.com/jabri62018",
+        "https://zenodo.org/records/20513840",
+        "https://t.me/Heaven_Jabri/"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://jabri-com.vercel.app/#organization",
+      "name": "واحة الجبري",
+      "alternateName": "Heaven Al-Jabri",
+      "url": "https://jabri-com.vercel.app/",
+      "logo": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+      "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jabri-com.vercel.app/#website",
+      "url": "https://jabri-com.vercel.app/",
+      "name": "واحة الجبري",
+      "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "inLanguage": ["ar", "en"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jabri-com.vercel.app/Page2.html#webpage",
+      "url": "https://jabri-com.vercel.app/Page2.html",
+      "name": "طائر اليمن | Yemen Bird",
+      "description": "صفحة طائر اليمن ضمن واحة الجبري",
+      "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+      "about": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "inLanguage": "ar"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://jabri-com.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "طائر اليمن", "item": "https://jabri-com.vercel.app/Page2.html"}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ===== المتغيرات ===== */
+:root{
+  --bg:#0a0a0f; --bg-alt:#0f0f1a;
+  --card:#12121a; --card2:#1a1a2e;
+  --bd:#1f1f2e; --bd2:#2a2a4a;
+  --txt:#e8e8f0; --mut:#8a8a9e;
+  --acc:#6ae3ff; --acc2:#4dd4ff;
+  --radius:12px;
+}
+
+/* ===== إعادة الضبط ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:"Tajawal","Cairo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  margin:0;line-height:1.9;min-height:100vh;
+  display:flex;flex-direction:column;
+}
+img{max-width:100%;height:auto;display:block}
+
+/* ===== الوصولية ===== */
+.skip-link{
+  position:absolute;top:-100px;right:12px;z-index:999;
+  background:var(--acc);color:#000;padding:10px 18px;
+  border-radius:8px;font-weight:700;text-decoration:none;
+  transition:top .2s ease;
+}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,.nav-btn:focus-visible{
+  outline:2px solid var(--acc);outline-offset:3px;border-radius:8px;
+}
+
+/* ===== الروابط ===== */
+a{color:var(--acc);text-decoration:none;transition:color .2s ease}
+a:hover{color:var(--acc2);text-decoration:underline}
+
+/* ===== حاوية ===== */
+.wrapper{
+  width:100%;max-width:460px;margin:0 auto;
+  padding:24px 20px 40px;flex:1;
+  display:flex;flex-direction:column;gap:14px;
+}
+
+/* ===== الهيدر ===== */
+.site-header{text-align:center;margin-bottom:8px}
+.site-header h1{
+  font-family:"Cairo";font-weight:900;font-size:1.65rem;
+  color:var(--acc);margin:0;line-height:1.35;
+}
+.site-header .sub{
+  color:var(--mut);font-size:.95rem;margin:6px 0 0;
+  font-weight:500;
+}
+
+/* ===== صورة الطائر ===== */
+.bird-img{
+  width:132px;height:132px;border-radius:50%;
+  object-fit:cover;margin:14px auto;
+  border:3px solid var(--acc);
+  box-shadow:0 0 30px rgba(106,227,255,.3);
+  background:var(--card);
+}
+
+/* ===== زر تبديل اللغة ===== */
+.lang-toggle{
+  position:fixed;top:18px;left:18px;z-index:50;
+  background:var(--card);color:var(--txt);
+  border:1px solid var(--bd2);border-radius:999px;
+  padding:8px 16px;font-family:inherit;font-size:.85rem;
+  font-weight:700;cursor:pointer;
+  transition:border-color .25s ease,background .25s ease;
+}
+.lang-toggle:hover{border-color:var(--acc);background:var(--card2)}
+
+/* ===== القائمة ===== */
+.nav-menu{
+  display:flex;flex-direction:column;gap:10px;
+  margin:12px 0;
+}
+.nav-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 20px;
+  background:var(--card);color:var(--txt);
+  border:1px solid var(--bd);border-radius:14px;
+  font-family:inherit;font-size:1rem;font-weight:700;
+  cursor:pointer;text-decoration:none;text-align:center;
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+.nav-btn:hover{
+  border-color:var(--acc);background:var(--card2);
+  color:var(--txt);text-decoration:none;transform:translateY(-2px);
+}
+.nav-btn i{color:var(--acc);font-size:1.05rem}
+
+/* ===== الأقسام القابلة للفتح ===== */
+.section{
+  display:none;
+  background:var(--card);border:1px solid var(--bd);
+  border-radius:14px;padding:18px 16px;margin:4px 0;
+  text-align:right;
+}
+.section.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.section h3{
+  color:var(--acc);font-family:"Cairo";
+  font-size:1.15rem;margin:0 0 14px;text-align:center;
+}
+.section a{
+  display:block;padding:8px 0;
+  border-bottom:1px solid var(--bd);
+}
+.section a:last-child{border-bottom:none}
+.section a:hover{text-decoration:none;color:var(--acc2);padding-inline-start:6px}
+
+/* ===== الفوتر ===== */
+.footer-info{
+  margin-top:auto;padding-top:20px;
+  border-top:2px solid var(--bd);
+  font-size:.85rem;color:var(--mut);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;
+}
+.footer-info a{color:var(--acc)}
+
+/* ===== اللغة ===== */
+.ar,.en{display:inline}
+body.en .ar{display:none}
+body.en .en{display:inline}
+body.en{direction:ltr}
+body.en .section{text-align:left}
+
+/* ===== استجابة الشاشات الصغيرة ===== */
+@media (max-width:480px){
+  .wrapper{padding:20px 16px 32px}
+  .site-header h1{font-size:1.35rem}
+  .bird-img{width:110px;height:110px}
+  .nav-btn{padding:14px 16px;font-size:.95rem}
+  .lang-toggle{top:12px;left:12px;padding:6px 12px;font-size:.78rem}
+}
+
+/* ===== تقليل الحركة ===== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+</style>
 </head>
+
 <body>
-    <div class="wrapper">
-        <header class="site-header">
-            <h1><span class="ar">واحة الجبري - طائر اليمن</span><span class="en">Heaven Al-Jabri - Yemen Bird</span></h1>
-            <div class="sub">
-                <span class="ar"
-                >م/جبر عبدالله محمد الجبري</span><span class="en">Eng. Jabr Abdulla Mohammed Al-Jabri</span>
-            </div>
-        </header>
 
-        <img src="/image/Yemen-bird.png" alt="Yemen Bird" class="bird-img" />
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
 
-        <nav class="nav-menu">
-            <a href="/Page1.html"><span class="ar">سندباد اليمن</span><span class="en">Yemen Sindbad</span></a>
-            <a href="/Page3.html"><span class="ar">عنكبوت اليمن</span><span class="en">Yemen Ankaboot</span></a>
-            <a href="/Page11.html"><span class="ar">الواحة الرئيسية</span><span class="en">Main Oasis</span></a>
-            
-            <a href="/explore.html"><span class="ar" >المستكشف</span><span class="en">Explore</span></a>
-            <a href="/yemen-photo.html"><span class="ar">الاستديو</span><span class="en">Gallery</span></a>
+<!-- ===== زر تبديل اللغة ===== -->
+<button type="button" class="lang-toggle" id="langToggle" aria-label="تبديل اللغة">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <span class="ar">EN</span>
+  <span class="en">ع</span>
+</button>
 
-            <a href="/dashboard.html"><span class="ar" >لوحة التحكم</span><span class="en">Control Panle</span></a>
+<!-- ===== الهيدر المحمّل ديناميكياً ===== -->
+<div id="header-placeholder"></div>
 
-            <a href="/index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
-        </nav>
+<!-- ===== المحتوى الرئيسي ===== -->
+<main id="main" class="wrapper">
 
-        <footer class="footer-info">
-            <span>© 2026 م/ عبدالله الجبري</span>
-        </footer>
-    </div>
+  <!-- ===== الهيدر ===== -->
+  <header class="site-header">
+    <h1>
+      <span class="ar">واحة الجبري — طائر اليمن</span>
+      <span class="en">Heaven Al-Jabri — Yemen Bird</span>
+    </h1>
+    <p class="sub">
+      <span class="ar">م/ عبدالله محمد ناصر الجبري</span>
+      <span class="en">Eng. Abdulla Mohammed Nasser Al-Jabri</span>
+    </p>
+  </header>
 
-    <!-- ===== الأسطر الأربعة الأخيرة لتحميل الهيدر والفوتر ===== -->
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <script src="/js/init-page-root.js"></script>
-    <script src="/js/menu.js"></script>
+  <!-- ===== صورة الطائر ===== -->
+  <img src="/image/Yemen-bird.png"
+       alt="طائر اليمن — Yemen Bird"
+       class="bird-img"
+       width="132" height="132"
+       fetchpriority="high" decoding="async">
+
+  <!-- ===== القائمة الرئيسية ===== -->
+  <nav class="nav-menu" aria-label="القائمة الرئيسية">
+
+    <a href="/Page1.html" class="nav-btn">
+      <i class="fa-solid fa-compass" aria-hidden="true"></i>
+      <span class="ar">سندباد اليمن</span>
+      <span class="en">Yemen Sindbad</span>
+    </a>
+
+    <a href="/Page3.html" class="nav-btn">
+      <i class="fa-solid fa-spider" aria-hidden="true"></i>
+      <span class="ar">عنكبوت اليمن</span>
+      <span class="en">Yemen Ankaboot</span>
+    </a>
+
+    <a href="/catalog.html" class="nav-btn">
+      <i class="fa-solid fa-kaaba" aria-hidden="true"></i>
+      <span class="ar"
+      >الكتلوج</span>
+      <span class="en">Catalog</span>
+    </a>
+
+    <a href="/explore.html" class="nav-btn">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <span class="ar">المستكشف</span>
+      <span class="en">Explore</span>
+    </a>
+
+    <a href="/yemen-photo.html" class="nav-btn">
+      <i class="fa-solid fa-camera" aria-hidden="true"></i>
+      <span class="ar">الاستديو</span>
+      <span class="en">Gallery</span>
+    </a>
+
+    <a href="/dashboard.html" class="nav-btn">
+      <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+      <span class="ar">لوحة التحكم</span>
+      <span class="en">Control Panel</span>
+    </a>
+
+    <a href="/index.html" class="nav-btn">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
+      <span class="ar">الرئيسية</span>
+      <span class="en">Home</span>
+    </a>
+
+  </nav>
+
+  <!-- ===== الفوتر ===== -->
+  <footer class="footer-info">
+    <span>© 2026 م/ عبدالله الجبري</span>
+    <a href="https://jabri-com.vercel.app/">jabri-com.vercel.app</a>
+  </footer>
+
+</main>
+
+<!-- ===== الفوتر المحمّل ديناميكياً ===== -->
+<div id="footer-placeholder"></div>
+
+<!-- ===== السكربتات ===== -->
+<script>
+  /* ضبط Canonical و hreflang ديناميكياً */
+  document.addEventListener('DOMContentLoaded', function () {
+    var base = location.origin;
+    var path = location.pathname.replace(/^\/en\//, '/');
+
+    var canonical = document.getElementById('dynamicCanonical');
+    var arLink    = document.getElementById('hreflangAr');
+    var enLink    = document.getElementById('hreflangEn');
+    var xLink     = document.getElementById('hreflangX');
+
+    if (canonical) canonical.href = base + path;
+    if (arLink)    arLink.href    = base + path;
+    if (enLink)    enLink.href    = base + '/en' + path;
+    if (xLink)     xLink.href     = base + path;
+  });
+
+  /* تبديل اللغة AR/EN مع حفظ الاختيار */
+  (function () {
+    var btn = document.getElementById('langToggle');
+    var saved = localStorage.getItem('jabri-lang') || 'ar';
+
+    function setLang(lang) {
+      document.body.classList.toggle('en', lang === 'en');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+      localStorage.setItem('jabri-lang', lang);
+    }
+
+    setLang(saved);
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var next = document.body.classList.contains('en') ? 'ar' : 'en';
+        setLang(next);
+      });
+    }
+  })();
+</script>
+<script src="/js/init-page-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
+
 </body>
 </html>

@@ -1,662 +1,1195 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta name="theme-color" content="#0a0a0f">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    
-    <title>📦 نظام فحص الواحة - repo9</title>
-    <meta name="description" content="نظام فحص واحة الجبري - اختبار الروابط، السرعة، 404، والأداء الشامل" />
-    <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
-    <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-    
-    <link rel="canonical" href="https://jabri-com.vercel.app/Page9.html" />
-    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Check.html" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Check.html" />
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="واحة الجبري | نظام الفحص" />
-    <meta property="og:title" content="نظام فحص الواحة - Jabri Checkout" />
-    <meta property="og:description" content="فحص شامل للروابط، السرعة، 404، وأداء واحة الجبري" />
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/Page9.html" />
+<!-- ==========================================================
+     Page9.html — نظام فحص الواحة | Jabri Checkout System
+     واحة الجبري — Heaven Al-Jabri
+     م/ عبدالله محمد ناصر الجبري — Eng. Abdulla Al-Jabri
+     ========================================================== -->
 
-    <style>
-        /* ===== إجبار العرض على Desktop ===== */
-        html {
-            min-width: 1200px;
-            overflow-x: auto;
-        }
+<!-- ===== الأساسيات ===== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-        body {
-            min-width: 1200px;
-            overflow-x: auto;
-            background: #0a0a0f;
-            color: #e8e8f0;
-            font-family: 'Cairo', 'Tajawal', sans-serif;
-            padding: 20px;
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+<!-- ===== منع التخزين المؤقت ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, private">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
 
-        /* ===== وضع Phone (يُفعّل من الإعدادات) ===== */
-        body.device-phone {
-            min-width: unset;
-            overflow-x: hidden;
-        }
+<!-- ===== SEO الأساسي ===== -->
+<title>نظام فحص الواحة | Jabri Checkout System — واحة الجبري</title>
+<meta name="description" content="نظام فحص واحة الجبري — اختبار شامل للروابط، السرعة، 404، وبنية الملفات. Jabri Checkout System — Full Link, Speed, 404 & Structure Scan.">
+<meta name="keywords" content="نظام فحص, Jabri Checkout, فحص الروابط, فحص السرعة, 404, واحة الجبري, أدوات الواحة">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
+<link rel="author" href="https://jabri-com.vercel.app/about.html">
 
-        body.device-phone .container {
-            max-width: 100%;
-            padding: 0 10px;
-        }
+<!-- ===== Dublin Core ===== -->
+<meta name="DC.title" content="نظام فحص الواحة | Jabri Checkout System">
+<meta name="DC.creator" content="م/ عبدالله محمد ناصر الجبري">
+<meta name="DC.subject" content="أدوات فحص, فحص الروابط, فحص السرعة">
+<meta name="DC.language" content="ar">
+<meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري">
 
-        body.device-phone .grid-2 {
-            grid-template-columns: 1fr;
-        }
+<!-- ===== Canonical & Hreflang ===== -->
+<link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/Page9.html">
+<link id="hreflangAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Page9.html">
+<link id="hreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Page9.html">
+<link id="hreflangX" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/Page9.html">
 
-        body.device-phone .header h1 {
-            font-size: 1.8rem;
-        }
+<!-- ===== Open Graph ===== -->
+<meta property="og:locale" content="ar_YE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
+<meta property="og:title" content="نظام فحص الواحة | Jabri Checkout System">
+<meta property="og:description" content="فحص شامل للروابط، السرعة، 404، وبنية الملفات — واحة الجبري">
+<meta property="og:url" content="https://jabri-com.vercel.app/Page9.html">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta property="og:image:alt" content="نظام فحص الواحة — Jabri Checkout">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-        body.device-phone .repo9-grid {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        }
+<!-- ===== Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="نظام فحص الواحة | Jabri Checkout System">
+<meta name="twitter:description" content="فحص شامل للروابط، السرعة، 404، وبنية الملفات">
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta name="twitter:image:alt" content="Jabri Checkout System">
 
-        body.device-phone .bottom-bar {
-            min-width: unset;
-            width: 96%;
-        }
+<!-- ===== الأيقونات والمانيفست ===== -->
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
 
-        /* ===== منع تصغير الشاشة ===== */
-        @media (max-width: 1199px) {
-            html, body {
-                min-width: 1200px;
-                overflow-x: auto;
-            }
-        }
+<!-- ===== الخطوط والأيقونات ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* ===== تصحيح للجوال مع إجبار Desktop ===== */
-        @media (max-width: 820px) {
-            html, body {
-                min-width: 1200px;
-                overflow-x: auto;
-            }
-            .container {
-                padding: 0 20px;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr 1fr;
-            }
-            .repo9-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            .lang-btn {
-                top: 15px;
-                left: 15px;
-            }
-            .music-btn-fixed {
-                top: 15px;
-                right: 15px;
-            }
-            #visitorCounter {
-                top: 15px;
-                font-size: 14px;
-                padding: 6px 16px;
-            }
-        }
+<!-- ===== Google Analytics ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-EQBMJKBC24');
+</script>
 
-        body.en { direction: ltr; font-family: 'Segoe UI', Arial, sans-serif; }
-        .lang-btn { position: fixed; top: 15px; left: 20px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 999; display: flex; align-items: center; gap: 8px; }
-        body.en .lang-btn { left: auto; right: 20px; }
-        #visitorCounter { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1a1a2e, #2a2a3e); color: #6ae3ff; padding: 8px 20px; border-radius: 50px; font-size: 16px; font-weight: bold; z-index: 9999; border: 1px solid #6ae3ff; display: flex; gap: 8px; align-items: center; }
-        .music-btn-fixed { position: fixed; top: 15px; right: 20px; z-index: 99999; background: linear-gradient(135deg, #6ae3ff, #3b9fcb); border: none; color: #0a0a0f; width: 50px; height: 50px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 0 20px rgba(106, 227, 255, 0.4); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-        body.en .music-btn-fixed { right: auto; left: 20px; }
-        .music-btn-fixed:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(106, 227, 255, 0.7); }
-        .music-btn-fixed.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); color: #fff; animation: pulse-red 1.5s infinite; }
-        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(255, 106, 106, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 106, 106, 0); } }
-        @media (max-width: 600px) { .music-btn-fixed { width: 42px; height: 42px; font-size: 20px; top: 75px; right: 10px; } body.en .music-btn-fixed { right: auto; left: 10px; } .lang-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 13px; } #visitorCounter { font-size: 13px; padding: 5px 14px; top: 10px; } }
-        .container { max-width: 1200px; margin: 80px auto 0; flex: 1; width: 100%; }
-        .header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0a3d62, #1e6f9f); border-radius: 16px; margin-bottom: 30px; border: 2px solid #6ae3ff; }
-        .header h1 { font-size: 2.5rem; color: #fff; } .header h1 i { color: #ffd700; margin: 0 10px; }
-        .header .subtitle { font-size: 1.3rem; font-weight: 700; color: #6ae3ff; margin: 8px 0; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 30px 0; }
-        @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
-        .card { background: #1a1a2e; border: 2px solid #2a2a3e; border-radius: 16px; padding: 25px; transition: 0.3s; }
-        .card:hover { border-color: #6ae3ff; }
-        .card h2 { color: #6ae3ff; font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .card h2 i { color: #ffd700; }
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 15px; }
-        .links-grid a { background: #0a0a0f; color: #6ae3ff; text-decoration: none; padding: 10px 14px; border-radius: 8px; border: 1px solid #2a2a3e; text-align: center; transition: 0.3s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .links-grid a:hover { border-color: #6ae3ff; background: #6ae3ff; color: #0a0a0f; }
-        .result-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
-        .result-table th { background: #2a2a3e; color: #6ae3ff; padding: 10px 15px; text-align: center; border: 1px solid #3a3a4e; }
-        .result-table td { padding: 10px 15px; border: 1px solid #2a2a3e; text-align: center; }
-        .result-table .pass { color: #00ff88; } .result-table .fail { color: #ff4444; } .result-table .warn { color: #ffd700; }
-        .run-btn { background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
-        .run-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
-        .run-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        .run-btn.speed { background: linear-gradient(135deg, #6ae3ff, #3b9fcb); }
-        .run-btn.error { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); }
-        .run-btn.structure { background: linear-gradient(135deg, #00ff88, #009966); }
-        .run-btn.clear { background: #2a2a3e; color: #94a3b8; }
-        #footer-placeholder { margin-top: 40px; }
-        .ar, .en { display: inline; } body.en .ar { display: none; } body:not(.en) .en { display: none; }
-        #errorBox { background: #2a0000; border: 2px solid #ff4444; color: #ffaaaa; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: left; direction: ltr; font-family: monospace; display: none; }
-        .progress-bar { width: 100%; height: 6px; background: #1a1a2e; border-radius: 4px; margin: 10px 0; overflow: hidden; }
-        .progress-bar .fill { height: 100%; background: linear-gradient(90deg, #6ae3ff, #ffd700); width: 0%; transition: width 0.3s; border-radius: 4px; }
-        .log-box { background: #0a0a0f; border: 1px solid #2a2a3e; border-radius: 8px; padding: 15px; max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 0.85rem; color: #94a3b8; margin-top: 10px; direction: ltr; text-align: left; }
-        .log-box .log-ok { color: #00ff88; } .log-box .log-fail { color: #ff4444; } .log-box .log-warn { color: #ffd700; } .log-box .log-info { color: #6ae3ff; }
-        .repo9-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 15px 0; }
-        .repo9-card { background: #0a0a0f; border: 1px solid #2a2a3e; border-radius: 12px; padding: 15px 10px; text-decoration: none; color: #e8e8f0; transition: 0.3s; display: block; }
-        .repo9-card:hover { border-color: #6ae3ff; transform: translateY(-4px); }
-        .repo9-card i { font-size: 2rem; display: block; margin-bottom: 6px; }
-        .repo9-card .title { font-weight: bold; font-size: 0.85rem; }
-        .repo9-card .desc { color: #94a3b8; font-size: 0.7rem; }
-        .icon-yellow { color: #ffd700; } .icon-purple { color: #a855f7; } .icon-blue { color: #6ae3ff; } .icon-green { color: #00ff88; } .icon-orange { color: #ff8800; } .icon-red { color: #ff4444; }
-        .badge { display: inline-block; background: #00ff8820; color: #00ff88; padding: 4px 16px; border-radius: 40px; font-size: 0.75rem; border: 1px solid #00ff8840; margin-bottom: 15px; }
-        
-        .diagnose-btn { background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
-        .diagnose-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
-        .diagnose-btn i { color: #ffd700; }
-        
-        .explore-btn { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); color: #fff; border: none; padding: 14px 40px; border-radius: 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 15px 0; display: inline-flex; align-items: center; gap: 12px; }
-        .explore-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 106, 106, 0.4); }
-        .explore-btn i { color: #ffd700; }
+<!-- ===== Schema.org — Site-wide (كما هو) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jabri-com.vercel.app/#jabri",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "alternateName": ["Heaven Al-Jabri", "واحة الجبري", "Eng. Abdulla Al-Jabri", "سندباد اليمن"],
+      "url": "https://jabri-com.vercel.app/about.html",
+      "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+      "jobTitle": "باحث ومبرمج ومؤسس",
+      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+      "sameAs": [
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://github.com/Jabri-web",
+        "https://zenodo.org/records/20513840",
+        "https://www.facebook.com/share/p/1CvCG9xehw/",
+        "https://www.instagram.com/reel/Da5zRhypJlo/",
+        "https://t.me/Heaven_Jabri/",
+        "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://jabri-com.vercel.app/#organization",
+      "name": "واحة الجبري",
+      "alternateName": "Heaven Al-Jabri",
+      "url": "https://jabri-com.vercel.app/",
+      "logo": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+      "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jabri-com.vercel.app/#website",
+      "url": "https://jabri-com.vercel.app/",
+      "name": "واحة الجبري",
+      "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+      "inLanguage": ["ar", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
 
-        /* ===== إعدادات الشاشة ===== */
-        .settings-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
+<style>
+/* ===== المتغيرات ===== */
+:root{
+  --bg:#0a0a0f; --bg-alt:#1a1a2e; --bg-card:#1a1a2e;
+  --bd:#2a2a3e; --bd2:#3a3a4e;
+  --txt:#e8e8f0; --txt-dim:#94a3b8;
+  --acc:#6ae3ff; --acc2:#3b9fcb;
+  --gold:#ffd700; --gold2:#f0a500;
+  --green:#00ff88; --red:#ff4444; --orange:#ff8800;
+  --radius:16px;
+}
 
-        .settings-overlay.active {
-            display: flex;
-        }
+/* ===== إعادة الضبط ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:"Cairo","Tajawal",system-ui,-apple-system,"Segoe UI",sans-serif;
+  margin:0;padding:20px;line-height:1.8;
+  min-height:100vh;display:flex;flex-direction:column;
+  transition:background .3s ease,color .3s ease;
+}
+body.en{direction:ltr;font-family:"Segoe UI",system-ui,sans-serif}
+img{max-width:100%;height:auto;display:block}
 
-        .settings-box {
-            background: #1a1a2e;
-            border: 2px solid #6ae3ff;
-            border-radius: 20px;
-            padding: 35px 40px;
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-            animation: slideUp 0.4s ease;
-            color: #e8e8f0;
-        }
+/* ===== الوصولية ===== */
+.skip-link{
+  position:absolute;top:-100px;right:12px;z-index:9999;
+  background:var(--acc);color:#000;padding:10px 18px;
+  border-radius:8px;font-weight:700;text-decoration:none;
+  transition:top .2s ease;
+}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2px solid var(--acc);outline-offset:3px;border-radius:6px;
+}
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* ===== الأزرار العائمة ===== */
+.lang-btn{
+  position:fixed;top:15px;left:20px;z-index:999;
+  background:var(--acc);border:none;color:var(--bg);
+  padding:8px 16px;border-radius:6px;cursor:pointer;
+  font-weight:700;font-family:inherit;
+  display:flex;align-items:center;gap:8px;
+}
+body.en .lang-btn{left:auto;right:20px}
 
-        .settings-box h2 {
-            color: #6ae3ff;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
+.settings-btn{
+  position:fixed;top:65px;left:20px;z-index:999;
+  background:transparent;border:1px solid var(--acc);
+  color:var(--acc);padding:6px 14px;border-radius:6px;
+  cursor:pointer;font-size:13px;font-family:inherit;
+  display:flex;align-items:center;gap:6px;
+}
+body.en .settings-btn{left:auto;right:20px}
 
-        .settings-box h3 {
-            font-size: 14px;
-            color: #94a3b8;
-            margin: 15px 0 8px;
-        }
+#visitorCounter{
+  position:fixed;top:15px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--bg-alt),#2a2a3e);
+  color:var(--acc);padding:8px 20px;border-radius:50px;
+  font-size:16px;font-weight:700;z-index:9999;
+  border:1px solid var(--acc);
+  display:flex;gap:8px;align-items:center;
+}
 
-        .settings-box .btn-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.music-btn-fixed{
+  position:fixed;top:15px;right:20px;z-index:9999;
+  background:linear-gradient(135deg,var(--acc),var(--acc2));
+  border:none;color:var(--bg);width:50px;height:50px;
+  border-radius:50%;font-size:22px;cursor:pointer;
+  box-shadow:0 0 20px rgba(106,227,255,.4);
+  transition:transform .3s ease,box-shadow .3s ease,background .3s ease;
+  display:flex;align-items:center;justify-content:center;
+}
+body.en .music-btn-fixed{right:auto;left:20px}
+.music-btn-fixed:hover{
+  transform:scale(1.1);box-shadow:0 0 30px rgba(106,227,255,.7);
+}
+.music-btn-fixed.playing{
+  background:linear-gradient(135deg,#ff6a6a,#cb3b3b);color:#fff;
+  animation:pulse-red 1.5s infinite;
+}
+@keyframes pulse-red{
+  0%{box-shadow:0 0 0 0 rgba(255,106,106,.5)}
+  70%{box-shadow:0 0 0 15px rgba(255,106,106,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,106,106,0)}
+}
 
-        .settings-box .btn-setting {
-            padding: 10px 20px;
-            border: 2px solid rgba(106, 227, 255, 0.3);
-            border-radius: 12px;
-            background: transparent;
-            color: #6ae3ff;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 14px;
-            font-family: inherit;
-        }
+/* ===== الحاوية ===== */
+.container{max-width:1200px;margin:80px auto 0;flex:1;width:100%}
 
-        .settings-box .btn-setting:hover {
-            background: rgba(106, 227, 255, 0.1);
-        }
+/* ===== الهيدر ===== */
+.header{
+  text-align:center;padding:40px 20px;
+  background:linear-gradient(135deg,#0a3d62,#1e6f9f);
+  border-radius:var(--radius);margin-bottom:30px;
+  border:2px solid var(--acc);
+}
+.header h1{font-family:"Cairo";font-size:2.3rem;font-weight:900;color:#fff;margin:0;line-height:1.25}
+.header h1 i{color:var(--gold);margin:0 10px}
+.header .subtitle{font-size:1.2rem;font-weight:700;color:var(--acc);margin:8px 0}
+.header .note{color:var(--txt-dim);margin-top:8px;font-size:.95rem}
 
-        .settings-box .btn-setting.active {
-            background: #6ae3ff;
-            color: #0a0a0f;
-            border-color: #6ae3ff;
-        }
+/* ===== شبكة ===== */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:30px 0}
+@media (max-width:800px){.grid-2{grid-template-columns:1fr}}
 
-        .settings-box .btn-close {
-            margin-top: 20px;
-            padding: 10px 30px;
-            background: #6ae3ff;
-            border: none;
-            border-radius: 30px;
-            color: #0a0a0f;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 14px;
-            font-family: inherit;
-        }
+/* ===== الكروت ===== */
+.card{
+  background:var(--bg-card);border:2px solid var(--bd);
+  border-radius:var(--radius);padding:25px;
+  transition:border-color .3s ease;
+}
+.card:hover{border-color:var(--acc)}
+.card h2{
+  color:var(--acc);font-family:"Cairo";font-size:1.4rem;
+  margin:0 0 15px;display:flex;align-items:center;gap:10px;
+}
+.card h2 i{color:var(--gold)}
 
-        .settings-box .btn-close:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(106, 227, 255, 0.3);
-        }
+/* ===== شبكة الروابط ===== */
+.links-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;margin-top:15px;
+}
+.links-grid a{
+  background:var(--bg);color:var(--acc);
+  text-decoration:none;padding:10px 14px;
+  border-radius:8px;border:1px solid var(--bd);
+  text-align:center;
+  transition:border-color .3s ease,background .3s ease,color .3s ease;
+  font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.links-grid a:hover{
+  border-color:var(--acc);background:var(--acc);
+  color:var(--bg);text-decoration:none;
+}
 
-        .settings-btn {
-            border: 1px solid rgba(106, 227, 255, 0.2);
-            color: #6ae3ff !important;
-        }
-        .settings-btn:hover {
-            background: #6ae3ff;
-            color: #0a0a0f !important;
-        }
+/* ===== جدول النتائج ===== */
+.result-table{
+  width:100%;border-collapse:collapse;margin-top:15px;font-size:.9rem;
+}
+.result-table th{
+  background:var(--bd);color:var(--acc);padding:10px 15px;
+  text-align:center;border:1px solid var(--bd2);
+}
+.result-table td{
+  padding:10px 15px;border:1px solid var(--bd);text-align:center;
+}
+.result-table .pass{color:var(--green)}
+.result-table .fail{color:var(--red)}
+.result-table .warn{color:var(--gold)}
 
-        /* ===== زر فتح الملف - المستخدم يكتب اسم الملف ===== */
-        .file-open-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #0a0a0f;
-            border: 2px solid #ffd700;
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .file-open-wrapper .file-label {
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .file-open-wrapper .file-label i {
-            font-size: 1.2rem;
-        }
-        .file-open-wrapper input {
-            flex: 1;
-            min-width: 200px;
-            background: #1a1a2e;
-            border: 1px solid #3a3a4e;
-            border-radius: 8px;
-            padding: 10px 14px;
-            color: #e8e8f0;
-            font-size: 0.95rem;
-            font-family: 'Cairo', sans-serif;
-            outline: none;
-            transition: 0.3s;
-            direction: ltr;
-        }
-        .file-open-wrapper input:focus {
-            border-color: #6ae3ff;
-        }
-        .file-open-wrapper input::placeholder {
-            color: #555;
-        }
-        .file-open-btn {
-            background: linear-gradient(135deg, #ffd700, #f0a500);
-            color: #0a0a0f;
-            border: none;
-            padding: 10px 28px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        .file-open-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-        }
-        .file-open-btn i { font-size: 1rem; }
-        .file-open-btn .fa-chevron-left { font-size: 14px; }
-        body.en .file-open-btn .fa-chevron-left { transform: rotate(180deg); }
-        .file-open-wrapper .full-url {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .file-open-wrapper .full-url .url-val {
-            color: #6ae3ff;
-            font-family: monospace;
-            background: #1a1a2e;
-            padding: 4px 12px;
-            border-radius: 6px;
-            border: 1px solid #2a2a3e;
-            direction: ltr;
-            font-size: 0.8rem;
-        }
-    </style>
+/* ===== الأزرار ===== */
+.btn-row{
+  display:flex;flex-wrap:wrap;gap:15px;
+  justify-content:center;margin:20px 0;
+}
+.run-btn,.diagnose-btn,.explore-btn{
+  border:none;padding:14px 32px;border-radius:40px;
+  font-size:1.05rem;font-weight:700;cursor:pointer;
+  transition:transform .3s ease,box-shadow .3s ease;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:inherit;
+}
+.run-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg);
+}
+.run-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(255,215,0,.4)}
+.run-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.run-btn.speed{background:linear-gradient(135deg,var(--acc),var(--acc2))}
+.run-btn.error{background:linear-gradient(135deg,#ff6a6a,#cb3b3b);color:#fff}
+.run-btn.structure{background:linear-gradient(135deg,var(--green),#009966);color:#000}
+.run-btn.clear{background:var(--bd);color:var(--txt-dim)}
+
+.diagnose-btn{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff}
+.diagnose-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(168,85,247,.4)}
+.diagnose-btn i{color:var(--gold)}
+
+.explore-btn{background:linear-gradient(135deg,#ff6a6a,#cb3b3b);color:#fff}
+.explore-btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(255,106,106,.4)}
+.explore-btn i{color:var(--gold)}
+
+/* ===== السجل ===== */
+.log-box{
+  background:var(--bg);border:1px solid var(--bd);
+  border-radius:8px;padding:15px;max-height:220px;
+  overflow-y:auto;font-family:"Courier New",monospace;
+  font-size:.85rem;color:var(--txt-dim);margin-top:10px;
+  direction:ltr;text-align:left;
+}
+.log-box .log-ok{color:var(--green)}
+.log-box .log-fail{color:var(--red)}
+.log-box .log-warn{color:var(--gold)}
+.log-box .log-info{color:var(--acc)}
+
+/* ===== شريط التقدم ===== */
+.progress-bar{
+  width:100%;height:6px;background:var(--bg-alt);
+  border-radius:4px;margin:10px 0;overflow:hidden;
+}
+.progress-bar .fill{
+  height:100%;background:linear-gradient(90deg,var(--acc),var(--gold));
+  width:0%;transition:width .3s ease;border-radius:4px;
+}
+
+/* ===== شبكة repo9 ===== */
+.repo9-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;margin:15px 0;
+}
+.repo9-card{
+  background:var(--bg);border:1px solid var(--bd);
+  border-radius:12px;padding:15px 10px;
+  text-decoration:none;color:var(--txt);
+  transition:border-color .3s ease,transform .3s ease;
+  display:block;text-align:center;
+}
+.repo9-card:hover{
+  border-color:var(--acc);transform:translateY(-4px);
+  color:var(--txt);text-decoration:none;
+}
+.repo9-card i{font-size:1.8rem;display:block;margin-bottom:6px}
+.repo9-card .title{font-weight:700;font-size:.85rem}
+.repo9-card .desc{color:var(--txt-dim);font-size:.72rem;margin-top:2px}
+
+.icon-yellow{color:var(--gold)}
+.icon-purple{color:#a855f7}
+.icon-blue{color:var(--acc)}
+.icon-green{color:var(--green)}
+.icon-orange{color:var(--orange)}
+.icon-red{color:var(--red)}
+
+.badge{
+  display:inline-block;background:rgba(0,255,136,.13);
+  color:var(--green);padding:4px 16px;border-radius:40px;
+  font-size:.75rem;border:1px solid rgba(0,255,136,.25);
+  margin-bottom:15px;
+}
+
+/* ===== صندوق الخطأ ===== */
+#errorBox{
+  background:#2a0000;border:2px solid var(--red);color:#ffaaaa;
+  padding:15px;border-radius:8px;margin:20px 0;
+  text-align:left;direction:ltr;font-family:monospace;
+  display:none;
+}
+
+/* ===== فتح الملف ===== */
+.file-open-wrapper{
+  display:flex;align-items:center;gap:12px;
+  background:var(--bg);border:2px solid var(--gold);
+  border-radius:12px;padding:12px 20px;margin:10px 0;
+  flex-wrap:wrap;justify-content:center;
+}
+.file-label{
+  color:var(--gold);font-weight:700;font-size:1rem;
+  display:flex;align-items:center;gap:8px;
+}
+.file-open-wrapper input{
+  flex:1;min-width:180px;background:var(--bg-alt);
+  border:1px solid var(--bd2);border-radius:8px;
+  padding:10px 14px;color:var(--txt);font-size:.95rem;
+  font-family:inherit;outline:none;
+  transition:border-color .3s ease;direction:ltr;
+}
+.file-open-wrapper input:focus{border-color:var(--acc)}
+.file-open-wrapper input::placeholder{color:#555}
+.file-open-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--bg);border:none;padding:10px 28px;
+  border-radius:30px;font-weight:700;cursor:pointer;
+  transition:transform .3s ease,box-shadow .3s ease;
+  font-size:1rem;display:flex;align-items:center;gap:8px;
+  white-space:nowrap;font-family:inherit;
+}
+.file-open-btn:hover{
+  transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.4);
+}
+.full-url{
+  color:var(--txt-dim);font-size:.85rem;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.full-url .url-val{
+  color:var(--acc);font-family:"Courier New",monospace;
+  background:var(--bg-alt);padding:4px 12px;
+  border-radius:6px;border:1px solid var(--bd);
+  direction:ltr;font-size:.8rem;word-break:break-all;
+}
+
+/* ===== إعدادات العرض ===== */
+.settings-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.8);
+  backdrop-filter:blur(10px);z-index:2000;
+  display:none;justify-content:center;align-items:center;
+}
+.settings-overlay.active{display:flex}
+.settings-box{
+  background:var(--bg-alt);border:2px solid var(--acc);
+  border-radius:20px;padding:35px 40px;
+  max-width:450px;width:90%;text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+  animation:slideUp .4s ease;color:var(--txt);
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.settings-box h2{
+  color:var(--acc);margin:0 0 20px;font-size:1.4rem;
+}
+.settings-box h3{
+  font-size:.9rem;color:var(--txt-dim);margin:15px 0 8px;
+}
+.settings-box .btn-group{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+}
+.settings-box .btn-setting{
+  padding:10px 20px;
+  border:2px solid rgba(106,227,255,.3);
+  border-radius:12px;background:transparent;
+  color:var(--acc);cursor:pointer;
+  transition:all .3s ease;font-size:.9rem;font-family:inherit;
+}
+.settings-box .btn-setting:hover{background:rgba(106,227,255,.1)}
+.settings-box .btn-setting.active{
+  background:var(--acc);color:var(--bg);border-color:var(--acc);
+}
+.settings-box .btn-close{
+  margin-top:20px;padding:10px 30px;background:var(--acc);
+  border:none;border-radius:30px;color:var(--bg);
+  font-weight:700;cursor:pointer;font-family:inherit;
+  transition:transform .3s ease,box-shadow .3s ease;font-size:.9rem;
+}
+.settings-box .btn-close:hover{
+  transform:scale(1.05);box-shadow:0 0 30px rgba(106,227,255,.3);
+}
+#currentStatus{color:var(--acc);margin-top:15px;font-weight:700}
+
+/* ===== وضع Phone ===== */
+body.device-phone{min-width:unset;overflow-x:hidden}
+body.device-phone .container{max-width:100%;padding:0 10px}
+body.device-phone .grid-2{grid-template-columns:1fr}
+body.device-phone .header h1{font-size:1.5rem}
+body.device-phone .repo9-grid{
+  grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+}
+
+/* ===== وضع النهار ===== */
+body.mode-day{
+  background:#f5efe6;color:#1a1a1a;
+}
+body.mode-day .card{background:#fff;border-color:#ddd}
+body.mode-day .card h2{color:#0a3d62}
+body.mode-day .log-box{background:#fff;color:#333;border-color:#ddd}
+body.mode-day .repo9-card{background:#fff;color:#1a1a1a;border-color:#ddd}
+body.mode-day .links-grid a{background:#fff;color:#0a3d62;border-color:#ddd}
+body.mode-day .file-open-wrapper{background:#fff}
+body.mode-day .file-open-wrapper input{background:#f0f0f0;color:#000}
+
+/* ===== اللغة ===== */
+.ar,.en{display:inline}
+body.en .ar{display:none}
+body:not(.en) .en{display:none}
+
+/* ===== استجابة الشاشات ===== */
+@media (max-width:820px){
+  .lang-btn{top:10px;left:10px;padding:6px 12px;font-size:.8rem}
+  body.en .lang-btn{left:auto;right:10px}
+  .settings-btn{top:52px;left:10px;padding:5px 10px;font-size:.75rem}
+  body.en .settings-btn{left:auto;right:10px}
+  #visitorCounter{font-size:.85rem;padding:5px 14px;top:10px}
+  .music-btn-fixed{width:44px;height:44px;font-size:20px;top:10px;right:10px}
+  body.en .music-btn-fixed{right:auto;left:10px}
+  .container{margin:70px auto 0}
+  .header{padding:28px 16px}
+  .header h1{font-size:1.6rem}
+  .header .subtitle{font-size:1rem}
+  .card{padding:18px}
+  .file-open-wrapper{padding:12px}
+  .file-open-wrapper input{min-width:100%}
+  .run-btn,.diagnose-btn,.explore-btn{padding:12px 22px;font-size:.95rem}
+  .settings-box{padding:25px 20px}
+}
+@media (max-width:480px){
+  body{padding:12px}
+  .container{margin:60px auto 0}
+  .header h1{font-size:1.3rem}
+  .card h2{font-size:1.15rem}
+  .repo9-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ===== تقليل الحركة ===== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .music-btn-fixed.playing{animation:none}
+}
+
+/* ===== الطباعة ===== */
+@media print{
+  body{background:#fff;color:#000}
+  .lang-btn,.settings-btn,#visitorCounter,.music-btn-fixed,
+  .btn-row,.file-open-wrapper{display:none}
+  .card{border-color:#999;background:#f5f5f5}
+}
+</style>
 </head>
+
 <body>
 
-    <audio id="bgMusic" loop preload="auto"><source src="image/music.mp3" type="audio/mpeg"></audio>
-    <button class="music-btn-fixed" id="musicToggle" title="🎵 تشغيل / إيقاف">🎵<i class="fas fa-music"></i></button>
-    
-    <button class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe"></i><span class="ar">🇬🇧 English</span><span class="en">🇾🇪 عربي</span></button>
-    
-    <button class="lang-btn settings-btn" onclick="openSettings()" style="position:fixed; top:65px; left:20px; background:transparent; border:1px solid #6ae3ff; color:#6ae3ff; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:13px; z-index:999; display:flex; align-items:center; gap:6px;">
-        <i class="fas fa-cog"></i> <span class="ar">إعدادات</span><span class="en">Settings</span>
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+
+<!-- ===== مشغل الموسيقى ===== -->
+<audio id="bgMusic" loop preload="none">
+  <source src="/image/music.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn-fixed" id="musicToggle" title="تشغيل / إيقاف الموسيقى" aria-label="تشغيل الموسيقى">
+  <i class="fas fa-music" aria-hidden="true"></i>
+</button>
+
+<!-- ===== زر اللغة ===== -->
+<button class="lang-btn" id="langToggle" type="button" aria-label="تبديل اللغة">
+  <i class="fas fa-globe" aria-hidden="true"></i>
+  <span class="ar">🇬🇧 English</span>
+  <span class="en">🇾🇪 عربي</span>
+</button>
+
+<!-- ===== زر الإعدادات ===== -->
+<button class="settings-btn" id="settingsBtn" type="button" aria-label="الإعدادات">
+  <i class="fas fa-cog" aria-hidden="true"></i>
+  <span class="ar">إعدادات</span>
+  <span class="en">Settings</span>
+</button>
+
+<!-- ===== عدّاد الزوار ===== -->
+<div id="visitorCounter" role="status" aria-live="polite">
+  <i class="fas fa-users" aria-hidden="true"></i>
+  <span class="ar">زوار:</span><span class="en">Visitors:</span>
+  <span id="visitorCountDisplay">1</span>
+</div>
+
+<!-- ===== نافذة الإعدادات ===== -->
+<div class="settings-overlay" id="settingsOverlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="settings-box">
+    <h2 id="settingsTitle">⚙️ <span class="ar">إعدادات العرض</span><span class="en">Display Settings</span></h2>
+
+    <h3>📱 <span class="ar">نوع الجهاز</span><span class="en">Device</span></h3>
+    <div class="btn-group">
+      <button class="btn-setting active" id="desktopBtn" type="button">🖥️ Desktop</button>
+      <button class="btn-setting" id="phoneBtn" type="button">📱 Phone</button>
+    </div>
+
+    <h3>🌓 <span class="ar">وضع الشاشة</span><span class="en">Mode</span></h3>
+    <div class="btn-group">
+      <button class="btn-setting" id="dayBtn" type="button">☀️ <span class="ar">نهاري</span><span class="en">Day</span></button>
+      <button class="btn-setting active" id="nightBtn" type="button">🌙 <span class="ar">ليلي</span><span class="en">Night</span></button>
+    </div>
+
+    <p id="currentStatus">Desktop 🖥️ · 🌙 Night</p>
+
+    <button class="btn-close" id="closeSettings" type="button">✕ <span class="ar">إغلاق</span><span class="en">Close</span></button>
+  </div>
+</div>
+
+<!-- ===== المحتوى الرئيسي ===== -->
+<main id="main" class="container">
+
+  <!-- ===== الهيدر ===== -->
+  <header class="header">
+    <h1>
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <span class="ar">نظام فحص الواحة</span>
+      <span class="en">Jabri Checkout System</span>
+    </h1>
+    <p class="subtitle">
+      <i class="fas fa-flag" aria-hidden="true"></i>
+      <span class="ar">🇾🇪 فحص شامل للروابط، السرعة، 404، والأداء</span>
+      <span class="en">🇾🇪 Full Link, Speed, 404 &amp; Performance Scan</span>
+    </p>
+    <p class="note">
+      <i class="fas fa-link" aria-hidden="true"></i>
+      <span class="ar">فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span>
+      <span class="en">Scan every page, link, file &amp; repo</span>
+    </p>
+  </header>
+
+  <div id="errorBox" role="alert"></div>
+
+  <!-- ===== فتح ملف ===== -->
+  <div class="file-open-wrapper">
+    <div class="file-label">
+      <i class="fas fa-file-code" aria-hidden="true"></i>
+      <span class="ar">📂 فتح ملف:</span>
+      <span class="en">📂 Open File:</span>
+    </div>
+    <input type="text" id="filePathInput" placeholder="logo.html" value="logo.html" dir="ltr" aria-label="اسم الملف">
+    <button class="file-open-btn" id="fileOpenBtn" type="button">
+      <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+      <span class="ar">فتح</span>
+      <span class="en">Open</span>
     </button>
+    <div class="full-url">
+      <i class="fas fa-link" aria-hidden="true"></i>
+      <span class="ar">الرابط:</span><span class="en">URL:</span>
+      <span class="url-val" id="fullUrlDisplay">https://jabri-com.vercel.app/logo.html</span>
+    </div>
+  </div>
 
-    <div id="visitorCounter"><i class="fas fa-users"></i><span class="ar">زوار:</span><span class="en">Visitors:</span><span id="visitorCountDisplay">1</span></div>
+  <!-- ===== أزرار الفحص ===== -->
+  <div class="btn-row">
+    <button class="run-btn" id="runFullScan" type="button">
+      <i class="fas fa-rocket" aria-hidden="true"></i>
+      <span class="ar">فحص شامل</span><span class="en">Full Scan</span>
+    </button>
+    <button class="run-btn speed" id="runSpeedTest" type="button">
+      <i class="fas fa-bolt" aria-hidden="true"></i>
+      <span class="ar">اختبار السرعة</span><span class="en">Speed Test</span>
+    </button>
+    <button class="run-btn error" id="run404Test" type="button">
+      <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+      <span class="ar">فحص 404</span><span class="en">404 Check</span>
+    </button>
+    <button class="run-btn structure" id="runStructureCheck" type="button">
+      <i class="fas fa-folder-tree" aria-hidden="true"></i>
+      <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span>
+    </button>
+    <button class="run-btn clear" id="clearLogs" type="button">
+      <i class="fas fa-trash" aria-hidden="true"></i>
+      <span class="ar">مسح السجل</span><span class="en">Clear Logs</span>
+    </button>
+  </div>
 
-    <!-- ===== إعدادات الشاشة ===== -->
-    <div class="settings-overlay" id="settingsOverlay">
-        <div class="settings-box">
-            <h2>⚙️ <span class="ar">إعدادات العرض</span><span class="en">Display Settings</span></h2>
+  <div class="btn-row">
+    <button class="diagnose-btn" id="diagnoseBtn" type="button">
+      <i class="fas fa-stethoscope" aria-hidden="true"></i>
+      <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span>
+    </button>
+    <button class="explore-btn" id="exploreBtn" type="button">
+      <i class="fas fa-compass" aria-hidden="true"></i>
+      <span class="ar">🧭 المستكشف</span><span class="en">🧭 Explore</span>
+    </button>
+  </div>
 
-            <h3>📱 <span class="ar">نوع الجهاز</span><span class="en">Device</span></h3>
-            <div class="btn-group">
-                <button class="btn-setting active" id="desktopBtn" onclick="setDevice('desktop')">🖥️ Desktop</button>
-                <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 Phone</button>
-            </div>
+  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="fill" id="progressFill"></div>
+  </div>
 
-            <h3>🌓 <span class="ar">وضع الشاشة</span><span class="en">Mode</span></h3>
-            <div class="btn-group">
-                <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ <span class="ar">نهاري</span><span class="en">Day</span></button>
-                <button class="btn-setting active" id="nightBtn" onclick="setMode('night')">🌙 <span class="ar">ليلي</span><span class="en">Night</span></button>
-            </div>
-
-            <h3 id="currentStatus" style="color: #6ae3ff; margin-top: 15px;">Desktop 🖥️ · 🌙 Night</h3>
-
-            <button class="btn-close" onclick="closeSettings()">✕ <span class="ar">إغلاق</span><span class="en">Close</span></button>
-        </div>
+  <!-- ===== شبكة 2 ===== -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>
+        <i class="fas fa-file-alt" aria-hidden="true"></i>
+        <span class="ar">الصفحات (Page1–12)</span>
+        <span class="en">Pages (Page1–12)</span>
+      </h2>
+      <div class="links-grid" id="pageLinks"></div>
+      <p style="margin-top:10px;font-size:.85rem;color:var(--txt-dim)">
+        <i class="fas fa-check-circle" style="color:var(--green)" aria-hidden="true"></i>
+        <span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span>
+        <span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span>
+      </p>
     </div>
 
-    <div class="container">
-        <header class="header">
-            <h1><i class="fas fa-search"></i> <span class="ar">نظام فحص الواحة</span><span class="en">Jabri Checkout System</span></h1>
-            <div class="subtitle"><i class="fas fa-flag"></i> <span class="ar">🇾🇪 فحص شامل للروابط، السرعة، 404، والأداء</span><span class="en">🇾🇪 Full Link, Speed, 404 & Performance Scan</span></div>
-            <p style="color: #94a3b8; margin-top: 8px;"><i class="fas fa-link"></i><span class="ar">فحص كل صفحة، كل رابط، كل ملف، كل ريبو</span><span class="en">Scan every page, link, file & repo</span></p>
-        </header>
-        <div id="errorBox"></div>
+    <div class="card">
+      <h2>
+        <i class="fas fa-folder-open" aria-hidden="true"></i>
+        <span class="ar">الريبوهات</span>
+        <span class="en">Repositories</span>
+      </h2>
+      <div class="links-grid" id="repoLinks"></div>
+      <p style="margin-top:10px;font-size:.85rem;color:var(--txt-dim)">
+        <i class="fas fa-code-fork" style="color:var(--gold)" aria-hidden="true"></i>
+        <span class="ar">ريبوهات: <span id="repoCount">0</span></span>
+        <span class="en">Repos: <span id="repoCountEn">0</span></span>
+      </p>
+    </div>
+  </div>
 
-        <!-- ===== زر فتح الملف - المستخدم يكتب اسم الملف ===== -->
-        <div class="file-open-wrapper">
-            <div class="file-label">
-                <i class="fas fa-file-code"></i>
-                <span class="ar">📂 فتح ملف:</span>
-                <span class="en">📂 Open File:</span>
-            </div>
-            <input type="text" id="filePathInput" placeholder="logo.html" value="logo.html" dir="ltr">
-            <button class="file-open-btn" id="fileOpenBtn">
-                <i class="fas fa-external-link-alt"></i>
-                <span class="ar">فتح</span>
-                <span class="en">Open</span>
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="full-url">
-                <i class="fas fa-link"></i>
-                <span class="ar">الرابط:</span><span class="en">URL:</span>
-                <span class="url-val" id="fullUrlDisplay">https://jabri-com.vercel.app/logo.html</span>
-            </div>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px 0;">
-            <button class="run-btn" id="runFullScan"><i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span></button>
-            <button class="run-btn speed" id="runSpeedTest"><i class="fas fa-bolt"></i> <span class="ar">اختبار السرعة</span><span class="en">Speed Test</span></button>
-            <button class="run-btn error" id="run404Test"><i class="fas fa-exclamation-triangle"></i> <span class="ar">فحص 404</span><span class="en">404 Check</span></button>
-            <button class="run-btn structure" id="runStructureCheck"><i class="fas fa-folder-tree"></i> <span class="ar">فحص الهيكلة</span><span class="en">Structure Check</span></button>
-            <button class="run-btn clear" id="clearLogs"><i class="fas fa-trash"></i> <span class="ar">مسح السجل</span><span class="en">Clear Logs</span></button>
-            
-            <button class="diagnose-btn" onclick="window.location.href='diagnose.html'">
-                <i class="fas fa-stethoscope"></i> <span class="ar">📊 تشخيص المستودعات</span><span class="en">📊 Repo Diagnosis</span>
-            </button>
-            
-            <button class="explore-btn" onclick="window.location.href='current-auto.html'">
-                <i class="fas fa-compass"></i> <span class="ar">🧭 المستكشف</span><span class="en">🧭 Explore</span>
-            </button>
-        </div>
-
-        <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
-        <div class="grid-2">
-            <div class="card"><h2><i class="fas fa-file-alt"></i> <span class="ar">الصفحات (Page1-12)</span><span class="en">Pages (Page1-12)</span></h2><div class="links-grid" id="pageLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-check-circle" style="color:#00ff88;"></i><span class="ar">جاهزة: <span id="pageReady">0</span> / 12</span><span class="en">Ready: <span id="pageReadyEn">0</span> / 12</span></div></div>
-            <div class="card"><h2><i class="fas fa-folder-open"></i> <span class="ar">الريبوهات</span><span class="en">Repositories</span></h2><div class="links-grid" id="repoLinks"></div><div style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;"><i class="fas fa-code-fork" style="color:#ffd700;"></i><span class="ar">ريبوهات: <span id="repoCount">0</span></span><span class="en">Repos: <span id="repoCountEn">0</span></span></div></div>
-        </div>
-        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-toolbox"></i> <span class="ar">repo9 - أدوات الواحة</span><span class="en">repo9 - Jabri Tools</span></h2><div class="badge"><i class="fas fa-check-circle"></i> ✅ يعمل على Vercel</div><div class="repo9-grid">
-            <a href="https://jabri-web.vercel.app/publish/publish.html" class="repo9-card" style="border-color: #25D366; background: #0a0a0f;">
-                <i class="fab fa-whatsapp" style="color: #25D366; font-size: 2rem; display: block; margin-bottom: 6px;"></i>
-                <div class="title" style="color: #25D366;">💬 واتساب الواحة</div>
-                <div class="desc" style="color: #94a3b8;">نشر المنشورات</div>
-            </a>
-            <a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a>
-            <a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a>
-            <a href="yemen-photo-api.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض API</div><div class="desc">قراءة تلقائية</div></a>
-            <a href="yemen-photo.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">🐘 معرض اليمن</div><div class="desc">قراءة تقائمة</div></a>
-            <a href="gallery.html" class="repo9-card"><i class="fab fa-php icon-purple"></i><div class="title">معرض Gallery</div><div class="desc">قراءة تقائمة</div></a>
-            <a href="diagnose.html" class="repo9-card"><i class="fas fa-search icon-blue"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a>
-            <a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a>
-            <a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a>
-            <a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a>
-            <a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a>
-            <a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a>
-            <a href="diagnose.html" class="repo9-card" style="border-color:#a855f7;"><i class="fas fa-stethoscope icon-purple"></i><div class="title">📊 Diagnose</div><div class="desc">تشخيص المستودعات</div></a>
-            <a href="current-auto.html" class="repo9-card" style="border-color:#ff6a6a;">
-                <i class="fas fa-compass icon-red"></i>
-                <div class="title" style="color:#ff6a6a;">🧭 المستكشف</div>
-                <div class="desc">استكشاف الواحة</div>
-            </a>
-        </div></div>
-        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-chart-bar"></i> <span class="ar">نتائج الفحص</span><span class="en">Scan Results</span></h2><div style="overflow-x: auto;"><table class="result-table" id="resultTable"><thead><tr><th><i class="fas fa-cube"></i> <span class="ar">العنصر</span><span class="en">Item</span></th><th><i class="fas fa-circle"></i> <span class="ar">الحالة</span><span class="en">Status</span></th><th><i class="fas fa-clock"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th><th><i class="fas fa-flag-checkered"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th></tr></thead><tbody id="resultBody"><tr><td colspan="4" style="color:#666;"><i class="fas fa-search"></i> <span class="ar">اضغط "فحص شامل" للبدء</span><span class="en">Press "Full Scan" to start</span></td></tr></tbody></table></div></div>
-        <div class="card" style="margin-top: 20px;"><h2><i class="fas fa-list"></i> <span class="ar">سجل الفحص</span><span class="en">Scan Log</span></h2><div class="log-box" id="logBox"><div class="log-info"><i class="fas fa-info-circle"></i> <span class="ar">انتظر بدء الفحص...</span><span class="en">Waiting for scan...</span></div></div></div>
-        <div id="footer-placeholder"></div>
+  <!-- ===== repo9 ===== -->
+  <div class="card" style="margin-top:20px">
+    <h2>
+      <i class="fas fa-toolbox" aria-hidden="true"></i>
+      <span class="ar">repo9 — أدوات الواحة</span>
+      <span class="en">repo9 — Jabri Tools</span>
+    </h2>
+    <div class="badge">
+      <i class="fas fa-check-circle" aria-hidden="true"></i>
+      ✅ يعمل على Vercel
     </div>
 
-    <script>
-        // ===== إعدادات الجهاز =====
-        let currentDevice = 'desktop';
-        let currentMode = 'night';
+    <div class="repo9-grid">
+      <a href="https://jabri-web.vercel.app/publish/publish.html" class="repo9-card" style="border-color:#25D366" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" style="color:#25D366" aria-hidden="true"></i>
+        <div class="title" style="color:#25D366">💬 واتساب الواحة</div>
+        <div class="desc">نشر المنشورات</div>
+      </a>
+      <a href="yemen-photo2.html" class="repo9-card"><i class="fas fa-images icon-yellow" aria-hidden="true"></i><div class="title">📸 معرض JSON</div><div class="desc">يعمل على Vercel</div></a>
+      <a href="yemen-photo-php.html" class="repo9-card"><i class="fab fa-php icon-purple" aria-hidden="true"></i><div class="title">🐘 معرض PHP</div><div class="desc">قراءة تلقائية</div></a>
+      <a href="yemen-photo-api.html" class="repo9-card"><i class="fab fa-php icon-purple" aria-hidden="true"></i><div class="title">🐘 معرض API</div><div class="desc">قراءة تلقائية</div></a>
+      <a href="yemen-photo.html" class="repo9-card"><i class="fab fa-php icon-purple" aria-hidden="true"></i><div class="title">🐘 معرض اليمن</div><div class="desc">قراءة تلقائية</div></a>
+      <a href="gallery.html" class="repo9-card"><i class="fab fa-php icon-purple" aria-hidden="true"></i><div class="title">معرض Gallery</div><div class="desc">قراءة تلقائية</div></a>
+      <a href="diagnose.html" class="repo9-card"><i class="fas fa-search icon-blue" aria-hidden="true"></i><div class="title">🔍 نظام الفحص</div><div class="desc">فحص الروابط</div></a>
+      <a href="Page9.html" class="repo9-card"><i class="fas fa-file-alt icon-green" aria-hidden="true"></i><div class="title">📄 Page9</div><div class="desc">الصفحة الرئيسية</div></a>
+      <a href="file-structure.html" class="repo9-card"><i class="fas fa-sitemap icon-orange" aria-hidden="true"></i><div class="title">🗺️ الهيكلة</div><div class="desc">خريطة الموقع</div></a>
+      <a href="all-links.html" class="repo9-card"><i class="fas fa-link icon-blue" aria-hidden="true"></i><div class="title">🔗 الروابط</div><div class="desc">جميع الروابط</div></a>
+      <a href="header.html" class="repo9-card"><i class="fas fa-header icon-purple" aria-hidden="true"></i><div class="title">📋 الهيدر</div><div class="desc">رأس الصفحة</div></a>
+      <a href="file-structure2.html" class="repo9-card"><i class="fas fa-copy icon-green" aria-hidden="true"></i><div class="title">📄 هيكلة 2</div><div class="desc">نسخة بديلة</div></a>
+      <a href="diagnose.html" class="repo9-card" style="border-color:#a855f7"><i class="fas fa-stethoscope icon-purple" aria-hidden="true"></i><div class="title">📊 Diagnose</div><div class="desc">تشخيص المستودعات</div></a>
+      <a href="current-auto.html" class="repo9-card" style="border-color:#ff6a6a"><i class="fas fa-compass icon-red" aria-hidden="true"></i><div class="title" style="color:#ff6a6a">🧭 المستكشف</div><div class="desc">استكشاف الواحة</div></a>
+    </div>
+  </div>
 
-        function setDevice(device) {
-            currentDevice = device;
-            document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
-            document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
-            document.body.classList.remove('device-desktop', 'device-phone');
-            document.body.classList.add('device-' + device);
-            updateStatus();
-        }
+  <!-- ===== جدول النتائج ===== -->
+  <div class="card" style="margin-top:20px">
+    <h2>
+      <i class="fas fa-chart-bar" aria-hidden="true"></i>
+      <span class="ar">نتائج الفحص</span>
+      <span class="en">Scan Results</span>
+    </h2>
+    <div style="overflow-x:auto">
+      <table class="result-table" id="resultTable">
+        <thead>
+          <tr>
+            <th><i class="fas fa-cube" aria-hidden="true"></i> <span class="ar">العنصر</span><span class="en">Item</span></th>
+            <th><i class="fas fa-circle" aria-hidden="true"></i> <span class="ar">الحالة</span><span class="en">Status</span></th>
+            <th><i class="fas fa-clock" aria-hidden="true"></i> <span class="ar">الوقت (ms)</span><span class="en">Time (ms)</span></th>
+            <th><i class="fas fa-flag-checkered" aria-hidden="true"></i> <span class="ar">النتيجة</span><span class="en">Result</span></th>
+          </tr>
+        </thead>
+        <tbody id="resultBody">
+          <tr>
+            <td colspan="4" style="color:#666">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <span class="ar">اضغط "فحص شامل" للبدء</span>
+              <span class="en">Press "Full Scan" to start</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-        function setMode(mode) {
-            currentMode = mode;
-            document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
-            document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
-            
-            if (mode === 'day') {
-                document.body.style.background = '#f5efe6';
-                document.body.style.color = '#1a1a1a';
-            } else {
-                document.body.style.background = '#0a0a0f';
-                document.body.style.color = '#e8e8f0';
-            }
-            updateStatus();
-        }
+  <!-- ===== سجل الفحص ===== -->
+  <div class="card" style="margin-top:20px">
+    <h2>
+      <i class="fas fa-list" aria-hidden="true"></i>
+      <span class="ar">سجل الفحص</span>
+      <span class="en">Scan Log</span>
+    </h2>
+    <div class="log-box" id="logBox" role="log" aria-live="polite">
+      <div class="log-info">
+        <i class="fas fa-info-circle" aria-hidden="true"></i>
+        <span class="ar">انتظر بدء الفحص...</span>
+        <span class="en">Waiting for scan...</span>
+      </div>
+    </div>
+  </div>
 
-        function updateStatus() {
-            const deviceText = currentDevice === 'desktop' ? 'Desktop 🖥️' : 'Phone 📱';
-            const modeText = currentMode === 'day' ? '☀️ Day' : '🌙 Night';
-            document.getElementById('currentStatus').textContent = deviceText + ' · ' + modeText;
-        }
+</main>
 
-        function openSettings() {
-            document.getElementById('settingsOverlay').classList.add('active');
-        }
+<!-- ===== الفوتر المحمّل ديناميكياً ===== -->
+<div id="footer-placeholder"></div>
 
-        function closeSettings() {
-            document.getElementById('settingsOverlay').classList.remove('active');
-        }
+<!-- ===== السكربتات ===== -->
+<script>
+/* ===== ضبط Canonical و hreflang ديناميكياً ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  var base = location.origin;
+  var path = location.pathname.replace(/^\/en\//, '/');
 
-        document.getElementById('settingsOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeSettings();
-        });
+  var canonical = document.getElementById('dynamicCanonical');
+  var arLink    = document.getElementById('hreflangAr');
+  var enLink    = document.getElementById('hreflangEn');
+  var xLink     = document.getElementById('hreflangX');
 
-        // ===== الوظائف الأساسية =====
-        function generateLinks() {
-            const pageContainer = document.getElementById('pageLinks'); const pages = []; for (let i = 1; i <= 12; i++) { pages.push(`Page${i}.html`); }
-            pageContainer.innerHTML = pages.map(p => `<a href="/${p}" target="_blank"><i class="fas fa-file-code"></i> ${p}</a>`).join('');
-            document.getElementById('pageReady').innerText = 12; document.getElementById('pageReadyEn').innerText = 12;
-            const repoContainer = document.getElementById('repoLinks'); const repos = ['Jabri-web', 'Jabri_RiemannOS', 'Zx_Mother_Function_Jabri', 'Jabri_Nobble', 'Jabri_Checkout', 'Jabri_Archive'];
-            repoContainer.innerHTML = repos.map(r => `<a href="https://github.com/jabri-web/${r}" target="_blank"><i class="fab fa-github"></i> ${r}</a>`).join('');
-            document.getElementById('repoCount').innerText = repos.length; document.getElementById('repoCountEn').innerText = repos.length;
-        }
+  if (canonical) canonical.href = base + path;
+  if (arLink)    arLink.href    = base + path;
+  if (enLink)    enLink.href    = base + '/en' + path;
+  if (xLink)     xLink.href     = base + path;
+});
 
-        function addLog(msg, type = 'info') {
-            const box = document.getElementById('logBox'); const icons = { ok: '<i class="fas fa-check-circle" style="color:#00ff88;"></i>', fail: '<i class="fas fa-times-circle" style="color:#ff4444;"></i>', warn: '<i class="fas fa-exclamation-circle" style="color:#ffd700;"></i>', info: '<i class="fas fa-info-circle" style="color:#6ae3ff;"></i>' };
-            const cls = { ok: 'log-ok', fail: 'log-fail', warn: 'log-warn', info: 'log-info' }; const time = new Date().toLocaleTimeString();
-            box.innerHTML += `<div class="${cls[type] || 'log-info'}">${icons[type] || icons.info} [${time}] ${msg}</div>`; box.scrollTop = box.scrollHeight;
-        }
+/* ===== إعدادات الجهاز والوضع ===== */
+(function () {
+  var STORAGE_DEVICE = 'jabri-device';
+  var STORAGE_MODE   = 'jabri-mode';
+  var currentDevice = 'desktop';
+  var currentMode   = 'night';
 
-        function clearLogs() { document.getElementById('logBox').innerHTML = ''; document.getElementById('resultBody').innerHTML = ''; document.getElementById('progressFill').style.width = '0%'; addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info'); }
+  function updateStatus() {
+    var dTxt = currentDevice === 'desktop' ? 'Desktop 🖥️' : 'Phone 📱';
+    var mTxt = currentMode === 'day' ? '☀️ Day' : '🌙 Night';
+    var el = document.getElementById('currentStatus');
+    if (el) el.textContent = dTxt + ' · ' + mTxt;
+  }
 
-        function checkPage(url) { return new Promise((resolve) => { const start = performance.now(); fetch(url, { method: 'HEAD', cache: 'no-cache' }).then(res => resolve({ url, status: res.status, time: Math.round(performance.now() - start), ok: res.ok })).catch(() => resolve({ url, status: 404, time: Math.round(performance.now() - start), ok: false })); }); }
+  function setDevice(device) {
+    currentDevice = device;
+    document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
+    document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
+    document.body.classList.remove('device-desktop', 'device-phone');
+    document.body.classList.add('device-' + device);
+    try { localStorage.setItem(STORAGE_DEVICE, device); } catch (e) {}
+    updateStatus();
+  }
 
-        async function checkStructure() {
-            addLog('📂 <span class="ar">جاري التحقق من هيكلة الملفات...</span><span class="en">Checking file structure...</span>', 'info'); try {
-                const response = await fetch('/file-structure.txt'); if (!response.ok) { addLog('❌ <span class="ar">تعذر العثور على ملف الهيكلة</span><span class="en">Structure file not found</span>', 'fail'); return; }
-                const text = await response.text(); const pathRegex = /(?:[\/\w.-]+\/)*[\w.-]+\.(?:html|js|css|txt|webp|mp3|json|png|jpg|xml)/g; const paths = text.match(pathRegex);
-                if (!paths || paths.length === 0) { addLog('⚠️ <span class="ar">لم يتم العثور على مسارات صالحة</span><span class="en">No valid paths found</span>', 'warn'); return; }
-                const uniquePaths = [...new Set(paths)]; addLog(`📊 <span class="ar">تم العثور على ${uniquePaths.length} ملف</span><span class="en">Found ${uniquePaths.length} files</span>`, 'info'); let found = 0, missing = 0;
-                for (const filePath of uniquePaths) { if (filePath.startsWith('http')) continue; let cleanPath = filePath.replace(/^\.\/|^\//, ''); if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath; const result = await checkPage(cleanPath);
-                    if (result.ok) { found++; addLog(`✅ ${cleanPath} — موجود (${result.status})`, 'ok'); } else { missing++; addLog(`❌ ${cleanPath} — مفقود (${result.status})`, 'fail'); } }
-                addLog(`📊 <span class="ar">خلاصة: ✅ ${found} موجود | ❌ ${missing} مفقود</span><span class="en">Summary: ✅ ${found} found | ❌ ${missing} missing</span>`, missing === 0 ? 'ok' : 'fail');
-            } catch (error) { addLog(`💥 <span class="ar">خطأ: ${error.message}</span><span class="en">Error: ${error.message}</span>`, 'fail'); }
-        }
+  function setMode(mode) {
+    currentMode = mode;
+    document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
+    document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
+    document.body.classList.remove('mode-day', 'mode-night');
+    document.body.classList.add('mode-' + mode);
+    try { localStorage.setItem(STORAGE_MODE, mode); } catch (e) {}
+    updateStatus();
+  }
 
-        async function runFullScan() {
-            const btn = document.getElementById('runFullScan'); btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
-            document.getElementById('resultBody').innerHTML = ''; clearLogs(); addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
-            const progress = document.getElementById('progressFill'); const results = []; const pages = []; for (let i = 1; i <= 12; i++) pages.push(`Page${i}.html`); pages.push('theory-ar.html', 'theory-en.html', 'Checkout.html', 'Check.html', 'file-structure.html'); let completed = 0, total = pages.length;
-            for (const page of pages) { const url = `/${page}`; const result = await checkPage(url); results.push(result); completed++; progress.style.width = `${(completed / total) * 100}%`; const statusClass = result.ok ? 'pass' : 'fail';
-                addLog(`${result.ok ? '✅' : '❌'} ${page} — ${result.status} (${result.time}ms)`, result.ok ? 'ok' : 'fail'); const row = document.createElement('tr'); row.innerHTML = `<td>${page}</td><td class="${statusClass}">${result.status}</td><td>${result.time}</td><td class="${statusClass}">${result.ok ? '<i class="fas fa-check-circle" style="color:#00ff88;"></i>' : '<i class="fas fa-times-circle" style="color:#ff4444;"></i>'}</td>`; document.getElementById('resultBody').appendChild(row); }
-            const okCount = results.filter(r => r.ok).length; const failCount = results.filter(r => !r.ok).length; const avgTime = Math.round(results.reduce((sum, r) => sum + r.time, 0) / results.length);
-            addLog(`📊 <span class="ar">النتيجة: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span><span class="en">Final: ✅ ${okCount} | ❌ ${failCount} | ⏱️ ${avgTime}ms</span>`, 'info'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span>'; progress.style.width = '100%';
-        }
+  window.setDevice = setDevice;
+  window.setMode = setMode;
 
-        async function runSpeedTest() {
-            const btn = document.getElementById('runSpeedTest'); btn.disabled = true; addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info'); const urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Check.html']; const results = [];
-            for (const url of urls) { const start = performance.now(); try { await fetch(url, { cache: 'no-cache' }); const time = Math.round(performance.now() - start); results.push({ url, time, ok: true }); addLog(`⚡ ${url} — ${time}ms`, 'ok'); }
-            catch { const time = Math.round(performance.now() - start); results.push({ url, time, ok: false }); addLog(`❌ ${url} — فشل (${time}ms)`, 'fail'); } }
-            const avg = Math.round(results.reduce((s, r) => s + r.time, 0) / results.length); const fastest = Math.min(...results.map(r => r.time)); const slowest = Math.max(...results.map(r => r.time));
-            addLog(`📊 <span class="ar">السرعة: المتوسط ${avg}ms | الأسرع ${fastest}ms | الأبطأ ${slowest}ms</span><span class="en">Speed: Avg ${avg}ms | Fastest ${fastest}ms | Slowest ${slowest}ms</span>`, 'info'); btn.disabled = false;
-        }
+  document.getElementById('desktopBtn').addEventListener('click', function () { setDevice('desktop'); });
+  document.getElementById('phoneBtn').addEventListener('click',   function () { setDevice('phone'); });
+  document.getElementById('dayBtn').addEventListener('click',     function () { setMode('day'); });
+  document.getElementById('nightBtn').addEventListener('click',   function () { setMode('night'); });
 
-        async function run404Test() {
-            const btn = document.getElementById('run404Test'); btn.disabled = true; addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn'); const testUrls = ['/nonexistent.html', '/fake-page', '/wrong-path', '/missing-file.js', '/invalid.css']; let found404 = 0;
-            for (const url of testUrls) { const result = await checkPage(url); if (result.status === 404) { found404++; addLog(`🚨 404 تم كشفه: ${url}`, 'warn'); } else { addLog(`✅ ${url} — ${result.status}`, 'ok'); } }
-            addLog(`📊 <span class="ar">تم كشف ${found404} من ${testUrls.length} روابط 404</span><span class="en">Found ${found404} of ${testUrls.length} 404 links</span>`, found404 > 0 ? 'warn' : 'ok'); btn.disabled = false;
-        }
+  /* نافذة الإعدادات */
+  var overlay = document.getElementById('settingsOverlay');
+  document.getElementById('settingsBtn').addEventListener('click', function () {
+    overlay.classList.add('active');
+  });
+  document.getElementById('closeSettings').addEventListener('click', function () {
+    overlay.classList.remove('active');
+  });
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) overlay.classList.remove('active');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      overlay.classList.remove('active');
+    }
+  });
 
-        function toggleLang() { const html = document.documentElement; const newLang = html.lang === 'ar' ? 'en' : 'ar'; html.lang = newLang; html.dir = newLang === 'ar' ? 'rtl' : 'ltr'; document.body.classList.toggle('en', newLang === 'en'); localStorage.setItem('preferred-language', newLang); }
+  /* استعادة الإعدادات المحفوظة */
+  var savedDevice = 'desktop';
+  var savedMode   = 'night';
+  try {
+    savedDevice = localStorage.getItem(STORAGE_DEVICE) || 'desktop';
+    savedMode   = localStorage.getItem(STORAGE_MODE)   || 'night';
+  } catch (e) {}
+  setDevice(savedDevice);
+  setMode(savedMode);
+})();
 
-        (function() { let count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0'); count += 1; localStorage.setItem('jabri_visitor_count_checkout', count); document.getElementById('visitorCountDisplay').innerText = count; })();
+/* ===== دوال مساعدة ===== */
+function generateLinks() {
+  var pageContainer = document.getElementById('pageLinks');
+  var pages = [];
+  for (var i = 1; i <= 12; i++) pages.push('Page' + i + '.html');
+  pageContainer.innerHTML = pages.map(function (p) {
+    return '<a href="/' + p + '" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-code" aria-hidden="true"></i> ' + p + '</a>';
+  }).join('');
+  document.getElementById('pageReady').innerText = 12;
+  document.getElementById('pageReadyEn').innerText = 12;
 
-        (function() { const music = document.getElementById('bgMusic'); const btn = document.getElementById('musicToggle'); if (!music || !btn) return; let isPlaying = false; music.volume = 0.3;
-            btn.addEventListener('click', function() { if (isPlaying) { music.pause(); btn.innerHTML = '<i class="fas fa-music"></i>'; btn.classList.remove('playing'); isPlaying = false; } else { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } });
-            document.addEventListener('click', function firstInteraction() { if (!isPlaying) { music.play().then(() => { btn.innerHTML = '<i class="fas fa-volume-up"></i>'; btn.classList.add('playing'); isPlaying = true; }).catch(() => {}); } document.removeEventListener('click', firstInteraction); }); })();
+  var repoContainer = document.getElementById('repoLinks');
+  var repos = ['Jabri-web', 'Jabri_RiemannOS', 'Zx_Mother_Function_Jabri', 'Jabri_Nobble', 'Jabri_Checkout', 'Jabri_Archive'];
+  repoContainer.innerHTML = repos.map(function (r) {
+    return '<a href="https://github.com/jabri-web/' + r + '" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> ' + r + '</a>';
+  }).join('');
+  document.getElementById('repoCount').innerText = repos.length;
+  document.getElementById('repoCountEn').innerText = repos.length;
+}
 
-        // ===== زر فتح الملف - المستخدم يكتب اسم الملف =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const input = document.getElementById('filePathInput');
-            const urlDisplay = document.getElementById('fullUrlDisplay');
-            const openBtn = document.getElementById('fileOpenBtn');
-            const BASE_URL = 'https://jabri-com.vercel.app/';
+function addLog(msg, type) {
+  type = type || 'info';
+  var box = document.getElementById('logBox');
+  var icons = {
+    ok:   '<i class="fas fa-check-circle" style="color:#00ff88"></i>',
+    fail: '<i class="fas fa-times-circle" style="color:#ff4444"></i>',
+    warn: '<i class="fas fa-exclamation-circle" style="color:#ffd700"></i>',
+    info: '<i class="fas fa-info-circle" style="color:#6ae3ff"></i>'
+  };
+  var cls = { ok: 'log-ok', fail: 'log-fail', warn: 'log-warn', info: 'log-info' };
+  var time = new Date().toLocaleTimeString();
+  box.innerHTML += '<div class="' + (cls[type] || 'log-info') + '">' + (icons[type] || icons.info) + ' [' + time + '] ' + msg + '</div>';
+  box.scrollTop = box.scrollHeight;
+}
 
-            // تحديث العرض عند تغيير المدخل
-            input.addEventListener('input', function() {
-                const val = this.value.trim() || '';
-                if (val) {
-                    urlDisplay.textContent = BASE_URL + val;
-                } else {
-                    urlDisplay.textContent = BASE_URL;
-                }
-            });
+function clearLogs() {
+  document.getElementById('logBox').innerHTML = '';
+  document.getElementById('resultBody').innerHTML = '';
+  document.getElementById('progressFill').style.width = '0%';
+  addLog('🗑️ <span class="ar">تم مسح السجل</span><span class="en">Logs cleared</span>', 'info');
+}
 
-            // عند الضغط على زر الفتح
-            openBtn.addEventListener('click', function() {
-                const val = input.value.trim() || '';
-                let fullUrl = BASE_URL;
-                if (val) {
-                    fullUrl = BASE_URL + val;
-                }
-                urlDisplay.textContent = fullUrl;
-                
-                // تسجيل في السجل
-                addLog(`📂 <span class="ar">جاري فتح: ${fullUrl}</span><span class="en">Opening: ${fullUrl}</span>`, 'info');
-                
-                // فتح الصفحة في نافذة جديدة
-                window.open(fullUrl, '_blank');
-            });
+function checkPage(url) {
+  return new Promise(function (resolve) {
+    var start = performance.now();
+    fetch(url, { method: 'HEAD', cache: 'no-cache' })
+      .then(function (res) {
+        resolve({ url: url, status: res.status, time: Math.round(performance.now() - start), ok: res.ok });
+      })
+      .catch(function () {
+        resolve({ url: url, status: 404, time: Math.round(performance.now() - start), ok: false });
+      });
+  });
+}
 
-            // عند الضغط على Enter في حقل الإدخال
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    openBtn.click();
-                }
-            });
+async function checkStructure() {
+  addLog('📂 <span class="ar">جاري التحقق من هيكلة الملفات...</span><span class="en">Checking file structure...</span>', 'info');
+  try {
+    var response = await fetch('/file-structure.txt');
+    if (!response.ok) {
+      addLog('❌ <span class="ar">تعذر العثور على ملف الهيكلة</span><span class="en">Structure file not found</span>', 'fail');
+      return;
+    }
+    var text = await response.text();
+    var pathRegex = /(?:[\/\w.-]+\/)*[\w.-]+\.(?:html|js|css|txt|webp|mp3|json|png|jpg|xml)/g;
+    var paths = text.match(pathRegex);
+    if (!paths || paths.length === 0) {
+      addLog('⚠️ <span class="ar">لم يتم العثور على مسارات صالحة</span><span class="en">No valid paths found</span>', 'warn');
+      return;
+    }
+    var uniquePaths = Array.from(new Set(paths));
+    addLog('📊 <span class="ar">تم العثور على ' + uniquePaths.length + ' ملف</span><span class="en">Found ' + uniquePaths.length + ' files</span>', 'info');
+    var found = 0, missing = 0;
+    for (var i = 0; i < uniquePaths.length; i++) {
+      var filePath = uniquePaths[i];
+      if (filePath.startsWith('http')) continue;
+      var cleanPath = filePath.replace(/^\.\/|^\//, '');
+      if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+      var result = await checkPage(cleanPath);
+      if (result.ok) {
+        found++;
+        addLog('✅ ' + cleanPath + ' — موجود (' + result.status + ')', 'ok');
+      } else {
+        missing++;
+        addLog('❌ ' + cleanPath + ' — مفقود (' + result.status + ')', 'fail');
+      }
+    }
+    addLog('📊 <span class="ar">خلاصة: ✅ ' + found + ' موجود | ❌ ' + missing + ' مفقود</span><span class="en">Summary: ✅ ' + found + ' found | ❌ ' + missing + ' missing</span>', missing === 0 ? 'ok' : 'fail');
+  } catch (error) {
+    addLog('💥 <span class="ar">خطأ: ' + error.message + '</span><span class="en">Error: ' + error.message + '</span>', 'fail');
+  }
+}
 
-            generateLinks(); 
-            document.getElementById('runFullScan').addEventListener('click', runFullScan); 
-            document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
-            document.getElementById('run404Test').addEventListener('click', run404Test); 
-            document.getElementById('runStructureCheck').addEventListener('click', checkStructure); 
-            document.getElementById('clearLogs').addEventListener('click', clearLogs);
-            
-            // استعادة اللغة المحفوظة
-            const savedLang = localStorage.getItem('preferred-language') || 'ar'; 
-            document.documentElement.lang = savedLang; 
-            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr'; 
-            document.body.classList.toggle('en', savedLang === 'en');
-            
-            // تعيين الوضع الافتراضي: Desktop + Night
-            document.body.classList.add('device-desktop');
-            setMode('night');
-            setDevice('desktop');
-            
-            console.log('🔍 نظام فحص الواحة جاهز'); 
-            console.log('📄 12 صفحة + 6 ريبوهات + هيكلة ملفات'); 
-            console.log('🇾🇪 من صنعاء إلى الكون');
-            console.log('📊 مركز تشخيص المستودعات متاح في diagnose.html');
-            console.log('🧭 المستكشف متاح في current-auto.html');
-            console.log('🖥️ الإعدادات الافتراضية: Desktop + Night');
-            console.log('📂 زر فتح الملف: يكتب المستخدم اسم الملف ويفتح الرابط الكامل');
-        });
-    </script>
-    
-    <script src="/js/menu.js"></script>
-    
+async function runFullScan() {
+  var btn = document.getElementById('runFullScan');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span class="ar">جاري الفحص...</span><span class="en">Scanning...</span>';
+  document.getElementById('resultBody').innerHTML = '';
+  clearLogs();
+  addLog('🚀 <span class="ar">بدء الفحص الشامل...</span><span class="en">Starting full scan...</span>', 'info');
+
+  var progress = document.getElementById('progressFill');
+  var results = [];
+  var pages = [];
+  for (var i = 1; i <= 12; i++) pages.push('Page' + i + '.html');
+  pages.push('theory-ar.html', 'theory-en.html', 'Checkout.html', 'Check.html', 'file-structure.html');
+
+  var completed = 0;
+  var total = pages.length;
+
+  for (var j = 0; j < pages.length; j++) {
+    var url = '/' + pages[j];
+    var result = await checkPage(url);
+    results.push(result);
+    completed++;
+    progress.style.width = (completed / total) * 100 + '%';
+
+    var statusClass = result.ok ? 'pass' : 'fail';
+    addLog((result.ok ? '✅' : '❌') + ' ' + pages[j] + ' — ' + result.status + ' (' + result.time + 'ms)', result.ok ? 'ok' : 'fail');
+
+    var row = document.createElement('tr');
+    row.innerHTML =
+      '<td>' + pages[j] + '</td>' +
+      '<td class="' + statusClass + '">' + result.status + '</td>' +
+      '<td>' + result.time + '</td>' +
+      '<td class="' + statusClass + '">' +
+      (result.ok
+        ? '<i class="fas fa-check-circle" style="color:#00ff88"></i>'
+        : '<i class="fas fa-times-circle" style="color:#ff4444"></i>') +
+      '</td>';
+    document.getElementById('resultBody').appendChild(row);
+  }
+
+  var okCount = results.filter(function (r) { return r.ok; }).length;
+  var failCount = results.filter(function (r) { return !r.ok; }).length;
+  var avgTime = Math.round(results.reduce(function (sum, r) { return sum + r.time; }, 0) / results.length);
+
+  addLog('📊 <span class="ar">النتيجة: ✅ ' + okCount + ' | ❌ ' + failCount + ' | ⏱️ ' + avgTime + 'ms</span><span class="en">Final: ✅ ' + okCount + ' | ❌ ' + failCount + ' | ⏱️ ' + avgTime + 'ms</span>', 'info');
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-rocket" aria-hidden="true"></i> <span class="ar">فحص شامل</span><span class="en">Full Scan</span>';
+  progress.style.width = '100%';
+}
+
+async function runSpeedTest() {
+  var btn = document.getElementById('runSpeedTest');
+  btn.disabled = true;
+  addLog('⚡ <span class="ar">اختبار السرعة...</span><span class="en">Speed test...</span>', 'info');
+
+  var urls = ['/', '/Sanaa.html', '/Shibam.html', '/Soqatra.html', '/theory-ar.html', '/theory-en.html', '/Check.html'];
+  var results = [];
+
+  for (var i = 0; i < urls.length; i++) {
+    var url = urls[i];
+    var start = performance.now();
+    try {
+      await fetch(url, { cache: 'no-cache' });
+      var time = Math.round(performance.now() - start);
+      results.push({ url: url, time: time, ok: true });
+      addLog('⚡ ' + url + ' — ' + time + 'ms', 'ok');
+    } catch (e) {
+      var t2 = Math.round(performance.now() - start);
+      results.push({ url: url, time: t2, ok: false });
+      addLog('❌ ' + url + ' — فشل (' + t2 + 'ms)', 'fail');
+    }
+  }
+
+  var avg = Math.round(results.reduce(function (s, r) { return s + r.time; }, 0) / results.length);
+  var fastest = Math.min.apply(null, results.map(function (r) { return r.time; }));
+  var slowest = Math.max.apply(null, results.map(function (r) { return r.time; }));
+
+  addLog('📊 <span class="ar">السرعة: المتوسط ' + avg + 'ms | الأسرع ' + fastest + 'ms | الأبطأ ' + slowest + 'ms</span><span class="en">Speed: Avg ' + avg + 'ms | Fastest ' + fastest + 'ms | Slowest ' + slowest + 'ms</span>', 'info');
+  btn.disabled = false;
+}
+
+async function run404Test() {
+  var btn = document.getElementById('run404Test');
+  btn.disabled = true;
+  addLog('🚨 <span class="ar">فحص 404...</span><span class="en">404 check...</span>', 'warn');
+
+  var testUrls = ['/nonexistent.html', '/fake-page', '/wrong-path', '/missing-file.js', '/invalid.css'];
+  var found404 = 0;
+
+  for (var i = 0; i < testUrls.length; i++) {
+    var result = await checkPage(testUrls[i]);
+    if (result.status === 404) {
+      found404++;
+      addLog('🚨 404 تم كشفه: ' + testUrls[i], 'warn');
+    } else {
+      addLog('✅ ' + testUrls[i] + ' — ' + result.status, 'ok');
+    }
+  }
+
+  addLog('📊 <span class="ar">تم كشف ' + found404 + ' من ' + testUrls.length + ' روابط 404</span><span class="en">Found ' + found404 + ' of ' + testUrls.length + ' 404 links</span>', found404 > 0 ? 'warn' : 'ok');
+  btn.disabled = false;
+}
+
+/* ===== تبديل اللغة ===== */
+(function () {
+  var STORAGE_KEY = 'jabri-lang';
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.body.classList.toggle('en', lang === 'en');
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+  }
+
+  var btn = document.getElementById('langToggle');
+  btn.addEventListener('click', function () {
+    var current = document.documentElement.lang || 'ar';
+    applyLanguage(current === 'en' ? 'ar' : 'en');
+  });
+
+  var saved = 'ar';
+  try { saved = localStorage.getItem(STORAGE_KEY) || 'ar'; } catch (e) {}
+  applyLanguage(saved);
+})();
+
+/* ===== عدّاد الزوار ===== */
+(function () {
+  var count = parseInt(localStorage.getItem('jabri_visitor_count_checkout') || '0', 10);
+  count += 1;
+  try { localStorage.setItem('jabri_visitor_count_checkout', count); } catch (e) {}
+  var el = document.getElementById('visitorCountDisplay');
+  if (el) el.innerText = count;
+})();
+
+/* ===== مشغل الموسيقى ===== */
+(function () {
+  var music = document.getElementById('bgMusic');
+  var btn = document.getElementById('musicToggle');
+  if (!music || !btn) return;
+
+  var isPlaying = false;
+  music.volume = 0.3;
+
+  btn.addEventListener('click', function () {
+    if (isPlaying) {
+      music.pause();
+      btn.innerHTML = '<i class="fas fa-music" aria-hidden="true"></i>';
+      btn.classList.remove('playing');
+      isPlaying = false;
+    } else {
+      music.play().then(function () {
+        btn.innerHTML = '<i class="fas fa-volume-up" aria-hidden="true"></i>';
+        btn.classList.add('playing');
+        isPlaying = true;
+      }).catch(function () {});
+    }
+  });
+})();
+
+/* ===== فتح ملف ===== */
+(function () {
+  var input = document.getElementById('filePathInput');
+  var urlDisplay = document.getElementById('fullUrlDisplay');
+  var openBtn = document.getElementById('fileOpenBtn');
+  var BASE_URL = 'https://jabri-com.vercel.app/';
+
+  input.addEventListener('input', function () {
+    var val = this.value.trim() || '';
+    urlDisplay.textContent = val ? BASE_URL + val : BASE_URL;
+  });
+
+  openBtn.addEventListener('click', function () {
+    var val = input.value.trim() || '';
+    var fullUrl = val ? BASE_URL + val : BASE_URL;
+    urlDisplay.textContent = fullUrl;
+    addLog('📂 <span class="ar">جاري فتح: ' + fullUrl + '</span><span class="en">Opening: ' + fullUrl + '</span>', 'info');
+    window.open(fullUrl, '_blank', 'noopener,noreferrer');
+  });
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); openBtn.click(); }
+  });
+})();
+
+/* ===== تفعيل الأزرار ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  generateLinks();
+
+  document.getElementById('runFullScan').addEventListener('click', runFullScan);
+  document.getElementById('runSpeedTest').addEventListener('click', runSpeedTest);
+  document.getElementById('run404Test').addEventListener('click', run404Test);
+  document.getElementById('runStructureCheck').addEventListener('click', checkStructure);
+  document.getElementById('clearLogs').addEventListener('click', clearLogs);
+  document.getElementById('diagnoseBtn').addEventListener('click', function () {
+    window.location.href = 'diagnose.html';
+  });
+  document.getElementById('exploreBtn').addEventListener('click', function () {
+    window.location.href = 'current-auto.html';
+  });
+});
+
+
+
+<script src="/js/menu.js" defer></script>
+
 </body>
 </html>
