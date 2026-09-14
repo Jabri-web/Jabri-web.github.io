@@ -439,6 +439,7 @@ index.html
 logo.html
 catalog.html
 all-links.html
+monitor.html
 
 
 # ─────────────────────────────────────────────

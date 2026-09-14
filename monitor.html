@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- ═══════════════════════════════════════════════════════════
+     monitor.html — Jabri Empire Monitor v4.0
+     واحة الجبري — Heaven Al-Jabri
+     صفحة داخلية (noindex) — نظام المراقبة والأرشفة
+     ═══════════════════════════════════════════════════════════ -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://jabri-com.vercel.app/monitor.html">
+
+<title>📊 Jabri Empire Monitor v4.0</title>
+<meta name="description" content="نظام مراقبة الإمبراطورية الرقمية — واحة الجبري">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   المتغيرات
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --bg: #0a0a0f;
+  --bg-alt: #0d1117;
+  --bg-card: #161b22;
+  --bg-elevated: #1c2333;
+  --bd: #1f1f2e;
+  --bd2: #2a2a3e;
+  --bd3: #3a3a4e;
+  --txt: #e8e8f0;
+  --txt-dim: #8a8a9e;
+  --txt-muted: #5a5a6e;
+  --acc: #6ae3ff;
+  --acc2: #4dd4ff;
+  --green: #25c26e;
+  --green2: #1fa056;
+  --gold: #c9a84c;
+  --orange: #ff9800;
+  --red: #ff5555;
+  --purple: #a855f7;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .4);
+  --transition: .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+body.light {
+  --bg: #f5f7fa;
+  --bg-alt: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f0f2f5;
+  --bd: #e1e4e8;
+  --bd2: #d0d4da;
+  --bd3: #b8bcc4;
+  --txt: #1a1a1f;
+  --txt-dim: #5a5a6e;
+  --txt-muted: #8a8a9e;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .08);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   إعادة الضبط
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: "Tajawal", "Cairo", system-ui, sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background var(--transition), color var(--transition);
+}
+
+img { max-width: 100%; display: block; }
+button, input, select { font-family: inherit; }
+
+/* ═══════════════════════════════════════════════════════════
+   الوصولية
+   ═══════════════════════════════════════════════════════════ */
+.skip-link {
+  position: absolute; top: -100px; right: 12px; z-index: 9999;
+  background: var(--green); color: #000;
+  padding: 10px 18px; border-radius: 8px;
+  font-weight: 700; text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+*:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   الحاوية
+   ═══════════════════════════════════════════════════════════ */
+.container { max-width: 1400px; margin: 0 auto; }
+
+/* ═══════════════════════════════════════════════════════════
+   الهيدر
+   ═══════════════════════════════════════════════════════════ */
+.page-header {
+  text-align: center;
+  padding: 36px 24px 30px;
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg-card));
+  border: 2px solid var(--green);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '🌌';
+  position: absolute;
+  font-size: 18rem;
+  opacity: .025;
+  top: -40px;
+  left: -40px;
+  pointer-events: none;
+}
+
+.page-header h1 {
+  font-family: "Cairo";
+  color: var(--green);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 900;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header .subtitle {
+  color: var(--txt-dim);
+  font-size: .95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header .identity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(201, 168, 76, .15), rgba(201, 168, 76, .05));
+  border: 1px solid rgba(201, 168, 76, .4);
+  color: var(--gold);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-top: 12px;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   شريط الأدوات العلوي
+   ═══════════════════════════════════════════════════════════ */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-alt);
+  color: var(--txt-dim);
+  border: 2px solid var(--bd2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.tool-btn:hover {
+  border-color: var(--acc);
+  color: var(--acc);
+  transform: translateY(-2px);
+}
+
+.tool-btn.primary {
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  border-color: var(--green);
+  color: #000;
+}
+
+.tool-btn.primary:hover { transform: translateY(-2px) scale(1.03); }
+
+.tool-btn.active {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: #000;
+}
+
+.tool-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tool-btn kbd {
+  background: rgba(0, 0, 0, .2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: .7rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   الإحصائيات
+   ═══════════════════════════════════════════════════════════ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg-card));
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green);
+  box-shadow: 0 10px 30px rgba(37, 194, 110, .15);
+}
+
+.stat-card .num {
+  font-family: "Cairo";
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--green);
+  display: block;
+  line-height: 1.1;
+}
+
+.stat-card .lbl {
+  color: var(--txt-dim);
+  font-size: .75rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.stat-card.gold .num { color: var(--gold); }
+.stat-card.orange .num { color: var(--orange); }
+.stat-card.blue .num { color: var(--acc); }
+.stat-card.purple .num { color: var(--purple); }
+.stat-card.red .num { color: var(--red); }
+
+/* ═══════════════════════════════════════════════════════════
+   شريط البحث
+   ═══════════════════════════════════════════════════════════ */
+.search-bar {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+  background: rgba(13, 17, 23, .9);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 2px solid var(--bd2);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition);
+}
+
+body.light .search-bar {
+  background: rgba(255, 255, 255, .9);
+}
+
+.search-bar:focus-within { border-color: var(--green); }
+
+.search-input-wrap { position: relative; margin-bottom: 10px; }
+
+.search-input-wrap > i {
+  position: absolute;
+  top: 50%; right: 16px;
+  transform: translateY(-50%);
+  color: var(--txt-dim);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 44px;
+  background: var(--bg-alt);
+  color: var(--txt);
+  border: 2px solid var(--bd2);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all var(--transition);
+}
+
+body.light .search-input { background: var(--bg-card); }
+.search-input:focus { border-color: var(--green); outline: none; }
+.search-input::placeholder { color: var(--txt-muted); }
+
+.clear-search {
+  position: absolute;
+  top: 50%; left: 12px;
+  transform: translateY(-50%);
+  background: var(--bd2);
+  border: none;
+  color: var(--txt);
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: .8rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.clear-search.visible { display: flex; }
+.clear-search:hover { background: var(--red); color: #fff; }
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-alt);
+  color: var(--txt-dim);
+  border: 2px solid var(--bd2);
+  border-radius: 50px;
+  padding: 6px 12px;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+body.light .chip { background: var(--bg-card); }
+.chip:hover { border-color: var(--green); color: var(--txt); transform: translateY(-2px); }
+.chip.active { background: var(--green); border-color: var(--green); color: #000; transform: translateY(-1px); }
+
+.chip .cnt {
+  background: rgba(255, 255, 255, .15);
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.chip.active .cnt { background: rgba(0, 0, 0, .2); }
+
+.sub-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--bd);
+}
+
+.sort-select {
+  background: var(--bg-alt);
+  color: var(--txt);
+  border: 2px solid var(--bd2);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body.light .sort-select { background: var(--bg-card); }
+
+.results-info {
+  color: var(--txt-dim);
+  font-size: .8rem;
+  margin: 0;
+}
+
+.results-info strong { color: var(--green); font-family: "Cairo"; }
+
+/* ═══════════════════════════════════════════════════════════
+   الجدول
+   ═══════════════════════════════════════════════════════════ */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--bd);
+  background: var(--bg-alt);
+  margin-bottom: 20px;
+}
+
+body.light .table-wrap { background: var(--bg-card); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+  min-width: 760px;
+}
+
+thead th {
+  background: var(--bg-card);
+  color: var(--green);
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--green);
+  text-align: right;
+  font-family: "Cairo";
+  font-weight: 800;
+  font-size: .75rem;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+body.light thead th { background: var(--bg-elevated); }
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid var(--bd);
+  background: var(--bg-alt);
+  vertical-align: middle;
+}
+
+body.light tbody td { background: var(--bg-card); }
+
+tbody tr { transition: background var(--transition); }
+tbody tr:hover td { background: var(--bg-card); }
+body.light tbody tr:hover td { background: var(--bg-elevated); }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody td:first-child {
+  color: var(--gold);
+  font-weight: 900;
+  text-align: center;
+  width: 40px;
+  font-family: "Cairo";
+  font-size: .9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   صحة الرابط
+   ═══════════════════════════════════════════════════════════ */
+.health-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--txt-muted);
+  transition: all var(--transition);
+  box-shadow: 0 0 0 2px transparent;
+}
+
+.health-dot.checking {
+  background: var(--orange);
+  animation: pulse 1.5s infinite;
+}
+
+.health-dot.ok { background: var(--green); box-shadow: 0 0 8px rgba(37, 194, 110, .5); }
+.health-dot.warn { background: var(--orange); }
+.health-dot.error { background: var(--red); box-shadow: 0 0 8px rgba(255, 85, 85, .5); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   أزرار صغيرة (في الجدول)
+   ═══════════════════════════════════════════════════════════ */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--bd2);
+  color: var(--txt-dim);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: .75rem;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: #000;
+  transform: scale(1.1);
+}
+
+.icon-btn.fav-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #000;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   الشارات
+   ═══════════════════════════════════════════════════════════ */
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+
+.badge.type-archive { background: rgba(37, 194, 110, .15); color: var(--green); border: 1px solid rgba(37, 194, 110, .35); }
+.badge.type-not-indexed { background: rgba(255, 152, 0, .15); color: var(--orange); border: 1px solid rgba(255, 152, 0, .35); }
+.badge.type-system { background: rgba(106, 227, 255, .15); color: var(--acc); border: 1px solid rgba(106, 227, 255, .35); }
+.badge.type-partial { background: rgba(138, 138, 158, .15); color: var(--txt-dim); border: 1px solid rgba(138, 138, 158, .35); }
+.badge.type-repo { background: rgba(201, 168, 76, .15); color: var(--gold); border: 1px solid rgba(201, 168, 76, .35); }
+.badge.type-doi { background: rgba(168, 85, 247, .15); color: var(--purple); border: 1px solid rgba(168, 85, 247, .35); }
+
+.badge.cat {
+  background: rgba(106, 227, 255, .08);
+  color: var(--acc);
+  border: 1px solid rgba(106, 227, 255, .2);
+  border-radius: 20px;
+}
+
+.badge.layer {
+  background: linear-gradient(135deg, rgba(201, 168, 76, .2), rgba(201, 168, 76, .05));
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, .4);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   خلايا الكود (DOI)
+   ═══════════════════════════════════════════════════════════ */
+.code-cell {
+  font-family: "JetBrains Mono", monospace;
+  direction: ltr;
+  color: var(--purple);
+  font-weight: 700;
+  background: rgba(168, 85, 247, .1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: .72rem;
+  display: inline-block;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.code-cell:hover { background: rgba(168, 85, 247, .25); }
+
+/* ═══════════════════════════════════════════════════════════
+   اسم الملف
+   ═══════════════════════════════════════════════════════════ */
+.file-name {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .82rem;
+  direction: ltr;
+  color: var(--txt);
+  font-weight: 700;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.file-desc {
+  color: var(--txt-dim);
+  font-size: .72rem;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   شارة التاريخ
+   ═══════════════════════════════════════════════════════════ */
+.date-badge {
+  display: inline-block;
+  background: rgba(106, 227, 255, .1);
+  border: 1px solid rgba(106, 227, 255, .25);
+  color: var(--acc);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: .68rem;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.date-badge.today {
+  background: linear-gradient(135deg, var(--red), #cb3b3b);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   رابط
+   ═══════════════════════════════════════════════════════════ */
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(37, 194, 110, .15), rgba(37, 194, 110, .08));
+  border: 1px solid rgba(37, 194, 110, .35);
+  color: var(--green);
+  font-size: .72rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.link-btn:hover {
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  color: #000;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   شبكة البطاقات
+   ═══════════════════════════════════════════════════════════ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.item-card {
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg-card));
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.item-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--green);
+}
+
+.item-card.type-archive::before { background: var(--green); }
+.item-card.type-not-indexed::before { background: var(--orange); }
+.item-card.type-system::before { background: var(--acc); }
+.item-card.type-repo::before { background: var(--gold); }
+.item-card.type-doi::before { background: var(--purple); }
+.item-card.type-partial::before { background: var(--txt-dim); }
+
+.item-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green);
+  box-shadow: 0 12px 36px rgba(37, 194, 110, .12);
+}
+
+.item-card .head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.item-card .title {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  color: var(--txt);
+  font-size: .9rem;
+  direction: ltr;
+  word-break: break-word;
+  flex: 1;
+}
+
+.item-card .actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.item-card .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.item-card .desc {
+  color: var(--txt-dim);
+  font-size: .8rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.item-card .foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   خريطة الإمبراطورية
+   ═══════════════════════════════════════════════════════════ */
+.empire-map {
+  background: var(--bg-alt);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+body.light .empire-map { background: var(--bg-card); }
+
+.empire-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 600px;
+}
+
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 2px solid var(--bd2);
+  border-radius: 12px;
+  transition: all var(--transition);
+  position: relative;
+}
+
+body.light .layer-row { background: var(--bg-elevated); }
+
+.layer-row:hover {
+  border-color: var(--gold);
+  transform: translateX(-4px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, .12);
+}
+
+.layer-row::before {
+  content: attr(data-layer);
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: var(--gold);
+  color: #000;
+  padding: 2px 12px;
+  border-radius: 20px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .7rem;
+  font-weight: 900;
+}
+
+.layer-info { flex: 1; min-width: 0; }
+
+.layer-info .layer-title {
+  font-family: "Cairo";
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.layer-info .layer-desc {
+  color: var(--txt-dim);
+  font-size: .82rem;
+}
+
+.layer-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  max-width: 60%;
+}
+
+.layer-pill {
+  background: var(--bg);
+  border: 1px solid var(--bd2);
+  color: var(--txt-dim);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-family: "JetBrains Mono", monospace;
+  transition: all var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.layer-pill:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+  transform: scale(1.08);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Timeline
+   ═══════════════════════════════════════════════════════════ */
+.timeline {
+  position: relative;
+  padding: 20px 60px 20px 20px;
+  margin-bottom: 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  right: 30px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--green), var(--acc), var(--purple));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+  background: var(--bg-alt);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all var(--transition);
+}
+
+body.light .timeline-item { background: var(--bg-card); }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -38px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--green);
+}
+
+.timeline-item:hover {
+  border-color: var(--green);
+  transform: translateX(-4px);
+}
+
+.timeline-date {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: .78rem;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 4px;
+  font-family: "JetBrains Mono", monospace;
+  direction: ltr;
+  font-size: .9rem;
+}
+
+.timeline-desc {
+  color: var(--txt-dim);
+  font-size: .82rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Command Palette
+   ═══════════════════════════════════════════════════════════ */
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+}
+
+.palette-overlay.active { display: flex; }
+
+.palette {
+  background: var(--bg-card);
+  border: 2px solid var(--bd2);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 640px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .7);
+  animation: slideDown .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.palette-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--bd);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.palette-header i { color: var(--green); font-size: 1.1rem; }
+
+.palette-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--txt);
+  font-size: 1.05rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.palette-input::placeholder { color: var(--txt-muted); }
+
+.palette-results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.palette-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.palette-result:hover,
+.palette-result.selected {
+  background: var(--bg-elevated);
+}
+
+.palette-result.selected {
+  outline: 2px solid var(--green);
+}
+
+.palette-result .pr-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  flex-shrink: 0;
+}
+
+.palette-result .pr-icon.page { background: rgba(37, 194, 110, .15); color: var(--green); }
+.palette-result .pr-icon.repo { background: rgba(201, 168, 76, .15); color: var(--gold); }
+.palette-result .pr-icon.doi { background: rgba(168, 85, 247, .15); color: var(--purple); }
+.palette-result .pr-icon.action { background: rgba(106, 227, 255, .15); color: var(--acc); }
+
+.palette-result .pr-content { flex: 1; min-width: 0; }
+
+.palette-result .pr-title {
+  color: var(--txt);
+  font-weight: 700;
+  font-size: .9rem;
+  font-family: "JetBrains Mono", monospace;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.palette-result .pr-sub {
+  color: var(--txt-dim);
+  font-size: .75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.palette-footer {
+  padding: 8px 14px;
+  border-top: 1px solid var(--bd);
+  display: flex;
+  justify-content: space-between;
+  color: var(--txt-muted);
+  font-size: .72rem;
+}
+
+.palette-footer kbd {
+  background: var(--bg-alt);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Toast
+   ═══════════════════════════════════════════════════════════ */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-card);
+  border-right: 4px solid var(--green);
+  border-radius: 10px;
+  padding: 12px 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 240px;
+  max-width: 380px;
+  animation: slideInRight .3s cubic-bezier(.4, 0, .2, 1);
+  pointer-events: auto;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.toast.success { border-right-color: var(--green); }
+.toast.info { border-right-color: var(--acc); }
+.toast.warn { border-right-color: var(--orange); }
+.toast.error { border-right-color: var(--red); }
+
+.toast i { font-size: 1.1rem; }
+.toast.success i { color: var(--green); }
+.toast.info i { color: var(--acc); }
+.toast.warn i { color: var(--orange); }
+.toast.error i { color: var(--red); }
+
+.toast .toast-msg {
+  flex: 1;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--txt);
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   الحالة الفارغة
+   ═══════════════════════════════════════════════════════════ */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--txt-dim);
+  display: none;
+}
+
+.empty-state.visible { display: block; }
+.empty-state i { font-size: 3.5rem; color: var(--bd3); margin-bottom: 14px; }
+.empty-state h3 { color: var(--txt); font-family: "Cairo"; font-size: 1.1rem; margin-bottom: 6px; }
+.empty-state p { font-size: .85rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   الفوتر
+   ═══════════════════════════════════════════════════════════ */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px;
+  color: var(--txt-dim);
+  font-size: .85rem;
+  border-top: 1px solid var(--bd);
+}
+
+.footer .identity {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--gold);
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 10px 0;
+}
+
+.footer a {
+  color: var(--acc);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer a:hover { color: var(--green); text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════
+   الأقسام
+   ═══════════════════════════════════════════════════════════ */
+.section-title {
+  color: var(--acc);
+  font-family: "Cairo";
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 24px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bd);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-title .count {
+  color: var(--txt-dim);
+  font-size: .75rem;
+  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.view-section { display: none; }
+.view-section.visible { display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   استجابة الشاشات
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  body { padding: 12px; }
+  .page-header { padding: 24px 16px; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .toolbar-group { width: 100%; justify-content: center; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card .num { font-size: 1.6rem; }
+  .search-bar { top: 8px; padding: 10px; }
+  .search-input { padding: 10px 40px; font-size: .9rem; }
+  .chip { padding: 5px 10px; font-size: .72rem; }
+  .layer-row { flex-direction: column; align-items: flex-start; }
+  .layer-items { max-width: 100%; justify-content: flex-start; }
+  table { font-size: .78rem; min-width: 680px; }
+  thead th, tbody td { padding: 8px 6px; }
+  .timeline { padding: 20px 40px 20px 10px; }
+  .timeline::before { right: 16px; }
+  .timeline-item::before { right: -30px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   تقليل الحركة
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<!-- ═══════════════════════════════════════════════════════════
+     حاوية Toast
+     ═══════════════════════════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     Command Palette
+     ═══════════════════════════════════════════════════════════ -->
+<div class="palette-overlay" id="paletteOverlay" role="dialog" aria-modal="true" aria-label="لوحة الأوامر">
+  <div class="palette">
+    <div class="palette-header">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input type="text" class="palette-input" id="paletteInput"
+             placeholder="اكتب أمراً أو ابحث في الإمبراطورية..." autocomplete="off">
+      <span style="background:var(--bg-alt);padding:4px 10px;border-radius:6px;font-size:.72rem;font-family:JetBrains Mono,monospace;font-weight:700;color:var(--txt-dim)">ESC</span>
+    </div>
+    <div class="palette-results" id="paletteResults"></div>
+    <div class="palette-footer">
+      <span><kbd>↑↓</kbd> تنقل · <kbd>↵</kbd> تنفيذ</span>
+      <span><kbd>Ctrl+K</kbd> فتح · <kbd>ESC</kbd> إغلاق</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       الهيدر
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="page-header">
+    <h1>🌌 Jabri Empire Monitor</h1>
+    <p class="subtitle">نظام مراقبة الإمبراطورية الرقمية — v4.0</p>
+    <div class="identity-chip">Z + C + A = 1</div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       شريط الأدوات
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <button class="tool-btn primary" id="btnPalette" type="button">
+        <i class="fas fa-search"></i> ابحث
+        <kbd>Ctrl+K</kbd>
+      </button>
+      <button class="tool-btn" id="btnHealth" type="button">
+        <i class="fas fa-heart-pulse"></i> فحص صحي
+      </button>
+    </div>
+    <div class="toolbar-group">
+      <button class="tool-btn active" data-view="table" type="button">
+        <i class="fas fa-list"></i> جدول
+      </button>
+      <button class="tool-btn" data-view="cards" type="button">
+        <i class="fas fa-th-large"></i> شبكة
+      </button>
+      <button class="tool-btn" data-view="map" type="button">
+        <i class="fas fa-project-diagram"></i> خريطة
+      </button>
+      <button class="tool-btn" data-view="timeline" type="button">
+        <i class="fas fa-clock-rotate-left"></i> زمني
+      </button>
+    </div>
+    <div class="toolbar-group">
+      <button class="tool-btn" id="btnExport" type="button">
+        <i class="fas fa-download"></i> تصدير
+      </button>
+      <button class="tool-btn" id="btnTheme" type="button" title="تبديل المظهر">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       الإحصائيات
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card" data-stat="total" data-filter="all">
+      <span class="num">0</span>
+      <span class="lbl">إجمالي</span>
+    </div>
+    <div class="stat-card gold" data-stat="archive" data-filter="archive">
+      <span class="num">0</span>
+      <span class="lbl">📦 مؤرشف</span>
+    </div>
+    <div class="stat-card orange" data-stat="notIndexed" data-filter="not-indexed">
+      <span class="num">0</span>
+      <span class="lbl">🆕 غير مؤرشف</span>
+    </div>
+    <div class="stat-card blue" data-stat="system" data-filter="system">
+      <span class="num">0</span>
+      <span class="lbl">⚙️ النظام</span>
+    </div>
+    <div class="stat-card purple" data-stat="repo" data-filter="repo">
+      <span class="num">0</span>
+      <span class="lbl">📚 ريبوز</span>
+    </div>
+    <div class="stat-card red" data-stat="doi" data-filter="doi">
+      <span class="num">0</span>
+      <span class="lbl">🔗 DOI</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       شريط البحث
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="search-bar">
+    <div class="search-input-wrap">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input type="search" id="searchInput" class="search-input"
+             placeholder="ابحث بالاسم، الوصف، DOI، الفئة... أو اضغط Ctrl+K للأوامر"
+             aria-label="بحث شامل">
+      <button class="clear-search" id="clearSearch" type="button" aria-label="مسح البحث">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="filter-chips" role="tablist">
+      <button class="chip active" data-filter="all" type="button">
+        🌐 الكل <span class="cnt" id="cAll">0</span>
+      </button>
+      <button class="chip" data-filter="archive" type="button">
+        📦 مؤرشف <span class="cnt" id="cArchive">0</span>
+      </button>
+      <button class="chip" data-filter="not-indexed" type="button">
+        🆕 غير مؤرشف <span class="cnt" id="cNotIndexed">0</span>
+      </button>
+      <button class="chip" data-filter="system" type="button">
+        ⚙️ نظام <span class="cnt" id="cSystem">0</span>
+      </button>
+      <button class="chip" data-filter="repo" type="button">
+        📚 ريبوز <span class="cnt" id="cRepo">0</span>
+      </button>
+      <button class="chip" data-filter="doi" type="button">
+        🔗 DOI <span class="cnt" id="cDoi">0</span>
+      </button>
+      <button class="chip" data-filter="partial" type="button">
+        📄 أجزاء <span class="cnt" id="cPartial">0</span>
+      </button>
+      <button class="chip" data-filter="favorites" type="button">
+        ⭐ المفضلة <span class="cnt" id="cFav">0</span>
+      </button>
+    </div>
+
+    <div class="sub-toolbar">
+      <select class="sort-select" id="sortSelect" aria-label="ترتيب">
+        <option value="default">📋 الترتيب الافتراضي</option>
+        <option value="name">🔤 الاسم (أ-ي)</option>
+        <option value="name-desc">🔤 الاسم (ي-أ)</option>
+        <option value="date">📅 التاريخ (الأحدث)</option>
+        <option value="type">🏷️ النوع</option>
+        <option value="layer">🔷 الطبقة</option>
+      </select>
+      <p class="results-info">
+        عرض <strong id="visibleCount">0</strong>
+        من <strong id="totalCount">0</strong> عنصر
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       المحتوى الرئيسي
+       ═══════════════════════════════════════════════════════════ -->
+  <main id="main">
+
+    <!-- ═══ قسم الجدول والشبكة ═══ -->
+    <section id="mainSection" class="view-section visible">
+      <div id="tableView" class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:40px">#</th>
+              <th style="width:36px">•</th>
+              <th>الاسم</th>
+              <th>الفئة / الطبقة</th>
+              <th>النوع</th>
+              <th>DOI</th>
+              <th>التاريخ</th>
+              <th style="width:80px">إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div id="cardsView" class="cards-grid" style="display:none"></div>
+
+      <div class="empty-state" id="emptyState">
+        <i class="fas fa-inbox"></i>
+        <h3>لا توجد نتائج</h3>
+        <p>جرّب كلمة بحث مختلفة أو غيّر الفلتر</p>
+      </div>
+    </section>
+
+    <!-- ═══ قسم الخريطة ═══ -->
+    <section id="mapSection" class="view-section">
+      <h2 class="section-title">
+        🗺️ خريطة الإمبراطورية الرقمية
+        <span class="count">5 طبقات</span>
+      </h2>
+      <div class="empire-map">
+        <div class="empire-layers" id="empireLayers"></div>
+      </div>
+    </section>
+
+    <!-- ═══ قسم Timeline ═══ -->
+    <section id="timelineSection" class="view-section">
+      <h2 class="section-title">
+        ⏱️ العرض الزمني
+        <span class="count" id="timelineCount">0 عنصر</span>
+      </h2>
+      <div class="timeline" id="timelineContainer"></div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       الفوتر
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="identity">Z + C + A = 1</div>
+    <p id="footerSummary">—</p>
+    <p style="margin-top:10px">
+      <a href="/Dbase.html"><i class="fas fa-database"></i> قواعد البيانات</a> ·
+      <a href="/Check.html"><i class="fas fa-circle-check"></i> الفحص</a> ·
+      <a href="/Page11.html"><i class="fas fa-home"></i> الواحة</a>
+    </p>
+    <p style="margin-top:12px;color:var(--txt-muted);font-size:.75rem">
+      © 2026 م/ عبدالله محمد ناصر الجبري · CC BY 4.0
+    </p>
+  </footer>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JavaScript
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   1. البيانات — الصفحات
+   ═══════════════════════════════════════════════════════════════ */
+
+const PAGES = [
+  /* ═══ المؤرشف (16) ═══ */
+  { name:'Office.html', url:'/Office.html', type:'archive', cat:'المكتبة', date:'2026/09/05' },
+  { name:'about-waha.html', url:'/about-waha.html', type:'archive', cat:'نبذة', date:'2026/09/07' },
+  { name:'author-history.html', url:'/author-history.html', type:'archive', cat:'المؤلف', date:'2026/08/16' },
+  { name:'profile.html', url:'/profile.html', type:'archive', cat:'المؤلف', date:'2026/08/26' },
+  { name:'profile-en.html', url:'/profile-en.html', type:'archive', cat:'المؤلف', date:'2026/09/12' },
+  { name:'Sindbad-theory.html', url:'/Sindbad-theory.html', type:'archive', cat:'النظرية', date:'2026/08/15' },
+  { name:'Yemen-library.html', url:'/Yemen-library.html', type:'archive', cat:'التراث', date:'2026/09/11' },
+  { name:'journal.html', url:'/journal.html', type:'archive', cat:'المجلات', date:'2026/09/12' },
+  { name:'logo.html', url:'/logo.html', type:'archive', cat:'الرئيسية' },
+  { name:'catalog.html', url:'/catalog.html', type:'archive', cat:'الرئيسية' },
+  { name:'all-links.html', url:'/all-links.html', type:'archive', cat:'الرئيسية' },
+  { name:'Page1.html', url:'/Page1.html', type:'archive', cat:'Page 1-12' },
+  { name:'Page2.html', url:'/Page2.html', type:'archive', cat:'Page 1-12' },
+  { name:'Page3.html', url:'/Page3.html', type:'archive', cat:'Page 1-12' },
+  { name:'Page11.html', url:'/Page11.html', type:'archive', cat:'Page 1-12' },
+  { name:'Dbase.html', url:'/Dbase.html', type:'archive', cat:'قواعد البيانات', date:'اليوم' },
+
+  /* ═══ غير المؤرشف — رئيسية ═══ */
+  { name:'index.html', url:'/index.html', type:'not-indexed', cat:'الرئيسية' },
+  { name:'about.html', url:'/about.html', type:'not-indexed', cat:'نبذة' },
+  { name:'about-ar.html', url:'/about-ar.html', type:'not-indexed', cat:'نبذة' },
+  { name:'about-en.html', url:'/about-en.html', type:'not-indexed', cat:'نبذة' },
+
+  /* ═══ Page 4-12 ═══ */
+  { name:'Page4.html', url:'/Page4.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page5.html', url:'/Page5.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page6.html', url:'/Page6.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page7.html', url:'/Page7.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page8.html', url:'/Page8.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page9.html', url:'/Page9.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page10.html', url:'/Page10.html', type:'not-indexed', cat:'Page 1-12' },
+  { name:'Page12.html', url:'/Page12.html', type:'not-indexed', cat:'Page 1-12' },
+
+  /* ═══ المؤلف ═══ */
+  { name:'Author-cv.html', url:'/Author-cv.html', type:'not-indexed', cat:'المؤلف' },
+  { name:'cv-2026a.html', url:'/cv-2026a.html', type:'not-indexed', cat:'المؤلف' },
+  { name:'cv-2026e.html', url:'/cv-2026e.html', type:'not-indexed', cat:'المؤلف' },
+  { name:'founder.html', url:'/founder.html', type:'not-indexed', cat:'المؤلف' },
+
+  /* ═══ النظرية ═══ */
+  { name:'theory-ar.html', url:'/theory-ar.html', type:'not-indexed', cat:'النظرية' },
+  { name:'theory-en.html', url:'/theory-en.html', type:'not-indexed', cat:'النظرية' },
+  { name:'Sindbad-Brdoni.html', url:'/Sindbad-Brdoni.html', type:'not-indexed', cat:'النظرية' },
+
+  /* ═══ البحث ═══ */
+  { name:'research.html', url:'/research.html', type:'not-indexed', cat:'البحث' },
+  { name:'research-deep.html', url:'/research-deep.html', type:'not-indexed', cat:'البحث' },
+  { name:'Pages-Researches.html', url:'/Pages-Researches.html', type:'not-indexed', cat:'البحث' },
+
+  /* ═══ التراث ═══ */
+  { name:'Sanaa.html', url:'/Sanaa.html', type:'not-indexed', cat:'التراث' },
+  { name:'Shibam.html', url:'/Shibam.html', type:'not-indexed', cat:'التراث' },
+  { name:'Soqatra.html', url:'/Soqatra.html', type:'not-indexed', cat:'التراث' },
+  { name:'gallery.html', url:'/gallery.html', type:'not-indexed', cat:'التراث' },
+  { name:'yemen-photo.html', url:'/yemen-photo.html', type:'not-indexed', cat:'التراث' },
+  { name:'yemen-photo2.html', url:'/yemen-photo2.html', type:'not-indexed', cat:'التراث' },
+  { name:'yemen-photo-api.html', url:'/yemen-photo-api.html', type:'not-indexed', cat:'التراث' },
+  { name:'yemen-photo-php.html', url:'/yemen-photo-php.html', type:'not-indexed', cat:'التراث' },
+
+  /* ═══ المجلات ═══ */
+  { name:'journal2.html', url:'/journal2.html', type:'not-indexed', cat:'المجلات' },
+  { name:'journal3.html', url:'/journal3.html', type:'not-indexed', cat:'المجلات' },
+  { name:'journal4.html', url:'/journal4.html', type:'not-indexed', cat:'المجلات' },
+  { name:'History-pdf.html', url:'/History-pdf.html', type:'not-indexed', cat:'المجلات' },
+
+  /* ═══ الأدوات ═══ */
+  { name:'calculator.html', url:'/calculator.html', type:'not-indexed', cat:'الأدوات' },
+  { name:'handsa.html', url:'/handsa.html', type:'not-indexed', cat:'الأدوات' },
+  { name:'char-balance.html', url:'/char-balance.html', type:'not-indexed', cat:'الأدوات' },
+  { name:'magic-translator.html', url:'/magic-translator.html', type:'not-indexed', cat:'الأدوات' },
+
+  /* ═══ الشبكة ═══ */
+  { name:'microtik.html', url:'/microtik.html', type:'not-indexed', cat:'الشبكة' },
+  { name:'microtik-deep.html', url:'/microtik-deep.html', type:'not-indexed', cat:'الشبكة' },
+
+  /* ═══ قواعد البيانات ═══ */
+  { name:'Dbase-deep.html', url:'/Dbase-deep.html', type:'not-indexed', cat:'قواعد البيانات' },
+
+  /* ═══ المكتبة ═══ */
+  { name:'source.html', url:'/source.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'citations.html', url:'/citations.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'music.html', url:'/music.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'taraif.html', url:'/taraif.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'Nezar.html', url:'/Nezar.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'wonder.html', url:'/wonder.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'heaven-info.html', url:'/heaven-info.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'visitor.html', url:'/visitor.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'who-we.html', url:'/who-we.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'project.html', url:'/project.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'project-ar.html', url:'/project-ar.html', type:'not-indexed', cat:'المكتبة' },
+  { name:'poster.html', url:'/poster.html', type:'not-indexed', cat:'المكتبة' },
+
+  /* ═══ التواصل ═══ */
+  { name:'contact.html', url:'/contact.html', type:'not-indexed', cat:'التواصل' },
+  { name:'FAQPage.html', url:'/FAQPage.html', type:'not-indexed', cat:'التواصل' },
+  { name:'FAQPage-en.html', url:'/FAQPage-en.html', type:'not-indexed', cat:'التواصل' },
+  { name:'privacy-policy.html', url:'/privacy-policy.html', type:'not-indexed', cat:'التواصل' },
+  { name:'404.html', url:'/404.html', type:'not-indexed', cat:'التواصل' },
+  { name:'offline.html', url:'/offline.html', type:'not-indexed', cat:'التواصل' },
+
+  /* ═══ متنوع ═══ */
+  { name:'kfupm-msg.html', url:'/kfupm-msg.html', type:'not-indexed', cat:'متنوع' },
+  { name:'explore.html', url:'/explore.html', type:'not-indexed', cat:'متنوع' },
+
+  /* ═══ مجلدات فرعية ═══ */
+  { name:'ar/index.html', url:'/ar/index.html', type:'not-indexed', cat:'ar' },
+  { name:'ar/about.html', url:'/ar/about.html', type:'not-indexed', cat:'ar' },
+  { name:'ar/contact.html', url:'/ar/contact.html', type:'not-indexed', cat:'ar' },
+  { name:'ar/journal.html', url:'/ar/journal.html', type:'not-indexed', cat:'ar' },
+  { name:'en/index.html', url:'/en/index.html', type:'not-indexed', cat:'en' },
+  { name:'en/about.html', url:'/en/about.html', type:'not-indexed', cat:'en' },
+  { name:'en/contact.html', url:'/en/contact.html', type:'not-indexed', cat:'en' },
+  { name:'en/journal.html', url:'/en/journal.html', type:'not-indexed', cat:'en' },
+  { name:'game/game-auto.html', url:'/game/game-auto.html', type:'not-indexed', cat:'game' },
+  { name:'publish/publish.html', url:'/publish/publish.html', type:'not-indexed', cat:'publish' },
+
+  /* ═══ النظام ═══ */
+  { name:'Check.html', url:'/Check.html', type:'system', cat:'نظام', date:'2026/09/10' },
+  { name:'monitor.html', url:'/monitor.html', type:'system', cat:'نظام', date:'اليوم' },
+  { name:'diagnose.html', url:'/diagnose.html', type:'system', cat:'نظام' },
+  { name:'file-structure.html', url:'/file-structure.html', type:'system', cat:'نظام' },
+  { name:'file-structure2.html', url:'/file-structure2.html', type:'system', cat:'نظام' },
+  { name:'Router-all.html', url:'/Router-all.html', type:'system', cat:'نظام' },
+  { name:'repos-auto.html', url:'/repos-auto.html', type:'system', cat:'نظام' },
+  { name:'repos-sqr.html', url:'/repos-sqr.html', type:'system', cat:'نظام' },
+  { name:'current-auto.html', url:'/current-auto.html', type:'system', cat:'نظام' },
+  { name:'dashboard.html', url:'/dashboard.html', type:'system', cat:'نظام' },
+
+  /* ═══ الأجزاء ═══ */
+  { name:'header.html', url:'/header.html', type:'partial', cat:'أجزاء' },
+  { name:'footer.html', url:'/footer.html', type:'partial', cat:'أجزاء' },
+  { name:'hero.html', url:'/hero.html', type:'partial', cat:'أجزاء' },
+  { name:'js/init-page-root.js', url:'/js/init-page-root.js', type:'partial', cat:'js' },
+  { name:'js/menu.js', url:'/js/menu.js', type:'partial', cat:'js' }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   2. البيانات — الريبوز
+   ═══════════════════════════════════════════════════════════════ */
+
+const REPOS = [
+  /* Layer 1: Gateway */
+  { name:'jabri62018.github.io', url:'https://jabri-web.github.io/jabri62018.github.io/', doi:'20403864', desc:'البوابة الرئيسية P1', layer:1 },
+  { name:'Jabri-web.github.io', url:'https://Jabri-web.github.io/', doi:'20499365', doi2:'20404167', desc:'المركز التنظيمي', layer:1 },
+  { name:'Jabri-web (Router)', url:'https://jabri-web.vercel.app', desc:'راوتر GitHub الرئيسي', layer:1 },
+  { name:'jabri-com', url:'https://jabri-com.vercel.app', doi:'21970418', desc:'راوتر Vercel — الموقع الرئيسي', layer:1 },
+  { name:'jabri.com', url:'https://jabri.com', doi:'21970523', desc:'HyperRouter النهائي', layer:1 },
+
+  /* Layer 2: Core OS */
+  { name:'Zx_Mother_Function_Jabri', url:'https://github.com/Jabri-web/Zx_Mother_Function_Jabri', desc:'الدالة الأم Z(x) — القلب النظري', layer:2 },
+  { name:'Jabri_RiemannOS', url:'https://github.com/Jabri-web/Jabri_RiemannOS', desc:'نظام ريمان المخصص', layer:2 },
+  { name:'Zx_RieOS_v1.2', url:'https://github.com/Jabri-web/Zx_RieOS_v1.2', doi:'20100622', desc:'نظام RieOS — الإصدار الذهبي', layer:2 },
+  { name:'Zx_RieOS_v1.1', url:'https://github.com/Jabri-web/Zx_RieOS_v1.1', doi:'19981688', doi2:'20070594', desc:'نظام RieOS — الإصدار السابق', layer:2 },
+
+  /* Layer 3: Millennium */
+  { name:'Jabri_Nobble', url:'https://github.com/Jabri-web/Jabri_Nobble', doi:'20148770', desc:'حزمة مسائل الألفية (6 مسائل)', layer:3 },
+  { name:'└ Jabri_Riemann', url:'https://github.com/Jabri-web/Jabri_Riemann', doi:'20139904', doi2:'20145337', desc:'فرضية ريمان', layer:3 },
+  { name:'└ Jabri_np', url:'https://github.com/Jabri-web/Jabri_np', doi:'20145279', desc:'P vs NP — التعقيد الحاسوبي', layer:3 },
+  { name:'└ Jabri_gab', url:'https://github.com/Jabri-web/Jabri_gab', doi:'20148344', desc:'Yang-Mills — فجوة الكتلة', layer:3 },
+  { name:'└ Jabri_Navier', url:'https://github.com/Jabri-web/Jabri_Navier', doi:'20149618', desc:'معادلات نافيير-ستوكس', layer:3 },
+  { name:'└ Jabri_Birch', url:'https://github.com/Jabri-web/Jabri_Birch', desc:'بيرش-سوينرتون-داير', layer:3 },
+  { name:'└ Jabri_Hodge', url:'https://github.com/Jabri-web/Jabri_Hodge', desc:'حدسية هودج', layer:3 },
+  { name:'└ Jabri_Identity', url:'https://github.com/Jabri-web/Jabri_Identity', doi:'20114317', desc:'هوية الجبري Z+C+A=1', layer:3 },
+
+  /* Layer 4: Lab */
+  { name:'Jabri_lab', url:'https://github.com/Jabri-web/Jabri_lab', desc:'المختبر الرقمي — 9 أقسام فرعية', layer:4 },
+  { name:'└ Jabri_5', url:'https://github.com/Jabri-web/Jabri_5', desc:'معامل 5', layer:4 },
+  { name:'└ Jabri_28', url:'https://github.com/Jabri-web/Jabri_28', desc:'معامل 28', layer:4 },
+  { name:'└ Jabri_Gravity', url:'https://github.com/Jabri-web/Jabri_Gravity', desc:'الجاذبية', layer:4 },
+  { name:'└ Jabri_Spacetime', url:'https://github.com/Jabri-web/Jabri_Spacetime', desc:'الزمكان', layer:4 },
+  { name:'└ Jabri_Darkenergy', url:'https://github.com/Jabri-web/Jabri_Darkenergy', desc:'الطاقة المظلمة', layer:4 },
+  { name:'└ Jabri_Planck', url:'https://github.com/Jabri-web/Jabri_Planck', desc:'ثابت بلانك', layer:4 },
+  { name:'└ Jabri_Hubble', url:'https://github.com/Jabri-web/Jabri_Hubble', desc:'ثابت هابل', layer:4 },
+  { name:'└ Jabri_Periodic', url:'https://github.com/Jabri-web/Jabri_Periodic', desc:'الدورية', layer:4 },
+  { name:'└ Jabri_all', url:'https://github.com/Jabri-web/Jabri_all', desc:'الدمج الكلي', layer:4 },
+
+  /* Layer 5: Tools */
+  { name:'Jabri_Checkout', url:'https://github.com/Jabri-web/Jabri_Checkout', doi:'20513840', doi2:'21970064', desc:'نقطة التحقق والفحص v2.0', layer:5 }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   3. البيانات — DOI المستقلة
+   ═══════════════════════════════════════════════════════════════ */
+
+const DOIS = [
+  { name:'Hubble Tension (IRIS)', doi:'20114317', desc:'توتر هابل — مجرة IRIS' },
+  { name:'4+1 Eigenvalue Law', doi:'20100622', desc:'قانون القيمة الذاتية 4+1' },
+  { name:'RiemannOS v1.0', doi:'19700735', desc:'نظام ريمان — الإصدار الأول' },
+  { name:'Zx_total_v3.2.1', doi:'19956313', desc:'الدالة الأم Zx — الإصدار الشامل' },
+  { name:'Zx_RieOS v1.1 (قديم)', doi:'19645066', desc:'نظام RieOS — الإصدار الأول' },
+  { name:'jabri62018.github.io', doi:'21006432', desc:'البوابة الرئيسية' },
+  { name:'Jabri-web.github.io', doi:'20404167', desc:'الواجهة الثانية' },
+  { name:'Jabri-web', doi:'20499365', desc:'راوتر GitHub' },
+  { name:'Jabri-com', doi:'21970418', desc:'راوتر Vercel' },
+  { name:'jabri.com', doi:'21970523', desc:'HyperRouter النهائي' },
+  { name:'Zx_RieOS_v1.1', doi:'19981688', desc:'نظام RieOS v1.1' },
+  { name:'Zx_RieOS_v1.1 (Update)', doi:'20070594', desc:'تحديث Zx_RieOS v1.1' },
+  { name:'Riemann Hypothesis', doi:'20139904', desc:'فرضية ريمان' },
+  { name:'Riemann (Alt)', doi:'20145337', desc:'فرضية ريمان — إصدار بديل' },
+  { name:'P ≠ NP', doi:'20145279', desc:'P مقابل NP' },
+  { name:'Yang-Mills', doi:'20148344', desc:'يانغ-ميلز فجوة الكتلة' },
+  { name:'Navier-Stokes', doi:'20149618', desc:'معادلات نافيير-ستوكس' },
+  { name:'Jabri Identity', doi:'20114317', desc:'هوية الجبري Z+C+A=1' },
+  { name:'Jabri Nobble', doi:'20148770', desc:'حزمة مسائل الألفية' },
+  { name:'Jabri Checkout', doi:'20513840', desc:'نقطة التحقق' }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   4. الحالة العامة
+   ═══════════════════════════════════════════════════════════════ */
+
+const State = {
+  filter: 'all',
+  search: '',
+  sort: 'default',
+  view: 'table',
+  health: {},
+  favorites: [],
+  theme: 'dark'
+};
+
+/* استعادة المفضلة والمظهر */
+try {
+  State.favorites = JSON.parse(localStorage.getItem('jabri_monitor_favs') || '[]');
+  State.theme = localStorage.getItem('jabri_monitor_theme') || 'dark';
+} catch (e) {
+  State.favorites = [];
+  State.theme = 'dark';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. أدوات مساعدة
+   ═══════════════════════════════════════════════════════════════ */
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function doiLink(doi) {
+  return 'https://doi.org/10.5281/zenodo.' + doi;
+}
+
+function itemKey(it) {
+  return (it.kind || '') + ':' + (it.name || '') + ':' + (it.doi || '');
+}
+
+function saveFavs() {
+  try { localStorage.setItem('jabri_monitor_favs', JSON.stringify(State.favorites)); } catch (e) {}
+}
+
+function isFav(key) {
+  return State.favorites.indexOf(key) !== -1;
+}
+
+function toggleFav(key) {
+  const idx = State.favorites.indexOf(key);
+  if (idx === -1) {
+    State.favorites.push(key);
+    toast('⭐ أُضيف للمفضلة', 'success');
+  } else {
+    State.favorites.splice(idx, 1);
+    toast('أُزيل من المفضلة', 'info');
+  }
+  saveFavs();
+  render();
+  updateStats();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. Toast
+   ═══════════════════════════════════════════════════════════════ */
+
+function toast(msg, type) {
+  type = type || 'info';
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  const icons = { success:'check-circle', info:'info-circle', warn:'exclamation-triangle', error:'times-circle' };
+  el.innerHTML = '<i class="fas fa-' + (icons[type] || 'info-circle') + '"></i><span class="toast-msg">' + msg + '</span>';
+  c.appendChild(el);
+  setTimeout(function () {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(-30px)';
+    setTimeout(function () { el.remove(); }, 300);
+  }, 2800);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   7. تجميع العناصر
+   ═══════════════════════════════════════════════════════════════ */
+
+function getAllItems() {
+  const items = [];
+  PAGES.forEach(function (p) { items.push(Object.assign({}, p, { kind: 'page' })); });
+  REPOS.forEach(function (r) { items.push(Object.assign({}, r, { kind: 'repo', type: 'repo' })); });
+  DOIS.forEach(function (d) { items.push(Object.assign({}, d, { kind: 'doi', type: 'doi' })); });
+  return items;
+}
+
+function countByType() {
+  const c = { all:0, archive:0, 'not-indexed':0, system:0, partial:0, repo:0, doi:0, favorites:0 };
+  PAGES.forEach(function (p) { c.all++; c[p.type]++; });
+  REPOS.forEach(function () { c.all++; c.repo++; });
+  DOIS.forEach(function () { c.all++; c.doi++; });
+  c.favorites = State.favorites.length;
+  return c;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   8. الفلترة والترتيب
+   ═══════════════════════════════════════════════════════════════ */
+
+function getVisible() {
+  const s = State.search.toLowerCase().trim();
+  const f = State.filter;
+
+  let items = getAllItems().filter(function (it) {
+    /* فلتر */
+    if (f === 'favorites') {
+      if (!isFav(itemKey(it))) return false;
+    } else if (f !== 'all') {
+      if (it.type !== f) return false;
+    }
+    /* بحث */
+    if (s) {
+      const hay = ((it.name || '') + ' ' + (it.desc || '') + ' ' + (it.doi || '') + ' ' + (it.cat || '') + ' ' + (it.layer || '')).toLowerCase();
+      if (hay.indexOf(s) === -1) return false;
+    }
+    return true;
+  });
+
+  /* ترتيب */
+  if (State.sort === 'name') {
+    items.sort(function (a, b) { return (a.name || '').localeCompare(b.name || '', 'ar'); });
+  } else if (State.sort === 'name-desc') {
+    items.sort(function (a, b) { return (b.name || '').localeCompare(a.name || '', 'ar'); });
+  } else if (State.sort === 'date') {
+    items.sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
+  } else if (State.sort === 'type') {
+    items.sort(function (a, b) { return (a.type || '').localeCompare(b.type || ''); });
+  } else if (State.sort === 'layer') {
+    items.sort(function (a, b) { return (a.layer || 99) - (b.layer || 99); });
+  }
+
+  return items;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   9. رسم الجدول
+   ═══════════════════════════════════════════════════════════════ */
+
+function renderTable(items) {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  const typeLabels = {
+    archive:'📦 مؤرشف',
+    'not-indexed':'🆕 غير',
+    system:'⚙️ نظام',
+    partial:'📄 جزء',
+    repo:'📚 ريبو',
+    doi:'🔗 DOI'
+  };
+
+  items.forEach(function (it, i) {
+    const key = itemKey(it);
+    const fav = isFav(key);
+    const tr = document.createElement('tr');
+
+    const catLabel = it.cat ? '<span class="badge cat">' + escapeHtml(it.cat) + '</span>' :
+                     (it.layer ? '<span class="badge layer">L' + it.layer + '</span>' : '—');
+
+    const doiCell = it.doi ? '<span class="code-cell" data-copy-doi="' + it.doi + '">' + it.doi + '</span>' : '—';
+
+    const hState = State.health[it.url] || '';
+    const dateCell = it.date ? '<span class="date-badge' + (it.date === 'اليوم' ? ' today' : '') + '">' + it.date + '</span>' : '—';
+
+    tr.innerHTML =
+      '<td>' + (i + 1) + '</td>' +
+      '<td><span class="health-dot ' + hState + '" data-health="' + escapeHtml(it.url) + '"></span></td>' +
+      '<td>' +
+        '<span class="file-name">' + escapeHtml(it.name) + '</span>' +
+        (it.desc ? '<div class="file-desc">' + escapeHtml(it.desc) + '</div>' : '') +
+      '</td>' +
+      '<td>' + catLabel + '</td>' +
+      '<td><span class="badge type-' + it.type + '">' + (typeLabels[it.type] || it.type) + '</span></td>' +
+      '<td>' + doiCell + '</td>' +
+      '<td>' + dateCell + '</td>' +
+      '<td style="white-space:nowrap">' +
+        '<button class="icon-btn ' + (fav ? 'fav-active' : '') + '" data-fav="' + escapeHtml(key) + '" title="مفضلة">⭐</button>' +
+        (it.url ? '<a href="' + it.url + '" target="_blank" rel="noopener noreferrer" class="icon-btn" title="فتح" style="margin-inline-start:4px"><i class="fas fa-external-link-alt"></i></a>' : '') +
+      '</td>';
+
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('tableView').style.display = items.length ? '' : 'none';
+  document.getElementById('emptyState').classList.toggle('visible', items.length === 0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   10. رسم البطاقات
+   ═══════════════════════════════════════════════════════════════ */
+
+function renderCards(items) {
+  const grid = document.getElementById('cardsView');
+  grid.innerHTML = '';
+
+  const typeLabels = {
+    archive:'📦 مؤرشف',
+    'not-indexed':'🆕 غير',
+    system:'⚙️ نظام',
+    partial:'📄 جزء',
+    repo:'📚 ريبو',
+    doi:'🔗 DOI'
+  };
+
+  items.forEach(function (it) {
+    const key = itemKey(it);
+    const fav = isFav(key);
+
+    const card = document.createElement('div');
+    card.className = 'item-card type-' + it.type;
+
+    card.innerHTML =
+      '<div class="head">' +
+        '<div class="title">' + escapeHtml(it.name) + '</div>' +
+        '<div class="actions">' +
+          '<button class="icon-btn ' + (fav ? 'fav-active' : '') + '" data-fav="' + escapeHtml(key) + '" aria-label="مفضلة">⭐</button>' +
+        '</div>' +
+      '</div>' +
+      (it.desc ? '<div class="desc">' + escapeHtml(it.desc) + '</div>' : '') +
+      '<div class="meta">' +
+        '<span class="badge type-' + it.type + '">' + (typeLabels[it.type] || it.type) + '</span>' +
+        (it.cat ? '<span class="badge cat">' + escapeHtml(it.cat) + '</span>' : '') +
+        (it.layer ? '<span class="badge layer">L' + it.layer + '</span>' : '') +
+      '</div>' +
+      '<div class="foot">' +
+        (it.doi ? '<span class="code-cell" data-copy-doi="' + it.doi + '">' + it.doi + '</span>' : '<span></span>') +
+        (it.url ? '<a href="' + it.url + '" target="_blank" rel="noopener noreferrer" class="link-btn">فتح ↗</a>' : '') +
+      '</div>';
+
+    grid.appendChild(card);
+  });
+
+  grid.style.display = items.length ? 'grid' : 'none';
+  document.getElementById('emptyState').classList.toggle('visible', items.length === 0);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   11. رسم الخريطة
+   ═══════════════════════════════════════════════════════════════ */
+
+function renderMap() {
+  const layers = [
+    { n:1, title:'بوابات الدخول — Gateway Layer', desc:'البوابات والواجهات والراوترات', items:['jabri62018.github.io','Jabri-web.github.io','Jabri-web (Router)','jabri-com','jabri.com'] },
+    { n:2, title:'النواة ونظام التشغيل — Core OS', desc:'الدالة الأم وأنظمة Riemann', items:['Zx_Mother_Function_Jabri','Jabri_RiemannOS','Zx_RieOS_v1.2','Zx_RieOS_v1.1'] },
+    { n:3, title:'مسائل الألفية — Millennium', desc:'حزمة Jabri_Nobble و7 مسائل', items:['Jabri_Nobble','Riemann','P vs NP','Yang-Mills','Navier-Stokes','Birch','Hodge','Identity'] },
+    { n:4, title:'مختبر الفيزياء — Jabri Lab', desc:'9 أقسام: Gravity, Spacetime, Planck...', items:['Jabri_lab','Jabri_5','Jabri_28','Jabri_Gravity','Jabri_Spacetime','Jabri_Planck','Jabri_Hubble','Jabri_all'] },
+    { n:5, title:'أدوات التشخيص — Tools Layer', desc:'الفحص والتحقق', items:['Jabri_Checkout'] }
+  ];
+
+  const container = document.getElementById('empireLayers');
+  container.innerHTML = '';
+
+  layers.forEach(function (l) {
+    const row = document.createElement('div');
+    row.className = 'layer-row';
+    row.dataset.layer = 'L' + l.n;
+
+    row.innerHTML =
+      '<div class="layer-info">' +
+        '<div class="layer-title">' + escapeHtml(l.title) + '</div>' +
+        '<div class="layer-desc">' + escapeHtml(l.desc) + '</div>' +
+      '</div>' +
+      '<div class="layer-items">' +
+        l.items.map(function (it) { return '<span class="layer-pill" data-jump="' + escapeHtml(it) + '">' + escapeHtml(it) + '</span>'; }).join('') +
+      '</div>';
+
+    container.appendChild(row);
+  });
+
+  container.querySelectorAll('.layer-pill').forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      State.search = pill.dataset.jump;
+      document.getElementById('searchInput').value = State.search;
+      document.getElementById('clearSearch').classList.add('visible');
+      switchView('table');
+      render();
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   12. رسم Timeline
+   ═══════════════════════════════════════════════════════════════ */
+
+function renderTimeline() {
+  const container = document.getElementById('timelineContainer');
+  const items = getAllItems().filter(function (i) {
+    return i.date && i.date !== '—' && i.date !== 'اليوم';
+  });
+
+  items.sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
+
+  container.innerHTML = '';
+  document.getElementById('timelineCount').textContent = items.length + ' عنصر بتاريخ';
+
+  items.forEach(function (it) {
+    const el = document.createElement('div');
+    el.className = 'timeline-item';
+    el.innerHTML =
+      '<div class="timeline-date">' + escapeHtml(it.date) + '</div>' +
+      '<div class="timeline-title">' + escapeHtml(it.name) + '</div>' +
+      (it.desc ? '<div class="timeline-desc">' + escapeHtml(it.desc) + '</div>' : '');
+    container.appendChild(el);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   13. رسم عام
+   ═══════════════════════════════════════════════════════════════ */
+
+function render() {
+  const items = getVisible();
+  document.getElementById('visibleCount').textContent = items.length;
+  document.getElementById('totalCount').textContent = getAllItems().length;
+
+  if (State.view === 'table') {
+    renderTable(items);
+    document.getElementById('cardsView').style.display = 'none';
+  } else if (State.view === 'cards') {
+    renderCards(items);
+    document.getElementById('tableView').style.display = 'none';
+  } else if (State.view === 'map') {
+    renderMap();
+  } else if (State.view === 'timeline') {
+    renderTimeline();
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   14. تبديل العرض
+   ═══════════════════════════════════════════════════════════════ */
+
+function switchView(view) {
+  State.view = view;
+
+  /* إخفاء كل الأقسام */
+  document.querySelectorAll('.view-section').forEach(function (s) { s.classList.remove('visible'); });
+
+  /* إظهار القسم المناسب */
+  const map = {
+    table: 'mainSection',
+    cards: 'mainSection',
+    map: 'mapSection',
+    timeline: 'timelineSection'
+  };
+  document.getElementById(map[view]).classList.add('visible');
+
+  /* تحضير الجدول/الشبكة */
+  if (view === 'table') {
+    document.getElementById('tableView').style.display = '';
+    document.getElementById('cardsView').style.display = 'none';
+  } else if (view === 'cards') {
+    document.getElementById('tableView').style.display = 'none';
+    document.getElementById('cardsView').style.display = 'grid';
+  }
+
+  /* تفعيل الزر */
+  document.querySelectorAll('[data-view]').forEach(function (b) {
+    b.classList.toggle('active', b.dataset.view === view);
+  });
+
+  render();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   15. الإحصائيات
+   ═══════════════════════════════════════════════════════════════ */
+
+function updateStats() {
+  const c = countByType();
+
+  const set = function (sel, val) { const el = document.querySelector(sel); if (el) el.textContent = val; };
+
+  set('[data-stat="total"] .num', c.all);
+  set('[data-stat="archive"] .num', c.archive);
+  set('[data-stat="notIndexed"] .num', c['not-indexed']);
+  set('[data-stat="system"] .num', c.system);
+  set('[data-stat="repo"] .num', c.repo);
+  set('[data-stat="doi"] .num', c.doi);
+
+  set('#cAll', c.all);
+  set('#cArchive', c.archive);
+  set('#cNotIndexed', c['not-indexed']);
+  set('#cSystem', c.system);
+  set('#cRepo', c.repo);
+  set('#cDoi', c.doi);
+  set('#cPartial', c.partial);
+  set('#cFav', c.favorites);
+
+  set('#footerSummary',
+    c.all + ' عنصر · ' + c.archive + ' مؤرشف · ' + c['not-indexed'] +
+    ' غير مؤرشف · ' + c.repo + ' ريبو · ' + c.doi + ' DOI');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   16. الفحص الصحي — مع كسر حقيقي للكاش
+   ═══════════════════════════════════════════════════════════════ */
+
+async function checkHealth() {
+  const btn = document.getElementById('btnHealth');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الفحص...';
+
+  /* تنظيف الحالة القديمة */
+  State.health = {};
+  document.querySelectorAll('.health-dot').forEach(function (d) {
+    d.className = 'health-dot checking';
+  });
+
+  toast('💓 بدء الفحص — كسر الكاش مُفعّل', 'info');
+
+  /* جمع الروابط الداخلية فقط */
+  const urls = new Set();
+  getAllItems().forEach(function (it) {
+    if (it.url && it.url.startsWith('/')) urls.add(it.url);
+  });
+  const arr = Array.from(urls).slice(0, 40);
+
+  let ok = 0, warn = 0, error = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    const u = arr[i];
+    const dot = document.querySelector('[data-health="' + u + '"]');
+    const start = performance.now();
+
+    try {
+      /* ═══ Cache Buster الحقيقي ═══ */
+      /* 1. بارامتر زمني فريد لكل طلب */
+      /* 2. cache: 'no-store' (أقوى من no-cache) */
+      /* 3. headers تمنع الـ CDN من التخزين */
+      /* 4. AbortController للـ Timeout */
+
+      const stamp = Date.now();
+      const rand = Math.random().toString(36).slice(2);
+      const bustUrl = location.origin + u + '?_=' + stamp + '_' + rand;
+
+      const controller = new AbortController();
+      const timer = setTimeout(function () { controller.abort(); }, 8000);
+
+      const res = await fetch(bustUrl, {
+        method: 'GET',
+        cache: 'no-store',
+        redirect: 'follow',
+        signal: controller.signal,
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      });
+
+      clearTimeout(timer);
+
+      const ms = Math.round(performance.now() - start);
+
+      let state = 'ok';
+      if (!res.ok) state = 'error';
+      else if (ms > 2000) state = 'warn';
+
+      State.health[u] = state;
+      if (state === 'ok') ok++;
+      else if (state === 'warn') warn++;
+      else error++;
+
+      if (dot) {
+        dot.className = 'health-dot ' + state;
+        dot.title = ms + 'ms';
+      }
+    } catch (err) {
+      const state = err.name === 'AbortError' ? 'warn' : 'error';
+      State.health[u] = state;
+      if (state === 'warn') warn++;
+      else error++;
+
+      if (dot) {
+        dot.className = 'health-dot ' + state;
+        dot.title = err.name === 'AbortError' ? 'انتهت المدة (8s)' : 'فشل';
+      }
+    }
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-heart-pulse"></i> فحص صحي';
+
+  const msg = '💓 ✅ ' + ok + ' · ⚠️ ' + warn + ' · ❌ ' + error;
+  toast(msg, error > 0 ? 'warn' : 'success');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   17. Command Palette
+   ═══════════════════════════════════════════════════════════════ */
+
+const Commands = [
+  { title:'فحص صحي لكل الروابط', sub:'كسر الكاش مفعّل', icon:'action', action: function () { checkHealth(); } },
+  { title:'تبديل المظهر', sub:'Dark / Light', icon:'action', action: function () { toggleTheme(); } },
+  { title:'تصدير JSON', sub:'نسخ احتياطي كامل', icon:'action', action: function () { exportJSON(); } },
+  { title:'عرض الجدول', sub:'Table view', icon:'action', action: function () { switchView('table'); } },
+  { title:'عرض الشبكة', sub:'Grid view', icon:'action', action: function () { switchView('cards'); } },
+  { title:'عرض الخريطة', sub:'Empire map', icon:'action', action: function () { switchView('map'); } },
+  { title:'عرض زمني', sub:'Timeline', icon:'action', action: function () { switchView('timeline'); } }
+];
+
+let paletteSel = 0;
+let paletteItems = [];
+
+function buildPaletteResults(query) {
+  const q = query.toLowerCase().trim();
+  const results = [];
+
+  /* الأوامر */
+  Commands.forEach(function (c) {
+    if (!q || (c.title + ' ' + c.sub).toLowerCase().indexOf(q) !== -1) {
+      results.push({ kind:'action', title:c.title, sub:c.sub, icon:c.icon, action:c.action });
+    }
+  });
+
+  /* العناصر */
+  getAllItems().forEach(function (it) {
+    const hay = ((it.name || '') + ' ' + (it.desc || '') + ' ' + (it.doi || '')).toLowerCase();
+    if (!q || hay.indexOf(q) !== -1) {
+      results.push({
+        kind: it.kind,
+        title: it.name,
+        sub: it.desc || it.doi || it.url || '',
+        url: it.url,
+        action: function () {
+          if (it.url) window.open(it.url, '_blank', 'noopener,noreferrer');
+          else toast('لا يوجد رابط', 'warn');
+        }
+      });
+    }
+  });
+
+  return results.slice(0, 12);
+}
+
+function openPalette() {
+  document.getElementById('paletteOverlay').classList.add('active');
+  const inp = document.getElementById('paletteInput');
+  inp.value = '';
+  inp.focus();
+  paletteSel = 0;
+  renderPalette('');
+}
+
+function closePalette() {
+  document.getElementById('paletteOverlay').classList.remove('active');
+}
+
+function renderPalette(query) {
+  paletteItems = buildPaletteResults(query);
+  const container = document.getElementById('paletteResults');
+  container.innerHTML = '';
+
+  if (paletteItems.length === 0) {
+    container.innerHTML = '<div style="padding:24px;text-align:center;color:var(--txt-dim)">لا نتائج</div>';
+    return;
+  }
+
+  paletteItems.forEach(function (it, i) {
+    const el = document.createElement('div');
+    el.className = 'palette-result' + (i === paletteSel ? ' selected' : '');
+
+    const iconClass = it.kind === 'page' ? 'page' :
+                      it.kind === 'repo' ? 'repo' :
+                      it.kind === 'doi' ? 'doi' : 'action';
+
+    const faIcon = it.kind === 'page' ? 'file' :
+                   it.kind === 'repo' ? 'code-branch' :
+                   it.kind === 'doi' ? 'link' : 'bolt';
+
+    el.innerHTML =
+      '<div class="pr-icon ' + iconClass + '"><i class="fas fa-' + faIcon + '"></i></div>' +
+      '<div class="pr-content">' +
+        '<div class="pr-title">' + escapeHtml(it.title) + '</div>' +
+        (it.sub ? '<div class="pr-sub">' + escapeHtml(it.sub) + '</div>' : '') +
+      '</div>';
+
+    el.addEventListener('click', function () { it.action(); closePalette(); });
+    container.appendChild(el);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   18. النسخ
+   ═══════════════════════════════════════════════════════════════ */
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('📋 تم النسخ: ' + (text.length > 40 ? text.slice(0, 40) + '...' : text), 'success');
+  } catch (e) {
+    toast('تعذّر النسخ', 'error');
+  }
+}
+
+function copyDOI(doi) {
+  const txt = 'Zenodo DOI: 10.5281/zenodo.' + doi + '\n' + doiLink(doi);
+  copyText(txt);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   19. تصدير JSON
+   ═══════════════════════════════════════════════════════════════ */
+
+function exportJSON() {
+  const data = {
+    generated: new Date().toISOString(),
+    pages: PAGES,
+    repos: REPOS,
+    dois: DOIS,
+    favorites: State.favorites
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'jabri-monitor-' + Date.now() + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('📤 تم تصدير JSON', 'success');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   20. المظهر
+   ═══════════════════════════════════════════════════════════════ */
+
+function toggleTheme() {
+  State.theme = State.theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+  try { localStorage.setItem('jabri_monitor_theme', State.theme); } catch (e) {}
+  toast('🌓 المظهر: ' + (State.theme === 'dark' ? 'ليلي' : 'نهاري'), 'info');
+}
+
+function applyTheme() {
+  document.body.classList.toggle('light', State.theme === 'light');
+  const icon = document.querySelector('#btnTheme i');
+  if (icon) icon.className = State.theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   21. الأحداث
+   ═══════════════════════════════════════════════════════════════ */
+
+document.addEventListener('DOMContentLoaded', function () {
+  /* المظهر */
+  applyTheme();
+
+  /* الإحصائيات */
+  updateStats();
+  render();
+
+  /* البحث */
+  const si = document.getElementById('searchInput');
+  const cl = document.getElementById('clearSearch');
+
+  si.addEventListener('input', function (e) {
+    State.search = e.target.value;
+    cl.classList.toggle('visible', e.target.value.length > 0);
+    render();
+  });
+
+  cl.addEventListener('click', function () {
+    si.value = '';
+    State.search = '';
+    cl.classList.remove('visible');
+    si.focus();
+    render();
+  });
+
+  /* الفلاتر */
+  document.querySelectorAll('.chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      State.filter = chip.dataset.filter;
+      render();
+    });
+  });
+
+  /* بطاقات الإحصائيات — الفلترة السريعة */
+  document.querySelectorAll('.stat-card[data-filter]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      State.filter = card.dataset.filter;
+      document.querySelectorAll('.chip').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.filter === State.filter);
+      });
+      render();
+      document.querySelector('.search-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* الترتيب */
+  document.getElementById('sortSelect').addEventListener('change', function (e) {
+    State.sort = e.target.value;
+    render();
+  });
+
+  /* العروض */
+  document.querySelectorAll('[data-view]').forEach(function (btn) {
+    btn.addEventListener('click', function () { switchView(btn.dataset.view); });
+  });
+
+  /* الأزرار */
+  document.getElementById('btnTheme').addEventListener('click', toggleTheme);
+  document.getElementById('btnExport').addEventListener('click', exportJSON);
+  document.getElementById('btnHealth').addEventListener('click', checkHealth);
+  document.getElementById('btnPalette').addEventListener('click', openPalette);
+
+  /* Event Delegation — الجدول والشبكة */
+  document.body.addEventListener('click', function (e) {
+    /* زر المفضلة */
+    const favBtn = e.target.closest('[data-fav]');
+    if (favBtn) {
+      toggleFav(favBtn.dataset.fav);
+      return;
+    }
+
+    /* خلية DOI */
+    const copyCell = e.target.closest('[data-copy-doi]');
+    if (copyCell) {
+      copyDOI(copyCell.dataset.copyDoi);
+      return;
+    }
+  });
+
+  /* Command Palette — input */
+  const pInput = document.getElementById('paletteInput');
+
+  pInput.addEventListener('input', function (e) {
+    paletteSel = 0;
+    renderPalette(e.target.value);
+  });
+
+  pInput.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      paletteSel = Math.min(paletteSel + 1, paletteItems.length - 1);
+      renderPalette(pInput.value);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      paletteSel = Math.max(paletteSel - 1, 0);
+      renderPalette(pInput.value);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (paletteItems[paletteSel]) {
+        paletteItems[paletteSel].action();
+        closePalette();
+      }
+    } else if (e.key === 'Escape') {
+      closePalette();
+    }
+  });
+
+  /* اختصارات لوحة المفاتيح */
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const overlay = document.getElementById('paletteOverlay');
+      if (overlay.classList.contains('active')) closePalette();
+      else openPalette();
+    } else if (e.key === 'Escape') {
+      closePalette();
+    } else if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      si.focus();
+    }
+  });
+
+  /* إغلاق Palette بالنقر خارجها */
+  document.getElementById('paletteOverlay').addEventListener('click', function (e) {
+    if (e.target.id === 'paletteOverlay') closePalette();
+  });
+
+  console.log('✅ Jabri Empire Monitor v4.0 — جاهز');
+  console.log('📊 ' + getAllItems().length + ' عنصر مُحمّل');
+  console.log('💡 Ctrl+K للأوامر · / للبحث');
+});
+</script>
+
+</body>
+</html>
