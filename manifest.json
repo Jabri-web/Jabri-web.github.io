@@ -1,64 +1,57 @@
 {
   "name": "Heaven Al-Jabri | واحة الجبري",
   "short_name": "واحة الجبري",
-  "description": "تطبيق واحة الجبري - موسيقى باب اليمن الأصيلة ونظرية السندباد الموحدة Z+C+A=1",
-  "start_url": "/logo.html",
+  "description": "موسيقى باب اليمن ونظرية السندباد Z+C+A=1",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "id": "/",
   "display": "standalone",
   "background_color": "#0A0A0F",
   "theme_color": "#c9a84c",
   "orientation": "portrait",
   "lang": "ar",
   "dir": "rtl",
-  "categories": ["education", "science", "music", "culture"],
+  "categories": ["education", "music", "science"],
   "screenshots": [
     {
-      "src": "/image/screenshot1.webp",
-      "sizes": "1080x1920",
+      "src": "/images/Jabri-photo.webp",
+      "sizes": "1280x720",
       "type": "image/webp",
-      "form_factor": "narrow"
+      "form_factor": "wide",
+      "label": "واحة الجبري - الصفحة الرئيسية"
     },
     {
-      "src": "/image/screenshot2.webp",
-      "sizes": "1920x1080",
+      "src": "/images/Jabri-photo.webp",
+      "sizes": "750x1334",
       "type": "image/webp",
-      "form_factor": "wide"
+      "form_factor": "narrow",
+      "label": "نظرية السندباد الموحدة"
     }
   ],
   "icons": [
     {
-      "src": "/Icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/Icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
       "name": "نظرية السندباد",
-      "short_name": "النظرية",
-      "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة",
       "url": "/ar/theory-ar.html",
-      "icons": [{ "src": "/Icon-192.png", "sizes": "192x192" }]
+      "icons": [{"src": "/icon-192.png","sizes": "192x192"}]
     },
     {
-      "name": "الموسيقى اليمنية",
-      "short_name": "الموسيقى",
-      "description": "موسيقى باب اليمن الأصيلة",
+      "name": "الموسيقى",
       "url": "/music.html",
-      "icons": [{ "src": "/Icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "واحة الجبري",
-      "short_name": "الواحة",
-      "description": "صفحة logo والواحة",
-      "url": "/logo.html",
-      "icons": [{ "src": "/Icon-192.png", "sizes": "192x192" }]
+      "icons": [{"src": "/icon-192.png","sizes": "192x192"}]
     }
   ]
 }
