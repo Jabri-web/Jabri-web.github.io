@@ -1,4 +1,54 @@
 
+# المستودع/الورقة DOI
+1 jabri62018.github.io 21006432
+2 Zx_RieOS_v1.2 20100622
+4 Jabri-web.github.io 20404167
+5 Jabri_Nobble 20148770
+7 Zx_RieOS_v1.1 19981688
+9 Jabri_Checkout 21970064
+10 Jabri-web 20499365
+11 Jabri-com 21970418
+12 jabri.com 21970523
+5.1 Riemann Hypothesis 20139904
+5.2 P ≠ NP 20145337
+5.3 Yang-Mills 20148344
+5.4 Navier-Stokes 20149618
+5.7 Hubble Tension (IRIS) 20114317
+جديد Zx_RieOS v1.1 (قديم) 19645066 ⭐
+جديد 4+1 Eigenvalue Law 20100622
+جديد RiemannOS v1.0 19700735
+جديد Zx_total_v3.2.1 19956313
+
+
+
+
+# السجل DOI
+1 jabri62018.github.io 21006432
+2 Zx_RieOS_v1.2 20100622
+4 Jabri-web.github.io 20404167
+5 Jabri_Nobble 20148770
+7 Zx_RieOS_v1.1 19981688
+9 Jabri_Checkout 21970064 ⭐
+10 Jabri-web 20499365
+11 Jabri-com 21970418
+12 jabri.com 21970523
+5.1 Riemann Hypothesis 20139904
+5.2 P ≠ NP 20145337
+5.3 Yang-Mills 20148344
+5.4 Navier-Stokes 20149618
+5.7 Hubble Tension (IRIS) 20114317
+جديد 4+1 Eigenvalue Law 20100622
+جديد RiemannOS v1.0 19700735
+جديد Zx_total_v3.2.1 19956313
+جديد Zx_RieOS v1.1 (قديم) 19645066
+جديد Jabri_Checkout v2.0 21970064 ⭐
+
+
+
+
+
+
+
 ___ databases_____
 1. jabri62018.github.io ← البوابة الرئيسية
 2. Zx_RieOS_v1.2 ← الإصدار الذهبي النهائي
