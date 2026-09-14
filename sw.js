@@ -1,138 +1,112 @@
 // ================================================================
-//   service-worker.js - v5.2 (تحديث صامت + مسح أسرع للكاش)
-//   👑 CACHE_NAME = مفتاح التحكم بالإصدارات
+//   service-worker.js - v6.0 - SEO Safe + Network First for HTML
+//   Z+C+A=1 - Heaven Al-Jabri
 // ================================================================
 
-const CACHE_NAME = 'heaven-aljabri-v5.2';
+const CACHE_NAME = 'heaven-aljabri-v6.0';
+const STATIC_CACHE = [
+  '/',
+  '/index.html',
+  '/logo.html',
+  '/about-waha.html',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
+];
 
-// 📦 الملفات المخزّنة (index + header + logo فقط)
-const FILES_TO_CACHE = [
-  './',
-  'index.html',
-  'header.html',
-  'logo.html', // ✅ تم استبدال Page12.html
-  'about-waha.html' // ✅ صفحة الواحة
+// الملفات اللي لازم NEVER تتكاش
+const NEVER_CACHE = [
+  '/sw.js',
+  '/sitemap.xml',
+  '/sitemap-',
+  '/robots.txt',
+  '/vercel.json'
 ];
 
 // ================================================================
-//  📥 التثبيت (Install)
+//  📥 Install
 // ================================================================
 self.addEventListener('install', event => {
-  console.log(`📦 [SW ${CACHE_NAME}] بدء التثبيت...`);
-  
+  console.log(`📦 [SW ${CACHE_NAME}] Install...`);
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      return Promise.all(
-        FILES_TO_CACHE.map(url => {
-          return cache.add(url).then(() => {
-            console.log(`✅ [SW] تم تخزين: ${url}`);
-          }).catch(err => {
-            console.warn(`⚠️ [SW] فشل تخزين: ${url}`, err.message);
-          });
-        })
-      );
-    }).then(() => {
-      console.log(`✅ [SW ${CACHE_NAME}] تم التثبيت`);
-      return self.skipWaiting(); // 🚀 تفعيل فوري
-    })
+      return cache.addAll(STATIC_CACHE.map(url => {
+        return new Request(url, { cache: 'reload' });
+      }));
+    }).then(() => self.skipWaiting())
   );
 });
 
 // ================================================================
-//  🔄 التفعيل (Activate) — حذف الكاش القديم (مسح أسرع)
+//  🔄 Activate - مسح شامل
 // ================================================================
 self.addEventListener('activate', event => {
-  console.log(`🔄 [SW ${CACHE_NAME}] بدء التفعيل...`);
-  
   event.waitUntil(
     caches.keys().then(keys => {
-      // 🗑️ حذف كل الكاشات القديمة (مسح أسرع)
       return Promise.all(
-        keys.filter(k => k !== CACHE_NAME).map(k => {
-          console.log(`🗑️ [SW] حذف الكاش القديم: ${k}`);
-          return caches.delete(k);
-        })
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
       );
-    }).then(() => {
-      console.log(`✅ [SW ${CACHE_NAME}] تم التفعيل`);
-      return self.clients.claim(); // 👑 السيطرة على كل التبويبات
-    }).then(() => {
-      // 📢 إبلاغ كل الصفحات بالتحديث (هذا ما سيُظهر الـ Popup)
+    }).then(() => self.clients.claim())
+    .then(() => {
       return self.clients.matchAll({ type: 'window' }).then(clients => {
-        clients.forEach(client => {
-          console.log('📢 [SW] إبلاغ الصفحة بالتحديث');
-          client.postMessage({
-            type: 'SW_ACTIVATED',
-            version: CACHE_NAME
-          });
-        });
+        clients.forEach(c => c.postMessage({ type: 'SW_ACTIVATED', version: CACHE_NAME }));
       });
     })
   );
 });
 
 // ================================================================
-//  🌐 الجلب (Fetch) — Cache First, Network Fallback
+//  🌐 Fetch - استراتيجية ذكية
 // ================================================================
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  
   const url = event.request.url;
-  if (!url.startsWith(self.location.origin)) {
+  const reqUrl = new URL(url);
+  
+  // 1. لا تتدخل في الخارجي + ملفات NEVER_CACHE
+  if (!url.startsWith(self.location.origin) || NEVER_CACHE.some(p => url.includes(p))) {
     return;
   }
   
+  // 2. HTML = Network First (مهم جدا للـ SEO!)
+  if (event.request.mode === 'navigate' || reqUrl.pathname.endsWith('.html') || reqUrl.pathname === '/') {
+    event.respondWith(
+      fetch(event.request)
+      .then(res => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return res;
+      })
+      .catch(() => caches.match(event.request).then(cached => cached || caches.match('/index.html')))
+    );
+    return;
+  }
+  
+  // 3. الصور والأيقونات والـ JS/CSS = Cache First
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      
-      return fetch(event.request)
-        .then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseToCache = networkResponse.clone();
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          }
-          return networkResponse;
-        })
-        .catch(() => {
-          if (event.request.mode === 'navigate') {
-            return caches.match('index.html');
-          }
-          return new Response('Offline', {
-            status: 503,
-            statusText: 'Service Unavailable'
-          });
-        });
+    caches.match(event.request).then(cached => {
+      if (cached) return cached;
+      return fetch(event.request).then(res => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return res;
+      });
     })
   );
 });
 
 // ================================================================
-//  💬 الرسائل من الصفحات (Messages)
+//  💬 Messages
 // ================================================================
 self.addEventListener('message', event => {
-  if (!event.data) return;
-  
-  if (event.data.action === 'skipWaiting') {
-    console.log('🚀 [SW] تفعيل فوري بناءً على طلب الصفحة');
-    self.skipWaiting();
-  }
-  
-  if (event.data.action === 'checkVersion') {
-    event.source.postMessage({
-      type: 'VERSION_INFO',
-      version: CACHE_NAME,
-      timestamp: new Date().toISOString()
-    });
+  if (event.data?.action === 'skipWaiting') self.skipWaiting();
+  if (event.data?.action === 'checkVersion') {
+    event.source?.postMessage({ type: 'VERSION_INFO', version: CACHE_NAME });
   }
 });
 
-// ================================================================
-//  🎯 جاهز!
-// ================================================================
-console.log(`🌴 [SW ${CACHE_NAME}] جاهز — logo.html + index.html + الصفحات الأساسية`);
-console.log('👑 للتحكم بالإصدارات: غيّر CACHE_NAME فقط');
+console.log(`🌴 [SW ${CACHE_NAME}] Ready - SEO Safe Mode`);
