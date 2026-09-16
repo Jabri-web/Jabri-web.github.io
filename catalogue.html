@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://jabri-com.vercel.app/catalog.html" />
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>الكاتلوج | Catalog - واحة الجبري</title>
+<meta name="description" content="الكاتلوج الشامل لواحة الجبري - 92 ملف، 12 مستودع، 7 مسائل ألفية - م/ عبدالله محمد ناصر الجبري">
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a0f;
+    color: #e8e8f0;
+    font-family: "Tajawal", Tahoma, Arial, sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* ═══════════ الهيدر ═══════════ */
+.hero {
+    text-align: center;
+    padding: 50px 20px 40px;
+    background: linear-gradient(180deg, #0a0a0a, #0d0d18);
+    border-bottom: 1px solid #1f1f2e;
+}
+.hero h1 {
+    color: #58a6ff;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.hero h1 i { color: #c9a84c; }
+.hero p {
+    color: #8b949e;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.hero .stats-mini {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.hero .stat {
+    color: #58a6ff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+.hero .stat b {
+    color: #c9a84c;
+    font-size: 1.5rem;
+    display: block;
+}
+
+/* ═══════════ الحاوية ═══════════ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+
+/* ═══════════ البحث ═══════════ */
+.search-bar {
+    margin-bottom: 30px;
+    position: relative;
+}
+.search-bar input {
+    width: 100%;
+    padding: 16px 55px 16px 20px;
+    background: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    color: #c9d1d9;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: 0.3s;
+}
+.search-bar input:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 20px rgba(88,166,255,0.2);
+}
+.search-bar input::placeholder {
+    color: #6e7681;
+}
+.search-bar i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #58a6ff;
+    font-size: 1.2rem;
+}
+
+/* ═══════════ الأقسام ═══════════ */
+.category {
+    margin-bottom: 35px;
+    background: #0d1117;
+    border: 1px solid #1f1f2e;
+    border-radius: 14px;
+    overflow: hidden;
+}
+.category-header {
+    background: linear-gradient(135deg, #161b22, #1c2128);
+    padding: 15px 20px;
+    border-bottom: 1px solid #1f1f2e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+}
+.category-header:hover {
+    background: linear-gradient(135deg, #1c2128, #22272e);
+}
+.category-header h2 {
+    color: #58a6ff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+.category-header h2 i {
+    color: #c9a84c;
+    font-size: 1.1rem;
+}
+.category-header .count {
+    background: rgba(88,166,255,0.15);
+    color: #58a6ff;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.category-header .toggle-icon {
+    color: #6e7681;
+    font-size: 1rem;
+    transition: transform 0.3s;
+}
+.category-header.open .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* ═══════════ قائمة الروابط ═══════════ */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    padding: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.links-grid.open {
+    max-height: 2000px;
+    padding: 15px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #c9d1d9;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+.link-item:hover {
+    background: #1c2128;
+    border-color: #58a6ff;
+    transform: translateX(-5px);
+    text-decoration: none;
+    color: #c9d1d9;
+}
+.link-item i.icon {
+    color: #58a6ff;
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.link-item .link-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.link-item .link-text small {
+    display: block;
+    color: #6e7681;
+    font-size: 0.75rem;
+    margin-top: 2px;
+}
+.link-item .arrow {
+    color: #6e7681;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+.link-item:hover .arrow {
+    color: #58a6ff;
+    transform: translateX(-3px);
+}
+
+/* ═══════════ Highlight للصفحات المؤرشفة ═══════════ */
+.link-item.indexed {
+    border-color: rgba(63,185,80,0.3);
+}
+.link-item.indexed i.icon {
+    color: #3fb950;
+}
+.link-item.indexed::after {
+    content: '✓';
+    color: #3fb950;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* ═══════════ الفوتر ═══════════ */
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    color: #666;
+    font-size: 14px;
+    border-top: 1px solid #1f1f2e;
+}
+.footer .identity {
+    font-family: 'Times New Roman', serif;
+    color: #c9a84c;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 10px 0;
+}
+
+/* ═══════════ Responsive ═══════════ */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 1.5rem; }
+    .hero p { font-size: 0.95rem; }
+    .hero .stats-mini { gap: 15px; }
+    .hero .stat { font-size: 0.8rem; }
+    .hero .stat b { font-size: 1.2rem; }
+    .container { padding: 25px 15px 40px; }
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    .category-header h2 { font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ الهيدر ═══════════ -->
+<div class="hero">
+    <h1><i class="fas fa-folder-open"></i> الكاتلوج</h1>
+    <p>الفهرس الشامل لموقع واحة الجبري — تصفح سريع لكل الملفات والمشاريع</p>
+    <div class="stats-mini">
+        <div class="stat"><b>92</b>ملف</div>
+        <div class="stat"><b>12</b>مستودع</div>
+        <div class="stat"><b>7</b>مسائل ألفية</div>
+        <div class="stat"><b>17</b>مؤرشف ✓</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ═══════════ البحث ═══════════ -->
+    <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="ابحث عن ملف أو صفحة..." autocomplete="off" />
+    </div>
+
+    <!-- ═══════════ 1. الصفحات الرئيسية ═══════════ -->
+    <div class="category">
+        <div class="category-header open" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-home"></i> الصفحات الرئيسية</h2>
+            <span class="count">4 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid open">
+            <a href="/" class="link-item indexed">
+                <i class="fas fa-home icon"></i>
+                <span class="link-text">الرئيسية <small>index.html</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/logo.html" class="link-item indexed">
+                <i class="fas fa-image icon"></i>
+                <span class="link-text">الشعار <small>logo.html</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/catalog.html" class="link-item">
+                <i class="fas fa-list icon"></i>
+                <span class="link-text">الكاتلوج <small>catalog.html</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/all-links.html" class="link-item indexed">
+                <i class="fas fa-link icon"></i>
+                <span class="link-text">جميع الروابط <small>all-links.html</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 2. المستودعات الرئيسية ═══════════ -->
+    <div class="category">
+        <div class="category-header open" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-database"></i> المستودعات الرئيسية 1-12</h2>
+            <span class="count">12 مستودع</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid open">
+            <a href="/Page1.html" class="link-item indexed">
+                <i class="fas fa-crown icon"></i>
+                <span class="link-text">1. Jabri62018.github.io <small>البوابة الرئيسية</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page2.html" class="link-item indexed">
+                <i class="fas fa-rocket icon"></i>
+                <span class="link-text">2. Zx_RieOS_v1.2 <small>الذهبي النهائي</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page3.html" class="link-item indexed">
+                <i class="fas fa-infinity icon"></i>
+                <span class="link-text">3. Zx_Mother_Function_Jabri <small>الدالة الأم</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page4.html" class="link-item">
+                <i class="fas fa-building icon"></i>
+                <span class="link-text">4. Jabri-web.github.io <small>الواجهة الثانية</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html" class="link-item">
+                <i class="fas fa-trophy icon"></i>
+                <span class="link-text">5. Jabri_Nobble <small>مسائل الألفية</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page6.html" class="link-item">
+                <i class="fas fa-flask icon"></i>
+                <span class="link-text">6. Jabri_lab <small>مختبر الفيزياء</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page7.html" class="link-item">
+                <i class="fas fa-history icon"></i>
+                <span class="link-text">7. Zx_RieOS_v1.1 <small>الإصدار السابق</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page8.html" class="link-item">
+                <i class="fas fa-brain icon"></i>
+                <span class="link-text">8. Jabri_RiemannOS <small>نظام ريمان</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page9.html" class="link-item">
+                <i class="fas fa-check-double icon"></i>
+                <span class="link-text">9. Jabri_Checkout <small>نقطة التحقق</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page10.html" class="link-item">
+                <i class="fas fa-random icon"></i>
+                <span class="link-text">10. Jabri-web <small>Router GitHub</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page11.html" class="link-item">
+                <i class="fas fa-server icon"></i>
+                <span class="link-text">11. Jabri-com <small>Vercel</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page12.html" class="link-item">
+                <i class="fas fa-globe icon"></i>
+                <span class="link-text">12. jabri.com <small>HyperRouter</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 3. مسائل الألفية ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-trophy"></i> مسائل الألفية السبعة</h2>
+            <span class="count">7 مسائل</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/Page5.html#riemann" class="link-item">
+                <i class="fas fa-square-root-alt icon"></i>
+                <span class="link-text">فرضية ريمان <small>Riemann Hypothesis</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#np" class="link-item">
+                <i class="fas fa-code icon"></i>
+                <span class="link-text">P vs NP <small>مسألة التعقيد</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#gab" class="link-item">
+                <i class="fas fa-atom icon"></i>
+                <span class="link-text">فجوة يانغ-ميلز <small>Yang-Mills Mass Gap</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#navier" class="link-item">
+                <i class="fas fa-water icon"></i>
+                <span class="link-text">نافييه-ستوكس <small>Navier-Stokes</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#birch" class="link-item">
+                <i class="fas fa-chart-line icon"></i>
+                <span class="link-text">بيرش-سوينرتون-داير <small>BSD</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#hodge" class="link-item">
+                <i class="fas fa-shapes icon"></i>
+                <span class="link-text">حدسية هودج <small>Hodge Conjecture</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Page5.html#identity" class="link-item">
+                <i class="fas fa-equals icon"></i>
+                <span class="link-text">هوية الجبري <small>Z+C+A=1</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 4. التراث اليمني ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-landmark"></i> التراث اليمني</h2>
+            <span class="count">8 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/Sanaa.html" class="link-item">
+                <i class="fas fa-city icon"></i>
+                <span class="link-text">صنعاء القديمة <small>Sana'a</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Shibam.html" class="link-item">
+                <i class="fas fa-building icon"></i>
+                <span class="link-text">شبام حضرموت <small>Shibam</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Soqatra.html" class="link-item">
+                <i class="fas fa-tree icon"></i>
+                <span class="link-text">سقطرى <small>Socotra</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Yemen-library.html" class="link-item indexed">
+                <i class="fas fa-book icon"></i>
+                <span class="link-text">مكتبة اليمن <small>Yemen Library</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/gallery.html" class="link-item">
+                <i class="fas fa-images icon"></i>
+                <span class="link-text">المعرض <small>Gallery</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/yemen-photo.html" class="link-item">
+                <i class="fas fa-camera icon"></i>
+                <span class="link-text">صور اليمن <small>Yemen Photos</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/History-pdf.html" class="link-item">
+                <i class="fas fa-file-pdf icon"></i>
+                <span class="link-text">كتب التاريخ <small>History PDFs</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Nezar.html" class="link-item">
+                <i class="fas fa-feather-alt icon"></i>
+                <span class="link-text">نزار <small>Nezar</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 5. النظرية والأبحاث ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-flask"></i> النظرية والأبحاث</h2>
+            <span class="count">9 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/Sindbad-theory.html" class="link-item indexed">
+                <i class="fas fa-scroll icon"></i>
+                <span class="link-text">نظرية السندباد <small>Sindbad Theory</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/theory-ar.html" class="link-item">
+                <i class="fas fa-square-root-alt icon"></i>
+                <span class="link-text">الدالة الأم Z(x) <small>Theory AR</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/theory-en.html" class="link-item">
+                <i class="fas fa-square-root-alt icon"></i>
+                <span class="link-text">Mother Function <small>Theory EN</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/research.html" class="link-item">
+                <i class="fas fa-microscope icon"></i>
+                <span class="link-text">البحوث <small>Research</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/research-deep.html" class="link-item">
+                <i class="fas fa-search-plus icon"></i>
+                <span class="link-text">البحوث المتعمقة <small>Deep Research</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Pages-Researches.html" class="link-item">
+                <i class="fas fa-file-alt icon"></i>
+                <span class="link-text">صفحات وأبحاث <small>Pages & Researches</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Office.html" class="link-item indexed">
+                <i class="fas fa-briefcase icon"></i>
+                <span class="link-text">المكتب <small>Office</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Sindbad-Brdoni.html" class="link-item">
+                <i class="fas fa-mask icon"></i>
+                <span class="link-text">البردوني <small>Brdoni</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Dbase.html" class="link-item indexed">
+                <i class="fas fa-database icon"></i>
+                <span class="link-text">قواعد البيانات <small>Dbase</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 6. الباحث والسيرة ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-user-circle"></i> الباحث والسيرة الذاتية</h2>
+            <span class="count">7 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/about.html" class="link-item">
+                <i class="fas fa-user icon"></i>
+                <span class="link-text">عن الباحث <small>About</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/about-waha.html" class="link-item indexed">
+                <i class="fas fa-tree icon"></i>
+                <span class="link-text">عن الواحة <small>About Waha</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Author-cv.html" class="link-item">
+                <i class="fas fa-file-alt icon"></i>
+                <span class="link-text">السيرة الذاتية <small>Author CV</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/author-history.html" class="link-item indexed">
+                <i class="fas fa-history icon"></i>
+                <span class="link-text">تاريخ الباحث <small>Author History</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/profile.html" class="link-item indexed">
+                <i class="fas fa-id-card icon"></i>
+                <span class="link-text">الملف الشخصي <small>Profile</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/profile-en.html" class="link-item indexed">
+                <i class="fas fa-id-card icon"></i>
+                <span class="link-text">Profile (EN) <small>Profile EN</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/founder.html" class="link-item">
+                <i class="fas fa-crown icon"></i>
+                <span class="link-text">المؤسس <small>Founder</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 7. المجلات ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-newspaper"></i> المجلات</h2>
+            <span class="count">5 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/journal.html" class="link-item indexed">
+                <i class="fas fa-book-open icon"></i>
+                <span class="link-text">المجلة 1 <small>Journal</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/journal2.html" class="link-item">
+                <i class="fas fa-robot icon"></i>
+                <span class="link-text">تجربتي مع AI <small>Journal 2</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/journal3.html" class="link-item">
+                <i class="fas fa-envelope icon"></i>
+                <span class="link-text">رسالة من صنعاء <small>Journal 3</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/journal4.html" class="link-item">
+                <i class="fas fa-landmark icon"></i>
+                <span class="link-text">شجرة التوحيد <small>Journal 4</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/History-pdf.html" class="link-item">
+                <i class="fas fa-file-pdf icon"></i>
+                <span class="link-text">تاريخ PDF <small>History PDF</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 8. الأدوات ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-tools"></i> الأدوات والتحقق</h2>
+            <span class="count">6 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/calculator.html" class="link-item">
+                <i class="fas fa-calculator icon"></i>
+                <span class="link-text">الحاسبة <small>Calculator</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/handsa.html" class="link-item">
+                <i class="fas fa-drafting-compass icon"></i>
+                <span class="link-text">هندسة الأعداد <small>Handsa</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/char-balance.html" class="link-item">
+                <i class="fas fa-balance-scale icon"></i>
+                <span class="link-text">موازنة الأحرف <small>Char Balance</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Check.html" class="link-item indexed">
+                <i class="fas fa-check-circle icon"></i>
+                <span class="link-text">نظام الفحص <small>Check</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/magic-translator.html" class="link-item">
+                <i class="fas fa-hat-wizard icon"></i>
+                <span class="link-text">الساحر <small>Magic Translator</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/diagnose.html" class="link-item">
+                <i class="fas fa-stethoscope icon"></i>
+                <span class="link-text">التشخيص <small>Diagnose</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 9. الوسائط والمكتبة ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-photo-video"></i> الوسائط والمكتبة</h2>
+            <span class="count">7 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/music.html" class="link-item">
+                <i class="fas fa-music icon"></i>
+                <span class="link-text">الموسيقى <small>Music</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/taraif.html" class="link-item">
+                <i class="fas fa-laugh icon"></i>
+                <span class="link-text">طرائف <small>Taraif</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/wonder.html" class="link-item">
+                <i class="fas fa-star icon"></i>
+                <span class="link-text">عجائب <small>Wonder</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/heaven-info.html" class="link-item">
+                <i class="fas fa-info-circle icon"></i>
+                <span class="link-text">معلومات الواحة <small>Heaven Info</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/poster.html" class="link-item">
+                <i class="fas fa-image icon"></i>
+                <span class="link-text">البوستر <small>Poster</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/project.html" class="link-item">
+                <i class="fas fa-project-diagram icon"></i>
+                <span class="link-text">المشاريع <small>Project</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/source.html" class="link-item">
+                <i class="fas fa-bookmark icon"></i>
+                <span class="link-text">المصادر <small>Source</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 10. التواصل والنظام ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-cog"></i> التواصل والنظام</h2>
+            <span class="count">10 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/contact.html" class="link-item">
+                <i class="fas fa-phone icon"></i>
+                <span class="link-text">اتصل بنا <small>Contact</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/who-we.html" class="link-item">
+                <i class="fas fa-users icon"></i>
+                <span class="link-text">من نحن <small>Who We</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/visitor.html" class="link-item">
+                <i class="fas fa-user-check icon"></i>
+                <span class="link-text">الزوار <small>Visitors</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/FAQPage.html" class="link-item">
+                <i class="fas fa-question-circle icon"></i>
+                <span class="link-text">الأسئلة الشائعة <small>FAQ</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/privacy-policy.html" class="link-item">
+                <i class="fas fa-shield-alt icon"></i>
+                <span class="link-text">الخصوصية <small>Privacy</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/citations.html" class="link-item">
+                <i class="fas fa-quote-right icon"></i>
+                <span class="link-text">الاستشهادات <small>Citations</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Router-all.html" class="link-item">
+                <i class="fas fa-route icon"></i>
+                <span class="link-text">Router All <small>Router</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/dashboard.html" class="link-item">
+                <i class="fas fa-tachometer-alt icon"></i>
+                <span class="link-text">لوحة التحكم <small>Dashboard</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/explore.html" class="link-item">
+                <i class="fas fa-compass icon"></i>
+                <span class="link-text">المستكشف <small>Explore</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/404.html" class="link-item">
+                <i class="fas fa-exclamation-triangle icon"></i>
+                <span class="link-text">صفحة الخطأ <small>404</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ 11. الأدوات والملفات ═══════════ -->
+    <div class="category">
+        <div class="category-header" onclick="toggleCategory(this)">
+            <h2><i class="fas fa-code"></i> أدوات المطور</h2>
+            <span class="count">8 صفحات</span>
+            <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="links-grid">
+            <a href="/file-structure.html" class="link-item">
+                <i class="fas fa-sitemap icon"></i>
+                <span class="link-text">هيكلة الملفات <small>File Structure</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/file-structure2.html" class="link-item">
+                <i class="fas fa-sitemap icon"></i>
+                <span class="link-text">هيكلة 2 <small>Structure 2</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/repos-auto.html" class="link-item">
+                <i class="fas fa-robot icon"></i>
+                <span class="link-text">ريبوهات تلقائية <small>Repos Auto</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/current-auto.html" class="link-item">
+                <i class="fas fa-sync icon"></i>
+                <span class="link-text">الحالي التلقائي <small>Current Auto</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/Dbase-deep.html" class="link-item">
+                <i class="fas fa-database icon"></i>
+                <span class="link-text">قواعد متعمقة <small>Dbase Deep</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/microtik.html" class="link-item">
+                <i class="fas fa-network-wired icon"></i>
+                <span class="link-text">شبكات <small>MikroTik</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/microtik-deep.html" class="link-item">
+                <i class="fas fa-server icon"></i>
+                <span class="link-text">شبكات متعمقة <small>MikroTik Deep</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+            <a href="/kfupm-msg.html" class="link-item">
+                <i class="fas fa-graduation-cap icon"></i>
+                <span class="link-text">رسالة KFUPM <small>KFUPM</small></span>
+                <i class="fas fa-arrow-left arrow"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════ الفوتر ═══════════ -->
+    <div class="footer">
+        <div class="identity">Z + C + A = 1</div>
+        <p><b>92 ملف</b> · <b>12 مستودعاً</b> · <b>17 صفحة مؤرشفة</b></p>
+        <p style="margin-top:10px">
+            <a href="/Dbase.html" style="color:#58a6ff;">← قواعد البيانات</a>
+        </p>
+        <p style="margin-top:10px;color:#555;font-size:0.85rem">
+            © 2026 م/ عبدالله محمد ناصر الجبري · CC BY 4.0
+        </p>
+    </div>
+
+</div>
+
+<script>
+/* ═══════════ فتح وإغلاق الأقسام ═══════════ */
+function toggleCategory(header) {
+    const grid = header.nextElementSibling;
+    header.classList.toggle('open');
+    grid.classList.toggle('open');
+}
+
+/* ═══════════ البحث الفوري ═══════════ */
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase().trim();
+    const allLinks = document.querySelectorAll('.link-item');
+    const allCategories = document.querySelectorAll('.category');
+
+    if (!query) {
+        // إذا لم يكن هناك بحث — أظهر كل شيء
+        allLinks.forEach(link => link.style.display = 'flex');
+        allCategories.forEach(cat => cat.style.display = 'block');
+        return;
+    }
+
+    allLinks.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        if (text.includes(query)) {
+            link.style.display = 'flex';
+        } else {
+            link.style.display = 'none';
+        }
+    });
+
+    // إخفاء الأقسام الفارغة
+    allCategories.forEach(cat => {
+        const visibleLinks = cat.querySelectorAll('.link-item[style*="flex"], .link-item:not([style*="none"])');
+        const hasVisible = Array.from(cat.querySelectorAll('.link-item')).some(l => l.style.display !== 'none');
+        if (hasVisible) {
+            cat.style.display = 'block';
+            // فتح القسم تلقائياً عند البحث
+            const header = cat.querySelector('.category-header');
+            const grid = cat.querySelector('.links-grid');
+            header.classList.add('open');
+            grid.classList.add('open');
+        } else {
+            cat.style.display = 'none';
+        }
+    });
+});
+
+/* ═══════════ ESC لمسح البحث ═══════════ */
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        this.value = '';
+        this.dispatchEvent(new Event('input'));
+    }
+});
+</script>
+
+</body>
+</html>

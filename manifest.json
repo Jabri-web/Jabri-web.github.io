@@ -1,57 +1,92 @@
 {
-  "name": "Heaven Al-Jabri | واحة الجبري",
+  "name": "Heaven Al-Jabri | واحة الجبري - Z+C+A=1",
   "short_name": "واحة الجبري",
-  "description": "موسيقى باب اليمن ونظرية السندباد Z+C+A=1",
-  "start_url": "/?source=pwa",
+  "description": "موسيقى باب اليمن ونظرية السندباد الموحدة Z+C+A=1 | 110 ملف بدون شبكة",
+  "start_url": "/?source=pwa&utm_source=homescreen",
   "scope": "/",
-  "id": "/",
+  "id": "heaven-al-jabri-v5-offline",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
   "background_color": "#0A0A0F",
   "theme_color": "#c9a84c",
   "orientation": "portrait",
   "lang": "ar",
   "dir": "rtl",
-  "categories": ["education", "music", "science"],
-  "screenshots": [
-    {
-      "src": "/images/Jabri-photo.webp",
-      "sizes": "1280x720",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "واحة الجبري - الصفحة الرئيسية"
-    },
-    {
-      "src": "/images/Jabri-photo.webp",
-      "sizes": "750x1334",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "نظرية السندباد الموحدة"
-    }
-  ],
+  "categories": ["education", "music", "science", "yemen"],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/image/Yemen2026.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/image/Yemen2026.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/image/Yemen2026.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/image/Yemen2026.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "shortcuts": [
+  "screenshots": [
     {
-      "name": "نظرية السندباد",
-      "url": "/ar/theory-ar.html",
-      "icons": [{"src": "/icon-192.png","sizes": "192x192"}]
+      "src": "/image/Yemen2026.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "واحة الجبري - الصفحة الرئيسية"
     },
     {
-      "name": "الموسيقى",
-      "url": "/music.html",
-      "icons": [{"src": "/icon-192.png","sizes": "192x192"}]
+      "src": "/image/Jabri-photo.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "نظرية السندباد الموحدة Z+C+A=1"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "نظرية السندباد Z+C+A=1",
+      "short_name": "النظرية",
+      "description": "النظرية الموحدة",
+      "url": "/theory-ar.html?source=shortcut",
+      "icons": [{"src": "/image/Yemen2026.png","sizes": "192x192","type":"image/png"}]
+    },
+    {
+      "name": "موسيقى باب اليمن",
+      "short_name": "الموسيقى",
+      "description": "تراث اليمن الموسيقي",
+      "url": "/music.html?source=shortcut",
+      "icons": [{"src": "/image/Yemen2026.png","sizes": "192x192","type":"image/png"}]
+    },
+    {
+      "name": "خريطة الملفات 110",
+      "short_name": "الملفات",
+      "description": "كل ملفات الواحة",
+      "url": "/all-links.html?source=shortcut",
+      "icons": [{"src": "/image/Yemen2026.png","sizes": "192x192","type":"image/png"}]
+    },
+    {
+      "name": "بدون شبكة",
+      "short_name": "Offline",
+      "description": "يعمل بدون انترنت",
+      "url": "/offline.html?source=shortcut",
+      "icons": [{"src": "/image/Yemen2026.png","sizes": "192x192","type":"image/png"}]
     }
   ]
 }

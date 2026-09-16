@@ -1,3 +1,5 @@
+
+
 <!-- ========================================================== -->
 <!-- header.html - الهيدر العام الكامل + CSS + JavaScript -->
 
@@ -7,6 +9,9 @@
 <meta name="theme-color" content="#0a0a0f">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
+
+
+
 
 
 
@@ -30,6 +35,9 @@
 
 <!-- ===== Canonical (سيتم تحديثه من init-page-root.js) ===== -->
 <link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/" />
+
+<!-- ===== رابط Manifest للتطبيق ===== -->
+
 <!-- ===== رابط Manifest للتطبيق ===== -->
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -93,534 +101,464 @@
 }
 </script>
 
-<!-- ===== الروابط والخطوط ===== -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- ========================================================== -->
-<!-- CSS الكامل (الهيدر + الواحة) -->
-<!-- ========================================================== -->
-<style>
-    /* ===== إعادة التعيين ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { overflow-x: hidden; }
-    body { min-height: 100vh; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
 
-    /* ===== الخلفيات ===== */
-    body.night { background: #0a0f0d; color: #f5efe6; }
-    body.day { background: #f5efe6; color: #1a1a1a; }
 
-    /* ===== الفيديو الخلفي ===== */
-    .bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.3; pointer-events: none; }
 
-    /* ===== الهيدر العلوي ===== */
-    .top-header-buttons {
-        position: fixed; top: 15px; left: 0; right: 0; z-index: 99999;
-        display: flex; justify-content: space-between; align-items: center; gap: 10px;
-        padding: 0 20px; pointer-events: none;
-    }
-    .top-header-buttons > * { pointer-events: auto; }
-    .top-btn {
-        background: rgba(10, 10, 15, 0.85) !important;
-        color: #ffd700 !important;
-        border: 2px solid rgba(255, 215, 0, 0.7) !important;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.2) !important;
-        border-radius: 30px !important;
-        font-weight: 900 !important;
-        cursor: pointer; font-family: 'Cairo', sans-serif;
-        display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-        height: 44px; font-size: 13px; padding: 0 16px;
-        transition: all 0.3s ease !important; text-decoration: none;
-        backdrop-filter: blur(5px);
-    }
-    .top-btn:hover {
-        transform: scale(1.05) !important;
-        background: rgba(20, 20, 25, 0.95) !important;
-        border-color: #ffd700 !important;
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
-    }
-    .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
-    .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
-    /* ===== المحتوى الرئيسي ===== */
-    .main-content { position: relative; z-index: 10; padding-top: 76px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-    .hero-section { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 30px 20px 20px; min-height: 55vh; width: 100%; max-width: 1024px; backdrop-filter: blur(3px); }
-    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 5px 18px; border-radius: 50px; font-size: 11px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
-    .hero-title { font-size: 52px; font-weight: 900; text-shadow: 0 0 50px rgba(201, 168, 76, 0.15); line-height: 1.1; }
-    .hero-title span { color: #c9a84c; }
-    .hero-sub { font-size: 18px; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; margin: 6px 0 18px; }
-    .hero-philosophy { max-width: 500px; margin: 8px auto; padding: 10px 20px; border-radius: 12px; border-right: 3px solid #c9a84c; }
-    .hero-philosophy p { font-size: 14px; padding: 2px 0; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .hero-philosophy p i { color: #c9a84c; }
-    .hero-formula { display: inline-flex; align-items: center; gap: 5px; padding: 8px 20px; background: rgba(201, 168, 76, 0.05); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 12px; font-size: 26px; font-weight: bold; font-family: 'Times New Roman', serif; margin: 15px 0 18px; }
-    .hero-formula .b { color: #c9a84c; opacity: 0.5; }
-    .hero-formula .v { font-size: 30px; }
-    .hero-formula .v:nth-child(2) { color: #c9a84c; }
-    .hero-formula .v:nth-child(4) { color: #2d8f5c; }
-    .hero-formula .v:nth-child(6) { color: #e8c96e; }
-    .hero-formula .p { color: #666; font-size: 24px; }
-    .hero-formula .e { color: #666; font-size: 26px; }
-    .hero-formula .r { color: #c9a84c; font-size: 36px; animation: glow 2s ease-in-out infinite; }
-    @keyframes glow { 0%, 100% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.2); transform: scale(1); } 50% { text-shadow: 0 0 60px rgba(201, 168, 76, 0.5); transform: scale(1.05); } }
-    .hero-mission { font-size: 15px; padding: 8px 16px; border-radius: 30px; }
-    .hero-mission i { color: #c9a84c; margin: 0 5px; }
-    .hero-mission .emoji { display: inline-block; margin: 0 4px; }
 
-    /* ===== بطاقات البراند ===== */
-    .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1024px; margin: 10px auto 20px; padding: 0 15px; width: 100%; }
-    .brand-card { backdrop-filter: blur(8px); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 16px; padding: 18px 15px; text-align: center; transition: 0.4s; cursor: pointer; }
-    .brand-card:hover { border-color: rgba(201, 168, 76, 0.3); transform: translateY(-3px); box-shadow: 0 10px 40px rgba(201, 168, 76, 0.05); }
-    .brand-card .card-icon { font-size: 28px; color: #c9a84c; margin-bottom: 6px; }
-    .brand-card .card-name { font-size: 16px; font-weight: 700; }
-    .brand-card .card-sub { font-size: 11px; color: #b8a07c; letter-spacing: 2px; }
-    .brand-card .card-formula { font-size: 14px; color: #c9a84c; font-family: 'Times New Roman', serif; margin-top: 4px; opacity: 0.6; }
-    .brand-card:nth-child(2) .card-icon { color: #2d8f5c; }
-    .brand-card:nth-child(3) .card-icon { color: #e8c96e; }
-    .brand-card:nth-child(4) .card-icon { color: #ffd700; }
 
-    /* ===== الأزرار السفلية ===== */
-    .bottom-buttons { position: fixed; bottom: 28px; left: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; direction: ltr; }
-    .bottom-btn { background: linear-gradient(135deg, #ffd700, #f0a500) !important; color: #0a0a0f !important; border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important; border-radius: 30px !important; font-weight: 900 !important; font-family: 'Cairo', sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 22px; font-size: 16px; height: 50px; min-width: 120px; transition: all 0.3s ease !important; backdrop-filter: blur(4px); white-space: nowrap; }
-    .bottom-btn:hover { transform: scale(1.07) !important; box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important; }
-    .bottom-btn.music { font-size: 20px; min-width: 60px; padding: 0 18px; }
-    .bottom-btn.music.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important; color: #fff !important; border-color: #ff6a6a !important; box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important; }
-    .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
 
-    /* ===== القائمة الجانبية ===== */
-    .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); z-index: 1500; display: none; }
-    .menu-overlay.active { display: block; }
-    .side-menu { position: fixed; top: 0; right: -400px; width: 350px; max-width: 90vw; height: 100vh; background: linear-gradient(180deg, #1a1a1a, #0a0f0d); border-left: 2px solid #c9a84c; z-index: 1600; padding: 80px 25px 30px; overflow-y: auto; transition: right 0.4s ease; }
-    body.en .side-menu { right: auto; left: -400px; }
-    body.en .side-menu.open { left: 0; }
-    .side-menu.open { right: 0; }
-    .menu-close { position: absolute; top: 15px; right: 20px; border: 2px solid #c9a84c; color: #c9a84c; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .menu-title { text-align: center; font-size: 22px; font-weight: 900; color: #c9a84c; margin-bottom: 20px; border-bottom: 2px solid rgba(201, 168, 76, 0.2); padding-bottom: 15px; }
-    .menu-btn { display: block; width: 100%; padding: 12px 16px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 10px; color: #f5efe6; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; text-align: right; transition: 0.3s; }
-    .menu-btn:hover { background: rgba(201, 168, 76, 0.1); border-color: #c9a84c; }
-    .menu-btn i { margin-left: 10px; color: #c9a84c; }
-    body.en .menu-btn i { margin-left: 0; margin-right: 10px; }
 
-    /* ===== الإعدادات ===== */
-    .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; }
-    .settings-overlay.active { display: flex; }
-    .settings-box { border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8); animation: slideUp 0.4s ease; }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    .settings-box h2 { color: #c9a84c; margin-bottom: 20px; font-size: 24px; }
-    .settings-box h3 { font-size: 14px; color: #b8a07c; margin: 15px 0 8px; }
-    .settings-box .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .settings-box .btn-setting { padding: 10px 20px; border: 2px solid rgba(201, 168, 76, 0.3); border-radius: 12px; background: transparent; color: #c9a84c; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
-    .settings-box .btn-setting:hover { background: rgba(201, 168, 76, 0.1); }
-    .settings-box .btn-setting.active { background: #c9a84c; color: #0a0f0d; border-color: #c9a84c; }
-    .settings-box .btn-close { margin-top: 20px; padding: 10px 30px; background: #c9a84c; border: none; border-radius: 30px; color: #0a0f0d; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
-    .settings-box .btn-close:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(201, 168, 76, 0.3); }
+    <style>
+        /* =========================================================
+           الأنماط العامة والهيدر (Header Styles)
+           ========================================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
+        body { min-height: 100vh; padding: 20px; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
 
-    /* ===== نافذة تسجيل الدخول ===== */
-    .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; }
-    .login-modal.active { display: flex; }
-    .login-modal .modal-content { background: #1a1a1a; border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 420px; width: 90%; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9); animation: slideUp 0.4s ease; position: relative; }
-    .login-modal .modal-content .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #f5efe6; transition: 0.3s; background: none; border: none; }
-    .login-modal .modal-content h2 { color: #c9a84c; font-size: 24px; margin-bottom: 20px; text-align: center; }
-    .login-modal .modal-content .login-option { display: block; width: 100%; padding: 14px 20px; margin: 10px 0; border-radius: 12px; border: 2px solid rgba(201, 168, 76, 0.2); background: transparent; color: #f5efe6; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; text-align: center; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .login-modal .modal-content .login-option:hover { transform: scale(1.02); }
-    .login-modal .modal-content .login-option.google { border-color: #ea4335; color: #ea4335; }
-    .login-modal .modal-content .login-option.google:hover { background: #ea4335; color: #fff; }
-    .login-modal .modal-content .login-option.local { border-color: #6ae3ff; color: #6ae3ff; }
-    .login-modal .modal-content .login-option.local:hover { background: #6ae3ff; color: #0a0f0d; }
-    .login-modal .modal-content .login-option i { font-size: 20px; }
-    .login-modal .modal-content .local-login-form { display: none; margin-top: 15px; }
-    .login-modal .modal-content .local-login-form.active { display: block; }
-    .login-modal .modal-content .local-login-form input { width: 100%; padding: 12px 16px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0f0d; color: #f5efe6; font-size: 14px; font-family: inherit; outline: none; transition: 0.3s; }
-    .login-modal .modal-content .local-login-form .submit-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #c9a84c; color: #0a0f0d; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
-    .login-modal .modal-content .user-status { text-align: center; padding: 15px; border-radius: 8px; margin: 10px 0; background: rgba(106, 227, 255, 0.1); border: 1px solid rgba(106, 227, 255, 0.2); color: #6ae3ff; }
-    .login-modal .modal-content .logout-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #ff6b6b; color: #fff; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
+        body.night { background: #0a0f0d; color: #f5efe6; }
+        body.day { background: #f5efe6; color: #1a1a1a; }
 
-    /* ===== التجاوب مع الشاشات الصغيرة ===== */
-    @media (max-width: 600px) {
-        .top-header-buttons { padding: 0 10px; }
-        .top-btn { height: 38px; font-size: 11px; padding: 0 12px; }
-        .top-btn.lang { min-width: 60px; }
-        .top-btn.menu { width: 40px; font-size: 17px; }
-        .hero-title { font-size: 36px; }
-        .brand-grid { grid-template-columns: 1fr 1fr; }
-        .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
-        .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
-        .side-menu { width: 300px; }
-    }
-</style>
+        .bg-video { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; object-fit:cover; opacity:0.12; }
 
-<!-- ========================================================== -->
-<!-- الهيكل (HTML) -->
-<!-- ========================================================== -->
+        .top-header-buttons {
+            position: fixed; top: 15px; left: 0; right: 0; z-index: 99999;
+            display: flex; justify-content: space-between; align-items: center; gap: 10px;
+            padding: 0 20px; pointer-events: none;
+        }
+        .top-header-buttons > * { pointer-events: auto; }
+        .top-btn {
+            background: rgba(10, 10, 15, 0.85) !important; 
+            color: #ffd700 !important; 
+            border: 2px solid rgba(255, 215, 0, 0.7) !important;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2) !important;
+            border-radius: 30px !important; font-weight: 900 !important;
+            cursor: pointer; font-family: 'Cairo', sans-serif;
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            height: 44px; font-size: 13px; padding: 0 16px;
+            transition: all 0.3s ease !important; text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+        .top-btn:hover { 
+            transform: scale(1.05) !important; 
+            background: rgba(20, 20, 25, 0.95) !important; 
+            border-color: #ffd700 !important;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important; 
+        }
+        .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
+        .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
-<!-- ===== الهيدر العلوي ===== -->
-<div class="top-header-buttons">
-    <div style="display:flex; gap:8px;">
-        <button class="top-btn menu" onclick="window.toggleMenu()" title="القائمة">☰</button>
-        <button class="top-btn lang" id="langTopBtn" onclick="window.toggleLang()" title="تبديل اللغة">
-            <span class="ar">🇾🇪 عربي</span>
-            <span class="en">🇬🇧 EN</span>
-        </button>
-    </div>
-    <div style="display:flex; gap:8px;">
-        <button class="top-btn" onclick="openSettings()" title="الإعدادات">⚙️</button>
-        <button class="top-btn" id="loginBtn" onclick="openLoginModal()" title="تسجيل الدخول">🔑</button>
-    </div>
-</div>
+        /* =========================================================
+           نظام الدخول والإعدادات (Login & Settings)
+           ========================================================= */
+        .login-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:2000; align-items:center; justify-content:center; backdrop-filter: blur(5px); }
+        .login-modal.active { display:flex; }
+        .modal-content { background:rgba(20,20,20,0.95); padding:30px; border-radius:16px; max-width:420px; width:90%; position:relative; border:1px solid rgba(201,168,76,0.2); }
+        .close-modal { position:absolute; top:10px; left:15px; background:none; border:none; font-size:28px; color:#c9a84c; cursor:pointer; }
+        .local-login-form { display:none; margin-top:15px; }
+        .local-login-form.active { display:block; }
+        .local-login-form input { width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #444; background:#0a0f0d; color:#fff; }
+        .submit-btn,.login-option,.logout-btn { width:100%; padding:10px; margin:8px 0; border-radius:8px; border:none; cursor:pointer; background:linear-gradient(135deg,#c9a84c,#e8c96e); color:#0a0f0d; font-weight:700; }
 
-<!-- ===== القائمة الجانبية ===== -->
-<div class="menu-overlay" id="menuOverlay" onclick="window.closeMenu()"></div>
-<div class="side-menu" id="sideMenu">
-    <button class="menu-close" onclick="window.closeMenu()">✕</button>
-    <div class="menu-title">🌊 واحة الجبري</div>
-    
-    <a href="/" class="menu-btn" onclick="window.closeMenu()">🏠 الرئيسية</a>
-    <a href="/about.html" class="menu-btn" onclick="window.closeMenu()">👤 عن الباحث</a>
-    <a href="/theory-ar.html" class="menu-btn" onclick="window.closeMenu()">🧮 الدالة الأم Z(x)</a>
-    <a href="/research.html" class="menu-btn" onclick="window.closeMenu()">🔬 البحوث العلمية</a>
-    <a href="/journal.html" class="menu-btn" onclick="window.closeMenu()">📓 المجلة العلمية</a>
-    <a href="/project.html" class="menu-btn" onclick="window.closeMenu()">📁 المشاريع البرمجية</a>
-    <a href="/all-links.html" class="menu-btn" onclick="window.closeMenu()">🗺️ خريطة المسارات</a>
-    <a href="/Sanaa.html" class="menu-btn" onclick="window.closeMenu()">🏛️ صنعاء القديمة</a>
-    <a href="/Shibam.html" class="menu-btn" onclick="window.closeMenu()">🏗️ شبام حضرموت</a>
-    <a href="/Soqatra.html" class="menu-btn" onclick="window.closeMenu()">🌴 سقطرى</a>
-    <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()">👥 الزوار</a>
-    <a href="/contact.html" class="menu-btn" onclick="window.closeMenu()">📞 اتصل بنا</a>
-    
-    <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
-    <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();">🌐 تبديل اللغة</button>
-</div>
+        .settings-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1500; align-items:center; justify-content:center; }
+        .settings-overlay.active { display:flex; }
+        .settings-box { background:rgba(20,20,20,0.95); padding:25px; border-radius:16px; max-width:400px; width:90%; border:1px solid rgba(201,168,76,0.2); }
+        .btn-group { display:flex; gap:10px; margin:10px 0; }
+        .btn-setting { flex:1; padding:8px; border-radius:8px; border:1px solid #c9a84c; background:transparent; color:#c9a84c; cursor:pointer; }
+        .btn-setting.active { background:#c9a84c; color:#0a0f0d; }
+        .btn-close { width:100%; padding:10px; margin-top:15px; border-radius:8px; border:none; background:#c9a84c; color:#0a0f0d; cursor:pointer; }
 
-<!-- ===== نافذة تسجيل الدخول ===== -->
-<div class="login-modal" id="loginModal">
-    <div class="modal-content">
-        <button class="close-modal" id="closeLoginModal" onclick="closeLoginModalFn()">×</button>
-        <div id="loginTitle" style="text-align:center; margin-bottom:20px; font-size:1.5rem; font-weight:900; color:#c9a84c;">🔐 تسجيل الدخول</div>
-        
-        <div id="loginOptions">
-            <button class="login-option google" onclick="googleLogin()">
-                <i class="fab fa-google"></i> الدخول عبر Google
-            </button>
-            <button class="login-option local" onclick="document.getElementById('localLoginForm').classList.toggle('active')">
-                <i class="fas fa-key"></i> الدخول المحلي
+        /* =========================================================
+           القائمة الجانبية (Side Menu)
+           ========================================================= */
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99997; display: none; backdrop-filter: blur(4px); }
+        .menu-overlay.active { display: block; }
+        .side-menu { position: fixed; top: 0; right: -400px; width: 350px; max-width: 85vw; height: 100vh; background: linear-gradient(180deg, #0a0a0f, #1a1a2e); border-left: 2px solid #ffd700; z-index: 99998; padding: 80px 25px 30px; overflow-y: auto; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: -10px 0 40px rgba(0,0,0,0.8); }
+        .side-menu.open { right: 0; }
+        .menu-close { position: absolute; top: 20px; left: 20px; background: none; border: 2px solid #ffd700; color: #ffd700; border-radius: 50%; width: 44px; height: 44px; font-size: 22px; cursor: pointer; }
+        .menu-title { text-align: center; font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, #ffd700, #6ae3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,215,0,0.2); }
+        .menu-btn { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 18px; margin-bottom: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,215,0,0.15); border-radius: 12px; color: #fff; font-size: 1rem; font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer; transition: all 0.3s ease; text-decoration: none; text-align: right; }
+        .menu-btn:hover { background: rgba(255,215,0,0.15); border-color: #ffd700; transform: translateX(-5px); }
+        .menu-btn .icon { font-size: 1.5rem; width: 36px; text-align: center; }
+
+        /* =========================================================
+           الأزرار السفلية (Bottom Buttons)
+           ========================================================= */
+        .bottom-buttons {
+            position: fixed; bottom: 28px; left: 28px; z-index: 9999;
+            display: flex; flex-direction: column; align-items: flex-start; gap: 12px; direction: ltr;
+        }
+        .bottom-btn {
+            background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+            color: #0a0a0f !important; border: 2px solid #ffd700 !important;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+            border-radius: 30px !important; font-weight: 900 !important;
+            font-family: 'Cairo', sans-serif; cursor: pointer;
+            text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+            gap: 10px; padding: 0 22px; font-size: 16px; height: 50px;
+            min-width: 120px; transition: all 0.3s ease !important; backdrop-filter: blur(4px);
+            white-space: nowrap;
+        }
+        .bottom-btn:hover { transform: scale(1.07) !important; box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important; }
+        .bottom-btn.music { font-size: 20px; min-width: 60px; padding: 0 18px; }
+        .bottom-btn.music.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important; color: #fff !important; border-color: #ff6a6a !important; box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important; }
+        .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
+
+        @media (max-width: 600px) {
+            .top-header-buttons { padding: 0 10px; }
+            .top-btn { height: 38px; }
+            .top-btn.lang { min-width: 70px; padding: 0 12px; font-size: 11px; }
+            .top-btn.menu { width: 40px; font-size: 17px; }
+            .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
+            .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
+            .bottom-btn.music { font-size: 17px; min-width: 60px; padding: 0 14px; }
+        }
+    </style>
+</head>
+<body class="night device-desktop">
+
+    <!-- خلفية الفيديو -->
+    <video class="bg-video" id="bgVideo" autoplay muted playsinline loop poster="oasis-poster.jpg">
+        <source src="/image/heaven3.mp4" type="video/mp4" />
+    </video>
+
+    <!-- عنصر الصوت -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="sanaani.mp3" type="audio/mpeg" />
+        <source src="hadrami.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- =========================================================
+         الهيدر (Header Buttons) 
+         ========================================================= -->
+    <div class="top-header-buttons">
+        <div style="display:flex; gap:8px;">
+            <button class="top-btn menu" onclick="window.toggleMenu()" title="القائمة">☰</button>
+            <button class="top-btn lang" id="langTopBtn" onclick="window.toggleLang()" title="تبديل اللغة">
+                <span class="ar">🇾🇪 عربي</span>
+                <span class="en">🇬🇧 EN</span>
             </button>
         </div>
-
-        <div class="local-login-form" id="localLoginForm">
-            <input type="text" id="localUsername" placeholder="اسم المستخدم" />
-            <input type="password" id="localPassword" placeholder="كلمة المرور" />
-            <button class="submit-btn" onclick="localLogin()">تسجيل الدخول</button>
+        <div style="display:flex; gap:8px;">
+            <!-- زر الإعدادات -->
+            <button class="top-btn" onclick="openSettings()" title="الإعدادات">⚙️</button>
+            <!-- زر تسجيل الدخول -->
+            <button class="top-btn" id="loginBtn" onclick="openLoginModal()" title="تسجيل الدخول">🔑</button>
         </div>
-
-        <div id="userStatus" style="display:none; text-align:center;">
-            <div id="userNameText" style="color:#6ae3ff; font-size:1.1rem;"></div>
-            <div id="userRoleText" style="color:#888; font-size:0.8rem;"></div>
-        </div>
-
-        <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logout()">تسجيل الخروج</button>
     </div>
-</div>
 
-<!-- ===== نافذة الإعدادات ===== -->
-<div class="settings-overlay" id="settingsOverlay">
-    <div class="settings-box">
-        <div style="text-align:center; margin-bottom:15px; font-size:1.5rem; font-weight:900; color:#c9a84c;">⚙️ الإعدادات</div>
-        
-        <div style="margin:10px 0; font-weight:700; color:#b8a07c;">الوضع:</div>
-        <div class="btn-group">
-            <button class="btn-setting" id="nightBtn" onclick="setMode('night')">🌙 ليلي</button>
-            <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ نهاري</button>
-        </div>
-
-        <div style="margin:10px 0; font-weight:700; color:#b8a07c;">الجهاز:</div>
-        <div class="btn-group">
-            <button class="btn-setting" id="desktopBtn" onclick="setDevice('desktop')">💻 كمبيوتر</button>
-            <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 جوال</button>
-        </div>
-
-        <button class="btn-close" onclick="closeSettings()">إغلاق</button>
+    <!-- =========================================================
+         القائمة الجانبية (Side Menu)
+         ========================================================= -->
+    <div class="menu-overlay" id="menuOverlay" onclick="window.closeMenu()"></div>
+    <div class="side-menu" id="sideMenu">
+        <button class="menu-close" onclick="window.closeMenu()">✕</button>
+        <div class="menu-title">🌊 واحة الجبري</div>
+        <a href="/" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏠</span> الرئيسية</a>
+        <a href="/about-waha.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👤</span> عن واحة الجبري</a>
+        <a href="/about.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👤</span> عن الباحث</a>
+        <a href="/Sindbad-theory.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">📐</span> نظرية السندباد</a>
+        <a href="/theory-ar.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🧮</span> الدالة الأم Z(x)</a>
+        <a href="/Sanaa.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏛️</span> صنعاء القديمة</a>
+        <a href="/Shibam.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🏗️</span> شبام حضرموت</a>
+        <a href="/Soqatra.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🌴</span> سقطرى</a>
+        <a href="/music.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🎵</span> الموسيقى</a>
+        <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👥</span> الزوار</a>
+        <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+        <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();"><span class="icon">🌐</span> تبديل اللغة</button>
     </div>
-</div>
 
-<!-- ===== الأزرار السفلية ===== -->
-<div class="bottom-buttons">
-    <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
-    <button class="bottom-btn chat" onclick="window.toggleChat()">💬 محادثة</button>
-</div>
+    <!-- =========================================================
+         نافذة تسجيل الدخول (Login Modal)
+         ========================================================= -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeLoginModal" onclick="closeLoginModalFn()">×</button>
+            <div id="loginTitle" style="text-align:center; margin-bottom:20px; font-size:1.5rem; font-weight:900; color:#c9a84c;">🔐 تسجيل الدخول</div>
+            
+            <div id="loginOptions">
+                <button class="login-option" id="googleLoginBtn">الدخول عبر Google</button>
+                <button class="login-option" id="localLoginToggle" onclick="document.getElementById('localLoginForm').classList.toggle('active')">الدخول المحلي (اسم مستخدم وكلمة مرور)</button>
+            </div>
 
-<!-- ===== مشغل الموسيقى الخلفي ===== -->
-<audio id="bgMusic" loop preload="none">
-    <source src="/image/heaven.mp3" type="audio/mpeg">
-</audio>
+            <div class="local-login-form" id="localLoginForm">
+                <input type="text" id="localUsername" placeholder="اسم المستخدم" />
+                <input type="password" id="localPassword" placeholder="كلمة المرور" />
+                <button class="submit-btn" id="localLoginBtn" onclick="localLogin()">تسجيل الدخول</button>
+            </div>
 
-<!-- ========================================================== -->
-<!-- الجافاسكربت الكامل -->
-<!-- ========================================================== -->
-<script>
-    // ==========================================
-    // تهيئة المتغيرات العامة
-    // ==========================================
-    let isPlaying = false;
-    let currentUser = null;
+            <div id="userStatus" style="display:none; text-align:center;">
+                <div id="userNameText"></div>
+                <div id="userRoleText" style="color:#888; font-size:0.8rem;"></div>
+            </div>
 
-    // ==========================================
-    // دالة تبديل اللغة
-    // ==========================================
-    window.toggleLang = function() {
-        const isEnglish = document.documentElement.lang === 'en';
-        const newLang = isEnglish ? 'ar' : 'en';
-        document.documentElement.lang = newLang;
-        document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-        
-        // تحديث زر اللغة
-        const btn = document.getElementById('langTopBtn');
-        if (btn) {
-            btn.innerHTML = newLang === 'ar' ? '🇾🇪 عربي' : '🇬🇧 English';
-        }
-        
-        // حفظ التفضيل
-        localStorage.setItem('preferred-lang', newLang);
-        
-        // إعادة تحميل الصفحة لتطبيق التغييرات
-        window.location.reload();
-    };
+            <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logout()">تسجيل الخروج</button>
+        </div>
+    </div>
 
-    // ==========================================
-    // دالة القائمة الجانبية
-    // ==========================================
-    window.toggleMenu = function() {
-        const menu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('menuOverlay');
-        menu.classList.toggle('open');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    };
+    <!-- =========================================================
+         نافذة الإعدادات (Settings Overlay)
+         ========================================================= -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-box">
+            <div style="text-align:center; margin-bottom:15px; font-weight:900; color:#c9a84c;">⚙️ الإعدادات</div>
+            
+            <div style="margin:10px 0; font-weight:700;">الوضع:</div>
+            <div class="btn-group">
+                <button class="btn-setting" id="nightBtn" onclick="setMode('night')">🌙 ليلي</button>
+                <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ نهاري</button>
+            </div>
 
-    window.closeMenu = function() {
-        document.getElementById('sideMenu').classList.remove('open');
-        document.getElementById('menuOverlay').classList.remove('active');
-        document.body.style.overflow = '';
-    };
+            <div style="margin:10px 0; font-weight:700;">الجهاز:</div>
+            <div class="btn-group">
+                <button class="btn-setting" id="desktopBtn" onclick="setDevice('desktop')">💻 كمبيوتر</button>
+                <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 جوال</button>
+            </div>
 
-    // ==========================================
-    // دالة الإعدادات
-    // ==========================================
-    function openSettings() {
-        document.getElementById('settingsOverlay').classList.add('active');
-    }
+            <button class="btn-close" onclick="closeSettings()">إغلاق</button>
+        </div>
+    </div>
 
-    function closeSettings() {
-        document.getElementById('settingsOverlay').classList.remove('active');
-    }
+    <!-- =========================================================
+         الأزرار السفلية (Bottom Buttons)
+         ========================================================= -->
+    <div class="bottom-buttons">
+        <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
+        <button class="bottom-btn chat" onclick="window.toggleChat()">💬 محادثة</button>
+    </div>
 
-    function setMode(mode) {
-        document.body.className = mode;
-        localStorage.setItem('theme-mode', mode);
-        // تحديث الأزرار
-        document.querySelectorAll('.btn-setting').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(mode + 'Btn').classList.add('active');
-        closeSettings();
-    }
+    <!-- =========================================================
+         JavaScript (مصحح ومكتمل)
+         ========================================================= -->
+    <script>
+        // ===== تنظيف الكاش (Cache Busting) =====
+        (function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    names.forEach(function(name) { caches.delete(name); });
+                });
+            }
+            console.log('🗑️ تم تنظيف الكاش تلقائياً');
+        })();
 
-    function setDevice(device) {
-        if (device === 'desktop') {
-            document.body.classList.remove('phone-mode');
-        } else {
-            document.body.classList.add('phone-mode');
-        }
-        localStorage.setItem('device-mode', device);
-        document.querySelectorAll('.btn-setting').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(device + 'Btn').classList.add('active');
-    }
+        // ===== تشغيل الصوت تلقائياً =====
+        document.addEventListener('click', function firstInteraction() {
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic) { bgMusic.volume = 0.3; bgMusic.play().catch(function() {}); }
+            document.removeEventListener('click', firstInteraction);
+        }, { once: true });
 
-    // ==========================================
-    // دالة تسجيل الدخول
-    // ==========================================
-    function openLoginModal() {
-        document.getElementById('loginModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-        checkLoginStatus();
-    }
+        // ===== نظام تسجيل الدخول (مصحح) =====
+        const USERS = { 'admin': { password: '12345', role: 'admin', name: 'المدير' }, 'user': { password: 'user123', role: 'user', name: 'مستخدم' } };
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    function closeLoginModalFn() {
-        document.getElementById('loginModal').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function googleLogin() {
-        // هنا يمكن إضافة Google OAuth
-        alert('🚧 جاري تطوير ميزة الدخول عبر Google');
-    }
-
-    function localLogin() {
-        const username = document.getElementById('localUsername').value.trim();
-        const password = document.getElementById('localPassword').value.trim();
-        
-        if (!username || !password) {
-            alert('❌ يرجى إدخال اسم المستخدم وكلمة المرور');
-            return;
-        }
-        
-        // التحقق من بيانات الدخول (مثال بسيط)
-        if (username === 'admin' && password === '123456') {
-            currentUser = { name: 'مدير النظام', role: 'admin' };
-            updateLoginUI();
-            alert('✅ تم تسجيل الدخول بنجاح!');
-            closeLoginModalFn();
-        } else {
-            alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
-        }
-    }
-
-    function logout() {
-        currentUser = null;
-        updateLoginUI();
-        alert('✅ تم تسجيل الخروج بنجاح');
-        closeLoginModalFn();
-    }
-
-    function checkLoginStatus() {
-        if (currentUser) {
-            updateLoginUI();
-        }
-    }
-
-    function updateLoginUI() {
-        const userStatus = document.getElementById('userStatus');
+        // معرّفات العناصر (لقد أضفتها لضمان عمل السكربت)
+        const loginModal = document.getElementById('loginModal');
+        const localLoginForm = document.getElementById('localLoginForm');
+        const localUsername = document.getElementById('localUsername');
+        const localPassword = document.getElementById('localPassword');
         const logoutBtn = document.getElementById('logoutBtn');
         const loginOptions = document.getElementById('loginOptions');
+        const userStatus = document.getElementById('userStatus');
+        const userNameText = document.getElementById('userNameText');
+        const userRoleText = document.getElementById('userRoleText');
+        const loginTitle = document.getElementById('loginTitle');
+
+        // دوال فتح وإغلاق المودال
+        function openLoginModal() { loginModal.classList.add('active'); updateLoginUI(); }
+        function closeLoginModalFn() { loginModal.classList.remove('active'); localLoginForm.classList.remove('active'); }
         
-        if (currentUser) {
-            userStatus.style.display = 'block';
-            document.getElementById('userNameText').textContent = '👤 ' + currentUser.name;
-            document.getElementById('userRoleText').textContent = '🔑 ' + (currentUser.role === 'admin' ? 'مدير' : 'مستخدم');
-            logoutBtn.style.display = 'block';
-            loginOptions.style.display = 'none';
-            document.getElementById('localLoginForm').classList.remove('active');
-        } else {
-            userStatus.style.display = 'none';
-            logoutBtn.style.display = 'none';
-            loginOptions.style.display = 'block';
-        }
-    }
+        // الأحداث
+        document.getElementById('loginBtn').addEventListener('click', openLoginModal);
+        document.getElementById('closeLoginModal').addEventListener('click', closeLoginModalFn);
+        loginModal.addEventListener('click', function(e) { if (e.target === this) closeLoginModalFn(); });
 
-    // ==========================================
-    // دالة الموسيقى
-    // ==========================================
-    window.toggleMusic = function() {
-        const audio = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicBottomBtn');
-        if (isPlaying) {
-            audio.pause();
-            btn.classList.remove('playing');
-            btn.textContent = '🎵';
-        } else {
-            audio.play().catch(() => {});
-            btn.classList.add('playing');
-            btn.textContent = '⏸️';
-        }
-        isPlaying = !isPlaying;
-    };
-
-    // ==========================================
-    // دالة المحادثة
-    // ==========================================
-    window.toggleChat = function() {
-        alert('💬 نافذة المحادثة قيد التطوير');
-    };
-
-    // ==========================================
-    // إغلاق النوافذ عند الضغط على Escape
-    // ==========================================
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeMenu();
-            closeSettings();
-            closeLoginModalFn();
-        }
-    });
-
-    // ==========================================
-    // إغلاق النوافذ عند الضغط خارجها
-    // ==========================================
-    document.getElementById('settingsOverlay').addEventListener('click', function(e) {
-        if (e.target === this) closeSettings();
-    });
-
-    document.getElementById('loginModal').addEventListener('click', function(e) {
-        if (e.target === this) closeLoginModalFn();
-    });
-
-    // ==========================================
-    // تحميل التفضيلات المحفوظة
-    // ==========================================
-    document.addEventListener('DOMContentLoaded', function() {
-        // استعادة الوضع
-        const savedMode = localStorage.getItem('theme-mode') || 'night';
-        setMode(savedMode);
-        
-        // استعادة الجهاز
-        const savedDevice = localStorage.getItem('device-mode') || 'desktop';
-        setDevice(savedDevice);
-        
-        // استعادة اللغة
-        const savedLang = localStorage.getItem('preferred-lang') || 'ar';
-        if (savedLang !== document.documentElement.lang) {
-            document.documentElement.lang = savedLang;
-            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
-            const btn = document.getElementById('langTopBtn');
-            if (btn) {
-                btn.innerHTML = savedLang === 'ar' ? '🇾🇪 عربي' : '🇬🇧 English';
+        // تحديث واجهة المستخدم
+        function updateLoginUI() {
+            if (currentUser) {
+                userStatus.style.display = 'block'; loginOptions.style.display = 'none'; logoutBtn.style.display = 'block';
+                userNameText.textContent = currentUser.name; userRoleText.textContent = currentUser.role;
+                loginTitle.innerHTML = '👤 <span class="ar">مرحباً</span><span class="en">Welcome</span> ' + currentUser.name;
+            } else {
+                userStatus.style.display = 'none'; loginOptions.style.display = 'block'; logoutBtn.style.display = 'none';
+                loginTitle.innerHTML = '🔐 <span class="ar">تسجيل الدخول</span><span class="en">Login</span>';
+                localLoginForm.classList.remove('active');
             }
         }
+
+        // تسجيل الدخول عبر جوجل
+        document.getElementById('googleLoginBtn').addEventListener('click', function() {
+            currentUser = { name: 'مستخدم Google', role: 'google', email: 'user@gmail.com' };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            updateLoginUI();
+            setTimeout(closeLoginModalFn, 1500);
+        });
+
+        // تبديل الفورم المحلي
+        document.getElementById('localLoginToggle').addEventListener('click', function() { 
+            localLoginForm.classList.toggle('active'); 
+        });
+
+        // دالة تسجيل الدخول المحلي (تم إصلاحها هنا)
+        function localLogin() {
+            const username = localUsername.value.trim();
+            const password = localPassword.value.trim();
+            
+            // ⚠️ هنا السطر الذي تم تصحيحه وإكماله
+            if (!username || !password) {
+                alert('⚠️ الرجاء إدخال اسم المستخدم وكلمة المرور');
+                return;
+            }
+
+            const user = USERS[username];
+            if (user && user.password === password) {
+                currentUser = { name: user.name, role: user.role };
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                closeLoginModalFn();
+                alert('✅ تم تسجيل الدخول بنجاح');
+            } else {
+                alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+            }
+        }
+
+        // ربط زر تسجيل الدخول المحلي بالدالة
+        document.getElementById('localLoginBtn').addEventListener('click', localLogin);
+
+        // تسجيل الخروج
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateLoginUI();
+            alert('تم تسجيل الخروج');
+        }
         
-        console.log('🌊 واحة الجبري - الهيدر تم تحميله بنجاح');
-        console.log('📅 التاريخ:', new Date().toLocaleDateString('ar-EG'));
-    });
+        // ربط زر الخروج بالدالة
+        logoutBtn.addEventListener('click', logout);
 
-    // ==========================================
-    // Service Worker
-    // ==========================================
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(() => console.log('✅ Service Worker مسجل'))
-            .catch(err => console.log('❌ خطأ في تسجيل Service Worker:', err));
-    }
-</script>
+        // ===== دوال الإعدادات =====
+        function openSettings() { document.getElementById('settingsOverlay').classList.add('active'); }
+        function closeSettings() { document.getElementById('settingsOverlay').classList.remove('active'); }
+        function setMode(mode) {
+            document.body.className = mode + ' device-desktop';
+            document.getElementById('dayBtn').classList.toggle('active', mode==='day');
+            document.getElementById('nightBtn').classList.toggle('active', mode==='night');
+        }
+        function setDevice(device) {
+            document.body.className = document.body.className.replace(/device-\w+/, 'device-' + device);
+            document.getElementById('desktopBtn').classList.toggle('active', device==='desktop');
+            document.getElementById('phoneBtn').classList.toggle('active', device==='phone');
+        }
 
+        // ===== دوال الواجهة العامة =====
+        window.toggleMusic = function() {
+            const audio = document.getElementById('bgMusic');
+            if (!audio) return;
+            const btn = document.getElementById('musicBottomBtn');
+            if (audio.paused) {
+                audio.play().catch(() => {});
+                btn.textContent = '🔊';
+                btn.classList.add('playing');
+            } else {
+                audio.pause();
+                btn.textContent = '🎵';
+                btn.classList.remove('playing');
+            }
+        };
 
+        window.toggleChat = function() {
+            alert('💬 المحادثة قيد التطوير... قريباً بإذن الله!\n\n📧 للتواصل: jabri62018@gmail.com');
+        };
 
+        window.toggleMenu = function() {
+            document.getElementById('sideMenu').classList.toggle('open');
+            document.getElementById('menuOverlay').classList.toggle('active');
+        };
+        window.closeMenu = function() {
+            document.getElementById('sideMenu').classList.remove('open');
+            document.getElementById('menuOverlay').classList.remove('active');
+        };
 
+        window.toggleLang = function() {
+            const next = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+            document.documentElement.dir = next === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = next;
+            localStorage.setItem('lang', next);
+            
+            document.querySelectorAll('.top-btn.lang, .bottom-btn.lang').forEach(btn => {
+                btn.innerHTML = next === 'en' ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>' : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
+            });
+        };
 
-<!-- ========================================================== -->
-<!-- نهاية header.html -->
-
-
-
-
-
-<!-- ========================================================== -->
-
-
-<!-- 🎉 Popup v6.0 - واحة الجبري تحدثت -->
-<div id="waha-update-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:99999; align-items:center; justify-content:center;">
-    <div style="background:linear-gradient(135deg,#0A0A0F,#1a1a2e); border:2px solid #c9a84c; border-radius:20px; padding:30px; max-width:350px; text-align:center; box-shadow:0 0 30px #c9a84c66;">
-        <div style="font-size:50px;">🌴</div>
-        <h3 style="color:#c9a84c; margin:15px 0;">واحة الجبري تحدّثت!</h3>
-        <p style="color:#fff; opacity:0.8;">تم تثبيت النسخة الجديدة<br><span id="waha-version" style="color:#c9a84c;"></span></p>
-        <button onclick="document.getElementById('waha-update-popup').style.display='none'" style="margin-top:20px; background:#c9a84c; color:#000; border:none; padding:12px 40px; border-radius:50px; font-weight:bold; cursor:pointer;">رائع! ✨</button>
-    </div>
+        // ===== التهيئة الأولية =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('lang') || 'ar';
+            document.documentElement.dir = savedLang === 'en' ? 'ltr' : 'rtl';
+            document.documentElement.lang = savedLang;
+            updateLoginUI();
+        });
+    </script>
+    
+    
+    <!-- ===================== popup بآخرة - النسخة النهائية ===================== -->
+<div class="bottom-buttons">
+  <button class="bottom-btn" id="musicBottomBtn" onclick="toggleMusic()">🎵</button>
+  <button class="bottom-btn" onclick="toggleChat()">💬 محادثة</button>
 </div>
 
+<audio id="bgMusic" loop preload="none"><source src="/images/heaven.mp3" type="audio/mpeg"></audio>
+
+<!-- ===== popup بآخرة خالص - قبل السكربت مباشرة ===== -->
+<div id="waha-update-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center;">
+  <div style="background:linear-gradient(135deg,#0A0A0F,#1a1a2e); border:2px solid #c9a84c; border-radius:20px; padding:30px; max-width:350px; text-align:center; box-shadow:0 0 30px rgba(201,168,76,0.4);">
+    <div style="font-size:50px;">🌴</div>
+    <h3 style="color:#c9a84c; margin:15px 0; font-family:'Cairo';">واحة الجبري تحدّثت!</h3>
+    <p style="color:#fff; opacity:0.8; font-family:'Cairo';">تم تثبيت النسخة الجديدة<br><span id="waha-version" style="color:#c9a84c; font-weight:900;"></span></p>
+    <button onclick="document.getElementById('waha-update-popup').style.display='none'" style="margin-top:20px; background:#c9a84c; color:#000; border:none; padding:12px 40px; border-radius:50px; font-weight:bold; cursor:pointer; font-family:'Cairo';">رائع! ✨</button>
+  </div>
+</div>
+
+
+
+    <audio controls preload="metadata" style="width: 100%;">
+    <source src="/image/hadrami.mp3" type="audio/mpeg">
+    المتصفح لا يدعم تشغيل الصوت
+   </audio>
+    
+    
+    
+    
+    
+    
+    
+    <!-- ===== زر صوت الخلفية ===== -->
+<button id="soundBtn" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; padding: 12px 20px; border-radius: 50px; background: linear-gradient(135deg, #c9a84c, #e8c96e); color: #0a0f0d; border: none; font-weight: 900; font-size: 16px; cursor: pointer; box-shadow: 0 5px 20px rgba(201,168,76,0.4);">
+    🔊 تشغيل صوت الخلفية
+</button>
+
 <script>
-    // الاستماع لمحرك التحديثات v6.0
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.addEventListener('message', event => {
-            if (event.data.type === 'SW_ACTIVATED') {
-                document.getElementById('waha-version').textContent = event.data.version;
-                document.getElementById('waha-update-popup').style.display = 'flex';
-                console.log('🌴 واحة الجبري:', event.data.version);
-            }
-        });
+    let video = document.getElementById('bgVideo');
+    let btn = document.getElementById('soundBtn');
+    
+    btn.onclick = function() {
+        if (video.muted) {
+            video.muted = false;
+            video.play();
+            btn.innerHTML = '🔇 كتم صوت الخلفية';
+        } else {
+            video.muted = true;
+            btn.innerHTML = '🔊 تشغيل صوت الخلفية';
+        }
     }
 </script>
+    
 
+
+
+
+    <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
