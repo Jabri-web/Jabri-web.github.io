@@ -71,6 +71,60 @@ th.col-doi{color:#a855f7!important;border-bottom-color:#a855f7!important}
 .stat-card .label{color:#8a8a9e;font-size:0.9rem}
 .center-footer{text-align:center;margin-top:60px;padding:30px 20px;border-top:1px solid #1f1f2e;color:#666;font-size:14px}
 .center-footer .identity{font-family:'Times New Roman',serif;color:#c9a84c;font-size:1.3rem;font-weight:bold;letter-spacing:3px;margin:15px 0}
+
+/* ═══ قسم DOIs الرسمي (ذهبي) ═══ */
+.dois-notice{
+  background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.04));
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:14px;
+  padding:20px 25px;
+  margin:35px 0;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.dois-notice-icon{font-size:2rem}
+.dois-notice-text{flex:1;min-width:220px}
+.dois-notice-text h4{color:#d4af37;font-size:1.15rem;margin-bottom:6px}
+.dois-notice-text p{color:#b8b8c8;font-size:.9rem}
+.dois-notice-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-gold-mini{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#d4af37,#f4e5a1);
+  color:#0a0a0f;padding:9px 18px;border-radius:24px;
+  text-decoration:none;font-weight:700;font-size:.88rem;
+  box-shadow:0 4px 12px rgba(212,175,55,.25);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-gold-mini:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,175,55,.45);color:#0a0a0f;text-decoration:none}
+.btn-cyan-mini{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(106,227,255,.15);color:#6ae3ff;
+  padding:9px 18px;border-radius:24px;text-decoration:none;
+  font-weight:700;font-size:.88rem;border:1px solid #6ae3ff;
+  transition:background .2s,transform .2s;
+}
+.btn-cyan-mini:hover{background:rgba(106,227,255,.25);transform:translateY(-2px);color:#6ae3ff;text-decoration:none}
+
+/* ═══ زر العودة للأعلى ═══ */
+.back-to-top{
+  position:fixed;bottom:24px;left:24px;z-index:900;
+  background:linear-gradient(135deg,#6ae3ff,#25c26e);color:#0a0a0f;
+  border:none;width:48px;height:48px;border-radius:50%;
+  cursor:pointer;font-size:1.1rem;
+  box-shadow:0 8px 24px rgba(106,227,255,.3);
+  display:none;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.back-to-top.visible{display:flex}
+.back-to-top:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 32px rgba(106,227,255,.5)}
+
+@media(max-width:640px){
+  .back-to-top{bottom:16px;left:16px;width:42px;height:42px}
+  .dois-notice{flex-direction:column;align-items:stretch;text-align:center}
+  .dois-notice-actions{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -91,7 +145,20 @@ th.col-doi{color:#a855f7!important;border-bottom-color:#a855f7!important}
         <div class="stat-card"><span class="num">12</span><span class="label">مستودعاً رئيسياً</span></div>
         <div class="stat-card"><span class="num">7</span><span class="label">مسائل ألفية</span></div>
         <div class="stat-card"><span class="num">9</span><span class="label">مختبرات فيزياء</span></div>
-        <div class="stat-card"><span class="num">15+</span><span class="label">DOIs منشورة</span></div>
+        <div class="stat-card"><span class="num">28</span><span class="label">DOI رسمي</span></div>
+    </div>
+
+    <!-- 🆕 إشعار DOIs الكامل -->
+    <div class="dois-notice">
+        <div class="dois-notice-icon">📜</div>
+        <div class="dois-notice-text">
+            <h4>سجل DOIs الرسمي الكامل</h4>
+            <p>28 DOI على Zenodo — المستودعات (9) + الأوراق العلمية (19). الجدول الشامل متوفر في صفحة مستقلة.</p>
+        </div>
+        <div class="dois-notice-actions">
+            <a href="/table-all.html" class="btn-gold-mini">📊 الجدول الكامل</a>
+            <a href="/repos.json" download class="btn-cyan-mini">⬇️ repos.json</a>
+        </div>
     </div>
 
     <h3 class="section-title"><i class="fas fa-database"></i> المستودعات الرئيسية 1-12 | مع مرآة اليمن 🇾🇪</h3>
@@ -109,13 +176,13 @@ th.col-doi{color:#a855f7!important;border-bottom-color:#a855f7!important}
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td><b>Jabri62018.github.io</b> - البوابة الرئيسية</td><td><a href="https://jabri-web.github.io/Jabri62018.github.io" target="_blank" class="link-live">فتح</a></td><td><a href="/Page1.html" target="_blank" class="link-vercel">Page1 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri62018.github.io" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20403864" target="_blank" class="link-doi">20403864</a></td></tr>
+                <tr><td>1</td><td><b>Jabri62018.github.io</b> - البوابة الرئيسية</td><td><a href="https://jabri-web.github.io/Jabri62018.github.io" target="_blank" class="link-live">فتح</a></td><td><a href="/Page1.html" target="_blank" class="link-vercel">Page1 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri62018.github.io" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.21006432" target="_blank" class="link-doi">21006432</a></td></tr>
 
                 <tr><td>2</td><td><b>Zx_RieOS_v1.2</b> - الذهبي النهائي</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2" target="_blank" class="link-live">فتح</a></td><td><a href="/Page2.html" target="_blank" class="link-vercel">Page2 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank" class="link-doi">20100622</a></td></tr>
 
                 <tr><td>3</td><td><b>Zx_Mother_Function_Jabri</b> - الدالة الأم</td><td><a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri" target="_blank" class="link-live">فتح</a></td><td><a href="/Page3.html" target="_blank" class="link-vercel">Page3 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Zx_Mother_Function_Jabri" target="_blank" class="link-repo">Repo</a></td><td><span class="badge pending">قيد النشر</span></td></tr>
 
-                <tr><td>4</td><td><b>Jabri-web.github.io</b> - الواجهة الثانية</td><td><a href="https://jabri-web.github.io" target="_blank" class="link-live">فتح</a></td><td><a href="/Page4.html" target="_blank" class="link-vercel">Page4 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri-web.github.io" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank" class="link-doi">20499365</a></td></tr>
+                <tr><td>4</td><td><b>Jabri-web.github.io</b> - الواجهة الثانية</td><td><a href="https://jabri-web.github.io" target="_blank" class="link-live">فتح</a></td><td><a href="/Page4.html" target="_blank" class="link-vercel">Page4 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri-web.github.io" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20404167" target="_blank" class="link-doi">20404167</a></td></tr>
 
                 <tr><td>5</td><td><b>Jabri_Nobble</b> - مسائل الألفية</td><td><a href="https://jabri-web.github.io/Jabri_Nobble" target="_blank" class="link-live">فتح</a></td><td><a href="/Page5.html" target="_blank" class="link-vercel">Page5 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri_Nobble" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20148770" target="_blank" class="link-doi">20148770</a></td></tr>
 
@@ -125,13 +192,13 @@ th.col-doi{color:#a855f7!important;border-bottom-color:#a855f7!important}
 
                 <tr><td>8</td><td><b>Jabri_RiemannOS</b></td><td><a href="https://jabri-web.github.io/Jabri_RiemannOS" target="_blank" class="link-live">فتح</a></td><td><a href="/Page8.html" target="_blank" class="link-vercel">Page8 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri_RiemannOS" target="_blank" class="link-repo">Repo</a></td><td><span class="badge pending">—</span></td></tr>
 
-                <tr><td>9</td><td><b>Jabri_Checkout</b> - نقطة التحقق</td><td><a href="https://jabri-web.github.io/Jabri_Checkout" target="_blank" class="link-live">فتح</a></td><td><a href="/Page9.html" target="_blank" class="link-vercel">Page9 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri_Checkout" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20513840" target="_blank" class="link-doi">20513840</a></td></tr>
+                <tr><td>9</td><td><b>Jabri_Checkout</b> - نقطة التحقق</td><td><a href="https://jabri-web.github.io/Jabri_Checkout" target="_blank" class="link-live">فتح</a></td><td><a href="/Page9.html" target="_blank" class="link-vercel">Page9 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri_Checkout" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.21970064" target="_blank" class="link-doi">21970064</a></td></tr>
 
                 <tr><td>10</td><td><b>Jabri-web</b> - Router</td><td><a href="https://jabri-web.github.io/Jabri-web" target="_blank" class="link-live">فتح</a></td><td><a href="/Page10.html" target="_blank" class="link-vercel">Page10 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri-web" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank" class="link-doi">20499365</a></td></tr>
 
-                <tr><td>11</td><td><b>Jabri-com</b> - Vercel</td><td><a href="https://jabri-web.github.io/Jabri-com" target="_blank" class="link-live">فتح</a></td><td><a href="/Page11.html" target="_blank" class="link-vercel">Page11 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri-com" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.21003990" target="_blank" class="link-doi">21003990</a></td></tr>
+                <tr><td>11</td><td><b>Jabri-com</b> - Vercel</td><td><a href="https://jabri-web.github.io/Jabri-com" target="_blank" class="link-live">فتح</a></td><td><a href="/Page11.html" target="_blank" class="link-vercel">Page11 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web/Jabri-com" target="_blank" class="link-repo">Repo</a></td><td><a href="https://doi.org/10.5281/zenodo.21970418" target="_blank" class="link-doi">21970418</a></td></tr>
 
-                <tr><td>12</td><td><b>jabri.com</b> - HyperRouter</td><td><a href="https://jabri.com" target="_blank" class="link-live">فتح</a></td><td><a href="/Page12.html" target="_blank" class="link-vercel">Page12 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web" target="_blank" class="link-repo">Org</a></td><td><span class="badge pending">—</span></td></tr>
+                <tr><td>12</td><td><b>jabri.com</b> - HyperRouter</td><td><a href="https://jabri.com" target="_blank" class="link-live">فتح</a></td><td><a href="/Page12.html" target="_blank" class="link-vercel">Page12 - اليمن</a></td><td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td><td><a href="https://github.com/Jabri-web" target="_blank" class="link-repo">Org</a></td><td><a href="https://doi.org/10.5281/zenodo.21970523" target="_blank" class="link-doi">21970523</a></td></tr>
             </tbody>
         </table>
     </div>
@@ -170,13 +237,33 @@ th.col-doi{color:#a855f7!important;border-bottom-color:#a855f7!important}
 
     <div class="center-footer">
         <div class="identity">Z + C + A = 1</div>
-        <p><b>Verified 2026-09-13</b> · مرآة يمنية مفعلة 🇾🇪 · 12 مستودعاً</p>
+        <p><b>Verified 2026-09-16</b> · مرآة يمنية مفعلة 🇾🇪 · 12 مستودعاً · 28 DOI</p>
         <p>© 2026 م/ عبدالله الجبري · CC BY 4.0</p>
     </div>
 
 </main>
 
+<!-- ═══ زر العودة للأعلى ═══ -->
+<button class="back-to-top" id="backToTop" type="button" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
 <div id="footer-placeholder"></div>
 <script src="/js/init-page-root.js"></script>
+
+<script>
+/* ═══ زر العودة للأعلى ═══ */
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+
 </body>
 </html>
