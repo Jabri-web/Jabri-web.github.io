@@ -31,9 +31,6 @@ Disallow: /*?*gclid=*
 
 # خرائط الموقع - كل الخرائط
 Sitemap: https://jabri-com.vercel.app/sitemap.xml
-Sitemap: https://jabri-com.vercel.app/sitemap-index.xml
-Sitemap: https://jabri-com.vercel.app/sitemap-pages.xml
-Sitemap: https://jabri-com.vercel.app/sitemap-general.xml
 
 # Host للتأكيد
 Host: https://jabri-com.vercel.app

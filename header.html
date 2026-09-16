@@ -680,6 +680,52 @@
 <!-- ========================================================== -->
 <!-- 17. مكان العناصر الديناميكية (Footer + JS)                -->
 <!-- ========================================================== -->
+<!-- Popup of apk v6.0 -->
+<div id="updatePopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
+    <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d); border:2px solid #c9a227; border-radius:24px; padding:32px 24px; max-width:90%; width:400px; text-align:center; box-shadow:0 20px 60px rgba(201,162,39,0.4);">
+        <div style="font-size:64px; margin-bottom:16px;">🎉</div>
+        <h2 style="color:#c9a227; font-size:22px; margin:0 0 12px; font-family:'Cairo',sans-serif;">واحة الجبري تحدّثت!</h2>
+        <p style="color:#c9d1d9; font-size:15px; line-height:1.7; margin:0 0 24px;">
+            تم تحميل الإصدار الجديد بنجاح.<br>
+            استمتع بالتجربة المحسّنة ✨
+        </p>
+        <button onclick="closeAndReload()" style="background:linear-gradient(135deg,#c9a227,#e6c34a); color:#0d1117; border:none; padding:14px 40px; border-radius:30px; font-size:16px; font-weight:bold; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:0 6px 20px rgba(201,162,39,0.5);">
+            رائع! 🚀
+        </button>
+    </div>
+</div>
+
+<script>
+    // تسجيل Service Worker + كشف التحديث
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(reg => {
+                // كشف تحديث جديد
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // نسخة جديدة جاهزة!
+                            document.getElementById('updatePopup').style.display = 'flex';
+                        }
+                    });
+                });
+            });
+        });
+    }
+    
+    function closeAndReload() {
+        // أرسل أمر للـ SW لتفعيل النسخة الجديدة
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage('SKIP_WAITING');
+        }
+        document.getElementById('updatePopup').style.display = 'none';
+        setTimeout(() => window.location.reload(), 500);
+    }
+</script>
+
+
+
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>
 <script src="/js/init-page-root.js" defer></script>

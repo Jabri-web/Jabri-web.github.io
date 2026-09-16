@@ -1,112 +1,86 @@
-// ================================================================
-//   service-worker.js - v6.0 - SEO Safe + Network First for HTML
-//   Z+C+A=1 - Heaven Al-Jabri
-// ================================================================
+const CACHE_NAME = 'heaven-al-jabri-v7.1-gold';
+const CORE_ASSETS = ['/', '/index.html', '/offline.html', '/manifest.json'];
+const NEVER_CACHE = ['/sw.js', '/sitemap.xml', '/robots.txt', '/vercel.json'];
+const FETCH_TIMEOUT = 3000;
 
-const CACHE_NAME = 'heaven-aljabri-v6.0';
-const STATIC_CACHE = [
-  '/',
-  '/index.html',
-  '/logo.html',
-  '/about-waha.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
-];
-
-// الملفات اللي لازم NEVER تتكاش
-const NEVER_CACHE = [
-  '/sw.js',
-  '/sitemap.xml',
-  '/sitemap-',
-  '/robots.txt',
-  '/vercel.json'
-];
-
-// ================================================================
-//  📥 Install
-// ================================================================
-self.addEventListener('install', event => {
-  console.log(`📦 [SW ${CACHE_NAME}] Install...`);
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(STATIC_CACHE.map(url => {
-        return new Request(url, { cache: 'reload' });
-      }));
-    }).then(() => self.skipWaiting())
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(c => Promise.allSettled(CORE_ASSETS.map(u => c.add(new Request(u, { cache: 'reload' })))))
+      .then(() => self.skipWaiting())
   );
 });
 
-// ================================================================
-//  🔄 Activate - مسح شامل
-// ================================================================
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-      );
-    }).then(() => self.clients.claim())
-    .then(() => {
-      return self.clients.matchAll({ type: 'window' }).then(clients => {
-        clients.forEach(c => c.postMessage({ type: 'SW_ACTIVATED', version: CACHE_NAME }));
-      });
-    })
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window' }))
+      .then(clients => clients.forEach(c => c.postMessage({ type: 'SW_ACTIVATED', version: CACHE_NAME })))
   );
 });
 
-// ================================================================
-//  🌐 Fetch - استراتيجية ذكية
-// ================================================================
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const url = event.request.url;
-  const reqUrl = new URL(url);
-  
-  // 1. لا تتدخل في الخارجي + ملفات NEVER_CACHE
-  if (!url.startsWith(self.location.origin) || NEVER_CACHE.some(p => url.includes(p))) {
-    return;
-  }
-  
-  // 2. HTML = Network First (مهم جدا للـ SEO!)
-  if (event.request.mode === 'navigate' || reqUrl.pathname.endsWith('.html') || reqUrl.pathname === '/') {
-    event.respondWith(
-      fetch(event.request)
-      .then(res => {
-        if (res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return res;
-      })
-      .catch(() => caches.match(event.request).then(cached => cached || caches.match('/index.html')))
+function timeoutFetch(req, ms) {
+  return Promise.race([
+    fetch(req),
+    new Promise((_, rej) => setTimeout(() => rej(new Error('SW-timeout')), ms))
+  ]);
+}
+
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  const url = e.request.url;
+
+  if (!url.startsWith(self.location.origin)) return;
+  if (NEVER_CACHE.some(p => url.endsWith(p))) return;
+
+  // HTML — Network First + timeout
+  if (e.request.mode === 'navigate' || e.request.headers.get('accept')?.includes('text/html')) {
+    e.respondWith(
+      timeoutFetch(e.request, FETCH_TIMEOUT)
+        .then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+          }
+          return res;
+        })
+        .catch(async () =>
+          (await caches.match(e.request)) ||
+          (await caches.match('/offline.html')) ||
+          (await caches.match('/index.html')) ||
+          new Response('Offline', { status: 503 })
+        )
     );
     return;
   }
-  
-  // 3. الصور والأيقونات والـ JS/CSS = Cache First
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(res => {
-        if (res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return res;
-      });
+
+  // Static — Stale While Revalidate
+  e.respondWith(
+    caches.match(e.request).then(cached => {
+      const network = timeoutFetch(e.request, FETCH_TIMEOUT)
+        .then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+          }
+          return res;
+        })
+        .catch(async () => {
+          if (e.request.destination === 'image') {
+            return (await caches.match('/image/Yemen2026.png')) ||
+                   new Response('', { status: 404 });
+          }
+          return cached || new Response('', { status: 504 });
+        });
+      return cached || network;
     })
   );
 });
 
-// ================================================================
-//  💬 Messages
-// ================================================================
-self.addEventListener('message', event => {
-  if (event.data?.action === 'skipWaiting') self.skipWaiting();
-  if (event.data?.action === 'checkVersion') {
-    event.source?.postMessage({ type: 'VERSION_INFO', version: CACHE_NAME });
-  }
+self.addEventListener('message', e => {
+  if (e.data?.action === 'skipWaiting' || e.data === 'SKIP_WAITING') self.skipWaiting();
+  if (e.data?.action === 'checkVersion')
+    e.source?.postMessage({ type: 'VERSION_INFO', version: CACHE_NAME });
 });
-
-console.log(`🌴 [SW ${CACHE_NAME}] Ready - SEO Safe Mode`);

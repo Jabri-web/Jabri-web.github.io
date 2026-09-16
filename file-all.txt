@@ -1,3 +1,307 @@
+https://jabri-com.vercel.app/
+
+♻️♻️♻️
+____(collected data)_____
+Offical technical guide
+دليل فني رسمي
+
+(Technical Documentation) لمشروع "واحة الجبري" والإمبراطورية الرقمية الخاصة بعبدالله الجبري. تم تقسيم الدليل إلى 5 أقسام رئيسية لسهولة القراءة والتنقل.
+_________________________
+
+
+📘 الدليل الفني الشامل: إمبراطورية الجبري الرقمية
+
+---
+
+📌 القسم 1: أدلة الاستدعاء والربط (Linking & Tools Syntax)
+
+1.1 صيغ استدعاء الملفات والصفحات
+
+البيئة الصيغة القياسية مثال تطبيقي
+GitHub Repo (الكود المصدري) https://github.com/[User]/[Repo]/blob/main/[File] https://github.com/Jabri-web/Jabri-com/blob/main/all-links.html
+GitHub Pages (صفحة منشورة) https://[User].github.io/[Repo]/[File] https://jabri-web.github.io/Jabri-com/all-links.html
+Vercel (الموقع الرئيسي) https://[Domain]/[File] https://jabri-com.vercel.app/all-links.html
+Magic Translator (الترجمة السحرية) https://jabri-web.github.io/Jabri-web/magic-translator.html?file=[File]&lang=[ar/en] ...magic-translator.html?file=README.md&lang=ar
+
+1.2 مثال تطبيقي (Row 2 - Zx_RieOS_v1.2)
+
+هذا هو الكود القياسي لصف واحد في جدول البيانات، يوضح كيفية دمج "مرآة اليمن" (التي تشير إلى Page2.html على Vercel) و"الساحر" (أداة الترجمة):
+
+```html
+<tr>
+  <td>2</td>
+  <td><b>Zx_RieOS_v1.2</b> - الذهبي النهائي</td>
+  <td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2" target="_blank" class="link-live">فتح</a></td>
+  <td><a href="/Page2.html" target="_blank" class="link-vercel">Page2 - اليمن (مرآة اليمن)</a></td>
+  <td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" target="_blank" class="link-wizard">الساحر</a></td>
+  <td><a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" target="_blank" class="link-repo">Repo</a></td>
+  <td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank" class="link-doi">20100622</a></td>
+</tr>
+```
+
+---
+
+🗺️ القسم 2: خريطة الإمبراطورية الرقمية (Heaven Al-Jabri Map)
+
+👤 الباحث: م/ عبدالله محمد ناصر الجبري (Eng. Abdulla Mohammed Nasser Al-Jabri)
+📍 الموقع: صنعاء – اليمن
+🔗 رابط الموقع: https://jabri-com.vercel.app
+📊 ORCID: 0009-0003-3319-3822
+
+🧭 الطبقة 1: البوابات والواجهات (Gateway Layer)
+
+# المشروع الدور الرابط المباشر
+1 jabri62018.github.io البوابة الرئيسية زيارة
+4 Jabri-web.github.io الواجهة الثانية زيارة
+10 Jabri-web Router الرئيسي زيارة
+11 jabri-com النشر على Vercel زيارة
+12 jabri.com Hyper Router زيارة
+
+🧠 الطبقة 2: النواة ونظام التشغيل (Core OS Layer)
+
+# المشروع الدور الرابط المباشر
+3 Zx-Mother-Function-Jabri الدالة الأم Z(x) زيارة
+8 Jabri-RiemannOS نظام ريمان النظري زيارة
+2 Zx-RieOS-v1.2 الذهبي النهائي زيارة
+7 Zx-RieOS-v1.1 الإصدار السابق زيارة
+
+🏆 الطبقة 3: الحزمة الكبرى - مسائل الألفية (Jabri-Nobble)
+
+📦 المستودع الأم: github.com/Jabri-web/Jabri_Nobble
+
+# المشروع المسألة الرابط المباشر
+5.1 Jabri-Riemann فرضية ريمان زيارة
+5.2 Jabri-np P vs NP زيارة
+5.3 Jabri-gab الفجوة (Gap) زيارة
+5.4 Jabri-Navier معادلات نافييه-ستوكس زيارة
+5.5 Jabri-Birch بيرش-سوينرتون-داير زيارة
+5.6 Jabri-Hodge حدسية هودج زيارة
+5.7 Jabri-Identity الهوية Z_t = 1 زيارة
+
+🧪 الطبقة 4: مختبر الفيزياء والكون (Jabri-Lab)
+
+📦 المستودع الأم: github.com/Jabri-web/Jabri_lab
+
+# المشروع التخصص الرابط المباشر
+6.1 Jabri-5 معامل 5 زيارة
+6.2 Jabri-28 معامل 28 زيارة
+6.3 Jabri-Gravity الجاذبية زيارة
+6.4 Jabri-Spacetime الزمكان زيارة
+6.5 Jabri-Darkenergy الطاقة المظلمة زيارة
+6.6 Jabri-Planck ثابت بلانك زيارة
+6.7 Jabri-Hubble ثابت هابل زيارة
+6.8 Jabri-Periodic الدورية زيارة
+6.9 Jabri-all الدمج الكلي زيارة
+
+🛠️ الطبقة 5: الأدوات والتشخيص (Tools Layer)
+
+# المشروع الدور الرابط المباشر
+9 Jabri-Checkout نقطة التحقق - فحص وتشخيص النظام زيارة
+
+---
+
+🗂️ القسم 3: هيكل مستودعات GitHub (Organization Map)
+
+الهوية: Z + C + A = 1 | التحقق: 2026-06-09
+
+```text
+📁 Jabri-web/ <-- Organization Root
+│
+├── 1. Jabri6218.github.io
+│   DOI: 10.5281/zenodo.20403864
+│   Pages: https://jabri-web.github.io/jabri62018.github.io/
+│   Desc: Main Portal Index - Central hub for all projects
+│
+├── 2. Zx-RieOS-v1.2
+│   DOI: 10.5281/zenodo.20100622 [x2]
+│   Pages: https://jabri-web.github.io/Zx_RieOS_v1.2/
+│   Desc: Experimental OS based on Zx Function & Riemann Zeros
+│
+├── 3. Zx-Mother-Function-Jabri
+│   DOI: -
+│   Pages: https://jabri-web.github.io/Zx_Mother_Function_Jabri/
+│   Desc: Core Zx Mother Function Implementation
+│
+├── 4. Jabri-web.github.io
+│   DOI: 10.5281/zenodo.20499365 / 10.5281/zenodo.20404167
+│   Pages: https://jabri-web.github.io/
+│   Desc: Secondary Main Portal
+│
+├── 5. Jabri-Nobble (Millennium Problems Research Suite)
+│   DOI: 10.5281/zenodo.20148770
+│   Pages: https://jabri-web.github.io/Jabri_Nobble/
+│   ├── 5-1. Jabri-Riemann (DOI: 20139904 / 20145337)
+│   ├── 5-2. Jabri-np (DOI: 20145279)
+│   ├── 5-3. Jabri-gab (DOI: 20148344)
+│   ├── 5-4. Jabri-Navier (DOI: 20149618)
+│   ├── 5-5. Jabri-Birch (DOI: -)
+│   ├── 5-6. Jabri-Hodge (DOI: -)
+│   └── 5-7. Jabri-S-care [Jabri-Identity] (DOI: 20114317)
+│
+├── 6. Jabri-lab (Digital Laboratory for Experiments)
+│   DOI: Publishing
+│   Pages: https://jabri-web.github.io/jabri_lab/
+│   ├── 6-1. Jabri-5
+│   ├── 6-2. Jabri-28
+│   ├── 6-3. Jabri-Gravity
+│   ├── 6-4. Jabri-Spacetime
+│   ├── 6-5. Jabri-DarkEnergy
+│   ├── 6-6. Jabri-Planck
+│   ├── 6-7. Jabri-Hubble
+│   ├── 6-8. Jabri-Periodic
+│   └── 6-9. Jabri-all
+│
+├── 7. Zx-RieOS-v1.1
+│   DOI: 10.5281/zenodo.19981688 / 10.5281/zenodo.20070594
+│   Pages: https://jabri-web.github.io/Zx_RieOS_v1.1/
+│
+├── 8. Jabri-RiemannOS
+│   DOI: -
+│   Pages: https://jabri-web.github.io/Jabri-RiemannOS/
+│
+├── 9. Jabri-Checkout
+│   DOI: 10.5281/zenodo.20513840
+│   Pages: https://jabri-web.github.io/Jabri_Checkout/
+│
+├── 10. Jabri-web [ROUTER FOR GITHUB]
+├── 11. jabri-com [ROUTER FOR AL-WAHA & VERCEL]
+└── 12. jabri.com [ROUTER FOR 10++ 11]
+```
+
+📋 متطلبات كل مستودع (REQUIREMENTS FOR EACH REPO):
+
+1. README.md + README-AR.md
+2. ABOUT.md + ABOUT-AR.md (مع شريط تبديل اللغة)
+3. رابط الموقع الرئيسي: https://jabri-com.vercel.app
+4. الرخصة: CC BY 4.0
+
+---
+
+📜 القسم 4: سجل معرفات DOI (DOI Registry)
+
+# اسم المستودع / الورقة رقم DOI الرابط المباشر
+1 jabri62018.github.io 21006432 DOI
+2 Zx_RieOS_v1.2 20100622 DOI
+4 Jabri-web.github.io 20404167 DOI
+5 Jabri_Nobble 20148770 DOI
+7 Zx_RieOS_v1.1 19981688 DOI
+9 Jabri_Checkout 21970064 ⭐ DOI
+10 Jabri-web 20499365 DOI
+11 Jabri-com 21970418 DOI
+12 jabri.com 21970523 DOI
+5.1 Riemann Hypothesis 20139904 DOI
+5.2 P ≠ NP 20145337 DOI
+5.3 Yang-Mills 20148344 DOI
+5.4 Navier-Stokes 20149618 DOI
+5.7 Hubble Tension (IRIS) 20114317 DOI
+🆕 Zx_RieOS v1.1 (قديم) 19645066 ⭐ DOI
+🆕 4+1 Eigenvalue Law 20100622 DOI
+🆕 RiemannOS v1.0 19700735 DOI
+🆕 Zx_total_v3.2.1 19956313 DOI
+🆕 Jabri_Checkout v2.0 21970064 ⭐ DOI
+
+---
+
+📂 القسم 5: هيكل ملفات موقع jabri-com.vercel.app
+
+📊 الإحصائيات العامة:
+
+· الإجمالي: ~92 ملف
+· صفحات HTML: 76 (75 في الجذر + 1 في المجلدات الفرعية)
+· يُفهرس في Sitemap: ~75 صفحة
+· لا يُفهرس: الأجزاء (Partials) + ملفات النظام + JS
+
+5.1 المجلدات الأساسية (Subfolders)
+
+```text
+/ .....root (98% من الملفات)
+ar/ .....ملفات النسخة العربية (index, about, contact, journal)
+en/ .....ملفات النسخة الإنجليزية (index, about, contact, journal)
+js/ .....ملفات الجافاسكريبت (init-page-root.js, menu.js)
+publish/..ملفات النشر (publish.html)
+game/..ملفات الألعاب (game-auto.html)
+image/..جميع الوسائط المتعددة (Jabri-photo.png, Yemen2026.png)
+```
+
+5.2 قائمة الملفات حسب الفئة (File Categories)
+
+الفئة الملفات
+1. الصفحات الرئيسية index.html, logo.html, catalog.html, all-links.html, monitor
+2. صفحات Page 1-12 Page1.html إلى Page12.html
+3. صفحات About about.html, about-ar.html, about-en.html, about-waha.html
+4. المؤلف والسيرة الذاتية Author-cv.html, author-history.html, cv-2026a.html, cv-2026e.html, founder.html, profile.html, profile-en.html
+5. النظرية الموحدة theory-ar.html, theory-en.html, Sindbad-theory.html, Sindbad-Brdoni.html
+6. البحث العلمي research.html, research-deep.html, Pages-Researches.html
+7. التراث اليمني Sanaa.html, Shibam.html, Soqatra.html, Yemen-library.html, gallery.html, yemen-photo.html, yemen-photo2.html, yemen-photo-api.html, yemen-photo-php.html
+8. المجلات journal.html, journal2.html, journal3.html, journal4.html, History-pdf.html
+9. الأدوات calculator.html, handsa.html, char-balance.html, Check.html, magic-translator.html, diagnose.html
+10. قواعد البيانات والشبكة Dbase.html, Dbase-deep.html, microtik.html, microtik-deep.html
+11. المكتبة والمحتوى Office.html, source.html, citations.html, music.html, taraif.html, Nezar.html, wonder.html, heaven-info.html, visitor.html, who-we.html, project.html, project-ar.html, poster.html, bazar.html (not yet)
+12. التواصل والنظام contact.html, FAQPage.html, FAQPage-en.html, privacy-policy.html, 404.html, offline.html, dashboard.html
+13. أدوات المطور file-structure.html, file-structure2.html, Router-all.html, repos-auto.html, repos-sqr.html, current-auto.html
+14. المتنوع kfupm-msg.html, explore.html
+15. الأجزاء (لا تُفهرس) header.html, footer.html, hero.html
+16. ملفات النظام manifest.json, robots.txt, sitemap.xml, sw.js, vercel.json
+
+---
+
+© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة.
+__________________________
+
+_______Root file:
+# المجموعة عدد الملفات أسماء الملفات
+1 الصفحات الرئيسية 5 index.html, logo.html, catalog.html, all-links.html, monitor
+2 صفحات Page 1-12 12 Page1.html … Page12.html
+3 صفحات About 4 about.html, about-ar.html, about-en.html, about-waha.html
+4 المؤلف والسيرة الذاتية 7 Author-cv.html, author-history.html, cv-2026a.html, cv-2026e.html, founder.html, profile.html, profile-en.html
+5 النظرية الموحدة 4 theory-ar.html, theory-en.html, Sindbad-theory.html, Sindbad-Brdoni.html
+6 البحث العلمي 3 research.html, research-deep.html, Pages-Researches.html
+7 التراث اليمني 9 Sanaa.html, Shibam.html, Soqatra.html, Yemen-library.html, gallery.html, yemen-photo.html, yemen-photo2.html, yemen-photo-api.html, yemen-photo-php.html
+8 المجلات 5 journal.html, journal2.html, journal3.html, journal4.html, History-pdf.html
+9 الأدوات 6 calculator.html, handsa.html, char-balance.html, Check.html, magic-translator.html, diagnose.html
+10 قواعد البيانات والشبكة 4 Dbase.html, Dbase-deep.html, microtik.html, microtik-deep.html
+11 المكتبة والمحتوى 14 Office.html, source.html, citations.html, music.html, taraif.html, Nezar.html, wonder.html, heaven-info.html, visitor.html, who-we.html, project.html, project-ar.html, poster.html, bazar.html (not yet)
+12 التواصل والنظام 7 contact.html, FAQPage.html, FAQPage-en.html, privacy-policy.html, 404.html, offline.html, dashboard.html
+13 أدوات المطور 6 file-structure.html, file-structure2.html, Router-all.html, repos-auto.html, repos-sqr.html, current-auto.html
+14 المتنوع 2 kfupm-msg.html, explore.html
+15 الأجزاء (Partials) — لا تُفهرس 3 header.html, footer.html, hero.html
+16 ملفات النظام 5 manifest.json, robots.txt, sitemap.xml, sw.js, vercel.json
+مجموع ملفات الجذر 96 ملف (منها 87 HTML + 3 Partial + 5 نظام + 1 monitor)
+_______________________
+
+______Subfolders files:
+# المجموعة عدد الملفات أسماء الملفات
+17 /ar/ — النسخة العربية 4 ar/index.html, ar/about.html, ar/contact.html, ar/journal.html
+18 /en/ — النسخة الإنجليزية 4 en/index.html, en/about.html, en/contact.html, en/journal.html
+19 /game/ — الألعاب 1 game/game-auto.html
+20 /publish/ — النشر 1 publish/publish.html
+21 /js/ — الجافاسكريبت 2 js/init-page-root.js, js/menu.js
+22 /image/ — الوسائط 2 image/Jabri-photo.png, image/Yemen2026.png
+مجموع المجلدات الفرعية 14 ملف
+____________________
+
+Grand total:
+البيان العدد
+مجموع ملفات الجذر 96
+مجموع المجلدات الفرعية 14
+الإجمالي الكلي 110 ملف
+صفحات HTML القابلة للفهرسة ~75 صفحة
+ملفات لا تُفهرس Partials + JS + System + Images
+مجموع المجاميع (الفئات) 22 مجموعة
+__________________
+
+____eof (collected data)___
+♻️♻️♻️
+♻️♻️♻️
+
+👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+
+🇾🇪🇾🇪🇾🇪
+🇾🇪🇾🇪🇾🇪
+________Technical file _________
+Technical file-all.txt::
+_________________________
+
 # ============================================================
 # دليل واحة الجبري | Heaven Al-Jabri - الإصدار الذهبي v1.0
 # المؤلف: م/ عبدالله محمد ناصر الجبري
@@ -101,3 +405,23 @@
 - الرخصة: CC BY 4.0
 
 © 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة.
+__________eof____________
+____eof(Technical info______
+🇾🇪🇾🇪🇾🇪
+🇾🇪🇾🇪🇾🇪
+♻️♻️
+♻️♻️♻️
+_______footer;_______
+1- https://www.google.com/search?q=الدالة+الأم+Z(x)+نظرية+السندباد+الموحدة&udm=50
+2- https://www.google.com/search?q=Z(x)+%3D+x%5E5+ln(x)+sin(2%CF%80%2Fx)+exp(-x%2Fxp)&udm=50
+3- https://www.google.com/search?q=Z+%2B+C+%2B+A+%3D+1&udm=50
+4- https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&udm=50
+5- https://www.google.com/search?q=Eng.+Abdulla+Mohammed+Nasser+Al-Jabri&udm=50
+6-ORCID: https://orcid.org/0009-0003-3319-3822
+7-Zenodo: https://zenodo.org/records/20513840
+8- https://overleaf.com/project
+9- https://colab.research.google.com/drive/12oG9B7DgsQpTWlvfMm4awnpbt34yPv_h
+10- https://github.com/Jabri-web
+11- https://en.wikipedia.org/wiki/User:Jabri2026
+12- https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html
+_______________________
