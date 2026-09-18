@@ -32,14 +32,5 @@
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/ar-page", "destination": "/ar", "permanent": true },
-    { "source": "/en-page", "destination": "/en", "permanent": true },
-    { "source": "/diagmose.html", "destination": "/diagnose", "permanent": true },
-    { "source": "/author-cv.html", "destination": "/Author-cv", "permanent": true },
-    { "source": "/ar/unified-theory.html", "destination": "/ar/Sindbad-theory", "permanent": true },
-    { "source": "/Jabri_Nobble.html", "destination": "/Page5", "permanent": true },
-    { "source": "/Checkout.html", "destination": "/Page9", "permanent": true }
   ]
 }

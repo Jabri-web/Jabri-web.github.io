@@ -1,5 +1,5 @@
-const CACHE_NAME = 'heaven-al-jabri-v7.1-gold';
-const CORE_ASSETS = ['/', '/index.html', '/offline.html', '/manifest.json'];
+const CACHE_NAME = 'heaven-al-jabri-v8.0-gold';
+const CORE_ASSETS = ['/', '/logo', '/manifest.json'];
 const NEVER_CACHE = ['/sw.js', '/sitemap.xml', '/robots.txt', '/vercel.json'];
 const FETCH_TIMEOUT = 3000;
 
@@ -48,8 +48,8 @@ self.addEventListener('fetch', e => {
         })
         .catch(async () =>
           (await caches.match(e.request)) ||
-          (await caches.match('/offline.html')) ||
-          (await caches.match('/index.html')) ||
+          (await caches.match('/logo')) ||
+          (await caches.match('/')) ||
           new Response('Offline', { status: 503 })
         )
     );

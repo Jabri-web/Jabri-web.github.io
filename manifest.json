@@ -2,7 +2,8 @@
   "name": "Heaven Al-Jabri | واحة الجبري",
   "short_name": "واحة الجبري",
   "description": "تطبيق واحة الجبري - موسيقى باب اليمن الأصيلة ونظرية السندباد الموحدة Z+C+A=1",
-  "start_url": "/logo.html",
+  "start_url": "/logo",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0A0A0F",
   "theme_color": "#c9a84c",
@@ -43,21 +44,21 @@
       "name": "نظرية السندباد",
       "short_name": "النظرية",
       "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة",
-      "url": "/ar/theory-ar.html",
+      "url": "/theory-ar",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "الموسيقى اليمنية",
       "short_name": "الموسيقى",
       "description": "موسيقى باب اليمن الأصيلة",
-      "url": "/music.html",
+      "url": "/music",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "واحة الجبري",
       "short_name": "الواحة",
       "description": "صفحة logo والواحة",
-      "url": "/logo.html",
+      "url": "/logo",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]

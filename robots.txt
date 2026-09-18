@@ -1,36 +1,8 @@
 # Heaven Al-Jabri - واحة الجبري
-# Z+C+A=1 - آخر تحديث: 2026/09/14
-
-User-agent: Googlebot
-Allow: /
-Disallow: /login
-Disallow: /dashboard
-Disallow: /api/
-Disallow: /private/
-
-User-agent: Googlebot-Image
-Allow: /
-Allow: /image/
-Allow: /images/
-
-User-agent: Bingbot
-Allow: /
-Disallow: /login
-Disallow: /dashboard
-Disallow: /api/
+# Z+C+A=1 - وضع الصيانة المؤقت
+# آخر تحديث: 2026/09/18
 
 User-agent: *
-Allow: /
-Disallow: /login
-Disallow: /dashboard
-Disallow: /api/
-Disallow: /private/
-Disallow: /*?*utm_*
-Disallow: /*?*fbclid=*
-Disallow: /*?*gclid=*
+Disallow: /
 
-# خرائط الموقع - كل الخرائط
 Sitemap: https://jabri-com.vercel.app/sitemap.xml
-
-# Host للتأكيد
-Host: https://jabri-com.vercel.app
