@@ -724,7 +724,123 @@
     }
 </script>
 
+<!-- ========================================================== -->
+<!-- 18. نافذة تحميل تطبيق الأندرويد (APK)                     -->
+<!-- ========================================================== -->
+<div id="apk-overlay" style="
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.8); 
+    z-index: 999999; 
+    justify-content: center; 
+    align-items: center;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    backdrop-filter: blur(5px);
+">
+    <div style="
+        background: linear-gradient(135deg, #1a1a1a, #2d2d2d); 
+        padding: 30px; 
+        border-radius: 20px; 
+        text-align: center; 
+        max-width: 350px; 
+        width: 90%;
+        border: 2px solid #c9a227;
+        box-shadow: 0 20px 60px rgba(201, 162, 39, 0.5);
+        position: relative;
+    ">
+        <!-- زر الإغلاق (X) في الأعلى -->
+        <span id="apk-close-x" style="
+            position: absolute; 
+            top: 10px; 
+            left: 15px; 
+            font-size: 28px; 
+            cursor: pointer; 
+            color: #c9a84c;
+            transition: 0.3s;
+        " onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='#c9a84c'">&times;</span>
 
+        <!-- أيقونة التطبيق -->
+        <img src="/image/Yemen2026.png" alt="App Icon" style="width: 90px; height: 90px; margin-bottom: 15px; border-radius: 20px; object-fit: cover; border: 2px solid #c9a227;">
+        
+        <h3 style="margin: 10px 0; color: #c9a227; font-size: 22px; font-weight: 900;">تطبيق واحة الجبري</h3>
+        <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-bottom: 25px;">
+            للحصول على أفضل تجربة وتصفح أسرع، قم بتحميل تطبيقنا الآن.
+        </p>
+
+        <!-- زر التحميل الأساسي -->
+        <a href="/app-release.apk" download style="
+            display: block; 
+            background: linear-gradient(135deg, #c9a227, #e6c34a); 
+            color: #0d1117; 
+            text-decoration: none; 
+            padding: 14px; 
+            border-radius: 30px; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+            box-shadow: 0 6px 20px rgba(201,162,39,0.5);
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            ⬇️ تحميل التطبيق (APK)
+        </a>
+        
+        <!-- زر "لاحقاً" لإغلاق النافذة -->
+        <button id="apk-close-btn" style="
+            background: transparent; 
+            border: none; 
+            color: #888; 
+            cursor: pointer; 
+            font-size: 14px;
+            padding: 5px;
+            font-family: 'Cairo', sans-serif;
+        ">لاحقاً</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // تأكد من أن المستخدم لم يغلق النافذة في هذه الجلسة
+        if (!sessionStorage.getItem('apk_prompt_dismissed')) {
+            
+            // إظهار النافذة بعد 4 ثوانٍ من التصفح
+            setTimeout(function() {
+                var overlay = document.getElementById('apk-overlay');
+                if (overlay) {
+                    overlay.style.display = 'flex';
+                }
+            }, 4000); // 4000 مللي ثانية = 4 ثواني
+        }
+
+        // دالة الإغلاق
+        function closeOverlay() {
+            var overlay = document.getElementById('apk-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                // تسجيل أن المستخدم أغلق النافذة، حتى لا تظهر له مرة أخرى في نفس الجلسة
+                sessionStorage.setItem('apk_prompt_dismissed', 'true');
+            }
+        }
+
+        // ربط الأزرار بوظيفة الإغلاق
+        var closeX = document.getElementById('apk-close-x');
+        var closeBtn = document.getElementById('apk-close-btn');
+        
+        if (closeX) closeX.addEventListener('click', closeOverlay);
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+        // إغلاق النافذة عند الضغط في الخلفية المعتمة
+        var overlay = document.getElementById('apk-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closeOverlay();
+                }
+            });
+        }
+    });
+</script>
 
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>

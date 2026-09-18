@@ -3,19 +3,76 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🗂️ مستكشف الواحة</title>
+    <title>🗂️ مستكشف الواحة v2.2 - سحب محسّن</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
     <style>
         * {margin: 0;padding: 0;box-sizing: border-box;}
-        body {font-family: 'Tajawal', sans-serif;background: #0d1117;color: #e6edf3;height: 100vh;overflow: hidden;}
-        .split-layout {display: flex;flex-direction: column;height: 100vh;}
-        .file-list {height: 50vh;overflow-y: auto;padding: 20px;border-bottom: 3px solid #ffd700;background: #161b22;}
+        body {font-family: 'Tajawal', sans-serif;background: #0d1117;color: #e6edf3;height: 100vh;overflow: hidden; display:flex; flex-direction:column;}
+        .split-layout {display: flex;flex-direction: column;height: 100vh; flex:1; overflow:hidden;}
+        
+        /* ═══ قائمة الملفات — محسّنة للسحب ═══ */
+        .file-list {
+            flex: 0 0 auto;
+            height: 45%;
+            min-height: 100px;
+            max-height: 85%;
+            overflow-y: auto;
+            padding: 20px;
+            border-bottom: none;
+            background: #161b22;
+        }
+        .file-list.dragging { transition: none; }
         .file-list::-webkit-scrollbar {width: 6px;}
         .file-list::-webkit-scrollbar-track {background: #0d1117;}
         .file-list::-webkit-scrollbar-thumb {background: #ffd700;border-radius: 10px;}
-        .preview-area {height: 50vh;background: #0d1117;position: relative;}
-        .preview-area iframe {width: 100%;height: 100%;border: none;background: #fff;}
-        .preview-notice {position: absolute;bottom: 10px;left: 10px;background: rgba(0,0,0,0.7);color: #ffd700;padding: 4px 12px;border-radius: 20px;font-size: 12px;}
+
+        /* ═══ المقبض القابل للسحب ═══ */
+        .resizer {
+            height: 14px;
+            background: #21262d;
+            border-top: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
+            cursor: row-resize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+            flex-shrink: 0;
+            transition: background 0.2s;
+            z-index: 10;
+            position: relative;
+        }
+        .resizer:hover, .resizer.dragging {background: #30363d;}
+        .resizer .dots {width: 40px; height: 4px; background: #ffd700; border-radius: 10px; opacity:0.6;}
+        .resizer:hover .dots {opacity:1; box-shadow: 0 0 8px rgba(255,215,0,0.5);}
+        .resizer .label {font-size: 11px; color: #8b949e; font-weight:700;}
+        .resizer-controls {display:flex; gap:6px; margin-inline-start:auto; margin-inline-end:10px;}
+        .resizer-controls button {
+            background: #0d1117; border:1px solid #30363d; color:#ffd700;
+            padding:2px 8px; border-radius:12px; font-size:11px; cursor:pointer; font-family:'Tajawal';
+            transition:0.2s;
+        }
+        .resizer-controls button:hover {background:#ffd700; color:#000;}
+
+        .preview-area {flex:1; background: #0d1117;position: relative; display:flex; flex-direction:column; min-height:150px;}
+        .preview-area iframe {width: 100%;height: 100%;border: none;background: #fff; flex:1;}
+        .preview-area.fullscreen {position:fixed; inset:0; z-index:9999; height:100vh !important;}
+        .preview-toolbar {
+            display:flex; justify-content:space-between; align-items:center;
+            background:#161b22; padding:6px 10px; border-bottom:1px solid #30363d;
+            flex-shrink:0;
+        }
+        .preview-toolbar .title {font-size:12px; color:#8b949e;}
+        .preview-toolbar .btns {display:flex; gap:6px;}
+        .preview-toolbar .btns button {
+            background:#21262d; border:1px solid #30363d; color:#e6edf3;
+            padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px; font-family:'Tajawal';
+        }
+        .preview-toolbar .btns button.primary {background:#ffd700; color:#000; font-weight:700;}
+        .preview-notice {position: absolute;bottom: 10px;left: 10px;background: rgba(0,0,0,0.7);color: #ffd700;padding: 4px 12px;border-radius: 20px;font-size: 12px; pointer-events:none; z-index:5;}
         
         .header {display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;gap: 10px;margin-bottom: 15px;padding-bottom: 10px;border-bottom: 1px solid #30363d;}
         .header h2 {color: #ffd700;font-weight: 700;font-size: 22px;}
@@ -42,47 +99,42 @@
         .empty-msg {text-align: center;color: #8b949e;padding: 30px 0;font-size: 18px;}
         .loader {text-align: center;padding: 20px;color: #ffd700;font-size: 18px;}
 
-        /* ===== القائمة المنسدلة ===== */
-        .context-menu {
-            position: fixed;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 6px 0;
-            min-width: 180px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-            z-index: 1000;
-            display: none;
-        }
+        .context-menu {position: fixed;background: #21262d;border: 1px solid #30363d;border-radius: 8px;padding: 6px 0;min-width: 180px;box-shadow: 0 8px 24px rgba(0,0,0,0.6);z-index: 1000;display: none;}
         .context-menu.show {display: block;}
-        .context-menu .menu-item {
-            padding: 8px 16px;
-            cursor: pointer;
-            color: #e6edf3;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-        }
+        .context-menu .menu-item {padding: 8px 16px;cursor: pointer;color: #e6edf3;font-size: 14px;display: flex;align-items: center;gap: 10px;transition: 0.2s;}
         .context-menu .menu-item:hover {background: #30363d;}
-        .context-menu .menu-item .icon {font-size: 16px;}
-        .context-menu .menu-item.danger {color: #f85149;}
-        .context-menu .menu-item.danger:hover {background: #f8514915;}
         .context-menu .divider {height: 1px;background: #30363d;margin: 4px 12px;}
+
+        /* شريط الروابط العلوي */
+        .top-links {display:flex; gap:10px; overflow-x:auto; padding:8px 12px; background:#0d1117; border-bottom:1px solid #30363d; white-space:nowrap; flex-shrink:0;}
+        .top-links a {color:#8b949e; text-decoration:none; font-size:13px; background:#161b22; padding:4px 10px; border-radius:20px; border:1px solid #30363d;}
+        .top-links a:hover {color:#ffd700; border-color:#ffd700;}
+
+        /* ═══ استجابة الجوال ═══ */
+        @media (max-width: 700px) {
+            .resizer {height: 20px;}
+            .resizer .label {display: none;}
+            .resizer-controls button {padding: 4px 10px; font-size: 12px;}
+            .header h2 {font-size: 18px;}
+            .header .badge {font-size: 12px; padding: 3px 10px;}
+            .header .actions button {padding: 5px 10px; font-size: 12px;}
+            .file-item {padding: 12px 14px;}
+            .file-item .name {font-size: 14px;}
+        }
     </style>
 </head>
 <body>
-    
-    <a href="/heaven-info.html">👀heaven-info🙏</a>
-    <a href="/repos-auto.html">♻️reoos-auto🙏</a>
-    <a href="/repos-sqr.html">♻️repos-sqr🙏</a>
-    <a href="/current-auto.html">🤣current-auto🙏</a>
-    <a href="/gallery.html">👀gallery🙏</a>
-    <a href="/game/game-auto.html>🤣game-auto🙏</a>
-     <a href="/publish/publish.html">🤣publish🇾🇪🇪🇾🇪</a>
+    <!-- روابط مختصرة -->
+    <div class="top-links">
+        <a href="/heaven-info.html">👀 heaven-info</a>
+        <a href="/repos-auto.html">♻️ repos-auto</a>
+        <a href="/repos-sqr.html">♻️ repos-sqr</a>
+        <a href="/current-auto.html">🤣 current-auto</a>
+        <a href="/gallery.html">👀 gallery</a>
+        <a href="/game/game-auto.html">🤣 game-auto</a>
+        <a href="/publish/publish.html">🤣 publish 🇾🇪</a>
+    </div>
 
-    
     <div class="split-layout">
         <div class="file-list" id="fileList">
             <div class="header">
@@ -95,37 +147,52 @@
             </div>
             <div class="path-display" id="currentPath">📂 الجذر /</div>
             <input type="text" class="search-box" id="searchInput" placeholder="🔍 ابحث عن ملف..." oninput="filterFiles()" />
-            
             <div class="stats">
                 <span>📊 الكل: <span id="total">0</span></span>
                 <span>📁 مجلدات: <span id="folders">0</span></span>
                 <span>🌐 HTML: <span id="html">0</span></span>
             </div>
-
             <div id="filesContainer"><div class="loader">⏳ جارٍ التحميل...</div></div>
         </div>
-        <div class="preview-area">
+
+        <!-- الفاصل القابل للسحب -->
+        <div class="resizer" id="resizer">
+            <div class="dots"></div>
+            <span class="label">اسحب لتوسيع المعاينة ↔</span>
+            <div class="resizer-controls">
+                <button onclick="setSplit(30)">معاينة كبيرة</button>
+                <button onclick="setSplit(50)">50/50</button>
+                <button onclick="setSplit(70)">قائمة كبيرة</button>
+            </div>
+        </div>
+
+        <div class="preview-area" id="previewArea">
+            <div class="preview-toolbar">
+                <span class="title" id="previewTitle">📺 المعاينة - Vercel</span>
+                <div class="btns">
+                    <button onclick="expandPreview()">⛶ ملء الشاشة</button>
+                    <button class="primary" onclick="openExternal()">↗ فتح في تبويب</button>
+                </div>
+            </div>
             <iframe id="previewFrame" src="about:blank"></iframe>
             <div class="preview-notice">📺 معاينة من Vercel</div>
         </div>
     </div>
 
-    <!-- ===== القائمة المنسدلة ===== -->
     <div class="context-menu" id="contextMenu">
-        <div class="menu-item" onclick="menuAction('rename')"><span class="icon">✏️</span> Rename</div>
-        <div class="menu-item" onclick="menuAction('edit')"><span class="icon">📝</span> Edit</div>
-        <div class="menu-item" onclick="menuAction('copy')"><span class="icon">📋</span> Copy</div>
-        <div class="menu-item" onclick="menuAction('delete')"><span class="icon">🗑️</span> Delete</div>
+        <div class="menu-item" onclick="menuAction('rename')"><span>✏️</span> Rename</div>
+        <div class="menu-item" onclick="menuAction('edit')"><span>📝</span> Edit</div>
+        <div class="menu-item" onclick="menuAction('copy')"><span>📋</span> Copy Link</div>
+        <div class="menu-item" onclick="menuAction('delete')"><span>🗑️</span> Delete</div>
         <div class="divider"></div>
-        <div class="menu-item" onclick="menuAction('upload')"><span class="icon">📤</span> Upload</div>
-        <div class="menu-item" onclick="menuAction('download')"><span class="icon">⬇️</span> Download</div>
-        <div class="menu-item" onclick="menuAction('print')"><span class="icon">🖨️</span> Print</div>
+        <div class="menu-item" onclick="menuAction('upload')"><span>📤</span> Upload</div>
+        <div class="menu-item" onclick="menuAction('download')"><span>⬇️</span> Download</div>
+        <div class="menu-item" onclick="menuAction('print')"><span>🖨️</span> Print</div>
         <div class="divider"></div>
-        <div class="menu-item" onclick="menuAction('info')"><span class="icon">ℹ️</span> Info</div>
+        <div class="menu-item" onclick="menuAction('info')"><span>ℹ️</span> Info</div>
     </div>
 
     <script>
-        // ===== الإعدادات =====
         const REPO_OWNER = 'Jabri-web';
         const REPO_NAME = 'Jabri-web.github.io';
         const BRANCH = 'main';
@@ -137,32 +204,136 @@
         let currentPath = '';
         let pathHistory = [];
         let selectedItem = null;
+        let lastPreviewUrl = '';
 
-        // ===== جلب الملفات =====
+        /* ═══════════════════════════════════════════════════════════════
+           نظام السحب v2.0 — مُحسّن لـ Flex + الجوال (Pointer Events)
+           ═══════════════════════════════════════════════════════════════ */
+        const resizer = document.getElementById('resizer');
+        const fileList = document.getElementById('fileList');
+        const previewArea = document.getElementById('previewArea');
+        const splitLayout = document.querySelector('.split-layout');
+
+        let isDragging = false;
+        let startY = 0;
+        let startHeight = 0;
+
+        /* استرجاع الحجم المحفوظ */
+        const savedSplit = parseInt(localStorage.getItem('waha_split_percent') || '45');
+        setSplit(savedSplit, false);
+
+        /* ═══ بدء السحب ═══ */
+        function onDragStart(e) {
+            isDragging = true;
+            resizer.classList.add('dragging');
+            fileList.classList.add('dragging');
+            document.body.style.cursor = 'row-resize';
+            document.body.style.userSelect = 'none';
+            
+            startY = e.clientY || (e.touches && e.touches[0].clientY);
+            startHeight = fileList.getBoundingClientRect().height;
+            
+            if (resizer.setPointerCapture && e.pointerId) {
+                try { resizer.setPointerCapture(e.pointerId); } catch(err) {}
+            }
+            if (e.preventDefault) e.preventDefault();
+        }
+
+        /* ═══ أثناء السحب ═══ */
+        function onDragMove(e) {
+            if (!isDragging) return;
+            const currentY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (!currentY) return;
+            
+            const delta = currentY - startY;
+            const containerHeight = splitLayout.getBoundingClientRect().height;
+            let newHeight = startHeight + delta;
+            
+            const minH = containerHeight * 0.15;
+            const maxH = containerHeight * 0.85;
+            newHeight = Math.max(minH, Math.min(maxH, newHeight));
+            
+            fileList.style.height = newHeight + 'px';
+            
+            if (e.preventDefault) e.preventDefault();
+        }
+
+        /* ═══ انتهاء السحب ═══ */
+        function onDragEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            resizer.classList.remove('dragging');
+            fileList.classList.remove('dragging');
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+            
+            const containerHeight = splitLayout.getBoundingClientRect().height;
+            const currentHeight = fileList.getBoundingClientRect().height;
+            const percent = Math.round((currentHeight / containerHeight) * 100);
+            localStorage.setItem('waha_split_percent', percent);
+        }
+
+        /* ═══ ربط الأحداث ═══ */
+        if (window.PointerEvent) {
+            resizer.addEventListener('pointerdown', onDragStart);
+            window.addEventListener('pointermove', onDragMove);
+            window.addEventListener('pointerup', onDragEnd);
+            window.addEventListener('pointercancel', onDragEnd);
+        } else {
+            resizer.addEventListener('mousedown', onDragStart);
+            window.addEventListener('mousemove', onDragMove);
+            window.addEventListener('mouseup', onDragEnd);
+            resizer.addEventListener('touchstart', onDragStart, { passive: false });
+            window.addEventListener('touchmove', onDragMove, { passive: false });
+            window.addEventListener('touchend', onDragEnd);
+        }
+
+        /* ═══ ضبط النسبة ═══ */
+        function setSplit(percent, save = true) {
+            percent = Math.max(15, Math.min(85, percent));
+            fileList.style.height = percent + '%';
+            if (save) localStorage.setItem('waha_split_percent', percent);
+        }
+
+        /* ═══ ملء الشاشة ═══ */
+        function expandPreview() {
+            previewArea.classList.toggle('fullscreen');
+            const btn = previewArea.querySelector('.preview-toolbar button');
+            if (btn) {
+                btn.textContent = previewArea.classList.contains('fullscreen') 
+                    ? '✕ إغلاق' 
+                    : '⛶ ملء الشاشة';
+            }
+        }
+
+        function openExternal() {
+            if (lastPreviewUrl) window.open(lastPreviewUrl, '_blank');
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           نظام المستكشف (GitHub API)
+           ═══════════════════════════════════════════════════════════════ */
         async function discoverFiles(path = '') {
             const container = document.getElementById('filesContainer');
             container.innerHTML = '<div class="loader">⏳ جارٍ التحميل...</div>';
             try {
                 const apiPath = path ? `/${path}` : '';
                 const response = await fetch(`${GITHUB_API}${apiPath}?ref=${BRANCH}`);
+                if(!response.ok) throw new Error('GitHub API Error');
                 const data = await response.json();
-
                 const folders = data.filter(i => i.type === 'dir').map(i => ({...i, type:'folder'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
                 const files = data.filter(i => i.type === 'file' && i.name !== EXCLUDED_FILE).map(i => ({...i, type:'file'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
-                
                 allItems = [...folders, ...files];
                 currentPath = path;
                 updatePath();
                 renderItems(allItems);
                 updateStats();
-
                 document.getElementById('fileCount').textContent = allItems.length;
                 document.getElementById('backBtn').classList.toggle('show', pathHistory.length > 0 || path);
                 document.getElementById('previewFrame').src = 'about:blank';
-
+                document.getElementById('previewTitle').textContent = '📺 المعاينة - Vercel';
             } catch (error) {
-                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل</div>`;
-                console.error(error);
+                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل - تأكد من اتصال GitHub API</div>`;
             }
         }
 
@@ -178,22 +349,20 @@
             document.getElementById('html').textContent = html;
         }
 
-        // ===== عرض الملفات والمجلدات =====
         function renderItems(items) {
             const container = document.getElementById('filesContainer');
             if(!items.length) {container.innerHTML = '<div class="empty-msg">📭 فاضي</div>'; return;}
             let html = '';
-            items.forEach((item, index) => {
-                const itemId = `item-${Date.now()}-${index}`;
+            items.forEach((item) => {
                 if(item.type === 'folder'){
-                    html += `<div class="file-item folder" id="${itemId}" data-path="${item.path}" data-name="${item.name}" data-type="folder" onclick="handleItemClick(event, '${item.path}', 'folder')">
+                    html += `<div class="file-item folder" data-path="${item.path}" data-name="${item.name}" data-type="folder" onclick="handleItemClick(event, '${item.path}', 'folder')">
                         <span class="name">📁 ${item.name}</span>
                         <span class="ext">مجلد</span>
                         <button class="more-btn" onclick="event.stopPropagation(); showContextMenu(event, '${item.path}', '${item.name}', 'folder')">⋯</button>
                     </div>`;
                 } else {
                     const ext = item.name.split('.').pop().toUpperCase();
-                    html += `<div class="file-item" id="${itemId}" data-path="${item.path}" data-name="${item.name}" data-type="file" onclick="handleItemClick(event, '${item.path}', 'file')">
+                    html += `<div class="file-item" data-path="${item.path}" data-name="${item.name}" data-type="file" onclick="handleItemClick(event, '${item.path}', 'file')">
                         <span class="name">📄 ${item.name}</span>
                         <span class="ext">${ext}</span>
                         <button class="more-btn" onclick="event.stopPropagation(); showContextMenu(event, '${item.path}', '${item.name}', 'file')">⋯</button>
@@ -203,155 +372,75 @@
             container.innerHTML = html;
         }
 
-        // ===== التعامل مع النقر على العنصر =====
         function handleItemClick(event, path, type) {
-            if (type === 'folder') {
-                enterFolder(path);
-            } else {
-                previewFile(path);
-            }
+            if (type === 'folder') enterFolder(path);
+            else previewFile(path);
         }
 
-        // ===== التنقل =====
         function enterFolder(path) {pathHistory.push(currentPath); discoverFiles(path);}
         function goBack() {discoverFiles(pathHistory.pop() || '');}
 
-        // ===== البحث =====
         function filterFiles() {
             const q = document.getElementById('searchInput').value.toLowerCase();
             renderItems(allItems.filter(i => i.name.toLowerCase().includes(q)));
         }
 
-        // ===== المعاينة من Vercel =====
         function previewFile(filepath) {
             const frame = document.getElementById('previewFrame');
             const fullUrl = VERCEl_BASE + filepath;
+            lastPreviewUrl = fullUrl;
             frame.src = fullUrl;
-
+            document.getElementById('previewTitle').textContent = '📺 ' + filepath;
             document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
-            const items = document.querySelectorAll('.file-item');
-            for (let item of items) {
-                if (item.dataset.path === filepath) {
-                    item.classList.add('active');
-                    break;
-                }
-            }
+            document.querySelectorAll('.file-item').forEach(item=>{
+                if(item.dataset.path === filepath) item.classList.add('active');
+            });
             localStorage.setItem('lastPreview', filepath);
+            /* على الجوال: وسّع المعاينة تلقائياً */
+            if (window.innerWidth < 700) {
+                setSplit(25);
+            }
         }
 
-        // ===== نسخ الرابط =====
         function copyLink(p){
-            navigator.clipboard.writeText(`${VERCEl_BASE}${p}`).then(()=>{
-                alert('✅ تم نسخ رابط Vercel');
-            }).catch(()=>{alert('❌ فشل النسخ')})
+            navigator.clipboard.writeText(`${VERCEl_BASE}${p}`).then(()=>alert('✅ تم نسخ رابط Vercel')).catch(()=>alert('❌ فشل النسخ'))
         }
 
-        // ===== القائمة المنسدلة =====
         function showContextMenu(event, path, name, type) {
-            event.preventDefault();
-            event.stopPropagation();
-            
+            event.preventDefault(); event.stopPropagation();
             const menu = document.getElementById('contextMenu');
             selectedItem = { path, name, type };
-            
-            // تحديد موقع القائمة
-            let x = event.clientX;
-            let y = event.clientY;
-            
-            // التأكد من عدم خروج القائمة عن الشاشة
-            const menuWidth = 200;
-            const menuHeight = 320;
+            let x = event.clientX; let y = event.clientY;
+            const menuWidth = 200; const menuHeight = 320;
             if (x + menuWidth > window.innerWidth) x = window.innerWidth - menuWidth - 10;
             if (y + menuHeight > window.innerHeight) y = window.innerHeight - menuHeight - 10;
-            
-            menu.style.left = x + 'px';
-            menu.style.top = y + 'px';
-            menu.classList.add('show');
+            menu.style.left = x + 'px'; menu.style.top = y + 'px'; menu.classList.add('show');
         }
 
-        function hideContextMenu() {
-            document.getElementById('contextMenu').classList.remove('show');
-        }
+        function hideContextMenu() {document.getElementById('contextMenu').classList.remove('show');}
 
-        // ===== إجراءات القائمة =====
         function menuAction(action) {
             if (!selectedItem) return;
             const { path, name, type } = selectedItem;
-            
             switch(action) {
-                case 'rename':
-                    const newName = prompt(`✏️ إعادة تسمية "${name}"`, name);
-                    if (newName && newName !== name) {
-                        alert(`🔧 سيتم إعادة تسمية ${name} → ${newName}\n(هذه ميزة تجريبية)`);
-                    }
-                    break;
-                case 'edit':
-                    if (type === 'file') {
-                        window.open(`${VERCEl_BASE}${path}`, '_blank');
-                    } else {
-                        alert('📁 لا يمكن تعديل مجلد');
-                    }
-                    break;
-                case 'copy':
-                    copyLink(path);
-                    break;
-                case 'delete':
-                    if (confirm(`🗑️ هل أنت متأكد من حذف "${name}"؟`)) {
-                        alert(`⚠️ حذف الملفات من API غير مدعوم حالياً.\n(يمكنك حذفه يدوياً من GitHub)`);
-                    }
-                    break;
-                case 'upload':
-                    alert('📤 سيتم فتح نافذة رفع الملفات\n(هذه ميزة تجريبية)');
-                    break;
-                case 'download':
-                    if (type === 'file') {
-                        window.open(`${VERCEl_BASE}${path}`, '_blank');
-                    } else {
-                        alert('📁 لا يمكن تحميل مجلد');
-                    }
-                    break;
-                case 'print':
-                    if (type === 'file') {
-                        window.open(`${VERCEl_BASE}${path}`, '_blank');
-                        setTimeout(() => window.print(), 1000);
-                    } else {
-                        alert('📁 لا يمكن طباعة مجلد');
-                    }
-                    break;
-                case 'info':
-                    const info = `📄 معلومات الملف:\n\n📛 الاسم: ${name}\n📂 المسار: ${path}\n📁 النوع: ${type === 'folder' ? 'مجلد' : 'ملف'}\n🔗 الرابط: ${VERCEl_BASE}${path}`;
-                    alert(info);
-                    break;
-                default: break;
+                case 'rename': const newName = prompt(`✏️ إعادة تسمية "${name}"`, name); if (newName && newName !== name) alert(`🔧 سيتم إعادة تسمية ${name} → ${newName}`); break;
+                case 'edit': if (type === 'file') window.open(`${VERCEl_BASE}${path}`, '_blank'); break;
+                case 'copy': copyLink(path); break;
+                case 'delete': if (confirm(`🗑️ حذف "${name}"؟`)) alert(`⚠️ احذفه يدوياً من GitHub`); break;
+                case 'download': if (type === 'file') window.open(`${VERCEl_BASE}${path}`, '_blank'); break;
+                case 'info': alert(`📄 ${name}\n📂 ${path}\n🔗 ${VERCEl_BASE}${path}`); break;
             }
             hideContextMenu();
         }
 
-        // ===== إغلاق القائمة عند النقر خارجها =====
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.context-menu') && !e.target.closest('.more-btn')) {
-                hideContextMenu();
-            }
-        });
+        document.addEventListener('click', (e) => {if (!e.target.closest('.context-menu') && !e.target.closest('.more-btn')) hideContextMenu();});
+        document.addEventListener('keydown', (e) => {if (e.key === 'Escape'){ hideContextMenu(); if(previewArea.classList.contains('fullscreen')) expandPreview(); }});
 
-        // ===== إغلاق القائمة عند الضغط على Escape =====
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') hideContextMenu();
-        });
-
-        // ===== تحميل الصفحة =====
         window.onload = () => discoverFiles();
     </script>
-    
-    
-    
-    <!-- في كل صفحة HTML -->
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<script src="/js/init-page-root.js"></script>
-<script src="/js/menu.js"></script>
-
-    
-    
+    <div id="header-placeholder"></div>
+    <div id="footer-placeholder"></div>
+    <script src="/js/init-page-root.js"></script>
+    <script src="/js/menu.js"></script>
 </body>
 </html>
