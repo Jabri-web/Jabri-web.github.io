@@ -1,0 +1,233 @@
+واحة الجبري
+_______________
+https://jabri-com
+vercel.app/
+_______المجلدات_____folder;
+/ .....root 98% of files
+ar/.....Arabic files
+en/.....English files
+js/....
+publish/..
+game/..
+image/.. all multimedia
+
+_______files_______
+# ───────────────────────────────
+# 1. الصفحات الرئيسية (Main Pages)
+# ───────────────────────────────
+1-index.html...(ar,en)
+2-logo.html
+3-catalog.html
+4-all-links.html
+5-table-all.html
+6-monitor.html
+
+# ───────────────────────────────
+# 2. صفحات Page 1-12 (بأحرف كبيرة P)
+# ───────────────────────────────
+/....root
+7-Page1.html
+8-Page2.html
+9-Page3.html
+10-Page4.html
+11-Page5.html
+12-Page6.html
+13-Page7.html
+14-Page8.html
+15-Page9.html
+16-Page10.html
+17-Page11.html
+18-Page12.html
+
+# ───────────────────────────────
+# 3. صفحات About (نبذة)
+# ───────────────────────────────
+/..root
+19-about.html...(ar,en)
+20-about-ar.html
+21-about-en.html
+22-about-waha.html
+
+# ────────────────────────────
+# 4. المؤلف والسيرة الذاتية (Author & CV)
+# ───────────────────────────
+/...root
+23-Author-cv.html
+24-author-history.html
+25-cv-2026a.html
+26-cv-2026e.html
+27-founder.html
+28-profile.html
+29-profile-en.html
+
+# ────────────────────────────
+# 5. النظرية الموحدة (Theory)
+# ─────────────────────────────
+/....root
+30-theory-ar.html
+31-theory-en.html
+32-Sindbad-theory.html
+33-Sindbad-Brdoni.html
+
+# ───────────────────────────────
+# 6. البحث العلمي (Research)
+# ────────────────────────────────
+/...root
+34-research.html
+35-research-deep.html
+36-Pages-Researches.html
+
+# ──────────────────────────────
+# 7. التراث اليمني (Yemeni Heritage)
+# ──────────────────────────────
+/....root
+37-Sanaa.html
+38-Shibam.html
+39-Soqatra.html
+40-Yemen-library.html
+41-gallery.html
+42-yemen-photo.html
+43-yemen-photo2.html
+44-yemen-photo-api.html
+45-yemen-photo-php.html
+
+# ───────────────────────────────
+# 8. المجلات (Journals)
+# ───────────────────────────────
+/...root:
+46-journal.html
+47-journal2.html
+48-journal3.html
+49-journal4.html
+50-History-pdf.html
+
+# ──────────────────────────────
+# 9. الأدوات (Tools)
+# ──────────────────────────────
+/...root:
+51-calculator.html
+52-handsa.html
+53-char-balance.html
+54-Check.html
+55-magic-translator.html
+56-diagnose.html
+
+# ────────────────────────────
+# 10. قواعد البيانات والشبكة (Databases & Network)
+# ────────────────────────────
+/...root:
+57-Dbase.html
+58-Dbase-deep.html
+59-microtik.html
+60-microtik-deep.html
+
+# ─────────────────────────────
+# 11. المكتبة والمحتوى (Library & Content)
+# ─────────────────────────────
+/..root:
+61-Office.html
+62-source.html
+63-citations.html
+64-music.html
+65-taraif.html
+66-Nezar.html
+67-wonder.html
+68-heaven-info.html
+69-visitor.html
+70-who-we.html
+71-project.html
+72-project-ar.html
+73-poster.html
+
+# ────────────────────────────
+# 12. التواصل والنظام (Contact & System)
+# ─────────────────────────────
+/..root:
+74-contact.html...(ar,en)
+75-FAQPage.html
+76-FAQPage-en.html
+77-privacy-policy.html
+78-404.html
+79-dashboard.html
+
+# ──────────────────────────────
+# 13. أدوات المطور (Developer Tools)
+# ───────────────────────────────
+/...root:
+80-file-structure.html
+81-file-structure2.html
+82-Router-all.html
+83-repos-auto.html
+84-repos-sqr.html
+85-current-auto.html
+
+# ──────────────────────────────
+# 14. المتنوع (Miscellaneous)
+# ──────────────────────────────
+/...root:
+86-kfupm-msg.html
+87-explore.html
+
+# ═══════════════════════════
+# المجلدات الفرعية (Subfolders)
+# ════════════════════════════
+# ─────────────────────────────
+# 15. مجلد /ar/ (النسخة العربية)
+# ─────────────────────────────
+88-ar/index.html
+89-ar/about.html
+90-ar/contact.html
+91-ar/journal.html
+
+# ──────────────────────────────
+# 16. مجلد /en/(النسخة الإنجليزية)
+# ───────────────────────────────
+92-en/index.html
+93-en/about.html
+94-en/contact.html
+95-en/journal.html
+
+# ──────────────────────────────
+# 17. مجلد /game/ (الألعاب)
+# ──────────────────────────────
+96-game/game-auto.html
+
+# ──────────────────────────────
+# 18. مجلد /publish/ (النشر)
+# ──────────────────────────────
+97-publish/publish.html
+_____________________
+Total=97
+
+
+🇾🇪🇾🇪🇾🇪🇾🇪
+♻️♻️♻️♻️
+_____NO indexing______________
+# ────────────────────────────
+# 19. الأجزاء -لاتفهرس
+# ───────────────────────────
+/..root;general files
+1-header.html
+2-footer.html
+3-hero.html
+4-offline.html
+
+# ─────────────────────────────
+# 20. مجلد /js/ (الجافاسكريبت)
+# ─────────────────────────────
+js/...general files;
+1-js/init-page-root.js
+2-js/menu.js
+
+# ═════════════════════════════
+# ملفات النظام (System Files — في الجذر)
+# ═════════════════════════════
+/..root:system general files:
+1-manifest.json
+2-robots.txt
+3-sitemap.xml
+4-sw.js
+5-vercel.json
+6-file-all.txt
+# ═════════════════════════════
+
