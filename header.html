@@ -1,6 +1,6 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.0)           -->
-<!-- التاريخ: 2026-09-16 | لا يحتوي على تكرارات                -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.1)           -->
+<!-- التاريخ: 2026-09-19 | إضافة hreflang و og:locale         -->
 <!-- ========================================================== -->
 
 <!-- ===== 1. وسوم السيو الأساسية ===== -->
@@ -15,6 +15,7 @@
 <meta id="dynamicDescription" name="description" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري">
 
 <!-- ===== 3. كروت المشاركة (Open Graph & Twitter) ===== -->
+<meta id="dynamicOgLocale" property="og:locale" content="ar_YE">
 <meta id="dynamicOgTitle" property="og:title" content="واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
 <meta id="dynamicOgDescription" property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
 <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
@@ -28,8 +29,13 @@
 <meta name="twitter:title" content="واحة الجبري - نظرية السندباد الموحدة">
 <meta name="twitter:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري">
 
-<!-- ===== 4. Canonical ===== -->
+<!-- ===== 4.a. Canonical ===== -->
 <link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/" />
+
+<!-- ===== 4.b. البدائل اللغوية (hreflang) ===== -->
+<link id="dynamicHreflangAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
+<link id="dynamicHreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
+<link id="dynamicHreflangDefault" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
 
 <!-- ===== 5. Manifest والأيقونات (موحّدة على /image/) ===== -->
 <link rel="manifest" href="/manifest.json">
@@ -92,6 +98,9 @@
 }
 </script>
 
+<!-- ========================================================== -->
+<!-- نهاية header.html v2.1                                     -->
+<!-- ========================================================== -->
 <!-- ===== 7. الأنماط (CSS) ===== -->
 <style>
     /* ---------- الأنماط العامة ---------- */

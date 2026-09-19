@@ -2,52 +2,111 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0f">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- ===== الروابط الأساسية ===== -->
     <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://jabri-com.vercel.app/ar/" />
+    <!-- ===== Canonical (الرابط الأساسي للصفحة الرئيسية) ===== -->
+    <link rel="canonical" href="https://jabri-com.vercel.app/" />
 
-    <!-- hreflang -->
+    <!-- ===== hreflang (البدائل اللغوية) ===== -->
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
     <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
 
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- ===== robots ===== -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
+    <!-- ===== SEO الأساسي ===== -->
     <title>واحة الجبري - البوابة الرئيسية | Heaven Al-Jabri</title>
-    <meta name="description" content="بوابة واحة الجبري - تراث اليمن العريق. استكشف نظرية السندباد الموحدة والدالة الأم Z(x)." />
-    <meta name="author" content="م/ عبدالله محمد ناصر الجبري" />
+    <meta name="description" content="بوابة واحة الجبري - تراث اليمن العريق | Heaven Al-Jabri - Yemen Heritage Portal" />
+    <meta name="keywords" content="واحة الجبري, Heaven Al-Jabri, تراث اليمن, صنعاء, شبام, سقطرى, عبدالله الجبري, Z(x), نظرية السندباد" />
+    <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri" />
+
+    <!-- ===== Open Graph ===== -->
+    <meta property="og:locale" content="ar_YE" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="واحة الجبري" />
-    <meta property="og:locale" content="ar_YE" />
-    <meta property="og:title" content="واحة الجبري - البوابة الرئيسية" />
-    <meta property="og:description" content="بوابة واحة الجبري - تراث اليمن العريق" />
+    <meta property="og:title" content="واحة الجبري - البوابة الرئيسية | Heaven Al-Jabri" />
+    <meta property="og:description" content="بوابة واحة الجبري - تراث اليمن العريق | Heaven Al-Jabri - Yemen Heritage Portal" />
     <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://jabri-com.vercel.app/" />
 
-    <!-- Schema.org -->
+    <!-- ===== Twitter Card ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="واحة الجبري - البوابة الرئيسية" />
+    <meta name="twitter:description" content="بوابة واحة الجبري - تراث اليمن العريق" />
+    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
+
+    <!-- ===== Schema.org (مكثف للصفحة الرئيسية) ===== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "واحة الجبري",
-      "alternateName": "Heaven Al-Jabri",
-      "url": "https://jabri-com.vercel.app/",
-      "inLanguage": "ar",
-      "publisher": {
-        "@type": "Person",
-        "name": "م/ عبدالله محمد ناصر الجبري"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://jabri-com.vercel.app/#jabri",
+          "name": "م/ عبدالله محمد ناصر الجبري",
+          "alternateName": ["Heaven Al-Jabri", "واحة الجبري", "Eng. Abdulla Al-Jabri", "سندباد اليمن"],
+          "url": "https://jabri-com.vercel.app/about.html",
+          "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "jobTitle": "باحث ومبرمج ومؤسس",
+          "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+          "sameAs": [
+            "https://orcid.org/0009-0003-3319-3822",
+            "https://github.com/Jabri-web",
+            "https://zenodo.org/records/20513840",
+            "https://www.facebook.com/share/p/1CvCG9xehw/",
+            "https://www.instagram.com/reel/Da5zRhypJlo/",
+            "https://t.me/Heaven_Jabri/"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://jabri-com.vercel.app/#organization",
+          "name": "واحة الجبري",
+          "alternateName": "Heaven Al-Jabri",
+          "url": "https://jabri-com.vercel.app/",
+          "logo": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+          "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+          "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+          "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+          "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jabri-com.vercel.app/#website",
+          "url": "https://jabri-com.vercel.app/",
+          "name": "واحة الجبري",
+          "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+          "inLanguage": ["ar", "en"],
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
     }
     </script>
 
+    <!-- ===== الخطوط والأيقونات ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+
     <style>
+    
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
         body { background: #0a0f0d; color: #f5efe6; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; min-height: 100vh; padding: 20px; line-height: 1.8; display: flex; flex-direction: column; }
@@ -65,17 +124,23 @@
         body.day .hero-mission { background: rgba(255, 255, 255, 0.5); color: #333; }
         body.day .brand-card { background: rgba(255, 255, 255, 0.85); border-color: rgba(201, 168, 76, 0.15); }
         body.day .brand-card .card-name { color: #1a1a1a; }
+        body.day .brand-card:hover { border-color: rgba(201, 168, 76, 0.5); }
         body.day .bottom-bar { background: rgba(245, 239, 230, 0.92); border-color: rgba(201, 168, 76, 0.2); }
         body.day .bottom-bar .btn-b { color: #444; }
         body.day .bottom-bar .btn-b.active { background: #c9a84c; color: #fff; }
-        body.day .video-timer, body.day .sound-btn { background: rgba(245, 239, 230, 0.85); color: #8a6d2b; }
+        body.day .video-timer { background: rgba(245, 239, 230, 0.85); color: #8a6d2b; }
+        body.day .sound-btn { background: rgba(245, 239, 230, 0.85); color: #8a6d2b; }
+        body.day .sound-btn:hover { background: #c9a84c; color: #fff; }
         body.day .hero-badge { background: rgba(201, 168, 76, 0.12); border-color: rgba(201, 168, 76, 0.25); }
-        body.day .settings-box, body.day .login-modal .modal-content { background: #f5efe6; color: #1a1a1a; }
+        body.day .settings-box { background: #f5efe6; color: #1a1a1a; }
+        body.day .login-modal .modal-content { background: #f5efe6; color: #1a1a1a; }
         body.day .login-modal .modal-content input { background: #fff; color: #1a1a1a; border-color: #ccc; }
+        body.day .login-modal .modal-content .close-modal { color: #333; }
 
         body.night { background: #0a0f0d; color: #f5efe6; }
         body.night .top-bar { background: rgba(10, 15, 13, 0.95); border-bottom: 2px solid rgba(201, 168, 76, 0.25); }
         body.night .top-bar .brand .name { color: #c9a84c; }
+        body.night .top-bar .brand .name small { color: #b8a07c; }
         body.night .top-actions a, body.night .top-actions button { color: #eee; }
         body.night .hero-section { background: rgba(0, 0, 0, 0.2); }
         body.night .hero-title { color: #f5efe6; }
@@ -85,13 +150,30 @@
         body.night .hero-mission { background: rgba(0, 0, 0, 0.3); color: #ddd; }
         body.night .brand-card { background: rgba(10, 15, 13, 0.8); border-color: rgba(201, 168, 76, 0.1); }
         body.night .brand-card .card-name { color: #f5efe6; }
+        body.night .brand-card:hover { border-color: rgba(201, 168, 76, 0.3); }
         body.night .bottom-bar { background: rgba(10, 15, 13, 0.92); border-color: rgba(201, 168, 76, 0.12); }
         body.night .bottom-bar .btn-b { color: #ccc; }
         body.night .bottom-bar .btn-b.active { background: #c9a84c; color: #0a0f0d; }
-        body.night .video-timer, body.night .sound-btn { background: rgba(0, 0, 0, 0.7); color: #c9a84c; }
+        body.night .video-timer { background: rgba(0, 0, 0, 0.7); color: #c9a84c; }
+        body.night .sound-btn { background: rgba(0, 0, 0, 0.7); color: #c9a84c; }
+        body.night .sound-btn:hover { background: #c9a84c; color: #0a0f0d; }
         body.night .hero-badge { background: rgba(201, 168, 76, 0.08); border-color: rgba(201, 168, 76, 0.15); }
-        body.night .settings-box, body.night .login-modal .modal-content { background: #1a1a1a; color: #f5efe6; }
+        body.night .settings-box { background: #1a1a1a; color: #f5efe6; }
+        body.night .login-modal .modal-content { background: #1a1a1a; color: #f5efe6; }
         body.night .login-modal .modal-content input { background: #0a0f0d; color: #f5efe6; border-color: #333; }
+        body.night .login-modal .modal-content .close-modal { color: #f5efe6; }
+
+        body.device-phone { min-width: unset; overflow-x: hidden; }
+        body.device-phone .main-content { min-width: unset; }
+        body.device-phone .brand-grid { grid-template-columns: 1fr 1fr; }
+        body.device-phone .bottom-bar { min-width: unset; width: 96%; }
+        body.device-phone .hero-title { font-size: 36px; }
+        body.device-phone .hero-sub { font-size: 15px; }
+        body.device-phone .hero-formula { font-size: 20px; padding: 6px 14px; }
+        body.device-phone .hero-formula .v { font-size: 24px; }
+        body.device-phone .hero-formula .r { font-size: 30px; }
+        body.device-phone .login-modal .modal-content { width: 95%; padding: 25px; }
+        body.device-phone .top-actions a, body.device-phone .top-actions button { font-size: 10px; padding: 4px 8px; }
 
         .bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.3; }
 
@@ -133,6 +215,7 @@
         @keyframes glow { 0%, 100% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.2); transform: scale(1); } 50% { text-shadow: 0 0 60px rgba(201, 168, 76, 0.5); transform: scale(1.05); } }
         .hero-mission { font-size: 15px; padding: 8px 16px; border-radius: 30px; }
         .hero-mission i { color: #c9a84c; margin: 0 5px; }
+        .hero-mission .emoji { display: inline-block; margin: 0 4px; }
 
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1024px; margin: 10px auto 20px; padding: 0 15px; width: 100%; }
         .brand-card { backdrop-filter: blur(8px); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 16px; padding: 18px 15px; text-align: center; transition: 0.4s; cursor: pointer; }
@@ -141,12 +224,18 @@
         .brand-card .card-name { font-size: 16px; font-weight: 700; }
         .brand-card .card-sub { font-size: 11px; color: #b8a07c; letter-spacing: 2px; }
         .brand-card .card-formula { font-size: 14px; color: #c9a84c; font-family: 'Times New Roman', serif; margin-top: 4px; opacity: 0.6; }
+        .brand-card:nth-child(2) .card-icon { color: #2d8f5c; }
+        .brand-card:nth-child(3) .card-icon { color: #e8c96e; }
+        .brand-card:nth-child(4) .card-icon { color: #ffd700; }
 
         .bottom-bar { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(12px); padding: 6px 16px; border-radius: 50px; border: 1px solid rgba(201, 168, 76, 0.12); flex-wrap: wrap; justify-content: center; min-width: 500px; max-width: 95%; }
         .bottom-bar .btn-b { padding: 5px 14px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.06); background: rgba(255, 255, 255, 0.03); font-size: 11px; cursor: pointer; transition: 0.3s; text-decoration: none; display: flex; align-items: center; gap: 5px; }
-        .bottom-bar .btn-b:hover, .bottom-bar .btn-b.active { background: #c9a84c; color: #0a0f0d !important; border-color: #c9a84c; }
+        .bottom-bar .btn-b:hover { background: #c9a84c; color: #0a0f0d !important; border-color: #c9a84c; }
+        .bottom-bar .btn-b.active { background: #c9a84c; color: #0a0f0d !important; border-color: #c9a84c; }
+        .bottom-bar .btn-b i { font-size: 12px; }
 
         .sound-btn { position: fixed; bottom: 75px; right: 20px; z-index: 50; border: 1px solid rgba(201, 168, 76, 0.2); padding: 7px 12px; border-radius: 50px; cursor: pointer; transition: 0.3s; backdrop-filter: blur(8px); font-size: 12px; display: flex; align-items: center; gap: 5px; background: rgba(0,0,0,0.7); color: #c9a84c; font-family: inherit; }
+        .sound-btn:hover { background: #c9a84c; color: #0a0f0d !important; }
         .video-timer { position: fixed; bottom: 75px; left: 20px; z-index: 50; border: 1px solid rgba(201, 168, 76, 0.15); padding: 5px 12px; border-radius: 50px; backdrop-filter: blur(8px); font-size: 11px; display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.7); color: #c9a84c; }
         .video-timer .progress { width: 70px; height: 3px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
         .video-timer .progress .fill { height: 100%; width: 0%; background: #c9a84c; border-radius: 10px; transition: width 0.3s; }
@@ -159,30 +248,45 @@
         .settings-box h3 { font-size: 14px; color: #b8a07c; margin: 15px 0 8px; }
         .settings-box .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .settings-box .btn-setting { padding: 10px 20px; border: 2px solid rgba(201, 168, 76, 0.3); border-radius: 12px; background: transparent; color: #c9a84c; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
+        .settings-box .btn-setting:hover { background: rgba(201, 168, 76, 0.1); }
         .settings-box .btn-setting.active { background: #c9a84c; color: #0a0f0d; border-color: #c9a84c; }
-        .settings-box .btn-close { margin-top: 20px; padding: 10px 30px; background: #c9a84c; border: none; border-radius: 30px; color: #0a0f0d; font-weight: bold; cursor: pointer; font-size: 14px; font-family: inherit; }
+        .settings-box .btn-close { margin-top: 20px; padding: 10px 30px; background: #c9a84c; border: none; border-radius: 30px; color: #0a0f0d; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
+        .settings-box .btn-close:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(201, 168, 76, 0.3); }
 
         .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; }
         .login-modal.active { display: flex; }
         .login-modal .modal-content { background: #1a1a1a; border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 420px; width: 90%; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9); animation: slideUp 0.4s ease; position: relative; color: #f5efe6; }
         .login-modal .modal-content .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #f5efe6; transition: 0.3s; background: none; border: none; }
+        .login-modal .modal-content .close-modal:hover { color: #ff6b6b; transform: rotate(90deg); }
         .login-modal .modal-content h2 { color: #c9a84c; font-size: 24px; margin-bottom: 20px; text-align: center; }
-        .login-modal .modal-content .login-option { display: flex; width: 100%; padding: 14px 20px; margin: 10px 0; border-radius: 12px; border: 2px solid rgba(201, 168, 76, 0.2); background: transparent; color: #f5efe6; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; font-family: inherit; align-items: center; justify-content: center; gap: 12px; }
+        .login-modal .modal-content .login-option { display: flex; width: 100%; padding: 14px 20px; margin: 10px 0; border-radius: 12px; border: 2px solid rgba(201, 168, 76, 0.2); background: transparent; color: #f5efe6; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; text-align: center; font-family: inherit; align-items: center; justify-content: center; gap: 12px; }
+        .login-modal .modal-content .login-option:hover { transform: scale(1.02); }
         .login-modal .modal-content .login-option.google { border-color: #ea4335; color: #ea4335; }
+        .login-modal .modal-content .login-option.google:hover { background: #ea4335; color: #fff; }
         .login-modal .modal-content .login-option.local { border-color: #6ae3ff; color: #6ae3ff; }
+        .login-modal .modal-content .login-option.local:hover { background: #6ae3ff; color: #0a0f0d; }
+        .login-modal .modal-content .login-option i { font-size: 20px; }
+        .login-modal .modal-content .divider { display: flex; align-items: center; gap: 10px; margin: 15px 0; color: #666; }
+        .login-modal .modal-content .divider::before, .login-modal .modal-content .divider::after { content: ''; flex: 1; height: 1px; background: #333; }
         .login-modal .modal-content .local-login-form { display: none; margin-top: 15px; }
         .login-modal .modal-content .local-login-form.active { display: block; }
-        .login-modal .modal-content .local-login-form input { width: 100%; padding: 12px 16px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0f0d; color: #f5efe6; font-size: 14px; font-family: inherit; outline: none; }
-        .login-modal .modal-content .local-login-form .submit-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #c9a84c; color: #0a0f0d; font-weight: bold; font-size: 16px; cursor: pointer; font-family: inherit; }
+        .login-modal .modal-content .local-login-form input { width: 100%; padding: 12px 16px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0f0d; color: #f5efe6; font-size: 14px; font-family: inherit; outline: none; transition: 0.3s; }
+        .login-modal .modal-content .local-login-form input:focus { border-color: #c9a84c; }
+        .login-modal .modal-content .local-login-form .submit-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #c9a84c; color: #0a0f0d; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
+        .login-modal .modal-content .local-login-form .submit-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(201, 168, 76, 0.3); }
+        .login-modal .modal-content .user-status { text-align: center; padding: 15px; border-radius: 8px; margin: 10px 0; background: rgba(106, 227, 255, 0.1); border: 1px solid rgba(106, 227, 255, 0.2); color: #6ae3ff; }
+        .login-modal .modal-content .user-status .user-role { font-size: 12px; color: #94a3b8; }
+        .login-modal .modal-content .logout-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #ff6b6b; color: #fff; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
+        .login-modal .modal-content .logout-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 107, 107, 0.3); }
 
-        @media (max-width: 820px) { .brand-grid { grid-template-columns: 1fr 1fr; } .bottom-bar { min-width: unset; width: 96%; } .login-modal .modal-content { padding: 25px; } }
-        @media (max-width: 480px) { .hero-title { font-size: 30px; } .hero-sub { font-size: 13px; } .hero-formula { font-size: 16px; } .brand-grid { grid-template-columns: 1fr 1fr; gap: 8px; } .brand-card .card-name { font-size: 12px; } .top-actions a, .top-actions button { font-size: 9px; padding: 3px 6px; } }
+        @media (max-width: 820px) { body .main-content { min-width: unset; } body .brand-grid { grid-template-columns: 1fr 1fr; } body .bottom-bar { min-width: unset; width: 96%; } .login-modal .modal-content { padding: 25px; } }
+        @media (max-width: 480px) { .hero-title { font-size: 30px; } .hero-sub { font-size: 13px; letter-spacing: 2px; } .hero-formula { font-size: 16px; padding: 5px 10px; } .hero-formula .v { font-size: 20px; } .hero-formula .r { font-size: 24px; } .brand-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 10px; } .brand-card { padding: 12px 8px; } .brand-card .card-name { font-size: 12px; } .settings-box { padding: 25px 20px; } .login-modal .modal-content { padding: 20px; } .login-modal .modal-content .login-option { font-size: 14px; padding: 12px; } .top-actions a, .top-actions button { font-size: 9px; padding: 3px 6px; } }
     </style>
 </head>
 <body class="night device-desktop">
 
     <video class="bg-video" id="bgVideo" autoplay muted playsinline loop poster="/oasis-poster.jpg">
-        <source src="/image/heaven3.mp4" type="video/mp4" />
+        <source src="/image/heaven3.mp4" type="video/mp4" id="videoSource" />
     </video>
 
     <audio id="bgMusic" loop preload="auto">
@@ -192,92 +296,188 @@
 
     <header class="top-bar">
         <div class="brand">
-            <img src="/icon-192.png" alt="واحة الجبري" style="width:42px;height:42px;border-radius:50%;">
+            <img src="/icon-192.png" alt="واحة الجبري" class="brand-logo" style="width:42px;height:42px;border-radius:50%;">
             <div class="name">
                 واحة الجبري
                 <small>✦ تراث اليمن العريق ✦</small>
             </div>
         </div>
         <div class="top-actions">
-            <button class="btn-login" id="loginBtn" type="button"><i class="fas fa-user-circle"></i> دخول</button>
-            <button class="btn-exit" id="exitBtn" type="button"><i class="fas fa-power-off"></i> خروج</button>
-            <a class="btn-lang" href="/en/" title="English"><i class="fas fa-globe"></i> EN</a>
-            <button class="btn-settings" onclick="openSettings()" type="button"><i class="fas fa-cog"></i> إعدادات</button>
+            <button class="btn-login" id="loginBtn" type="button">
+                <i class="fas fa-user-circle"></i> 
+                <span class="ar">دخول</span>
+                <span class="en">Login</span>
+            </button>
+            <button class="btn-exit" id="exitBtn" type="button">
+                <i class="fas fa-power-off"></i> 
+                <span class="ar">خروج</span>
+                <span class="en">Exit</span>
+            </button>
+            <button class="btn-lang" id="langToggle" type="button">
+                <i class="fas fa-globe"></i> 
+                <span id="langLabel">عربي</span>
+            </button>
+            <button class="btn-settings" id="settingsToggle" onclick="openSettings()" type="button">
+                <i class="fas fa-cog"></i> 
+                <span id="settingsLabel">إعدادات</span>
+            </button>
         </div>
     </header>
 
     <div class="login-modal" id="loginModal">
         <div class="modal-content">
             <button class="close-modal" id="closeLoginModal" type="button">&times;</button>
-            <h2>🔐 تسجيل الدخول</h2>
-            <div id="userStatus" style="display:none;text-align:center;padding:15px;border-radius:8px;margin:10px 0;background:rgba(106,227,255,0.1);border:1px solid rgba(106,227,255,0.2);color:#6ae3ff;">
-                <div><i class="fas fa-check-circle"></i> <span id="userNameText">مستخدم</span></div>
-                <div style="font-size:12px;color:#94a3b8;">صلاحية: <span id="userRoleText">زائر</span></div>
+            
+            <h2 id="loginTitle">🔐 <span class="ar">تسجيل الدخول</span><span class="en">Login</span></h2>
+            
+            <div id="userStatus" style="display:none;" class="user-status">
+                <div id="userNameDisplay"><i class="fas fa-check-circle"></i> <span id="userNameText">مستخدم</span></div>
+                <div class="user-role" id="userRoleDisplay">صلاحية: <span id="userRoleText">زائر</span></div>
             </div>
+
             <div id="loginOptions">
-                <button class="login-option google" id="googleLoginBtn" type="button"><i class="fab fa-google"></i> تسجيل الدخول بحساب Google</button>
-                <button class="login-option local" id="localLoginToggle" type="button"><i class="fas fa-users"></i> نظام المستخدمين</button>
+                <button class="login-option google" id="googleLoginBtn" type="button">
+                    <i class="fab fa-google"></i> 
+                    <span class="ar">تسجيل الدخول بحساب Google</span>
+                    <span class="en">Sign in with Google</span>
+                </button>
+
+                <div class="divider"><span class="ar">أو</span><span class="en">OR</span></div>
+
+                <button class="login-option local" id="localLoginToggle" type="button">
+                    <i class="fas fa-users"></i> 
+                    <span class="ar">نظام المستخدمين والصلاحيات</span>
+                    <span class="en">Local Users & Permissions</span>
+                </button>
+
                 <div class="local-login-form" id="localLoginForm">
-                    <input type="text" id="localUsername" placeholder="اسم المستخدم" dir="ltr">
-                    <input type="password" id="localPassword" placeholder="كلمة المرور" dir="ltr">
-                    <button class="submit-btn" id="localLoginBtn" type="button"><i class="fas fa-sign-in-alt"></i> دخول</button>
+                    <input type="text" id="localUsername" placeholder="اسم المستخدم / Username" dir="ltr">
+                    <input type="password" id="localPassword" placeholder="كلمة المرور / Password" dir="ltr">
+                    <button class="submit-btn" id="localLoginBtn" type="button">
+                        <i class="fas fa-sign-in-alt"></i> 
+                        <span class="ar">دخول</span>
+                        <span class="en">Login</span>
+                    </button>
+                    <div style="text-align:center;margin-top:8px;font-size:12px;color:#666;">
+                        <span class="ar">مستخدم افتراضي: admin / 12345</span>
+                        <span class="en">Default: admin / 12345</span>
+                    </div>
                 </div>
             </div>
-            <button class="submit-btn" id="logoutBtn" style="display:none;background:#ff6b6b;color:#fff;width:100%;padding:12px;margin-top:10px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;font-family:inherit;" type="button"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+
+            <button class="logout-btn" id="logoutBtn" style="display:none;" type="button">
+                <i class="fas fa-sign-out-alt"></i> 
+                <span class="ar">تسجيل الخروج</span>
+                <span class="en">Logout</span>
+            </button>
         </div>
     </div>
 
     <div class="main-content">
         <section class="hero-section">
-            <div class="hero-badge"><i class="fas fa-scroll"></i><span>واحة الجبري</span><i class="fas fa-scroll"></i></div>
-            <h1 class="hero-title">واحة <span>الجبري</span></h1>
+            <div class="hero-badge">
+                <i class="fas fa-scroll"></i>
+                <span>واحة الجبري</span>
+                <i class="fas fa-scroll"></i>
+            </div>
+
+            <h1 class="hero-title">
+                واحة <span>الجبري</span>
+            </h1>
             <p class="hero-sub">تراث اليمن العريق</p>
+
             <div class="hero-philosophy">
                 <p><i class="fas fa-seedling"></i> من أصفار ريمان إلى بنية الكون</p>
                 <p><i class="fas fa-gem"></i> نظرية السندباد الموحدة</p>
             </div>
+
             <div class="hero-formula">
-                <span class="b">[</span><span class="v">Z</span><span class="p">+</span><span class="v">C</span><span class="p">+</span><span class="v">A</span><span class="b">]</span><span class="e">=</span><span class="r">1</span>
+                <span class="b">[</span>
+                <span class="v">Z</span>
+                <span class="p">+</span>
+                <span class="v">C</span>
+                <span class="p">+</span>
+                <span class="v">A</span>
+                <span class="b">]</span>
+                <span class="e">=</span>
+                <span class="r">1</span>
             </div>
+
             <div class="hero-mission">
-                <i class="fas fa-quote-right"></i> نستكشف الماضي لنفهم الحاضر.. ونبني المستقبل <i class="fas fa-quote-left"></i>
+                <i class="fas fa-quote-right"></i>
+                نستكشف الماضي لنفهم الحاضر.. ونبني المستقبل
+                <i class="fas fa-quote-left"></i>
+                <span class="emoji">😊😊</span>
             </div>
         </section>
 
         <div class="brand-grid">
-            <div class="brand-card" data-page="/Page11.html"><div class="card-icon"><i class="fas fa-crown"></i></div><div class="card-name">واحة الجبري</div><div class="card-sub">تراث اليمن العريق</div><div class="card-formula">[Z + C + A] = 1</div></div>
-            <div class="brand-card" data-page="/about-waha.html"><div class="card-icon"><i class="fas fa-tree"></i></div><div class="card-name">About Waha</div><div class="card-sub">نبذة عن الواحة</div><div class="card-formula">[Z + C + A] = 1</div></div>
-            <div class="brand-card" data-page="/journal4.html"><div class="card-icon"><i class="fas fa-landmark"></i></div><div class="card-name">شجرة التوحيد</div><div class="card-sub">تراث اليمن العربي</div><div class="card-formula">[Z + C + A] = 1</div></div>
-            <div class="brand-card" data-page="/catalog.html"><div class="card-icon"><i class="fas fa-unity"></i></div><div class="card-name">الكاتلوج</div><div class="card-sub">الفهرس الشامل</div><div class="card-formula">[Z + C + A] = 1</div></div>
+            <div class="brand-card" data-page="/Page11.html">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <div class="card-name">واحة الجبري</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="/about-waha.html">
+                <div class="card-icon"><i class="fas fa-tree"></i></div>
+                <div class="card-name">About Waha</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="/journal4.html">
+                <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                <div class="card-name">شجرة التوحيد</div>
+                <div class="card-sub">تراث اليمن العربي</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+            <div class="brand-card" data-page="/catalog.html">
+                <div class="card-icon"><i class="fas fa-unity"></i></div>
+                <div class="card-name">الكاتلوج</div>
+                <div class="card-sub">تراث اليمن العربي</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
         </div>
     </div>
 
     <div class="bottom-bar">
-        <a class="btn-b" href="/Page11.html"><i class="fas fa-comment-dots"></i> محادثة</a>
-        <a class="btn-b" href="/en/"><i class="fas fa-language"></i> English</a>
-        <a class="btn-b" href="/Page12.html"><i class="fas fa-users"></i> زوار</a>
-        <a class="btn-b" href="/Page11.html"><i class="fas fa-music"></i> موسيقى</a>
-        <a class="btn-b" href="/Page12.html"><i class="fas fa-info-circle"></i> الباحث</a>
-        <a class="btn-b active" href="/Page11.html"><i class="fas fa-play"></i> استمع الآن</a>
+        <a class="btn-b" data-action="chat" data-page="/Page11.html"><i class="fas fa-comment-dots"></i> <span class="ar">محادثة</span><span class="en">Chat</span></a>
+        <a class="btn-b" data-action="lang" data-page="/Page11.html"><i class="fas fa-language"></i> <span class="ar">عربي</span><span class="en">English</span></a>
+        <a class="btn-b" data-action="visitors" data-page="/Page12.html"><i class="fas fa-users"></i> <span class="ar">زوار</span><span class="en">Visitors</span> <span id="visitorsCount">1,247</span></a>
+        <a class="btn-b" data-action="music" data-page="/Page11.html"><i class="fas fa-music"></i> <span class="ar">موسيقى</span><span class="en">Music</span></a>
+        <a class="btn-b" data-action="institute" data-page="/Page12.html"><i class="fas fa-info-circle"></i> <span class="ar">الباحث</span><span class="en">Institute</span></a>
+        <a class="btn-b active" data-action="listen" data-page="/Page11.html"><i class="fas fa-play"></i> <span class="ar">استمع الآن</span><span class="en">Listen Now</span></a>
     </div>
 
-    <button class="sound-btn" id="soundBtn" type="button"><i class="fas fa-volume-mute"></i> تشغيل الصوت</button>
-    <div class="video-timer"><span id="timeDisplay">00:00 / 00:45</span><div class="progress"><div class="fill" id="progressFill"></div></div></div>
+    <button class="sound-btn" id="soundBtn" type="button">
+        <i class="fas fa-volume-mute"></i> <span id="soundText"><span class="ar">تشغيل الصوت</span><span class="en">Unmute</span></span>
+    </button>
+
+    <div class="video-timer">
+        <span id="timeDisplay">00:00 / 00:45</span>
+        <div class="progress">
+            <div class="fill" id="progressFill"></div>
+        </div>
+    </div>
 
     <div class="settings-overlay" id="settingsOverlay">
         <div class="settings-box">
-            <h2>⚙️ إعدادات العرض</h2>
-            <h3>📱 نوع الجهاز</h3>
+            <h2>⚙️ <span class="ar">إعدادات العرض</span><span class="en">Display Settings</span></h2>
+
+            <h3>📱 <span class="ar">نوع الجهاز</span><span class="en">Device</span></h3>
             <div class="btn-group">
                 <button class="btn-setting active" id="desktopBtn" onclick="setDevice('desktop')" type="button">🖥️ Desktop</button>
                 <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')" type="button">📱 Phone</button>
             </div>
-            <h3>🌓 وضع الشاشة</h3>
+
+            <h3>🌓 <span class="ar">وضع الشاشة</span><span class="en">Mode</span></h3>
             <div class="btn-group">
-                <button class="btn-setting" id="dayBtn" onclick="setMode('day')" type="button">☀️ نهاري</button>
-                <button class="btn-setting active" id="nightBtn" onclick="setMode('night')" type="button">🌙 ليلي</button>
+                <button class="btn-setting" id="dayBtn" onclick="setMode('day')" type="button">☀️ <span class="ar">نهاري</span><span class="en">Day</span></button>
+                <button class="btn-setting active" id="nightBtn" onclick="setMode('night')" type="button">🌙 <span class="ar">ليلي</span><span class="en">Night</span></button>
             </div>
-            <button class="btn-close" onclick="closeSettings()" type="button">✕ إغلاق</button>
+
+            <h3 id="currentStatus" style="color: #c9a84c; margin-top: 15px;">Desktop 🖥️ · 🌙 <span class="ar">ليلي</span><span class="en">Night</span></h3>
+
+            <button class="btn-close" onclick="closeSettings()" type="button">✕ <span class="ar">إغلاق</span><span class="en">Close</span></button>
         </div>
     </div>
 
@@ -288,46 +488,111 @@
             document.removeEventListener('click', firstInteraction);
         }, { once: true });
 
-        const USERS = { 'admin': { password: '12345', role: 'admin', name: 'المدير' }, 'user': { password: 'user123', role: 'user', name: 'مستخدم' } };
+        document.addEventListener('touchstart', function firstTouch() {
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic) { bgMusic.volume = 0.3; bgMusic.play().catch(function() {}); }
+            document.removeEventListener('touchstart', firstTouch);
+        }, { once: true });
+
+        const USERS = {
+            'admin': { password: '12345', role: 'admin', name: 'المدير' },
+            'moderator': { password: 'mod123', role: 'moderator', name: 'مشرف' },
+            'user': { password: 'user123', role: 'user', name: 'مستخدم' },
+            'guest': { password: 'guest', role: 'guest', name: 'زائر' }
+        };
+
         let currentUser = null;
+        const loginBtn = document.getElementById('loginBtn');
         const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const localLoginToggle = document.getElementById('localLoginToggle');
         const localLoginForm = document.getElementById('localLoginForm');
-        const loginOptions = document.getElementById('loginOptions');
-        const userStatus = document.getElementById('userStatus');
+        const localLoginBtn = document.getElementById('localLoginBtn');
+        const localUsername = document.getElementById('localUsername');
+        const localPassword = document.getElementById('localPassword');
         const logoutBtn = document.getElementById('logoutBtn');
+        const userStatus = document.getElementById('userStatus');
+        const userNameText = document.getElementById('userNameText');
+        const userRoleText = document.getElementById('userRoleText');
+        const loginOptions = document.getElementById('loginOptions');
+        const loginTitle = document.getElementById('loginTitle');
 
         function openLoginModal() { loginModal.classList.add('active'); updateLoginUI(); }
         function closeLoginModalFn() { loginModal.classList.remove('active'); localLoginForm.classList.remove('active'); }
+
+        loginBtn.addEventListener('click', openLoginModal);
+        closeLoginModal.addEventListener('click', closeLoginModalFn);
+        loginModal.addEventListener('click', function(e) { if (e.target === this) closeLoginModalFn(); });
+
         function updateLoginUI() {
             if (currentUser) {
-                userStatus.style.display = 'block'; loginOptions.style.display = 'none'; logoutBtn.style.display = 'block';
-                document.getElementById('userNameText').textContent = currentUser.name;
-                document.getElementById('userRoleText').textContent = currentUser.role;
+                userStatus.style.display = 'block';
+                loginOptions.style.display = 'none';
+                logoutBtn.style.display = 'block';
+                userNameText.textContent = currentUser.name;
+                userRoleText.textContent = currentUser.role;
+                loginTitle.innerHTML = '👤 <span class="ar">مرحباً</span><span class="en">Welcome</span> ' + currentUser.name;
             } else {
-                userStatus.style.display = 'none'; loginOptions.style.display = 'block'; logoutBtn.style.display = 'none';
+                userStatus.style.display = 'none';
+                loginOptions.style.display = 'block';
+                logoutBtn.style.display = 'none';
+                loginTitle.innerHTML = '🔐 <span class="ar">تسجيل الدخول</span><span class="en">Login</span>';
+                localLoginForm.classList.remove('active');
             }
         }
 
-        document.getElementById('loginBtn').addEventListener('click', openLoginModal);
-        document.getElementById('closeLoginModal').addEventListener('click', closeLoginModalFn);
-        loginModal.addEventListener('click', function(e) { if (e.target === this) closeLoginModalFn(); });
-        document.getElementById('googleLoginBtn').addEventListener('click', function() {
-            currentUser = { name: 'مستخدم Google', role: 'google' }; updateLoginUI(); setTimeout(closeLoginModalFn, 1500);
+        googleLoginBtn.addEventListener('click', function() {
+            currentUser = { name: 'مستخدم Google', role: 'google', email: 'user@gmail.com' };
+            updateLoginUI();
+            setTimeout(closeLoginModalFn, 1500);
         });
-        document.getElementById('localLoginToggle').addEventListener('click', function() { localLoginForm.classList.toggle('active'); });
-        document.getElementById('localLoginBtn').addEventListener('click', function() {
-            const u = document.getElementById('localUsername').value.trim();
-            const p = document.getElementById('localPassword').value.trim();
-            if (USERS[u] && USERS[u].password === p) {
-                currentUser = { name: USERS[u].name, role: USERS[u].role }; updateLoginUI(); setTimeout(closeLoginModalFn, 1000);
-            } else { alert('❌ بيانات غير صحيحة'); }
+
+        localLoginToggle.addEventListener('click', function() { localLoginForm.classList.toggle('active'); });
+
+        localLoginBtn.addEventListener('click', function() {
+            const username = localUsername.value.trim();
+            const password = localPassword.value.trim();
+            if (!username || !password) { alert('⚠️ الرجاء إدخال اسم المستخدم وكلمة المرور'); return; }
+            const user = USERS[username];
+            if (user && user.password === password) {
+                currentUser = { name: user.name, role: user.role, username: username };
+                updateLoginUI();
+                localUsername.value = '';
+                localPassword.value = '';
+                localLoginForm.classList.remove('active');
+                setTimeout(closeLoginModalFn, 1000);
+            } else { alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة'); }
         });
-        logoutBtn.addEventListener('click', function() { currentUser = null; updateLoginUI(); setTimeout(closeLoginModalFn, 500); });
+
+        localUsername.addEventListener('keydown', function(e) { if (e.key === 'Enter') localPassword.focus(); });
+        localPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') localLoginBtn.click(); });
+
+        logoutBtn.addEventListener('click', function() {
+            currentUser = null;
+            updateLoginUI();
+            setTimeout(closeLoginModalFn, 500);
+        });
+
+        document.querySelectorAll('.btn-b').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.dataset.page || '/Page11.html';
+                window.location.href = page;
+            });
+        });
 
         document.querySelectorAll('.brand-card').forEach(card => {
-            card.addEventListener('click', function() { window.location.href = this.dataset.page || '/Page11.html'; });
+            card.addEventListener('click', function() {
+                const page = this.dataset.page || '/Page11.html';
+                window.location.href = page;
+            });
         });
-        document.getElementById('exitBtn').addEventListener('click', function() { window.location.href = 'https://www.google.com'; });
+
+        document.getElementById('exitBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'https://www.google.com';
+        });
 
         function openSettings() { document.getElementById('settingsOverlay').classList.add('active'); }
         function closeSettings() { document.getElementById('settingsOverlay').classList.remove('active'); }
@@ -335,62 +600,134 @@
         window.openSettings = openSettings;
         window.closeSettings = closeSettings;
 
-        let currentDevice = 'desktop', currentMode = 'night';
+        let currentDevice = 'desktop';
+        let currentMode = 'night';
+
         function setDevice(device) {
             currentDevice = device;
             document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
             document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
             document.body.classList.remove('device-desktop', 'device-phone');
             document.body.classList.add('device-' + device);
+            updateStatus();
         }
+
         function setMode(mode) {
             currentMode = mode;
             document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
             document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
             document.body.classList.remove('day', 'night');
             document.body.classList.add(mode);
+            updateStatus();
         }
+
+        function updateStatus() {
+            const deviceText = currentDevice === 'desktop' ? 'Desktop 🖥️' : 'Phone 📱';
+            const modeText = currentMode === 'day' ? '☀️ Day' : '🌙 Night';
+            document.getElementById('currentStatus').textContent = deviceText + ' · ' + modeText;
+        }
+
         window.setDevice = setDevice;
         window.setMode = setMode;
 
         const video = document.getElementById('bgVideo');
         const progressFill = document.getElementById('progressFill');
         const timeDisplay = document.getElementById('timeDisplay');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }
+
         video.addEventListener('timeupdate', function() {
-            const current = video.currentTime, duration = video.duration || 45;
-            progressFill.style.width = Math.min((current / duration) * 100, 100) + '%';
-            timeDisplay.textContent = String(Math.floor(current/60)).padStart(2,'0') + ':' + String(Math.floor(current%60)).padStart(2,'0') + ' / ' + String(Math.floor(duration/60)).padStart(2,'0') + ':' + String(Math.floor(duration%60)).padStart(2,'0');
+            const current = video.currentTime;
+            const duration = video.duration || 45;
+            const percent = (current / duration) * 100;
+            progressFill.style.width = Math.min(percent, 100) + '%';
+            timeDisplay.textContent = formatTime(Math.floor(current)) + ' / ' + formatTime(Math.floor(duration));
         });
 
+        const soundBtn = document.getElementById('soundBtn');
+        const bgMusic = document.getElementById('bgMusic');
         let isSoundOn = false;
-        document.getElementById('soundBtn').addEventListener('click', function() {
-            const bgMusic = document.getElementById('bgMusic');
+
+        soundBtn.addEventListener('click', function() {
             if (isSoundOn) {
-                video.muted = true; bgMusic.muted = true;
-                this.innerHTML = '<i class="fas fa-volume-mute"></i> تشغيل الصوت';
+                video.muted = true;
+                bgMusic.muted = true;
+                soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i> <span id="soundText"><span class="ar">تشغيل الصوت</span><span class="en">Unmute</span></span>';
                 isSoundOn = false;
             } else {
-                video.muted = false; bgMusic.muted = false;
-                this.innerHTML = '<i class="fas fa-volume-up"></i> كتم الصوت';
+                video.muted = false;
+                bgMusic.muted = false;
+                soundBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="soundText"><span class="ar">كتم الصوت</span><span class="en">Mute</span></span>';
                 isSoundOn = true;
             }
         });
 
+        let currentLang = 'ar';
+
+        document.getElementById('langToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            currentLang = newLang;
+            document.documentElement.lang = newLang;
+            document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.toggle('en', newLang === 'en');
+            document.getElementById('langLabel').textContent = newLang === 'ar' ? 'عربي' : 'English';
+            document.getElementById('settingsLabel').textContent = newLang === 'ar' ? 'إعدادات' : 'Settings';
+        });
+
+        let visitorsCount = 1247;
+        setInterval(() => {
+            visitorsCount += Math.random() > 0.6 ? 1 : 0;
+            const visitorsSpan = document.getElementById('visitorsCount');
+            if (visitorsSpan) visitorsSpan.textContent = visitorsCount.toLocaleString();
+        }, 10000);
+
+        document.body.classList.add('night', 'device-desktop');
+        document.getElementById('nightBtn').classList.add('active');
+        document.getElementById('desktopBtn').classList.add('active');
+        updateStatus();
         video.play().catch(function() {});
-        console.log('🌴 واحة الجبري v6.1 - عربي خالص');
+
+        console.log('🌴 واحة الجبري v6.0 - البوابة الرئيسية');
+        console.log('🇾🇪 من صنعاء إلى الكون');
     </script>
 
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').then(reg => reg.update());
+            navigator.serviceWorker.register('/sw.js').then(reg => {
+                reg.update();
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            if (confirm('✨ يتوفر تحديث جديد لواحة الجبري. هل تريد التحديث الآن؟')) {
+                                newWorker.postMessage({ action: 'skipWaiting' });
+                            }
+                        }
+                    });
+                });
+            }).catch(err => console.error('❌ [SW] فشل التسجيل:', err));
+        });
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
         });
     }
     </script>
 
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
+
     <script src="/js/init-page-root.js" defer></script>
     <script src="/js/menu.js" defer></script>
+
 </body>
 </html>
