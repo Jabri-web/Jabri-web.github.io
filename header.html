@@ -1,6 +1,6 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.1)           -->
-<!-- التاريخ: 2026-09-19 | إضافة hreflang و og:locale         -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.2)           -->
+<!-- التاريخ: 2026-09-19 | إصلاح تبديل اللغة                   -->
 <!-- ========================================================== -->
 
 <!-- ===== 1. وسوم السيو الأساسية ===== -->
@@ -98,9 +98,6 @@
 }
 </script>
 
-<!-- ========================================================== -->
-<!-- نهاية header.html v2.1                                     -->
-<!-- ========================================================== -->
 <!-- ===== 7. الأنماط (CSS) ===== -->
 <style>
     /* ---------- الأنماط العامة ---------- */
@@ -109,6 +106,12 @@
     body { min-height: 100vh; padding: 20px; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
     body.night { background: #0a0f0d; color: #f5efe6; }
     body.day { background: #f5efe6; color: #1a1a1a; }
+
+    /* ---------- إخفاء النص حسب اللغة ---------- */
+    html[lang="ar"] .en { display: none !important; }
+    html[lang="ar"] .ar { display: inline !important; }
+    html[lang="en"] .ar { display: none !important; }
+    html[lang="en"] .en { display: inline !important; }
 
     /* ---------- خلفية الفيديو ---------- */
     .bg-video {
@@ -145,6 +148,9 @@
     .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
     .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
+    /* ---------- باقي الأنماط (لم تتغير) ---------- */
+    /* ... (كود الستايل كاملاً كما هو) ... */
+    
     /* ---------- نافذة تسجيل الدخول ---------- */
     .login-modal {
         display: none; position: fixed; top: 0; left: 0;
@@ -552,7 +558,6 @@
         alert('تم تسجيل الخروج');
     }
 
-    // ربط الأحداث (مرة واحدة فقط)
     document.getElementById('loginBtn').addEventListener('click', window.openLoginModal);
     loginModal.addEventListener('click', function(e) {
         if (e.target === loginModal) window.closeLoginModalFn();
@@ -641,27 +646,41 @@
         document.getElementById('menuOverlay').classList.remove('active');
     };
 
-    // ========== تبديل اللغة ==========
+    // ========== تبديل اللغة (النسخة المُصلحة) ==========
     window.toggleLang = function() {
-        var next = document.documentElement.lang === 'ar' ? 'en' : 'ar';
-        document.documentElement.dir = next === 'en' ? 'ltr' : 'rtl';
-        document.documentElement.lang = next;
-        localStorage.setItem('lang', next);
-        document.querySelectorAll('.top-btn.lang').forEach(function(btn) {
-            btn.innerHTML = next === 'en'
-                ? '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>'
-                : '<span class="ar">🇾🇪 عربي</span><span class="en">🇬🇧 EN</span>';
-        });
+        var path = window.location.pathname;
+        
+        // تحديد اللغة الحالية
+        var isArabic = path.includes('/ar/') || (!path.includes('/en/') && document.documentElement.lang !== 'en');
+        
+        // تحديد اسم الملف الحالي
+        var fileName = path.split('/').pop() || 'index.html';
+        if (fileName === '' || fileName === 'ar' || fileName === 'en') {
+            fileName = 'index.html';
+        }
+        
+        // بناء المسار الجديد
+        var newPath;
+        if (isArabic) {
+            // عربي → إنجليزي
+            newPath = '/en/' + fileName;
+            localStorage.setItem('lang', 'en');
+        } else {
+            // إنجليزي → عربي
+            newPath = '/ar/' + fileName;
+            localStorage.setItem('lang', 'ar');
+        }
+        
+        console.log('🌐 تحويل اللغة من:', path, '→', newPath);
+        window.location.href = newPath;
     };
 
     // ========== التهيئة الأولية ==========
     document.addEventListener('DOMContentLoaded', function() {
-        // اللغة
         var savedLang = localStorage.getItem('lang') || 'ar';
         document.documentElement.dir = savedLang === 'en' ? 'ltr' : 'rtl';
         document.documentElement.lang = savedLang;
 
-        // الوضع
         var savedTheme = localStorage.getItem('theme') || 'night';
         document.body.className = savedTheme + ' ' + (localStorage.getItem('device') || 'device-desktop') + ' device-desktop';
         document.getElementById('nightBtn').classList.toggle('active', savedTheme === 'night');
@@ -669,10 +688,8 @@
         document.getElementById('desktopBtn').classList.toggle('active', (localStorage.getItem('device') || 'desktop') === 'desktop');
         document.getElementById('phoneBtn').classList.toggle('active', localStorage.getItem('device') === 'phone');
 
-        // حالة الدخول
         updateLoginUI();
 
-        // تشغيل الصوت عند أول تفاعل
         document.addEventListener('click', function firstInteraction() {
             var audio = document.getElementById('bgMusic');
             if (audio && audio.paused) {
@@ -687,9 +704,8 @@
 </script>
 
 <!-- ========================================================== -->
-<!-- 17. مكان العناصر الديناميكية (Footer + JS)                -->
+<!-- 17. Popup التحديث + Service Worker                        -->
 <!-- ========================================================== -->
-<!-- Popup of apk v6.0 -->
 <div id="updatePopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
     <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d); border:2px solid #c9a227; border-radius:24px; padding:32px 24px; max-width:90%; width:400px; text-align:center; box-shadow:0 20px 60px rgba(201,162,39,0.4);">
         <div style="font-size:64px; margin-bottom:16px;">🎉</div>
@@ -705,16 +721,13 @@
 </div>
 
 <script>
-    // تسجيل Service Worker + كشف التحديث
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js').then(reg => {
-                // كشف تحديث جديد
                 reg.addEventListener('updatefound', () => {
                     const newWorker = reg.installing;
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // نسخة جديدة جاهزة!
                             document.getElementById('updatePopup').style.display = 'flex';
                         }
                     });
@@ -724,7 +737,6 @@
     }
     
     function closeAndReload() {
-        // أرسل أمر للـ SW لتفعيل النسخة الجديدة
         if (navigator.serviceWorker.controller) {
             navigator.serviceWorker.controller.postMessage('SKIP_WAITING');
         }
@@ -736,116 +748,40 @@
 <!-- ========================================================== -->
 <!-- 18. نافذة تحميل تطبيق الأندرويد (APK)                     -->
 <!-- ========================================================== -->
-<div id="apk-overlay" style="
-    display: none; 
-    position: fixed; 
-    top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0, 0, 0, 0.8); 
-    z-index: 999999; 
-    justify-content: center; 
-    align-items: center;
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-    backdrop-filter: blur(5px);
-">
-    <div style="
-        background: linear-gradient(135deg, #1a1a1a, #2d2d2d); 
-        padding: 30px; 
-        border-radius: 20px; 
-        text-align: center; 
-        max-width: 350px; 
-        width: 90%;
-        border: 2px solid #c9a227;
-        box-shadow: 0 20px 60px rgba(201, 162, 39, 0.5);
-        position: relative;
-    ">
-        <!-- زر الإغلاق (X) في الأعلى -->
-        <span id="apk-close-x" style="
-            position: absolute; 
-            top: 10px; 
-            left: 15px; 
-            font-size: 28px; 
-            cursor: pointer; 
-            color: #c9a84c;
-            transition: 0.3s;
-        " onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='#c9a84c'">&times;</span>
-
-        <!-- أيقونة التطبيق -->
+<div id="apk-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 999999; justify-content: center; align-items: center; font-family: 'Cairo', sans-serif; direction: rtl; backdrop-filter: blur(5px);">
+    <div style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; width: 90%; border: 2px solid #c9a227; box-shadow: 0 20px 60px rgba(201, 162, 39, 0.5); position: relative;">
+        <span id="apk-close-x" style="position: absolute; top: 10px; left: 15px; font-size: 28px; cursor: pointer; color: #c9a84c; transition: 0.3s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='#c9a84c'">&times;</span>
         <img src="/image/Yemen2026.png" alt="App Icon" style="width: 90px; height: 90px; margin-bottom: 15px; border-radius: 20px; object-fit: cover; border: 2px solid #c9a227;">
-        
         <h3 style="margin: 10px 0; color: #c9a227; font-size: 22px; font-weight: 900;">تطبيق واحة الجبري</h3>
-        <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-bottom: 25px;">
-            للحصول على أفضل تجربة وتصفح أسرع، قم بتحميل تطبيقنا الآن.
-        </p>
-
-        <!-- زر التحميل الأساسي -->
-        <a href="/app-release.apk" download style="
-            display: block; 
-            background: linear-gradient(135deg, #c9a227, #e6c34a); 
-            color: #0d1117; 
-            text-decoration: none; 
-            padding: 14px; 
-            border-radius: 30px; 
-            font-weight: bold; 
-            font-size: 16px;
-            margin-bottom: 15px;
-            transition: transform 0.3s;
-            box-shadow: 0 6px 20px rgba(201,162,39,0.5);
-        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            ⬇️ تحميل التطبيق (APK)
-        </a>
-        
-        <!-- زر "لاحقاً" لإغلاق النافذة -->
-        <button id="apk-close-btn" style="
-            background: transparent; 
-            border: none; 
-            color: #888; 
-            cursor: pointer; 
-            font-size: 14px;
-            padding: 5px;
-            font-family: 'Cairo', sans-serif;
-        ">لاحقاً</button>
+        <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-bottom: 25px;">للحصول على أفضل تجربة وتصفح أسرع، قم بتحميل تطبيقنا الآن.</p>
+        <a href="/app-release.apk" download style="display: block; background: linear-gradient(135deg, #c9a227, #e6c34a); color: #0d1117; text-decoration: none; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 16px; margin-bottom: 15px; transition: transform 0.3s; box-shadow: 0 6px 20px rgba(201,162,39,0.5);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">⬇️ تحميل التطبيق (APK)</a>
+        <button id="apk-close-btn" style="background: transparent; border: none; color: #888; cursor: pointer; font-size: 14px; padding: 5px; font-family: 'Cairo', sans-serif;">لاحقاً</button>
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // تأكد من أن المستخدم لم يغلق النافذة في هذه الجلسة
         if (!sessionStorage.getItem('apk_prompt_dismissed')) {
-            
-            // إظهار النافذة بعد 4 ثوانٍ من التصفح
             setTimeout(function() {
                 var overlay = document.getElementById('apk-overlay');
-                if (overlay) {
-                    overlay.style.display = 'flex';
-                }
-            }, 4000); // 4000 مللي ثانية = 4 ثواني
+                if (overlay) overlay.style.display = 'flex';
+            }, 4000);
         }
-
-        // دالة الإغلاق
         function closeOverlay() {
             var overlay = document.getElementById('apk-overlay');
             if (overlay) {
                 overlay.style.display = 'none';
-                // تسجيل أن المستخدم أغلق النافذة، حتى لا تظهر له مرة أخرى في نفس الجلسة
                 sessionStorage.setItem('apk_prompt_dismissed', 'true');
             }
         }
-
-        // ربط الأزرار بوظيفة الإغلاق
         var closeX = document.getElementById('apk-close-x');
         var closeBtn = document.getElementById('apk-close-btn');
-        
         if (closeX) closeX.addEventListener('click', closeOverlay);
         if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
-
-        // إغلاق النافذة عند الضغط في الخلفية المعتمة
         var overlay = document.getElementById('apk-overlay');
         if (overlay) {
             overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    closeOverlay();
-                }
+                if (e.target === overlay) closeOverlay();
             });
         }
     });
