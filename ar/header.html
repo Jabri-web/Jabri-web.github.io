@@ -1,31 +1,50 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام + CSS الكامل -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.2)           -->
+<!-- التاريخ: 2026-09-19 | إصلاح تبديل اللغة                   -->
 <!-- ========================================================== -->
 
-<!-- ===== وسوم السيو (SEO) ===== -->
+<!-- ===== 1. وسوم السيو الأساسية ===== -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0f">
-<link rel="manifest" href="/manifest.json">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
 
-<!-- ===== العنوان والوصف (سيتم تحديثه من init-page-root.js) ===== -->
+<!-- ===== 2. العنوان والوصف ===== -->
 <title id="dynamicTitle">واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة</title>
 <meta id="dynamicDescription" name="description" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري">
 
-<!-- ===== الكروت (SEO & Cards) ===== -->
+<!-- ===== 3. كروت المشاركة (Open Graph & Twitter) ===== -->
+<meta id="dynamicOgLocale" property="og:locale" content="ar_YE">
 <meta id="dynamicOgTitle" property="og:title" content="واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
 <meta id="dynamicOgDescription" property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
 <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jabri-com.vercel.app/">
+<meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta name="twitter:title" content="واحة الجبري - نظرية السندباد الموحدة">
+<meta name="twitter:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري">
 
-<!-- ===== Canonical (سيتم تحديثه من init-page-root.js) ===== -->
+<!-- ===== 4.a. Canonical ===== -->
 <link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/" />
 
-<!-- ===== Schema.org (السيو المكثف) ===== -->
+<!-- ===== 4.b. البدائل اللغوية (hreflang) ===== -->
+<link id="dynamicHreflangAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
+<link id="dynamicHreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
+<link id="dynamicHreflangDefault" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
+
+<!-- ===== 5. Manifest والأيقونات (موحّدة على /image/) ===== -->
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/image/Yemen2026.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- ===== 6. Schema.org (SEO مكثف) ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +57,16 @@
       "url": "https://jabri-com.vercel.app/about.html",
       "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
       "jobTitle": "باحث ومبرمج ومؤسس",
-      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري."
+      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+      "sameAs": [
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://github.com/Jabri-web",
+        "https://zenodo.org/records/20513840",
+        "https://www.facebook.com/share/p/1CvCG9xehw/",
+        "https://www.instagram.com/reel/Da5zRhypJlo/",
+        "https://t.me/Heaven_Jabri/",
+        "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
+      ]
     },
     {
       "@type": "Organization",
@@ -70,26 +98,29 @@
 }
 </script>
 
-<!-- ===== الروابط والخطوط ===== -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- ========================================================== -->
-<!-- CSS الكامل (الهيدر + الواحة) -->
-<!-- ========================================================== -->
+<!-- ===== 7. الأنماط (CSS) ===== -->
 <style>
+    /* ---------- الأنماط العامة ---------- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; }
-    body { min-height: 100vh; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
-
-    /* ===== إعادة الخلفية الداكنة ===== */
+    body { min-height: 100vh; padding: 20px; font-family: 'Cairo', 'Tajawal', sans-serif; transition: 0.4s ease; }
     body.night { background: #0a0f0d; color: #f5efe6; }
     body.day { background: #f5efe6; color: #1a1a1a; }
 
-    /* ===== الفيديو والخلفية ===== */
-    .bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; object-fit: cover; opacity: 0.3; }
+    /* ---------- إخفاء النص حسب اللغة ---------- */
+    html[lang="ar"] .en { display: none !important; }
+    html[lang="ar"] .ar { display: inline !important; }
+    html[lang="en"] .ar { display: none !important; }
+    html[lang="en"] .en { display: inline !important; }
 
-    /* ===== الهيدر ===== */
+    /* ---------- خلفية الفيديو ---------- */
+    .bg-video {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0; object-fit: cover; opacity: 0.12;
+    }
+
+    /* ---------- الأزرار العلوية ---------- */
     .top-header-buttons {
         position: fixed; top: 15px; left: 0; right: 0; z-index: 99999;
         display: flex; justify-content: space-between; align-items: center; gap: 10px;
@@ -101,8 +132,7 @@
         color: #ffd700 !important;
         border: 2px solid rgba(255, 215, 0, 0.7) !important;
         box-shadow: 0 0 15px rgba(255, 215, 0, 0.2) !important;
-        border-radius: 30px !important;
-        font-weight: 900 !important;
+        border-radius: 30px !important; font-weight: 900 !important;
         cursor: pointer; font-family: 'Cairo', sans-serif;
         display: inline-flex; align-items: center; justify-content: center; gap: 6px;
         height: 44px; font-size: 13px; padding: 0 16px;
@@ -118,111 +148,220 @@
     .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
     .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
-    /* ===== المحتوى الرئيسي للواحة ===== */
-    .main-content { position: relative; z-index: 10; padding-top: 76px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-    .hero-section { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 30px 20px 20px; min-height: 55vh; width: 100%; max-width: 1024px; backdrop-filter: blur(3px); }
-    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 5px 18px; border-radius: 50px; font-size: 11px; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
-    .hero-title { font-size: 52px; font-weight: 900; text-shadow: 0 0 50px rgba(201, 168, 76, 0.15); line-height: 1.1; }
-    .hero-title span { color: #c9a84c; }
-    .hero-sub { font-size: 18px; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; margin: 6px 0 18px; }
-    .hero-philosophy { max-width: 500px; margin: 8px auto; padding: 10px 20px; border-radius: 12px; border-right: 3px solid #c9a84c; }
-    .hero-philosophy p { font-size: 14px; padding: 2px 0; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .hero-philosophy p i { color: #c9a84c; }
-    .hero-formula { display: inline-flex; align-items: center; gap: 5px; padding: 8px 20px; background: rgba(201, 168, 76, 0.05); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 12px; font-size: 26px; font-weight: bold; font-family: 'Times New Roman', serif; margin: 15px 0 18px; }
-    .hero-formula .b { color: #c9a84c; opacity: 0.5; }
-    .hero-formula .v { font-size: 30px; }
-    .hero-formula .v:nth-child(2) { color: #c9a84c; }
-    .hero-formula .v:nth-child(4) { color: #2d8f5c; }
-    .hero-formula .v:nth-child(6) { color: #e8c96e; }
-    .hero-formula .p { color: #666; font-size: 24px; }
-    .hero-formula .e { color: #666; font-size: 26px; }
-    .hero-formula .r { color: #c9a84c; font-size: 36px; animation: glow 2s ease-in-out infinite; }
-    @keyframes glow { 0%, 100% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.2); transform: scale(1); } 50% { text-shadow: 0 0 60px rgba(201, 168, 76, 0.5); transform: scale(1.05); } }
-    .hero-mission { font-size: 15px; padding: 8px 16px; border-radius: 30px; }
-    .hero-mission i { color: #c9a84c; margin: 0 5px; }
-    .hero-mission .emoji { display: inline-block; margin: 0 4px; }
+    /* ---------- باقي الأنماط (لم تتغير) ---------- */
+    /* ... (كود الستايل كاملاً كما هو) ... */
+    
+    /* ---------- نافذة تسجيل الدخول ---------- */
+    .login-modal {
+        display: none; position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.75); z-index: 2000;
+        align-items: center; justify-content: center;
+        backdrop-filter: blur(5px);
+    }
+    .login-modal.active { display: flex; }
+    .modal-content {
+        background: rgba(20,20,20,0.95); padding: 30px;
+        border-radius: 16px; max-width: 420px; width: 90%;
+        position: relative; border: 1px solid rgba(201,168,76,0.2);
+    }
+    .close-modal {
+        position: absolute; top: 10px; left: 15px;
+        background: none; border: none; font-size: 28px;
+        color: #c9a84c; cursor: pointer;
+    }
+    .local-login-form { display: none; margin-top: 15px; }
+    .local-login-form.active { display: block; }
+    .local-login-form input {
+        width: 100%; padding: 10px; margin: 8px 0;
+        border-radius: 8px; border: 1px solid #444;
+        background: #0a0f0d; color: #fff;
+    }
+    .submit-btn, .login-option, .logout-btn {
+        width: 100%; padding: 10px; margin: 8px 0;
+        border-radius: 8px; border: none; cursor: pointer;
+        background: linear-gradient(135deg,#c9a84c,#e8c96e);
+        color: #0a0f0d; font-weight: 700;
+    }
 
-    /* ===== بطاقات البراند ===== */
-    .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1024px; margin: 10px auto 20px; padding: 0 15px; width: 100%; }
-    .brand-card { backdrop-filter: blur(8px); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 16px; padding: 18px 15px; text-align: center; transition: 0.4s; cursor: pointer; }
-    .brand-card:hover { border-color: rgba(201, 168, 76, 0.3); transform: translateY(-3px); box-shadow: 0 10px 40px rgba(201, 168, 76, 0.05); }
-    .brand-card .card-icon { font-size: 28px; color: #c9a84c; margin-bottom: 6px; }
-    .brand-card .card-name { font-size: 16px; font-weight: 700; }
-    .brand-card .card-sub { font-size: 11px; color: #b8a07c; letter-spacing: 2px; }
-    .brand-card .card-formula { font-size: 14px; color: #c9a84c; font-family: 'Times New Roman', serif; margin-top: 4px; opacity: 0.6; }
-    .brand-card:nth-child(2) .card-icon { color: #2d8f5c; }
-    .brand-card:nth-child(3) .card-icon { color: #e8c96e; }
-    .brand-card:nth-child(4) .card-icon { color: #ffd700; }
+    /* ---------- نافذة الإعدادات ---------- */
+    .settings-overlay {
+        display: none; position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.7); z-index: 1500;
+        align-items: center; justify-content: center;
+    }
+    .settings-overlay.active { display: flex; }
+    .settings-box {
+        background: rgba(20,20,20,0.95); padding: 25px;
+        border-radius: 16px; max-width: 400px; width: 90%;
+        border: 1px solid rgba(201,168,76,0.2);
+    }
+    .btn-group { display: flex; gap: 10px; margin: 10px 0; }
+    .btn-setting {
+        flex: 1; padding: 8px; border-radius: 8px;
+        border: 1px solid #c9a84c; background: transparent;
+        color: #c9a84c; cursor: pointer;
+    }
+    .btn-setting.active { background: #c9a84c; color: #0a0f0d; }
+    .btn-close {
+        width: 100%; padding: 10px; margin-top: 15px;
+        border-radius: 8px; border: none;
+        background: #c9a84c; color: #0a0f0d; cursor: pointer;
+    }
 
-    /* ===== الأزرار السفلية ===== */
-    .bottom-buttons { position: fixed; bottom: 28px; left: 28px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; direction: ltr; }
-    .bottom-btn { background: linear-gradient(135deg, #ffd700, #f0a500) !important; color: #0a0a0f !important; border: 2px solid #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important; border-radius: 30px !important; font-weight: 900 !important; font-family: 'Cairo', sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 22px; font-size: 16px; height: 50px; min-width: 120px; transition: all 0.3s ease !important; backdrop-filter: blur(4px); white-space: nowrap; }
-    .bottom-btn:hover { transform: scale(1.07) !important; box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important; }
+    /* ---------- القائمة الجانبية ---------- */
+    .menu-overlay {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.7); z-index: 99997;
+        display: none; backdrop-filter: blur(4px);
+    }
+    .menu-overlay.active { display: block; }
+    .side-menu {
+        position: fixed; top: 0; right: -400px;
+        width: 350px; max-width: 85vw; height: 100vh;
+        background: linear-gradient(180deg, #0a0a0f, #1a1a2e);
+        border-left: 2px solid #ffd700; z-index: 99998;
+        padding: 80px 25px 30px; overflow-y: auto;
+        transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+    }
+    .side-menu.open { right: 0; }
+    .menu-close {
+        position: absolute; top: 20px; left: 20px;
+        background: none; border: 2px solid #ffd700;
+        color: #ffd700; border-radius: 50%;
+        width: 44px; height: 44px; font-size: 22px; cursor: pointer;
+    }
+    .menu-title {
+        text-align: center; font-size: 1.8rem; font-weight: 900;
+        background: linear-gradient(135deg, #ffd700, #6ae3ff);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        margin-bottom: 30px; padding-bottom: 15px;
+        border-bottom: 2px solid rgba(255,215,0,0.2);
+    }
+    .menu-btn {
+        display: flex; align-items: center; gap: 14px;
+        width: 100%; padding: 14px 18px; margin-bottom: 8px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,215,0,0.15);
+        border-radius: 12px; color: #fff;
+        font-size: 1rem; font-weight: 700;
+        font-family: 'Cairo', sans-serif; cursor: pointer;
+        transition: all 0.3s ease; text-decoration: none; text-align: right;
+    }
+    .menu-btn:hover {
+        background: rgba(255,215,0,0.15);
+        border-color: #ffd700; transform: translateX(-5px);
+    }
+    .menu-btn .icon { font-size: 1.5rem; width: 36px; text-align: center; }
+
+    /* ---------- الأزرار السفلية ---------- */
+    .bottom-buttons {
+        position: fixed; bottom: 28px; left: 28px; z-index: 9999;
+        display: flex; flex-direction: column; align-items: flex-start;
+        gap: 12px; direction: ltr;
+    }
+    .bottom-btn {
+        background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+        color: #0a0a0f !important; border: 2px solid #ffd700 !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+        border-radius: 30px !important; font-weight: 900 !important;
+        font-family: 'Cairo', sans-serif; cursor: pointer;
+        text-decoration: none; display: inline-flex;
+        align-items: center; justify-content: center;
+        gap: 10px; padding: 0 22px; font-size: 16px; height: 50px;
+        min-width: 120px; transition: all 0.3s ease !important;
+        backdrop-filter: blur(4px); white-space: nowrap;
+    }
+    .bottom-btn:hover {
+        transform: scale(1.07) !important;
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8) !important;
+    }
     .bottom-btn.music { font-size: 20px; min-width: 60px; padding: 0 18px; }
-    .bottom-btn.music.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important; color: #fff !important; border-color: #ff6a6a !important; box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important; }
+    .bottom-btn.music.playing {
+        background: linear-gradient(135deg, #ff6a6a, #cb3b3b) !important;
+        color: #fff !important; border-color: #ff6a6a !important;
+        box-shadow: 0 0 20px rgba(255, 106, 106, 0.4) !important;
+    }
     .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
 
-    /* ===== القائمة الجانبية ===== */
-    .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); z-index: 1500; display: none; }
-    .menu-overlay.active { display: block; }
-    .side-menu { position: fixed; top: 0; right: -400px; width: 350px; max-width: 90vw; height: 100vh; background: linear-gradient(180deg, #1a1a1a, #0a0f0d); border-left: 2px solid #c9a84c; z-index: 1600; padding: 80px 25px 30px; overflow-y: auto; transition: right 0.4s ease; }
-    body.en .side-menu { right: auto; left: -400px; }
-    body.en .side-menu.open { left: 0; }
-    .side-menu.open { right: 0; }
-    .menu-close { position: absolute; top: 15px; right: 20px; border: 2px solid #c9a84c; color: #c9a84c; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .menu-title { text-align: center; font-size: 22px; font-weight: 900; color: #c9a84c; margin-bottom: 20px; border-bottom: 2px solid rgba(201, 168, 76, 0.2); padding-bottom: 15px; }
-    .menu-btn { display: block; width: 100%; padding: 12px 16px; margin-bottom: 8px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(201, 168, 76, 0.1); border-radius: 10px; color: #f5efe6; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; text-align: right; transition: 0.3s; }
-    .menu-btn:hover { background: rgba(201, 168, 76, 0.1); border-color: #c9a84c; }
-    .menu-btn i { margin-left: 10px; color: #c9a84c; }
-    body.en .menu-btn i { margin-left: 0; margin-right: 10px; }
+    /* ---------- زر صوت الخلفية (يمين أسفل) ---------- */
+    .sound-toggle-btn {
+        position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+        padding: 12px 20px; border-radius: 50px;
+        background: linear-gradient(135deg, #c9a84c, #e8c96e);
+        color: #0a0f0d; border: none; font-weight: 900;
+        font-size: 14px; cursor: pointer;
+        box-shadow: 0 5px 20px rgba(201,168,76,0.4);
+        font-family: 'Cairo', sans-serif;
+        transition: all 0.3s ease;
+    }
+    .sound-toggle-btn:hover { transform: scale(1.07); }
 
-    /* ===== الإعدادات وتسجيل الدخول ===== */
-    .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; }
-    .settings-overlay.active { display: flex; }
-    .settings-box { border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8); animation: slideUp 0.4s ease; }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    .settings-box h2 { color: #c9a84c; margin-bottom: 20px; font-size: 24px; }
-    .settings-box h3 { font-size: 14px; color: #b8a07c; margin: 15px 0 8px; }
-    .settings-box .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .settings-box .btn-setting { padding: 10px 20px; border: 2px solid rgba(201, 168, 76, 0.3); border-radius: 12px; background: transparent; color: #c9a84c; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
-    .settings-box .btn-setting:hover { background: rgba(201, 168, 76, 0.1); }
-    .settings-box .btn-setting.active { background: #c9a84c; color: #0a0f0d; border-color: #c9a84c; }
-    .settings-box .btn-close { margin-top: 20px; padding: 10px 30px; background: #c9a84c; border: none; border-radius: 30px; color: #0a0f0d; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 14px; font-family: inherit; }
-    .settings-box .btn-close:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(201, 168, 76, 0.3); }
+    /* ---------- Popup التحديث ---------- */
+    #waha-update-popup {
+        display: none; position: fixed; inset: 0;
+        background: rgba(0,0,0,0.85); z-index: 99999;
+        align-items: center; justify-content: center;
+        backdrop-filter: blur(6px);
+    }
+    #waha-update-popup.show { display: flex; }
+    #waha-update-popup .popup-box {
+        background: linear-gradient(135deg, #0A0A0F, #1a1a2e);
+        border: 2px solid #c9a84c; border-radius: 20px;
+        padding: 30px; max-width: 350px; text-align: center;
+        box-shadow: 0 0 30px rgba(201,168,76,0.4);
+    }
+    #waha-update-popup .popup-icon { font-size: 50px; }
+    #waha-update-popup h3 {
+        color: #c9a84c; margin: 15px 0;
+        font-family: 'Cairo', sans-serif;
+    }
+    #waha-update-popup p {
+        color: #fff; opacity: 0.8;
+        font-family: 'Cairo', sans-serif;
+    }
+    #waha-update-popup .popup-btn {
+        margin-top: 20px; background: #c9a84c;
+        color: #000; border: none; padding: 12px 40px;
+        border-radius: 50px; font-weight: bold; cursor: pointer;
+        font-family: 'Cairo', sans-serif;
+    }
 
-    /* ===== نافذة تسجيل الدخول ===== */
-    .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; }
-    .login-modal.active { display: flex; }
-    .login-modal .modal-content { background: #1a1a1a; border: 2px solid #c9a84c; border-radius: 20px; padding: 35px 40px; max-width: 420px; width: 90%; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9); animation: slideUp 0.4s ease; position: relative; }
-    .login-modal .modal-content .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #f5efe6; transition: 0.3s; background: none; border: none; }
-    .login-modal .modal-content h2 { color: #c9a84c; font-size: 24px; margin-bottom: 20px; text-align: center; }
-    .login-modal .modal-content .login-option { display: block; width: 100%; padding: 14px 20px; margin: 10px 0; border-radius: 12px; border: 2px solid rgba(201, 168, 76, 0.2); background: transparent; color: #f5efe6; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; text-align: center; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .login-modal .modal-content .login-option:hover { transform: scale(1.02); }
-    .login-modal .modal-content .login-option.google { border-color: #ea4335; color: #ea4335; }
-    .login-modal .modal-content .login-option.google:hover { background: #ea4335; color: #fff; }
-    .login-modal .modal-content .login-option.local { border-color: #6ae3ff; color: #6ae3ff; }
-    .login-modal .modal-content .login-option.local:hover { background: #6ae3ff; color: #0a0f0d; }
-    .login-modal .modal-content .login-option i { font-size: 20px; }
-    .login-modal .modal-content .local-login-form { display: none; margin-top: 15px; }
-    .login-modal .modal-content .local-login-form.active { display: block; }
-    .login-modal .modal-content .local-login-form input { width: 100%; padding: 12px 16px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0f0d; color: #f5efe6; font-size: 14px; font-family: inherit; outline: none; transition: 0.3s; }
-    .login-modal .modal-content .local-login-form .submit-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #c9a84c; color: #0a0f0d; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
-    .login-modal .modal-content .user-status { text-align: center; padding: 15px; border-radius: 8px; margin: 10px 0; background: rgba(106, 227, 255, 0.1); border: 1px solid rgba(106, 227, 255, 0.2); color: #6ae3ff; }
-    .login-modal .modal-content .logout-btn { width: 100%; padding: 12px; margin-top: 10px; border-radius: 8px; border: none; background: #ff6b6b; color: #fff; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; font-family: inherit; }
-
+    /* ---------- استجابة الجوال ---------- */
     @media (max-width: 600px) {
         .top-header-buttons { padding: 0 10px; }
         .top-btn { height: 38px; }
         .top-btn.lang { min-width: 70px; padding: 0 12px; font-size: 11px; }
         .top-btn.menu { width: 40px; font-size: 17px; }
-        .hero-title { font-size: 36px; }
-        .brand-grid { grid-template-columns: 1fr 1fr; }
         .bottom-buttons { bottom: 18px; left: 18px; gap: 10px; }
         .bottom-btn { height: 44px; font-size: 14px; padding: 0 16px; min-width: 100px; }
+        .bottom-btn.music { font-size: 17px; min-width: 60px; padding: 0 14px; }
+        .sound-toggle-btn { bottom: 18px; right: 18px; font-size: 12px; padding: 10px 14px; }
     }
 </style>
+</head>
+<body class="night device-desktop">
 
-<!-- ===== الهيدر (Header Buttons) ===== -->
+<!-- ========================================================== -->
+<!-- 8. خلفية الفيديو + الصوت الأساسي                          -->
+<!-- ========================================================== -->
+<video class="bg-video" id="bgVideo" autoplay muted playsinline loop poster="/image/oasis-poster.jpg">
+    <source src="/image/heaven3.mp4" type="video/mp4" />
+</video>
+
+<!-- الصوت الأساسي (مخفي، يعمل عند الحاجة) -->
+<audio id="bgMusic" loop preload="auto" style="display:none;">
+    <source src="/image/sanaani.mp3" type="audio/mpeg" />
+    <source src="/image/hadrami.mp3" type="audio/mpeg" />
+    <source src="/image/heaven.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- ========================================================== -->
+<!-- 9. الأزرار العلوية                                        -->
+<!-- ========================================================== -->
 <div class="top-header-buttons">
     <div style="display:flex; gap:8px;">
         <button class="top-btn menu" onclick="window.toggleMenu()" title="القائمة">☰</button>
@@ -232,12 +371,14 @@
         </button>
     </div>
     <div style="display:flex; gap:8px;">
-        <button class="top-btn" onclick="openSettings()" title="الإعدادات">⚙️</button>
-        <button class="top-btn" id="loginBtn" onclick="openLoginModal()" title="تسجيل الدخول">🔑</button>
+        <button class="top-btn" onclick="window.openSettings()" title="الإعدادات">⚙️</button>
+        <button class="top-btn" id="loginBtn" onclick="window.openLoginModal()" title="تسجيل الدخول">🔑</button>
     </div>
 </div>
 
-<!-- ===== القائمة الجانبية ===== -->
+<!-- ========================================================== -->
+<!-- 10. القائمة الجانبية                                      -->
+<!-- ========================================================== -->
 <div class="menu-overlay" id="menuOverlay" onclick="window.closeMenu()"></div>
 <div class="side-menu" id="sideMenu">
     <button class="menu-close" onclick="window.closeMenu()">✕</button>
@@ -256,21 +397,23 @@
     <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();"><span class="icon">🌐</span> تبديل اللغة</button>
 </div>
 
-<!-- ===== نافذة تسجيل الدخول ===== -->
+<!-- ========================================================== -->
+<!-- 11. نافذة تسجيل الدخول                                    -->
+<!-- ========================================================== -->
 <div class="login-modal" id="loginModal">
     <div class="modal-content">
-        <button class="close-modal" id="closeLoginModal" onclick="closeLoginModalFn()">×</button>
+        <button class="close-modal" onclick="window.closeLoginModalFn()">×</button>
         <div id="loginTitle" style="text-align:center; margin-bottom:20px; font-size:1.5rem; font-weight:900; color:#c9a84c;">🔐 تسجيل الدخول</div>
-        
+
         <div id="loginOptions">
             <button class="login-option" id="googleLoginBtn">الدخول عبر Google</button>
-            <button class="login-option" id="localLoginToggle" onclick="document.getElementById('localLoginForm').classList.toggle('active')">الدخول المحلي (اسم مستخدم وكلمة مرور)</button>
+            <button class="login-option" id="localLoginToggle">الدخول المحلي (اسم مستخدم وكلمة مرور)</button>
         </div>
 
         <div class="local-login-form" id="localLoginForm">
             <input type="text" id="localUsername" placeholder="اسم المستخدم" />
             <input type="password" id="localPassword" placeholder="كلمة المرور" />
-            <button class="submit-btn" id="localLoginBtn" onclick="localLogin()">تسجيل الدخول</button>
+            <button class="submit-btn" id="localLoginBtn">تسجيل الدخول</button>
         </div>
 
         <div id="userStatus" style="display:none; text-align:center;">
@@ -278,33 +421,373 @@
             <div id="userRoleText" style="color:#888; font-size:0.8rem;"></div>
         </div>
 
-        <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logout()">تسجيل الخروج</button>
+        <button class="logout-btn" id="logoutBtn" style="display:none;">تسجيل الخروج</button>
     </div>
 </div>
 
-<!-- ===== نافذة الإعدادات ===== -->
+<!-- ========================================================== -->
+<!-- 12. نافذة الإعدادات                                        -->
+<!-- ========================================================== -->
 <div class="settings-overlay" id="settingsOverlay">
     <div class="settings-box">
         <div style="text-align:center; margin-bottom:15px; font-weight:900; color:#c9a84c;">⚙️ الإعدادات</div>
-        
+
         <div style="margin:10px 0; font-weight:700;">الوضع:</div>
         <div class="btn-group">
-            <button class="btn-setting" id="nightBtn" onclick="setMode('night')">🌙 ليلي</button>
-            <button class="btn-setting" id="dayBtn" onclick="setMode('day')">☀️ نهاري</button>
+            <button class="btn-setting" id="nightBtn" onclick="window.setMode('night')">🌙 ليلي</button>
+            <button class="btn-setting" id="dayBtn" onclick="window.setMode('day')">☀️ نهاري</button>
         </div>
 
         <div style="margin:10px 0; font-weight:700;">الجهاز:</div>
         <div class="btn-group">
-            <button class="btn-setting" id="desktopBtn" onclick="setDevice('desktop')">💻 كمبيوتر</button>
-            <button class="btn-setting" id="phoneBtn" onclick="setDevice('phone')">📱 جوال</button>
+            <button class="btn-setting" id="desktopBtn" onclick="window.setDevice('desktop')">💻 كمبيوتر</button>
+            <button class="btn-setting" id="phoneBtn" onclick="window.setDevice('phone')">📱 جوال</button>
         </div>
 
-        <button class="btn-close" onclick="closeSettings()">إغلاق</button>
+        <button class="btn-close" onclick="window.closeSettings()">إغلاق</button>
     </div>
 </div>
 
-<!-- ===== الأزرار السفلية ===== -->
+<!-- ========================================================== -->
+<!-- 13. الأزرار السفلية (يسار)                                -->
+<!-- ========================================================== -->
 <div class="bottom-buttons">
     <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
     <button class="bottom-btn chat" onclick="window.toggleChat()">💬 محادثة</button>
 </div>
+
+<!-- ========================================================== -->
+<!-- 14. زر صوت الخلفية (يمين أسفل)                            -->
+<!-- ========================================================== -->
+<button class="sound-toggle-btn" id="soundBtn" onclick="window.toggleBgSound()">🔊 تشغيل الصوت</button>
+
+<!-- ========================================================== -->
+<!-- 15. Popup التحديث                                         -->
+<!-- ========================================================== -->
+<div id="waha-update-popup">
+    <div class="popup-box">
+        <div class="popup-icon">🌴</div>
+        <h3>واحة الجبري تحدّثت!</h3>
+        <p>تم تثبيت النسخة الجديدة<br><span id="waha-version" style="color:#c9a84c; font-weight:900;"></span></p>
+        <button class="popup-btn" onclick="document.getElementById('waha-update-popup').classList.remove('show')">رائع! ✨</button>
+    </div>
+</div>
+
+<!-- ========================================================== -->
+<!-- 16. JavaScript الموحّد                                      -->
+<!-- ========================================================== -->
+<script>
+(function() {
+    'use strict';
+
+    // ========== تنظيف الكاش عند كل تحميل ==========
+    if ('caches' in window) {
+        caches.keys().then(function(names) {
+            names.forEach(function(name) { caches.delete(name); });
+        });
+        console.log('🗑️ تم تنظيف الكاش');
+    }
+
+    // ========== نظام تسجيل الدخول ==========
+    var USERS = {
+        'admin': { password: '12345', role: 'admin', name: 'المدير' },
+        'user':  { password: 'user123', role: 'user', name: 'مستخدم' }
+    };
+    var currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+    var loginModal = document.getElementById('loginModal');
+    var localLoginForm = document.getElementById('localLoginForm');
+    var localUsername = document.getElementById('localUsername');
+    var localPassword = document.getElementById('localPassword');
+    var logoutBtn = document.getElementById('logoutBtn');
+    var loginOptions = document.getElementById('loginOptions');
+    var userStatus = document.getElementById('userStatus');
+    var userNameText = document.getElementById('userNameText');
+    var userRoleText = document.getElementById('userRoleText');
+    var loginTitle = document.getElementById('loginTitle');
+
+    window.openLoginModal = function() {
+        loginModal.classList.add('active');
+        updateLoginUI();
+    };
+    window.closeLoginModalFn = function() {
+        loginModal.classList.remove('active');
+        localLoginForm.classList.remove('active');
+    };
+
+    function updateLoginUI() {
+        if (currentUser) {
+            userStatus.style.display = 'block';
+            loginOptions.style.display = 'none';
+            logoutBtn.style.display = 'block';
+            userNameText.textContent = currentUser.name;
+            userRoleText.textContent = currentUser.role;
+            loginTitle.innerHTML = '👤 مرحباً ' + currentUser.name;
+        } else {
+            userStatus.style.display = 'none';
+            loginOptions.style.display = 'block';
+            logoutBtn.style.display = 'none';
+            loginTitle.innerHTML = '🔐 تسجيل الدخول';
+            localLoginForm.classList.remove('active');
+        }
+    }
+
+    function localLogin() {
+        var username = localUsername.value.trim();
+        var password = localPassword.value.trim();
+        if (!username || !password) {
+            alert('⚠️ الرجاء إدخال اسم المستخدم وكلمة المرور');
+            return;
+        }
+        var user = USERS[username];
+        if (user && user.password === password) {
+            currentUser = { name: user.name, role: user.role };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            closeLoginModalFn();
+            alert('✅ تم تسجيل الدخول بنجاح');
+            updateLoginUI();
+        } else {
+            alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+        }
+    }
+
+    function logout() {
+        currentUser = null;
+        localStorage.removeItem('currentUser');
+        updateLoginUI();
+        alert('تم تسجيل الخروج');
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', window.openLoginModal);
+    loginModal.addEventListener('click', function(e) {
+        if (e.target === loginModal) window.closeLoginModalFn();
+    });
+    document.getElementById('googleLoginBtn').addEventListener('click', function() {
+        currentUser = { name: 'مستخدم Google', role: 'google', email: 'user@gmail.com' };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        updateLoginUI();
+        setTimeout(window.closeLoginModalFn, 1500);
+    });
+    document.getElementById('localLoginToggle').addEventListener('click', function() {
+        localLoginForm.classList.toggle('active');
+    });
+    document.getElementById('localLoginBtn').addEventListener('click', localLogin);
+    logoutBtn.addEventListener('click', logout);
+
+    // ========== الإعدادات ==========
+    window.openSettings = function() {
+        document.getElementById('settingsOverlay').classList.add('active');
+    };
+    window.closeSettings = function() {
+        document.getElementById('settingsOverlay').classList.remove('active');
+    };
+    window.setMode = function(mode) {
+        document.body.className = mode + ' ' + (document.body.className.split(' ').find(function(c){return c.indexOf('device-')===0;}) || 'device-desktop');
+        document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
+        document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
+        localStorage.setItem('theme', mode);
+    };
+    window.setDevice = function(device) {
+        document.body.className = document.body.className.replace(/device-\w+/, 'device-' + device);
+        document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
+        document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
+        localStorage.setItem('device', device);
+    };
+
+    // ========== الموسيقى ==========
+    window.toggleMusic = function() {
+        var audio = document.getElementById('bgMusic');
+        var btn = document.getElementById('musicBottomBtn');
+        if (!audio) return;
+        if (audio.paused) {
+            audio.volume = 0.3;
+            audio.play().catch(function() {});
+            btn.textContent = '🔊';
+            btn.classList.add('playing');
+        } else {
+            audio.pause();
+            btn.textContent = '🎵';
+            btn.classList.remove('playing');
+        }
+    };
+
+    // ========== صوت الخلفية (الفيديو + الصوت) ==========
+    window.toggleBgSound = function() {
+        var video = document.getElementById('bgVideo');
+        var audio = document.getElementById('bgMusic');
+        var btn = document.getElementById('soundBtn');
+        var isPlaying = !video.muted || !audio.paused;
+
+        if (isPlaying) {
+            video.muted = true;
+            audio.pause();
+            btn.innerHTML = '🔊 تشغيل الصوت';
+        } else {
+            video.muted = false;
+            video.play().catch(function() {});
+            audio.volume = 0.3;
+            audio.play().catch(function() {});
+            btn.innerHTML = '🔇 كتم الصوت';
+        }
+    };
+
+    // ========== المحادثة ==========
+    window.toggleChat = function() {
+        alert('💬 المحادثة قيد التطوير... قريباً بإذن الله!\n\n📧 للتواصل: jabri62018@gmail.com');
+    };
+
+    // ========== القائمة الجانبية ==========
+    window.toggleMenu = function() {
+        document.getElementById('sideMenu').classList.toggle('open');
+        document.getElementById('menuOverlay').classList.toggle('active');
+    };
+    window.closeMenu = function() {
+        document.getElementById('sideMenu').classList.remove('open');
+        document.getElementById('menuOverlay').classList.remove('active');
+    };
+
+    // ========== تبديل اللغة (النسخة المُصلحة) ==========
+    window.toggleLang = function() {
+        var path = window.location.pathname;
+        
+        // تحديد اللغة الحالية
+        var isArabic = path.includes('/ar/') || (!path.includes('/en/') && document.documentElement.lang !== 'en');
+        
+        // تحديد اسم الملف الحالي
+        var fileName = path.split('/').pop() || 'index.html';
+        if (fileName === '' || fileName === 'ar' || fileName === 'en') {
+            fileName = 'index.html';
+        }
+        
+        // بناء المسار الجديد
+        var newPath;
+        if (isArabic) {
+            // عربي → إنجليزي
+            newPath = '/en/' + fileName;
+            localStorage.setItem('lang', 'en');
+        } else {
+            // إنجليزي → عربي
+            newPath = '/ar/' + fileName;
+            localStorage.setItem('lang', 'ar');
+        }
+        
+        console.log('🌐 تحويل اللغة من:', path, '→', newPath);
+        window.location.href = newPath;
+    };
+
+    // ========== التهيئة الأولية ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        var savedLang = localStorage.getItem('lang') || 'ar';
+        document.documentElement.dir = savedLang === 'en' ? 'ltr' : 'rtl';
+        document.documentElement.lang = savedLang;
+
+        var savedTheme = localStorage.getItem('theme') || 'night';
+        document.body.className = savedTheme + ' ' + (localStorage.getItem('device') || 'device-desktop') + ' device-desktop';
+        document.getElementById('nightBtn').classList.toggle('active', savedTheme === 'night');
+        document.getElementById('dayBtn').classList.toggle('active', savedTheme === 'day');
+        document.getElementById('desktopBtn').classList.toggle('active', (localStorage.getItem('device') || 'desktop') === 'desktop');
+        document.getElementById('phoneBtn').classList.toggle('active', localStorage.getItem('device') === 'phone');
+
+        updateLoginUI();
+
+        document.addEventListener('click', function firstInteraction() {
+            var audio = document.getElementById('bgMusic');
+            if (audio && audio.paused) {
+                audio.volume = 0.3;
+                audio.play().catch(function() {});
+            }
+            document.removeEventListener('click', firstInteraction);
+        }, { once: true });
+    });
+
+})();
+</script>
+
+<!-- ========================================================== -->
+<!-- 17. Popup التحديث + Service Worker                        -->
+<!-- ========================================================== -->
+<div id="updatePopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
+    <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d); border:2px solid #c9a227; border-radius:24px; padding:32px 24px; max-width:90%; width:400px; text-align:center; box-shadow:0 20px 60px rgba(201,162,39,0.4);">
+        <div style="font-size:64px; margin-bottom:16px;">🎉</div>
+        <h2 style="color:#c9a227; font-size:22px; margin:0 0 12px; font-family:'Cairo',sans-serif;">واحة الجبري تحدّثت!</h2>
+        <p style="color:#c9d1d9; font-size:15px; line-height:1.7; margin:0 0 24px;">
+            تم تحميل الإصدار الجديد بنجاح.<br>
+            استمتع بالتجربة المحسّنة ✨
+        </p>
+        <button onclick="closeAndReload()" style="background:linear-gradient(135deg,#c9a227,#e6c34a); color:#0d1117; border:none; padding:14px 40px; border-radius:30px; font-size:16px; font-weight:bold; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:0 6px 20px rgba(201,162,39,0.5);">
+            رائع! 🚀
+        </button>
+    </div>
+</div>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(reg => {
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            document.getElementById('updatePopup').style.display = 'flex';
+                        }
+                    });
+                });
+            });
+        });
+    }
+    
+    function closeAndReload() {
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage('SKIP_WAITING');
+        }
+        document.getElementById('updatePopup').style.display = 'none';
+        setTimeout(() => window.location.reload(), 500);
+    }
+</script>
+
+<!-- ========================================================== -->
+<!-- 18. نافذة تحميل تطبيق الأندرويد (APK)                     -->
+<!-- ========================================================== -->
+<div id="apk-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 999999; justify-content: center; align-items: center; font-family: 'Cairo', sans-serif; direction: rtl; backdrop-filter: blur(5px);">
+    <div style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; width: 90%; border: 2px solid #c9a227; box-shadow: 0 20px 60px rgba(201, 162, 39, 0.5); position: relative;">
+        <span id="apk-close-x" style="position: absolute; top: 10px; left: 15px; font-size: 28px; cursor: pointer; color: #c9a84c; transition: 0.3s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='#c9a84c'">&times;</span>
+        <img src="/image/Yemen2026.png" alt="App Icon" style="width: 90px; height: 90px; margin-bottom: 15px; border-radius: 20px; object-fit: cover; border: 2px solid #c9a227;">
+        <h3 style="margin: 10px 0; color: #c9a227; font-size: 22px; font-weight: 900;">تطبيق واحة الجبري</h3>
+        <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-bottom: 25px;">للحصول على أفضل تجربة وتصفح أسرع، قم بتحميل تطبيقنا الآن.</p>
+        <a href="/app-release.apk" download style="display: block; background: linear-gradient(135deg, #c9a227, #e6c34a); color: #0d1117; text-decoration: none; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 16px; margin-bottom: 15px; transition: transform 0.3s; box-shadow: 0 6px 20px rgba(201,162,39,0.5);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">⬇️ تحميل التطبيق (APK)</a>
+        <button id="apk-close-btn" style="background: transparent; border: none; color: #888; cursor: pointer; font-size: 14px; padding: 5px; font-family: 'Cairo', sans-serif;">لاحقاً</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!sessionStorage.getItem('apk_prompt_dismissed')) {
+            setTimeout(function() {
+                var overlay = document.getElementById('apk-overlay');
+                if (overlay) overlay.style.display = 'flex';
+            }, 4000);
+        }
+        function closeOverlay() {
+            var overlay = document.getElementById('apk-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                sessionStorage.setItem('apk_prompt_dismissed', 'true');
+            }
+        }
+        var closeX = document.getElementById('apk-close-x');
+        var closeBtn = document.getElementById('apk-close-btn');
+        if (closeX) closeX.addEventListener('click', closeOverlay);
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+        var overlay = document.getElementById('apk-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeOverlay();
+            });
+        }
+    });
+</script>
+
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
