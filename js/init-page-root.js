@@ -1,11 +1,11 @@
 // ================================================================
-//  init-page-root.js - v5.3 (APK Ready + Auth + Lang + Waha Logo)
+//  init-page-root.js - v5.3.1 (APK Ready + Auth + Lang + Splash Logo)
 //  Heaven Al-Jabri | واحة الجبري
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] تفعيل الدرع المطلق (v5.3.0 - APK + Auth + Lang + Logo)...');
+  console.log('🛡️ [init] تفعيل الدرع المطلق (v5.3.1 - APK + Auth + Lang + Splash Logo)...');
 
   // ✅ كشف البيئة
   const IS_APK = window.location.protocol === 'file:' || 
@@ -137,7 +137,7 @@
   }
 
   /* ================================================================
-     ✅ [v5.3] Lang Loader — شعار الواحة بدل 🌐
+     ✅ [v5.3] Lang Loader — شعار الواحة
      ================================================================ */
   function _showLangLoader() {
     let el = document.getElementById('waha-lang-loader');
@@ -198,7 +198,7 @@
       '/'
     ];
 
-    // ✅ [v5.3] حماية: لو الفحص أخذ أكثر من 3 ثواني، انتقل مباشرة
+    // ✅ حماية: لو الفحص أخذ أكثر من 3 ثواني، انتقل مباشرة
     const safety = setTimeout(function() {
       console.warn('⏰ [lang] timeout - تحويل مباشر');
       window.location.href = '/' + target + '/';
@@ -238,29 +238,91 @@
 
   // تصدير عام
   window.switchLanguage = switchLanguage;
-  window.toggleLang = switchLanguage; // توافق مع الكود القديم
+  window.toggleLang = switchLanguage;
   window.getCurrentLanguage = _getCurrentLang;
 
   /* ================================================================
-     ⬇️ من هنا الكود الأصلي v5.1 كما هو بدون تغيير
+     ⬇️ من هنا الكود الأصلي v5.1
      ================================================================ */
 
-  // ===== شاشة الترحيب =====
+  /* ================================================================
+     ✅ [v5.3.1] Splash Screen — مع شعار الواحة
+     ================================================================ */
   function createSplash() {
     if (document.getElementById('splashScreen')) return;
     const html = `
       <div id="splashScreen">
+        <img src="/icon-192.png" alt="واحة الجبري" class="splash-logo" />
         <div class="splash-title">واحة الجبري</div>
         <div class="splash-sub">تراث اليمن العريق · نظرية السندباد الموحدة</div>
         <div class="spinner"></div>
         <style>
-          #splashScreen { position: fixed; top:0; left:0; width:100%; height:100%; background:#0a0a0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:999999; transition: opacity 0.6s ease; font-family: 'Cairo', sans-serif; }
+          #splashScreen {
+            position: fixed; top:0; left:0;
+            width:100%; height:100%;
+            background:#0a0a0f;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            z-index:999999;
+            transition: opacity 0.6s ease;
+            font-family: 'Cairo', sans-serif;
+          }
           #splashScreen.hidden { opacity:0; pointer-events:none; }
-          .splash-title { color:#6ae3ff; font-size:2.5rem; font-weight:900; }
-          .splash-sub { color:#888; font-size:1.1rem; margin-top:8px; }
-          .spinner { width:40px; height:40px; margin-top:30px; border:3px solid rgba(106,227,255,0.1); border-top:3px solid #6ae3ff; border-radius:50%; animation: spin 1s linear infinite; }
-          @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
-          @media (max-width:600px) { .splash-title { font-size:1.8rem; } .splash-sub { font-size:0.95rem; } }
+
+          .splash-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #c9a84c;
+            box-shadow: 0 0 60px rgba(201,168,76,0.5);
+            object-fit: cover;
+            animation: splashPulse 1.8s ease-in-out infinite;
+            margin-bottom: 22px;
+          }
+
+          .splash-title {
+            color:#6ae3ff;
+            font-size:2.5rem;
+            font-weight:900;
+            letter-spacing:1px;
+          }
+
+          .splash-sub {
+            color:#888;
+            font-size:1.1rem;
+            margin-top:8px;
+          }
+
+          .spinner {
+            width:40px; height:40px;
+            margin-top:30px;
+            border:3px solid rgba(106,227,255,0.1);
+            border-top:3px solid #6ae3ff;
+            border-radius:50%;
+            animation: spin 1s linear infinite;
+          }
+
+          @keyframes splashPulse {
+            0%, 100% {
+              transform: scale(1);
+              box-shadow: 0 0 60px rgba(201,168,76,0.5);
+            }
+            50% {
+              transform: scale(1.06);
+              box-shadow: 0 0 90px rgba(201,168,76,0.9);
+            }
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          @media (max-width:600px) {
+            .splash-logo { width: 96px; height: 96px; }
+            .splash-title { font-size:1.8rem; }
+            .splash-sub { font-size:0.95rem; }
+          }
         </style>
       </div>
     `;
@@ -503,7 +565,6 @@
 
   // ===== init الرئيسية =====
   function init() {
-    // ✅ [v5.2] تهيئة اللغة والوضع
     initLang();
     initTheme();
 
@@ -519,7 +580,6 @@
     document.addEventListener('headerLoaded', function() {
       setDynamicCanonical();
       addDynamicLinks();
-      // إعادة تهيئة اللغة بعد تحميل الهيدر (لتحديث #langLabel إن وُجد)
       initLang();
     });
 
@@ -537,5 +597,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.3 - APK + Auth + Lang + Logo)');
+  console.log('✅ init-page-root.js جاهز (v5.3.1 - APK + Auth + Lang + Splash Logo)');
 })();
