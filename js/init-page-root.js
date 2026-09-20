@@ -1,11 +1,11 @@
 // ================================================================
-//  init-page-root.js - v5.3.1 (APK Ready + Auth + Lang + Splash Logo)
+//  init-page-root.js - v5.6 (Secure + Smart 404 + Lang Root Fallback)
 //  Heaven Al-Jabri | واحة الجبري
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] تفعيل الدرع المطلق (v5.3.1 - APK + Auth + Lang + Splash Logo)...');
+  console.log('🛡️ [init] تفعيل الدرع المطلق (v5.6 - Secure + Smart 404 + Lang Fallback)...');
 
   // ✅ كشف البيئة
   const IS_APK = window.location.protocol === 'file:' || 
@@ -20,15 +20,9 @@
   let splashHidden = false;
 
   /* ================================================================
-     ✅ [v5.2] WahaAuth — نظام الدخول الموحّد
+     ✅ [v5.5] WahaAuth — واجهة آمنة (بدون كلمات سر مكشوفة)
      ================================================================ */
   const AUTH_KEY = 'waha_user';
-  const AUTH_USERS = {
-    'admin':     { password: '12345',   role: 'admin',     name: 'المدير'  },
-    'moderator': { password: 'mod123',  role: 'moderator', name: 'مشرف'   },
-    'user':      { password: 'user123', role: 'user',      name: 'مستخدم' },
-    'guest':     { password: 'guest',   role: 'guest',     name: 'زائر'   }
-  };
 
   let _currentUser = null;
   try {
@@ -56,43 +50,41 @@
     hasRole: function(role) {
       return !!_currentUser && _currentUser.role === role;
     },
-    loginLocal: function(username, password) {
-      username = String(username || '').trim();
-      password = String(password || '').trim();
-      if (!username || !password) {
-        return { ok: false, error: 'الرجاء إدخال اسم المستخدم وكلمة المرور' };
-      }
-      const u = AUTH_USERS[username];
-      if (u && u.password === password) {
-        _currentUser = {
-          name: u.name,
-          role: u.role,
-          username: username,
-          provider: 'local',
-          since: Date.now()
-        };
-        _persistAuth();
-        return { ok: true, user: Object.assign({}, _currentUser) };
-      }
-      return { ok: false, error: 'اسم المستخدم أو كلمة المرور غير صحيحة' };
-    },
-    loginGoogle: function() {
-      _currentUser = {
-        name: 'مستخدم Google',
-        role: 'google',
-        email: 'user@gmail.com',
-        provider: 'google',
-        since: Date.now()
+
+    /* ⚠️ [v5.5] Login محلي معطّل — استخدم /api/auth لاحقاً */
+    loginLocal: function(/* username, password */) {
+      console.warn('🔒 [v5.5] الدخول المحلي معطّل لأسباب أمنية. استخدم /api/auth');
+      return {
+        ok: false,
+        error: 'الدخول المحلي معطّل حالياً. قريباً سيتوفر الدخول عبر خدمة آمنة.'
       };
-      _persistAuth();
-      return { ok: true, user: Object.assign({}, _currentUser) };
     },
+
+    /* Google login — stub (يحتاج OAuth حقيقي) */
+    loginGoogle: function() {
+      console.warn('🔒 [v5.5] الدخول عبر Google — قيد التطوير');
+      return {
+        ok: false,
+        error: 'الدخول عبر Google قيد التطوير. تابعنا قريباً.'
+      };
+    },
+
+    /* Logout — يعمل دائماً */
     logout: function() {
       _currentUser = null;
       _persistAuth();
       return { ok: true };
+    },
+
+    /* للاستخدام الداخلي فقط (من /api/auth) */
+    _setUser: function(user) {
+      _currentUser = user;
+      _persistAuth();
+      return { ok: true, user: Object.assign({}, _currentUser) };
     }
   };
+
+  console.log('🔒 [WahaAuth] v5.5 — آمن: Login معطّل، Logout يعمل');
 
   /* ================================================================
      ✅ [v5.2] Lang Switcher — تبديل اللغة الذكي
@@ -178,6 +170,9 @@
     el.style.display = 'flex';
   }
 
+  /* ================================================================
+     ✅ [v5.6] switchLanguage — مع fallback للـ root
+     ================================================================ */
   let _switching = false;
   function switchLanguage() {
     if (_switching) return;
@@ -191,14 +186,21 @@
 
     const t = setTimeout(_showLangLoader, 280);
 
+    /* المرشحون بترتيب الأولوية:
+       1) /en/Page4.html        (نفس الملف في اللغة الأخرى)
+       2) /Page4.html           (نفس الملف في الجذر - root fallback)
+       3) /en/index.html        (index اللغة الأخرى)
+       4) /en/                  (جذر اللغة)
+       5) /                     (الجذر)
+    */
     const candidates = [
       '/' + target + '/' + file,
+      '/' + file,
       '/' + target + '/index.html',
       '/' + target + '/',
       '/'
     ];
 
-    // ✅ حماية: لو الفحص أخذ أكثر من 3 ثواني، انتقل مباشرة
     const safety = setTimeout(function() {
       console.warn('⏰ [lang] timeout - تحويل مباشر');
       window.location.href = '/' + target + '/';
@@ -236,14 +238,9 @@
     document.body.classList.add(t, 'device-' + d);
   }
 
-  // تصدير عام
   window.switchLanguage = switchLanguage;
   window.toggleLang = switchLanguage;
   window.getCurrentLanguage = _getCurrentLang;
-
-  /* ================================================================
-     ⬇️ من هنا الكود الأصلي v5.1
-     ================================================================ */
 
   /* ================================================================
      ✅ [v5.3.1] Splash Screen — مع شعار الواحة
@@ -303,20 +300,10 @@
           }
 
           @keyframes splashPulse {
-            0%, 100% {
-              transform: scale(1);
-              box-shadow: 0 0 60px rgba(201,168,76,0.5);
-            }
-            50% {
-              transform: scale(1.06);
-              box-shadow: 0 0 90px rgba(201,168,76,0.9);
-            }
+            0%, 100% { transform: scale(1);    box-shadow: 0 0 60px rgba(201,168,76,0.5); }
+            50%      { transform: scale(1.06); box-shadow: 0 0 90px rgba(201,168,76,0.9); }
           }
-
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
+          @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
           @media (max-width:600px) {
             .splash-logo { width: 96px; height: 96px; }
@@ -339,10 +326,15 @@
     setTimeout(() => { if (el) el.remove(); }, 800);
   }
 
+  /* ================================================================
+     ✅ [v5.5] bustCache — يعمل فقط في APK
+     ================================================================ */
   function bustCache(url) {
-    if (IS_APK) return url;
-    const sep = url.includes('?') ? '&' : '?';
-    return url + sep + '_t=' + Date.now();
+    if (IS_APK) {
+      const sep = url.includes('?') ? '&' : '?';
+      return url + sep + '_t=' + Date.now();
+    }
+    return url;
   }
 
   function safelyExecuteScripts(container) {
@@ -366,9 +358,6 @@
     });
   }
 
-  // ================================================================
-  //  ✅ تحميل HTML مع XHR + timeout
-  // ================================================================
   function loadHTMLFile(placeholder, filename, onSuccess, onFail) {
     if (!placeholder) {
       if (onFail) onFail(new Error('placeholder not found'));
@@ -448,7 +437,6 @@
     );
   }
 
-  // ===== الروابط الديناميكية =====
   function addDynamicLinks() {
     const currentPath = window.location.pathname;
     const currentFile = currentPath.split('/').pop() || 'index.html';
@@ -490,7 +478,25 @@
     console.log('🔗 روابط ديناميكية مضافة لـ ' + currentFile);
   }
 
+  /* ================================================================
+     ✅ [v5.5] setDynamicCanonical — يتخطى 404 و index
+     ================================================================ */
   function setDynamicCanonical() {
+    // ❌ لا نضيف canonical على صفحات 404
+    if (document.title.includes('404') ||
+        document.body.innerHTML.includes('404 Not Found') ||
+        document.body.innerHTML.includes('Page Not Found')) {
+      console.log('⏭️ [canonical] تم التخطي (صفحة 404)');
+      return;
+    }
+
+    // ❌ ولا على الصفحة الرئيسية
+    const path = window.location.pathname;
+    if (path === '/' || path === '/index.html' || path === '') {
+      console.log('⏭️ [canonical] تم التخطي (الصفحة الرئيسية)');
+      return;
+    }
+
     const currentUrl = window.location.href.split('?')[0].split('#')[0];
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -501,7 +507,9 @@
     canonicalLink.href = currentUrl;
   }
 
-  // ===== كاشف 404 (فقط على الويب) =====
+  /* ================================================================
+     ✅ [v5.4] كاشف 404
+     ================================================================ */
   function detect404AndHandle() {
     if (IS_APK) {
       console.log('⏭️ [404] تم تخطي كاشف 404 (بيئة APK)');
@@ -530,6 +538,130 @@
   }
 
   function handle404Error() {
+    tryToFixUrl(function(fixed) {
+      if (fixed) {
+        console.log('✨ [404] تم إصلاح URL تلقائياً');
+        return;
+      }
+      show404Overlay();
+    });
+  }
+
+  /* ================================================================
+     ✅ [v5.6] tryToFixUrl — منطق محسّن مع root fallback
+     ------------------------------------------------------------
+     القواعد:
+     1) /ar أو /en → /ar/index.html أو /en/index.html
+     2) /ar/Page4 → /ar/Page4.html ثم /Page4.html (root fallback)
+     3) /Page4 → /Page4.html ثم /Page4/index.html
+     4) فشل → 404 overlay
+     ================================================================ */
+  function tryToFixUrl(callback) {
+    var path = window.location.pathname;
+    var lastSegment = path.split('/').pop();
+
+    /* ===== قاعدة 1: /ar أو /en (بدون slash) ===== */
+    if (/^\/(ar|en)$/i.test(path)) {
+        var lang = path.substring(1);
+        console.log('🌐 [404-Fix] اللغة بدون slash:', lang);
+
+        var langIndex = '/' + lang + '/index.html';
+        fetch(langIndex, { method: 'HEAD', cache: 'no-cache' })
+            .then(function(res) {
+                if (res.ok) {
+                    console.log('✅ [404-Fix] →', langIndex);
+                    window.location.replace(langIndex);
+                } else {
+                    console.log('⚠️ [404-Fix] اللغة غير متوفرة → root');
+                    window.location.replace('/');
+                }
+                callback(true);
+            })
+            .catch(function() {
+                window.location.replace('/');
+                callback(true);
+            });
+        return;
+    }
+
+    /* ===== تجاهل: ملف له امتداد أو الجذر ===== */
+    var hasExtension = lastSegment && lastSegment.indexOf('.') !== -1;
+    var isRoot = (path === '/' || path === '');
+
+    if (hasExtension || isRoot) {
+        console.log('⏭️ [404-Fix] تخطي — ملف له امتداد أو الجذر');
+        callback(false);
+        return;
+    }
+
+    /* ===== كشف البيئة: هل نحن في مجلد لغة؟ ===== */
+    var isInLangFolder = /^\/(ar|en)\//i.test(path);
+    var langMatch = path.match(/^\/(ar|en)\/(.+)$/i);
+
+    var candidates = [];
+
+    if (isInLangFolder && langMatch) {
+        /* /ar/Page4 → نجرب:
+           1) /ar/Page4.html
+           2) /Page4.html (root fallback) ⭐
+           3) /ar/Page4/index.html
+        */
+        var lang = langMatch[1];
+        var fileName = langMatch[2];
+
+        candidates.push('/' + lang + '/' + fileName + '.html');
+        candidates.push('/' + fileName + '.html');
+        candidates.push('/' + lang + '/' + fileName + '/index.html');
+
+        console.log('🔧 [404-Fix] داخل مجلد اللغة — أولوية الـ root fallback');
+    } else {
+        /* /Page4 → نجرب:
+           1) /Page4.html
+           2) /Page4/index.html
+        */
+        if (path.endsWith('/')) {
+            var clean = path.slice(0, -1);
+            candidates.push(path + 'index.html');
+            candidates.push(clean + '.html');
+        } else {
+            candidates.push(path + '.html');
+            candidates.push(path + '/index.html');
+        }
+    }
+
+    console.log('🔧 [404-Fix] محاولة إصلاح:', path);
+    console.log('🔧 [404-Fix] المرشحون:', candidates);
+
+    /* ===== فحص متسلسل ===== */
+    (function tryNext(i) {
+        if (i >= candidates.length) {
+            console.warn('❌ [404-Fix] فشلت كل المحاولات');
+            callback(false);
+            return;
+        }
+
+        var url = candidates[i];
+
+        fetch(url, { method: 'HEAD', cache: 'no-cache', redirect: 'follow' })
+            .then(function(res) {
+                if (res.ok) {
+                    console.log('✅ [404-Fix] وُجد:', url);
+                    window.location.replace(url);
+                    callback(true);
+                } else {
+                    tryNext(i + 1);
+                }
+            })
+            .catch(function() {
+                tryNext(i + 1);
+            });
+    })(0);
+  }
+
+  /* ================================================================
+     ✅ [v5.4] show404Overlay
+     ================================================================ */
+  function show404Overlay() {
     if (sessionStorage.getItem('jabri404Handled')) return;
     sessionStorage.setItem('jabri404Handled', 'true');
 
@@ -563,7 +695,9 @@
     }, 7000);
   }
 
-  // ===== init الرئيسية =====
+  /* ================================================================
+     ✅ init الرئيسية
+     ================================================================ */
   function init() {
     initLang();
     initTheme();
@@ -597,5 +731,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.3.1 - APK + Auth + Lang + Splash Logo)');
+  console.log('✅ init-page-root.js جاهز (v5.6 - Secure + Smart 404 + Lang Fallback)');
 })();
