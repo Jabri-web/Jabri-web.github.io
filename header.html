@@ -1,6 +1,6 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.2)           -->
-<!-- التاريخ: 2026-09-19 | إصلاح تبديل اللغة                   -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.3)           -->
+<!-- التاريخ: 2026-09-20 | توحيد Auth + Lang                    -->
 <!-- ========================================================== -->
 
 <!-- ===== 1. وسوم السيو الأساسية ===== -->
@@ -37,14 +37,14 @@
 <link id="dynamicHreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
 <link id="dynamicHreflangDefault" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
 
-<!-- ===== 5. Manifest والأيقونات (موحّدة على /image/) ===== -->
+<!-- ===== 5. Manifest والأيقونات ===== -->
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/image/Yemen2026.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-<!-- ===== 6. Schema.org (SEO مكثف) ===== -->
+<!-- ===== 6. Schema.org ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -148,9 +148,6 @@
     .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
     .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
 
-    /* ---------- باقي الأنماط (لم تتغير) ---------- */
-    /* ... (كود الستايل كاملاً كما هو) ... */
-    
     /* ---------- نافذة تسجيل الدخول ---------- */
     .login-modal {
         display: none; position: fixed; top: 0; left: 0;
@@ -287,7 +284,7 @@
     }
     .bottom-btn .count { font-weight: 900; font-size: 18px; color: #0a0a0f; }
 
-    /* ---------- زر صوت الخلفية (يمين أسفل) ---------- */
+    /* ---------- زر صوت الخلفية ---------- */
     .sound-toggle-btn {
         position: fixed; bottom: 28px; right: 28px; z-index: 9999;
         padding: 12px 20px; border-radius: 50px;
@@ -342,8 +339,6 @@
         .sound-toggle-btn { bottom: 18px; right: 18px; font-size: 12px; padding: 10px 14px; }
     }
 </style>
-</head>
-<body class="night device-desktop">
 
 <!-- ========================================================== -->
 <!-- 8. خلفية الفيديو + الصوت الأساسي                          -->
@@ -352,7 +347,6 @@
     <source src="/image/heaven3.mp4" type="video/mp4" />
 </video>
 
-<!-- الصوت الأساسي (مخفي، يعمل عند الحاجة) -->
 <audio id="bgMusic" loop preload="auto" style="display:none;">
     <source src="/image/sanaani.mp3" type="audio/mpeg" />
     <source src="/image/hadrami.mp3" type="audio/mpeg" />
@@ -474,7 +468,7 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- 16. JavaScript الموحّد                                      -->
+<!-- 16. JavaScript الموحّد (يستخدم WahaAuth + switchLanguage)  -->
 <!-- ========================================================== -->
 <script>
 (function() {
@@ -488,13 +482,7 @@
         console.log('🗑️ تم تنظيف الكاش');
     }
 
-    // ========== نظام تسجيل الدخول ==========
-    var USERS = {
-        'admin': { password: '12345', role: 'admin', name: 'المدير' },
-        'user':  { password: 'user123', role: 'user', name: 'مستخدم' }
-    };
-    var currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-
+    // ========== عناصر UI ==========
     var loginModal = document.getElementById('loginModal');
     var localLoginForm = document.getElementById('localLoginForm');
     var localUsername = document.getElementById('localUsername');
@@ -506,23 +494,16 @@
     var userRoleText = document.getElementById('userRoleText');
     var loginTitle = document.getElementById('loginTitle');
 
-    window.openLoginModal = function() {
-        loginModal.classList.add('active');
-        updateLoginUI();
-    };
-    window.closeLoginModalFn = function() {
-        loginModal.classList.remove('active');
-        localLoginForm.classList.remove('active');
-    };
-
+    // ========== تحديث واجهة الدخول بناءً على WahaAuth ==========
     function updateLoginUI() {
-        if (currentUser) {
+        var user = (window.WahaAuth && window.WahaAuth.getUser) ? window.WahaAuth.getUser() : null;
+        if (user) {
             userStatus.style.display = 'block';
             loginOptions.style.display = 'none';
             logoutBtn.style.display = 'block';
-            userNameText.textContent = currentUser.name;
-            userRoleText.textContent = currentUser.role;
-            loginTitle.innerHTML = '👤 مرحباً ' + currentUser.name;
+            userNameText.textContent = user.name || 'مستخدم';
+            userRoleText.textContent = user.role || 'زائر';
+            loginTitle.innerHTML = '👤 مرحباً ' + (user.name || 'مستخدم');
         } else {
             userStatus.style.display = 'none';
             loginOptions.style.display = 'block';
@@ -532,47 +513,70 @@
         }
     }
 
+    window.openLoginModal = function() {
+        loginModal.classList.add('active');
+        updateLoginUI();
+    };
+    window.closeLoginModalFn = function() {
+        loginModal.classList.remove('active');
+        localLoginForm.classList.remove('active');
+    };
+
+    // ========== الدخول المحلي (يعتمد على WahaAuth) ==========
     function localLogin() {
-        var username = localUsername.value.trim();
-        var password = localPassword.value.trim();
-        if (!username || !password) {
-            alert('⚠️ الرجاء إدخال اسم المستخدم وكلمة المرور');
+        if (!window.WahaAuth) {
+            alert('⚠️ نظام الدخول لم يُحمّل بعد، حاول مرة أخرى');
             return;
         }
-        var user = USERS[username];
-        if (user && user.password === password) {
-            currentUser = { name: user.name, role: user.role };
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            closeLoginModalFn();
-            alert('✅ تم تسجيل الدخول بنجاح');
+        var res = window.WahaAuth.loginLocal(localUsername.value, localPassword.value);
+        if (res.ok) {
+            localUsername.value = '';
+            localPassword.value = '';
             updateLoginUI();
+            setTimeout(window.closeLoginModalFn, 800);
         } else {
-            alert('❌ اسم المستخدم أو كلمة المرور غير صحيحة');
+            alert('❌ ' + res.error);
         }
     }
 
     function logout() {
-        currentUser = null;
-        localStorage.removeItem('currentUser');
+        if (window.WahaAuth) window.WahaAuth.logout();
         updateLoginUI();
-        alert('تم تسجيل الخروج');
     }
 
-    document.getElementById('loginBtn').addEventListener('click', window.openLoginModal);
-    loginModal.addEventListener('click', function(e) {
-        if (e.target === loginModal) window.closeLoginModalFn();
-    });
-    document.getElementById('googleLoginBtn').addEventListener('click', function() {
-        currentUser = { name: 'مستخدم Google', role: 'google', email: 'user@gmail.com' };
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        updateLoginUI();
-        setTimeout(window.closeLoginModalFn, 1500);
-    });
-    document.getElementById('localLoginToggle').addEventListener('click', function() {
-        localLoginForm.classList.toggle('active');
-    });
-    document.getElementById('localLoginBtn').addEventListener('click', localLogin);
-    logoutBtn.addEventListener('click', logout);
+    // ========== ربط الأحداث ==========
+    var loginBtnEl = document.getElementById('loginBtn');
+    if (loginBtnEl) loginBtnEl.addEventListener('click', window.openLoginModal);
+
+    if (loginModal) {
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) window.closeLoginModalFn();
+        });
+    }
+
+    var googleBtn = document.getElementById('googleLoginBtn');
+    if (googleBtn) {
+        googleBtn.addEventListener('click', function() {
+            if (window.WahaAuth) window.WahaAuth.loginGoogle();
+            updateLoginUI();
+            setTimeout(window.closeLoginModalFn, 1200);
+        });
+    }
+
+    var localToggle = document.getElementById('localLoginToggle');
+    if (localToggle) {
+        localToggle.addEventListener('click', function() {
+            localLoginForm.classList.toggle('active');
+        });
+    }
+
+    var localLoginBtn = document.getElementById('localLoginBtn');
+    if (localLoginBtn) localLoginBtn.addEventListener('click', localLogin);
+
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+
+    // تحديث الواجهة لما WahaAuth يتغير من مكان تاني
+    window.addEventListener('waha:auth-changed', updateLoginUI);
 
     // ========== الإعدادات ==========
     window.openSettings = function() {
@@ -582,15 +586,20 @@
         document.getElementById('settingsOverlay').classList.remove('active');
     };
     window.setMode = function(mode) {
-        document.body.className = mode + ' ' + (document.body.className.split(' ').find(function(c){return c.indexOf('device-')===0;}) || 'device-desktop');
-        document.getElementById('dayBtn').classList.toggle('active', mode === 'day');
-        document.getElementById('nightBtn').classList.toggle('active', mode === 'night');
+        var device = (document.body.className.split(' ').find(function(c){return c.indexOf('device-')===0;}) || 'device-desktop');
+        document.body.className = mode + ' ' + device;
+        var dayBtn = document.getElementById('dayBtn');
+        var nightBtn = document.getElementById('nightBtn');
+        if (dayBtn) dayBtn.classList.toggle('active', mode === 'day');
+        if (nightBtn) nightBtn.classList.toggle('active', mode === 'night');
         localStorage.setItem('theme', mode);
     };
     window.setDevice = function(device) {
         document.body.className = document.body.className.replace(/device-\w+/, 'device-' + device);
-        document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
-        document.getElementById('phoneBtn').classList.toggle('active', device === 'phone');
+        var desktopBtn = document.getElementById('desktopBtn');
+        var phoneBtn = document.getElementById('phoneBtn');
+        if (desktopBtn) desktopBtn.classList.toggle('active', device === 'desktop');
+        if (phoneBtn) phoneBtn.classList.toggle('active', device === 'phone');
         localStorage.setItem('device', device);
     };
 
@@ -598,7 +607,7 @@
     window.toggleMusic = function() {
         var audio = document.getElementById('bgMusic');
         var btn = document.getElementById('musicBottomBtn');
-        if (!audio) return;
+        if (!audio || !btn) return;
         if (audio.paused) {
             audio.volume = 0.3;
             audio.play().catch(function() {});
@@ -611,11 +620,12 @@
         }
     };
 
-    // ========== صوت الخلفية (الفيديو + الصوت) ==========
+    // ========== صوت الخلفية ==========
     window.toggleBgSound = function() {
         var video = document.getElementById('bgVideo');
         var audio = document.getElementById('bgMusic');
         var btn = document.getElementById('soundBtn');
+        if (!video || !audio || !btn) return;
         var isPlaying = !video.muted || !audio.paused;
 
         if (isPlaying) {
@@ -646,47 +656,45 @@
         document.getElementById('menuOverlay').classList.remove('active');
     };
 
-    // ========== تبديل اللغة (النسخة المُصلحة) ==========
+    // ========== تبديل اللغة (موحّد عبر switchLanguage) ==========
     window.toggleLang = function() {
-        var path = window.location.pathname;
-        
-        // تحديد اللغة الحالية
-        var isArabic = path.includes('/ar/') || (!path.includes('/en/') && document.documentElement.lang !== 'en');
-        
-        // تحديد اسم الملف الحالي
-        var fileName = path.split('/').pop() || 'index.html';
-        if (fileName === '' || fileName === 'ar' || fileName === 'en') {
-            fileName = 'index.html';
-        }
-        
-        // بناء المسار الجديد
-        var newPath;
-        if (isArabic) {
-            // عربي → إنجليزي
-            newPath = '/en/' + fileName;
-            localStorage.setItem('lang', 'en');
+        if (window.switchLanguage) {
+            window.switchLanguage();
         } else {
-            // إنجليزي → عربي
-            newPath = '/ar/' + fileName;
-            localStorage.setItem('lang', 'ar');
+            console.warn('⚠️ switchLanguage غير متاح بعد');
+            var path = window.location.pathname;
+            var isArabic = path.indexOf('/ar/') !== -1 || (path.indexOf('/en/') === -1 && document.documentElement.lang !== 'en');
+            var fileName = path.split('/').pop() || 'index.html';
+            if (fileName === '' || fileName === 'ar' || fileName === 'en') fileName = 'index.html';
+            var newPath = isArabic ? '/en/' + fileName : '/ar/' + fileName;
+            window.location.href = newPath;
         }
-        
-        console.log('🌐 تحويل اللغة من:', path, '→', newPath);
-        window.location.href = newPath;
     };
 
-    // ========== التهيئة الأولية ==========
+    // ========== التهيئة الأولية عند DOMContentLoaded ==========
     document.addEventListener('DOMContentLoaded', function() {
-        var savedLang = localStorage.getItem('lang') || 'ar';
-        document.documentElement.dir = savedLang === 'en' ? 'ltr' : 'rtl';
-        document.documentElement.lang = savedLang;
+        var savedLang = localStorage.getItem('waha_lang') || localStorage.getItem('lang') || 'ar';
+        if (savedLang === 'en') {
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+        } else {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+        }
 
         var savedTheme = localStorage.getItem('theme') || 'night';
-        document.body.className = savedTheme + ' ' + (localStorage.getItem('device') || 'device-desktop') + ' device-desktop';
-        document.getElementById('nightBtn').classList.toggle('active', savedTheme === 'night');
-        document.getElementById('dayBtn').classList.toggle('active', savedTheme === 'day');
-        document.getElementById('desktopBtn').classList.toggle('active', (localStorage.getItem('device') || 'desktop') === 'desktop');
-        document.getElementById('phoneBtn').classList.toggle('active', localStorage.getItem('device') === 'phone');
+        var savedDevice = localStorage.getItem('device') || 'desktop';
+        document.body.classList.remove('day', 'night', 'device-desktop', 'device-phone');
+        document.body.classList.add(savedTheme, 'device-' + savedDevice);
+
+        var nightBtn = document.getElementById('nightBtn');
+        var dayBtn = document.getElementById('dayBtn');
+        var desktopBtn = document.getElementById('desktopBtn');
+        var phoneBtn = document.getElementById('phoneBtn');
+        if (nightBtn) nightBtn.classList.toggle('active', savedTheme === 'night');
+        if (dayBtn) dayBtn.classList.toggle('active', savedTheme === 'day');
+        if (desktopBtn) desktopBtn.classList.toggle('active', savedDevice === 'desktop');
+        if (phoneBtn) phoneBtn.classList.toggle('active', savedDevice === 'phone');
 
         updateLoginUI();
 
@@ -722,11 +730,11 @@
 
 <script>
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').then(reg => {
-                reg.addEventListener('updatefound', () => {
-                    const newWorker = reg.installing;
-                    newWorker.addEventListener('statechange', () => {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                reg.addEventListener('updatefound', function() {
+                    var newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', function() {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                             document.getElementById('updatePopup').style.display = 'flex';
                         }
@@ -735,13 +743,13 @@
             });
         });
     }
-    
+
     function closeAndReload() {
         if (navigator.serviceWorker.controller) {
             navigator.serviceWorker.controller.postMessage('SKIP_WAITING');
         }
         document.getElementById('updatePopup').style.display = 'none';
-        setTimeout(() => window.location.reload(), 500);
+        setTimeout(function() { window.location.reload(); }, 500);
     }
 </script>
 
@@ -786,8 +794,3 @@
         }
     });
 </script>
-
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<script src="/js/init-page-root.js" defer></script>
-<script src="/js/menu.js" defer></script>

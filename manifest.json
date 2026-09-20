@@ -2,7 +2,7 @@
   "name": "Heaven Al-Jabri | واحة الجبري",
   "short_name": "واحة الجبري",
   "description": "تطبيق واحة الجبري - موسيقى باب اليمن الأصيلة ونظرية السندباد الموحدة Z+C+A=1",
-  "start_url": "/logo",
+  "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0A0A0F",
@@ -13,13 +13,13 @@
   "categories": ["education", "science", "music", "culture"],
   "screenshots": [
     {
-      "src": "/image/screenshot1.webp",
+      "src": "/image/oasis-poster1.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow"
     },
     {
-      "src": "/image/screenshot2.webp",
+      "src": "/image/oasis-poster2.webp",
       "sizes": "1920x1080",
       "type": "image/webp",
       "form_factor": "wide"
@@ -44,21 +44,21 @@
       "name": "نظرية السندباد",
       "short_name": "النظرية",
       "description": "الدالة الأم Z(x) ونظرية السندباد الموحدة",
-      "url": "/theory-ar",
+      "url": "/theory-ar.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "الموسيقى اليمنية",
       "short_name": "الموسيقى",
       "description": "موسيقى باب اليمن الأصيلة",
-      "url": "/music",
+      "url": "/music.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "واحة الجبري",
       "short_name": "الواحة",
-      "description": "صفحة logo والواحة",
-      "url": "/logo",
+      "description": "واحة الجبري' الصفحة الرئيسية",
+      "url": "/index.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
