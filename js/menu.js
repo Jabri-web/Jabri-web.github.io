@@ -1,5 +1,6 @@
 // ============================================================
-//   menu.js - v6.0 (APK + Web Ready)
+//   menu.js - v6.1 (APK + Web Ready + Header Integration)
+//   Heaven Al-Jabri | واحة الجبري
 // ============================================================
 
 (function() {
@@ -164,25 +165,21 @@
 
         let html = '';
 
-        // الأساسيات
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,215,0,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ffd700; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 ${isArabic ? 'الأساسيات' : 'Essentials'}</div>`;
         MENU_TOP.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // الألعاب
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(0,255,128,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#00ff88; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🎮 ${isArabic ? 'مركز الألعاب' : 'Games Hub'}</div>`;
         GAMES.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // النظرية
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 ${isArabic ? 'النظرية' : 'Theory'}</div>`;
         MENU_MIDDLE.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // التنزيلات (مخفية في APK)
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
         if (!IS_APK) {
@@ -193,7 +190,6 @@
         }
         html += `</div>`;
 
-        // ويكيبيديا
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📖 ${isArabic ? 'ويكيبيديا' : 'Wikipedia'}</div>`;
         html += buildMenuItem({
@@ -206,13 +202,11 @@
         });
         html += `</div>`;
 
-        // المحادثات
         html += `<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2); padding-bottom:8px; margin-bottom:10px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">💬 ${isArabic ? 'آخر المحادثات' : 'Recent Chats'} <span style="font-size:0.6rem; opacity:0.6;">(${MENU_BOTTOM.length})</span></div>`;
         MENU_BOTTOM.forEach(item => { html += buildMenuItem(item); });
         html += `</div>`;
 
-        // إنجازات اليوم
         const today = new Date();
         const dateStr = today.toLocaleDateString(isArabic ? 'ar-EG' : 'en-US', {
             year: 'numeric', month: 'long', day: 'numeric'
@@ -237,7 +231,6 @@
             </div>
         `;
 
-        // روابط خارجية
         html += `
             <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
             <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
@@ -269,7 +262,6 @@
             </div>
         `;
 
-        // الأساسيات
         html += `<div style="border-bottom:2px solid rgba(255,215,0,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#ffd700; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📌 ${isArabic ? 'الأساسيات' : 'Essentials'}</div>`;
         MENU_TOP.forEach(item => {
@@ -279,7 +271,6 @@
         });
         html += `</div>`;
 
-        // الألعاب
         html += `<div style="border-bottom:2px solid rgba(0,255,128,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#00ff88; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🎮 ${isArabic ? 'مركز الألعاب' : 'Games Hub'}</div>`;
         GAMES.forEach(item => {
@@ -289,7 +280,6 @@
         });
         html += `</div>`;
 
-        // النظرية
         html += `<div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">🧠 ${isArabic ? 'النظرية' : 'Theory'}</div>`;
         MENU_MIDDLE.forEach(item => {
@@ -299,7 +289,6 @@
         });
         html += `</div>`;
 
-        // التنزيلات
         if (!IS_APK) {
             html += `<div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;">`;
             html += `<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">⬇️ ${isArabic ? 'تنزيل الواحة' : 'Download Waha'}</div>`;
@@ -312,7 +301,6 @@
             html += `</div>`;
         }
 
-        // ويكيبيديا
         html += `<div style="border-bottom:2px solid rgba(106,227,255,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">📖 ${isArabic ? 'ويكيبيديا' : 'Wikipedia'}</div>`;
         html += `<a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" rel="noopener" style="color:#6ae3ff;padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;font-size:0.82rem;border-bottom:1px solid rgba(106,227,255,0.03);">
@@ -320,7 +308,6 @@
                  </a>`;
         html += `</div>`;
 
-        // المحادثات
         html += `<div style="border-bottom:2px solid rgba(255,106,106,0.15); padding-bottom:6px; margin-bottom:8px;">`;
         html += `<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold; letter-spacing:1px; margin-bottom:4px;">💬 ${isArabic ? 'آخر المحادثات' : 'Recent Chats'} <span style="font-size:0.6rem; opacity:0.6;">(${MENU_BOTTOM.length})</span></div>`;
         if (MENU_BOTTOM.length === 0) {
@@ -338,7 +325,6 @@
         }
         html += `</div>`;
 
-        // روابط خارجية
         html += `
             <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
             <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:6px 10px;border-radius:6px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">
@@ -356,52 +342,23 @@
     }
 
     // ============================================================
-    //   القائمة汉堡
+    //   القائمة المنسدلة (بدون زر أصفر — مربوطة بزر الهيدر ☰)
     // ============================================================
     function buildHamburgerMenu() {
-        const oldMenu = document.getElementById('hamburger-menu');
-        if (oldMenu) oldMenu.remove();
         const oldDropdown = document.getElementById('menu-dropdown');
         if (oldDropdown) oldDropdown.remove();
 
-        const menuContainer = document.createElement('div');
-        menuContainer.id = 'hamburger-menu';
-        menuContainer.style.cssText = `
-            position: fixed !important;
-            top: 75px !important;
-            right: 20px !important;
-            z-index: 9999 !important;
-            cursor: pointer !important;
-            background: linear-gradient(135deg, #ffd700, #f0a500) !important;
-            color: #0a0a0f !important;
-            padding: 8px 14px !important;
-            border-radius: 10px !important;
-            font-size: 13px !important;
-            font-weight: bold !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            font-family: 'Cairo', 'Tahoma', sans-serif !important;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) !important;
-            border: 1px solid rgba(255, 215, 0, 0.1) !important;
-        `;
-
-        menuContainer.innerHTML = `
-            <div style="display:flex;flex-direction:column;gap:3px;width:20px;height:14px;justify-content:center;flex-shrink:0;">
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-                <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
-            </div>
-            <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">${isArabic ? 'القائمة' : 'Menu'}</span>
-        `;
+        // إزالة الزر الأصفر القديم إن وُجد
+        const oldYellowBtn = document.getElementById('hamburger-menu');
+        if (oldYellowBtn) oldYellowBtn.remove();
 
         const dropdown = document.createElement('div');
         dropdown.id = 'menu-dropdown';
         dropdown.style.cssText = `
             display: none !important;
             position: fixed !important;
-            top: 125px !important;
-            right: 20px !important;
+            top: 75px !important;
+            ${isArabic ? 'right: 20px' : 'left: 20px'} !important;
             background: rgba(10, 10, 20, 0.97) !important;
             border: 2px solid #ffd700 !important;
             border-radius: 16px !important;
@@ -418,22 +375,61 @@
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
         `;
 
-        document.body.appendChild(menuContainer);
         document.body.appendChild(dropdown);
         buildDropdownMenu();
 
         let isOpen = false;
-        menuContainer.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdown.style.display = isOpen ? 'none' : 'flex';
+
+        function toggleDropdown(e) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
             isOpen = !isOpen;
-        });
+            dropdown.style.display = isOpen ? 'flex' : 'none';
+        }
+
+        function closeDropdown() {
+            isOpen = false;
+            dropdown.style.display = 'none';
+        }
+
+        // ربط زر ☰ في الهيدر
+        function bindHeaderMenuBtn() {
+            const headerBtn = document.querySelector('.top-btn.menu');
+            if (!headerBtn) return false;
+
+            // إزالة أي onclick قديم
+            headerBtn.removeAttribute('onclick');
+
+            if (headerBtn.dataset.wahaBound === '1') return true;
+            headerBtn.dataset.wahaBound = '1';
+
+            headerBtn.addEventListener('click', toggleDropdown);
+            console.log('✅ [menu] زر ☰ مربوط بنجاح');
+            return true;
+        }
+
+        // محاولات متعددة للربط
+        if (!bindHeaderMenuBtn()) {
+            document.addEventListener('headerLoaded', bindHeaderMenuBtn);
+            window.addEventListener('headerLoaded', bindHeaderMenuBtn);
+            setTimeout(bindHeaderMenuBtn, 500);
+            setTimeout(bindHeaderMenuBtn, 1500);
+            setTimeout(bindHeaderMenuBtn, 3000);
+        }
+
+        // تجاوز دالة toggleMenu القديمة
+        window.toggleMenu = toggleDropdown;
+
+        // إغلاق عند الضغط خارج القائمة
         document.addEventListener('click', function(e) {
-            if (!menuContainer.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
-                isOpen = false;
+            if (!dropdown.contains(e.target) && !e.target.closest('.top-btn.menu')) {
+                closeDropdown();
             }
         });
+
+        console.log('🌴 [menu] buildHamburgerMenu v6.1 — بدون زر أصفر');
     }
 
     // ============================================================
@@ -504,7 +500,7 @@
             updateBottomMenu();
             buildMainMenu();
             buildHamburgerMenu();
-            console.log('🌴 menu.js v6.0.0 - ' + (IS_APK ? '📱 APK Mode' : '🌐 Web Mode'));
+            console.log('🌴 menu.js v6.1 - ' + (IS_APK ? '📱 APK Mode' : '🌐 Web Mode'));
         } catch(e) {
             console.error('❌ [menu] خطأ في التشغيل:', e);
         }
