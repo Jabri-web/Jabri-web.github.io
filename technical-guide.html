@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- ===== SEO الأساسي ===== -->
+  <title>الدليل الفني | واحة الجبري — Heaven Al-Jabri</title>
+  <meta name="description" content="الدليل الفني الرسمي لواحة الجبري — قانون الاستدعاء الموحد، خريطة الإمبراطورية الرقمية، سجل DOI الكامل (19 معرف Zenodo)، وهيكل ملفات jabri-com.vercel.app. الهوية: Z + C + A = 1">
+  <meta name="keywords" content="واحة الجبري, Heaven Al-Jabri, الدليل الفني, Technical Guide, DOI, Zenodo, نظرية السندباد الموحدة, عبدالله الجبري, Z(x), Riemann, Millennium Problems">
+  <meta name="author" content="م/ عبدالله محمد ناصر الجبري | Eng. Abdulla Mohammed Nasser Al-Jabri">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U">
+
+  <!-- ===== Canonical ===== -->
+  <link rel="canonical" href="https://jabri-com.vercel.app/technical-guide.html">
+
+  <!-- ===== hreflang ===== -->
+  <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/technical-guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/technical-guide.html">
+
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ar_YE">
+  <meta property="og:title" content="الدليل الفني | واحة الجبري">
+  <meta property="og:description" content="الدليل الفني الشامل — Z + C + A = 1">
+  <meta property="og:url" content="https://jabri-com.vercel.app/technical-guide.html">
+  <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="واحة الجبري">
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="الدليل الفني | واحة الجبري">
+  <meta name="twitter:description" content="Z + C + A = 1">
+  <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+
+  <!-- ===== Icons ===== -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
+  <link rel="apple-touch-icon" href="/image/Yemen2026.png">
+
+  <!-- ===== Schema.org (TechArticle) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "الدليل الفني — واحة الجبري",
+    "description": "الدليل الفني الرسمي لواحة الجبري — Z + C + A = 1",
+    "author": {
+      "@type": "Person",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "url": "https://jabri-com.vercel.app/about.html",
+      "identifier": "https://orcid.org/0009-0003-3319-3822",
+      "sameAs": [
+        "https://github.com/Jabri-web",
+        "https://orcid.org/0009-0003-3319-3822",
+        "https://en.wikipedia.org/wiki/User:Jabri2026"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "واحة الجبري",
+      "url": "https://jabri-com.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp"
+      }
+    },
+    "inLanguage": "ar",
+    "datePublished": "2026-09-20",
+    "dateModified": "2026-09-20",
+    "mainEntityOfPage": "https://jabri-com.vercel.app/technical-guide.html",
+    "keywords": "واحة الجبري, DOI, Zenodo, نظرية السندباد, Z(x)"
+  }
+  </script>
+
+  <!-- ===== الخطوط ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Reset ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0f0d;
+      color: #e8e8e8;
+      font-family: 'Tajawal', 'Cairo', system-ui, sans-serif;
+      line-height: 1.85;
+      min-height: 100vh;
+    }
+
+    /* ===== Wrap ===== */
+    .tech-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 90px 20px 60px;
+    }
+
+    /* ===== Header ===== */
+    .tech-header {
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 2px solid rgba(212,175,55,0.25);
+      margin-bottom: 35px;
+    }
+
+    .tech-header h1 {
+      color: #d4af37;
+      font-size: 2.1rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .tech-header .sub {
+      color: #888;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+
+    .tech-header .id-badge {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 7px 24px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 30px;
+      color: #d4af37;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* ===== Content Container ===== */
+    #jabri-docs {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,175,55,0.18);
+      border-radius: 16px;
+      padding: 35px 30px;
+      color: #d0d0d0;
+    }
+
+    /* ===== Headings ===== */
+    #jabri-docs h1 {
+      color: #d4af37;
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin: 0 0 22px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid rgba(212,175,55,0.3);
+      line-height: 1.4;
+    }
+
+    #jabri-docs h2 {
+      color: #e8c96e;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(212,175,55,0.18);
+    }
+
+    #jabri-docs h3 {
+      color: #f5efe6;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 24px 0 12px;
+    }
+
+    /* ===== Paragraphs ===== */
+    #jabri-docs p {
+      margin: 12px 0;
+      color: #c8c8c8;
+    }
+
+    /* ===== Links ===== */
+    #jabri-docs a {
+      color: #6ae3ff;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(106,227,255,0.4);
+      transition: 0.2s;
+      unicode-bidi: embed;
+    }
+
+    #jabri-docs a:hover {
+      color: #d4af37;
+      border-bottom-color: #d4af37;
+    }
+
+    /* ===== Strong ===== */
+    #jabri-docs strong { color: #f5efe6; font-weight: 700; }
+
+    /* ===== Code ===== */
+    #jabri-docs code {
+      background: rgba(212,175,55,0.12);
+      color: #e8c96e;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      direction: ltr;
+      display: inline-block;
+      unicode-bidi: embed;
+    }
+
+    /* ===== Pre ===== */
+    #jabri-docs pre {
+      background: #050807;
+      border: 1px solid rgba(212,175,55,0.18);
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+      margin: 18px 0;
+      font-size: 0.85em;
+      line-height: 1.65;
+    }
+
+    #jabri-docs pre code {
+      background: transparent;
+      color: #b8e6b8;
+      padding: 0;
+      display: block;
+      unicode-bidi: normal;
+    }
+
+    /* ===== Tables ===== */
+    #jabri-docs table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.92em;
+      display: block;
+      overflow-x: auto;
+    }
+
+    #jabri-docs thead {
+      background: rgba(212,175,55,0.15);
+    }
+
+    #jabri-docs th {
+      color: #d4af37;
+      font-weight: 700;
+      padding: 12px 14px;
+      text-align: right;
+      border: 1px solid rgba(212,175,55,0.25);
+      white-space: nowrap;
+    }
+
+    #jabri-docs td {
+      padding: 10px 14px;
+      border: 1px solid rgba(212,175,55,0.12);
+      vertical-align: top;
+    }
+
+    #jabri-docs tr:nth-child(even) td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    #jabri-docs tr:hover td {
+      background: rgba(212,175,55,0.05);
+    }
+
+    /* ===== Blockquote ===== */
+    #jabri-docs blockquote {
+      border-right: 4px solid #d4af37;
+      background: rgba(212,175,55,0.07);
+      padding: 16px 22px;
+      margin: 20px 0;
+      border-radius: 0 10px 10px 0;
+      color: #d0c0a0;
+    }
+
+    #jabri-docs blockquote p {
+      margin: 6px 0;
+      color: #d0c0a0;
+    }
+
+    /* ===== HR ===== */
+    #jabri-docs hr {
+      border: none;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      margin: 30px 0;
+    }
+
+    /* ===== Lists ===== */
+    #jabri-docs ul,
+    #jabri-docs ol {
+      padding-right: 26px;
+      margin: 14px 0;
+    }
+
+    #jabri-docs li {
+      margin: 7px 0;
+      color: #c8c8c8;
+    }
+
+    #jabri-docs li::marker {
+      color: #d4af37;
+    }
+
+    /* ===== Footer ===== */
+    .tech-footer {
+      text-align: center;
+      margin-top: 45px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(212,175,55,0.15);
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .tech-footer a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+
+    .tech-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 640px) {
+      .tech-wrap { padding: 80px 12px 40px; }
+      .tech-header h1 { font-size: 1.4rem; }
+      .tech-header .id-badge { font-size: 0.8rem; padding: 5px 16px; }
+      #jabri-docs { padding: 22px 16px; border-radius: 12px; }
+      #jabri-docs h1 { font-size: 1.35rem; }
+      #jabri-docs h2 { font-size: 1.15rem; }
+      #jabri-docs h3 { font-size: 1rem; }
+      #jabri-docs th,
+      #jabri-docs td { padding: 8px 10px; font-size: 0.85em; }
+      #jabri-docs pre { padding: 14px; font-size: 0.78em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tech-wrap">
+    <header class="tech-header">
+      <h1>📘 الدليل الفني — واحة الجبري</h1>
+      <div class="sub">Heaven Al-Jabri — Official Technical Guide</div>
+      <div class="id-badge">Z + C + A = 1</div>
+    </header>
+
+    <main id="jabri-docs">
+
+      <h1>🗺️ واحة الجبري | Heaven Al-Jabri — الدليل الفني الرسمي v2.0 الذهبي</h1>
+
+      <blockquote>
+        <p><strong>المؤلف:</strong> م/ عبدالله محمد ناصر الجبري (Eng. Abdulla Mohammed Nasser Al-Jabri)</p>
+        <p><strong>الهوية:</strong> Z + C + A = 1</p>
+        <p><strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">0009-0003-3319-3822</a></p>
+        <p><strong>الموقع الرئيسي:</strong> <a href="https://jabri-com.vercel.app" target="_blank" rel="noopener">jabri-com.vercel.app</a></p>
+        <p><strong>المنظمة:</strong> <a href="https://github.com/Jabri-web" target="_blank" rel="noopener">github.com/Jabri-web</a></p>
+        <p><strong>الرخصة:</strong> CC BY 4.0 | <strong>التاريخ:</strong> 2026-09-16</p>
+      </blockquote>
+
+      <hr>
+
+      <h2>📌 القسم 1: قانون الاستدعاء الموحد (Unified Linking Law)</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>البيئة</th>
+            <th>الصيغة القياسية</th>
+            <th>مثال تطبيقي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GitHub Source — الكود المصدري</td>
+            <td><code>github.com/[User]/[Repo]/blob/main/[File]</code></td>
+            <td><a href="https://github.com/Jabri-web/Jabri-com/blob/main/all-links.html" target="_blank" rel="noopener">all-links.html</a></td>
+          </tr>
+          <tr>
+            <td>GitHub Live — صفحة منشورة</td>
+            <td><code>[User].github.io/[Repo]/[File]</code></td>
+            <td><a href="https://jabri-web.github.io/Jabri-com/all-links.html" target="_blank" rel="noopener">jabri-web.github.io</a></td>
+          </tr>
+          <tr>
+            <td>Vercel Main — الموقع الرئيسي</td>
+            <td><code>[Domain]/[File]</code></td>
+            <td><a href="https://jabri-com.vercel.app/all-links.html" target="_blank" rel="noopener">jabri-com.vercel.app</a></td>
+          </tr>
+          <tr>
+            <td>Yemen Mirror — مرآة اليمن</td>
+            <td><code>jabri-com.vercel.app/Page[X].html</code></td>
+            <td><a href="https://jabri-com.vercel.app/Page2.html" target="_blank" rel="noopener">Page2.html</a></td>
+          </tr>
+          <tr>
+            <td>Magic Translator — الساحر</td>
+            <td><code>.../magic-translator.html?file=[File]&amp;lang=[ar/en]</code></td>
+            <td><a href="https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&amp;lang=ar" target="_blank" rel="noopener">magic-translator</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>مثال تطبيقي Row 2 - Zx_RieOS_v1.2</h3>
+
+      <pre><code>&lt;tr&gt;
+  &lt;td&gt;2&lt;/td&gt;
+  &lt;td&gt;&lt;b&gt;Zx_RieOS_v1.2&lt;/b&gt; - الذهبي النهائي&lt;/td&gt;
+  &lt;td&gt;&lt;a href="https://jabri-web.github.io/Zx_RieOS_v1.2" class="link-live"&gt;فتح&lt;/a&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;a href="/Page2.html" class="link-vercel"&gt;Page2 - اليمن (مرآة اليمن)&lt;/a&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;a href=".../magic-translator.html?file=README.md&amp;lang=ar" class="link-wizard"&gt;الساحر&lt;/a&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" class="link-repo"&gt;Repo&lt;/a&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;a href="https://doi.org/10.5281/zenodo.20100622" class="link-doi"&gt;20100622&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+      <hr>
+
+      <h2>🗺️ القسم 2: خريطة الإمبراطورية الرقمية (5 طبقات)</h2>
+
+      <p><strong>الباحث:</strong> م/ عبدالله محمد ناصر الجبري | <strong>الموقع:</strong> صنعاء - اليمن</p>
+
+      <h3>🧭 الطبقة 1: البوابات والواجهات (Gateway Layer)</h3>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>المشروع</th><th>الدور</th><th>الرابط</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>jabri62018.github.io</td><td>البوابة الرئيسية</td><td><a href="https://jabri62018.github.io" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>4</td><td>Jabri-web.github.io</td><td>الواجهة الثانية</td><td><a href="https://jabri-web.github.io" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>10</td><td>Jabri-web</td><td>Router الرئيسي</td><td><a href="https://jabri-web.github.io/Jabri-web/" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>11</td><td>jabri-com</td><td>النشر على Vercel</td><td><a href="https://jabri-com.vercel.app" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>12</td><td>jabri.com</td><td>Hyper Router</td><td><a href="https://jabri-web.github.io/jabri.com/" target="_blank" rel="noopener">زيارة</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>🧠 الطبقة 2: النواة ونظام التشغيل (Core OS Layer)</h3>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>المشروع</th><th>الدور</th><th>الرابط</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3</td><td>Zx-Mother-Function-Jabri</td><td>الدالة الأم Z(x)</td><td><a href="https://jabri-web.github.io/Zx_Mother_Function_Jabri/" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>8</td><td>Jabri-RiemannOS</td><td>نظام ريمان النظري</td><td><a href="https://jabri-web.github.io/Jabri-RiemannOS/" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>2</td><td>Zx-RieOS-v1.2</td><td>الذهبي النهائي</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2/" target="_blank" rel="noopener">زيارة</a></td></tr>
+          <tr><td>7</td><td>Zx-RieOS-v1.1</td><td>الإصدار السابق</td><td><a href="https://jabri-web.github.io/Zx_RieOS_v1.1/" target="_blank" rel="noopener">زيارة</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>🏆 الطبقة 3: الحزمة الكبرى — مسائل الألفية (Jabri-Nobble)</h3>
+
+      <p><strong>المستودع الأم:</strong> <code>github.com/Jabri-web/Jabri_Nobble</code> — DOI: <a href="https://doi.org/10.5281/zenodo.20148770" target="_blank" rel="noopener">10.5281/zenodo.20148770</a></p>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>المشروع</th><th>المسألة</th><th>DOI</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5.1</td><td>Jabri-Riemann</td><td>فرضية ريمان</td><td><a href="https://doi.org/10.5281/zenodo.20139904" target="_blank" rel="noopener">20139904</a></td></tr>
+          <tr><td>5.2</td><td>Jabri-np</td><td>P vs NP</td><td><a href="https://doi.org/10.5281/zenodo.20145337" target="_blank" rel="noopener">20145337</a></td></tr>
+          <tr><td>5.3</td><td>Jabri-gab</td><td>الفجوة (Gap)</td><td><a href="https://doi.org/10.5281/zenodo.20148344" target="_blank" rel="noopener">20148344</a></td></tr>
+          <tr><td>5.4</td><td>Jabri-Navier</td><td>نافييه-ستوكس</td><td><a href="https://doi.org/10.5281/zenodo.20149618" target="_blank" rel="noopener">20149618</a></td></tr>
+          <tr><td>5.5</td><td>Jabri-Birch</td><td>بيرش-سوينرتون-داير</td><td>—</td></tr>
+          <tr><td>5.6</td><td>Jabri-Hodge</td><td>حدسية هودج</td><td>—</td></tr>
+          <tr><td>5.7</td><td>Jabri-Identity</td><td>الهوية Z_t = 1</td><td><a href="https://doi.org/10.5281/zenodo.20114317" target="_blank" rel="noopener">20114317</a></td></tr>
+        </tbody>
+      </table>
+
+      <h3>🧪 الطبقة 4: مختبر الفيزياء والكون (Jabri-Lab)</h3>
+
+      <p><strong>المستودع الأم:</strong> <code>github.com/Jabri-web/Jabri_lab</code></p>
+
+      <ul>
+        <li><strong>Jabri-5</strong> — معامل 5</li>
+        <li><strong>Jabri-28</strong> — معامل 28</li>
+        <li><strong>Jabri-Gravity</strong> — الجاذبية</li>
+        <li><strong>Jabri-Spacetime</strong> — الزمكان</li>
+        <li><strong>Jabri-Darkenergy</strong> — الطاقة المظلمة</li>
+        <li><strong>Jabri-Planck</strong> — ثابت بلانك</li>
+        <li><strong>Jabri-Hubble</strong> — ثابت هابل</li>
+        <li><strong>Jabri-Periodic</strong> — الدورية</li>
+        <li><strong>Jabri-all</strong> — الدمج الكلي</li>
+      </ul>
+
+      <h3>🛠️ الطبقة 5: الأدوات والتشخيص (Tools Layer)</h3>
+
+      <ul>
+        <li><strong>Jabri-Checkout</strong> — نقطة التحقق / فحص وتشخيص النظام — DOI: <a href="https://doi.org/10.5281/zenodo.20513840" target="_blank" rel="noopener">20513840</a></li>
+      </ul>
+
+      <hr>
+
+      <h2>🗂️ القسم 3: هيكل منظمة GitHub Jabri-web/</h2>
+
+      <pre><code>📁 Jabri-web/ &lt;-- Organization Root | الهوية: Z + C + A = 1
+
+├── 1.  Jabri6218.github.io        DOI: 20403864 / 21006432
+├── 2.  Zx-RieOS-v1.2              DOI: 20100622  [GOLD]
+├── 3.  Zx-Mother-Function-Jabri   الدالة الأم Z(x)
+├── 4.  Jabri-web.github.io        DOI: 20499365 / 20404167
+├── 5.  Jabri-Nobble               DOI: 20148770  (7 مسائل ألفية)
+├── 6.  Jabri_lab                  مختبر الفيزياء (9 معاملات)
+├── 7.  Zx-RieOS-v1.1              DOI: 19981688 / 20070594
+├── 8.  Jabri-RiemannOS            نظام ريمان النظري
+├── 9.  Jabri-Checkout             DOI: 20513840 / 21970064
+├── 10. Jabri-web                  [ROUTER FOR GITHUB]
+├── 11. jabri-com                  [ROUTER FOR AL-WAHA &amp; VERCEL]  DOI: 21970418
+└── 12. jabri.com                  [ROUTER FOR 10++11]            DOI: 21970523</code></pre>
+
+      <p><strong>متطلبات كل مستودع:</strong></p>
+      <ul>
+        <li><code>README.md</code> + <code>README-AR.md</code></li>
+        <li><code>ABOUT.md</code> + <code>ABOUT-AR.md</code> (مع شريط تبديل اللغة)</li>
+        <li>الرابط الإلزامي: <a href="https://jabri-com.vercel.app" target="_blank" rel="noopener">https://jabri-com.vercel.app</a></li>
+        <li>الرخصة: CC BY 4.0</li>
+      </ul>
+
+      <hr>
+
+      <h2>📜 القسم 4: سجل DOI الكامل (19 معرف Zenodo)</h2>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>الاسم</th><th>رقم DOI</th><th>الرابط المباشر</th><th>الحالة</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>jabri62018.github.io</td><td>21006432</td><td><a href="https://doi.org/10.5281/zenodo.21006432" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>2</td><td>Zx_RieOS_v1.2</td><td>20100622</td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank" rel="noopener">Link</a></td><td>✅ GOLD</td></tr>
+          <tr><td>3</td><td>Jabri-web.github.io</td><td>20404167</td><td><a href="https://doi.org/10.5281/zenodo.20404167" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>4</td><td>Jabri_Nobble</td><td>20148770</td><td><a href="https://doi.org/10.5281/zenodo.20148770" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>5</td><td>Zx_RieOS_v1.1</td><td>19981688</td><td><a href="https://doi.org/10.5281/zenodo.19981688" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>6</td><td>Jabri_Checkout</td><td>21970064</td><td><a href="https://doi.org/10.5281/zenodo.21970064" target="_blank" rel="noopener">Link</a></td><td>⭐</td></tr>
+          <tr><td>7</td><td>Jabri-web</td><td>20499365</td><td><a href="https://doi.org/10.5281/zenodo.20499365" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>8</td><td>Jabri-com</td><td>21970418</td><td><a href="https://doi.org/10.5281/zenodo.21970418" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>9</td><td>jabri.com</td><td>21970523</td><td><a href="https://doi.org/10.5281/zenodo.21970523" target="_blank" rel="noopener">Link</a></td><td>✅ ON</td></tr>
+          <tr><td>10</td><td>Riemann Hypothesis</td><td>20139904</td><td><a href="https://doi.org/10.5281/zenodo.20139904" target="_blank" rel="noopener">Link</a></td><td>✅ Paper</td></tr>
+          <tr><td>11</td><td>P ≠ NP</td><td>20145337</td><td><a href="https://doi.org/10.5281/zenodo.20145337" target="_blank" rel="noopener">Link</a></td><td>✅ Paper</td></tr>
+          <tr><td>12</td><td>Yang-Mills</td><td>20148344</td><td><a href="https://doi.org/10.5281/zenodo.20148344" target="_blank" rel="noopener">Link</a></td><td>✅ Paper</td></tr>
+          <tr><td>13</td><td>Navier-Stokes</td><td>20149618</td><td><a href="https://doi.org/10.5281/zenodo.20149618" target="_blank" rel="noopener">Link</a></td><td>✅ Paper</td></tr>
+          <tr><td>14</td><td>Hubble Tension (IRIS)</td><td>20114317</td><td><a href="https://doi.org/10.5281/zenodo.20114317" target="_blank" rel="noopener">Link</a></td><td>✅ Paper</td></tr>
+          <tr><td>15</td><td>Zx_RieOS v1.1 (قديم)</td><td>19645066</td><td><a href="https://doi.org/10.5281/zenodo.19645066" target="_blank" rel="noopener">Link</a></td><td>⭐</td></tr>
+          <tr><td>16</td><td>4+1 Eigenvalue Law</td><td>20100622</td><td><a href="https://doi.org/10.5281/zenodo.20100622" target="_blank" rel="noopener">Link</a></td><td>⚠️ مكرر</td></tr>
+          <tr><td>17</td><td>RiemannOS v1.0</td><td>19700735</td><td><a href="https://doi.org/10.5281/zenodo.19700735" target="_blank" rel="noopener">Link</a></td><td>✅</td></tr>
+          <tr><td>18</td><td>Zx_total_v3.2.1</td><td>19956313</td><td><a href="https://doi.org/10.5281/zenodo.19956313" target="_blank" rel="noopener">Link</a></td><td>✅</td></tr>
+          <tr><td>19</td><td>Jabri_Checkout v2.0</td><td>21970064</td><td><a href="https://doi.org/10.5281/zenodo.21970064" target="_blank" rel="noopener">Link</a></td><td>⭐</td></tr>
+        </tbody>
+      </table>
+
+      <blockquote>
+        <p>⚠️ <strong>تنبيه:</strong> DOI <code>20100622</code> و <code>19981688</code> مكرر في فئتين — طبيعي إذا كان نفس الحزمة.</p>
+      </blockquote>
+
+      <hr>
+
+      <h2>📂 القسم 5: هيكل ملفات jabri-com.vercel.app (110 ملف)</h2>
+
+      <p><strong>الإحصائيات:</strong> الجذر 96 ملف (87 HTML + 3 Partial + 5 نظام + 1 monitor) + المجلدات الفرعية 14 ملف = 110 إجمالي | ~75 صفحة قابلة للفهرسة</p>
+
+      <table>
+        <thead>
+          <tr><th>المجموعة</th><th>العدد</th><th>أسماء الملفات</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1. الصفحات الرئيسية</td><td>5</td><td><code>index, logo, catalog, all-links, monitor</code></td></tr>
+          <tr><td>2. صفحات Page 1-12</td><td>12</td><td><code>Page1.html … Page12.html</code></td></tr>
+          <tr><td>3. صفحات About</td><td>4</td><td><code>about, about-ar, about-en, about-waha</code></td></tr>
+          <tr><td>4. المؤلف والسيرة</td><td>7</td><td><code>Author-cv, author-history, cv-2026a, cv-2026e, founder, profile</code></td></tr>
+          <tr><td>5. النظرية الموحدة</td><td>4</td><td><code>theory-ar, theory-en, Sindbad-theory, Sindbad-Brdoni</code></td></tr>
+          <tr><td>6. البحث العلمي</td><td>3</td><td><code>research, research-deep, Pages-Researches</code></td></tr>
+          <tr><td>7. التراث اليمني</td><td>9</td><td><code>Sanaa, Shibam, Soqatra, Yemen-library, gallery…</code></td></tr>
+          <tr><td>8. المجلات</td><td>5</td><td><code>journal, journal2, journal3, journal4, History-pdf</code></td></tr>
+          <tr><td>9. الأدوات</td><td>6</td><td><code>calculator, handsa, char-balance, Check, magic-translator, diagnose</code></td></tr>
+          <tr><td>10. قواعد البيانات</td><td>4</td><td><code>Dbase, Dbase-deep, microtik, microtik-deep</code></td></tr>
+          <tr><td>11. المكتبة والمحتوى</td><td>14</td><td><code>Office, source, citations, music, taraif, Nezar, wonder…</code></td></tr>
+          <tr><td>12. التواصل والنظام</td><td>7</td><td><code>contact, FAQPage, privacy-policy, 404, offline, dashboard</code></td></tr>
+          <tr><td>13. أدوات المطور</td><td>6</td><td><code>file-structure, Router-all, repos-auto, repos-sqr…</code></td></tr>
+          <tr><td>14. المتنوع</td><td>2</td><td><code>kfupm-msg, explore</code></td></tr>
+          <tr><td>15. Partials (لا تُفهرس)</td><td>3</td><td><code>header, footer, hero</code></td></tr>
+          <tr><td>16. ملفات النظام</td><td>5</td><td><code>manifest.json, robots.txt, sitemap.xml, sw.js, vercel.json</code></td></tr>
+          <tr><td>17. /ar/</td><td>4</td><td><code>index, about, contact, journal</code></td></tr>
+          <tr><td>18. /en/</td><td>4</td><td><code>index, about, contact, journal</code></td></tr>
+          <tr><td>19. /game/</td><td>1</td><td><code>game-auto.html</code></td></tr>
+          <tr><td>20. /publish/</td><td>1</td><td><code>publish.html</code></td></tr>
+          <tr><td>21. /js/</td><td>2</td><td><code>init-page-root.js, menu.js</code></td></tr>
+          <tr><td>22. /image/</td><td>2</td><td><code>Jabri-photo.png, Yemen2026.png</code></td></tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>🔍 روابط التحقق والتوثيق</h2>
+
+      <ul>
+        <li><a href="https://www.google.com/search?q=الدالة+الأم+Z(x)+نظرية+السندباد+الموحدة&amp;udm=50" target="_blank" rel="noopener">الدالة الأم Z(x) نظرية السندباد الموحدة</a></li>
+        <li><a href="https://www.google.com/search?q=Z(x)+%3D+x%5E5+ln(x)+sin(2%CF%80%2Fx)+exp(-x%2Fxp)&amp;udm=50" target="_blank" rel="noopener">Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)</a></li>
+        <li><a href="https://www.google.com/search?q=Z+%2B+C+%2B+A+%3D+1&amp;udm=50" target="_blank" rel="noopener">Z + C + A = 1</a></li>
+        <li><a href="https://www.google.com/search?q=مهندس+عبدالله+محمد+ناصر+الجبري&amp;udm=50" target="_blank" rel="noopener">مهندس عبدالله الجبري</a></li>
+        <li><a href="https://www.google.com/search?q=Eng.+Abdulla+Mohammed+Nasser+Al-Jabri&amp;udm=50" target="_blank" rel="noopener">Eng. Abdulla Mohammed Nasser Al-Jabri</a></li>
+      </ul>
+
+      <hr>
+
+      <h2>📞 تواصل مع الباحث</h2>
+
+      <ul>
+        <li><strong>البريد:</strong> <a href="mailto:jabri62018@gmail.com">jabri62018@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/Jabri-web" target="_blank" rel="noopener">github.com/Jabri-web</a></li>
+        <li><strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">0009-0003-3319-3822</a></li>
+        <li><strong>Zenodo:</strong> <a href="https://zenodo.org/records/20513840" target="_blank" rel="noopener">zenodo.org/records/20513840</a></li>
+        <li><strong>Wikipedia:</strong> <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" rel="noopener">User:Jabri2026</a></li>
+        <li><strong>Wikibin:</strong> <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" rel="noopener">مقال عبدالله الجبري</a></li>
+      </ul>
+
+      <hr>
+
+      <p style="text-align:center; color:#888; margin-top:30px;">© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة | CC BY 4.0</p>
+
+    </main>
+
+    <footer class="tech-footer">
+      © 2026 <a href="https://jabri-com.vercel.app">واحة الجبري</a> · م/ عبدالله محمد ناصر الجبري · CC BY 4.0
+    </footer>
+  </div>
+
+</body>
+</html>

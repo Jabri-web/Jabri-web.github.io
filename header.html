@@ -1,6 +1,6 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.3)           -->
-<!-- التاريخ: 2026-09-20 | توحيد Auth + Lang                    -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.5)           -->
+<!-- التاريخ: 2026-09-20 | زر Help → technical-guide.html       -->
 <!-- ========================================================== -->
 
 <!-- ===== 1. وسوم السيو الأساسية ===== -->
@@ -147,6 +147,18 @@
     }
     .top-btn.menu { width: 44px; padding: 0; font-size: 18px; }
     .top-btn.lang { width: auto; min-width: 60px; padding: 0 14px; font-size: 12px; }
+
+    /* ⭐ زر Help - مميز بلون سماوي */
+    .top-btn.help {
+        color: #6ae3ff !important;
+        border-color: rgba(106, 227, 255, 0.5) !important;
+        box-shadow: 0 0 15px rgba(106, 227, 255, 0.25) !important;
+    }
+    .top-btn.help:hover {
+        background: rgba(15, 25, 30, 0.95) !important;
+        border-color: #6ae3ff !important;
+        box-shadow: 0 0 25px rgba(106, 227, 255, 0.7) !important;
+    }
 
     /* ---------- نافذة تسجيل الدخول ---------- */
     .login-modal {
@@ -365,6 +377,7 @@
         </button>
     </div>
     <div style="display:flex; gap:8px;">
+        <a href="/technical-guide.html" class="top-btn help" title="📘 الدليل الفني — Help">📖</a>
         <button class="top-btn" onclick="window.openSettings()" title="الإعدادات">⚙️</button>
         <button class="top-btn" id="loginBtn" onclick="window.openLoginModal()" title="تسجيل الدخول">🔑</button>
     </div>
@@ -388,6 +401,7 @@
     <a href="/music.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">🎵</span> الموسيقى</a>
     <a href="/visitor.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">👥</span> الزوار</a>
     <hr style="border-color: rgba(255,215,0,0.2); margin: 15px 0;">
+    <a href="/technical-guide.html" class="menu-btn" onclick="window.closeMenu()"><span class="icon">📘</span> الدليل الفني</a>
     <button class="menu-btn" onclick="window.toggleLang(); window.closeMenu();"><span class="icon">🌐</span> تبديل اللغة</button>
 </div>
 
@@ -641,9 +655,9 @@
         }
     };
 
-    // ========== المحادثة ==========
+    // ========== المحادثة → publish/publish.html ==========
     window.toggleChat = function() {
-        alert('💬 المحادثة قيد التطوير... قريباً بإذن الله!\n\n📧 للتواصل: jabri62018@gmail.com');
+        window.open('/publish/publish.html', '_blank');
     };
 
     // ========== القائمة الجانبية ==========
