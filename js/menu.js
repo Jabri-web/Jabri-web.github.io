@@ -1,6 +1,8 @@
 // ============================================================
-//   menu.js - v6.1 (APK + Web Ready + Header Integration)
+//   menu.js - v6.2 (APK + Web Ready + Header Integration)
 //   Heaven Al-Jabri | واحة الجبري
+//   ─────────────────────────────────────────────────────────
+//   🔧 v6.2: إصلاح SITE_URL — الآن يستخدم jabri-com.vercel.app
 // ============================================================
 
 (function() {
@@ -18,7 +20,8 @@
 
     console.log('🌍 [menu.js] البيئة:', IS_APK ? '📱 APK' : '🌐 Web');
 
-    const SITE_URL = IS_APK ? '.' : 'https://jabri-web.github.io/Jabri-com';
+    // ✅ [v6.2] النطاق الرسمي للموقع
+    const SITE_URL = IS_APK ? '.' : 'https://jabri-com.vercel.app';
     
     const currentPath = window.location.pathname;
     let langDir = '';
@@ -257,8 +260,8 @@
 
         let html = `
             <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
-                <a href="${IS_APK ? 'index.html' : SITE_URL + '/ar/'}" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇾🇪 عربي</a>
-                <a href="${IS_APK ? 'index.html' : SITE_URL + '/en/'}" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇬🇧 English</a>
+                <a href="${IS_APK ? 'index.html' : '/ar/'}" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇾🇪 عربي</a>
+                <a href="${IS_APK ? 'index.html' : '/en/'}" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; font-size:0.85rem;">🇬🇧 English</a>
             </div>
         `;
 
@@ -348,7 +351,6 @@
         const oldDropdown = document.getElementById('menu-dropdown');
         if (oldDropdown) oldDropdown.remove();
 
-        // إزالة الزر الأصفر القديم إن وُجد
         const oldYellowBtn = document.getElementById('hamburger-menu');
         if (oldYellowBtn) oldYellowBtn.remove();
 
@@ -394,12 +396,10 @@
             dropdown.style.display = 'none';
         }
 
-        // ربط زر ☰ في الهيدر
         function bindHeaderMenuBtn() {
             const headerBtn = document.querySelector('.top-btn.menu');
             if (!headerBtn) return false;
 
-            // إزالة أي onclick قديم
             headerBtn.removeAttribute('onclick');
 
             if (headerBtn.dataset.wahaBound === '1') return true;
@@ -410,7 +410,6 @@
             return true;
         }
 
-        // محاولات متعددة للربط
         if (!bindHeaderMenuBtn()) {
             document.addEventListener('headerLoaded', bindHeaderMenuBtn);
             window.addEventListener('headerLoaded', bindHeaderMenuBtn);
@@ -419,17 +418,15 @@
             setTimeout(bindHeaderMenuBtn, 3000);
         }
 
-        // تجاوز دالة toggleMenu القديمة
         window.toggleMenu = toggleDropdown;
 
-        // إغلاق عند الضغط خارج القائمة
         document.addEventListener('click', function(e) {
             if (!dropdown.contains(e.target) && !e.target.closest('.top-btn.menu')) {
                 closeDropdown();
             }
         });
 
-        console.log('🌴 [menu] buildHamburgerMenu v6.1 — بدون زر أصفر');
+        console.log('🌴 [menu] buildHamburgerMenu v6.2');
     }
 
     // ============================================================
@@ -463,6 +460,7 @@
         window.open('https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html', '_blank');
     };
 
+    // ✅ [v6.2] رابط التنزيل يستخدم نطاق Vercel
     window.downloadWaha = function(type) {
         if (IS_APK) {
             alert(isArabic ? '✅ أنت تستخدم التطبيق بالفعل!' : '✅ You are already using the app!');
@@ -475,9 +473,10 @@
         const filename = prompt(isArabic ? '📝 ادخل اسم الملف:' : '📝 Enter file name:', defaultName);
         if (filename === null) return;
 
-        const baseDownloadUrl = 'https://jabri-web.github.io/Jabri-com/11-Jabri-com/apk';
+        // ✅ [v6.2] Vercel بدل GitHub Pages
+        const baseDownloadUrl = 'https://jabri-com.vercel.app';
         const downloadUrl = type === 'apk' 
-            ? `${baseDownloadUrl}/jabri-heaven-v2.0.apk`
+            ? `${baseDownloadUrl}/app-release.apk`
             : `${baseDownloadUrl}/jabri-heaven-v2.0.zip`;
 
         const a = document.createElement('a');
@@ -500,7 +499,7 @@
             updateBottomMenu();
             buildMainMenu();
             buildHamburgerMenu();
-            console.log('🌴 menu.js v6.1 - ' + (IS_APK ? '📱 APK Mode' : '🌐 Web Mode'));
+            console.log('🌴 menu.js v6.2 - ' + (IS_APK ? '📱 APK Mode' : '🌐 Web Mode'));
         } catch(e) {
             console.error('❌ [menu] خطأ في التشغيل:', e);
         }
