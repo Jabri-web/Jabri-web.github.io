@@ -238,27 +238,40 @@
     });
   }
 
-  function detect404() {
-    if (document.title && /404/i.test(document.title)) return true;
-
-    const bodyHTML = (document.body && document.body.innerHTML) || '';
-    if (/404\s*Not\s*Found/i.test(bodyHTML)) return true;
-    if (/Page\s*Not\s*Found/i.test(bodyHTML)) return true;
-    if (/This\s*page\s*could\s*not\s*be\s*found/i.test(bodyHTML)) return true;
-    if (/NOT_FOUND/i.test(bodyHTML)) return true;
-    if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
-
-    if (window.performance && window.performance.getEntries) {
-      const href = location.href;
-      const entries = window.performance.getEntries();
-      for (let i = 0; i < entries.length; i++) {
-        if (entries[i].name === href && entries[i].responseStatus === 404) {
-          return true;
-        }
+function detect404() {
+  // ① علامة صريحة في body — الأكثر موثوقية
+  if (document.body && document.body.dataset && document.body.dataset.waha404 === 'true') {
+    console.log('✅ [404] تم الاكتشاف عبر data-waha-404');
+    return true;
+  }
+  
+  // ② فحوصات نصية
+  if (document.title && /404/i.test(document.title)) return true;
+  
+  const bodyHTML = (document.body && document.body.innerHTML) || '';
+  if (/404\s*Not\s*Found/i.test(bodyHTML)) return true;
+  if (/Page\s*Not\s*Found/i.test(bodyHTML)) return true;
+  if (/NOT_FOUND/i.test(bodyHTML)) return true;
+  if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
+  if (/هذا\s*الدرب\s*غير\s*موجود/.test(bodyHTML)) return true;
+  
+  // ③ Performance API
+  if (window.performance) {
+    try {
+      const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if (nav && nav.responseStatus === 404) return true;
+    } catch (e) {}
+    const entries = performance.getEntries();
+    const href = location.href;
+    for (let i = 0; i < entries.length; i++) {
+      if (entries[i].name === href && entries[i].responseStatus === 404) {
+        return true;
       }
     }
-    return false;
   }
+  
+  return false;
+}
 
   /* ================================================================
      مولّد المرشحات — نظيف
