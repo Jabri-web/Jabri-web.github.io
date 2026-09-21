@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 - واحة الجبري</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>404 — جاري البحث عن الصفحة | واحة الجبري</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -41,6 +42,14 @@
       padding: 10px 30px;
     }
     .visitor-box span { color: #f7d44a; font-weight: bold; }
+    .path-display {
+      margin: 15px 0;
+      font-size: 13px;
+      color: #8a7a6a;
+      font-family: Consolas, monospace;
+      direction: ltr;
+      word-break: break-all;
+    }
     .note {
       margin-top: 20px;
       font-size: 18px;
@@ -80,20 +89,26 @@
     }
   </style>
 </head>
-<body>
+
+<!-- ✅ علامة صريحة لـ init-page-root.js -->
+<body data-waha-404="true">
   <div class="container">
     <h1>🌿 404</h1>
     <div class="sub">عذرًا.. هذا الدرب غير موجود</div>
+
+    <div class="path-display" id="pathDisplay"></div>
 
     <div class="visitor-box">
       👥 عدد زوار الواحة: <span id="visitorCount">1</span>
     </div>
 
     <div class="loader"></div>
-    <p style="margin-top:5px; font-size:15px; color:#bbaa88;">🎵 تشغيل نغمات السندباد...</p>
+    <p style="margin-top:5px; font-size:15px; color:#bbaa88;">
+      🔎 جارٍ البحث عن الصفحة الصحيحة...
+    </p>
 
     <div class="note">
-      سيتم تحويلك إلى <strong>واحة الجبري</strong> بعد 7 ثوانٍ
+      سيتم تحويلك تلقائياً في ثوانٍ
     </div>
 
     <a href="/" class="btn-home">🏠 العودة إلى الواحة</a>
@@ -101,54 +116,30 @@
     <div class="footer">🏛️ من صنعاء إلى الكون 🇾🇪</div>
   </div>
 
+  <!-- ✅ placeholders اختيارية -->
+  <div id="header-placeholder" style="display:none"></div>
+  <div id="footer-placeholder" style="display:none"></div>
+
+  <!-- ✅ عداد الزوار -->
   <script>
-    // 1) عداد الزوار
-    let count = localStorage.getItem('jabriVisitorCount');
-    if (count === null) {
-      count = Math.floor(Math.random() * 80) + 20;
-    } else {
-      count = Number(count) + 1;
-    }
-    localStorage.setItem('jabriVisitorCount', count);
-    document.getElementById('visitorCount').textContent = count;
-
-    // 2) تشغيل موسيقى
-    try {
-      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-      audio.volume = 0.15;
-      audio.loop = true;
-      audio.play().catch(() => {});
-    } catch(e) {}
-
-    // 3) التوجيه بعد 7 ثواني
-    setTimeout(() => {
-      window.location.href = '/';
-    }, 7000);
-
-    // 4) تحميل القائمة الجانبية (بدون init-page-root)
-    document.addEventListener('DOMContentLoaded', function() {
-      // نضيف عنصر main-menu لو مو موجود
-      if (!document.getElementById('main-menu')) {
-        const menuDiv = document.createElement('div');
-        menuDiv.id = 'main-menu';
-        menuDiv.style.display = 'none';
-        document.body.appendChild(menuDiv);
+    (function(){
+      var count = localStorage.getItem('jabriVisitorCount');
+      if (count === null) {
+        count = Math.floor(Math.random() * 80) + 20;
+      } else {
+        count = Number(count) + 1;
       }
+      localStorage.setItem('jabriVisitorCount', count);
+      var el = document.getElementById('visitorCount');
+      if (el) el.textContent = count;
 
-      // نحمّل menu.js
-      const script = document.createElement('script');
-      script.src = '/js/menu.js';
-      script.onload = function() {
-        // ننتظر شوية عشان يتشغل
-        setTimeout(() => {
-          if (typeof window.buildHamburgerMenu === 'function') {
-            window.buildHamburgerMenu();
-            window.buildMainMenu();
-          }
-        }, 100);
-      };
-      document.head.appendChild(script);
-    });
+      var pathEl = document.getElementById('pathDisplay');
+      if (pathEl) pathEl.textContent = location.pathname + location.search;
+    })();
   </script>
+
+  <!-- ✅ الدرع المطلق — Smart 404 يتولى التحويل للصفحة الصحيحة -->
+  <script src="/js/init-page-root.js"></script>
+
 </body>
 </html>

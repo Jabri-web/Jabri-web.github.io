@@ -1,5 +1,5 @@
 // ================================================================
-//  sw.js - v9.1 (Dual Cache Architecture)
+//  sw.js - v9.2 (Dual Cache Architecture)
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
 //  🎯 الفكرة:
@@ -10,7 +10,7 @@
 //  🔄 عند إصدار جديد: غيّر VERSION فقط → الحذف تلقائي
 // ================================================================
 
-const VERSION = '9.1';                            // ← غيّر هذا فقط عند التحديث
+const VERSION = '9.2';                            // ← غيّر هذا فقط عند التحديث
 const CACHE_SHELL   = 'waha-shell-v'   + VERSION;
 const CACHE_RUNTIME = 'waha-runtime-v' + VERSION;
 
@@ -25,10 +25,13 @@ const SHELL_FILES = [
   '/favicon.ico',
   '/icon-192.png',
   '/icon-512.png',
+  '/404.html',
   '/js/file.js',
   '/js/menu.js',
   '/js/init-page-root.js',
+  '/js/link-checker.js',
   '/js/update-tracker.js',
+  '/link-checker.html',
   '/header.html',
   '/footer.html',
   '/explore.html'
@@ -101,7 +104,6 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET') return;
 
   // ② نتجاهل النطاقات الخارجية (CDN، fonts.googleapis، إلخ)
-  //    ملاحظة: نشيلها لأننا ما نبي نخزّن خطوط Google
   if (!req.url.startsWith(self.location.origin)) return;
 
   // ③ نتجاهل المسارات الحساسة
@@ -112,7 +114,6 @@ self.addEventListener('fetch', event => {
 
   // ─────────────────────────────────────────────────────────────
   //  ④ الصفحات (navigate) → Network First
-  //     السبب: نبي التحديث يوصل فوراً، لكن نرجع للكاش لو فشل
   // ─────────────────────────────────────────────────────────────
   if (req.mode === 'navigate') {
     event.respondWith(networkFirst(req, CACHE_RUNTIME));
@@ -121,7 +122,6 @@ self.addEventListener('fetch', event => {
 
   // ─────────────────────────────────────────────────────────────
   //  ⑤ ملفات جوهرية (Shell) → Shell First
-  //     السبب: offline guarantee — نعطيها الأولوية القصوى
   // ─────────────────────────────────────────────────────────────
   if (SHELL_FILES.indexOf(path) !== -1) {
     event.respondWith(shellFirst(req));
@@ -130,7 +130,6 @@ self.addEventListener('fetch', event => {
 
   // ─────────────────────────────────────────────────────────────
   //  ⑥ صور/أيقونات → Cache First Forever
-  //     السبب: ما تتغيّر أصلاً — نخزّنها للأبد
   // ─────────────────────────────────────────────────────────────
   if (/\.(png|jpg|jpeg|webp|svg|gif|ico|bmp|avif)$/i.test(path)) {
     event.respondWith(cacheFirstForever(req, CACHE_RUNTIME));
@@ -138,8 +137,7 @@ self.addEventListener('fetch', event => {
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  ⑦ فيديو/صوت → Cache First مع حد أقصى (اختياري)
-  //     السبب: كبيرة الحجم — نخزّن لكن بحذر
+  //  ⑦ فيديو/صوت → Cache First Forever
   // ─────────────────────────────────────────────────────────────
   if (/\.(mp4|webm|mp3|ogg|wav|m4a)$/i.test(path)) {
     event.respondWith(cacheFirstForever(req, CACHE_RUNTIME));
@@ -148,7 +146,6 @@ self.addEventListener('fetch', event => {
 
   // ─────────────────────────────────────────────────────────────
   //  ⑧ الباقي (JS/CSS/خطوط) → Stale-While-Revalidate
-  //     السبب: سريع + متجدد في الخلفية
   // ─────────────────────────────────────────────────────────────
   event.respondWith(staleWhileRevalidate(req, CACHE_RUNTIME));
 });
@@ -159,8 +156,6 @@ self.addEventListener('fetch', event => {
 
 /**
  * 🌐 Network First — للصفحات
- *   يحاول الشبكة → لو نجحت يخزّن ويُرجع
- *   لو فشلت → يرجع من الكاش → لو ما فيه، الصفحة الرئيسية
  */
 async function networkFirst(req, cacheName) {
   try {
@@ -193,7 +188,6 @@ async function networkFirst(req, cacheName) {
 
 /**
  * 🏕️ Shell First — للملفات الجوهرية
- *   من الكاش أولاً → لو ما فيه، من الشبكة
  */
 async function shellFirst(req) {
   const cached = await caches.match(req, { cacheName: CACHE_SHELL });
@@ -214,7 +208,6 @@ async function shellFirst(req) {
 
 /**
  * 🖼️ Cache First Forever — للصور والفيديو
- *   من الكاش أولاً → لا نحدّث أبداً (إلا لو تغير الرابط)
  */
 async function cacheFirstForever(req, cacheName) {
   const cached = await caches.match(req);
@@ -228,7 +221,6 @@ async function cacheFirstForever(req, cacheName) {
     }
     return res;
   } catch (err) {
-    // placeholder شفاف للصور
     if (req.destination === 'image') {
       return new Response('', { status: 204 });
     }
@@ -238,12 +230,10 @@ async function cacheFirstForever(req, cacheName) {
 
 /**
  * ⚡ Stale-While-Revalidate — للـ JS/CSS/خطوط
- *   نرجع الكاش فوراً → نحدّث في الخلفية
  */
 async function staleWhileRevalidate(req, cacheName) {
   const cached = await caches.match(req);
 
-  // نبدأ التحديث في الخلفية بغض النظر
   const fetchPromise = fetch(req).then(res => {
     if (res && res.ok) {
       caches.open(cacheName).then(c => c.put(req, res.clone()));
@@ -251,9 +241,7 @@ async function staleWhileRevalidate(req, cacheName) {
     return res;
   }).catch(() => null);
 
-  // نرجع الكاش فوراً لو موجود → وإلا ننتظر الشبكة
   if (cached) {
-    // نشغّل التحديث بدون انتظار
     fetchPromise.catch(() => {});
     return cached;
   }
@@ -276,20 +264,17 @@ self.addEventListener('message', event => {
     return;
   }
 
-  // أمر إضافي: تفريغ كل شيء
   if (data === 'CLEAR_ALL_CACHES') {
     event.waitUntil((async () => {
       const keys = await caches.keys();
       await Promise.all(keys.map(k => caches.delete(k)));
       console.log('🗑️ [sw] تم حذف كل الكاش — ' + keys.length + ' كاش');
-      // نعلم التبويبات
       const clients = await self.clients.matchAll();
       clients.forEach(c => c.postMessage('CACHES_CLEARED'));
     })());
     return;
   }
 
-  // أمر: إرجاع معلومات الكاش
   if (data === 'GET_CACHE_INFO') {
     event.waitUntil((async () => {
       const keys = await caches.keys();
