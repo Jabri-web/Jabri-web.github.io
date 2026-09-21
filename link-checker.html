@@ -3,224 +3,1322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فحص روابط sitemap.xml — واحة الجبري</title>
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="noindex, nofollow">
+<title>🔧 فاحص الروابط الذكي | واحة الجبري</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0a0f; color: #e8e8f0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; line-height: 1.7; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  h1 { color: #6ae3ff; text-align: center; margin-bottom: 20px; font-size: 1.8rem; }
-  .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
-  button { background: linear-gradient(135deg, #6ae3ff, #4dd4ff); color: #0a0a0f; border: none; padding: 12px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 15px; font-family: inherit; transition: 0.3s; }
-  button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(106,227,255,0.4); }
-  button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  button.stop { background: linear-gradient(135deg, #ff4444, #cc0000); color: #fff; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 25px; }
-  .stat { background: #1a1a2e; border: 2px solid #2a2a4e; border-radius: 12px; padding: 15px; text-align: center; }
-  .stat .num { font-size: 1.8rem; font-weight: 900; display: block; }
-  .stat .lbl { font-size: 0.85rem; color: #8a8a9e; }
-  .stat.ok { border-color: #22c55e; } .stat.ok .num { color: #22c55e; }
-  .stat.redirect { border-color: #f59e0b; } .stat.redirect .num { color: #f59e0b; }
-  .stat.error { border-color: #ef4444; } .stat.error .num { color: #ef4444; }
-  .stat.total { border-color: #6ae3ff; } .stat.total .num { color: #6ae3ff; }
-  .progress-bar { width: 100%; height: 8px; background: #1a1a2e; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, #6ae3ff, #22c55e); transition: width 0.3s; width: 0%; }
-  .log { background: #0f0f1a; border: 1px solid #2a2a4e; border-radius: 12px; padding: 15px; max-height: 60vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 13px; }
-  .log-item { padding: 6px 0; border-bottom: 1px solid #1a1a2e; display: flex; gap: 10px; align-items: center; }
-  .log-item:last-child { border-bottom: none; }
-  .status { font-weight: bold; padding: 2px 8px; border-radius: 5px; font-size: 12px; min-width: 60px; text-align: center; }
-  .status.ok { background: #22c55e; color: #0a0a0f; }
-  .status.redirect { background: #f59e0b; color: #0a0a0f; }
-  .status.error { background: #ef4444; color: #fff; }
-  .status.pending { background: #333; color: #888; }
-  .url { flex: 1; word-break: break-all; color: #b8e6ff; }
-  .url a { color: #b8e6ff; text-decoration: none; }
-  .url a:hover { text-decoration: underline; }
-  input[type="text"] { width: 100%; padding: 12px 16px; background: #1a1a2e; border: 2px solid #2a2a4e; border-radius: 8px; color: #fff; font-size: 14px; font-family: inherit; margin-bottom: 15px; }
-  input[type="text"]:focus { border-color: #6ae3ff; outline: none; }
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; justify-content: center; }
-  .note { background: #1a1a2e; border-right: 3px solid #6ae3ff; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; color: #8a8a9e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Cairo', 'Tajawal', sans-serif;
+        background: #0a0a0f;
+        color: #e6edf3;
+        min-height: 100vh;
+        padding: 20px;
+        padding-top: 80px;
+        direction: rtl;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgba(255,215,0,0.2);
+    }
+    .page-header h1 { color: #ffd700; font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
+    .page-header p { color: #8b949e; font-size: 0.95rem; }
+
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .card {
+        background: linear-gradient(135deg, #161b22, #0d1117);
+        border: 1px solid #30363d;
+        border-radius: 14px;
+        padding: 24px;
+        margin-bottom: 20px;
+    }
+    .card h2 {
+        color: #ffd700; font-size: 1.15rem; font-weight: 700;
+        margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .card .desc {
+        color: #8b949e; font-size: 13px; line-height: 1.7;
+        margin-bottom: 14px;
+    }
+    .card .desc code {
+        background: rgba(255,215,0,0.1); color: #ffd700;
+        padding: 2px 6px; border-radius: 4px;
+        font-family: 'Consolas', monospace; font-size: 12px;
+        direction: ltr; display: inline-block;
+    }
+
+    .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .url-input {
+        flex: 1; min-width: 200px;
+        padding: 12px 16px;
+        background: #0a0a0f;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        color: #e6edf3;
+        font-family: inherit;
+        font-size: 15px;
+        direction: ltr;
+        text-align: left;
+    }
+    .url-input:focus {
+        outline: none; border-color: #ffd700;
+        box-shadow: 0 0 0 3px rgba(255,215,0,0.1);
+    }
+    .btn {
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #ffd700, #f0a500);
+        color: #0a0a0f;
+        border: none; border-radius: 10px;
+        font-family: inherit; font-size: 15px; font-weight: 700;
+        cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,215,0,0.3); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn.secondary {
+        background: transparent;
+        border: 1px solid #6ae3ff; color: #6ae3ff;
+    }
+    .btn.secondary:hover { background: rgba(106,227,255,0.1); box-shadow: 0 6px 20px rgba(106,227,255,0.2); }
+    .btn.green {
+        background: linear-gradient(135deg, #7ee787, #2ea043);
+    }
+    .btn.green:hover { box-shadow: 0 6px 20px rgba(126,231,135,0.3); }
+
+    .result {
+        margin-top: 16px; padding: 14px;
+        border-radius: 10px; font-size: 14px; line-height: 1.7;
+    }
+    .result.ok { background: rgba(46,160,67,0.1); border: 1px solid rgba(46,160,67,0.4); color: #7ee787; }
+    .result.bad { background: rgba(248,81,73,0.1); border: 1px solid rgba(248,81,73,0.4); color: #ff7b72; }
+    .result.loading { background: rgba(255,215,0,0.06); border: 1px solid rgba(255,215,0,0.3); color: #ffd700; }
+
+    .suggestions-title {
+        color: #7ee787; font-size: 13px; font-weight: 700;
+        margin: 12px 0 8px;
+    }
+    .suggestion-item {
+        display: flex; align-items: center; gap: 8px;
+        background: rgba(126,231,135,0.08);
+        border: 1px solid rgba(126,231,135,0.2);
+        border-radius: 8px; padding: 8px 12px; margin-bottom: 6px;
+        transition: all 0.2s;
+    }
+    .suggestion-item:hover { background: rgba(126,231,135,0.15); }
+    .suggestion-item code {
+        flex: 1; color: #7ee787; font-size: 13px;
+        word-break: break-all; direction: ltr; text-align: left;
+        background: transparent; font-family: 'Consolas', 'Monaco', monospace;
+    }
+    .mini-btn {
+        background: transparent; border: 1px solid;
+        border-radius: 6px; padding: 3px 10px;
+        font-family: inherit; font-size: 11px;
+        cursor: pointer; transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex; align-items: center; gap: 3px;
+    }
+    .mini-btn.copy { color: #7ee787; border-color: #7ee787; }
+    .mini-btn.copy:hover { background: #7ee787; color: #0a0a0f; }
+    .mini-btn.try { color: #6ae3ff; border-color: #6ae3ff; }
+    .mini-btn.try:hover { background: #6ae3ff; color: #0a0a0f; }
+
+    .page-scan-stats {
+        display: flex; gap: 10px; flex-wrap: wrap;
+        margin-bottom: 16px;
+    }
+    .stat {
+        padding: 6px 14px; border-radius: 20px;
+        font-size: 13px; font-weight: 700;
+    }
+    .stat.total { background: rgba(255,215,0,0.1); color: #ffd700; }
+    .stat.ok { background: rgba(126,231,135,0.1); color: #7ee787; }
+    .stat.broken { background: rgba(248,81,73,0.1); color: #ff7b72; }
+    .stat.info { background: rgba(106,227,255,0.1); color: #6ae3ff; }
+
+    .link-row {
+        padding: 10px 12px; border-radius: 8px;
+        margin-bottom: 8px; font-size: 13px;
+        direction: ltr; text-align: left;
+    }
+    .link-row.ok { background: rgba(46,160,67,0.06); border-right: 3px solid #2ea043; }
+    .link-row.bad { background: rgba(248,81,73,0.06); border-right: 3px solid #f85149; }
+    .link-row .url {
+        color: #e6edf3; word-break: break-all;
+        font-family: 'Consolas', monospace; font-size: 12px;
+        display: block; margin-bottom: 4px;
+    }
+    .link-row.ok .url::before { content: '✅ '; color: #2ea043; }
+    .link-row.bad .url::before { content: '❌ '; color: #f85149; }
+
+    .log {
+        background: #0a0a0f;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 12px 14px;
+        max-height: 220px; overflow-y: auto;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 12px; line-height: 1.7;
+        direction: ltr; text-align: left;
+    }
+    .log-line { color: #8b949e; }
+    .log-line.ok { color: #7ee787; }
+    .log-line.err { color: #ff7b72; }
+    .log-line.info { color: #6ae3ff; }
+    .log-line.warn { color: #ffd700; }
+
+    .quick-links {
+        display: flex; gap: 8px; flex-wrap: wrap;
+        margin-top: 12px; padding-top: 12px;
+        border-top: 1px solid #30363d;
+    }
+    .quick-links a {
+        color: #6ae3ff; text-decoration: none;
+        font-size: 12px; padding: 4px 12px;
+        border-radius: 20px;
+        background: rgba(106,227,255,0.08);
+        border: 1px solid rgba(106,227,255,0.2);
+        transition: all 0.2s;
+    }
+    .quick-links a:hover {
+        background: rgba(106,227,255,0.2);
+        border-color: #6ae3ff;
+    }
+
+    /* ═══ عرض روابط الصفحة المقروءة ═══ */
+    .analysis-section {
+        margin-top: 18px;
+        border-top: 1px solid #30363d;
+        padding-top: 16px;
+    }
+    .analysis-section h3 {
+        color: #ffd700; font-size: 14px; font-weight: 700;
+        margin-bottom: 10px;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .analysis-section h3 .count {
+        background: rgba(255,215,0,0.15);
+        color: #ffd700;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+    }
+    .analysis-list {
+        max-height: 260px; overflow-y: auto;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.25);
+        padding: 10px;
+    }
+    .analysis-item {
+        padding: 6px 10px;
+        border-radius: 6px;
+        margin-bottom: 4px;
+        font-size: 12.5px;
+        font-family: 'Consolas', monospace;
+        direction: ltr;
+        text-align: left;
+        word-break: break-all;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+    }
+    .analysis-item:hover { background: rgba(255,215,0,0.06); }
+    .analysis-item .idx {
+        color: #666; font-size: 10px;
+        min-width: 22px; text-align: right;
+    }
+    .analysis-item .link {
+        flex: 1;
+        color: #e6edf3;
+    }
+    .analysis-item.internal .link { color: #7ee787; }
+    .analysis-item.external .link { color: #6ae3ff; }
+    .analysis-item.anchor   .link { color: #ffd700; }
+    .analysis-item.other    .link { color: #ff9b9b; }
+    .analysis-item img .link { color: #f0a500; }
+    .analysis-item script .link { color: #d2a8ff; }
+    .analysis-item style .link { color: #79c0ff; }
+    .analysis-item media .link { color: #ff7b72; }
+
+    .analysis-item .text-preview {
+        color: #8b949e;
+        font-size: 10.5px;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+    }
+    .analysis-item .mini-btn {
+        padding: 2px 8px;
+        font-size: 10px;
+    }
+
+    .empty-note {
+        color: #666; font-size: 12px;
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    .analysis-actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+        body { padding: 15px; padding-top: 70px; }
+        .page-header h1 { font-size: 1.4rem; }
+        .card { padding: 16px; }
+        .btn { padding: 10px 18px; font-size: 14px; }
+        .url-input { font-size: 14px; }
+        .analysis-item .text-preview { display: none; }
+    }
 </style>
 </head>
 <body>
+
 <div class="container">
-  <h1>🔗 أداة فحص روابط sitemap.xml</h1>
+    <div class="page-header">
+        <h1>🔧 فاحص الروابط الذكي</h1>
+        <p>واحة الجبري — أداة المطور v2.1</p>
+    </div>
 
-  <div class="note">
-    💡 <strong>ملاحظة:</strong> هذه الأداة تفحص كل رابط في sitemap.xml وتُظهر حالته (200 / 301 / 404). قد يستغرق الفحص دقائق حسب عدد الروابط. لا تغلق الصفحة أثناء الفحص.
-  </div>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ① اقرأ صفحة واستخرج روابطها (جديد v2.1)                   -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="card" style="border-color:#6ae3ff;">
+        <h2>📖 اقرأ صفحة واستخرج روابطها</h2>
+        <p class="desc">
+            اكتب اسم أي صفحة في الموقع (مثل <code>Page11.html</code> أو <code>/ar/about.html</code>)
+            وسنقرأها ونعرض كل ما فيها: روابط، صور، سكربتات، CSS، وسائط.
+        </p>
+        <div class="input-row">
+            <input
+                type="text"
+                class="url-input"
+                id="pageInput"
+                placeholder="Page11.html"
+                autocomplete="off"
+                value=""
+            >
+            <button class="btn green" id="readPageBtn">📖 اقرأ</button>
+        </div>
+        <div id="pageReadResult"></div>
+    </div>
 
-  <div class="controls">
-    <button id="startBtn">▶️ ابدأ الفحص</button>
-    <button id="stopBtn" class="stop" disabled>⏹️ إيقاف</button>
-    <button id="exportBtn" disabled>📥 تصدير النتائج</button>
-  </div>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ② افحص رابطاً واحداً                                      -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="card">
+        <h2>🔍 افحص رابطاً واحداً</h2>
+        <div class="input-row">
+            <input type="text" class="url-input" id="urlInput"
+                placeholder="/icon-192.png أو /about أو ..." autocomplete="off">
+            <button class="btn" id="checkBtn">🔎 افحص</button>
+        </div>
+        <div id="singleResult"></div>
+    </div>
 
-  <div class="stats">
-    <div class="stat total"><span class="num" id="statTotal">0</span><span class="lbl">الإجمالي</span></div>
-    <div class="stat ok"><span class="num" id="statOk">0</span><span class="lbl">200 OK</span></div>
-    <div class="stat redirect"><span class="num" id="statRedirect">0</span><span class="lbl">301/302</span></div>
-    <div class="stat error"><span class="num" id="statError">0</span><span class="lbl">404/أخطاء</span></div>
-  </div>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ③ افحص كل روابط الصفحة الحالية                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="card">
+        <h2>📄 افحص كل روابط هذه الصفحة</h2>
+        <p class="desc">
+            فحص تلقائي لكل روابط الصفحة الحالية. يفيد لو كنت تعرض أداة داخل صفحة.
+        </p>
+        <button class="btn secondary" id="scanBtn">🔎 ابدأ الفحص</button>
+        <button class="btn secondary" id="exportBtn" style="margin-inline-start:8px;">📥 تصدير JSON</button>
+        <div id="pageScanResult" style="margin-top:16px;"></div>
+    </div>
 
-  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
-  <div class="log" id="log"></div>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ④ السجل                                                   -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="card">
+        <h2>📋 السجل</h2>
+        <div class="log" id="log">
+            <div class="log-line info">🔗 فاحص الروابط الذكي v2.1 جاهز...</div>
+        </div>
+        <div class="quick-links">
+            <a href="/" target="_blank">🏠 الرئيسية</a>
+            <a href="/all-links.html">🗺️ خريطة المسارات</a>
+            <a href="/sitemap.xml" target="_blank">📄 sitemap.xml</a>
+            <a href="/js/link-checker.js" target="_blank">📦 link-checker.js</a>
+            <a href="/technical-guide.html">📖 الدليل الفني</a>
+        </div>
+    </div>
 </div>
 
 <script>
-const SITEMAP_URL = 'https://jabri-com.vercel.app/sitemap.xml';
-let links = [];
-let results = [];
-let isRunning = false;
+(function () {
+    'use strict';
 
-const logEl = document.getElementById('log');
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
-const exportBtn = document.getElementById('exportBtn');
-const progressFill = document.getElementById('progressFill');
+    console.log('%c🔧 [link-checker.html] v2.1 — جاهز',
+                'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 6px;border-radius:4px');
 
-function updateStats() {
-  const total = results.length;
-  const ok = results.filter(r => r.status === 'ok').length;
-  const redirect = results.filter(r => r.status === 'redirect').length;
-  const error = results.filter(r => r.status === 'error').length;
-  document.getElementById('statTotal').textContent = total;
-  document.getElementById('statOk').textContent = ok;
-  document.getElementById('statRedirect').textContent = redirect;
-  document.getElementById('statError').textContent = error;
-}
+    const CFG = {
+        checkTimeout:   3500,
+        batchSize:      6,
+        cacheTTL:       30 * 60 * 1000,
+        maxSuggestions: 6
+    };
 
-function addLog(url, status, statusText, httpCode) {
-  const div = document.createElement('div');
-  div.className = 'log-item';
-  div.innerHTML = `
-    <span class="status ${status}">${statusText}</span>
-    <span class="url"><a href="${url}" target="_blank" rel="noopener">${url}</a></span>
-    ${httpCode ? `<span style="color:#666;font-size:11px;">[${httpCode}]</span>` : ''}
-  `;
-  logEl.appendChild(div);
-  logEl.scrollTop = logEl.scrollHeight;
-}
+    const IS_APK = (location.protocol === 'file:') ||
+                   ((navigator.userAgent || '').indexOf('wv') !== -1);
 
-async function fetchSitemap() {
-  logEl.innerHTML = '';
-  addLog(SITEMAP_URL, 'pending', '⏳ جاري...', '');
-  try {
-    const res = await fetch(SITEMAP_URL + '?t=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const text = await res.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, 'text/xml');
-    const urlTags = xml.querySelectorAll('url > loc');
-    links = Array.from(urlTags).map(u => u.textContent.trim());
-    logEl.innerHTML = '';
-    addLog(SITEMAP_URL, 'ok', '✅ تم', links.length + ' رابط');
-    return links;
-  } catch (e) {
-    logEl.innerHTML = '';
-    addLog(SITEMAP_URL, 'error', '❌ خطأ', e.message);
-    return [];
-  }
-}
+    /* ═══════════════════════════════════════════════════════════
+       📁 ثوابت v2.0
+       ═══════════════════════════════════════════════════════════ */
+    const COMMON_FOLDERS = [
+        '/image/', '/images/', '/img/', '/css/', '/styles/',
+        '/js/', '/scripts/', '/fonts/', '/font/',
+        '/assets/', '/static/', '/public/',
+        '/downloads/', '/download/', '/files/', '/file/',
+        '/docs/', '/documents/', '/media/',
+        '/videos/', '/video/', '/audio/', '/music/',
+        '/pdf/', '/apk/', '/zip/', '/uploads/', '/upload/'
+    ];
 
-async function checkLink(url) {
-  try {
-    // نستخدم fetch مع mode: 'no-cors' لتفادي مشاكل CORS
-    // لكن هذا لا يعطينا حالة HTTP. لذا نستخدم تقنية الصورة.
-    return await new Promise((resolve) => {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => {
-        controller.abort();
-        resolve({ url, status: 'error', statusText: '⏰ مهلة', httpCode: 0 });
-      }, 10000);
+    const EXT_ALTS = {
+        'png':  ['webp', 'jpg', 'jpeg', 'svg', 'gif'],
+        'jpg':  ['jpeg', 'webp', 'png'],
+        'jpeg': ['jpg', 'webp', 'png'],
+        'webp': ['png', 'jpg', 'jpeg'],
+        'svg':  ['png', 'webp'],
+        'gif':  ['png', 'webp'],
+        'mp4':  ['webm'],
+        'webm': ['mp4'],
+        'mp3':  ['ogg', 'm4a'],
+        'ogg':  ['mp3', 'm4a']
+    };
 
-      fetch(url, { method: 'HEAD', signal: controller.signal, redirect: 'follow' })
-        .then(res => {
-          clearTimeout(timeout);
-          const code = res.status;
-          if (code >= 200 && code < 300) {
-            resolve({ url, status: 'ok', statusText: '✅ 200', httpCode: code });
-          } else if (code >= 300 && code < 400) {
-            resolve({ url, status: 'redirect', statusText: '🔀 ' + code, httpCode: code });
-          } else {
-            resolve({ url, status: 'error', statusText: '❌ ' + code, httpCode: code });
-          }
-        })
-        .catch(err => {
-          clearTimeout(timeout);
-          // في حالة CORS، نعتبر الرابط "غير معروف" وليس خطأ
-          resolve({ url, status: 'error', statusText: '⚠️ CORS', httpCode: 0 });
+    /* ═══════════════════════════════════════════════════════════
+       💾 الكاش
+       ═══════════════════════════════════════════════════════════ */
+    const MEM_CACHE = new Map();
+    function cacheKey(url) { return 'wlc_' + btoa(unescape(encodeURIComponent(url))).slice(0, 40); }
+    function getCache(url) {
+        if (MEM_CACHE.has(url)) return MEM_CACHE.get(url);
+        try {
+            const raw = sessionStorage.getItem(cacheKey(url));
+            if (!raw) return null;
+            const data = JSON.parse(raw);
+            if (Date.now() - data.t > CFG.cacheTTL) {
+                sessionStorage.removeItem(cacheKey(url));
+                return null;
+            }
+            MEM_CACHE.set(url, data);
+            return data;
+        } catch (e) { return null; }
+    }
+    function setCache(url, value) {
+        const data = { v: value, t: Date.now() };
+        MEM_CACHE.set(url, data);
+        try { sessionStorage.setItem(cacheKey(url), JSON.stringify(data)); } catch (e) {}
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🔍 أدوات الفحص
+       ═══════════════════════════════════════════════════════════ */
+    function isInternalLink(url) {
+        if (!url) return false;
+        if (url.indexOf('#') === 0) return false;
+        if (/^(mailto|tel|javascript|data|whatsapp|tg|blob):/i.test(url)) return false;
+        try {
+            const u = new URL(url, location.href);
+            if (u.origin !== location.origin) return false;
+            if (u.pathname === location.pathname && u.search === location.search) return false;
+            return true;
+        } catch (e) { return false; }
+    }
+
+    function probeFetch(url) {
+        return new Promise(function (resolve) {
+            const ctl = new AbortController();
+            const tid = setTimeout(function () { ctl.abort(); resolve(false); }, CFG.checkTimeout);
+            fetch(url, { method: 'HEAD', cache: 'no-cache', redirect: 'follow', signal: ctl.signal })
+                .then(function (r) { clearTimeout(tid); resolve(r.ok); })
+                .catch(function () { clearTimeout(tid); probeFetchGET(url).then(resolve); });
         });
+    }
+    function probeFetchGET(url) {
+        return new Promise(function (resolve) {
+            const ctl = new AbortController();
+            const tid = setTimeout(function () { ctl.abort(); resolve(false); }, CFG.checkTimeout);
+            fetch(url, { method: 'GET', cache: 'no-cache', redirect: 'follow', signal: ctl.signal })
+                .then(function (r) { clearTimeout(tid); resolve(r.ok); })
+                .catch(function () { clearTimeout(tid); resolve(false); });
+        });
+    }
+    function probeXHR(url) {
+        return new Promise(function (resolve) {
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.timeout = CFG.checkTimeout;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        const ok = (xhr.status === 200) || (xhr.status === 0 && xhr.responseText);
+                        resolve(!!ok);
+                    }
+                };
+                xhr.ontimeout = function () { resolve(false); };
+                xhr.onerror = function () { resolve(false); };
+                xhr.send();
+            } catch (e) { resolve(false); }
+        });
+    }
+    async function probe(url) {
+        const cached = getCache(url);
+        if (cached) return cached.v;
+        const result = IS_APK ? await probeXHR(url) : await probeFetch(url);
+        setCache(url, result);
+        return result;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🔧 إصلاحات
+       ═══════════════════════════════════════════════════════════ */
+    function basicFixes(url) {
+        var fixes = [];
+        try {
+            var u = new URL(url, location.href);
+            var path = u.pathname;
+            var search = u.search || '';
+            if (!/\.\w{2,5}$/.test(path)) fixes.push(path + '.html' + search);
+            var langMatch = path.match(/^\/(ar|en)\//);
+            if (langMatch) {
+                var lang = langMatch[1];
+                var other = lang === 'ar' ? 'en' : 'ar';
+                var rest = path.slice(('/' + lang + '/').length);
+                fixes.push('/' + other + '/' + rest + search);
+                fixes.push('/' + rest + search);
+            } else if (path !== '/') {
+                fixes.push('/ar' + path + search);
+                fixes.push('/en' + path + search);
+            }
+            var parts = path.split('/').filter(function (x) { return x; });
+            if (parts.length > 1) fixes.push('/' + parts[parts.length - 1] + search);
+        } catch (e) {}
+        return fixes;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       💡 مولّد الاقتراحات
+       ═══════════════════════════════════════════════════════════ */
+    function generateSuggestionCandidates(path) {
+        var candidates = [];
+        var u;
+        try { u = new URL(path, location.href); } catch (e) { return candidates; }
+        var p = u.pathname, search = u.search || '', hash = u.hash || '';
+        var parts = p.split('/').filter(function (x) { return x; });
+        var file = parts.length ? parts[parts.length - 1] : '';
+        var folder = parts.length > 1 ? '/' + parts.slice(0, -1).join('/') + '/' : '/';
+        if (!file) return candidates;
+        var dot = file.lastIndexOf('.');
+        var baseName = dot > 0 ? file.slice(0, dot) : file;
+        var ext = dot > 0 ? file.slice(dot + 1).toLowerCase() : '';
+        for (var i = 0; i < COMMON_FOLDERS.length; i++) {
+            var f = COMMON_FOLDERS[i];
+            if (f === folder) continue;
+            candidates.push(f + file + search + hash);
+        }
+        candidates.push(p.replace(/^\//, '') + search + hash);
+        candidates.push('./' + p.replace(/^\//, '') + search + hash);
+        if (ext && EXT_ALTS[ext]) {
+            var alts = EXT_ALTS[ext];
+            for (var j = 0; j < alts.length; j++) {
+                candidates.push(folder + baseName + '.' + alts[j] + search + hash);
+            }
+        }
+        if (folder !== '/') candidates.push('/' + file + search + hash);
+        var lower = file.toLowerCase();
+        var upperFirst = file.charAt(0).toUpperCase() + file.slice(1);
+        if (lower !== file) candidates.push(folder + lower + search + hash);
+        if (upperFirst !== file) candidates.push(folder + upperFirst + search + hash);
+        return candidates;
+    }
+    async function findWorkingSuggestions(path) {
+        var candidates = generateSuggestionCandidates(path);
+        var seen = {};
+        var working = [];
+        for (var i = 0; i < candidates.length; i++) {
+            var c = candidates[i];
+            if (!c || seen[c]) continue;
+            seen[c] = 1;
+            if (working.length >= CFG.maxSuggestions) break;
+            var ok = await probe(c);
+            if (ok) working.push(c);
+        }
+        return working;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🎨 أدوات UI
+       ═══════════════════════════════════════════════════════════ */
+    function escapeHtml(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function escapeAttr(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function log(msg, type) {
+        var logEl = document.getElementById('log');
+        if (!logEl) return;
+        var div = document.createElement('div');
+        div.className = 'log-line ' + (type || '');
+        var time = new Date().toLocaleTimeString('en-GB', { hour12: false });
+        div.textContent = '[' + time + '] ' + msg;
+        logEl.appendChild(div);
+        logEl.scrollTop = logEl.scrollHeight;
+    }
+    function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+        }
+        return Promise.resolve(legacyCopy(text));
+    }
+    function legacyCopy(text) {
+        try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed'; ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select(); document.execCommand('copy');
+            document.body.removeChild(ta);
+            return true;
+        } catch (e) { return false; }
+    }
+    function renderSuggestions(suggestions) {
+        return suggestions.map(function (s) {
+            return '<div class="suggestion-item">' +
+                '<code>' + escapeHtml(s) + '</code>' +
+                '<button class="mini-btn copy" data-copy="' + escapeAttr(s) + '">📋 نسخ</button>' +
+                '<a class="mini-btn try" href="' + escapeAttr(s) + '" target="_blank">▶ جرّب</a>' +
+            '</div>';
+        }).join('');
+    }
+    function attachSuggestionHandlers(container) {
+        container.querySelectorAll('.mini-btn.copy').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var txt = btn.getAttribute('data-copy');
+                copyToClipboard(txt).then(function () {
+                    var old = btn.textContent;
+                    btn.textContent = '✅ تم';
+                    btn.style.background = '#7ee787';
+                    btn.style.color = '#0a0a0f';
+                    setTimeout(function () {
+                        btn.textContent = old;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                    }, 1200);
+                });
+            });
+        });
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       📖 [v2.1] قراءة صفحة وتحليلها
+       ═══════════════════════════════════════════════════════════ */
+
+    // جلب HTML صفحة (fetch + XHR fallback)
+    async function fetchPageHTML(url) {
+        if (!IS_APK && typeof fetch === 'function') {
+            try {
+                const res = await fetch(url, { cache: 'no-cache' });
+                if (res.ok) return await res.text();
+            } catch (e) {}
+        }
+        return await new Promise(function (resolve) {
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.timeout = 6000;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        var ok = (xhr.status === 200) || (xhr.status === 0 && xhr.responseText);
+                        resolve(ok ? xhr.responseText : null);
+                    }
+                };
+                xhr.ontimeout = function () { resolve(null); };
+                xhr.onerror = function () { resolve(null); };
+                xhr.send();
+            } catch (e) { resolve(null); }
+        });
+    }
+
+    // تحليل HTML واستخراج كل الأصول
+    function analyzePage(html, baseUrl) {
+        var doc;
+        try {
+            doc = new DOMParser().parseFromString(html, 'text/html');
+        } catch (e) {
+            return null;
+        }
+
+        var base;
+        try { base = new URL(baseUrl, location.href); }
+        catch (e) { base = new URL(location.href); }
+
+        var result = {
+            anchors: { internal: [], external: [], anchor: [], other: [] },
+            images: [], scripts: [], styles: [], media: [],
+            title: doc.title || '',
+            metaDesc: (doc.querySelector('meta[name="description"]') || {}).content || ''
+        };
+
+        // ─── الروابط <a href> ───
+        doc.querySelectorAll('a[href]').forEach(function (a) {
+            var href = a.getAttribute('href');
+            var text = (a.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 50);
+            if (!href) return;
+
+            if (href.startsWith('#')) {
+                result.anchors.anchor.push({ href: href, text: text });
+            } else if (/^(mailto|tel|javascript|whatsapp|tg):/i.test(href)) {
+                result.anchors.other.push({ href: href, text: text });
+            } else {
+                try {
+                    var abs = new URL(href, base);
+                    if (abs.origin === location.origin) {
+                        result.anchors.internal.push({ href: href, abs: abs.href, text: text });
+                    } else {
+                        result.anchors.external.push({ href: href, abs: abs.href, text: text });
+                    }
+                } catch (e) {
+                    result.anchors.other.push({ href: href, text: text });
+                }
+            }
+        });
+
+        // ─── الصور <img src> ───
+        doc.querySelectorAll('img[src]').forEach(function (img) {
+            var src = img.getAttribute('src');
+            if (!src) return;
+            try {
+                var abs = new URL(src, base).href;
+                result.images.push({ src: src, abs: abs, alt: img.getAttribute('alt') || '' });
+            } catch (e) {}
+        });
+
+        // ─── السكربتات <script src> ───
+        doc.querySelectorAll('script[src]').forEach(function (s) {
+            var src = s.getAttribute('src');
+            if (!src) return;
+            try {
+                var abs = new URL(src, base).href;
+                result.scripts.push({ src: src, abs: abs });
+            } catch (e) {}
+        });
+
+        // ─── CSS <link rel="stylesheet"> ───
+        doc.querySelectorAll('link[rel="stylesheet"]').forEach(function (l) {
+            var href = l.getAttribute('href');
+            if (!href) return;
+            try {
+                var abs = new URL(href, base).href;
+                result.styles.push({ href: href, abs: abs });
+            } catch (e) {}
+        });
+
+        // ─── الوسائط <video> / <audio> ───
+        doc.querySelectorAll('video source[src], audio source[src], video[src], audio[src]').forEach(function (m) {
+            var src = m.getAttribute('src');
+            if (!src) return;
+            try {
+                var abs = new URL(src, base).href;
+                result.media.push({ src: src, abs: abs, tag: m.tagName.toLowerCase() });
+            } catch (e) {}
+        });
+
+        return result;
+    }
+
+    // عرض نتائج التحليل
+    function renderAnalysis(analysis, pageUrl) {
+        if (!analysis) {
+            return '<div class="result bad">❌ فشل تحليل HTML</div>';
+        }
+
+        var totalAnchors = analysis.anchors.internal.length +
+                          analysis.anchors.external.length +
+                          analysis.anchors.anchor.length +
+                          analysis.anchors.other.length;
+        var totalAssets = analysis.images.length + analysis.scripts.length +
+                          analysis.styles.length + analysis.media.length;
+
+        var html = '';
+
+        // العنوان والوصف
+        if (analysis.title || analysis.metaDesc) {
+            html += '<div style="background:rgba(106,227,255,0.06);' +
+                    'border-right:3px solid #6ae3ff;padding:10px 12px;' +
+                    'border-radius:8px;margin-bottom:14px;">';
+            if (analysis.title) {
+                html += '<div style="color:#6ae3ff;font-size:13px;margin-bottom:4px;">' +
+                        '<strong>📄 العنوان:</strong> ' + escapeHtml(analysis.title) + '</div>';
+            }
+            if (analysis.metaDesc) {
+                html += '<div style="color:#8b949e;font-size:12px;line-height:1.6;">' +
+                        '<strong>📝 الوصف:</strong> ' + escapeHtml(analysis.metaDesc.slice(0, 140)) +
+                        (analysis.metaDesc.length > 140 ? '...' : '') + '</div>';
+            }
+            html += '</div>';
+        }
+
+        // إحصائيات
+        html += '<div class="page-scan-stats">' +
+            '<span class="stat info">📊 روابط: ' + totalAnchors + '</span>' +
+            '<span class="stat info">🖼️ أصول: ' + totalAssets + '</span>' +
+        '</div>';
+
+        // ─── الروابط الداخلية ───
+        if (analysis.anchors.internal.length) {
+            html += renderSection(
+                '🔗 روابط داخلية',
+                analysis.anchors.internal.length,
+                analysis.anchors.internal.map(function (x) {
+                    return renderAnalysisItem('internal', x.href, x.text);
+                }).join('')
+            );
+        }
+
+        // ─── الروابط الخارجية ───
+        if (analysis.anchors.external.length) {
+            html += renderSection(
+                '🌍 روابط خارجية',
+                analysis.anchors.external.length,
+                analysis.anchors.external.map(function (x) {
+                    return renderAnalysisItem('external', x.href, x.text);
+                }).join('')
+            );
+        }
+
+        // ─── Anchors (#) ───
+        if (analysis.anchors.anchor.length) {
+            html += renderSection(
+                '🎯 مراسي داخلية (#)',
+                analysis.anchors.anchor.length,
+                analysis.anchors.anchor.map(function (x) {
+                    return renderAnalysisItem('anchor', x.href, x.text);
+                }).join('')
+            );
+        }
+
+        // ─── بريد/هاتف/أخرى ───
+        if (analysis.anchors.other.length) {
+            html += renderSection(
+                '📧 بريد / هاتف / أخرى',
+                analysis.anchors.other.length,
+                analysis.anchors.other.map(function (x) {
+                    return renderAnalysisItem('other', x.href, x.text);
+                }).join('')
+            );
+        }
+
+        // ─── الصور ───
+        if (analysis.images.length) {
+            html += renderSection(
+                '🖼️ الصور (img)',
+                analysis.images.length,
+                analysis.images.map(function (x) {
+                    return renderAnalysisItem('img', x.src, x.alt);
+                }).join('')
+            );
+        }
+
+        // ─── السكربتات ───
+        if (analysis.scripts.length) {
+            html += renderSection(
+                '📜 السكربتات (script src)',
+                analysis.scripts.length,
+                analysis.scripts.map(function (x) {
+                    return renderAnalysisItem('script', x.src, '');
+                }).join('')
+            );
+        }
+
+        // ─── CSS ───
+        if (analysis.styles.length) {
+            html += renderSection(
+                '🎨 ملفات CSS',
+                analysis.styles.length,
+                analysis.styles.map(function (x) {
+                    return renderAnalysisItem('style', x.href, '');
+                }).join('')
+            );
+        }
+
+        // ─── الوسائط ───
+        if (analysis.media.length) {
+            html += renderSection(
+                '🎬 الوسائط (فيديو/صوت)',
+                analysis.media.length,
+                analysis.media.map(function (x) {
+                    return renderAnalysisItem('media', x.src, x.tag);
+                }).join('')
+            );
+        }
+
+        // ─── لو ما فيه شيء ───
+        if (totalAnchors === 0 && totalAssets === 0) {
+            html += '<div class="result loading" style="margin-top:14px;">' +
+                    '📭 الصفحة ما فيها روابط ولا أصول' +
+                    '</div>';
+        }
+
+        // ─── أزرار الإجراءات ───
+        if (analysis.anchors.internal.length) {
+            html += '<div class="analysis-actions">' +
+                '<button class="btn green" id="checkInternalBtn" ' +
+                    'data-links="' + escapeAttr(JSON.stringify(analysis.anchors.internal.map(function (x) { return x.abs; }))) + '">' +
+                    '🔎 افحص كل الروابط الداخلية (' + analysis.anchors.internal.length + ')' +
+                '</button>' +
+                '<button class="btn secondary" id="exportAnalysisBtn">' +
+                    '📥 تصدير JSON' +
+                '</button>' +
+            '</div>';
+        }
+
+        return html;
+    }
+
+    function renderSection(title, count, itemsHtml) {
+        return '<div class="analysis-section">' +
+            '<h3>' + title + ' <span class="count">' + count + '</span></h3>' +
+            '<div class="analysis-list">' + itemsHtml + '</div>' +
+        '</div>';
+    }
+
+    function renderAnalysisItem(type, value, extra) {
+        var extraHtml = '';
+        if (extra) {
+            extraHtml = '<span class="text-preview">' + escapeHtml(extra) + '</span>';
+        }
+        return '<div class="analysis-item ' + type + '">' +
+            '<span class="link">' + escapeHtml(value) + '</span>' +
+            extraHtml +
+            '<button class="mini-btn copy" data-copy="' + escapeAttr(value) + '">📋</button>' +
+        '</div>';
+    }
+
+    // ─── الدالة الرئيسية: اقرأ صفحة ───
+    async function readAndAnalyzePage() {
+        var input = document.getElementById('pageInput');
+        var resultDiv = document.getElementById('pageReadResult');
+        var btn = document.getElementById('readPageBtn');
+
+        var raw = (input.value || '').trim();
+        if (!raw) {
+            input.focus();
+            return;
+        }
+
+        // لو ما فيه .html ولا امتداد → نضيف .html
+        if (!/\.\w{2,5}$/.test(raw) && raw.indexOf('/') === -1 && raw.indexOf('.') === -1) {
+            raw = raw + '.html';
+            input.value = raw;
+        }
+
+        var fullUrl;
+        try {
+            fullUrl = new URL(raw, location.href).href;
+        } catch (e) {
+            resultDiv.innerHTML = '<div class="result bad">❌ رابط غير صالح</div>';
+            return;
+        }
+
+        btn.disabled = true;
+        resultDiv.innerHTML = '<div class="result loading">⏳ جارٍ قراءة ' + escapeHtml(raw) + '...</div>';
+        log('📖 نقرأ: ' + raw, 'info');
+
+        var html = await fetchPageHTML(fullUrl);
+
+        if (!html) {
+            resultDiv.innerHTML =
+                '<div class="result bad">' +
+                    '❌ فشل قراءة الصفحة<br>' +
+                    '<span style="font-size:12px;opacity:0.7;">' +
+                        'تأكد من أن اسم الصفحة صحيح وأنها موجودة في الموقع' +
+                    '</span>' +
+                '</div>';
+            log('❌ فشل قراءة: ' + raw, 'err');
+            btn.disabled = false;
+            return;
+        }
+
+        log('✅ تم التحميل (' + html.length + ' حرف)', 'ok');
+
+        var analysis = analyzePage(html, fullUrl);
+        var html2 = renderAnalysis(analysis, fullUrl);
+        resultDiv.innerHTML = html2;
+
+        // ربط أزرار النسخ
+        attachSuggestionHandlers(resultDiv);
+
+        // زر افحص الداخلي
+        var checkBtn = document.getElementById('checkInternalBtn');
+        if (checkBtn) {
+            checkBtn.addEventListener('click', function () {
+                var links = JSON.parse(checkBtn.getAttribute('data-links') || '[]');
+                checkBatchOfLinks(links);
+            });
+        }
+
+        // زر التصدير
+        var exportBtn = document.getElementById('exportAnalysisBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', function () {
+                exportAnalysis(raw, analysis);
+            });
+        }
+
+        var totalAnchors = analysis.anchors.internal.length + analysis.anchors.external.length +
+                          analysis.anchors.anchor.length + analysis.anchors.other.length;
+        log('📊 وجدنا ' + totalAnchors + ' رابطاً و ' +
+            (analysis.images.length + analysis.scripts.length + analysis.styles.length + analysis.media.length) +
+            ' أصلاً', 'ok');
+
+        btn.disabled = false;
+    }
+
+    // ─── افحص قائمة روابط ───
+    async function checkBatchOfLinks(links) {
+        var resultDiv = document.getElementById('pageReadResult');
+        log('━━━ نفحص ' + links.length + ' رابط داخلي ━━━', 'info');
+
+        // أنشئ قسم منفصل في الأسفل
+        var section = document.createElement('div');
+        section.className = 'analysis-section';
+        section.style.borderTop = '2px solid #7ee787';
+        section.innerHTML =
+            '<h3 style="color:#7ee787;">🔎 نتائج الفحص <span class="count" id="chkCount">0/' + links.length + '</span></h3>' +
+            '<div class="analysis-list" id="chkList" style="max-height:400px;"></div>';
+        resultDiv.appendChild(section);
+
+        var listEl = document.getElementById('chkList');
+        var countEl = document.getElementById('chkCount');
+        var okCount = 0, badCount = 0;
+        var broken = [];
+
+        for (var i = 0; i < links.length; i += CFG.batchSize) {
+            var batch = links.slice(i, i + CFG.batchSize);
+            var results = await Promise.all(batch.map(function (u) {
+                return probe(u).then(function (ok) { return { u: u, ok: ok }; });
+            }));
+
+            results.forEach(function (r) {
+                var item = document.createElement('div');
+                item.className = 'analysis-item ' + (r.ok ? 'internal' : 'other');
+                var icon = r.ok ? '✅' : '❌';
+                item.innerHTML = icon + ' <span class="link" style="color:' +
+                    (r.ok ? '#7ee787' : '#ff7b72') + ';">' + escapeHtml(r.u) + '</span>';
+                listEl.appendChild(item);
+
+                if (r.ok) okCount++;
+                else {
+                    badCount++;
+                    broken.push(r.u);
+                }
+                countEl.textContent = (okCount + badCount) + '/' + links.length;
+                listEl.scrollTop = listEl.scrollHeight;
+            });
+        }
+
+        log('✅ سليم: ' + okCount + ' | ❌ مكسور: ' + badCount, okCount === links.length ? 'ok' : 'warn');
+
+        if (broken.length) {
+            // اقتراحات للمكسورة
+            var suggestTitle = document.createElement('div');
+            suggestTitle.className = 'suggestions-title';
+            suggestTitle.style.marginTop = '14px';
+            suggestTitle.textContent = '💡 اقتراحات للمكسورة:';
+            section.appendChild(suggestTitle);
+
+            for (var j = 0; j < broken.length; j++) {
+                var brokenUrl = broken[j];
+                var suggestions = await findWorkingSuggestions(brokenUrl);
+                var wrap = document.createElement('div');
+                wrap.innerHTML = '<div style="color:#ff9b9b;font-size:12px;' +
+                    'font-family:Consolas,monospace;direction:ltr;text-align:left;' +
+                    'margin-top:8px;">🔗 ' + escapeHtml(brokenUrl) + '</div>' +
+                    (suggestions.length
+                        ? renderSuggestions(suggestions)
+                        : '<div style="color:#666;font-size:11px;margin:4px 0;">❌ لا اقتراحات</div>');
+                section.appendChild(wrap);
+                attachSuggestionHandlers(wrap);
+            }
+        }
+    }
+
+    // ─── تصدير JSON ───
+    function exportAnalysis(pageName, analysis) {
+        var report = {
+            page: pageName,
+            url: location.href,
+            time: new Date().toISOString(),
+            title: analysis.title,
+            description: analysis.metaDesc,
+            counts: {
+                internalLinks:   analysis.anchors.internal.length,
+                externalLinks:   analysis.anchors.external.length,
+                anchors:         analysis.anchors.anchor.length,
+                otherLinks:      analysis.anchors.other.length,
+                images:          analysis.images.length,
+                scripts:         analysis.scripts.length,
+                styles:          analysis.styles.length,
+                media:           analysis.media.length
+            },
+            data: {
+                internal: analysis.anchors.internal,
+                external: analysis.anchors.external,
+                anchors:  analysis.anchors.anchor,
+                other:    analysis.anchors.other,
+                images:   analysis.images,
+                scripts:  analysis.scripts,
+                styles:   analysis.styles,
+                media:    analysis.media
+            }
+        };
+        var json = JSON.stringify(report, null, 2);
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'page-analysis-' + pageName.replace(/[^a-z0-9]/gi, '_') + '-' + Date.now() + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        log('📥 تم تصدير التقرير', 'ok');
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🎬 فحص رابط واحد (من v2.0)
+       ═══════════════════════════════════════════════════════════ */
+    async function checkSingleUrl() {
+        var input = document.getElementById('urlInput');
+        var resultDiv = document.getElementById('singleResult');
+        var btn = document.getElementById('checkBtn');
+
+        var raw = (input.value || '').trim();
+        if (!raw) { input.focus(); return; }
+
+        btn.disabled = true;
+        resultDiv.innerHTML = '<div class="result loading">⏳ جارٍ الفحص...</div>';
+        log('افحص: ' + raw, 'info');
+
+        var fullUrl;
+        try { fullUrl = new URL(raw, location.href).href; }
+        catch (e) {
+            resultDiv.innerHTML = '<div class="result bad">❌ رابط غير صالح</div>';
+            btn.disabled = false;
+            return;
+        }
+
+        var ok = await probe(fullUrl);
+
+        if (ok) {
+            resultDiv.innerHTML = '<div class="result ok"><strong>✅ الرابط سليم</strong><br>' +
+                '<code style="direction:ltr;display:inline-block;margin-top:6px;' +
+                'background:rgba(0,0,0,0.3);padding:3px 8px;border-radius:4px;">' +
+                escapeHtml(fullUrl) + '</code></div>';
+            log('✅ سليم: ' + raw, 'ok');
+            btn.disabled = false;
+            return;
+        }
+
+        log('❌ مكسور: ' + raw, 'err');
+        var basic = basicFixes(fullUrl);
+        var fixed = null;
+        for (var i = 0; i < basic.length; i++) {
+            if (await probe(basic[i])) { fixed = basic[i]; break; }
+        }
+
+        var html = '<div class="result bad"><strong>❌ الرابط مكسور</strong><br>' +
+            '<code style="direction:ltr;display:inline-block;margin-top:6px;' +
+            'background:rgba(0,0,0,0.3);padding:3px 8px;border-radius:4px;">' +
+            escapeHtml(fullUrl) + '</code>';
+
+        if (fixed) {
+            html += '<div class="suggestions-title" style="margin-top:14px;">🔧 إصلاح مباشر:</div>' +
+                    renderSuggestions([fixed]);
+        }
+
+        var suggestions = await findWorkingSuggestions(fullUrl);
+        if (suggestions.length) {
+            html += '<div class="suggestions-title" style="margin-top:14px;">💡 اقتراحات صالحة (' +
+                    suggestions.length + '):</div>' + renderSuggestions(suggestions);
+        } else {
+            html += '<div style="color:#ff9b9b;margin-top:12px;font-size:12px;">' +
+                    '❌ لا اقتراحات — تأكد من رفع الملف</div>';
+        }
+
+        html += '</div>';
+        resultDiv.innerHTML = html;
+        attachSuggestionHandlers(resultDiv);
+        btn.disabled = false;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🎬 فحص كل روابط الصفحة الحالية (من v2.0)
+       ═══════════════════════════════════════════════════════════ */
+    var LAST_SCAN = null;
+
+    async function scanPageLinks() {
+        var btn = document.getElementById('scanBtn');
+        var resultDiv = document.getElementById('pageScanResult');
+
+        btn.disabled = true;
+        resultDiv.innerHTML = '<div class="result loading">⏳ جارٍ جمع الروابط...</div>';
+        log('━━━ بدء فحص روابط الصفحة ━━━', 'info');
+
+        var anchors = document.querySelectorAll('a[href]');
+        var links = [];
+        var seen = {};
+        for (var i = 0; i < anchors.length; i++) {
+            var href = anchors[i].getAttribute('href');
+            if (!isInternalLink(href)) continue;
+            try {
+                var abs = new URL(href, location.href).href.split('#')[0];
+                if (seen[abs]) continue;
+                seen[abs] = 1;
+                links.push({ href: href, abs: abs });
+            } catch (e) {}
+        }
+
+        if (!links.length) {
+            resultDiv.innerHTML = '<div class="result loading">📭 لا توجد روابط داخلية في هذه الصفحة</div>';
+            log('لا توجد روابط داخلية', 'warn');
+            btn.disabled = false;
+            return;
+        }
+
+        resultDiv.innerHTML = '<div class="result loading">⏳ جارٍ فحص ' + links.length + ' رابط...</div>';
+        log('عدد الروابط: ' + links.length, 'info');
+
+        var results = { ok: [], broken: [] };
+        for (var j = 0; j < links.length; j += CFG.batchSize) {
+            var batch = links.slice(j, j + CFG.batchSize);
+            var batchResults = await Promise.all(batch.map(function (item) {
+                return probe(item.abs).then(function (ok) { return { item: item, ok: ok }; });
+            }));
+            batchResults.forEach(function (r) {
+                if (r.ok) { results.ok.push(r.item); log('✅ ' + r.item.href, 'ok'); }
+                else { r.item.suggestions = []; results.broken.push(r.item); log('❌ ' + r.item.href, 'err'); }
+            });
+        }
+
+        if (results.broken.length) {
+            log('━ جارٍ توليد اقتراحات للمكسورة...', 'warn');
+            for (var k = 0; k < results.broken.length; k++) {
+                var b = results.broken[k];
+                b.suggestions = await findWorkingSuggestions(b.abs);
+            }
+        }
+
+        LAST_SCAN = {
+            url: location.href,
+            time: new Date().toISOString(),
+            total: links.length,
+            ok: results.ok.length,
+            broken: results.broken.length,
+            details: {
+                ok: results.ok.map(function (x) { return x.href; }),
+                broken: results.broken.map(function (x) {
+                    return { href: x.href, suggestions: x.suggestions };
+                })
+            }
+        };
+
+        var html = '<div class="page-scan-stats">' +
+            '<span class="stat total">📊 الكل: ' + links.length + '</span>' +
+            '<span class="stat ok">✅ سليم: ' + results.ok.length + '</span>' +
+            '<span class="stat broken">❌ مكسور: ' + results.broken.length + '</span>' +
+        '</div>';
+
+        if (results.broken.length) {
+            html += '<div style="color:#7ee787;font-size:13px;font-weight:700;margin:14px 0 8px;">' +
+                    '💡 الاقتراحات للمكسورة:</div>';
+            results.broken.forEach(function (b) {
+                html += '<div class="link-row bad"><span class="url">' + escapeHtml(b.href) + '</span>';
+                if (b.suggestions.length) html += renderSuggestions(b.suggestions);
+                else html += '<div style="color:#ff9b9b;font-size:11px;margin-top:4px;">❌ لا اقتراحات</div>';
+                html += '</div>';
+            });
+        } else {
+            html += '<div class="result ok" style="margin-top:14px;">🎉 كل الروابط سليمة!</div>';
+        }
+
+        resultDiv.innerHTML = html;
+        attachSuggestionHandlers(resultDiv);
+        log('━━━ انتهى: ' + results.ok.length + ' سليم · ' + results.broken.length + ' مكسور ━━━', 'info');
+        btn.disabled = false;
+    }
+
+    function exportJSON() {
+        if (!LAST_SCAN) { alert('⚠️ افحص الصفحة أولاً'); return; }
+        var json = JSON.stringify(LAST_SCAN, null, 2);
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'link-checker-report-' + Date.now() + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        log('📥 تم تصدير التقرير', 'ok');
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       🎬 ربط الأحداث
+       ═══════════════════════════════════════════════════════════ */
+    document.getElementById('readPageBtn').addEventListener('click', readAndAnalyzePage);
+    document.getElementById('pageInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') readAndAnalyzePage();
     });
-  } catch (e) {
-    return { url, status: 'error', statusText: '❌ خطأ', httpCode: 0 };
-  }
-}
 
-async function runCheck() {
-  if (isRunning) return;
-  isRunning = true;
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
-  exportBtn.disabled = true;
-  results = [];
-  logEl.innerHTML = '';
+    document.getElementById('checkBtn').addEventListener('click', checkSingleUrl);
+    document.getElementById('urlInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') checkSingleUrl();
+    });
 
-  const urls = await fetchSitemap();
-  if (urls.length === 0) {
-    isRunning = false;
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
-    return;
-  }
+    document.getElementById('scanBtn').addEventListener('click', scanPageLinks);
+    document.getElementById('exportBtn').addEventListener('click', exportJSON);
 
-  document.getElementById('statTotal').textContent = urls.length;
+    /* ═══════════════════════════════════════════════════════════
+       🌐 API عام
+       ═══════════════════════════════════════════════════════════ */
+    window.WahaLinkCheckerTool = {
+        readPage:   readAndAnalyzePage,
+        check:      checkSingleUrl,
+        scan:       scanPageLinks,
+        export:     exportJSON,
+        probe:      probe,
+        suggest:    findWorkingSuggestions,
+        version:    '2.1'
+    };
 
-  for (let i = 0; i < urls.length; i++) {
-    if (!isRunning) break;
-    const url = urls[i];
-    addLog(url, 'pending', '⏳ جاري...', '');
-    const result = await checkLink(url);
-    results.push(result);
+    log('✅ الأداة جاهزة v2.1 — 4 أدوات', 'ok');
 
-    // إزالة السجل المؤقت وإضافة النتيجة النهائية
-    const lastChild = logEl.lastElementChild;
-    if (lastChild) lastChild.remove();
-    addLog(url, result.status, result.statusText, result.httpCode);
-
-    updateStats();
-    const percent = ((i + 1) / urls.length) * 100;
-    progressFill.style.width = percent + '%';
-  }
-
-  isRunning = false;
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
-  exportBtn.disabled = false;
-  addLog('', 'ok', '✅', 'اكتمل الفحص');
-}
-
-function stopCheck() {
-  isRunning = false;
-  stopBtn.disabled = true;
-  startBtn.disabled = false;
-}
-
-function exportResults() {
-  let csv = 'URL,Status,HTTP Code\n';
-  results.forEach(r => {
-    csv += `"${r.url}","${r.statusText}",${r.httpCode}\n`;
-  });
-  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'sitemap-check-' + new Date().toISOString().slice(0,10) + '.csv';
-  link.click();
-}
-
-startBtn.addEventListener('click', runCheck);
-stopBtn.addEventListener('click', stopCheck);
-exportBtn.addEventListener('click', exportResults);
+})();
 </script>
+
 </body>
 </html>
