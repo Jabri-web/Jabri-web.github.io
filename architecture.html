@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060607">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U">
+
+<!-- ═══════════════════════════════════════════════════════
+     Architecture — Heaven Al-Jabri | واحة الجبري
+     صفحة معمارية الموقع (4 واجهات + 12 قمر)
+     ═══════════════════════════════════════════════════════ -->
+
+<title>معمارية واحة الجبري | Heaven Al-Jabri Architecture</title>
+<meta name="description" content="معمارية موقع واحة الجبري: 4 واجهات Vercel رسمية + 12 مستودع GitHub كشبكة أقمار صناعية. 4 projects + 12 satellite repositories for Jabri Oasis.">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+
+<link rel="canonical" href="https://jabri-com.vercel.app/architecture.html">
+<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/architecture.html">
+<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/architecture.html">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="ar_YE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="واحة الجبري">
+<meta property="og:title" content="معمارية واحة الجبري — 4 واجهات + 12 قمر صناعي">
+<meta property="og:description" content="نظام الأقمار الصناعية SEO — 4 مشاريع Vercel رسمية + 12 مستودع GitHub للدعاية والأرشفة.">
+<meta property="og:url" content="https://jabri-com.vercel.app/architecture.html">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="معمارية واحة الجبري">
+<meta name="twitter:description" content="4 واجهات Vercel + 12 قمر GitHub — نظام SEO متكامل">
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://jabri-com.vercel.app/architecture.html#webpage",
+  "url": "https://jabri-com.vercel.app/architecture.html",
+  "name": "معمارية واحة الجبري",
+  "description": "معمارية موقع واحة الجبري: 4 واجهات Vercel + 12 مستودع GitHub",
+  "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+  "inLanguage": "ar",
+  "about": { "@id": "https://jabri-com.vercel.app/#organization" },
+  "author": { "@id": "https://jabri-com.vercel.app/#jabri" }
+}
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   الإعدادات الأساسية
+   ═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+    font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: #060607;
+    color: #e4e4e7;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+.mono { font-family: 'IBM Plex Mono', 'Consolas', monospace; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ═══════════════════════════════════════════════════════
+   الخلفية — طبقات خفيفة بدل صورة واحدة
+   ═══════════════════════════════════════════════════════ */
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+.bg-radial {
+    background:
+        radial-gradient(ellipse at top, rgba(212,168,67,0.12), transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(212,168,67,0.08), transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(120,80,20,0.06), transparent 60%);
+}
+.bg-grid {
+    background-image:
+        linear-gradient(rgba(212,168,67,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,168,67,0.5) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.03;
+}
+.bg-line-top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245,158,11,0.5), transparent);
+    z-index: 1;
+}
+.bg-ring {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 1px solid rgba(245,158,11,0.06);
+    z-index: 0;
+    pointer-events: none;
+}
+.bg-ring-1 { width: 800px; height: 800px; }
+.bg-ring-2 { width: 1200px; height: 1200px; border-color: rgba(245,158,11,0.03); }
+
+/* ═══════════════════════════════════════════════════════
+   الحاوية الرئيسية
+   ═══════════════════════════════════════════════════════ */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+}
+@media (min-width: 640px) {
+    .container { padding: 48px 24px 64px; }
+}
+@media (min-width: 1024px) {
+    .container { padding: 48px 32px 64px; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   الهيدر
+   ═══════════════════════════════════════════════════════ */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+@media (min-width: 640px) {
+    .page-header { margin-bottom: 56px; }
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #15120E;
+    border: 1px solid rgba(245,158,11,0.2);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(252,211,77,0.8);
+    margin-bottom: 24px;
+}
+.status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px rgba(52,211,153,0.6);
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+@media (min-width: 640px) {
+    .page-title { font-size: 42px; }
+}
+@media (min-width: 1024px) {
+    .page-title { font-size: 52px; }
+}
+
+.title-gradient-1 {
+    background: linear-gradient(to bottom, #f4f4f5, #a1a1aa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.title-gradient-2 {
+    background: linear-gradient(to bottom, #fde68a, #E8C87A, #9E7C3A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.page-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #71717a;
+    letter-spacing: 0.15em;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 8px;
+    display: inline-block;
+}
+@media (min-width: 640px) {
+    .page-subtitle { font-size: 20px; }
+}
+
+.tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 12px;
+}
+.tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #a1a1aa;
+    font-family: 'IBM Plex Mono', monospace;
+}
+.tag-gold {
+    background: rgba(69,26,3,0.4);
+    border-color: rgba(146,64,14,0.3);
+    color: rgba(252,211,77,0.7);
+}
+
+.divider-diamond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+.divider-diamond .line {
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(to left, rgba(245,158,11,0.4), transparent);
+}
+.divider-diamond .line-right {
+    background: linear-gradient(to right, rgba(245,158,11,0.4), transparent);
+}
+.divider-diamond .diamond {
+    width: 8px; height: 8px;
+    transform: rotate(45deg);
+    border: 1px solid rgba(245,158,11,0.4);
+    background: rgba(245,158,11,0.1);
+}
+
+/* ═══════════════════════════════════════════════════════
+   الأقسام
+   ═══════════════════════════════════════════════════════ */
+.section {
+    margin-bottom: 24px;
+}
+.section-big {
+    margin-bottom: 40px;
+}
+
+.section-card {
+    border-radius: 24px;
+    padding: 20px;
+    position: relative;
+}
+@media (min-width: 640px) {
+    .section-card {
+        border-radius: 32px;
+        padding: 32px;
+    }
+}
+
+.section-vercel {
+    border: 1px solid rgba(245,158,11,0.2);
+    background: linear-gradient(to bottom, #17140F, #0E0D0B);
+    box-shadow:
+        0 0 0 1px rgba(212,168,67,0.05) inset,
+        0 20px 80px -20px rgba(212,168,67,0.15);
+}
+.section-github {
+    border: 1px solid #27272a;
+    background: #0B0B0C;
+}
+.section-strategy {
+    border: 1px solid rgba(245,158,11,0.2);
+    background: linear-gradient(to bottom right, #17140E, #13110D, #0D0C0A);
+    overflow: hidden;
+}
+
+.section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.section-head-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.section-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.section-icon-white {
+    background: #ffffff;
+    color: #000;
+    font-weight: 900;
+}
+.section-icon-dark {
+    background: #151515;
+    border: 1px solid #27272a;
+}
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+@media (min-width: 640px) {
+    .section-title { font-size: 18px; }
+}
+.section-count {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #000;
+    font-family: 'IBM Plex Mono', monospace;
+}
+.section-count-dark {
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #a1a1aa;
+}
+.section-sub {
+    font-size: 12px;
+    color: #71717a;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 2px;
+}
+
+.live-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: rgba(52,211,153,0.8);
+}
+.live-badge .live-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 10px rgba(52,211,153,0.7);
+    animation: pulse 2s infinite;
+}
+.dim-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #71717a;
+}
+.dim-badge .dim-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #52525b;
+}
+
+/* ═══════════════════════════════════════════════════════
+   شبكة Vercel — 4 بطاقات
+   ═══════════════════════════════════════════════════════ */
+.grid-vercel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+@media (min-width: 640px) {
+    .grid-vercel { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (min-width: 1024px) {
+    .grid-vercel { grid-template-columns: repeat(4, 1fr); }
+}
+
+.vercel-card {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid #27272a;
+    padding: 16px;
+    background: #111011;
+    transition: all 0.3s ease;
+}
+.vercel-card:hover {
+    transform: translateY(-2px);
+    border-color: #3f3f46;
+    background: #151515;
+}
+.vercel-card.main {
+    background: linear-gradient(to bottom right, #221E14, #15120E);
+    border-color: rgba(251,191,36,0.4);
+    box-shadow: 0 0 30px -10px rgba(212,168,67,0.4);
+}
+.vercel-card.main:hover {
+    border-color: rgba(251,191,36,0.6);
+}
+
+.main-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #fcd34d, #ca8a04);
+    color: #000;
+    font-size: 10px;
+    font-weight: 900;
+    font-family: 'IBM Plex Mono', monospace;
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+}
+
+.vercel-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.vercel-logo {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+.vercel-logo-gold {
+    background: linear-gradient(to bottom right, #fbbf24, #ca8a04);
+}
+.vercel-logo-silver {
+    background: linear-gradient(to bottom right, #e4e4e7, #a1a1aa);
+}
+.repo-badge {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #71717a;
+}
+.vercel-url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #f4f4f5;
+    word-break: break-all;
+    line-height: 1.3;
+}
+.vercel-url a {
+    color: inherit;
+    transition: color 0.2s;
+}
+.vercel-url a:hover {
+    color: #fbbf24;
+}
+.vercel-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #71717a;
+}
+.vercel-status .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: #10b981;
+}
+.vercel-card.main .vercel-status .dot {
+    background: #fbbf24;
+}
+
+/* ═══════════════════════════════════════════════════════
+   السهم بين Vercel و GitHub
+   ═══════════════════════════════════════════════════════ */
+.arrow-bridge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    position: relative;
+}
+@media (min-width: 640px) {
+    .arrow-bridge { padding: 32px 0; }
+}
+.arrow-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(245,158,11,0.4), rgba(245,158,11,0.2), transparent);
+}
+@media (min-width: 640px) {
+    .arrow-line { height: 64px; }
+}
+.arrow-circle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #15120E;
+    border: 1px solid rgba(245,158,11,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(212,168,67,0.2);
+    position: relative;
+    margin-top: -4px;
+}
+.arrow-icon {
+    color: #fbbf24;
+    font-size: 18px;
+    animation: bounce 1s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(-25%); }
+    50% { transform: translateY(0); }
+}
+.arrow-halo {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(245,158,11,0.1);
+    filter: blur(10px);
+    z-index: -1;
+}
+.arrow-label {
+    margin-top: 12px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #1A1712;
+    border: 1px solid rgba(245,158,11,0.2);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(253,230,138,0.9);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.arrow-label .pulse-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fbbf24;
+    animation: pulse 2s infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   شبكة GitHub — 12 قمر
+   ═══════════════════════════════════════════════════════ */
+.grid-github {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+@media (min-width: 640px) {
+    .grid-github { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+    .grid-github { grid-template-columns: repeat(3, 1fr); }
+}
+
+.satellite-card {
+    position: relative;
+    border-radius: 14px;
+    border: 1px solid rgba(39,39,42,0.8);
+    padding: 14px;
+    background: #101011;
+    transition: all 0.3s ease;
+}
+.satellite-card:hover {
+    border-color: #3f3f46;
+    background: #151515;
+    transform: translateY(-1px);
+}
+.satellite-card.main {
+    background: #16120E;
+    border-color: rgba(146,64,14,0.3);
+}
+.satellite-card.main:hover {
+    border-color: rgba(245,158,11,0.3);
+}
+
+.satellite-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.satellite-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+.satellite-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #71717a;
+    flex-shrink: 0;
+}
+.satellite-card.main .satellite-num {
+    background: rgba(69,26,3,0.5);
+    border-color: rgba(146,64,14,0.3);
+    color: #fbbf24;
+}
+.satellite-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e4e4e7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.satellite-desc {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #52525b;
+    flex-shrink: 0;
+}
+
+.satellite-url {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 8px;
+}
+.satellite-url .proto { color: #52525b; }
+.satellite-url .host { color: #a1a1aa; }
+.satellite-url .path { color: rgba(245,158,11,0.6); }
+
+.satellite-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid #18181b;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #a1a1aa;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.satellite-link:hover {
+    border-color: rgba(245,158,11,0.3);
+    color: #fbbf24;
+    background: rgba(0,0,0,0.8);
+}
+.satellite-link .ext {
+    margin-right: auto;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #52525b;
+}
+.satellite-link .arrow {
+    font-size: 10px;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.satellite-link:hover .arrow {
+    opacity: 1;
+    transform: translateX(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   قسم الاستراتيجية (نظيف — بدون أسرار)
+   ═══════════════════════════════════════════════════════ */
+.strategy-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(to bottom right, #fbbf24, #b45309);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: 900;
+    font-size: 20px;
+}
+.strategy-title {
+    font-size: 18px;
+    font-weight: 800;
+}
+@media (min-width: 640px) {
+    .strategy-title { font-size: 22px; }
+}
+.strategy-title .gold { color: #fcd34d; }
+.strategy-badge {
+    margin-right: auto;
+    display: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(69,26,3,0.5);
+    border: 1px solid rgba(146,64,14,0.3);
+    color: rgba(252,211,77,0.8);
+}
+@media (min-width: 640px) {
+    .strategy-badge { display: inline-flex; }
+}
+
+.grid-strategy {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+@media (min-width: 768px) {
+    .grid-strategy { grid-template-columns: repeat(3, 1fr); }
+}
+
+.strategy-card {
+    border-radius: 18px;
+    padding: 16px;
+    background: #0F0E0D;
+    border: 1px solid #27272a;
+    transition: border-color 0.2s;
+}
+.strategy-card:hover {
+    border-color: #3f3f46;
+}
+.strategy-card.gold {
+    background: linear-gradient(to bottom right, #1A160F, #12100C);
+    border-color: rgba(146,64,14,0.3);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px -10px rgba(212,168,67,0.2);
+}
+.strategy-card.gold::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245,158,11,0.3), transparent);
+}
+.strategy-card.gold:hover {
+    border-color: rgba(180,83,9,0.4);
+}
+
+.strategy-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.strategy-icon-sm {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+.strategy-card.gold .strategy-icon-sm {
+    background: rgba(69,26,3,0.6);
+    border-color: rgba(146,64,14,0.3);
+}
+.strategy-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e4e4e7;
+}
+.strategy-card.gold .strategy-card-title {
+    color: #fef3c7;
+}
+.strategy-card-sub {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #52525b;
+}
+.strategy-card.gold .strategy-card-sub {
+    color: rgba(252,211,77,0.6);
+}
+.status-dot-sm {
+    margin-right: auto;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+}
+.status-red {
+    background: rgba(239,68,68,0.8);
+    box-shadow: 0 0 8px rgba(239,68,68,0.5);
+}
+.status-green {
+    background: #34d399;
+    box-shadow: 0 0 8px rgba(52,211,153,0.6);
+    animation: pulse 2s infinite;
+}
+.status-violet {
+    background: rgba(139,92,246,0.8);
+    box-shadow: 0 0 8px rgba(139,92,246,0.5);
+}
+
+.strategy-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #a1a1aa;
+}
+.strategy-text.amber {
+    color: rgba(254,243,199,0.7);
+}
+.strategy-text strong {
+    color: #e4e4e7;
+    font-weight: 500;
+}
+.strategy-text.amber strong {
+    color: #fde68a;
+    font-weight: 700;
+}
+
+.strategy-note {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #18181b;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #71717a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.strategy-card.gold .strategy-note {
+    background: rgba(69,26,3,0.3);
+    border-color: rgba(120,53,15,0.3);
+    color: rgba(252,211,77,0.7);
+}
+
+.insight-bar {
+    margin-top: 24px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(39,39,42,0.8);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+}
+.insight-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(69,26,3,0.4);
+    border: 1px solid rgba(120,53,15,0.3);
+    color: rgba(252,211,77,0.7);
+}
+.insight-text {
+    color: #a1a1aa;
+}
+.insight-text strong {
+    color: #fde68a;
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════
+   خريطة التدفق
+   ═══════════════════════════════════════════════════════ */
+.flow-card {
+    border-radius: 20px;
+    border: 1px solid #27272a;
+    background: #0B0B0C;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.flow-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.flow-title .badge {
+    margin-right: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #71717a;
+}
+
+.flow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+}
+.flow-item {
+    display: flex;
+    gap: 12px;
+}
+.flow-item-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+.flow-circle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+.flow-circle-white {
+    background: #ffffff;
+    color: #000;
+}
+.flow-circle-gold {
+    background: #15120E;
+    border: 1px solid rgba(245,158,11,0.3);
+    color: #fbbf24;
+    font-size: 14px;
+}
+.flow-circle-dark {
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #a1a1aa;
+}
+.flow-line {
+    width: 1px;
+    height: 32px;
+    margin-top: 4px;
+}
+.flow-line-gold {
+    background: linear-gradient(to bottom, #3f3f46, rgba(245,158,11,0.3));
+}
+.flow-line-amber {
+    background: rgba(245,158,11,0.2);
+}
+.flow-item-content {
+    padding-bottom: 16px;
+    flex: 1;
+    min-width: 0;
+}
+.flow-item-title {
+    color: #e4e4e7;
+    font-weight: 500;
+}
+.flow-item-title.gold {
+    color: rgba(253,230,138,0.9);
+}
+.flow-item-title.dark {
+    color: #d4d4d8;
+}
+.flow-item-sub {
+    font-size: 11px;
+    color: #71717a;
+    margin-top: 2px;
+}
+.flow-grid-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+.flow-mini-card {
+    border-radius: 10px;
+    padding: 10px;
+    background: #111011;
+    border: 1px solid #27272a;
+}
+.flow-mini-card.gold {
+    background: rgba(69,26,3,0.2);
+    border-color: rgba(120,53,15,0.3);
+}
+.flow-mini-card-title {
+    font-size: 10px;
+    color: #71717a;
+    margin-bottom: 2px;
+}
+.flow-mini-card.gold .flow-mini-card-title {
+    color: rgba(251,191,36,0.6);
+}
+.flow-mini-card-body {
+    font-size: 11px;
+    color: #d4d4d8;
+}
+.flow-mini-card.gold .flow-mini-card-body {
+    color: rgba(253,230,138,0.8);
+}
+
+.flow-note {
+    margin-top: auto;
+    padding-top: 20px;
+}
+.flow-note-box {
+    border-radius: 12px;
+    padding: 12px;
+    background: linear-gradient(to bottom right, rgba(69,26,3,0.3), transparent);
+    border: 1px solid rgba(120,53,15,0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.flow-note-box .icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+.flow-note-text {
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(253,230,138,0.6);
+}
+.flow-note-text strong {
+    color: #fde68a;
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════
+   الفوتر
+   ═══════════════════════════════════════════════════════ */
+.page-footer {
+    border-top: 1px solid #18181b;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #52525b;
+}
+@media (min-width: 640px) {
+    .page-footer { flex-direction: row; }
+}
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.footer-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #18181b;
+    border: 1px solid #27272a;
+}
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(245,158,11,0.5);
+}
+
+/* ═══════════════════════════════════════════════════════
+   تقليل الحركة
+   ═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     الخلفيات — طبقات خفيفة
+     ═══════════════════════════════════════════════════════ -->
+<div class="bg-layer bg-radial"></div>
+<div class="bg-layer bg-grid"></div>
+<div class="bg-line-top"></div>
+<div class="bg-ring bg-ring-1"></div>
+<div class="bg-ring bg-ring-2"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     المحتوى
+     ═══════════════════════════════════════════════════════ -->
+<div class="container">
+
+    <!-- ════ الهيدر ════ -->
+    <header class="page-header">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            SATELLITE NETWORK • ACTIVE
+        </div>
+        <h1 class="page-title">
+            <span class="title-gradient-1">معمارية </span><span class="title-gradient-2">واحة الجبري</span><br>
+            <span class="page-subtitle">نظام الأقمار الصناعية — v2.4</span>
+        </h1>
+        <div class="tags-row">
+            <div class="tag">4 واجهات رسمية</div>
+            <div class="tag">12 قمر صناعي</div>
+            <div class="tag tag-gold">SEO DOMINATION</div>
+        </div>
+        <div class="divider-diamond">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line line-right"></div>
+        </div>
+    </header>
+
+    <!-- ════ قسم Vercel ════ -->
+    <section class="section">
+        <div class="section-card section-vercel">
+            <div class="section-head">
+                <div class="section-head-left">
+                    <div class="section-icon section-icon-white">▲</div>
+                    <div>
+                        <h2 class="section-title">
+                            VERCEL — الواجهة الرسمية
+                            <span class="section-count">4 مشاريع</span>
+                        </h2>
+                        <p class="section-sub">EDGE NETWORK • GLOBAL CDN • INSTANT DEPLOY</p>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    LIVE &amp; INDEXED
+                </div>
+            </div>
+
+            <div class="grid-vercel">
+                <div class="vercel-card main">
+                    <span class="main-badge">⭐ الرئيسي</span>
+                    <div class="vercel-card-head">
+                        <div class="vercel-logo vercel-logo-gold">▲</div>
+                        <span class="repo-badge">repo11</span>
+                    </div>
+                    <div class="vercel-url">
+                        <a href="https://jabri-com.vercel.app" target="_blank" rel="noopener noreferrer">jabri-com.vercel.app</a>
+                    </div>
+                    <div class="vercel-status">
+                        <span class="dot"></span>
+                        يستقبل 90% من الزوار
+                    </div>
+                </div>
+
+                <div class="vercel-card">
+                    <div class="vercel-card-head">
+                        <div class="vercel-logo vercel-logo-silver">▲</div>
+                        <span class="repo-badge">repo12</span>
+                    </div>
+                    <div class="vercel-url">
+                        <a href="https://jabricom.vercel.app" target="_blank" rel="noopener noreferrer">jabricom.vercel.app</a>
+                    </div>
+                    <div class="vercel-status">
+                        <span class="dot"></span>
+                        مرآة احتياطية
+                    </div>
+                </div>
+
+                <div class="vercel-card">
+                    <div class="vercel-card-head">
+                        <div class="vercel-logo vercel-logo-silver">▲</div>
+                        <span class="repo-badge">repo10</span>
+                    </div>
+                    <div class="vercel-url">
+                        <a href="https://jabri-web.vercel.app" target="_blank" rel="noopener noreferrer">jabri-web.vercel.app</a>
+                    </div>
+                    <div class="vercel-status">
+                        <span class="dot"></span>
+                        البوابة الاحتياطية
+                    </div>
+                </div>
+
+                <div class="vercel-card">
+                    <div class="vercel-card-head">
+                        <div class="vercel-logo vercel-logo-silver">▲</div>
+                        <span class="repo-badge">repo4</span>
+                    </div>
+                    <div class="vercel-url">
+                        <a href="https://jabri-web.github.io" target="_blank" rel="noopener noreferrer">jabri-web.github.io</a>
+                    </div>
+                    <div class="vercel-status">
+                        <span class="dot"></span>
+                        الجذر الأرشيفي
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════ سهم الربط ════ -->
+        <div class="arrow-bridge">
+            <div class="arrow-line"></div>
+            <div class="arrow-circle">
+                <div class="arrow-halo"></div>
+                <span class="arrow-icon">↓</span>
+            </div>
+            <div class="arrow-label">
+                <span class="pulse-dot"></span>
+                تستقبل الزوار + الأرشفة الكاملة
+                <span class="pulse-dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ قسم GitHub ════ -->
+    <section class="section section-big">
+        <div class="section-card section-github">
+            <div class="section-head">
+                <div class="section-head-left">
+                    <div class="section-icon section-icon-dark">🚀</div>
+                    <div>
+                        <h2 class="section-title">
+                            GitHub Pages — محركات الدعاية
+                            <span class="section-count section-count-dark">12 مستودع</span>
+                        </h2>
+                        <p class="section-sub">SATELLITE NETWORK • SEO FUEL • BACKLINK MATRIX</p>
+                    </div>
+                </div>
+                <div class="dim-badge">
+                    <span class="dim-dot"></span>
+                    DIMMED • INDEXED ONLY
+                </div>
+            </div>
+
+            <div class="grid-github" id="githubGrid">
+                <!-- يُبنى ديناميكياً بـ JS -->
+            </div>
+
+            <div class="insight-bar" style="margin-top: 24px; background: transparent; border: none; padding: 0;">
+                <div class="strategy-note" style="flex: 1;">
+                    <span>📄</span>
+                    <span>النمط: Jabri-web.github.io/[repo]/research.html</span>
+                </div>
+                <div class="strategy-note" style="flex: 1;">
+                    <span>🛰️</span>
+                    <span>كل مستودع = قمر صناعي مستقل</span>
+                </div>
+                <div class="strategy-note" style="flex: 1;">
+                    <span>⚡</span>
+                    <span>12 × أرشفة = سيطرة SEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ قسم الاستراتيجية ════ -->
+    <section class="section section-big">
+        <div class="section-card section-strategy">
+            <div class="section-head">
+                <div class="section-head-left">
+                    <div class="strategy-icon">!</div>
+                    <h2 class="strategy-title">
+                        المفهوم الجوهري: <span class="gold">مرايا + دعاية</span>
+                    </h2>
+                </div>
+                <span class="strategy-badge">CORE STRATEGY</span>
+            </div>
+
+            <div class="grid-strategy">
+                <!-- بطاقة 1: العامة -->
+                <div class="strategy-card">
+                    <div class="strategy-card-head">
+                        <div class="strategy-icon-sm">👁️</div>
+                        <div>
+                            <div class="strategy-card-title">للعامة</div>
+                            <div class="strategy-card-sub">PUBLIC VIEW</div>
+                        </div>
+                        <span class="status-dot-sm status-red"></span>
+                    </div>
+                    <p class="strategy-text">
+                        يرى النسخة الرسمية على <strong>Vercel</strong> — تجربة نظيفة وسريعة.
+                        صفحات GitHub تُعيد التوجيه أو تعرض رسالة أنيقة.
+                    </p>
+                    <div class="strategy-note">
+                        <span>→</span>
+                        <span>/mirror.html + تحويل</span>
+                    </div>
+                </div>
+
+                <!-- بطاقة 2: Google -->
+                <div class="strategy-card gold">
+                    <div class="strategy-card-head">
+                        <div class="strategy-icon-sm">🔍</div>
+                        <div>
+                            <div class="strategy-card-title">لجوجل</div>
+                            <div class="strategy-card-sub">GOOGLE BOT</div>
+                        </div>
+                        <span class="status-dot-sm status-green"></span>
+                    </div>
+                    <p class="strategy-text amber">
+                        يفهرس <strong>كل الأقمار</strong> — كل قمر = باك لينك + كلمات مفتاحية.
+                        12 قمر = هيمنة كاملة على نتائج البحث.
+                    </p>
+                    <div class="strategy-note">
+                        <span>⚡</span>
+                        <span>indexed • cached • ranked</span>
+                    </div>
+                </div>
+
+                <!-- بطاقة 3: المتخصصون -->
+                <div class="strategy-card">
+                    <div class="strategy-card-head">
+                        <div class="strategy-icon-sm">🧙‍♂️</div>
+                        <div>
+                            <div class="strategy-card-title">للمتخصصين</div>
+                            <div class="strategy-card-sub">PRIVATE ACCESS</div>
+                        </div>
+                        <span class="status-dot-sm status-violet"></span>
+                    </div>
+                    <p class="strategy-text">
+                        وصول كامل عبر <strong>GitHub API</strong> و <strong>Raw URLs</strong>.
+                        ملفات المصدر الكاملة متاحة لمن يعرف البنية.
+                    </p>
+                    <div class="strategy-note">
+                        <span>🔑</span>
+                        <span>github.com/Jabri-web</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-bar">
+                <span class="insight-badge">INSIGHT</span>
+                <span class="insight-text">
+                    تكفينا الدعاية والظهور بقوقل — كل رابط يُعرض في نتائج البحث =
+                    <strong>إعلان مجاني باسم الواحة</strong>.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ خريطة التدفق ════ -->
+    <section class="section section-big">
+        <div class="flow-card">
+            <h3 class="flow-title">
+                <span>🗺️</span>
+                خريطة التدفق
+                <span class="badge">FLOW MAP</span>
+            </h3>
+
+            <div class="flow-list">
+                <!-- عنصر 1 -->
+                <div class="flow-item">
+                    <div class="flow-item-left">
+                        <div class="flow-circle flow-circle-white">▲</div>
+                        <div class="flow-line flow-line-gold"></div>
+                    </div>
+                    <div class="flow-item-content">
+                        <div class="flow-item-title">زائر / بوت جوجل يدخل</div>
+                        <div class="flow-item-sub">عبر Vercel — أرشفة كاملة + سرعة Edge</div>
+                    </div>
+                </div>
+
+                <!-- عنصر 2 -->
+                <div class="flow-item">
+                    <div class="flow-item-left">
+                        <div class="flow-circle flow-circle-gold">◈</div>
+                        <div class="flow-line flow-line-amber"></div>
+                    </div>
+                    <div class="flow-item-content">
+                        <div class="flow-item-title gold">نظام الأقمار يلتقط الإشارة</div>
+                        <div class="flow-item-sub">12 مستودع = 12 نقطة انتشار في نتائج البحث</div>
+                    </div>
+                </div>
+
+                <!-- عنصر 3 -->
+                <div class="flow-item">
+                    <div class="flow-item-left">
+                        <div class="flow-circle flow-circle-dark">🛰️</div>
+                    </div>
+                    <div class="flow-item-content">
+                        <div class="flow-item-title dark">قرار المسار الذكي</div>
+                        <div class="flow-grid-mini">
+                            <div class="flow-mini-card">
+                                <div class="flow-mini-card-title">العامة</div>
+                                <div class="flow-mini-card-body">مرآة + تحويل أنيق</div>
+                            </div>
+                            <div class="flow-mini-card gold">
+                                <div class="flow-mini-card-title">جوجل + متخصص</div>
+                                <div class="flow-mini-card-body">أرشفة + محتوى</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-note">
+                <div class="flow-note-box">
+                    <span class="icon">💡</span>
+                    <p class="flow-note-text">
+                        الفكرة: <strong>لا نمنع الظهور، نمنع الوصول السهل.</strong>
+                        كل رابط في نتائج البحث = إعلان مجاني باسم الواحة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ الفوتر ════ -->
+    <footer class="page-footer">
+        <div class="footer-left">
+            <span class="footer-badge">واحة الجبري © 2026</span>
+            <span>•</span>
+            <span>اليمن — صنعاء</span>
+        </div>
+        <div class="footer-right">
+            <span class="footer-dot"></span>
+            <span>12 قمر • 4 واجهات • 100% SEO</span>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     سكربت بناء شبكة GitHub
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+
+    // ─── بيانات 12 مستودع ───
+    var SATELLITES = [
+        { num: 'repo1',  name: 'Jabri62018',      path: 'Jabri62018.github.io',    desc: 'الأرشيف التاريخي' },
+        { num: 'repo2',  name: 'Zx_RieOS1.2',     path: 'Zx_RieOS1.2',             desc: 'نظام ريع 1.2' },
+        { num: 'repo3',  name: 'Zx_Mother',       path: 'Zx_Mother_Function_Jabri',desc: 'الدالة الأم' },
+        { num: 'repo4',  name: 'الواحة الرئيسية', path: '',                         desc: 'المركز', isMain: true },
+        { num: 'repo5',  name: 'Jabri_Nobble',    path: 'Jabri_Nobble',            desc: 'أرشيف نوبل' },
+        { num: 'repo6',  name: 'jabri_lab',       path: 'jabri_lab',               desc: 'المختبر' },
+        { num: 'repo7',  name: 'ZxRieOS1.1',      path: 'ZxRieOS1.1',              desc: 'نظام ريع 1.1' },
+        { num: 'repo8',  name: 'RiemannOS',       path: 'Jabri_RiemannOS',         desc: 'نظام ريمان' },
+        { num: 'repo9',  name: 'Checkout',        path: 'Jabri_Checkout',          desc: 'بوابة الدفع' },
+        { num: 'repo10', name: 'Jabri-web',       path: 'Jabri-web',               desc: 'واجهة الويب' },
+        { num: 'repo11', name: 'Jabri-com',       path: 'Jabri-com',               desc: 'المنصة التجارية' },
+        { num: 'repo12', name: 'jabri.com',       path: 'jabri.com',               desc: 'النطاق المميز' }
+    ];
+
+    var BASE_HOST = 'Jabri-web.github.io';
+    var SAMPLE_FILE = 'research.html';
+
+    // ─── بناء بطاقة قمر ───
+    function buildSatelliteCard(sat) {
+        var fullPath = sat.path ? sat.path + '/' + SAMPLE_FILE : SAMPLE_FILE;
+        var fullUrl = 'https://' + BASE_HOST + '/' + fullPath;
+        var pathDisplay = sat.path ? '/' + sat.path : '';
+        var safeName = escapeHtml(sat.name);
+        var safeDesc = escapeHtml(sat.desc);
+        var safeNum = escapeHtml(sat.num);
+
+        return '<div class="satellite-card' + (sat.isMain ? ' main' : '') + '">' +
+            '<div class="satellite-head">' +
+                '<div class="satellite-name-wrap">' +
+                    '<span class="satellite-num">' + safeNum + '</span>' +
+                    '<span class="satellite-name">' + safeName + '</span>' +
+                '</div>' +
+                '<span class="satellite-desc">' + safeDesc + '</span>' +
+            '</div>' +
+            '<div class="satellite-url">' +
+                '<span class="proto">https://</span>' +
+                '<span class="host">' + BASE_HOST + '</span>' +
+                '<span class="path">' + escapeHtml(pathDisplay) + '</span>' +
+            '</div>' +
+            '<a class="satellite-link" href="' + escapeAttr(fullUrl) + '" ' +
+               'target="_blank" rel="noopener noreferrer">' +
+                '<span>📄</span>' +
+                '<span>' + escapeHtml(fullPath) + '</span>' +
+                '<span class="ext">OPEN</span>' +
+                '<span class="arrow">↗</span>' +
+            '</a>' +
+        '</div>';
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+    function escapeAttr(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    // ─── البناء ───
+    function render() {
+        var grid = document.getElementById('githubGrid');
+        if (!grid) return;
+
+        var html = '';
+        for (var i = 0; i < SATELLITES.length; i++) {
+            html += buildSatelliteCard(SATELLITES[i]);
+        }
+        grid.innerHTML = html;
+    }
+
+    // ─── التهيئة ───
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', render);
+    } else {
+        render();
+    }
+
+    console.log('%c🛰️ Architecture — 4 Vercel + 12 Satellites',
+                'color:#fbbf24;font-weight:700;background:#0d1117;padding:2px 6px;border-radius:4px');
+
+})();
+</script>
+
+</body>
+</html>

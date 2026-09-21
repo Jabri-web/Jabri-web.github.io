@@ -339,9 +339,372 @@
       #jabri-docs td { padding: 8px 10px; font-size: 0.85em; }
       #jabri-docs pre { padding: 14px; font-size: 0.78em; }
     }
+    
+    
+    /* ═══════════════════════════════════════════════════════════
+   ✨ شبكة الأزرار الخمس — Five Views Grid
+   ═══════════════════════════════════════════════════════════ */
+
+.arch-btn-wrap {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4px;
+}
+
+.arch-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 18px 10px 16px;
+  border: 2px solid;
+  border-radius: 16px;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  min-height: 130px;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+/* ─── خط علوي متحرك ─── */
+.arch-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.15;
+  transition: opacity 0.35s;
+}
+.arch-btn:hover::before {
+  opacity: 0.9;
+}
+
+/* ─── توهج خلفي عند المرور ─── */
+.arch-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, currentColor, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
+}
+.arch-btn:hover::after {
+  opacity: 0.08;
+}
+
+/* ─── الأيقونة ─── */
+.arch-btn .icon {
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 12px currentColor);
+  margin-bottom: 4px;
+}
+.arch-btn:hover .icon {
+  transform: scale(1.2) rotate(-8deg);
+}
+
+/* ─── العناوين ─── */
+.arch-btn .label-full {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.arch-btn .label-sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ─── السهم ─── */
+.arch-btn .arrow {
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 2px;
+  font-weight: 900;
+}
+.arch-btn:hover .arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Hover العام ─── */
+.arch-btn:hover {
+  transform: translateY(-6px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ① الزر الذهبي — معمارية الموقع
+   ═══════════════════════════════════════════════════════════ */
+.arch-btn-1 {
+  background: linear-gradient(145deg, #1a1a2e 0%, #0a0f0d 100%);
+  border-color: #d4af37;
+  color: #d4af37;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.arch-btn-1:hover {
+  background: linear-gradient(145deg, #d4af37 0%, #e8c96e 100%);
+  color: #0a0f0d;
+  box-shadow: 
+    0 12px 40px rgba(212, 175, 55, 0.5),
+    0 0 60px rgba(212, 175, 55, 0.3);
+  border-color: #e8c96e;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ② الزر السماوي — النسخة الديناميكية
+   ═══════════════════════════════════════════════════════════ */
+.arch-btn-2 {
+  background: linear-gradient(145deg, #0a1a2e 0%, #0a0f1a 100%);
+  border-color: #6ae3ff;
+  color: #6ae3ff;
+  box-shadow: 
+    0 0 20px rgba(106, 227, 255, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.arch-btn-2:hover {
+  background: linear-gradient(145deg, #6ae3ff 0%, #4dd4ff 100%);
+  color: #0a0f0d;
+  box-shadow: 
+    0 12px 40px rgba(106, 227, 255, 0.5),
+    0 0 60px rgba(106, 227, 255, 0.3);
+  border-color: #4dd4ff;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ③ الزر البنفسجي — النسخة التفاعلية
+   ═══════════════════════════════════════════════════════════ */
+.arch-btn-3 {
+  background: linear-gradient(145deg, #1a0a2e 0%, #0f0a1a 100%);
+  border-color: #b47aff;
+  color: #b47aff;
+  box-shadow: 
+    0 0 20px rgba(180, 122, 255, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.arch-btn-3:hover {
+  background: linear-gradient(145deg, #b47aff 0%, #9b5fef 100%);
+  color: #0a0f0d;
+  box-shadow: 
+    0 12px 40px rgba(180, 122, 255, 0.5),
+    0 0 60px rgba(180, 122, 255, 0.3);
+  border-color: #9b5fef;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ④ الزر الأخضر — النسخة المدمجة
+   ═══════════════════════════════════════════════════════════ */
+.arch-btn-4 {
+  background: linear-gradient(145deg, #0a2e1a 0%, #0a1a0f 100%);
+  border-color: #4ade80;
+  color: #4ade80;
+  box-shadow: 
+    0 0 20px rgba(74, 222, 128, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.arch-btn-4:hover {
+  background: linear-gradient(145deg, #4ade80 0%, #22c55e 100%);
+  color: #0a0f0d;
+  box-shadow: 
+    0 12px 40px rgba(74, 222, 128, 0.5),
+    0 0 60px rgba(74, 222, 128, 0.3);
+  border-color: #22c55e;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ⑤ الزر البرتقالي — النسخة النصية
+   ═══════════════════════════════════════════════════════════ */
+.arch-btn-5 {
+  background: linear-gradient(145deg, #2e1a0a 0%, #1a0f05 100%);
+  border-color: #fb923c;
+  color: #fb923c;
+  box-shadow: 
+    0 0 20px rgba(251, 146, 60, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.arch-btn-5:hover {
+  background: linear-gradient(145deg, #fb923c 0%, #f97316 100%);
+  color: #0a0f0d;
+  box-shadow: 
+    0 12px 40px rgba(251, 146, 60, 0.5),
+    0 0 60px rgba(251, 146, 60, 0.3);
+  border-color: #f97316;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   استجابة الشاشات
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .arch-btn-wrap {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .arch-btn-4,
+  .arch-btn-5 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .arch-btn-wrap {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .arch-btn {
+    min-height: 115px;
+    padding: 14px 8px 12px;
+  }
+  .arch-btn .icon { font-size: 1.7rem; }
+  .arch-btn .label-full { font-size: 0.85rem; }
+  .arch-btn .label-sub { font-size: 0.68rem; }
+}
+
+@media (max-width: 480px) {
+  .arch-btn-wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .arch-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+    min-height: 68px;
+    padding: 12px 16px;
+    gap: 14px;
+  }
+  .arch-btn .icon {
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .arch-btn .label-full {
+    font-size: 0.9rem;
+    flex: 1;
+  }
+  .arch-btn .label-sub {
+    display: none;
+  }
+  .arch-btn .arrow {
+    opacity: 0.5;
+    transform: none;
+    flex-shrink: 0;
+  }
+  .arch-btn:hover {
+    transform: translateX(-4px);
+  }
+  .arch-btn:hover .arrow {
+    opacity: 1;
+    transform: translateX(-4px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   تقليل الحركة
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .arch-btn,
+  .arch-btn .icon,
+  .arch-btn .arrow,
+  .arch-btn::before,
+  .arch-btn::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .arch-btn:hover {
+    transform: none;
+  }
+  .arch-btn:hover .icon {
+    transform: none;
+  }
+}
+    
+    
+    
   </style>
 </head>
 <body>
+  
+  
+  
+  
+  
+
+
+
+<header class="tech-header">
+  <h1>📘 الدليل الفني — واحة الجبري</h1>
+  <div class="sub">Heaven Al-Jabri — Official Technical Guide</div>
+  <div class="id-badge">Z + C + A = 1</div>
+  
+  <!-- ═══════════════════════════════════════════════════════════
+       شبكة النسخ الخمس — Five Views Grid
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="arch-btn-wrap">
+    
+    <a href="/architecture.html" class="arch-btn arch-btn-1" title="معمارية الموقع — 4 واجهات + 12 قمر صناعي">
+      <span class="icon">🛰️</span>
+      <span class="label-full">معمارية الموقع</span>
+      <span class="label-sub">4 واجهات + 12 قمر</span>
+      <span class="arrow">←</span>
+    </a>
+    
+    <a href="/all-link-doc.html" class="arch-btn arch-btn-2" title="النسخة الديناميكية — تُحدّث نفسها من GitHub">
+      <span class="icon">📖</span>
+      <span class="label-full">النسخة الديناميكية</span>
+      <span class="label-sub">من GitHub مباشرة</span>
+      <span class="arrow">←</span>
+    </a>
+    
+    <a href="/Jabri-heaven-doc.html" class="arch-btn arch-btn-3" title="النسخة التفاعلية — واجهة متقدمة">
+      <span class="icon">🎨</span>
+      <span class="label-full">النسخة التفاعلية</span>
+      <span class="label-sub">Advanced View</span>
+      <span class="arrow">←</span>
+    </a>
+    
+    <a href="/Jabri-heaven-embed.html" class="arch-btn arch-btn-4" title="النسخة المدمجة — قابلة للتضمين">
+      <span class="icon">⚡</span>
+      <span class="label-full">النسخة المدمجة</span>
+      <span class="label-sub">Embed Script</span>
+      <span class="arrow">←</span>
+    </a>
+    
+    <a href="/Jabri-heaven-doc2.html" class="arch-btn arch-btn-5" title="النسخة الثانية — Doc2">
+      <span class="icon">🔬</span>
+      <span class="label-full">النسخة النصية</span>
+      <span class="label-sub">Markdown Source</span>
+      <span class="arrow">←</span>
+    </a>
+    
+  </div>
+</header>
+
+
 
   <div class="tech-wrap">
     <header class="tech-header">

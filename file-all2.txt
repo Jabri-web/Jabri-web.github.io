@@ -220,13 +220,15 @@ _____NO indexing______________
 2-footer.html
 3-hero.html
 4-offline.html
+5-dashboard.html
 
 # ───────────────────────────────────────────────────────────
 # 20. مجلد /js/
 # ───────────────────────────────────────────────────────────
 1-js/init-page-root.js
 2-js/menu.js
-3-js/update-tracker.js ⭐ NEW
+3-link-checker.js
+4-file.js
 
 # ───────────────────────────────────────────────────────────
 # ملفات النظام (System Files)
@@ -276,3 +278,90 @@ https://jabri-web.github.io/ repo4
 مدمج في الروت
 عربي خالصar
 اجليزي خالص en
+
+
+
+
+________________________
+
+
+به موقع لصفحات github يبداء الرابط هكذا:
+https://pages.github.....
+
+اما الصفحات الداخلية ل github فهي:
+https://Jabri-web.guthub.io/ repo4
+
+https://Jabri-web.guthub.io/Jabri62018.github.io/ repo1
+https://Jabri-web.guthub.io/Zx_RieOS1.2/ rep2
+https://Jabri-web.guthub.io/Zx_Mother_Function_Jabri/ repo3
+https://Jabri-web.guthub.io/ repo4
+https://Jabri-web.guthub.io/Jabri_Nobble/ repo5
+https://Jabri-web.guthub.io/jabri_lab/ repo6
+https://Jabri-web.guthub.io/ZxRieOS1.1/ REPO7
+https://Jabri-web.guthub.io/Jabri_RiemannOS/ REPO8
+https://Jabri-web.guthub.io/Jabri_Checkout/ repo9
+
+
+
+https://Jabri-web.guthub.io/Jabri-web/ repo10
+
+https://Jabri-web.guthub.io/Jabri-com/ repo11
+https://Jabri-web.guthub.io/jabri.com/ repo12
+
+
+مثلا لو تريد ملف معين...هكذا:
+https://Jabri-web.guthub.io/jabri.com/research.html
+
+
+صفحاتها مفتوحة للمتخصصين والشركات
+ومحجوبة على العامة
+
+___________________
+
+
+
+┌─────────────────────────────────────────────────────────┐
+│ VERCEL (4 مشاريع) │
+├─────────────────────────────────────────────────────────┤
+│ https://jabri-com.vercel.app/ ← repo11 (الرئيسي) │
+│ https://jabricom.vercel.app/ ← repo12 │
+│ https://jabri-web.vercel.app/ ← repo10 │
+│ https://jabri-web.github.io/ ← repo4 (GitHub) │
+└─────────────────────────────────────────────────────────┘
+↓
+┌─────────────────────────────────────────────────────────┐
+│ GitHub Pages (12 مستودع) │
+├─────────────────────────────────────────────────────────┤
+│ jabri-web.github.io/ ← repo4 │
+│ jabri-web.github.io/Jabri62018.github.io/ ← repo1 │
+│ jabri-web.github.io/Zx_RieOS1.2/ ← repo2 │
+│ jabri-web.github.io/Zx_Mother_Function_Jabri/ ← repo3 │
+│ jabri-web.github.io/Jabri_Nobble/ ← repo5 │
+│ jabri-web.github.io/jabri_lab/ ← repo6 │
+│ jabri-web.github.io/ZxRieOS1.1/ ← repo7 │
+│ jabri-web.github.io/Jabri_RiemannOS/ ← repo8 │
+│ jabri-web.github.io/Jabri_Checkout/ ← repo9 │
+│ jabri-web.github.io/Jabri-web/ ← repo10 │
+│ jabri-web.github.io/Jabri-com/ ← repo11 │
+│ jabri-web.github.io/jabri.com/ ← repo12 │
+└─────────────────────────────────────────────────────────┘
+
+
+كلمة محجوبة: تعني لا تفتح
+لكن يشاهدها العامة في المستعرضات
+
+
+تكفينا الدعاية والظهور بقوقل
+
+__________
+
+اسمع: كل شي مفتوح للعامة على github غير الصفحات
+
+
+ياسيخ: الرابط التالي يكفي بقوقل للبروفايل عامل امبراطورية وحدة:
+https://github.com/Jabri-web
+
+مارايك...
+
+___________
+

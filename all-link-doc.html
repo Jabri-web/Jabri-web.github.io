@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>واحة الجبري | Heaven Al-Jabri — الدليل الفني v2.0</title>
+  <meta name="description" content="الدليل الفني الشامل لإمبراطورية Heaven Al-Jabri الرقمية | Z + C + A = 1">
+  <meta name="author" content="Abdulla Mohammed Nasser Al-Jabri">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #f4f4f5;
+      line-height: 1.8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(212,175,55,0.06) 1px, transparent 0),
+        linear-gradient(45deg, transparent 48%, rgba(212,175,55,0.02) 50%, transparent 52%);
+      background-size: 24px 24px, 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* ===== Top Bar ===== */
+    .top-bar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      padding: 8px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; flex-wrap: wrap; gap: 8px;
+    }
+    .top-bar .brand {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      color: #d4af37;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .top-bar .status { color: #a1a1aa; display: flex; align-items: center; gap: 6px; }
+    .top-bar .status .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #34d399;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: 0.5; } }
+    .top-bar .links { display: flex; gap: 16px; color: #a1a1aa; }
+    .top-bar a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: #d4af37; }
+    /* ===== Header ===== */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 24px;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #a1a1aa;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+    .hero .badge::before {
+      content: '';
+      width: 12px; height: 12px;
+      background: #d4af37;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .gold { color: #d4af37; }
+    .hero h1 .sep { color: rgba(255,255,255,0.2); margin: 0 12px; font-weight: 300; }
+    .hero .subtitle {
+      color: #a1a1aa;
+      font-size: clamp(14px, 2vw, 17px);
+      margin-bottom: 28px;
+    }
+    /* ===== Buttons ===== */
+    .hero .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: #d4af37; color: #0a0a0a; }
+    .btn-primary:hover { background: #e0bd4a; transform: translateY(-1px); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: #f4f4f5;
+      border-color: rgba(255,255,255,0.08);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    /* ===== Main Container ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 24px 80px;
+      position: relative; z-index: 1;
+    }
+    /* ===== Markdown Content ===== */
+    #jabri-docs {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 40px 32px;
+    }
+
+    /* ✅ إخفاء العنوان الرئيسي المكسور */
+    #jabri-docs h1 { display: none !important; }
+
+    /* ✅ تنسيق اقتباس المؤلف بشكل عمودي نظيف */
+    #jabri-docs blockquote:first-of-type {
+      display: block !important;
+      background: rgba(212,175,55,0.06) !important;
+      border-right: 4px solid #d4af37 !important;
+      padding: 24px !important;
+      margin: 0 0 32px 0 !important;
+      border-radius: 12px !important;
+      text-align: center !important;
+      font-size: 0.95em !important;
+      line-height: 2.2 !important;
+      direction: rtl !important;
+    }
+    #jabri-docs blockquote:first-of-type p {
+      margin: 10px 0 !important;
+      color: #d4d4d8 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
+    }
+    #jabri-docs blockquote:first-of-type strong {
+      color: #d4af37 !important;
+      font-weight: 700 !important;
+      display: inline-block !important;
+      margin-left: 6px !important;
+    }
+    #jabri-docs blockquote:first-of-type a {
+      color: #e0bd4a !important;
+      border-bottom: 1px solid rgba(212,175,55,0.4) !important;
+      word-break: break-all !important;
+      direction: ltr !important;
+      display: inline-block !important;
+      unicode-bidi: embed !important;
+    }
+    #jabri-docs blockquote:first-of-type br {
+      display: none !important;
+    }
+
+    /* ✅ منع انكسار النص الغريب */
+    #jabri-docs * {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+
+    #jabri-docs h2 {
+      font-size: 1.4em;
+      color: #f4f4f5;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #jabri-docs h3 {
+      font-size: 1.15em;
+      color: #e4e4e7;
+      margin: 28px 0 12px;
+    }
+    #jabri-docs p { margin: 12px 0; color: #d4d4d8; }
+    #jabri-docs strong { color: #f4f4f5; font-weight: 700; }
+    #jabri-docs a {
+      color: #d4af37;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,175,55,0.3);
+      transition: all 0.15s;
+    }
+    #jabri-docs a:hover { color: #e0bd4a; border-bottom-color: #d4af37; }
+    #jabri-docs blockquote {
+      border-right: 4px solid #d4af37;
+      background: rgba(212,175,55,0.05);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 12px 12px 0;
+      color: #a1a1aa;
+    }
+    #jabri-docs blockquote p { margin: 6px 0; color: inherit; }
+    #jabri-docs hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: 40px 0;
+    }
+    #jabri-docs table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+      display: block;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    #jabri-docs thead { display: table-header-group; }
+    #jabri-docs th, #jabri-docs td {
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 10px;
+      text-align: right;
+      vertical-align: top;
+      word-break: normal;
+    }
+    #jabri-docs th {
+      background: rgba(212,175,55,0.15);
+      color: #d4af37;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    #jabri-docs tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    #jabri-docs tr:hover td { background: rgba(212,175,55,0.05); }
+    #jabri-docs code {
+      background: rgba(212,175,55,0.08);
+      color: #e0bd4a;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      direction: ltr;
+      display: inline-block;
+      border: 1px solid rgba(212,175,55,0.15);
+    }
+    #jabri-docs pre {
+      background: #000;
+      color: #e4e4e7;
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+      font-size: 0.85em;
+      line-height: 1.7;
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    #jabri-docs pre code { background: transparent; color: inherit; padding: 0; border: none; font-size: 1em; }
+    #jabri-docs ul, #jabri-docs ol { padding-right: 24px; margin: 12px 0; color: #d4d4d8; }
+    #jabri-docs li { margin: 8px 0; }
+
+    /* ===== Loading & Error ===== */
+    .loading {
+      text-align: center;
+      padding: 80px 20px;
+      color: #d4af37;
+      font-size: 1.1em;
+    }
+    .loading::before {
+      content: '';
+      display: block;
+      width: 40px; height: 40px;
+      margin: 0 auto 20px;
+      border: 3px solid rgba(212,175,55,0.2);
+      border-top-color: #d4af37;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-box {
+      text-align: center;
+      padding: 40px 20px;
+      border: 2px dashed rgba(212,175,55,0.4);
+      border-radius: 16px;
+      background: rgba(212,175,55,0.04);
+    }
+    .error-box h3 { color: #d4af37; margin: 0 0 12px; font-size: 1.2em; }
+    .error-box code {
+      background: rgba(0,0,0,0.5);
+      color: #e0bd4a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 12px 0;
+      font-size: 0.9em;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: #52525b;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      position: relative; z-index: 1;
+    }
+    .footer a { color: #d4af37; text-decoration: none; }
+
+    /* ===== Floating Home Button ===== */
+    .home-btn {
+      position: fixed; bottom: 24px; left: 24px;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #d4af37; color: #0a0a0a;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(212,175,55,0.3);
+      text-decoration: none; transition: all 0.2s;
+      z-index: 100; font-size: 22px;
+    }
+    .home-btn:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(212,175,55,0.4); }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+      .container { padding: 16px 12px 80px; }
+      #jabri-docs { padding: 20px 14px; border-radius: 16px; }
+      .hero { padding: 32px 16px 16px; }
+      .top-bar .links { display: none; }
+      #jabri-docs th, #jabri-docs td { padding: 6px 8px; font-size: 12px; }
+      .home-btn { bottom: 16px; left: 16px; width: 46px; height: 46px; font-size: 20px; }
+      #jabri-docs blockquote:first-of-type { padding: 16px !important; font-size: 0.85em !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Top Bar ===== -->
+  <div class="top-bar">
+    <span class="brand">#️⃣ Z + C + A = 1</span>
+    <span class="status"><span class="dot"></span> SYSTEM_VERIFIED 2026-09-16</span>
+    <div class="links">
+      <a href="https://orcid.org/0009-0003-3319-3822" target="_blank">ORCID</a>
+      <a href="https://github.com/Jabri-web" target="_blank">GitHub</a>
+      <a href="https://jabri-com.vercel.app" target="_blank">Vercel</a>
+    </div>
+  </div>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="badge">OFFICIAL TECHNICAL GUIDE • v2.0 GOLD</div>
+    <h1>
+      واحة الجبري <span class="sep">|</span> <span class="gold">Heaven Al-Jabri</span>
+    </h1>
+    <p class="subtitle">الدليل الفني الشامل — الإمبراطورية الرقمية لـ م/ عبدالله محمد ناصر الجبري</p>
+    <div class="cta">
+      <a href="https://jabri-com.vercel.app" target="_blank" class="btn btn-primary">
+        🌐 jabri-com.vercel.app
+      </a>
+      <a href="https://github.com/Jabri-web" target="_blank" class="btn btn-ghost">
+        📂 Jabri-web Organization
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== Markdown Content ===== -->
+  <main class="container">
+    <div id="jabri-docs">
+      <div class="loading">⏳ جارٍ تحميل الدليل الفني...</div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    © 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة | <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+  </footer>
+
+  <!-- ===== Floating Home Button ===== -->
+  <a href="/" class="home-btn" title="العودة للرئيسية">🏠</a>
+
+  <!-- ===== Scripts ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+  (async function loadJabriDocs() {
+    const container = document.getElementById('jabri-docs');
+    const REPO = 'Jabri-web/Jabri-com';
+    const FILE = 'README-INDEX.md';
+
+    // جرّب كل المصادر المحتملة بالترتيب
+    const SOURCES = [
+      `https://raw.githubusercontent.com/${REPO}/main/${FILE}`,
+      `https://raw.githubusercontent.com/${REPO}/master/${FILE}`,
+      `https://raw.githubusercontent.com/${REPO}/main/README.md`,
+      `https://cdn.jsdelivr.net/gh/${REPO}@main/${FILE}`,
+      `https://cdn.jsdelivr.net/gh/${REPO}/${FILE}`
+    ];
+
+    for (const url of SOURCES) {
+      try {
+        const r = await fetch(url, { cache: 'no-cache' });
+        if (!r.ok) continue;
+        const md = await r.text();
+        if (!md || md.length < 100) continue;
+
+        // ✅ نجح — اعرض المحتوى
+        container.innerHTML = marked.parse(md);
+
+        // اجعل كل الروابط الخارجية تفتح في تبويب جديد
+        container.querySelectorAll('a[href^="http"]').forEach(a => {
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+        });
+
+        console.log('✅ Loaded from:', url);
+        return;
+      } catch (e) { /* جرّب التالي */ }
+    }
+
+    // ❌ فشلت كل المحاولات
+    container.innerHTML = `
+      <div class="error-box">
+        <h3>⚠️ تعذر تحميل README-INDEX.md</h3>
+        <p>تأكد من رفع الملف على GitHub في:</p>
+        <code>${REPO}/main/${FILE}</code>
+        <p style="margin-top:16px">
+          <a href="https://github.com/${REPO}" target="_blank" style="color:#d4af37;font-weight:600">
+            افتح المستودع على GitHub →
+          </a>
+        </p>
+      </div>
+    `;
+  })();
+  </script>
+
+</body>
+</html>

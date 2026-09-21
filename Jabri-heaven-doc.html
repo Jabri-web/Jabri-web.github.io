@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>واحة الجبري | Heaven Al-Jabri — Technical Guide</title>
+  <style>
+    /* ===== TAILWIND CORE ===== */
+    *, :after, :before { box-sizing: border-box; border: 0 solid #e5e7eb; }
+    :after, :before { --tw-content: ""; }
+    html { line-height: 1.5; -webkit-text-size-adjust: 100%; tab-size: 4; font-family: ui-sans-serif, system-ui, sans-serif; }
+    body { line-height: inherit; margin: 0; }
+    h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+    a { color: inherit; text-decoration: inherit; }
+    b, strong { font-weight: bolder; }
+    code, kbd, pre, samp { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 1em; }
+    button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0; }
+    button, select { text-transform: none; }
+    button, [type=button], [type=reset], [type=submit] { -webkit-appearance: button; background-color: transparent; background-image: none; }
+    blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre { margin: 0; }
+    fieldset, legend { margin: 0; padding: 0; }
+    menu, ol, ul { list-style: none; margin: 0; padding: 0; }
+    textarea { resize: vertical; }
+    input::placeholder, textarea::placeholder { opacity: 1; color: #9ca3af; }
+    [role=button], button { cursor: pointer; }
+    :disabled { cursor: default; }
+    audio, canvas, embed, iframe, img, object, svg, video { display: block; vertical-align: middle; }
+    img, video { max-width: 100%; height: auto; }
+    [hidden] { display: none; }
+    table { text-indent: 0; border-color: inherit; border-collapse: collapse; }
+
+    /* ===== UTILITIES ===== */
+    .fixed { position: fixed; }
+    .absolute { position: absolute; }
+    .relative { position: relative; }
+    .sticky { position: sticky; }
+    .inset-x-0 { left: 0; right: 0; }
+    .bottom-0 { bottom: 0; }
+    .right-3 { right: .75rem; }
+    .top-0 { top: 0; }
+    .top-1\/2 { top: 50%; }
+    .top-\[37px\] { top: 37px; }
+    .z-40 { z-index: 40; }
+    .z-50 { z-index: 50; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mb-2 { margin-bottom: .5rem; }
+    .mb-3 { margin-bottom: .75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mt-0\.5 { margin-top: .125rem; }
+    .mt-1 { margin-top: .25rem; }
+    .mt-2 { margin-top: .5rem; }
+    .mt-3 { margin-top: .75rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .block { display: block; }
+    .flex { display: flex; }
+    .inline-flex { display: inline-flex; }
+    .table { display: table; }
+    .grid { display: grid; }
+    .hidden { display: none; }
+    .h-1 { height: .25rem; }
+    .h-1\.5 { height: .375rem; }
+    .h-11 { height: 2.75rem; }
+    .h-14 { height: 3.5rem; }
+    .h-3 { height: .75rem; }
+    .h-3\.5 { height: .875rem; }
+    .h-4 { height: 1rem; }
+    .h-7 { height: 1.75rem; }
+    .h-8 { height: 2rem; }
+    .h-9 { height: 2.25rem; }
+    .h-\[calc\(100vh-37px\)\] { height: calc(100vh - 37px); }
+    .h-full { height: 100%; }
+    .h-px { height: 1px; }
+    .max-h-\[360px\] { max-height: 360px; }
+    .max-h-\[680px\] { max-height: 680px; }
+    .min-h-screen { min-height: 100vh; }
+    .w-1 { width: .25rem; }
+    .w-1\.5 { width: .375rem; }
+    .w-3 { width: .75rem; }
+    .w-3\.5 { width: .875rem; }
+    .w-4 { width: 1rem; }
+    .w-6 { width: 1.5rem; }
+    .w-7 { width: 1.75rem; }
+    .w-8 { width: 2rem; }
+    .w-\[300px\] { width: 300px; }
+    .w-\[45\%\] { width: 45%; }
+    .w-\[68\%\] { width: 68%; }
+    .w-\[87\%\] { width: 87%; }
+    .w-full { width: 100%; }
+    .w-px { width: 1px; }
+    .min-w-0 { min-width: 0; }
+    .max-w-\[1600px\] { max-width: 1600px; }
+    .flex-1 { flex: 1 1 0%; }
+    .shrink-0 { flex-shrink: 0; }
+    .-translate-y-1\/2 { --tw-translate-y: -50%; transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+    @keyframes pulse { 50% { opacity: .5; } }
+    .animate-pulse { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+    .scroll-mt-16 { scroll-margin-top: 4rem; }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .grid-cols-\[160px_1fr_1fr_44px\] { grid-template-columns: 160px 1fr 1fr 44px; }
+    .flex-col { flex-direction: column; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-start { align-items: flex-start; }
+    .items-center { align-items: center; }
+    .justify-end { justify-content: flex-end; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-0 { gap: 0; }
+    .gap-1 { gap: .25rem; }
+    .gap-1\.5 { gap: .375rem; }
+    .gap-2 { gap: .5rem; }
+    .gap-3 { gap: .75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .gap-8 { gap: 2rem; }
+    .gap-px { gap: 1px; }
+    .space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: .25rem; }
+    .space-y-1\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: .375rem; }
+    .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 3rem; }
+    .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: .5rem; }
+    .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: .75rem; }
+    .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+    .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+    .divide-y > :not([hidden]) ~ :not([hidden]) { border-top-width: 1px; }
+    .divide-white\/\[0\.06\] > :not([hidden]) ~ :not([hidden]) { border-color: hsla(0,0%,100%,.06); }
+    .self-stretch { align-self: stretch; }
+    .overflow-hidden { overflow: hidden; }
+    .overflow-x-auto { overflow-x: auto; }
+    .overflow-y-auto { overflow-y: auto; }
+    .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .rounded { border-radius: .25rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-\[16px\] { border-radius: 16px; }
+    .rounded-\[18px\] { border-radius: 18px; }
+    .rounded-\[20px\] { border-radius: 20px; }
+    .rounded-full { border-radius: 9999px; }
+    .rounded-lg { border-radius: .5rem; }
+    .rounded-md { border-radius: .375rem; }
+    .rounded-xl { border-radius: .75rem; }
+    .border { border-width: 1px; }
+    .border-b { border-bottom-width: 1px; }
+    .border-t { border-top-width: 1px; }
+    .border-\[\#d4af37\]\/10 { border-color: rgba(212,175,55,.1); }
+    .border-\[\#d4af37\]\/15 { border-color: rgba(212,175,55,.15); }
+    .border-\[\#d4af37\]\/20 { border-color: rgba(212,175,55,.2); }
+    .border-amber-500\/10 { border-color: rgba(245,158,11,.1); }
+    .border-amber-500\/20 { border-color: rgba(245,158,11,.2); }
+    .border-emerald-500\/20 { border-color: rgba(16,185,129,.2); }
+    .border-red-500\/20 { border-color: rgba(239,68,68,.2); }
+    .border-transparent { border-color: transparent; }
+    .border-white\/10 { border-color: hsla(0,0%,100%,.1); }
+    .border-white\/\[0\.04\] { border-color: hsla(0,0%,100%,.04); }
+    .border-white\/\[0\.06\] { border-color: hsla(0,0%,100%,.06); }
+    .border-white\/\[0\.08\] { border-color: hsla(0,0%,100%,.08); }
+    .bg-\[\#0a0a0a\] { background-color: rgb(10 10 10); }
+    .bg-\[\#0a0a0a\]\/80 { background-color: hsla(0,0%,4%,.8); }
+    .bg-\[\#0a0a0a\]\/90 { background-color: hsla(0,0%,4%,.9); }
+    .bg-\[\#0d0d0b\] { background-color: rgb(13 13 11); }
+    .bg-\[\#0e0e0c\] { background-color: rgb(14 14 12); }
+    .bg-\[\#d4af37\] { background-color: rgb(212 175 55); }
+    .bg-\[\#d4af37\]\/10 { background-color: rgba(212,175,55,.1); }
+    .bg-\[\#d4af37\]\/15 { background-color: rgba(212,175,55,.15); }
+    .bg-\[\#d4af37\]\/20 { background-color: rgba(212,175,55,.2); }
+    .bg-\[\#d4af37\]\/50 { background-color: rgba(212,175,55,.5); }
+    .bg-\[\#d4af37\]\/\[0\.06\] { background-color: rgba(212,175,55,.06); }
+    .bg-\[\#d4af37\]\/\[0\.08\] { background-color: rgba(212,175,55,.08); }
+    .bg-amber-500 { background-color: rgb(245 158 11); }
+    .bg-amber-500\/10 { background-color: rgba(245,158,11,.1); }
+    .bg-amber-500\/\[0\.03\] { background-color: rgba(245,158,11,.03); }
+    .bg-amber-500\/\[0\.06\] { background-color: rgba(245,158,11,.06); }
+    .bg-black\/30 { background-color: rgba(0,0,0,.3); }
+    .bg-black\/40 { background-color: rgba(0,0,0,.4); }
+    .bg-black\/50 { background-color: rgba(0,0,0,.5); }
+    .bg-emerald-400 { background-color: rgb(52 211 153); }
+    .bg-emerald-500\/10 { background-color: rgba(16,185,129,.1); }
+    .bg-emerald-600 { background-color: rgb(5 150 105); }
+    .bg-red-500\/10 { background-color: rgba(239,68,68,.1); }
+    .bg-transparent { background-color: transparent; }
+    .bg-white { background-color: rgb(255 255 255); }
+    .bg-white\/10 { background-color: hsla(0,0%,100%,.1); }
+    .bg-white\/40 { background-color: hsla(0,0%,100%,.4); }
+    .bg-white\/60 { background-color: hsla(0,0%,100%,.6); }
+    .bg-white\/\[0\.02\] { background-color: hsla(0,0%,100%,.02); }
+    .bg-white\/\[0\.03\] { background-color: hsla(0,0%,100%,.03); }
+    .bg-white\/\[0\.04\] { background-color: hsla(0,0%,100%,.04); }
+    .bg-white\/\[0\.06\] { background-color: hsla(0,0%,100%,.06); }
+    .bg-zinc-700 { background-color: rgb(63 63 70); }
+    .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
+    .from-\[\#10100e\] { --tw-gradient-from: #10100e; --tw-gradient-to: rgba(16,16,14,0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-white\/\[0\.04\] { --tw-gradient-from: hsla(0,0%,100%,.04); --tw-gradient-to: hsla(0,0%,100%,0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-white\/\[0\.06\] { --tw-gradient-from: hsla(0,0%,100%,.06); --tw-gradient-to: hsla(0,0%,100%,0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-\[\#0a0a0a\] { --tw-gradient-to: #0a0a0a; }
+    .to-white\/\[0\.01\] { --tw-gradient-to: hsla(0,0%,100%,.01); }
+    .to-white\/\[0\.02\] { --tw-gradient-to: hsla(0,0%,100%,.02); }
+    .p-3 { padding: .75rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .px-1\.5 { padding-left: .375rem; padding-right: .375rem; }
+    .px-2 { padding-left: .5rem; padding-right: .5rem; }
+    .px-2\.5 { padding-left: .625rem; padding-right: .625rem; }
+    .px-3 { padding-left: .75rem; padding-right: .75rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .py-0\.5 { padding-top: .125rem; padding-bottom: .125rem; }
+    .py-1 { padding-top: .25rem; padding-bottom: .25rem; }
+    .py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+    .py-2\.5 { padding-top: .625rem; padding-bottom: .625rem; }
+    .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .pb-24 { padding-bottom: 6rem; }
+    .pl-4 { padding-left: 1rem; }
+    .pr-10 { padding-right: 2.5rem; }
+    .pr-2 { padding-right: .5rem; }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-\[10px\] { font-size: 10px; }
+    .text-\[11px\] { font-size: 11px; }
+    .text-\[12px\] { font-size: 12px; }
+    .text-\[13px\] { font-size: 13px; }
+    .text-\[16px\] { font-size: 16px; }
+    .text-\[22px\] { font-size: 22px; }
+    .text-\[26px\] { font-size: 26px; }
+    .text-\[28px\] { font-size: 28px; }
+    .text-\[30px\] { font-size: 30px; }
+    .text-\[8px\] { font-size: 8px; }
+    .text-\[9px\] { font-size: 9px; }
+    .font-bold { font-weight: 700; }
+    .font-extrabold { font-weight: 800; }
+    .font-light { font-weight: 300; }
+    .font-medium { font-weight: 500; }
+    .leading-5 { line-height: 1.25rem; }
+    .leading-6 { line-height: 1.5rem; }
+    .leading-\[1\.05\] { line-height: 1.05; }
+    .leading-none { line-height: 1; }
+    .leading-relaxed { line-height: 1.625; }
+    .leading-tight { line-height: 1.25; }
+    .tracking-normal { letter-spacing: 0; }
+    .tracking-tight { letter-spacing: -.025em; }
+    .tracking-wide { letter-spacing: .025em; }
+    .tracking-widest { letter-spacing: .1em; }
+    .text-\[\#d4af37\] { color: rgb(212 175 55); }
+    .text-\[\#d4af37\]\/70 { color: rgba(212,175,55,.7); }
+    .text-\[\#d4af37\]\/90 { color: rgba(212,175,55,.9); }
+    .text-amber-300 { color: rgb(252 211 77); }
+    .text-amber-400 { color: rgb(251 191 36); }
+    .text-amber-400\/70 { color: rgba(251,191,36,.7); }
+    .text-black { color: rgb(0 0 0); }
+    .text-emerald-400 { color: rgb(52 211 153); }
+    .text-red-400 { color: rgb(248 113 113); }
+    .text-white { color: rgb(255 255 255); }
+    .text-white\/40 { color: hsla(0,0%,100%,.4); }
+    .text-white\/60 { color: hsla(0,0%,100%,.6); }
+    .text-zinc-100 { color: rgb(244 244 245); }
+    .text-zinc-300 { color: rgb(212 212 216); }
+    .text-zinc-400 { color: rgb(161 161 170); }
+    .text-zinc-500 { color: rgb(113 113 122); }
+    .text-zinc-600 { color: rgb(82 82 91); }
+    .underline { text-decoration-line: underline; }
+    .decoration-\[\#d4af37\]\/20 { text-decoration-color: rgba(212,175,55,.2); }
+    .underline-offset-4 { text-underline-offset: 4px; }
+    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .opacity-40 { opacity: .4; }
+    .opacity-60 { opacity: .6; }
+    .filter { filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); }
+    .backdrop-blur-xl { --tw-backdrop-blur: blur(24px); backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia); }
+    .transition-all { transition-property: all; transition-timing-function: cubic-bezier(.4,0,.2,1); transition-duration: .15s; }
+    .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(.4,0,.2,1); transition-duration: .15s; }
+    #root, body, html { min-height: 100%; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; }
+    [role=button]:not([aria-disabled=true]), button:not(:disabled), label[for], select:not(:disabled), summary { cursor: pointer; }
+    .selection\:bg-\[\#d4af37\]\/30 ::selection { background-color: rgba(212,175,55,.3); }
+    .selection\:text-white ::selection { color: rgb(255 255 255); }
+    .placeholder\:text-zinc-500::placeholder { color: rgb(113 113 122); }
+    .hover\:border-\[\#d4af37\]\/20:hover { border-color: rgba(212,175,55,.2); }
+    .hover\:border-\[\#d4af37\]\/30:hover { border-color: rgba(212,175,55,.3); }
+    .hover\:border-white\/\[0\.06\]:hover { border-color: hsla(0,0%,100%,.06); }
+    .hover\:bg-\[\#12120f\]:hover { background-color: rgb(18 18 15); }
+    .hover\:bg-\[\#d4af37\]\/15:hover { background-color: rgba(212,175,55,.15); }
+    .hover\:bg-\[\#d4af37\]\/20:hover { background-color: rgba(212,175,55,.2); }
+    .hover\:bg-\[\#e0bd4a\]:hover { background-color: rgb(224 189 74); }
+    .hover\:bg-white\/\[0\.02\]:hover { background-color: hsla(0,0%,100%,.02); }
+    .hover\:bg-white\/\[0\.04\]:hover { background-color: hsla(0,0%,100%,.04); }
+    .hover\:bg-white\/\[0\.06\]:hover { background-color: hsla(0,0%,100%,.06); }
+    .hover\:bg-white\/\[0\.08\]:hover { background-color: hsla(0,0%,100%,.08); }
+    .hover\:bg-white\/\[0\.10\]:hover { background-color: hsla(0,0%,100%,.1); }
+    .hover\:text-\[\#d4af37\]:hover { color: rgb(212 175 55); }
+    .hover\:text-zinc-200:hover { color: rgb(228 228 231); }
+    .hover\:underline:hover { text-decoration-line: underline; }
+    .hover\:decoration-\[\#d4af37\]\/50:hover { text-decoration-color: rgba(212,175,55,.5); }
+    .focus\:border-\[\#d4af37\]\/30:focus { border-color: rgba(212,175,55,.3); }
+    .focus\:bg-white\/\[0\.06\]:focus { background-color: hsla(0,0%,100%,.06); }
+    .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+    .group:hover .group-hover\:text-\[\#d4af37\] { color: rgb(212 175 55); }
+    .group:hover .group-hover\:text-white { color: rgb(255 255 255); }
+    .group:hover .group-hover\:text-zinc-300 { color: rgb(212 212 216); }
+
+    @media (min-width: 768px) {
+      .md\:inline { display: inline; }
+      .md\:flex { display: flex; }
+      .md\:inline-flex { display: inline-flex; }
+      .md\:grid { display: grid; }
+      .md\:w-\[320px\] { width: 320px; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .md\:grid-cols-\[160px_1fr_1fr_44px\] { grid-template-columns: 160px 1fr 1fr 44px; }
+      .md\:flex-row { flex-direction: row; }
+      .md\:items-start { align-items: flex-start; }
+      .md\:gap-0 { gap: 0; }
+      .md\:gap-5 { gap: 1.25rem; }
+      .md\:gap-8 { gap: 2rem; }
+      .md\:space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 4rem; }
+      .md\:rounded-\[20px\] { border-radius: 20px; }
+      .md\:p-5 { padding: 1.25rem; }
+      .md\:p-6 { padding: 1.5rem; }
+      .md\:p-8 { padding: 2rem; }
+      .md\:px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .md\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .md\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .md\:py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      .md\:text-\[12px\] { font-size: 12px; }
+      .md\:text-\[18px\] { font-size: 18px; }
+      .md\:text-\[32px\] { font-size: 32px; }
+      .md\:text-\[44px\] { font-size: 44px; }
+    }
+    @media (min-width: 1024px) {
+      .lg\:block { display: block; }
+      .lg\:hidden { display: none; }
+      .lg\:w-\[360px\] { width: 360px; }
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lg\:grid-cols-\[1\.2fr_0\.8fr\] { grid-template-columns: 1.2fr .8fr; }
+      .lg\:flex-row { flex-direction: row; }
+      .lg\:items-start { align-items: flex-start; }
+    }
+
+    /* ===== CUSTOM ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    * { font-family: "Tajawal", system-ui, sans-serif; }
+    .mono { font-family: "JetBrains Mono", monospace !important; }
+    .pattern {
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(212,175,55,0.08) 1px, transparent 0),
+        linear-gradient(45deg, transparent 48%, rgba(212,175,55,0.03) 50%, transparent 52%);
+      background-size: 24px 24px, 80px 80px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    // ===== MINIMAL REACT SHIM (no bundler) =====
+    // Since we can't use real React in a single file easily, we'll build the UI with vanilla JS
+    // but keep the exact structure and classes from the original.
+    // We'll simulate the component with direct DOM manipulation.
+
+    (function() {
+      // --- Icons as SVG strings (simplified) ---
+      const icons = {
+        Award: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>',
+        Beaker: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg>',
+        BookOpen: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
+        Box: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
+        Check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+        Copy: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+        Cpu: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+        Database: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>',
+        ExternalLink: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
+        FileText: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
+        FolderTree: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M3 5a2 2 0 0 0 2 2h3"/><path d="M3 3v13a2 2 0 0 0 2 2h3"/></svg>',
+        GitBranch: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>',
+        Globe: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+        Hash: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></svg>',
+        Layers: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>',
+        Link2: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>',
+        Mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+        MapPin: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>',
+        Search: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+        Shield: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+        TriangleAlert: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+        Wrench: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'
+      };
+
+      // --- Data (from original component) ---
+      const u = [
+        { env: "GitHub Source", envAr: "الكود المصدري", formula: "github.com/[User]/[Repo]/blob/main/[File]", example: "github.com/Jabri-web/Jabri-com/blob/main/all-links.html", href: "https://github.com/Jabri-web/Jabri-com/blob/main/all-links.html" },
+        { env: "GitHub Live", envAr: "صفحة منشورة", formula: "[User].github.io/[Repo]/[File]", example: "jabri-web.github.io/Jabri-com/all-links.html", href: "https://jabri-web.github.io/Jabri-com/all-links.html" },
+        { env: "Vercel Main", envAr: "الموقع الرئيسي", formula: "[Domain]/[File]", example: "jabri-com.vercel.app/all-links.html", href: "https://jabri-com.vercel.app/all-links.html" },
+        { env: "Yemen Mirror", envAr: "مرآة اليمن", formula: "jabri-com.vercel.app/Page[X].html", example: "jabri-com.vercel.app/Page2.html", href: "https://jabri-com.vercel.app/Page2.html" },
+        { env: "Magic Translator", envAr: "الترجمة السحرية", formula: ".../magic-translator.html?repo=[Repo]&file=[File]&lang=[ar/en]", example: "...?repo=Zx_RieOS_v1.2&file=README.md&lang=ar", href: "https://jabri-web.github.io/Jabri-web/magic-translator.html?file=README.md&lang=ar" }
+      ];
+
+      const o = [
+        { id: 1, title: "البوابات والواجهات", en: "Gateway Layer", icon: "Globe", count: 5, items: [
+          { name: "jabri62018.github.io", role: "البوابة الرئيسية", link: "https://jabri62018.github.io" },
+          { name: "Jabri-web.github.io", role: "الواجهة الثانية", link: "https://jabri-web.github.io" },
+          { name: "Jabri-web", role: "Router الرئيسي", link: "https://github.com/Jabri-web/Jabri-web" },
+          { name: "jabri-com", role: "النشر على Vercel", link: "https://jabri-com.vercel.app" },
+          { name: "jabri.com", role: "Hyper Router", link: "https://jabri.com" }
+        ]},
+        { id: 2, title: "النواة ونظام التشغيل", en: "Core OS Layer", icon: "Cpu", count: 4, items: [
+          { name: "Zx-Mother-Function-Jabri", role: "الدالة الأم Z(x)", link: "https://github.com/Jabri-web/Zx_Mother_Function_Jabri" },
+          { name: "Jabri-RiemannOS", role: "نظام ريمان النظري", link: "https://github.com/Jabri-web/Jabri-RiemannOS" },
+          { name: "Zx-RieOS-v1.2", role: "الذهبي النهائي", link: "https://github.com/Jabri-web/Zx_RieOS_v1.2", badge: "GOLD" },
+          { name: "Zx-RieOS-v1.1", role: "الإصدار السابق", link: "https://github.com/Jabri-web/Zx_RieOS_v1.1" }
+        ]},
+        { id: 3, title: "الحزمة الكبرى - مسائل الألفية", en: "Jabri-Nobble", icon: "Award", count: 7, repo: "github.com/Jabri-web/Jabri_Nobble", items: [
+          { name: "Jabri-Riemann", role: "فرضية ريمان" },
+          { name: "Jabri-np", role: "P vs NP" },
+          { name: "Jabri-gab", role: "الفجوة Gap" },
+          { name: "Jabri-Navier", role: "نافييه-ستوكس" },
+          { name: "Jabri-Birch", role: "بيرش-سوينرتون-داير" },
+          { name: "Jabri-Hodge", role: "حدسية هودج" },
+          { name: "Jabri-Identity", role: "الهوية Z_t = 1", badge: "CORE" }
+        ]},
+        { id: 4, title: "مختبر الفيزياء والكون", en: "Jabri-Lab", icon: "Beaker", count: 9, repo: "github.com/Jabri-web/Jabri_lab", items: [
+          { name: "Jabri-5", role: "معامل 5" },
+          { name: "Jabri-28", role: "معامل 28" },
+          { name: "Jabri-Gravity", role: "الجاذبية" },
+          { name: "Jabri-Spacetime", role: "الزمكان" },
+          { name: "Jabri-Darkenergy", role: "الطاقة المظلمة" },
+          { name: "Jabri-Planck", role: "ثابت بلانك" },
+          { name: "Jabri-Hubble", role: "ثابت هابل" },
+          { name: "Jabri-Periodic", role: "الدورية" },
+          { name: "Jabri-all", role: "الدمج الكلي" }
+        ]},
+        { id: 5, title: "الأدوات والتشخيص", en: "Tools Layer", icon: "Wrench", count: 1, items: [
+          { name: "Jabri-Checkout", role: "نقطة التحقق - فحص وتشخيص النظام", link: "https://github.com/Jabri-web/Jabri_Checkout", badge: "DIAG" }
+        ]}
+      ];
+
+      const i = [
+        { name: "jabri62018.github.io", doi: "21006432", alt: "20403864", status: "conflict" },
+        { name: "Zx_RieOS_v1.2 GOLD", doi: "20100622", status: "duplicate" },
+        { name: "Jabri-web.github.io", doi: "20404167", alt2: "20499365", status: "active" },
+        { name: "Jabri_Nobble", doi: "20148770", status: "active" },
+        { name: "Zx_RieOS_v1.1", doi: "19981688", status: "duplicate" },
+        { name: "Jabri_Checkout", doi: "21970064", status: "active" },
+        { name: "Jabri-web Router", doi: "20499365", status: "active" },
+        { name: "jabri-com Vercel", doi: "21970418", status: "active" },
+        { name: "jabri.com Hyper", doi: "21970523", status: "active" },
+        { name: "Riemann Hypothesis", doi: "20139904", status: "active" },
+        { name: "P ≠ NP via Identity", doi: "20145337", status: "active" },
+        { name: "Yang-Mills Mass Gap", doi: "20148344", status: "active" },
+        { name: "Navier-Stokes", doi: "20149618", status: "active" },
+        { name: "Hubble Tension IRIS", doi: "20114317", status: "active" },
+        { name: "Zx_RieOS v1.1 قديم", doi: "19645066", status: "active" },
+        { name: "4+1 Eigenvalue Law", doi: "20100622", status: "duplicate" },
+        { name: "RiemannOS v1.0", doi: "19700735", status: "active" },
+        { name: "Zx_total_v3.2.1", doi: "19956313", status: "active" },
+        { name: "Jabri_Checkout v2.0", doi: "21970064", status: "duplicate" }
+      ];
+
+      const a = [
+        { id: 1, name: "الصفحات الرئيسية", count: 5, files: "index, logo, catalog, all-links, monitor", color: "bg-amber-500" },
+        { id: 2, name: "صفحات Page 1-12", count: 12, files: "Page1.html … Page12.html", color: "bg-white" },
+        { id: 3, name: "صفحات About", count: 4, files: "about, about-ar, about-en, about-waha", color: "bg-white/60" },
+        { id: 4, name: "المؤلف والسيرة", count: 7, files: "Author-cv, author-history, cv-2026a, cv-2026e, founder, profile", color: "bg-[#d4af37]" },
+        { id: 5, name: "النظرية الموحدة", count: 4, files: "theory-ar, theory-en, Sindbad-theory, Sindbad-Brdoni", color: "bg-amber-500" },
+        { id: 6, name: "البحث العلمي", count: 3, files: "research, research-deep, Pages-Researches", color: "bg-white" },
+        { id: 7, name: "التراث اليمني", count: 9, files: "Sanaa, Shibam, Soqatra, Yemen-library, gallery...", color: "bg-emerald-600" },
+        { id: 8, name: "المجلات", count: 5, files: "journal, journal2, journal3, journal4, History-pdf", color: "bg-white/60" },
+        { id: 9, name: "الأدوات", count: 6, files: "calculator, handsa, char-balance, Check, magic-translator, diagnose", color: "bg-[#d4af37]" },
+        { id: 10, name: "قواعد البيانات", count: 4, files: "Dbase, Dbase-deep, microtik, microtik-deep", color: "bg-white" },
+        { id: 11, name: "المكتبة والمحتوى", count: 14, files: "Office, source, citations, music, taraif, Nezar, wonder...", color: "bg-amber-500" },
+        { id: 12, name: "التواصل والنظام", count: 7, files: "contact, FAQPage, privacy-policy, 404, offline, dashboard", color: "bg-white/60" },
+        { id: 13, name: "أدوات المطور", count: 6, files: "file-structure, Router-all, repos-auto, repos-sqr...", color: "bg-white" },
+        { id: 14, name: "المتنوع", count: 2, files: "kfupm-msg, explore", color: "bg-white/40" },
+        { id: 15, name: "الأجزاء Partials", count: 3, files: "header, footer, hero (لا تُفهرس)", color: "bg-zinc-700", muted: true },
+        { id: 16, name: "ملفات النظام", count: 5, files: "manifest.json, robots.txt, sitemap.xml, sw.js, vercel.json", color: "bg-zinc-700", muted: true }
+      ];
+
+      const c = [
+        { path: "/ar/", count: 4, files: "index, about, contact, journal" },
+        { path: "/en/", count: 4, files: "index, about, contact, journal" },
+        { path: "/game/", count: 1, files: "game-auto.html" },
+        { path: "/publish/", count: 1, files: "publish.html" },
+        { path: "/js/", count: 2, files: "init-page-root.js, menu.js" },
+        { path: "/image/", count: 2, files: "Jabri-photo.png, Yemen2026.png" }
+      ];
+
+      const m = `{
+  "version": "2.0.0",
+  "updated": "2026-09-16",
+  "author": {
+    "name": "Abdulla Mohammed Nasser Al-Jabri",
+    "orcid": "0009-0003-3319-3822",
+    "github": "Jabri-web"
+  },
+  "identity": "Z + C + A = 1",
+  "repos": {
+    "Jabri-com": { "doi": "10.5281/zenodo.21970418", "url": "https://jabri-com.vercel.app", "status": "active" },
+    "Jabri-web": { "doi": "10.5281/zenodo.20499365", "status": "active" },
+    "Jabri_Checkout": { "doi": "10.5281/zenodo.21970064", "status": "active" },
+    "Jabri_Nobble": { "doi": "10.5281/zenodo.20148770", "status": "active" },
+    "Zx_RieOS_v1.2": { "doi": "10.5281/zenodo.20100622", "status": "gold" }
+  }
+}`;
+
+      // --- State ---
+      let searchTerm = '';
+      let activeSection = 'sec1';
+
+      // --- Render helpers ---
+      function el(tag, attrs = {}, children = []) {
+        const d = document.createElement(tag);
+        for (const [k, v] of Object.entries(attrs)) {
+          if (k === 'className') d.className = v;
+          else if (k === 'onClick') d.addEventListener('click', v);
+          else if (k === 'dir') d.dir = v;
+          else if (k === 'href') d.href = v;
+          else if (k === 'target') d.target = v;
+          else if (k === 'value') d.value = v;
+          else if (k === 'placeholder') d.placeholder = v;
+          else if (k === 'style') d.style.cssText = v;
+          else d.setAttribute(k, v);
+        }
+        if (typeof children === 'string') d.innerHTML = children;
+        else if (Array.isArray(children)) children.forEach(c => { if (typeof c === 'string') d.appendChild(document.createTextNode(c)); else if (c) d.appendChild(c); });
+        return d;
+      }
+
+      function h(tag, attrs, ...children) {
+        return el(tag, attrs, children);
+      }
+
+      function s(tag, attrs) {
+        return el(tag, attrs);
+      }
+
+      // --- Icon helper ---
+      function icon(name, cls = '') {
+        const svg = icons[name] || icons.Globe;
+        const span = document.createElement('span');
+        span.className = cls;
+        span.innerHTML = svg;
+        const svgEl = span.querySelector('svg');
+        if (svgEl) {
+          svgEl.setAttribute('class', cls);
+          svgEl.style.width = '1em';
+          svgEl.style.height = '1em';
+        }
+        return span;
+      }
+
+      // --- Components (as functions returning DOM) ---
+
+      function CopyButton({ text }) {
+        const btn = el('button', {
+          className: 'inline-flex items-center justify-center w-7 h-7 rounded-md border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] transition-colors',
+          title: 'نسخ'
+        });
+        const copyIcon = icon('Copy', 'w-3.5 h-3.5 text-white/60');
+        const checkIcon = icon('Check', 'w-3.5 h-3.5 text-[#d4af37]');
+        btn.appendChild(copyIcon);
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(text);
+          btn.innerHTML = '';
+          btn.appendChild(checkIcon);
+          setTimeout(() => {
+            btn.innerHTML = '';
+            btn.appendChild(copyIcon);
+          }, 1200);
+        });
+        return btn;
+      }
+
+      // --- Main App ---
+      function App() {
+        const container = el('div', {
+          dir: 'rtl',
+          className: 'min-h-screen bg-[#0a0a0a] text-zinc-100 selection:bg-[#d4af37]/30 selection:text-white antialiased'
+        });
+
+        // Inject custom styles
+        const styleEl = document.createElement('style');
+        styleEl.textContent = `
+          @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+          * { font-family: "Tajawal", system-ui, sans-serif; }
+          .mono { font-family: "JetBrains Mono", monospace !important; }
+          .pattern {
+            background-image:
+              radial-gradient(circle at 1px 1px, rgba(212,175,55,0.08) 1px, transparent 0),
+              linear-gradient(45deg, transparent 48%, rgba(212,175,55,0.03) 50%, transparent 52%);
+            background-size: 24px 24px, 80px 80px;
+          }
+        `;
+        container.appendChild(styleEl);
+
+        // --- Top bar ---
+        const topBar = h('div', { className: 'sticky top-0 z-50 border-b border-[#d4af37]/20 bg-[#0a0a0a]/80 backdrop-blur-xl' },
+          h('div', { className: 'mx-auto max-w-[1600px] px-4 md:px-6 h-9 flex items-center justify-between text-[11px] tracking-wide' },
+            h('div', { className: 'flex items-center gap-4' },
+              h('span', { className: 'inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37] font-bold mono' },
+                icon('Hash', 'w-3 h-3'), ' Z + C + A = 1'
+              ),
+              h('span', { className: 'hidden md:flex items-center gap-2 text-zinc-400 mono' },
+                h('span', { className: 'w-1 h-1 rounded-full bg-emerald-400 animate-pulse' }),
+                ' SYSTEM_VERIFIED 2026-06-09'
+              )
+            ),
+            h('div', { className: 'flex items-center gap-3 md:gap-5 text-zinc-400' },
+              h('a', { href: 'https://orcid.org/0009-0003-3319-3822', target: '_blank', className: 'hover:text-[#d4af37] transition-colors mono' }, 'ORCID 0009-0003-3319-3822'),
+              h('span', { className: 'hidden md:inline h-3 w-px bg-white/10' }),
+              h('span', { className: 'mono hidden md:inline' }, 'CC BY 4.0'),
+              h('span', { className: 'inline-flex items-center gap-1.5 text-[#d4af37]' },
+                icon('MapPin', 'w-3 h-3'), ' صنعاء - اليمن'
+              )
+            )
+          )
+        );
+        container.appendChild(topBar);
+
+        // --- Header ---
+        const header = h('header', { className: 'border-b border-white/[0.06] bg-gradient-to-b from-[#10100e] to-[#0a0a0a] pattern' },
+          h('div', { className: 'mx-auto max-w-[1600px] px-4 md:px-8 py-8 md:py-10' },
+            h('div', { className: 'flex flex-col lg:flex-row lg:items-start justify-between gap-8' },
+              h('div', { className: 'flex-1' },
+                h('div', { className: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-zinc-400 mb-4' },
+                  icon('Shield', 'w-3.5 h-3.5 text-[#d4af37]'), ' OFFICIAL TECHNICAL GUIDE • الإصدار الذهبي v1.0'
+                ),
+                h('h1', { className: 'text-[30px] md:text-[44px] leading-[1.05] font-extrabold tracking-tight' },
+                  h('span', { className: 'text-white' }, 'واحة الجبري'),
+                  h('span', { className: 'text-white/40 mx-3 font-light' }, '|'),
+                  h('span', { className: 'text-[#d4af37]' }, 'Heaven Al-Jabri'),
+                  h('div', { className: 'text-[16px] md:text-[18px] font-medium text-zinc-400 mt-3 tracking-normal' }, 'الدليل الفني الشامل — الإمبراطورية الرقمية الخاصة بـ م/ عبدالله محمد ناصر الجبري')
+                ),
+                h('div', { className: 'mt-6 flex flex-wrap gap-3' },
+                  h('a', { href: 'https://jabri-com.vercel.app', target: '_blank', className: 'inline-flex items-center gap-2 px-4 h-9 rounded-full bg-[#d4af37] text-black text-[13px] font-bold hover:bg-[#e0bd4a] transition-colors' },
+                    icon('Globe', 'w-4 h-4'), ' jabri-com.vercel.app ', icon('ExternalLink', 'w-3.5 h-3.5')
+                  ),
+                  h('a', { href: 'https://github.com/Jabri-web', target: '_blank', className: 'inline-flex items-center gap-2 px-4 h-9 rounded-full bg-white/[0.06] border border-white/[0.08] text-[13px] hover:bg-white/[0.10] transition-colors' },
+                    icon('GitBranch', 'w-4 h-4'), ' Jabri-web Organization'
+                  ),
+                  h('span', { className: 'inline-flex items-center gap-2 px-4 h-9 rounded-full bg-white/[0.04] border border-white/[0.06] text-[12px] text-zinc-400 mono' },
+                    icon('Mail', 'w-3.5 h-3.5'), ' jabri62018@gmail.com'
+                  )
+                )
+              ),
+              h('div', { className: 'w-full lg:w-[360px] space-y-4' },
+                h('div', { className: 'relative' },
+                  (() => {
+                    const searchIcon = icon('Search', 'absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500');
+                    const input = el('input', {
+                      value: searchTerm,
+                      placeholder: 'بحث في الدليل... DOI, ملف, repo, صيغة',
+                      className: 'w-full h-11 pr-10 pl-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13px] placeholder:text-zinc-500 focus:outline-none focus:border-[#d4af37]/30 focus:bg-white/[0.06] transition-colors'
+                    });
+                    input.addEventListener('input', (e) => {
+                      searchTerm = e.target.value;
+                      renderMain();
+                    });
+                    const wrapper = h('div');
+                    wrapper.appendChild(searchIcon);
+                    wrapper.appendChild(input);
+                    return wrapper;
+                  })()
+                ),
+                h('div', { className: 'grid grid-cols-3 gap-2' },
+                  h('div', { className: 'rounded-xl bg-white/[0.04] border border-white/[0.06] p-3' },
+                    h('div', { className: 'text-[22px] font-bold text-white leading-none mono' }, '110'),
+                    h('div', { className: 'text-[11px] text-zinc-500 mt-1' }, 'إجمالي الملفات')
+                  ),
+                  h('div', { className: 'rounded-xl bg-[#d4af37]/[0.08] border border-[#d4af37]/20 p-3' },
+                    h('div', { className: 'text-[22px] font-bold text-[#d4af37] leading-none mono' }, '19'),
+                    h('div', { className: 'text-[11px] text-[#d4af37]/70 mt-1' }, 'معرفات DOI')
+                  ),
+                  h('div', { className: 'rounded-xl bg-white/[0.04] border border-white/[0.06] p-3' },
+                    h('div', { className: 'text-[22px] font-bold text-white leading-none mono' }, '12+9'),
+                    h('div', { className: 'text-[11px] text-zinc-500 mt-1' }, 'مستودعات')
+                  )
+                ),
+                h('div', { className: 'rounded-xl bg-white/[0.03] border border-white/[0.06] p-3 flex items-center justify-between' },
+                  h('span', { className: 'text-[11px] text-zinc-500 mono' }, '75 HTML indexable'),
+                  h('span', { className: 'text-[11px] text-zinc-500 mono' }, '96 root + 14 sub')
+                )
+              )
+            )
+          )
+        );
+        container.appendChild(header);
+
+        // --- Body layout ---
+        const bodyDiv = h('div', { className: 'mx-auto max-w-[1600px] px-4 md:px-6 flex gap-6 md:gap-8' });
+
+        // --- Sidebar ---
+        const sidebar = h('aside', { className: 'hidden lg:block w-[300px] shrink-0 sticky top-[37px] h-[calc(100vh-37px)] overflow-y-auto py-8 pr-2' });
+        const nav = h('nav', { className: 'space-y-6' });
+
+        // Index
+        const indexDiv = h('div');
+        indexDiv.appendChild(h('div', { className: 'text-[11px] font-bold tracking-widest text-zinc-500 mb-3 mono' }, 'الفهرس • INDEX'));
+        const indexItems = [
+          { id: 'sec1', title: 'قانون الاستدعاء الموحد', en: 'Linking Law', icon: 'Link2' },
+          { id: 'sec2', title: 'خريطة الإمبراطورية', en: 'Empire Map', icon: 'Layers' },
+          { id: 'sec3', title: 'هيكل منظمة GitHub', en: 'Organization', icon: 'FolderTree' },
+          { id: 'sec4', title: 'سجل DOI الكامل', en: 'DOI Registry', icon: 'Database' },
+          { id: 'sec5', title: 'هيكل الملفات', en: 'File Structure', icon: 'FileText' }
+        ];
+        const indexList = h('div', { className: 'space-y-1' });
+        indexItems.forEach(item => {
+          const isActive = activeSection === item.id;
+          const link = h('a', {
+            href: `#${item.id}`,
+            className: `group flex items-center gap-3 px-3 py-2.5 rounded-xl border text-[13px] transition-all ${isActive ? 'bg-[#d4af37]/10 border-[#d4af37]/20 text-[#d4af37]' : 'bg-transparent border-transparent text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.04] hover:border-white/[0.06]'}`
+          });
+          link.appendChild(icon(item.icon, `w-4 h-4 ${isActive ? 'text-[#d4af37]' : 'text-zinc-500 group-hover:text-zinc-300'}`));
+          link.appendChild(h('span', { className: 'flex-1 font-medium' }, item.title));
+          link.appendChild(h('span', { className: 'text-[10px] mono opacity-60' }, item.en));
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+          indexList.appendChild(link);
+        });
+        indexDiv.appendChild(indexList);
+        nav.appendChild(indexDiv);
+
+        // Requirements box
+        const reqBox = h('div', { className: 'rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.08] p-4' },
+          h('div', { className: 'flex items-center gap-2 text-[12px] font-bold text-white mb-3' },
+            icon('Box', 'w-4 h-4 text-[#d4af37]'), ' متطلبات المستودع'
+          ),
+          h('div', { className: 'space-y-2 text-[11px] leading-relaxed' },
+            h('div', { className: 'flex gap-2' }, h('span', { className: 'text-[#d4af37]' }, '•'), h('span', { className: 'text-zinc-400' }, 'README.md + README-AR.md')),
+            h('div', { className: 'flex gap-2' }, h('span', { className: 'text-[#d4af37]' }, '•'), h('span', { className: 'text-zinc-400' }, 'ABOUT.md + ABOUT-AR.md مع شريط لغة')),
+            h('div', { className: 'flex gap-2' }, h('span', { className: 'text-[#d4af37]' }, '•'), h('span', { className: 'text-zinc-400' }, 'رابط رئيسي jabri-com.vercel.app')),
+            h('div', { className: 'flex gap-2' }, h('span', { className: 'text-[#d4af37]' }, '•'), h('span', { className: 'text-zinc-400' }, 'الرخصة CC BY 4.0'))
+          )
+        );
+        nav.appendChild(reqBox);
+
+        // Warnings box
+        const warnBox = h('div', { className: 'rounded-2xl bg-[#d4af37]/[0.06] border border-[#d4af37]/15 p-4' },
+          h('div', { className: 'flex items-center gap-2 text-[11px] font-bold text-[#d4af37] mb-2' },
+            icon('TriangleAlert', 'w-3.5 h-3.5'), ' تنبيهات التحقق'
+          ),
+          h('div', { className: 'text-[11px] text-zinc-400 leading-5 space-y-1.5' },
+            h('div', {}, '• تكرار DOI 19981688 في Repos و Papers'),
+            h('div', {}, '• تكرار DOI 20100622 في Repos و Papers'),
+            h('div', {}, '• تعارض 21006432 مقابل 20403864 لـ jabri62018')
+          )
+        );
+        nav.appendChild(warnBox);
+        sidebar.appendChild(nav);
+        bodyDiv.appendChild(sidebar);
+
+        // --- Main content ---
+        const main = h('main', { className: 'flex-1 min-w-0 py-6 md:py-10 space-y-12 md:space-y-16 pb-24' });
+
+        function renderMain() {
+          main.innerHTML = '';
+
+          // Section 1: Linking Law
+          const sec1 = h('div', { id: 'sec1', className: 'scroll-mt-16' });
+          sec1.appendChild(h('div', { className: 'flex items-start justify-between gap-4 mb-6' },
+            h('div', {},
+              h('div', { className: 'inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#d4af37] mono mb-2' },
+                h('span', { className: 'w-6 h-px bg-[#d4af37]/50' }), ' SECTION 01'
+              ),
+              h('h2', { className: 'text-[26px] md:text-[32px] font-extrabold leading-tight' }, 'قانون الاستدعاء الموحد'),
+              h('p', { className: 'text-[13px] text-zinc-500 mt-2 mono' }, 'Unified Linking Law — Standard syntax for all environments')
+            ),
+            h('span', { className: 'hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-zinc-400 mono' },
+              icon('Hash', 'w-3 h-3'), ' 5 formulas'
+            )
+          ));
+
+          const table1 = h('div', { className: 'rounded-[16px] md:rounded-[20px] border border-white/[0.08] bg-white/[0.02] overflow-hidden' });
+          table1.appendChild(h('div', { className: 'hidden md:grid grid-cols-[160px_1fr_1fr_44px] gap-0 bg-white/[0.03] border-b border-white/[0.06] text-[11px] font-bold tracking-wide text-zinc-500 px-5 py-3 mono' },
+            h('div', {}, 'البيئة'),
+            h('div', {}, 'الصيغة القياسية'),
+            h('div', {}, 'مثال تطبيقي'),
+            h('div', {})
+          ));
+
+          const filteredU = u.filter(v => !searchTerm || `${v.env} ${v.envAr} ${v.formula} ${v.example}`.toLowerCase().includes(searchTerm.toLowerCase()));
+          const rows = h('div', { className: 'divide-y divide-white/[0.06]' });
+          filteredU.forEach(v => {
+            const row = h('div', { className: 'grid md:grid-cols-[160px_1fr_1fr_44px] gap-3 md:gap-0 px-4 md:px-5 py-4 items-center hover:bg-white/[0.02] transition-colors group' });
+            row.appendChild(h('div', {},
+              h('div', { className: 'text-[13px] font-bold text-white' }, v.env),
+              h('div', { className: 'text-[11px] text-zinc-500 mt-0.5' }, v.envAr)
+            ));
+            row.appendChild(h('div', { className: 'mono text-[11px] md:text-[12px] text-zinc-300 bg-black/30 border border-white/[0.06] rounded-lg px-3 py-2 overflow-x-auto', dir: 'ltr' }, v.formula));
+            const linkDiv = h('div', { className: 'flex items-center gap-2 min-w-0' });
+            linkDiv.appendChild(h('a', { href: v.href, target: '_blank', className: 'mono text-[11px] md:text-[12px] text-[#d4af37]/90 hover:text-[#d4af37] truncate underline underline-offset-4 decoration-[#d4af37]/20 hover:decoration-[#d4af37]/50', dir: 'ltr' }, v.example));
+            linkDiv.appendChild(icon('ExternalLink', 'w-3 h-3 text-zinc-600 shrink-0'));
+            row.appendChild(linkDiv);
+            const copyDiv = h('div', { className: 'hidden md:flex justify-end' });
+            copyDiv.appendChild(CopyButton({ text: v.example }));
+            row.appendChild(copyDiv);
+            rows.appendChild(row);
+          });
+          table1.appendChild(rows);
+
+          // Code example
+          const codeDiv = h('div', { className: 'p-4 md:p-5 bg-[#0e0e0c] border-t border-white/[0.06]' });
+          codeDiv.appendChild(h('div', { className: 'text-[11px] font-bold text-zinc-500 mono mb-3' }, 'مثال تطبيقي Row 2 - Zx_RieOS_v1.2'));
+          const pre = h('pre', { dir: 'ltr', className: 'mono text-[11px] leading-5 text-zinc-300 bg-black/50 border border-white/[0.06] rounded-xl p-4 overflow-x-auto' });
+          pre.textContent = `<tr>
+  <td>2</td>
+  <td><b>Zx_RieOS_v1.2</b> - الذهبي النهائي</td>
+  <td><a href="https://jabri-web.github.io/Zx_RieOS_v1.2" class="link-live">فتح</a></td>
+  <td><a href="/Page2.html" class="link-vercel">Page2 - اليمن (مرآة اليمن)</a></td>
+  <td><a href=".../magic-translator.html?file=README.md&lang=ar" class="link-wizard">الساحر</a></td>
+  <td><a href="https://github.com/Jabri-web/Zx_RieOS_v1.2" class="link-repo">Repo</a></td>
+  <td><a href="https://doi.org/10.5281/zenodo.20100622" class="link-doi">20100622</a></td>
+</tr>`;
+          codeDiv.appendChild(pre);
+          table1.appendChild(codeDiv);
+          sec1.appendChild(table1);
+          main.appendChild(sec1);
+
+          // Section 2: Empire Map
+          const sec2 = h('div', { id: 'sec2', className: 'scroll-mt-16' });
+          sec2.appendChild(h('div', { className: 'flex items-start justify-between gap-4 mb-6' },
+            h('div', {},
+              h('div', { className: 'inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#d4af37] mono mb-2' },
+                h('span', { className: 'w-6 h-px bg-[#d4af37]/50' }), ' SECTION 02'
+              ),
+              h('h2', { className: 'text-[26px] md:text-[32px] font-extrabold leading-tight' }, 'خريطة الإمبراطورية الرقمية'),
+              h('p', { className: 'text-[13px] text-zinc-500 mt-2' }, 'Heaven Al-Jabri Map — 5 طبقات • الباحث: عبدالله الجبري — صنعاء اليمن')
+            )
+          ));
+
+          const layers = h('div', { className: 'space-y-4' });
+          o.forEach(v => {
+            const layer = h('div', { className: 'rounded-[18px] border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-white/[0.01] overflow-hidden' });
+            layer.appendChild(h('div', { className: 'flex items-center justify-between px-5 md:px-6 py-4 border-b border-white/[0.06] bg-white/[0.02]' },
+              h('div', { className: 'flex items-center gap-3' },
+                h('div', { className: 'w-8 h-8 rounded-xl bg-[#d4af37]/15 border border-[#d4af37]/20 flex items-center justify-center' },
+                  icon(v.icon, 'w-4 h-4 text-[#d4af37]')
+                ),
+                h('div', {},
+                  h('div', { className: 'flex items-center gap-2' },
+                    h('span', { className: 'text-[13px] font-bold text-white' }, `الطبقة ${v.id}: ${v.title}`),
+                    h('span', { className: 'text-[10px] px-2 py-0.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-zinc-400 mono' }, v.en)
+                  ),
+                  v.repo ? h('div', { className: 'mono text-[11px] text-zinc-500 mt-0.5' }, v.repo) : null
+                )
+              ),
+              h('span', { className: 'mono text-[11px] px-2.5 py-1 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37]' }, `${v.count} مشاريع`)
+            ));
+
+            const itemsGrid = h('div', { className: 'grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06]' });
+            v.items.forEach(w => {
+              const item = h('div', { className: 'bg-[#0d0d0b] p-4 flex items-start justify-between gap-3 hover:bg-[#12120f] transition-colors group' });
+              const left = h('div', { className: 'min-w-0' });
+              left.appendChild(h('div', { className: 'flex items-center gap-2' },
+                h('span', { className: 'text-[13px] font-bold text-zinc-100 mono truncate' }, w.name),
+                w.badge ? h('span', { className: 'text-[9px] px-1.5 py-0.5 rounded bg-[#d4af37] text-black font-bold mono' }, w.badge) : null
+              ));
+              left.appendChild(h('div', { className: 'text-[11px] text-zinc-500 mt-1' }, w.role));
+              item.appendChild(left);
+              if (w.link) {
+                const a = h('a', { href: w.link, target: '_blank', className: 'w-7 h-7 rounded-lg bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-[#d4af37]/20 hover:border-[#d4af37]/30 transition-colors shrink-0' });
+                a.appendChild(icon('ExternalLink', 'w-3.5 h-3.5 text-zinc-400 group-hover:text-[#d4af37]'));
+                item.appendChild(a);
+              } else {
+                const placeholder = h('div', { className: 'w-7 h-7 rounded-lg bg-white/[0.03] border border-white/[0.04] flex items-center justify-center shrink-0' });
+                placeholder.appendChild(icon('BookOpen', 'w-3.5 h-3.5 text-zinc-600'));
+                item.appendChild(placeholder);
+              }
+              itemsGrid.appendChild(item);
+            });
+            layer.appendChild(itemsGrid);
+            layers.appendChild(layer);
+          });
+          sec2.appendChild(layers);
+          main.appendChild(sec2);
+
+          // Section 3: GitHub Organization
+          const sec3 = h('div', { id: 'sec3', className: 'scroll-mt-16' });
+          sec3.appendChild(h('div', { className: 'flex items-start justify-between gap-4 mb-6' },
+            h('div', {},
+              h('div', { className: 'inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#d4af37] mono mb-2' },
+                h('span', { className: 'w-6 h-px bg-[#d4af37]/50' }), ' SECTION 03'
+              ),
+              h('h2', { className: 'text-[26px] md:text-[32px] font-extrabold leading-tight' }, 'هيكل منظمة GitHub'),
+              h('p', { className: 'text-[13px] text-zinc-500 mt-2 mono' }, 'Jabri-web/ Organization Map — Z + C + A = 1 | Verified 2026-06-09')
+            )
+          ));
+
+          const orgBox = h('div', { className: 'rounded-[18px] border border-white/[0.08] bg-[#0d0d0b] overflow-hidden' });
+          orgBox.appendChild(h('div', { className: 'px-5 md:px-6 py-3 bg-white/[0.03] border-b border-white/[0.06] flex items-center justify-between' },
+            h('span', { className: 'mono text-[11px] text-zinc-500' }, 'Jabri-web/ <-- Organization Root'),
+            h('span', { className: 'mono text-[10px] px-2 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37]' }, '12 repos')
+          ));
+          const treePre = h('pre', { dir: 'ltr', className: 'mono text-[11px] md:text-[12px] leading-6 text-zinc-300 overflow-x-auto p-4 md:p-6' });
+          treePre.textContent = `📁 Jabri-web/
+│
+├── [1] jabri62018.github.io
+│   DOI: 10.5281/zenodo.20403864 / 21006432 ⚠️ conflict
+│   Pages: jabri-web.github.io/jabri62018.github.io/
+│   Desc: Main Portal Index
+│
+├── [2] Zx-RieOS-v1.2 GOLD
+│   DOI: 10.5281/zenodo.20100622 [x2] duplicate
+│   Pages: jabri-web.github.io/Zx_RieOS_v1.2/
+│
+├── [3] Zx-Mother-Function-Jabri
+│   DOI: - (core function)
+│   Desc: Core Zx Mother Function Implementation
+│
+├── [4] Jabri-web.github.io
+│   DOI: 10.5281/zenodo.20499365 / 20404167
+│   Pages: https://jabri-web.github.io/
+│
+├── [5] Jabri_Nobble (Millennium Suite) DOI: 20148770
+│   ├── 5-1 Jabri-Riemann  DOI 20139904
+│   ├── 5-2 Jabri-np       DOI 20145279 / 20145337
+│   ├── 5-3 Jabri-gab      DOI 20148344
+│   ├── 5-4 Jabri-Navier   DOI 20149618
+│   ├── 5-5 Jabri-Birch    DOI: -
+│   ├── 5-6 Jabri-Hodge    DOI: -
+│   └── 5-7 Jabri-Identity DOI 20114317  Z_t=1
+│
+├── [6] Jabri_lab (Publishing)
+│   ├── 6-1 Jabri-5  6-2 Jabri-28  6-3 Gravity
+│   ├── 6-4 Spacetime 6-5 DarkEnergy 6-6 Planck
+│   └── 6-7 Hubble 6-8 Periodic 6-9 Jabri-all
+│
+├── [7] Zx-RieOS-v1.1 DOI: 19981688 / 20070594
+├── [8] Jabri-RiemannOS DOI: -
+├── [9] Jabri-Checkout DOI: 20513840 ⭐
+├── [10] Jabri-web [ROUTER FOR GITHUB]
+├── [11] jabri-com [ROUTER FOR AL-WAHA & VERCEL]
+└── [12] jabri.com [ROUTER FOR 10++ 11]`;
+          orgBox.appendChild(treePre);
+
+          // Requirements grid
+          const reqGrid = h('div', { className: 'grid md:grid-cols-3 gap-px bg-white/[0.06] border-t border-white/[0.06]' });
+          reqGrid.appendChild(h('div', { className: 'bg-[#0d0d0b] p-4' },
+            h('div', { className: 'text-[11px] font-bold text-white mb-2' }, 'المتطلبات لكل مستودع'),
+            h('div', { className: 'space-y-1.5 mono text-[11px] text-zinc-500' },
+              h('div', {}, '✓ README.md + README-AR.md'),
+              h('div', {}, '✓ ABOUT.md + ABOUT-AR.md'),
+              h('div', {}, '✓ Language toggle bar')
+            )
+          ));
+          reqGrid.appendChild(h('div', { className: 'bg-[#0d0d0b] p-4' },
+            h('div', { className: 'text-[11px] font-bold text-white mb-2' }, 'الربط الإلزامي'),
+            h('div', { className: 'mono text-[11px] text-[#d4af37]' }, 'https://jabri-com.vercel.app'),
+            h('div', { className: 'mono text-[10px] text-zinc-600 mt-1' }, 'Main portal link required in every repo')
+          ));
+          reqGrid.appendChild(h('div', { className: 'bg-[#0d0d0b] p-4' },
+            h('div', { className: 'text-[11px] font-bold text-white mb-2' }, 'الترخيص'),
+            h('div', { className: 'inline-flex px-2 py-1 rounded bg-white/[0.06] border border-white/[0.08] mono text-[11px] text-zinc-300' }, 'CC BY 4.0'),
+            h('div', { className: 'mono text-[10px] text-zinc-600 mt-2' }, 'Creative Commons Attribution')
+          ));
+          orgBox.appendChild(reqGrid);
+          sec3.appendChild(orgBox);
+          main.appendChild(sec3);
+
+          // Section 4: DOI Registry
+          const sec4 = h('div', { id: 'sec4', className: 'scroll-mt-16' });
+          sec4.appendChild(h('div', { className: 'flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6' },
+            h('div', {},
+              h('div', { className: 'inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#d4af37] mono mb-2' },
+                h('span', { className: 'w-6 h-px bg-[#d4af37]/50' }), ' SECTION 04'
+              ),
+              h('h2', { className: 'text-[26px] md:text-[32px] font-extrabold leading-tight' }, 'سجل معرفات DOI الكامل'),
+              h('p', { className: 'text-[13px] text-zinc-500 mt-2' }, '19 معرف • مع تحذيرات التكرار والتعارض')
+            ),
+            h('div', { className: 'flex gap-2' },
+              h('span', { className: 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 mono' },
+                h('span', { className: 'w-1.5 h-1.5 rounded-full bg-emerald-400' }), ' 15 active'
+              ),
+              h('span', { className: 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-400 mono' },
+                icon('TriangleAlert', 'w-3 h-3'), ' 4 warnings'
+              )
+            )
+          ));
+
+          const doiTable = h('div', { className: 'rounded-[18px] border border-white/[0.08] bg-white/[0.02] overflow-hidden' });
+          const tableWrap = h('div', { className: 'overflow-x-auto' });
+          const table = h('table', { className: 'w-full text-right', dir: 'rtl' });
+          table.appendChild(h('thead', {},
+            h('tr', { className: 'bg-white/[0.03] border-b border-white/[0.06] text-[11px] font-bold tracking-wide text-zinc-500 mono' },
+              h('th', { className: 'px-4 py-3 font-bold' }, '#'),
+              h('th', { className: 'px-4 py-3 font-bold' }, 'اسم المستودع / الورقة'),
+              h('th', { className: 'px-4 py-3 font-bold' }, 'رقم DOI'),
+              h('th', { className: 'px-4 py-3 font-bold' }, 'الرابط'),
+              h('th', { className: 'px-4 py-3 font-bold' }, 'الحالة'),
+              h('th', { className: 'px-4 py-3 font-bold' }, '')
+            )
+          ));
+          const tbody = h('tbody', { className: 'divide-y divide-white/[0.06]' });
+          const filteredI = i.filter(v => !searchTerm || `${v.name} ${v.doi}`.toLowerCase().includes(searchTerm.toLowerCase()));
+          filteredI.forEach((v, w) => {
+            const tr = h('tr', { className: `hover:bg-white/[0.02] transition-colors ${v.status !== 'active' ? 'bg-amber-500/[0.03]' : ''}` });
+            tr.appendChild(h('td', { className: 'px-4 py-3 mono text-[11px] text-zinc-500' }, w + 1));
+            const nameTd = h('td', { className: 'px-4 py-3' });
+            nameTd.appendChild(h('div', { className: 'text-[13px] font-medium text-zinc-100' }, v.name));
+            if (v.alt) nameTd.appendChild(h('div', { className: 'text-[10px] mono text-amber-400/70' }, `تعارض: ${v.alt}`));
+            tr.appendChild(nameTd);
+            tr.appendChild(h('td', { className: 'px-4 py-3 mono text-[12px] text-white', dir: 'ltr' }, v.doi));
+            const linkTd = h('td', { className: 'px-4 py-3' });
+            const doiLink = h('a', { href: `https://doi.org/10.5281/zenodo.${v.doi}`, target: '_blank', className: 'inline-flex items-center gap-1 mono text-[11px] text-[#d4af37] hover:underline underline-offset-4', dir: 'ltr' });
+            doiLink.textContent = `10.5281/zenodo.${v.doi} `;
+            doiLink.appendChild(icon('ExternalLink', 'w-3 h-3'));
+            linkTd.appendChild(doiLink);
+            tr.appendChild(linkTd);
+            const statusTd = h('td', { className: 'px-4 py-3' });
+            if (v.status === 'active') statusTd.appendChild(h('span', { className: 'inline-flex px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400 mono' }, 'ON'));
+            else if (v.status === 'duplicate') statusTd.appendChild(h('span', { className: 'inline-flex px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-400 mono' }, 'DUPLICATE'));
+            else if (v.status === 'conflict') statusTd.appendChild(h('span', { className: 'inline-flex px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/20 text-[10px] text-red-400 mono' }, 'CONFLICT'));
+            tr.appendChild(statusTd);
+            const copyTd = h('td', { className: 'px-4 py-3' });
+            copyTd.appendChild(CopyButton({ text: `https://doi.org/10.5281/zenodo.${v.doi}` }));
+            tr.appendChild(copyTd);
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          tableWrap.appendChild(table);
+          doiTable.appendChild(tableWrap);
+
+          // Warnings
+          const warnSection = h('div', { className: 'p-4 md:p-5 bg-amber-500/[0.06] border-t border-amber-500/10' });
+          const warnInner = h('div', { className: 'flex gap-3' });
+          warnInner.appendChild(icon('TriangleAlert', 'w-4 h-4 text-amber-400 shrink-0 mt-0.5'));
+          const warnText = h('div', { className: 'space-y-2 text-[12px] leading-6 text-zinc-300' });
+          warnText.appendChild(h('div', { className: 'font-bold text-amber-300' }, 'تحذيرات التحقق اليدوي — يجب المراجعة:'));
+          warnText.appendChild(h('div', {}, '1. jabri62018.github.io: الرقم ', h('span', { className: 'mono text-white' }, '21006432'), ' يظهر في القائمة، لكن Zenodo الرسمية تظهر ', h('span', { className: 'mono text-white' }, '20403864'), ' — تحقق من: zenodo.org/records/21006432 و /20403864'));
+          warnText.appendChild(h('div', {}, '2. تكرار ', h('span', { className: 'mono text-white' }, '19981688'), ' مذكور في Repos (#7) و Papers Page 2 (#9) — نفس الإصدار في فئتين؟'));
+          warnText.appendChild(h('div', {}, '3. تكرار ', h('span', { className: 'mono text-white' }, '20100622'), ' مذكور في Repos (#7) و Papers Page 2 (#7) — تصنيف مزدوج GOLD/Dataset'));
+          warnInner.appendChild(warnText);
+          warnSection.appendChild(warnInner);
+          doiTable.appendChild(warnSection);
+          sec4.appendChild(doiTable);
+          main.appendChild(sec4);
+
+          // Section 5: File Structure
+          const sec5 = h('div', { id: 'sec5', className: 'scroll-mt-16' });
+          sec5.appendChild(h('div', { className: 'flex items-start justify-between gap-4 mb-6' },
+            h('div', {},
+              h('div', { className: 'inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-[#d4af37] mono mb-2' },
+                h('span', { className: 'w-6 h-px bg-[#d4af37]/50' }), ' SECTION 05'
+              ),
+              h('h2', { className: 'text-[26px] md:text-[32px] font-extrabold leading-tight' }, 'هيكل ملفات jabri-com.vercel.app'),
+              h('p', { className: 'text-[13px] text-zinc-500 mt-2' }, 'إجمالي 110 ملف • 96 جذر + 14 مجلدات فرعية • 75 HTML قابلة للفهرسة')
+            )
+          ));
+
+          // Stats cards
+          const statsGrid = h('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-3 mb-6' });
+          statsGrid.appendChild(h('div', { className: 'rounded-2xl bg-white/[0.04] border border-white/[0.06] p-4' },
+            h('div', { className: 'text-[28px] font-bold mono text-white leading-none' }, '110'),
+            h('div', { className: 'text-[11px] text-zinc-500 mt-2' }, 'الإجمالي الكلي'),
+            h('div', { className: 'mt-3 h-1 rounded-full bg-white/[0.06] overflow-hidden' }, h('div', { className: 'h-full w-full bg-[#d4af37]' }))
+          ));
+          statsGrid.appendChild(h('div', { className: 'rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/20 p-4' },
+            h('div', { className: 'text-[28px] font-bold mono text-[#d4af37] leading-none' }, '96'),
+            h('div', { className: 'text-[11px] text-[#d4af37]/70 mt-2' }, 'ملفات الجذر'),
+            h('div', { className: 'mt-3 h-1 rounded-full bg-[#d4af37]/20 overflow-hidden' }, h('div', { className: 'h-full w-[87%] bg-[#d4af37]' }))
+          ));
+          statsGrid.appendChild(h('div', { className: 'rounded-2xl bg-white/[0.04] border border-white/[0.06] p-4' },
+            h('div', { className: 'text-[28px] font-bold mono text-white leading-none' }, '75'),
+            h('div', { className: 'text-[11px] text-zinc-500 mt-2' }, 'HTML قابلة للفهرسة'),
+            h('div', { className: 'mt-3 h-1 rounded-full bg-white/[0.06] overflow-hidden' }, h('div', { className: 'h-full w-[68%] bg-white' }))
+          ));
+          statsGrid.appendChild(h('div', { className: 'rounded-2xl bg-white/[0.04] border border-white/[0.06] p-4' },
+            h('div', { className: 'text-[28px] font-bold mono text-white leading-none' }, '22'),
+            h('div', { className: 'text-[11px] text-zinc-500 mt-2' }, 'مجموع المجاميع'),
+            h('div', { className: 'mt-3 h-1 rounded-full bg-white/[0.06] overflow-hidden' }, h('div', { className: 'h-full w-[45%] bg-white/60' }))
+          ));
+          sec5.appendChild(statsGrid);
+
+          // File groups + subfolders
+          const fileGrid = h('div', { className: 'grid lg:grid-cols-[1.2fr_0.8fr] gap-4' });
+
+          // Root files
+          const rootBox = h('div', { className: 'rounded-[18px] border border-white/[0.08] bg-white/[0.02] overflow-hidden' });
+          rootBox.appendChild(h('div', { className: 'px-5 py-3 bg-white/[0.03] border-b border-white/[0.06] flex items-center justify-between' },
+            h('span', { className: 'text-[12px] font-bold text-white' }, 'مجموعات ملفات الجذر (16 مجموعة)'),
+            h('span', { className: 'mono text-[10px] text-zinc-500' }, 'ROOT 96 files')
+          ));
+          const rootList = h('div', { className: 'divide-y divide-white/[0.06] max-h-[680px] overflow-y-auto' });
+          a.forEach(v => {
+            const item = h('div', { className: 'flex gap-3 px-4 py-3 hover:bg-white/[0.02] transition-colors items-start' });
+            item.appendChild(h('span', { className: `w-1 self-stretch rounded-full ${v.color} ${v.muted ? 'opacity-40' : ''}` }));
+            const content = h('div', { className: 'flex-1 min-w-0' });
+            content.appendChild(h('div', { className: 'flex items-center gap-2' },
+              h('span', { className: 'mono text-[11px] text-zinc-500' }, `${v.id}.`),
+              h('span', { className: 'text-[13px] font-medium text-zinc-100' }, v.name),
+              h('span', { className: 'mono text-[10px] px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.06] text-zinc-400' }, v.count)
+            ));
+            content.appendChild(h('div', { className: 'mono text-[11px] text-zinc-500 mt-1 truncate' }, v.files));
+            item.appendChild(content);
+            rootList.appendChild(item);
+          });
+          rootBox.appendChild(rootList);
+          fileGrid.appendChild(rootBox);
+
+          // Subfolders + JSON
+          const rightCol = h('div', { className: 'space-y-4' });
+          const subBox = h('div', { className: 'rounded-[18px] border border-white/[0.08] bg-white/[0.02] overflow-hidden' });
+          subBox.appendChild(h('div', { className: 'px-5 py-3 bg-white/[0.03] border-b border-white/[0.06] text-[12px] font-bold text-white' }, 'المجلدات الفرعية (14 ملف)'));
+          const subList = h('div', { className: 'divide-y divide-white/[0.06]' });
+          c.forEach(v => {
+            subList.appendChild(h('div', { className: 'px-4 py-3 flex items-center justify-between gap-3' },
+              h('div', {},
+                h('div', { className: 'mono text-[12px] font-bold text-[#d4af37]' }, v.path),
+                h('div', { className: 'mono text-[11px] text-zinc-500 mt-1' }, v.files)
+              ),
+              h('span', { className: 'mono text-[11px] px-2 py-1 rounded-full bg-white/[0.06] border border-white/[0.08] text-zinc-400' }, v.count)
+            ));
+          });
+          subList.appendChild(h('div', { className: 'px-4 py-3 bg-[#0d0d0b] border-t border-white/[0.06] text-[11px] text-zinc-500 mono' },
+            h('div', { className: 'flex justify-between' }, h('span', {}, 'مجموع ملفات الجذر'), h('span', { className: 'text-white' }, '96')),
+            h('div', { className: 'flex justify-between mt-1' }, h('span', {}, 'مجموع المجلدات'), h('span', { className: 'text-white' }, '14')),
+            h('div', { className: 'flex justify-between mt-1 font-bold' }, h('span', {}, 'الإجمالي'), h('span', { className: 'text-[#d4af37]' }, '110 ملف'))
+          ));
+          subBox.appendChild(subList);
+          rightCol.appendChild(subBox);
+
+          // JSON box
+          const jsonBox = h('div', { className: 'rounded-[18px] border border-[#d4af37]/20 bg-[#d4af37]/[0.06] overflow-hidden' });
+          jsonBox.appendChild(h('div', { className: 'px-5 py-3 border-b border-[#d4af37]/10 flex items-center justify-between' },
+            h('span', { className: 'text-[12px] font-bold text-[#d4af37] flex items-center gap-2' }, icon('Box', 'w-4 h-4'), ' Three-Tier JSON — للـ Developer'),
+            (() => { const c = h('div'); c.appendChild(CopyButton({ text: m })); return c; })()
+          ));
+          const jsonPre = h('pre', { dir: 'ltr', className: 'mono text-[11px] leading-5 p-4 text-zinc-300 overflow-x-auto max-h-[360px]' });
+          jsonPre.textContent = m;
+          jsonBox.appendChild(jsonPre);
+          rightCol.appendChild(jsonBox);
+          fileGrid.appendChild(rightCol);
+          sec5.appendChild(fileGrid);
+
+          // Verification footer
+          const verifyBox = h('div', { className: 'rounded-[20px] border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6 md:p-8' });
+          const verifyInner = h('div', { className: 'flex flex-col md:flex-row md:items-start justify-between gap-8' });
+          const verifyLeft = h('div', { className: 'flex-1' });
+          verifyLeft.appendChild(h('div', { className: 'text-[12px] font-bold tracking-widest text-zinc-500 mono mb-4' }, 'روابط التحقق والتوثيق • VERIFICATION LINKS'));
+          const linksGrid = h('div', { className: 'grid md:grid-cols-2 gap-3' });
+          [
+            { label: 'الدالة الأم Z(x) نظرية السندباد', q: 'الدالة+الأم+Z(x)+نظرية+السندباد+الموحدة' },
+            { label: 'Z(x)= x^5 ln(x) sin(2π/x) exp(-x/xp)', q: 'Z(x)+%3D+x%5E5+ln(x)+sin(2%CF%80%2Fx)+exp(-x%2Fxp)' },
+            { label: 'Z + C + A = 1', q: 'Z+%2B+C+%2B+A+%3D+1' },
+            { label: 'مهندس عبدالله الجبري', q: 'مهندس+عبدالله+محمد+ناصر+الجبري' },
+            { label: 'Eng. Abdulla Al-Jabri', q: 'Eng.+Abdulla+Mohammed+Nasser+Al-Jabri' }
+          ].forEach((v, w) => {
+            const a = h('a', { href: `https://www.google.com/search?q=${v.q}&udm=50`, target: '_blank', className: 'group flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-[#d4af37]/20 transition-colors' });
+            a.appendChild(icon('Search', 'w-3.5 h-3.5 text-zinc-500 group-hover:text-[#d4af37]'));
+            a.appendChild(h('span', { className: 'text-[12px] text-zinc-300 group-hover:text-white truncate' }, `${w + 1}- ${v.label}`));
+            linksGrid.appendChild(a);
+          });
+          verifyLeft.appendChild(linksGrid);
+          verifyInner.appendChild(verifyLeft);
+
+          const verifyRight = h('div', { className: 'w-full md:w-[320px] space-y-3' });
+          const registryBox = h('div', { className: 'rounded-xl bg-black/40 border border-white/[0.06] p-4' });
+          registryBox.appendChild(h('div', { className: 'text-[11px] font-bold text-white mono mb-3' }, 'OFFICIAL REGISTRY'));
+          const registryLinks = h('div', { className: 'space-y-2' });
+          [
+            { label: 'ORCID', val: '0009-0003-3319-3822 ↗', href: 'https://orcid.org/0009-0003-3319-3822', accent: false },
+            { label: 'Zenodo', val: '20513840 ↗', href: 'https://doi.org/10.5281/zenodo.20513840', accent: true },
+            { label: 'GitHub', val: 'Jabri-web ↗', href: 'https://github.com/Jabri-web', accent: false },
+            { label: 'Wikipedia', val: 'User:Jabri2026 ↗', href: 'https://en.wikipedia.org/wiki/User:Jabri2026', accent: false },
+            { label: 'Wikibin', val: 'Article ↗', href: 'https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html', accent: false }
+          ].forEach(item => {
+            const a = h('a', { href: item.href, target: '_blank', className: `flex items-center justify-between px-3 py-2 rounded-lg ${item.accent ? 'bg-[#d4af37]/10 border border-[#d4af37]/20 hover:bg-[#d4af37]/15' : 'bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.06]'} transition-colors` });
+            a.appendChild(h('span', { className: `text-[11px] mono ${item.accent ? 'text-[#d4af37]' : 'text-zinc-400'}` }, item.label));
+            a.appendChild(h('span', { className: `text-[11px] mono ${item.accent ? 'text-white' : 'text-white'}` }, item.val));
+            registryLinks.appendChild(a);
+          });
+          registryBox.appendChild(registryLinks);
+          verifyRight.appendChild(registryBox);
+          verifyRight.appendChild(h('div', { className: 'text-[11px] leading-5 text-zinc-500 mono text-center' },
+            '© 2026 م/ عبدالله محمد ناصر الجبري', h('br'), ' جميع الحقوق محفوظة — CC BY 4.0'
+          ));
+          verifyInner.appendChild(verifyRight);
+          verifyBox.appendChild(verifyInner);
+          main.appendChild(verifyBox);
+
+          // Re-attach main to bodyDiv
+          // (already attached)
+        }
+
+        renderMain();
+        bodyDiv.appendChild(main);
+        container.appendChild(bodyDiv);
+
+        // --- Mobile bottom bar ---
+        const mobileBar = h('div', { className: 'lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-white/[0.08] bg-[#0a0a0a]/90 backdrop-blur-xl' });
+        const mobileGrid = h('div', { className: 'grid grid-cols-5 gap-px bg-white/[0.06]' });
+        [
+          { id: 'sec1', icon: 'Link2' },
+          { id: 'sec2', icon: 'Layers' },
+          { id: 'sec3', icon: 'FolderTree' },
+          { id: 'sec4', icon: 'Database' },
+          { id: 'sec5', icon: 'FileText' }
+        ].forEach(v => {
+          const btn = h('button', { className: `h-14 flex flex-col items-center justify-center gap-1 bg-[#0a0a0a] ${activeSection === v.id ? 'text-[#d4af37]' : 'text-zinc-500'}` });
+          btn.appendChild(icon(v.icon, 'w-4 h-4'));
+          btn.appendChild(h('span', { className: 'text-[8px] mono' }, v.id.toUpperCase()));
+          btn.addEventListener('click', () => {
+            document.getElementById(v.id)?.scrollIntoView({ behavior: 'smooth' });
+          });
+          mobileGrid.appendChild(btn);
+        });
+        mobileBar.appendChild(mobileGrid);
+        container.appendChild(mobileBar);
+
+        // --- Intersection Observer for active section ---
+        setTimeout(() => {
+          const sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5'];
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                activeSection = entry.target.id;
+                // Update sidebar links
+                document.querySelectorAll('aside nav a[href^="#"]').forEach(link => {
+                  const href = link.getAttribute('href').slice(1);
+                  const isActive = href === activeSection;
+                  link.className = `group flex items-center gap-3 px-3 py-2.5 rounded-xl border text-[13px] transition-all ${isActive ? 'bg-[#d4af37]/10 border-[#d4af37]/20 text-[#d4af37]' : 'bg-transparent border-transparent text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.04] hover:border-white/[0.06]'}`;
+                  const iconEl = link.querySelector('svg');
+                  if (iconEl) iconEl.setAttribute('class', `w-4 h-4 ${isActive ? 'text-[#d4af37]' : 'text-zinc-500 group-hover:text-zinc-300'}`);
+                });
+                // Update mobile bar
+                document.querySelectorAll('.lg\\:hidden button').forEach((btn, idx) => {
+                  const id = `sec${idx + 1}`;
+                  btn.className = `h-14 flex flex-col items-center justify-center gap-1 bg-[#0a0a0a] ${id === activeSection ? 'text-[#d4af37]' : 'text-zinc-500'}`;
+                });
+              }
+            });
+          }, { rootMargin: '-30% 0px -60% 0px' });
+          sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+          });
+        }, 100);
+
+        return container;
+      }
+
+      // --- Mount ---
+      document.getElementById('root').appendChild(App());
+
+      // --- External links target blank ---
+      (function() {
+        function m(a) {
+          var h = a.getAttribute("href");
+          if (!h) return;
+          try {
+            var u = new URL(h, document.baseURI);
+            if ((u.protocol === "http:" || u.protocol === "https:") && u.host !== location.host) {
+              a.target = "_blank";
+              a.rel = "noopener noreferrer";
+            }
+          } catch (e) {}
+        }
+        function s() { document.querySelectorAll("a[href]").forEach(m); }
+        if (document.readyState !== "loading") { s(); }
+        else { document.addEventListener("DOMContentLoaded", s); }
+        document.addEventListener("click", function(e) {
+          var a = e.target && e.target.closest && e.target.closest("a[href]");
+          if (a) { m(a); }
+        }, true);
+      })();
+    })();
+  </script>
+</body>
+</html>
