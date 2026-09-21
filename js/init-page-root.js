@@ -1,17 +1,18 @@
 // ================================================================
-//  init-page-root.js - v5.5.0
+//  init-page-root.js - v5.7.1
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  ✨ جديد v5.5:
-//    • Smart 404 Handler — يصلّح الرابط تلقائياً
-//    • No White Screen — splash يبقى ظاهراً طوال الفحص
-//    • فحص /ar/ و /en/ و / قبل التحويل للرئيسية
-//    • إضافة .html تلقائياً لو ناقص
+//  🔒 v5.7.1 (أمان + 404 نظيف):
+//    • حذف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت إطلاقاً
+//    • loginLocal / loginGoogle معطّلة رسمياً (تحتاج backend)
+//    • WahaAuth يبقى للتوافق مع header.html (interface فقط)
+//    • Smart 404 نظيف: يضيف .html + يجرب ar/en/ فقط
+//    • لا شاشة بيضاء أبداً — splash يبقى أثناء الفحص
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] الدرع المطلق (v5.5.0 - Smart 404)...');
+  console.log('🛡️ [init] الدرع المطلق (v5.7.1 - Secure + Clean 404)...');
 
   // ✅ كشف البيئة
   const PROTO = window.location.protocol;
@@ -28,15 +29,13 @@
   let splashAutoHideTimer = null;
 
   /* ================================================================
-     ✅ WahaAuth — نظام الدخول الموحّد
+     🔒 WahaAuth — نظام الدخول (v5.7.1)
+     ─────────────────────────────────────────────────────────────
+     ⚠️ لا كلمات سر مكشوفة.
+     ⚠️ المصادقة الحقيقية تحتاج backend (Supabase/Firebase/…).
+     ⚠️ الملف ده عامّ ومفهرس — أي سر فيه = مكشوف.
      ================================================================ */
   const AUTH_KEY = 'waha_user';
-  const AUTH_USERS = {
-    'admin':     { password: '12345',   role: 'admin',     name: 'المدير'  },
-    'moderator': { password: 'mod123',  role: 'moderator', name: 'مشرف'   },
-    'user':      { password: 'user123', role: 'user',      name: 'مستخدم' },
-    'guest':     { password: 'guest',   role: 'guest',     name: 'زائر'   }
-  };
 
   let _currentUser = null;
   try {
@@ -55,38 +54,61 @@
   }
 
   window.WahaAuth = {
-    getUser: function() { return _currentUser ? Object.assign({}, _currentUser) : null; },
-    isLoggedIn: function() { return !!_currentUser; },
-    hasRole: function(role) { return !!_currentUser && _currentUser.role === role; },
+    getUser: function() {
+      return _currentUser ? Object.assign({}, _currentUser) : null;
+    },
+    isLoggedIn: function() {
+      return !!_currentUser;
+    },
+    hasRole: function(role) {
+      return !!_currentUser && _currentUser.role === role;
+    },
+
+    /**
+     * ⚠️ معطّلة رسمياً — لا مصادقة محلية في الفرونت
+     * للتفعيل: اربطها بـ backend آمن (fetch → API)
+     */
     loginLocal: function(username, password) {
-      username = String(username || '').trim();
-      password = String(password || '').trim();
-      if (!username || !password) {
-        return { ok: false, error: 'الرجاء إدخال اسم المستخدم وكلمة المرور' };
-      }
-      const u = AUTH_USERS[username];
-      if (u && u.password === password) {
-        _currentUser = {
-          name: u.name, role: u.role, username: username,
-          provider: 'local', since: Date.now()
-        };
-        _persistAuth();
-        return { ok: true, user: Object.assign({}, _currentUser) };
-      }
-      return { ok: false, error: 'اسم المستخدم أو كلمة المرور غير صحيحة' };
-    },
-    loginGoogle: function() {
-      _currentUser = {
-        name: 'مستخدم Google', role: 'google',
-        email: 'user@gmail.com', provider: 'google', since: Date.now()
+      console.warn('🔒 [auth] loginLocal معطّلة — لا مصادقة محلية في الفرونت');
+      return {
+        ok: false,
+        error: 'المصادقة المحلية معطّلة. النظام سيتوفر قريباً عبر خادم آمن.'
       };
-      _persistAuth();
-      return { ok: true, user: Object.assign({}, _currentUser) };
     },
+
+    /**
+     * ⚠️ معطّلة — OAuth الحقيقي يحتاج backend
+     */
+    loginGoogle: function() {
+      console.warn('🔒 [auth] loginGoogle معطّلة — تحتاج backend OAuth');
+      return {
+        ok: false,
+        error: 'الدخول عبر Google سيتوفر قريباً عبر خادم آمن.'
+      };
+    },
+
     logout: function() {
       _currentUser = null;
       _persistAuth();
       return { ok: true };
+    },
+
+    /**
+     * للاستخدام الداخلي فقط — عند ربط backend مستقبلاً
+     * ⛔ لا تستدعيها من كود عام
+     */
+    _setUser: function(user) {
+      if (!user || typeof user !== 'object') return false;
+      _currentUser = {
+        name: String(user.name || 'مستخدم'),
+        role: String(user.role || 'user'),
+        username: user.username ? String(user.username) : undefined,
+        email: user.email ? String(user.email) : undefined,
+        provider: String(user.provider || 'backend'),
+        since: Date.now()
+      };
+      _persistAuth();
+      return true;
     }
   };
 
@@ -118,7 +140,6 @@
   const _EXISTS_CACHE = new Map();
   function _pathExists(url) {
     if (_EXISTS_CACHE.has(url)) return Promise.resolve(_EXISTS_CACHE.get(url));
-    // APK: نستخدم XHR (fetch ممنوع على file://)
     if (IS_APK) {
       return _xhrProbe(url).then(function(ok) {
         _EXISTS_CACHE.set(url, ok);
@@ -207,7 +228,6 @@
 
     const t = setTimeout(_showLangLoader, 280);
 
-    // على APK: مسار نسبي مباشر
     if (IS_APK) {
       clearTimeout(t);
       _showLangLoader();
@@ -264,12 +284,23 @@
   window.getCurrentLanguage = _getCurrentLang;
 
   /* ================================================================
-     ✨ [v5.5] Smart 404 Handler
+     ✨ Smart 404 Handler — نظيف (v5.7.1)
      ─────────────────────────────────────────────────────────────
-     المبدأ: لا شاشة بيضاء أبداً — splash يبقى، نفحص بهدوء، ننتقل فوراً
+     ① ما نعيد روابط Google القديمة
+     ② نصلّح فقط: إضافة .html لو ناقص
+     ③ نجرّب /ar/ /en/ / — روابط موقعنا الحقيقية
+     ④ لو ما لقينا → الرئيسية بهدوء
      ================================================================ */
 
-  // كشف 404 عبر: العنوان + محتوى الصفحة + Performance API
+  function unique(arr) {
+    var seen = {};
+    return arr.filter(function(x) {
+      if (!x || seen[x]) return false;
+      seen[x] = 1;
+      return true;
+    });
+  }
+
   function detect404() {
     if (document.title && /404/i.test(document.title)) return true;
 
@@ -280,7 +311,6 @@
     if (/NOT_FOUND/i.test(bodyHTML)) return true;
     if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
 
-    // Performance API
     if (window.performance && window.performance.getEntries) {
       const href = location.href;
       const entries = window.performance.getEntries();
@@ -293,31 +323,29 @@
     return false;
   }
 
-  // توليد المسارات المرشحة
+  /* ================================================================
+     مولّد المرشحات — نظيف
+     ⛔ لا جدول خاص، لا hyphen، لا تخمين
+     ✅ .html + ar/en/ + /
+     ================================================================ */
   function generateCandidates(pathname) {
     var path = String(pathname || '/').split('?')[0].split('#')[0];
     path = path.replace(/\/+$/, '') || '/';
 
-    // استخرج اسم الملف والمجلد
-    var parts = path.split('/').filter(function(x) { return x; });
-    var file = parts.length ? parts[parts.length - 1] : 'index.html';
-    var dir  = parts.slice(0, -1).join('/');
-
-    // لو ما فيه امتداد معروف → أضف .html
-    var hasExt = /\.(html?|php|xml|json|css|js|png|jpe?g|gif|webp|svg|ico|mp3|mp4|webm|pdf|txt|md|apk|zip)$/i.test(file);
-    if (!hasExt) {
-      // لو الفايل فاضي من الأصل → index.html
-      if (!file) file = 'index.html';
-      else file = file + '.html';
-    }
-
-    var dirPrefix = dir ? dir + '/' : '';
     var candidates = [];
 
-    // ① المسار الحالي كما هو
+    var parts = path.split('/').filter(function(x) { return x; });
+    var lastRaw = parts.length ? parts[parts.length - 1] : '';
+    var dir = parts.slice(0, -1).join('/');
+    var dirPrefix = dir ? dir + '/' : '';
+
+    var hasExt = /\.(html?|php|xml|json|css|js|png|jpe?g|gif|webp|svg|ico|mp3|mp4|webm|pdf|txt|md|apk|zip)$/i.test(lastRaw);
+    var file = lastRaw;
+    if (!file) file = 'index.html';
+    else if (!hasExt) file = file + '.html';
+
     candidates.push('/' + dirPrefix + file);
 
-    // هل نحن داخل /ar/ أو /en/؟
     var langMatch = dir.match(/^(ar|en)(\/|$)/);
     if (langMatch) {
       var lang = langMatch[1];
@@ -325,16 +353,11 @@
       var rest = dir.slice(lang.length + 1);
       var restPrefix = rest ? rest + '/' : '';
 
-      // ② نفس الملف في اللغة الأخرى
       candidates.push('/' + other + '/' + restPrefix + file);
-      // ③ نفس الملف في الجذر
       candidates.push('/' + restPrefix + file);
     } else {
-      // ④ في ar/
       candidates.push('/ar/' + dirPrefix + file);
-      // ⑤ في en/
       candidates.push('/en/' + dirPrefix + file);
-      // ⑥ لو كنا في مجلد فرعي → جرّب الجذر
       if (dir) {
         candidates.push('/' + file);
         candidates.push('/ar/' + file);
@@ -342,35 +365,25 @@
       }
     }
 
-    // إزالة التكرار مع الحفاظ على الترتيب
-    var seen = {};
-    return candidates.filter(function(c) {
-      if (seen[c]) return false;
-      seen[c] = 1;
-      return true;
+    candidates = unique(candidates).filter(function(c) {
+      return c && c !== path && c.indexOf('//') === -1;
     });
+
+    return candidates;
   }
 
-  // تحديث نص الـ splash (بدون إخفاء)
   function updateSplashText(text) {
     var el = document.querySelector('#splashScreen .splash-sub');
     if (el) el.textContent = text;
   }
-  function updateSplashTitle(text) {
-    var el = document.querySelector('#splashScreen .splash-title');
-    if (el) el.textContent = text;
-  }
 
-  // ✨ المعالج الذكي
   async function handle404Smart() {
     var currentUrl = location.pathname + location.search;
 
-    // حماية ضد الحلقات — مفتاح لكل URL
     var guardKey = 'waha_404_' + currentUrl;
     try {
       if (sessionStorage.getItem(guardKey)) {
-        console.log('🔁 [404] محاولة مكررة لنفس الرابط — تخطي');
-        // لو مكرر → حوّل للرئيسية بهدوء
+        console.log('🔁 [404] محاولة مكررة — تخطي للرئيسية');
         navigateReplace('/index.html');
         return;
       }
@@ -379,7 +392,6 @@
 
     console.log('🔍 [404] صفحة مفقودة:', currentUrl);
 
-    // ✅ نُبقي splash ظاهراً
     if (document.getElementById('splashScreen')) {
       updateSplashText('🔎 جارٍ البحث عن الصفحة...');
     }
@@ -387,12 +399,8 @@
     var candidates = generateCandidates(location.pathname);
     console.log('🔍 [404] المسارات المرشحة:', candidates);
 
-    // ✅ نفحص كل مرشح بهدوء
     for (var i = 0; i < candidates.length; i++) {
       var candidate = candidates[i];
-      // ما نجرّب نفس الرابط الحالي
-      if (candidate === location.pathname) continue;
-
       var testUrl = candidate + location.search;
       var exists = await _pathExists(testUrl);
 
@@ -403,7 +411,6 @@
           updateSplashText('✨ وجدناها! جارٍ التحويل...');
         }
 
-        // ✅ انتقال فوري بهدوء — بدون overlay
         setTimeout(function() {
           navigateReplace(testUrl);
         }, 180);
@@ -411,8 +418,7 @@
       }
     }
 
-    // ❌ ما لقينا شيء → الرئيسية بهدوء
-    console.log('❌ [404] لا يوجد بديل — العودة للرئيسية');
+    console.log('❌ [404] لا يوجد بديل — الرئيسية');
     if (document.getElementById('splashScreen')) {
       updateSplashText('🏝️ العودة إلى الواحة...');
     }
@@ -421,7 +427,6 @@
     }, 300);
   }
 
-  // انتقال بدون إضافة history entry
   function navigateReplace(url) {
     try {
       var absolute = new URL(url, location.href).href;
@@ -501,9 +506,6 @@
     });
   }
 
-  // ================================================================
-  //  تحميل HTML — XHR آمن
-  // ================================================================
   function loadHTMLFile(placeholder, filename, onSuccess, onFail) {
     if (!placeholder) {
       if (onFail) onFail(new Error('placeholder not found'));
@@ -631,31 +633,22 @@
     canonicalLink.href = currentUrl;
   }
 
-  // ================================================================
-  //  init الرئيسية
-  // ================================================================
   function init() {
     initLang();
     initTheme();
 
-    // ✅ ① splash أولاً — قبل أي شيء (درع ضد الأبيض)
     createSplash();
 
-    // ✅ ② فحص 404 فوراً — قبل تحميل header/footer
     var quick404 = false;
-    try {
-      quick404 = detect404();
-    } catch (e) { quick404 = false; }
+    try { quick404 = detect404(); } catch (e) { quick404 = false; }
 
     if (!IS_APK && quick404) {
-      console.log('🚨 [init] 404 مكتشف — تشغيل المعالج الذكي');
-      // أوقف الإخفاء التلقائي للـ splash
+      console.log('🚨 [init] 404 مكتشف — معالج ذكي');
       if (splashAutoHideTimer) clearTimeout(splashAutoHideTimer);
       handle404Smart();
-      return; // ← لا نكمل التهيئة العادية
+      return;
     }
 
-    // ✅ ③ تأخير الفحص عبر Performance API (بعد 100ms)
     if (!IS_APK) {
       setTimeout(function() {
         try {
@@ -668,21 +661,20 @@
       }, 120);
     }
 
-    // ✅ ④ تحميل header/footer
     var hasHeaderPH = !!document.getElementById('header-placeholder');
     var hasFooterPH = !!document.getElementById('footer-placeholder');
 
     if (hasHeaderPH) {
       loadHeader();
     } else {
-      console.log('ℹ️ [init] لا يوجد header-placeholder — header مضمّن');
+      console.log('ℹ️ [init] لا يوجد header-placeholder');
       setTimeout(hideSplash, 300);
     }
 
     if (hasFooterPH) {
       loadFooter();
     } else {
-      console.log('ℹ️ [init] لا يوجد footer-placeholder — footer مضمّن');
+      console.log('ℹ️ [init] لا يوجد footer-placeholder');
     }
 
     document.addEventListener('headerLoaded', function() {
@@ -691,7 +683,6 @@
       initLang();
     });
 
-    // ✅ ⑤ مؤقت إخفاء الـ splash (احتياطي)
     splashAutoHideTimer = setTimeout(function() {
       if (!splashHidden) {
         console.warn('⏰ إخفاء الـ splash قسراً');
@@ -706,5 +697,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.5.0 - Smart 404 + No White)');
+  console.log('✅ init-page-root.js جاهز (v5.7.1 - Secure + Clean 404)');
 })();
