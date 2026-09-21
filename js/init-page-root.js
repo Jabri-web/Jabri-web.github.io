@@ -1,18 +1,18 @@
 // ================================================================
-//  init-page-root.js - v5.7.1
+//  init-page-root.js - v5.7.2
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  🔒 v5.7.1 (أمان + 404 نظيف):
-//    • حذف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت إطلاقاً
-//    • loginLocal / loginGoogle معطّلة رسمياً (تحتاج backend)
-//    • WahaAuth يبقى للتوافق مع header.html (interface فقط)
+//  🔒 v5.7.2 (أمان + Smart 404 + تحويل لغة فوري):
+//    • حذف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت
+//    • loginLocal / loginGoogle معطّلة رسمياً
 //    • Smart 404 نظيف: يضيف .html + يجرب ar/en/ فقط
+//    • switchLanguage فوري — صفر فحوصات، صفر انتظار
 //    • لا شاشة بيضاء أبداً — splash يبقى أثناء الفحص
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] الدرع المطلق (v5.7.1 - Secure + Clean 404)...');
+  console.log('🛡️ [init] الدرع المطلق (v5.7.2 - Secure + Fast Lang)...');
 
   // ✅ كشف البيئة
   const PROTO = window.location.protocol;
@@ -29,7 +29,7 @@
   let splashAutoHideTimer = null;
 
   /* ================================================================
-     🔒 WahaAuth — نظام الدخول (v5.7.1)
+     🔒 WahaAuth — نظام الدخول
      ─────────────────────────────────────────────────────────────
      ⚠️ لا كلمات سر مكشوفة.
      ⚠️ المصادقة الحقيقية تحتاج backend (Supabase/Firebase/…).
@@ -64,10 +64,6 @@
       return !!_currentUser && _currentUser.role === role;
     },
 
-    /**
-     * ⚠️ معطّلة رسمياً — لا مصادقة محلية في الفرونت
-     * للتفعيل: اربطها بـ backend آمن (fetch → API)
-     */
     loginLocal: function(username, password) {
       console.warn('🔒 [auth] loginLocal معطّلة — لا مصادقة محلية في الفرونت');
       return {
@@ -76,9 +72,6 @@
       };
     },
 
-    /**
-     * ⚠️ معطّلة — OAuth الحقيقي يحتاج backend
-     */
     loginGoogle: function() {
       console.warn('🔒 [auth] loginGoogle معطّلة — تحتاج backend OAuth');
       return {
@@ -93,10 +86,6 @@
       return { ok: true };
     },
 
-    /**
-     * للاستخدام الداخلي فقط — عند ربط backend مستقبلاً
-     * ⛔ لا تستدعيها من كود عام
-     */
     _setUser: function(user) {
       if (!user || typeof user !== 'object') return false;
       _currentUser = {
@@ -113,7 +102,11 @@
   };
 
   /* ================================================================
-     ✅ Lang Switcher
+     ✅ Lang Switcher — v5.7.2 (تحويل فوري — صفر فحوصات)
+     ─────────────────────────────────────────────────────────────
+     • لا فحص HEAD مسبق
+     • لا انتظار
+     • Smart 404 يتولى لو الملف غير موجود
      ================================================================ */
   const LANG_KEY = 'waha_lang';
   const SUPPORTED_LANGS = ['ar', 'en'];
@@ -137,7 +130,66 @@
     return f;
   }
 
+  let _switching = false;
+  function switchLanguage() {
+    if (_switching) return;
+    _switching = true;
+
+    const current = _getCurrentLang();
+    const target  = current === 'ar' ? 'en' : 'ar';
+    const file    = _getCurrentFile();
+
+    try { localStorage.setItem(LANG_KEY, target); } catch (e) {}
+
+    // ─── APK: تحويل نسبي مباشر ───
+    if (IS_APK) {
+      const relUrl = target + '/' + file;
+      console.log('🌐 [lang/APK]', current, '→', target, '|', file, '→', relUrl);
+      window.location.href = relUrl;
+      return;
+    }
+
+    // ─── الويب: تحويل فوري — Smart 404 يتولى الباقي ───
+    const newUrl = '/' + target + '/' + file;
+    console.log('🌐 [lang]', current, '→', target, '|', file, '→', newUrl);
+    window.location.href = newUrl;
+  }
+
+  function initLang() {
+    const lang = _getCurrentLang();
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.body.classList.toggle('lang-ar', lang === 'ar');
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    const label = document.getElementById('langLabel');
+    if (label) label.textContent = lang === 'ar' ? 'English' : 'عربي';
+  }
+
+  function initTheme() {
+    const t = localStorage.getItem('theme') || 'night';
+    const d = localStorage.getItem('device') || 'desktop';
+    document.body.classList.remove('day', 'night', 'device-desktop', 'device-phone');
+    document.body.classList.add(t, 'device-' + d);
+  }
+
+  window.switchLanguage = switchLanguage;
+  window.toggleLang = switchLanguage;
+  window.getCurrentLanguage = _getCurrentLang;
+
+  /* ================================================================
+     ✨ Smart 404 Handler — نظيف
+     ─────────────────────────────────────────────────────────────
+     ① ما نعيد روابط Google القديمة
+     ② نصلّح فقط: إضافة .html لو ناقص
+     ③ نجرّب /ar/ /en/ / — روابط موقعنا الحقيقية
+     ④ لو ما لقينا → الرئيسية بهدوء
+     ================================================================ */
+
+  // كاش النتائج
   const _EXISTS_CACHE = new Map();
+
+  // فحص وجود ملف — fetch على الويب، XHR على APK
   function _pathExists(url) {
     if (_EXISTS_CACHE.has(url)) return Promise.resolve(_EXISTS_CACHE.get(url));
     if (IS_APK) {
@@ -176,121 +228,6 @@
       } catch (e) { resolve(false); }
     });
   }
-
-  function _findFirstExisting(paths) {
-    return paths.reduce(function(p, cur) {
-      return p.then(function(found) {
-        if (found) return found;
-        return _pathExists(cur).then(function(ok) { return ok ? cur : null; });
-      });
-    }, Promise.resolve(null));
-  }
-
-  function _showLangLoader() {
-    let el = document.getElementById('waha-lang-loader');
-    if (!el) {
-      el = document.createElement('div');
-      el.id = 'waha-lang-loader';
-      el.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(10,15,13,0.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#c9a84c;font-family:Cairo,Tajawal,sans-serif;font-size:1.1rem;font-weight:900;';
-      el.innerHTML =
-        '<div style="text-align:center;">' +
-          '<img src="/icon-192.png" alt="واحة الجبري" ' +
-               'style="width:96px;height:96px;border-radius:50%;' +
-                      'border:3px solid #c9a84c;' +
-                      'box-shadow:0 0 40px rgba(201,168,76,0.5);' +
-                      'animation:waha-pulse 1.6s ease-in-out infinite;' +
-                      'object-fit:cover;">' +
-          '<div style="margin-top:20px;">جاري تبديل اللغة...</div>' +
-          '<div style="margin-top:6px;font-size:0.8rem;opacity:0.6;font-weight:400;">Switching language...</div>' +
-          '<div style="margin-top:18px;display:flex;justify-content:center;gap:6px;">' +
-            '<span style="width:8px;height:8px;border-radius:50%;background:#c9a84c;animation:waha-dot 1.4s ease-in-out infinite;"></span>' +
-            '<span style="width:8px;height:8px;border-radius:50%;background:#c9a84c;animation:waha-dot 1.4s ease-in-out infinite;animation-delay:0.2s;"></span>' +
-            '<span style="width:8px;height:8px;border-radius:50%;background:#c9a84c;animation:waha-dot 1.4s ease-in-out infinite;animation-delay:0.4s;"></span>' +
-          '</div>' +
-        '</div>' +
-        '<style>' +
-          '@keyframes waha-pulse {0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(201,168,76,0.5);}50%{transform:scale(1.08);box-shadow:0 0 70px rgba(201,168,76,0.9);}}' +
-          '@keyframes waha-dot {0%,80%,100%{opacity:0.3;transform:scale(0.8);}40%{opacity:1;transform:scale(1.2);}}' +
-        '</style>';
-      document.body.appendChild(el);
-    }
-    el.style.display = 'flex';
-  }
-
-  let _switching = false;
-  function switchLanguage() {
-    if (_switching) return;
-    _switching = true;
-    const current = _getCurrentLang();
-    const target = current === 'ar' ? 'en' : 'ar';
-    const file = _getCurrentFile();
-    try { localStorage.setItem(LANG_KEY, target); } catch (e) {}
-
-    const t = setTimeout(_showLangLoader, 280);
-
-    if (IS_APK) {
-      clearTimeout(t);
-      _showLangLoader();
-      setTimeout(function() {
-        window.location.href = target + '/' + file;
-      }, 400);
-      return;
-    }
-
-    const candidates = [
-      '/' + target + '/' + file,
-      '/' + target + '/index.html',
-      '/' + target + '/',
-      '/'
-    ];
-
-    const safety = setTimeout(function() {
-      window.location.href = '/' + target + '/';
-    }, 3000);
-
-    _findFirstExisting(candidates).then(function(url) {
-      clearTimeout(t);
-      clearTimeout(safety);
-      url = url || '/' + target + '/';
-      console.log('🌐 [lang]', current, '→', target, '|', file, '→', url);
-      window.location.href = url;
-    }).catch(function() {
-      clearTimeout(t);
-      clearTimeout(safety);
-      window.location.href = '/' + target + '/';
-    });
-  }
-
-  function initLang() {
-    const lang = _getCurrentLang();
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.body.classList.toggle('lang-en', lang === 'en');
-    document.body.classList.toggle('lang-ar', lang === 'ar');
-    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
-    const label = document.getElementById('langLabel');
-    if (label) label.textContent = lang === 'ar' ? 'English' : 'عربي';
-  }
-
-  function initTheme() {
-    const t = localStorage.getItem('theme') || 'night';
-    const d = localStorage.getItem('device') || 'desktop';
-    document.body.classList.remove('day', 'night', 'device-desktop', 'device-phone');
-    document.body.classList.add(t, 'device-' + d);
-  }
-
-  window.switchLanguage = switchLanguage;
-  window.toggleLang = switchLanguage;
-  window.getCurrentLanguage = _getCurrentLang;
-
-  /* ================================================================
-     ✨ Smart 404 Handler — نظيف (v5.7.1)
-     ─────────────────────────────────────────────────────────────
-     ① ما نعيد روابط Google القديمة
-     ② نصلّح فقط: إضافة .html لو ناقص
-     ③ نجرّب /ar/ /en/ / — روابط موقعنا الحقيقية
-     ④ لو ما لقينا → الرئيسية بهدوء
-     ================================================================ */
 
   function unique(arr) {
     var seen = {};
@@ -697,5 +634,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.7.1 - Secure + Clean 404)');
+  console.log('✅ init-page-root.js جاهز (v5.7.2 - Secure + Fast Lang)');
 })();
