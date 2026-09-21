@@ -75,125 +75,142 @@
 </script>
 
 <style>
+    * {margin: 0;padding: 0;box-sizing: border-box;}
+    body {font-family: 'Tajawal', sans-serif;background: #0d1117;color: #e6edf3;height: 100vh;overflow: hidden; display:flex; flex-direction:column;}
+    .split-layout {display: flex;flex-direction: column;height: 100vh; flex:1; overflow:hidden;}
 
-<style>
-    <style>
-        * {margin: 0;padding: 0;box-sizing: border-box;}
-        body {font-family: 'Tajawal', sans-serif;background: #0d1117;color: #e6edf3;height: 100vh;overflow: hidden; display:flex; flex-direction:column;}
-        .split-layout {display: flex;flex-direction: column;height: 100vh; flex:1; overflow:hidden;}
-        
-        /* ═══ قائمة الملفات — محسّنة للسحب ═══ */
-        .file-list {
-            flex: 0 0 auto;
-            height: 45%;
-            min-height: 100px;
-            max-height: 85%;
-            overflow-y: auto;
-            padding: 20px;
-            border-bottom: none;
-            background: #161b22;
-        }
-        .file-list.dragging { transition: none; }
-        .file-list::-webkit-scrollbar {width: 6px;}
-        .file-list::-webkit-scrollbar-track {background: #0d1117;}
-        .file-list::-webkit-scrollbar-thumb {background: #ffd700;border-radius: 10px;}
+    /* ═══ قائمة الملفات — محسّنة للسحب ═══ */
+    .file-list {
+        flex: 0 0 auto;
+        height: 45%;
+        min-height: 100px;
+        max-height: 85%;
+        overflow-y: auto;
+        padding: 20px;
+        border-bottom: none;
+        background: #161b22;
+    }
+    .file-list.dragging { transition: none; }
+    .file-list::-webkit-scrollbar {width: 6px;}
+    .file-list::-webkit-scrollbar-track {background: #0d1117;}
+    .file-list::-webkit-scrollbar-thumb {background: #ffd700;border-radius: 10px;}
 
-        /* ═══ المقبض القابل للسحب ═══ */
-        .resizer {
-            height: 14px;
-            background: #21262d;
-            border-top: 1px solid #30363d;
-            border-bottom: 1px solid #30363d;
-            cursor: row-resize;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: none;
-            flex-shrink: 0;
-            transition: background 0.2s;
-            z-index: 10;
-            position: relative;
-        }
-        .resizer:hover, .resizer.dragging {background: #30363d;}
-        .resizer .dots {width: 40px; height: 4px; background: #ffd700; border-radius: 10px; opacity:0.6;}
-        .resizer:hover .dots {opacity:1; box-shadow: 0 0 8px rgba(255,215,0,0.5);}
-        .resizer .label {font-size: 11px; color: #8b949e; font-weight:700;}
-        .resizer-controls {display:flex; gap:6px; margin-inline-start:auto; margin-inline-end:10px;}
-        .resizer-controls button {
-            background: #0d1117; border:1px solid #30363d; color:#ffd700;
-            padding:2px 8px; border-radius:12px; font-size:11px; cursor:pointer; font-family:'Tajawal';
-            transition:0.2s;
-        }
-        .resizer-controls button:hover {background:#ffd700; color:#000;}
+    /* ═══ المقبض القابل للسحب ═══ */
+    .resizer {
+        height: 14px;
+        background: #21262d;
+        border-top: 1px solid #30363d;
+        border-bottom: 1px solid #30363d;
+        cursor: row-resize;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: none;
+        flex-shrink: 0;
+        transition: background 0.2s;
+        z-index: 10;
+        position: relative;
+    }
+    .resizer:hover, .resizer.dragging {background: #30363d;}
+    .resizer .dots {width: 40px; height: 4px; background: #ffd700; border-radius: 10px; opacity:0.6;}
+    .resizer:hover .dots {opacity:1; box-shadow: 0 0 8px rgba(255,215,0,0.5);}
+    .resizer .label {font-size: 11px; color: #8b949e; font-weight:700;}
+    .resizer-controls {display:flex; gap:6px; margin-inline-start:auto; margin-inline-end:10px;}
+    .resizer-controls button {
+        background: #0d1117; border:1px solid #30363d; color:#ffd700;
+        padding:2px 8px; border-radius:12px; font-size:11px; cursor:pointer; font-family:'Tajawal';
+        transition:0.2s;
+    }
+    .resizer-controls button:hover {background:#ffd700; color:#000;}
 
-        .preview-area {flex:1; background: #0d1117;position: relative; display:flex; flex-direction:column; min-height:150px;}
-        .preview-area iframe {width: 100%;height: 100%;border: none;background: #fff; flex:1;}
-        .preview-area.fullscreen {position:fixed; inset:0; z-index:9999; height:100vh !important;}
-        .preview-toolbar {
-            display:flex; justify-content:space-between; align-items:center;
-            background:#161b22; padding:6px 10px; border-bottom:1px solid #30363d;
-            flex-shrink:0;
-        }
-        .preview-toolbar .title {font-size:12px; color:#8b949e;}
-        .preview-toolbar .btns {display:flex; gap:6px;}
-        .preview-toolbar .btns button {
-            background:#21262d; border:1px solid #30363d; color:#e6edf3;
-            padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px; font-family:'Tajawal';
-        }
-        .preview-toolbar .btns button.primary {background:#ffd700; color:#000; font-weight:700;}
-        .preview-notice {position: absolute;bottom: 10px;left: 10px;background: rgba(0,0,0,0.7);color: #ffd700;padding: 4px 12px;border-radius: 20px;font-size: 12px; pointer-events:none; z-index:5;}
-        
-        .header {display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;gap: 10px;margin-bottom: 15px;padding-bottom: 10px;border-bottom: 1px solid #30363d;}
-        .header h2 {color: #ffd700;font-weight: 700;font-size: 22px;}
-        .header .badge {background: #ffd700;color: #0d1117;padding: 4px 12px;border-radius: 20px;font-weight: 700;font-size: 14px;}
-        .header .actions {display: flex;gap: 8px;align-items: center;}
-        .header .actions button {background: #ffd700;border: none;padding: 6px 14px;border-radius: 6px;font-weight: 700;cursor: pointer;font-family: 'Tajawal', sans-serif;transition: 0.2s;font-size: 14px;}
-        .header .actions button:hover {transform: scale(1.05);box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);}
-        .back-btn {background: #1f6feb !important;color: white !important;display: none;}
-        .back-btn.show {display: inline-block;}
-        .path-display {background: #21262d;padding: 8px 16px;border-radius: 8px;font-size: 15px;color: #ffd700;margin-bottom: 12px;border: 1px solid #30363d;}
-        .search-box {width: 100%;padding: 10px 16px;border-radius: 8px;border: 1px solid #30363d;background: #0d1117;color: #e6edf3;font-family: 'Tajawal', sans-serif;font-size: 16px;margin-bottom: 12px;}
-        .stats {display: flex;gap: 10px;padding: 8px 0 12px 0;font-size: 13px;color: #8b949e;flex-wrap: wrap;border-bottom: 1px solid #30363d;margin-bottom: 12px;}
-        .stats span {background: #21262d;padding: 2px 10px;border-radius: 12px;}
-        
-        .file-item {display: flex;justify-content: space-between;align-items: center;padding: 10px 14px;margin-bottom: 4px;border-radius: 8px;cursor: pointer;transition: 0.2s;background: #21262d;border: 1px solid #30363d;position: relative;}
-        .file-item:hover {background: #30363d;border-color: #ffd70040;}
-        .file-item.active {background: #ffd70015;border-color: #ffd700;}
-        .file-item.folder {background: #1f6feb10;border-color: #1f6feb;}
-        .file-item .name {font-size: 15px;font-weight: 400;color: #e6edf3;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-        .file-item .ext {font-size: 10px;background: #0d1117;padding: 0 6px;border-radius: 4px;color: #8b949e;}
-        .file-item .more-btn {background: transparent;border: none;color: #aaa;padding: 2px 8px;border-radius: 4px;cursor: pointer;font-size: 18px;}
-        .file-item .more-btn:hover {color: #ffd700;}
-        
-        .empty-msg {text-align: center;color: #8b949e;padding: 30px 0;font-size: 18px;}
-        .loader {text-align: center;padding: 20px;color: #ffd700;font-size: 18px;}
+    .preview-area {flex:1; background: #0d1117;position: relative; display:flex; flex-direction:column; min-height:150px;}
+    .preview-area iframe {width: 100%;height: 100%;border: none;background: #fff; flex:1;}
+    .preview-area.fullscreen {position:fixed; inset:0; z-index:9999; height:100vh !important;}
+    .preview-toolbar {
+        display:flex; justify-content:space-between; align-items:center;
+        background:#161b22; padding:6px 10px; border-bottom:1px solid #30363d;
+        flex-shrink:0;
+    }
+    .preview-toolbar .title {font-size:12px; color:#8b949e;}
+    .preview-toolbar .btns {display:flex; gap:6px;}
+    .preview-toolbar .btns button {
+        background:#21262d; border:1px solid #30363d; color:#e6edf3;
+        padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px; font-family:'Tajawal';
+    }
+    .preview-toolbar .btns button.primary {background:#ffd700; color:#000; font-weight:700;}
+    .preview-notice {position: absolute;bottom: 10px;left: 10px;background: rgba(0,0,0,0.7);color: #ffd700;padding: 4px 12px;border-radius: 20px;font-size: 12px; pointer-events:none; z-index:5;}
 
-        .context-menu {position: fixed;background: #21262d;border: 1px solid #30363d;border-radius: 8px;padding: 6px 0;min-width: 180px;box-shadow: 0 8px 24px rgba(0,0,0,0.6);z-index: 1000;display: none;}
-        .context-menu.show {display: block;}
-        .context-menu .menu-item {padding: 8px 16px;cursor: pointer;color: #e6edf3;font-size: 14px;display: flex;align-items: center;gap: 10px;transition: 0.2s;}
-        .context-menu .menu-item:hover {background: #30363d;}
-        .context-menu .divider {height: 1px;background: #30363d;margin: 4px 12px;}
+    .header {display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;gap: 10px;margin-bottom: 15px;padding-bottom: 10px;border-bottom: 1px solid #30363d;}
+    .header h2 {color: #ffd700;font-weight: 700;font-size: 22px;}
+    .header .badge {background: #ffd700;color: #0d1117;padding: 4px 12px;border-radius: 20px;font-weight: 700;font-size: 14px;}
+    .header .actions {display: flex;gap: 8px;align-items: center;}
+    .header .actions button {background: #ffd700;border: none;padding: 6px 14px;border-radius: 6px;font-weight: 700;cursor: pointer;font-family: 'Tajawal', sans-serif;transition: 0.2s;font-size: 14px;}
+    .header .actions button:hover {transform: scale(1.05);box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);}
+    .back-btn {background: #1f6feb !important;color: white !important;display: none;}
+    .back-btn.show {display: inline-block;}
+    .path-display {background: #21262d;padding: 8px 16px;border-radius: 8px;font-size: 15px;color: #ffd700;margin-bottom: 12px;border: 1px solid #30363d;}
+    .search-box {width: 100%;padding: 10px 16px;border-radius: 8px;border: 1px solid #30363d;background: #0d1117;color: #e6edf3;font-family: 'Tajawal', sans-serif;font-size: 16px;margin-bottom: 12px;}
+    .stats {display: flex;gap: 10px;padding: 8px 0 12px 0;font-size: 13px;color: #8b949e;flex-wrap: wrap;border-bottom: 1px solid #30363d;margin-bottom: 12px;}
+    .stats span {background: #21262d;padding: 2px 10px;border-radius: 12px;}
 
-        /* شريط الروابط العلوي */
-        .top-links {display:flex; gap:10px; overflow-x:auto; padding:8px 12px; background:#0d1117; border-bottom:1px solid #30363d; white-space:nowrap; flex-shrink:0;}
-        .top-links a {color:#8b949e; text-decoration:none; font-size:13px; background:#161b22; padding:4px 10px; border-radius:20px; border:1px solid #30363d;}
-        .top-links a:hover {color:#ffd700; border-color:#ffd700;}
+    .file-item {display: flex;justify-content: space-between;align-items: center;padding: 10px 14px;margin-bottom: 4px;border-radius: 8px;cursor: pointer;transition: 0.2s;background: #21262d;border: 1px solid #30363d;position: relative;}
+    .file-item:hover {background: #30363d;border-color: #ffd70040;}
+    .file-item.active {background: #ffd70015;border-color: #ffd700;}
+    .file-item.folder {background: #1f6feb10;border-color: #1f6feb;}
+    .file-item .name {font-size: 15px;font-weight: 400;color: #e6edf3;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .file-item .ext {font-size: 10px;background: #0d1117;padding: 0 6px;border-radius: 4px;color: #8b949e;}
+    .file-item .more-btn {background: transparent;border: none;color: #aaa;padding: 2px 8px;border-radius: 4px;cursor: pointer;font-size: 18px;}
+    .file-item .more-btn:hover {color: #ffd700;}
 
-        /* ═══ استجابة الجوال ═══ */
-        @media (max-width: 700px) {
-            .resizer {height: 20px;}
-            .resizer .label {display: none;}
-            .resizer-controls button {padding: 4px 10px; font-size: 12px;}
-            .header h2 {font-size: 18px;}
-            .header .badge {font-size: 12px; padding: 3px 10px;}
-            .header .actions button {padding: 5px 10px; font-size: 12px;}
-            .file-item {padding: 12px 14px;}
-            .file-item .name {font-size: 14px;}
-        }
-    </style>
+    .empty-msg {text-align: center;color: #8b949e;padding: 30px 0;font-size: 18px;}
+    .loader {text-align: center;padding: 20px;color: #ffd700;font-size: 18px;}
+
+    .context-menu {position: fixed;background: #21262d;border: 1px solid #30363d;border-radius: 8px;padding: 6px 0;min-width: 180px;box-shadow: 0 8px 24px rgba(0,0,0,0.6);z-index: 1000;display: none;}
+    .context-menu.show {display: block;}
+    .context-menu .menu-item {padding: 8px 16px;cursor: pointer;color: #e6edf3;font-size: 14px;display: flex;align-items: center;gap: 10px;transition: 0.2s;}
+    .context-menu .menu-item:hover {background: #30363d;}
+    .context-menu .divider {height: 1px;background: #30363d;margin: 4px 12px;}
+
+    /* شريط الروابط العلوي */
+    .top-links {display:flex; gap:10px; overflow-x:auto; padding:8px 12px; background:#0d1117; border-bottom:1px solid #30363d; white-space:nowrap; flex-shrink:0;}
+    .top-links a {color:#8b949e; text-decoration:none; font-size:13px; background:#161b22; padding:4px 10px; border-radius:20px; border:1px solid #30363d;}
+    .top-links a:hover {color:#ffd700; border-color:#ffd700;}
+
+    /* ═══ إشعار وضع عدم الاتصال / sitemap ═══ */
+    .offline-notice {
+        display: none;
+        margin: 0 0 12px 0;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #2a1f00;
+        border: 1px solid #ffd70055;
+        color: #ffd700;
+        font-size: 14px;
+        line-height: 1.8;
+        font-weight: 600;
+    }
+    .offline-notice.show { display: block; }
+    .offline-notice.success { background: #0f2417; border-color: #2ea04388; color: #7ee787; }
+    .offline-notice.error   { background: #2a0d0d; border-color: #f8514988; color: #ff7b72; }
+    .offline-notice .sub { display:block; margin-top:6px; font-size:12.5px; color:#8b949e; font-weight:400; }
+    .offline-notice .pulse { display:inline-block; animation: wahaPulse 1.2s infinite; }
+    @keyframes wahaPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* ═══ استجابة الجوال ═══ */
+    @media (max-width: 700px) {
+        .resizer {height: 20px;}
+        .resizer .label {display: none;}
+        .resizer-controls button {padding: 4px 10px; font-size: 12px;}
+        .header h2 {font-size: 18px;}
+        .header .badge {font-size: 12px; padding: 3px 10px;}
+        .header .actions button {padding: 5px 10px; font-size: 12px;}
+        .file-item {padding: 12px 14px;}
+        .file-item .name {font-size: 14px;}
+    }
+</style>
 </head>
 <body>
     <!-- روابط مختصرة -->
@@ -213,7 +230,7 @@
                 <h2>🗂️ مستكشف الواحة</h2>
                 <div class="actions">
                     <span class="badge" id="fileCount">0</span>
-                    <button onclick="discoverFiles()">🔄 تحديث</button>
+                    <button onclick="refreshFiles()">🔄 تحديث</button>
                     <button class="back-btn" id="backBtn" onclick="goBack()">↩ رجوع</button>
                 </div>
             </div>
@@ -224,6 +241,17 @@
                 <span>📁 مجلدات: <span id="folders">0</span></span>
                 <span>🌐 HTML: <span id="html">0</span></span>
             </div>
+
+            <!-- ✦ إشعار الوضع البديل (file.js / sitemap / all-links) ✦ -->
+            <div class="offline-notice" id="offlineNotice">
+                <span class="msg">
+                    (نظرًا لفشل جلب الملفات وعدم وجود شبكة سنحمّل ملفات sitemap أو all-links لنكمل استكشافنا)
+                </span>
+                <span class="sub" id="offlineSub">
+                    <span class="pulse">⏳</span> جارٍ تحميل القائمة من /js/file.js ...
+                </span>
+            </div>
+
             <div id="filesContainer"><div class="loader">⏳ جارٍ التحميل...</div></div>
         </div>
 
@@ -264,6 +292,9 @@
         <div class="menu-item" onclick="menuAction('info')"><span>ℹ️</span> Info</div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════════════
+         السكربت الرئيسي — المستكشف ومنطق الواجهة
+         ═══════════════════════════════════════════════════════════════ -->
     <script>
         const REPO_OWNER = 'Jabri-web';
         const REPO_NAME = 'Jabri-web.github.io';
@@ -277,6 +308,10 @@
         let pathHistory = [];
         let selectedItem = null;
         let lastPreviewUrl = '';
+
+        /* ✦ حالة الوضع البديل (file.js / sitemap / all-links) ✦ */
+        let fallbackMode = false;
+        let virtualPaths = [];
 
         /* ═══════════════════════════════════════════════════════════════
            نظام السحب v2.0 — مُحسّن لـ Flex + الجوال (Pointer Events)
@@ -301,10 +336,10 @@
             fileList.classList.add('dragging');
             document.body.style.cursor = 'row-resize';
             document.body.style.userSelect = 'none';
-            
+
             startY = e.clientY || (e.touches && e.touches[0].clientY);
             startHeight = fileList.getBoundingClientRect().height;
-            
+
             if (resizer.setPointerCapture && e.pointerId) {
                 try { resizer.setPointerCapture(e.pointerId); } catch(err) {}
             }
@@ -316,17 +351,17 @@
             if (!isDragging) return;
             const currentY = e.clientY || (e.touches && e.touches[0].clientY);
             if (!currentY) return;
-            
+
             const delta = currentY - startY;
             const containerHeight = splitLayout.getBoundingClientRect().height;
             let newHeight = startHeight + delta;
-            
+
             const minH = containerHeight * 0.15;
             const maxH = containerHeight * 0.85;
             newHeight = Math.max(minH, Math.min(maxH, newHeight));
-            
+
             fileList.style.height = newHeight + 'px';
-            
+
             if (e.preventDefault) e.preventDefault();
         }
 
@@ -338,7 +373,7 @@
             fileList.classList.remove('dragging');
             document.body.style.cursor = '';
             document.body.style.userSelect = '';
-            
+
             const containerHeight = splitLayout.getBoundingClientRect().height;
             const currentHeight = fileList.getBoundingClientRect().height;
             const percent = Math.round((currentHeight / containerHeight) * 100);
@@ -372,8 +407,8 @@
             previewArea.classList.toggle('fullscreen');
             const btn = previewArea.querySelector('.preview-toolbar button');
             if (btn) {
-                btn.textContent = previewArea.classList.contains('fullscreen') 
-                    ? '✕ إغلاق' 
+                btn.textContent = previewArea.classList.contains('fullscreen')
+                    ? '✕ إغلاق'
                     : '⛶ ملء الشاشة';
             }
         }
@@ -383,16 +418,37 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
+           إشعار الوضع البديل
+           ═══════════════════════════════════════════════════════════════ */
+        function showNotice(subHtml, state) {
+            const n = document.getElementById('offlineNotice');
+            n.classList.add('show');
+            n.classList.remove('success', 'error');
+            if (state === 'success') n.classList.add('success');
+            if (state === 'error') n.classList.add('error');
+            if (subHtml !== undefined) document.getElementById('offlineSub').innerHTML = subHtml;
+        }
+        function hideNotice() {
+            document.getElementById('offlineNotice').classList.remove('show', 'success', 'error');
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
            نظام المستكشف (GitHub API)
            ═══════════════════════════════════════════════════════════════ */
         async function discoverFiles(path = '') {
             const container = document.getElementById('filesContainer');
+            hideNotice();
             container.innerHTML = '<div class="loader">⏳ جارٍ التحميل...</div>';
             try {
                 const apiPath = path ? `/${path}` : '';
                 const response = await fetch(`${GITHUB_API}${apiPath}?ref=${BRANCH}`);
-                if(!response.ok) throw new Error('GitHub API Error');
+                if (!response.ok) throw new Error('GitHub API Error ' + response.status);
                 const data = await response.json();
+                if (!Array.isArray(data)) throw new Error('Bad payload');
+
+                fallbackMode = false;
+                virtualPaths = [];
+
                 const folders = data.filter(i => i.type === 'dir').map(i => ({...i, type:'folder'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
                 const files = data.filter(i => i.type === 'file' && i.name !== EXCLUDED_FILE).map(i => ({...i, type:'file'})).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
                 allItems = [...folders, ...files];
@@ -405,10 +461,90 @@
                 document.getElementById('previewFrame').src = 'about:blank';
                 document.getElementById('previewTitle').textContent = '📺 المعاينة - Vercel';
             } catch (error) {
-                container.innerHTML = `<div class="empty-msg">❌ فشل التحميل - تأكد من اتصال GitHub API</div>`;
+                console.warn('⚠️ فشل جلب الملفات من GitHub API:', error);
+                await handleOfflineFallback();
             }
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           ✦ المعالج البديل — يستدعي جسر WAHA_OFFLINE_LOADER ✦
+           ═══════════════════════════════════════════════════════════════ */
+        async function handleOfflineFallback() {
+            const container = document.getElementById('filesContainer');
+
+            showNotice('<span class="pulse">⏳</span> جارٍ تحميل القائمة من /js/file.js ...', null);
+            container.innerHTML = '<div class="loader">⏳ جارٍ تحميل القائمة البديلة...</div>';
+
+            pathHistory = [];
+
+            /* نداء الجسر (المعروف في نهاية الملف) */
+            const ok = (typeof window.WAHA_OFFLINE_LOADER === 'function')
+                ? await window.WAHA_OFFLINE_LOADER()
+                : false;
+
+            if (!ok) {
+                showNotice('<span class="pulse">⏳</span> جارٍ تحميل القائمة البديلة ...');
+                document.getElementById('offlineSub').innerHTML =
+                    '❌ لم يتم العثور على قائمة بديلة — تأكد من وجود /js/file.js ثم اضغط 🔄 تحديث';
+                const n = document.getElementById('offlineNotice');
+                n.classList.remove('success');
+                n.classList.add('error');
+                container.innerHTML = '<div class="empty-msg">📭 لا توجد قائمة بديلة متاحة حالياً</div>';
+                document.getElementById('fileCount').textContent = '0';
+            }
+        }
+
+        function refreshFiles() {
+            if (fallbackMode) {
+                pathHistory = [];
+                renderVirtual('');
+            } else {
+                discoverFiles(currentPath);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           العرض الافتراضي (Virtual) — يستخدمه الجسر
+           ═══════════════════════════════════════════════════════════════ */
+        function renderVirtual(path) {
+            const prefix = path ? path + '/' : '';
+            const seenFolders = new Set();
+            const items = [];
+
+            virtualPaths.forEach(p => {
+                if (prefix && !p.startsWith(prefix)) return;
+                const rest = p.slice(prefix.length);
+                if (!rest) return;
+                const idx = rest.indexOf('/');
+                if (idx === -1) {
+                    items.push({ type: 'file', name: rest, path: p });
+                } else {
+                    const folderName = rest.slice(0, idx);
+                    if (!seenFolders.has(folderName)) {
+                        seenFolders.add(folderName);
+                        items.push({ type: 'folder', name: folderName, path: prefix + folderName });
+                    }
+                }
+            });
+
+            items.sort((a, b) =>
+                a.type === b.type
+                    ? a.name.localeCompare(b.name, 'ar')
+                    : (a.type === 'folder' ? -1 : 1)
+            );
+
+            allItems = items;
+            currentPath = path;
+            updatePath();
+            renderItems(items);
+            updateStats();
+            document.getElementById('fileCount').textContent = items.length;
+            document.getElementById('backBtn').classList.toggle('show', pathHistory.length > 0 || !!path);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           أدوات مساعدة
+           ═══════════════════════════════════════════════════════════════ */
         function updatePath() {
             document.getElementById('currentPath').textContent = currentPath ? `📂 ${currentPath.split('/').join(' / ')}` : '📂 الجذر /';
         }
@@ -449,8 +585,17 @@
             else previewFile(path);
         }
 
-        function enterFolder(path) {pathHistory.push(currentPath); discoverFiles(path);}
-        function goBack() {discoverFiles(pathHistory.pop() || '');}
+        function enterFolder(path) {
+            pathHistory.push(currentPath);
+            if (fallbackMode) renderVirtual(path);
+            else discoverFiles(path);
+        }
+
+        function goBack() {
+            const prev = pathHistory.pop() || '';
+            if (fallbackMode) renderVirtual(prev);
+            else discoverFiles(prev);
+        }
 
         function filterFiles() {
             const q = document.getElementById('searchInput').value.toLowerCase();
@@ -468,7 +613,6 @@
                 if(item.dataset.path === filepath) item.classList.add('active');
             });
             localStorage.setItem('lastPreview', filepath);
-            /* على الجوال: وسّع المعاينة تلقائياً */
             if (window.innerWidth < 700) {
                 setSplit(25);
             }
@@ -510,9 +654,59 @@
 
         window.onload = () => discoverFiles();
     </script>
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <script src="/js/init-page-root.js"></script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ✦ ① محمّل القائمة الاحتياطية — يعمل بدون شبكة ✦
+         يجب أن يأتي قبل الجسر (لأن الجسر يعتمد عليه)
+         ═══════════════════════════════════════════════════════════════ -->
+    <script src="/js/file.js"></script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ✦ ② الجسر — يربط explore.html بـ /js/file.js ✦
+         يُستدعى تلقائياً من handleOfflineFallback()
+         ═══════════════════════════════════════════════════════════════ -->
+    <script id="waha-offline-loader">
+    (function () {
+        'use strict';
+
+        window.WAHA_OFFLINE_LOADER = async function () {
+
+            /* ── ① المحمّل الأساسي: /js/file.js ── */
+            if (typeof window.WAHA_FILE_LOADER === 'function') {
+                try {
+                    const paths = await window.WAHA_FILE_LOADER();
+                    if (Array.isArray(paths) && paths.length) {
+
+                        virtualPaths = paths.slice().sort((a, b) => a.localeCompare(b, 'ar'));
+                        fallbackMode = true;
+
+                        showNotice(
+                            '<span class="pulse">🛡️</span> تم التحميل من <b>/js/file.js</b> — ' +
+                            paths.length + ' ملف &nbsp;•&nbsp; يعمل بدون شبكة',
+                            'success'
+                        );
+
+                        renderVirtual('');
+                        console.log('%c✅ explore.html ← /js/file.js (' + paths.length + ')',
+                                    'color:#7ee787;font-weight:700');
+                        return true;
+                    }
+                } catch (e) {
+                    console.warn('⚠️ /js/file.js فشل:', e);
+                }
+            } else {
+                console.warn('⚠️ /js/file.js غير مُحمَّل — تأكد من وجوده في المجلد /js/');
+            }
+
+            /* ── ② لا شيء آخر متاح ── */
+            return false;
+        };
+
+        console.log('%c✅ WAHA_OFFLINE_LOADER جاهز — ينتظر نداء explore.html',
+                    'color:#ffd700;font-weight:700');
+    })();
+    </script>
+
     <script src="/js/menu.js"></script>
 </body>
 </html>
