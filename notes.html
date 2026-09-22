@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0f">
+<title>📝 واحة الجبري — قائمة الأفكار</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0a0a0f;
+    --card: #14141f;
+    --card2: #1a1a2e;
+    --border: #2a2a3e;
+    --gold: #ffd700;
+    --cyan: #6ae3ff;
+    --green: #7ee787;
+    --red: #ff6a6a;
+    --txt: #e8e8f0;
+    --txt-dim: #8a8a9e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Cairo', 'Tajawal', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--txt);
+    padding: 20px;
+    line-height: 1.9;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #0a0a0f);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: var(--txt-dim);
+    font-size: 0.95rem;
+}
+
+.notice {
+    background: rgba(255, 215, 0, 0.08);
+    border-right: 4px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    color: var(--txt);
+}
+
+.notice strong { color: var(--gold); }
+
+.feature {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.feature:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.1);
+}
+
+.feature h2 {
+    color: var(--cyan);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.meta span {
+    background: var(--card2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: var(--txt-dim);
+}
+
+.meta .priority-medium { color: var(--gold); }
+.meta .priority-low { color: var(--green); }
+.meta .status-pending { color: var(--red); }
+
+.feature h3 {
+    color: var(--gold);
+    font-size: 1rem;
+    margin: 18px 0 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
+.feature p, .feature li {
+    color: var(--txt);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.feature ul {
+    list-style: none;
+    padding-right: 20px;
+}
+
+.feature ul li::before {
+    content: '✅ ';
+    color: var(--green);
+    margin-left: 8px;
+}
+
+.code-box {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    color: var(--green);
+    margin: 10px 0;
+}
+
+.checklist {
+    background: var(--card2);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.checklist li {
+    list-style: none;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: var(--txt);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+    content: '☐ ';
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-left: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px 15px;
+    border-top: 1px solid var(--border);
+    color: var(--txt-dim);
+    font-size: 0.85rem;
+}
+
+footer a {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+.toc {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border);
+}
+
+.toc h3 {
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.toc ol {
+    padding-right: 20px;
+    color: var(--txt);
+}
+
+.toc a {
+    color: var(--cyan);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.toc a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+    body { padding: 12px; }
+    header h1 { font-size: 1.3rem; }
+    .feature { padding: 16px; }
+    .feature h2 { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <h1>📝 واحة الجبري — قائمة الأفكار</h1>
+    <p>الأفكار والميزات المستقبلية | Heaven Al-Jabri — Future Features</p>
+</header>
+
+<div class="notice">
+    <strong>⚠️ صفحة داخلية:</strong> هذا الملف أرشيفي — يحتوي على أفكار وميزات مؤجلة.<br>
+    <strong>لا يؤثر على الموقع</strong> — لا يُحمَّل في أي صفحة أخرى.
+</div>
+
+<div class="toc">
+    <h3>📋 المحتويات</h3>
+    <ol>
+        <li><a href="#m1">M1: Disable Screen (تعطيل الشاشة)</a></li>
+        <li><a href="#m2">M2: IndexNow Integration</a></li>
+        <li><a href="#m3">M3: Service Worker Update Popup</a></li>
+        <li><a href="#tasks">📌 قائمة المهام المؤجلة</a></li>
+        <li><a href="#timeline">🗓️ الجدول الزمني</a></li>
+    </ol>
+</div>
+
+<!-- ===== M1: Disable Screen ===== -->
+<section class="feature" id="m1">
+    <h2>🎯 M1: Disable Screen (تعطيل الشاشة)</h2>
+
+    <div class="meta">
+        <span>📅 2026-09-22</span>
+        <span class="priority-medium">⭐ أولوية: متوسطة</span>
+        <span>⏱️ 1-2 يوم</span>
+        <span class="status-pending">🔒 مؤجلة</span>
+    </div>
+
+    <h3>الوصف</h3>
+    <p>عند الضغط على زر معين ← تعطيل الشاشة الكاملة:</p>
+    <ul>
+        <li>🔒 غطاء شفاف فوق كل العناصر</li>
+        <li>⏳ رسالة "جارٍ التحميل..." أو "الرجاء الانتظار"</li>
+        <li>✅ زر "موافق" عند الانتهاء</li>
+        <li>🚫 منع الضغط المزدوج</li>
+    </ul>
+
+    <h3>المشكلة التي تحلها</h3>
+    <p>المستخدم عندما يضغط زر في واحة الجبري:</p>
+    <ul>
+        <li>يظهر بطء في التحميل</li>
+        <li>أو: الزر لا يستجيب</li>
+        <li>النتيجة: يحاول مرة أخرى ← طلبات مكررة</li>
+        <li><strong>الحل:</strong> تعطيل الشاشة مع رسالة واضحة</li>
+    </ul>
+
+    <h3>الصيغ الثلاث</h3>
+    <p><strong>1️⃣ Disable Partial (جزئي)</strong></p>
+    <div class="code-box">
+document.getElementById('menu').disabled = true;
+// تعطيل جزء معين فقط
+    </div>
+
+    <p><strong>2️⃣ Disable Whole Screen (كامل)</strong></p>
+    <div class="code-box">
+overlay.style.display = 'block';
+// غطاء على كل الشاشة
+    </div>
+
+    <p><strong>3️⃣ Disable for Users (صلاحيات)</strong></p>
+    <div class="code-box">
+if (userRole === 'viewer') {
+    // عرض فقط — لا أزرار
+}
+    </div>
+
+    <h3>أماكن التطبيق في الواحة</h3>
+    <ul>
+        <li>عند تبديل اللغة</li>
+        <li>عند فتح APK</li>
+        <li>عند تحميل menu.js</li>
+        <li>عند التنقل بين الصفحات</li>
+        <li>للزوار غير المسجلين (لاحقاً)</li>
+        <li>للمشرفين (لاحقاً)</li>
+    </ul>
+
+    <h3>الفوائد</h3>
+    <ul>
+        <li>UX أفضل — المستخدم يعرف أن الموقع يعمل</li>
+        <li>منع أخطاء — لا ضغط مزدوج</li>
+        <li>منع 404 إضافية — لا طلبات مكررة</li>
+        <li>صلاحيات — في المستقبل: زائر / مسجل / مشرف</li>
+        <li>مظهر احترافي — يشبه التطبيقات الحقيقية</li>
+    </ul>
+
+    <h3>ملاحظات تقنية</h3>
+    <ul>
+        <li>الملف المقترح: <code>/js/ux.js</code> جديد</li>
+        <li>يُضاف في: <code>header.html</code> (بعد menu.js)</li>
+        <li>يحترم <code>prefers-reduced-motion</code></li>
+        <li>يعمل على: ويب + APK</li>
+        <li>لا يعمل في: Googlebot (IS_BOT)</li>
+    </ul>
+</section>
+
+<!-- ===== M2: IndexNow ===== -->
+<section class="feature" id="m2">
+    <h2>🎯 M2: IndexNow Integration</h2>
+
+    <div class="meta">
+        <span>📅 2026-09-22</span>
+        <span class="priority-low">⭐ أولوية: منخفضة</span>
+        <span class="status-pending">🔒 مؤجلة</span>
+    </div>
+
+    <h3>الوصف</h3>
+    <p>عند كل تحديث للموقع ← إشعار فوري لمحركات البحث:</p>
+    <ul>
+        <li>Bing</li>
+        <li>Yandex</li>
+        <li>Google (عبر sitemap ping)</li>
+    </ul>
+
+    <h3>الفائدة</h3>
+    <ul>
+        <li>⚡ زحف أسرع</li>
+        <li>📊 تحديث تقارير أسرع</li>
+        <li>🚀 فهرسة فورية</li>
+    </ul>
+</section>
+
+<!-- ===== M3: SW Update Popup ===== -->
+<section class="feature" id="m3">
+    <h2>🎯 M3: Service Worker Update Popup</h2>
+
+    <div class="meta">
+        <span>📅 2026-09-22</span>
+        <span class="priority-low">⭐ أولوية: منخفضة</span>
+        <span>✅ موجود في header.html</span>
+    </div>
+
+    <h3>الوصف</h3>
+    <p>عند تحديث SW ← popup يخبر المستخدم:</p>
+    <ul>
+        <li>"واحة الجبري تحدّثت!"</li>
+        <li>زر "رائع! 🚀" ← reload</li>
+    </ul>
+</section>
+
+<!-- ===== قائمة المهام ===== -->
+<section class="feature" id="tasks">
+    <h2>📌 قائمة المهام المؤجلة</h2>
+
+    <ul class="checklist">
+        <li><strong>M1:</strong> Disable Screen (UX)</li>
+        <li><strong>M2:</strong> IndexNow integration</li>
+        <li><strong>M3:</strong> تحسين Service Worker Update</li>
+        <li><strong>M4:</strong> مراجعة <code>escapeHtml</code> في link-checker.js</li>
+        <li><strong>M5:</strong> تفعيل link-checker.js v2.4 بعد GSC</li>
+        <li><strong>M6:</strong> تحديث repo1→10 و repo12</li>
+        <li><strong>M7:</strong> APK آخر إصدار</li>
+    </ul>
+</section>
+
+<!-- ===== الجدول الزمني ===== -->
+<section class="feature" id="timeline">
+    <h2>🗓️ الجدول الزمني المقترح</h2>
+
+    <ul>
+        <li><strong>2026-09-22 → 2026-09-29:</strong> انتظار GSC + لا تعديلات</li>
+        <li><strong>2026-09-30 → 2026-10-06:</strong> مراجعة نتائج GSC</li>
+        <li><strong>2026-10-07 → 2026-10-13:</strong> تفعيل link-checker v2.4 (إذا GSC مستقر)</li>
+        <li><strong>2026-10-14 → 2026-10-20:</strong> تنفيذ Disable Screen</li>
+        <li><strong>2026-10-21 → 2026-10-27:</strong> repo1→10 و repo12</li>
+    </ul>
+</section>
+
+<!-- ===== ملاحظات أمنية ===== -->
+<section class="feature">
+    <h2>🔐 ملاحظات أمنية</h2>
+
+    <h3>WahaAuth في init-page-root.js</h3>
+    <ul>
+        <li>⚠️ <code>loginLocal</code> معطّلة — لا مصادقة محلية</li>
+        <li>⚠️ <code>loginGoogle</code> معطّلة — تحتاج backend</li>
+        <li>✅ المصادقة الحقيقية تحتاج خادم آمن (Supabase / Firebase)</li>
+    </ul>
+
+    <h3>للصلاحيات المستقبلية</h3>
+    <ul>
+        <li><code>user.role</code> = <code>'viewer'</code> / <code>'user'</code> / <code>'admin'</code></li>
+        <li><code>WahaAuth.hasRole('admin')</code> ← تفعيل أدوات الإدارة</li>
+    </ul>
+</section>
+
+<footer>
+    <p>
+        <strong>الباحث:</strong> م/ عبدالله محمد ناصر الجبري<br>
+        <strong>الموقع:</strong> <a href="https://jabri-com.vercel.app/">jabri-com.vercel.app</a><br>
+        <strong>ORCID:</strong> 0009-0003-3319-3822
+    </p>
+    <p style="margin-top: 15px;">
+        © 2026 واحة الجبري — Heaven Al-Jabri<br>
+        🇾🇪 من صنعاء إلى الكون 🌟
+    </p>
+</footer>
+
+</div>
+
+</body>
+</html>
