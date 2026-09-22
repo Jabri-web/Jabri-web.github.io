@@ -1,8 +1,10 @@
-# ═══════════════════════════════════════════════════════════
+_______________________________
+https://jabri-com.vercel.app/
+# ═════════════════════════════
 # دليل واحة الجبري | Heaven Al-Jabri - v2.0
 # التاريخ: 2026-09-20
 # الإجمالي: ~110 ملف
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 
 ___المجلدات_____folder;
 / .........root 98% of files
@@ -13,11 +15,21 @@ publish/ ..Publishing
 game/ .....Games
 image/ ....All multimedia
 
+Each repo has to has:
+1-files (follow)
+2- index.html
+3- README.md
+4- README-AR.md
+5- README-INDEX.md
+6- ABOUT.md
+7- ABOUT-AR.md
+
+
 _______files_______
 
-# ═══════════════════════════════════════════════════════════
+#══════════════════════════════
 # 1. الصفحات الرئيسية (Main Pages)
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 1-index.html...(ar,en)
 2-logo.html
 3-catalog.html
@@ -25,9 +37,9 @@ _______files_______
 5-table-all.html
 6-monitor.html
 
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 # 2. صفحات Page 1-12
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════════
 7-Page1.html
 8-Page2.html
 9-Page3.html
@@ -41,17 +53,17 @@ _______files_______
 17-Page11.html
 18-Page12.html
 
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 # 3. About
-# ═══════════════════════════════════════════════════════════
+#══════════════════════════════
 19-about.html...(ar,en)
 20-about-ar.html
 21-about-en.html
 22-about-waha.html
 
-# ═══════════════════════════════════════════════════════════
+#══════════════════════════════
 # 4. المؤلف والسيرة الذاتية (Author & CV)
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 23-Author-cv.html
 24-author-history.html
 25-cv-2026a.html
@@ -60,24 +72,24 @@ _______files_______
 28-profile.html
 29-profile-en.html
 
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 # 5. النظرية الموحدة (Theory)
-# ═══════════════════════════════════════════════════════════
+#═══════════════════════════════
 30-theory-ar.html
 31-theory-en.html
 32-Sindbad-theory.html
 33-Sindbad-Brdoni.html
 
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════
 # 6. البحث العلمي (Research)
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 34-research.html
 35-research-deep.html
 36-Pages-Researches.html
 
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 # 7. التراث اليمني (Yemeni Heritage)
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 37-Sanaa.html
 38-Shibam.html
 39-Soqatra.html
@@ -88,18 +100,18 @@ _______files_______
 44-yemen-photo-api.html
 45-yemen-photo-php.html
 
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 # 8. المجلات (Journals)
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 46-journal.html
 47-journal2.html
 48-journal3.html
 49-journal4.html
 50-History-pdf.html
 
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 # 9. الأدوات (Tools) - محدّثة
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════════
 51-calculator.html
 52-handsa.html
 53-char-balance.html
@@ -108,17 +120,17 @@ _______files_______
 56-diagnose.html
 57-link-checker.html ⭐ NEW (2026-09-20)
 
-# ═══════════════════════════════════════════════════════════
+#═════════════════════════════
 # 10. قواعد البيانات والشبكة (Databases & Network)
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 58-Dbase.html
 59-Dbase-deep.html
 60-microtik.html
 61-microtik-deep.html
 
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 # 11. المكتبة والمحتوى (Library & Content)
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 62-Office.html
 63-source.html
 64-citations.html
@@ -133,9 +145,9 @@ _______files_______
 73-project-ar.html
 74-poster.html
 
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════
 # 12. التواصل والنظام (Contact & System)
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 75-contact.html...(ar,en)
 76-FAQPage.html
 77-FAQPage-en.html
@@ -143,9 +155,9 @@ _______files_______
 79-404.html
 80-dashboard.html
 
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════
 # 13. أدوات المطور (Developer Tools)
-# ═══════════════════════════════════════════════════════════
+# ═══════════════════════════
 81-file-structure.html
 82-file-structure2.html
 83-Router-all.html
@@ -153,19 +165,19 @@ _______files_______
 85-repos-sqr.html
 86-current-auto.html
 
-# ═══════════════════════════════════════════════════════════
+# ═════════════════════════════
 # 14. المتنوع (Miscellaneous)
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 87-kfupm-msg.html
 88-explore.html
 
-# ═══════════════════════════════════════════════════════════
+# ══════════════════════════════
 # المجلدات الفرعية (Subfolders)
-# ═══════════════════════════════════════════════════════════
+#════════════════════════════════
 
-# ───────────────────────────────────────────────────────────
+#───────────────────────────────
 # 15. مجلد /ar/ (النسخة العربية) - محدّث
-# ───────────────────────────────────────────────────────────
+# ──────────────────────────────
 89-ar/index.html
 90-ar/about.html
 91-ar/contact.html
@@ -178,9 +190,9 @@ _______files_______
 98-ar/Page11.html ⭐ NEW (2026-09-20)
 99-ar/Page12.html ⭐ NEW (2026-09-20)
 
-# ───────────────────────────────────────────────────────────
+# ────────────────────────────
 # 16. مجلد /en/ (النسخة الإنجليزية) - محدّث
-# ───────────────────────────────────────────────────────────
+# ────────────────────────────
 100-en/index.html
 101-en/about.html
 102-en/contact.html
@@ -193,15 +205,20 @@ _______files_______
 109-en/Page11.html ⭐ NEW (2026-09-20)
 110-en/Page12.html ⭐ NEW (2026-09-20)
 
-# ───────────────────────────────────────────────────────────
+# ────────────────────────────
 # 17. مجلد /game/ (الألعاب)
-# ───────────────────────────────────────────────────────────
+# ─────────────────────────────
 111-game/game-auto.html
 
-# ───────────────────────────────────────────────────────────
+# ──────────────────────────────
 # 18. مجلد /publish/ (النشر)
-# ───────────────────────────────────────────────────────────
+# ───────────────────────────────
 112-publish/publish.html
+
+________updated files__________
+113-/technical-guide.html
+114-/all-link-doc.html
+115-/update-tracker.html
 
 _____________________
 Total=112
@@ -209,30 +226,30 @@ Total=112
 🇾🇪🇾🇪🇾🇪🇾🇪
 ♻️♻️♻️♻️
 
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 _____NO indexing______________
-# ═══════════════════════════════════════════════════════════
+# ════════════════════════════
 
-# ───────────────────────────────────────────────────────────
+# ───────────────────────────
 # 19. الأجزاء - لا تُفهرس
-# ───────────────────────────────────────────────────────────
+#─────────────────────────────
 1-header.html
 2-footer.html
 3-hero.html
 4-offline.html
 5-dashboard.html
 
-# ───────────────────────────────────────────────────────────
+#──────────────────────────────
 # 20. مجلد /js/
-# ───────────────────────────────────────────────────────────
+# ─────────────────────────────
 1-js/init-page-root.js
 2-js/menu.js
 3-link-checker.js
 4-file.js
 
-# ───────────────────────────────────────────────────────────
+# ───────────────────────────────
 # ملفات النظام (System Files)
-# ───────────────────────────────────────────────────────────
+# ───────────────────────────────
 1-manifest.json
 2-robots.txt
 3-sitemap.xml
@@ -241,127 +258,124 @@ _____NO indexing______________
 6-file-all.txt
 7-file-all2.txt ⭐ NEW
 
-# ═══════════════════════════════════════════════════════════
+══════════════════
 # نهاية الدليل - EOF
-# ═══════════════════════════════════════════════════════════
+# ═════════════════
 
 
+____________________________
 
+واحة الجبري' Heaven Al-Jabri
+https://jabri-com.vercel.app/
 
-
-واحة الجبري: موقع شغال وانتهى الى مرحلة التوثيق..
-الا اذا وجد تحديث للضرورة القصوى.
-
-
-
-
-كل حاجة في github مسموح
-ماعدا صفحاتها..مثل:
-https://Jabri-web.github.io/
-https://Jabri-web.github.io/Jabri-com/
-لكنها مقبولة لدى قوقل وتعمل للموقع دعاية مرعبة...
-
-لجاءنا للذهاب الى vercel...
-كل العالم يشاهد موقع: واحة الجبري
-لا يوجد غير اربعة مشاريع فيه مخصصة باسم الريبو:
-https://jabri-com.vercel.app/ repo11
-https://jabricom.vercel.app/ repo12
-https://jabri-web.vercel.app/ repo10
-https://jabri-web.github.io/ repo4
-عملنا بديل لاستعراص صفحات githhub في قواعد البيانات باشياء مثل صفحات الساحر... وصفحات مرآة اليمن.
-
-
-معنا نظام يدوي للهيدر والفوتر في كل صفحة... وايضا نظام الى لتحميل هيدر عام وفوتر عام لكل صفحة...
-حتى تتم ارشفة الموقع سنحذف اليدوي ونبقي على الالي...
-
-اللغات:
-مدمج في الروت
-عربي خالصar
-اجليزي خالص en
-
-
-
-
-________________________
-
-
-به موقع لصفحات github يبداء الرابط هكذا:
-https://pages.github.....
-
-اما الصفحات الداخلية ل github فهي:
-https://Jabri-web.guthub.io/ repo4
-
-https://Jabri-web.guthub.io/Jabri62018.github.io/ repo1
-https://Jabri-web.guthub.io/Zx_RieOS1.2/ rep2
-https://Jabri-web.guthub.io/Zx_Mother_Function_Jabri/ repo3
-https://Jabri-web.guthub.io/ repo4
-https://Jabri-web.guthub.io/Jabri_Nobble/ repo5
-https://Jabri-web.guthub.io/jabri_lab/ repo6
-https://Jabri-web.guthub.io/ZxRieOS1.1/ REPO7
-https://Jabri-web.guthub.io/Jabri_RiemannOS/ REPO8
-https://Jabri-web.guthub.io/Jabri_Checkout/ repo9
-
-
-
-https://Jabri-web.guthub.io/Jabri-web/ repo10
-
-https://Jabri-web.guthub.io/Jabri-com/ repo11
-https://Jabri-web.guthub.io/jabri.com/ repo12
-
-
-مثلا لو تريد ملف معين...هكذا:
-https://Jabri-web.guthub.io/jabri.com/research.html
-
-
-صفحاتها مفتوحة للمتخصصين والشركات
-ومحجوبة على العامة
-
-___________________
-
-
-
-┌─────────────────────────────────────────────────────────┐
+┌─────────────────────────────┐
 │ VERCEL (4 مشاريع) │
-├─────────────────────────────────────────────────────────┤
-│ https://jabri-com.vercel.app/ ← repo11 (الرئيسي) │
-│ https://jabricom.vercel.app/ ← repo12 │
-│ https://jabri-web.vercel.app/ ← repo10 │
-│ https://jabri-web.github.io/ ← repo4 (GitHub) │
-└─────────────────────────────────────────────────────────┘
+├─────────────────────────────┤
+1- https://jabri-com.vercel.app/ 
+= repo11 =Jabri-com(الرئيسي) Router │
+2- https://jabricom.vercel.app/
+= repo12 =jabri.com│...hyper router
+3' https://jabri-web.vercel.app/ 
+= repo10= Jabri-web│...router
+4- https://jabri-web.github.io/
+= repo4 =Jabri-web.github.io│= same domain as Github
+└─────────────────────────────┘
 ↓
-┌─────────────────────────────────────────────────────────┐
+┌─────────────────────────────┐
 │ GitHub Pages (12 مستودع) │
-├─────────────────────────────────────────────────────────┤
-│ jabri-web.github.io/ ← repo4 │
-│ jabri-web.github.io/Jabri62018.github.io/ ← repo1 │
-│ jabri-web.github.io/Zx_RieOS1.2/ ← repo2 │
-│ jabri-web.github.io/Zx_Mother_Function_Jabri/ ← repo3 │
-│ jabri-web.github.io/Jabri_Nobble/ ← repo5 │
-│ jabri-web.github.io/jabri_lab/ ← repo6 │
-│ jabri-web.github.io/ZxRieOS1.1/ ← repo7 │
-│ jabri-web.github.io/Jabri_RiemannOS/ ← repo8 │
-│ jabri-web.github.io/Jabri_Checkout/ ← repo9 │
-│ jabri-web.github.io/Jabri-web/ ← repo10 │
-│ jabri-web.github.io/Jabri-com/ ← repo11 │
-│ jabri-web.github.io/jabri.com/ ← repo12 │
-└─────────────────────────────────────────────────────────┘
+├─────────────────────────────┤
+These are how links for Github Pages:
 
+ex: https://Jabri62018/Jabri-web.github.io/(repo name)
 
-كلمة محجوبة: تعني لا تفتح
-لكن يشاهدها العامة في المستعرضات
-
-
-تكفينا الدعاية والظهور بقوقل
-
-__________
-
-اسمع: كل شي مفتوح للعامة على github غير الصفحات
-
-
-ياسيخ: الرابط التالي يكفي بقوقل للبروفايل عامل امبراطورية وحدة:
+1- https://Jabri-web.github.io/Jabri62018.github.io/
+ =repo1=Page1
+2- https://Jabri-web.github.io/Zx_RieOS1.2/
+ =epo2 │=Page2
+3- https://Jabri-web.github.io/Zx_Mother_Function_Jabri/
+ repo3 │=Page3
+4' https://Jabri-web.github.io/ -repo4│=Page4
+5- https://Jabri-web.github.io/Jabri_Nobble/ 
+= repo5 │=ءPage5
+6- https://Jabri-web.github.io/Jabri_lab/ 
+= repo6 │=Page6
+7- https://Jabri-web.github.io/ZxRieOS1.1/ 
+= repo7 │=Page7
+8- https://Jabri-web.github.io/Jabri_RiemannOS/ 
+= repo8 │=Page8
+9- https://Jabri-web.github.io/Jabri_Checkout/ 
+= repo9 │=Page9
+10- https://Jabri-web.github.io/Jabri-web/ 
+= repo10 │=Page10
+11- https://Jabri-web.github.io/Jabri-com/ 
+= rrepo11 │=Page11= واحة الجبري
+12- https://Jabri-web.github.io/jabri.com/ 
+= repo12 │=Page12
+└─────────────────────────────┘
+# profile link:
 https://github.com/Jabri-web
+# repos access links:
+_____________________
+ex: https://github.com/(user)/(repo);
 
-مارايك...
+1-https://github.com/Jabri-web/Jabri62018.github.io 
+=repo1
+2- https:/github.com/Jabri-web/Zx_RieOS1.2 
+=repo2
+3- https://github.com/Jabri-web/Zx_Mother_Function_Jabri 
+=repo3
+4- https://github.com/Jabri-web/Jabri-web.github.io
+=repo4
+5- https://github.com/Jabri-web/Jabri_Nobble
+=repo5
+6- https://github.com/Jabri-web/Jabri-lab
+=repo6
+7- https://github.com/Jabri-web/Zx_RieOS1.1
+=repo7
+8- https://github.com/Jabri-web/Jabri-RiemannOS
+=repo8
+9- https://github.com/Jabri-web/Jabri-Checkout
+=repo9
+10- https://github.com/Jabri-web/Jabri-web
+=repo10
+11- https://github.com/Jabri-web/Jabri-web
+=repo11
+12- https://github.com/Jabri-web/jabri.com
+=repo12
+_____________________________
+how to opan files/Pages:
+1- vercel:
+https://jabri-com.vercel.app/(file_name.html)
+2- Github:
+as page:
+https://Jabri-web.github.io/(file-name.html)
+https://Jabri-web.github.io/(repo)/(file-name.html)
 
-___________
+as source:
+https://github.com/Jabri-web/blob/main/(file_name.html)
+https://github.com/Jabri-web/(repo)/blob/main/(file_name.html)
+______________________
+_______________________
+نظرا لحجب صفحات github على العامة
+في اليمن ذهبنا لفيرسل
+بقية الامور مفتوحة للعامة
+مثل دخول للريبوز والبروفايل
+الشركات وقوقل والمطورين كل شي مفتوح.
+كل شي يظهر من قتهاب في قوقل ويساهد من الجميع وتعتبر محطة دعاية واعلان لواحة الجبري وفيرسل يظهر ويفتح في انحاؤ المعمورة.
 
+واحة الجبري: تستخدم هيدر وفوتر يدوي في كل صفحة وايضا لديها هيدر عام وفوتر عام يدمج اليا في كل صفحة.
+بعد اكتمال التوثيق بقوقل وضمان تحميل الهيدر والفوتر اليا سيقرر حذف اليدوي.
+
+واحة الجبري:
+تستخدم الروت للغتين مدمجة وكل الملفات
+وتستخدم مجلد العربي للنسخ الخالصة عربيا
+وتستخدم المجلد الانجليزي للنسخ الخالصه انجليزيا
+عندما اكتمالوالنسخ الخالصة عربيا وانجليزيا وبعد توثيق قوقل سيقرر مصير ملفات الروت.
+
+_______________________
+
+تذكر: واحة الجبري موقع مغلق كامل وتحت الارشفة وممنوع تغيير شي الا للضرورة تناغما مع منطلبات الفهرسة.
+تحياتي
+#عبدالله_الجبري (صنعاء-اليمن)
+الثلاثاء 23 سبتمبر 2026م
+__________________________
