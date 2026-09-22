@@ -1,12 +1,12 @@
 /* ================================================================
-   /js/link-checker.js — v2.3
+   /js/link-checker.js — v2.4
    Heaven Al-Jabri | واحة الجبري
    ─────────────────────────────────────────────────────────────
-   🔒 v2.3 (Bot-Proof + Clean Folders):
+   🔒 v2.4 (Custom Folders + Bot-Proof):
      • IS_BOT: تخطي كامل للروبوتات (Googlebot, Bingbot, ...)
-     • COMMON_FOLDERS: تُبنى runtime بدل قائمة صريحة
-     • لا مزيد من 404 وهمية في GSC
-     • كل ميزات v2.2 محفوظة (زر "استمر لفتح الصفحة")
+     • getCommonFolders(): مخصص لواحة الجبري فقط (7 مجلدات)
+     • لا مزيد من 404 من /css/ /docs/ /scripts/ /static/ ...
+     • كل ميزات v2.3 محفوظة
    ================================================================ */
 
 (function () {
@@ -15,24 +15,23 @@
     if (window.__WAHA_LINK_CHECKER_LOADED__) return;
     window.__WAHA_LINK_CHECKER_LOADED__ = true;
 
-    // 🛡️ [v2.3] كشف الروبوتات — تخطي كامل
+    // 🛡️ [v2.4] كشف الروبوتات — تخطي كامل
     const UA = navigator.userAgent || '';
     const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot|bytespider/i.test(UA);
 
     if (IS_BOT) {
-        console.log('🤖 [link-checker] v2.3 — زائر روبوت، تخطي كامل');
-        // نعرّف الدوال وهمياً حتى لا يكسر أي كود آخر
+        console.log('🤖 [link-checker] v2.4 — زائر روبوت، تخطي كامل');
         window.WAHA_LINK_CHECKER = {
             scan: function(){}, probe: function(){return Promise.resolve(false);},
             tryFix: function(){return Promise.resolve(null);},
             suggest: function(){return Promise.resolve([]);},
             hide: function(){}, copy: function(){return false;},
-            version: '2.3-bot-skip'
+            version: '2.4-bot-skip'
         };
         return;
     }
 
-    // 👤 زائر حقيقي — نكمل بشكل طبيعي
+    // 👤 زائر حقيقي
     const CFG = Object.assign({
         autoRun:        true,
         runDelay:       800,
@@ -55,17 +54,21 @@
                      (location.hostname || '').indexOf('vercel') === -1 &&
                      (location.hostname || '').indexOf('github') === -1);
 
-    console.log('%c🔗 [link-checker] v2.3 — ' + (IS_APK ? 'APK' : 'Web'),
+    console.log('%c🔗 [link-checker] v2.4 — ' + (IS_APK ? 'APK' : 'Web'),
                 'color:#ffd700;font-weight:700');
 
-    // 🛡️ [v2.3] تُبنى runtime — لا تظهر كقائمة صريحة للروبوتات
+    // ✅ [v2.4] قائمة مخصصة لواحة الجبري فقط
+    // لا مجلدات عامة — فقط ما هو موجود فعلاً في الموقع
     function getCommonFolders() {
-        const names = ['image','images','img','css','styles','js','scripts',
-                       'fonts','font','assets','static','public','downloads',
-                       'download','files','file','docs','documents','media',
-                       'videos','video','audio','music','pdf','apk','zip',
-                       'uploads','upload'];
-        return names.map(function(n) { return '/' + n + '/'; });
+        return [
+            '/apk/',      // ملفات APK
+            '/ar/',       // النسخة العربية
+            '/en/',       // النسخة الإنجليزية
+            '/game/',     // الألعاب
+            '/image/',    // الصور والوسائط
+            '/js/',       // JavaScript
+            '/publish/'   // النشر
+        ];
     }
 
     const EXT_ALTS = {
@@ -204,7 +207,7 @@
         var baseName = dot > 0 ? file.slice(0, dot) : file;
         var ext = dot > 0 ? file.slice(dot + 1).toLowerCase() : '';
 
-        // 🛡️ [v2.3] نستخدم الدالة بدل القائمة الثابتة
+        // ✅ [v2.4] قائمة مخصصة (7 مجلدات فقط)
         var folders = getCommonFolders();
 
         for (var i = 0; i < folders.length; i++) {
@@ -267,7 +270,6 @@
 
     function ensurePanel() {
         if (panelEl) return panelEl;
-
         panelEl = document.createElement('div');
         panelEl.id = 'waha-link-checker-panel';
         panelEl.style.cssText =
@@ -315,14 +317,12 @@
         document.body.appendChild(panelEl);
 
         panelEl.querySelector('#wlc-close').addEventListener('click', hidePanel);
-
         const continueBtn = panelEl.querySelector('#wlc-continue');
         continueBtn.addEventListener('click', function () {
             continueBtn.textContent = '✅ تابع التصفح';
             continueBtn.style.opacity = '0.7';
             hidePanel();
             try { sessionStorage.setItem('wlc_dismissed', '1'); } catch (e) {}
-            console.log('▶ [link-checker] المستخدم اختار الاستمرار');
         });
         continueBtn.addEventListener('mouseenter', function () {
             continueBtn.style.transform = 'scale(1.03)';
@@ -459,7 +459,7 @@
             console.log('🔗 [link-checker] لا توجد روابط داخلية');
             return;
         }
-        console.log('🔗 [link-checker] نفحص ' + links.length + ' رابط...');
+        console.log('🔗 [link-checker] v2.4 — نفحص ' + links.length + ' رابط...');
 
         var broken = [];
         var fixed = [];
@@ -501,7 +501,7 @@
             }
         }
 
-        console.log('%c🔗 [link-checker] انتهى — سليم: ' +
+        console.log('%c🔗 [link-checker] v2.4 انتهى — سليم: ' +
                     (links.length - fixed.length - broken.length) +
                     ' | مُصلَح: ' + fixed.length +
                     ' | مكسور: ' + broken.length,
@@ -539,10 +539,10 @@
         suggest:   findWorkingSuggestions,
         hide:      hidePanel,
         copy:      copyToClipboard,
-        version:   '2.3'
+        version:   '2.4'
     };
 
-    console.log('%c✅ /js/link-checker.js v2.3 جاهز',
+    console.log('%c✅ /js/link-checker.js v2.4 جاهز',
                 'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 6px;border-radius:4px');
 
 })();
