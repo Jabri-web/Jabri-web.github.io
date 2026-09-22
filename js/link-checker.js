@@ -1,8 +1,12 @@
 /* ================================================================
-   /js/link-checker.js — v2.2
+   /js/link-checker.js — v2.3
    Heaven Al-Jabri | واحة الجبري
    ─────────────────────────────────────────────────────────────
-   ✨ v2.2: زر "استمر لفتح الصفحة" — يغلق اللوحة ويُكمل التصفح
+   🔒 v2.3 (Bot-Proof + Clean Folders):
+     • IS_BOT: تخطي كامل للروبوتات (Googlebot, Bingbot, ...)
+     • COMMON_FOLDERS: تُبنى runtime بدل قائمة صريحة
+     • لا مزيد من 404 وهمية في GSC
+     • كل ميزات v2.2 محفوظة (زر "استمر لفتح الصفحة")
    ================================================================ */
 
 (function () {
@@ -11,6 +15,24 @@
     if (window.__WAHA_LINK_CHECKER_LOADED__) return;
     window.__WAHA_LINK_CHECKER_LOADED__ = true;
 
+    // 🛡️ [v2.3] كشف الروبوتات — تخطي كامل
+    const UA = navigator.userAgent || '';
+    const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot|bytespider/i.test(UA);
+
+    if (IS_BOT) {
+        console.log('🤖 [link-checker] v2.3 — زائر روبوت، تخطي كامل');
+        // نعرّف الدوال وهمياً حتى لا يكسر أي كود آخر
+        window.WAHA_LINK_CHECKER = {
+            scan: function(){}, probe: function(){return Promise.resolve(false);},
+            tryFix: function(){return Promise.resolve(null);},
+            suggest: function(){return Promise.resolve([]);},
+            hide: function(){}, copy: function(){return false;},
+            version: '2.3-bot-skip'
+        };
+        return;
+    }
+
+    // 👤 زائر حقيقي — نكمل بشكل طبيعي
     const CFG = Object.assign({
         autoRun:        true,
         runDelay:       800,
@@ -27,24 +49,24 @@
 
     const PROTO  = location.protocol;
     const IS_FILE = PROTO === 'file:';
-    const IS_WV   = (navigator.userAgent || '').indexOf('wv') !== -1;
+    const IS_WV   = UA.indexOf('wv') !== -1;
     const IS_APK  = IS_FILE || IS_WV ||
                     (PROTO !== 'http:' && PROTO !== 'https:' &&
                      (location.hostname || '').indexOf('vercel') === -1 &&
                      (location.hostname || '').indexOf('github') === -1);
 
-    console.log('%c🔗 [link-checker] v2.2 — ' + (IS_APK ? 'APK' : 'Web'),
+    console.log('%c🔗 [link-checker] v2.3 — ' + (IS_APK ? 'APK' : 'Web'),
                 'color:#ffd700;font-weight:700');
 
-    const COMMON_FOLDERS = [
-        '/image/', '/images/', '/img/', '/css/', '/styles/',
-        '/js/', '/scripts/', '/fonts/', '/font/',
-        '/assets/', '/static/', '/public/',
-        '/downloads/', '/download/', '/files/', '/file/',
-        '/docs/', '/documents/', '/media/',
-        '/videos/', '/video/', '/audio/', '/music/',
-        '/pdf/', '/apk/', '/zip/', '/uploads/', '/upload/'
-    ];
+    // 🛡️ [v2.3] تُبنى runtime — لا تظهر كقائمة صريحة للروبوتات
+    function getCommonFolders() {
+        const names = ['image','images','img','css','styles','js','scripts',
+                       'fonts','font','assets','static','public','downloads',
+                       'download','files','file','docs','documents','media',
+                       'videos','video','audio','music','pdf','apk','zip',
+                       'uploads','upload'];
+        return names.map(function(n) { return '/' + n + '/'; });
+    }
 
     const EXT_ALTS = {
         'png':  ['webp', 'jpg', 'jpeg', 'svg', 'gif'],
@@ -181,8 +203,12 @@
         var dot = file.lastIndexOf('.');
         var baseName = dot > 0 ? file.slice(0, dot) : file;
         var ext = dot > 0 ? file.slice(dot + 1).toLowerCase() : '';
-        for (var i = 0; i < COMMON_FOLDERS.length; i++) {
-            var f = COMMON_FOLDERS[i];
+
+        // 🛡️ [v2.3] نستخدم الدالة بدل القائمة الثابتة
+        var folders = getCommonFolders();
+
+        for (var i = 0; i < folders.length; i++) {
+            var f = folders[i];
             if (f === folder) continue;
             candidates.push(f + file + search + hash);
         }
@@ -264,7 +290,6 @@
             '<div id="wlc-list" style="max-height:300px;overflow-y:auto;' +
                 'margin-bottom:10px;font-size:12.5px;line-height:1.6;"></div>' +
             '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
-                /* ⭐ الزر الجديد: استمر لفتح الصفحة */
                 '<button id="wlc-continue" style="flex:1;min-width:140px;padding:10px 14px;' +
                     'background:linear-gradient(135deg,#7ee787,#2ea043);' +
                     'color:#0a0a0f;border:none;border-radius:8px;' +
@@ -289,18 +314,13 @@
 
         document.body.appendChild(panelEl);
 
-        // زر الإغلاق ×
         panelEl.querySelector('#wlc-close').addEventListener('click', hidePanel);
 
-        // ⭐ زر "استمر لفتح الصفحة" — يُغلق اللوحة نهائياً ويكمل التصفح
         const continueBtn = panelEl.querySelector('#wlc-continue');
         continueBtn.addEventListener('click', function () {
-            // تأثير بصري بسيط
             continueBtn.textContent = '✅ تابع التصفح';
             continueBtn.style.opacity = '0.7';
-            // إغلاق فوري
             hidePanel();
-            // حفظ في الجلسة — لا يظهر مرة أخرى في نفس الجلسة
             try { sessionStorage.setItem('wlc_dismissed', '1'); } catch (e) {}
             console.log('▶ [link-checker] المستخدم اختار الاستمرار');
         });
@@ -310,8 +330,6 @@
         continueBtn.addEventListener('mouseleave', function () {
             continueBtn.style.transform = 'scale(1)';
         });
-
-        // زر تجاهل
         panelEl.querySelector('#wlc-hide').addEventListener('click', function () {
             hidePanel();
             try { sessionStorage.setItem('wlc_dismissed', '1'); } catch (e) {}
@@ -521,10 +539,10 @@
         suggest:   findWorkingSuggestions,
         hide:      hidePanel,
         copy:      copyToClipboard,
-        version:   '2.2'
+        version:   '2.3'
     };
 
-    console.log('%c✅ /js/link-checker.js v2.2 جاهز',
+    console.log('%c✅ /js/link-checker.js v2.3 جاهز',
                 'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 6px;border-radius:4px');
 
 })();
