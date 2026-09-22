@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📤 المنشورات التلقائية | واحة الجبري</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* نفس تصميم game-auto.html مع تعديلات بسيطة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a12;
+            color: #e8e4d8;
+            font-family: 'Tajawal', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(0, 255, 136, 0.02) 0%, transparent 60%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #D4AF37, #f5e56b, #D4AF37);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header .sub {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .header .sub span {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+
+        .header .auto-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 16px;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: 20px;
+            color: #00ff88;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .stats .stat-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            color: #888;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .stats .stat-item:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stats .stat-item strong {
+            color: #D4AF37;
+        }
+
+        .stats .stat-item .num {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #D4AF37;
+        }
+
+        /* ============================================================
+           شبكة المنشورات
+           ============================================================ */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .post-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: 16px;
+            padding: 24px 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            color: #e8e4d8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .post-card:hover::before {
+            opacity: 1;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.25);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .post-card .icon {
+            font-size: 2.8rem;
+            margin-bottom: 6px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-card .title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #D4AF37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-card .desc {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 6px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-card .badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.6rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 2px 10px;
+            border-radius: 12px;
+            color: #D4AF37;
+            z-index: 1;
+        }
+
+        .post-card .type-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            font-size: 0.55rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2px 10px;
+            border-radius: 12px;
+            color: #555;
+            z-index: 1;
+        }
+
+        .post-card .date-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 0.55rem;
+            color: #444;
+            z-index: 1;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 16px 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-bar input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: #e8e4d8;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            width: 280px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-bar input:focus {
+            border-color: #D4AF37;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+
+        .search-bar input::placeholder {
+            color: #555;
+        }
+
+        .other-files {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+        }
+
+        .other-files h3 {
+            color: #888;
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .other-files h3 .count {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+
+        .file-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .file-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 4px 14px;
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .file-list a:hover {
+            color: #D4AF37;
+            border-color: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.03);
+            transform: translateX(4px);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            padding: 4px 14px;
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #D4AF37;
+            border-color: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.02);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover { color: #f5e56b; }
+
+        .no-results {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 40px;
+            color: #555;
+        }
+
+        .no-results .big-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .posts-grid { grid-template-columns: 1fr; }
+            .stats { gap: 12px; }
+            .stats .stat-item { font-size: 0.75rem; padding: 4px 14px; }
+            .search-bar input { width: 100%; }
+            .search-bar { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- ============================================================
+         الرأس
+    ============================================================ -->
+    <div class="header">
+        <h1>📤 المنشورات</h1>
+        <div class="sub"><span>واحة الجبري</span> · Publications</div>
+        <div class="auto-badge">🔄 اكتشاف تلقائي · Auto-Discovery</div>
+        
+        <div class="stats">
+            <span class="stat-item">📄 <span class="num" id="postCount">0</span> منشور</span>
+            <span class="stat-item">📁 <span class="num" id="fileCount">0</span> ملف</span>
+            <span class="stat-item">📅 <span id="dateDisplay"></span></span>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         البحث
+    ============================================================ -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="🔍 ابحث في المنشورات...">
+    </div>
+
+    <!-- ============================================================
+         شبكة المنشورات
+    ============================================================ -->
+    <div class="posts-grid" id="postsGrid">
+        <!-- سيتم ملؤها بواسطة JavaScript -->
+    </div>
+
+    <!-- ============================================================
+         الملفات الأخرى
+    ============================================================ -->
+    <div class="other-files" id="otherFiles">
+        <h3>📄 ملفات أخرى في المجلد <span class="count" id="otherCount"></span></h3>
+        <div class="file-list" id="fileList">
+            <!-- سيتم ملؤها بواسطة JavaScript -->
+        </div>
+    </div>
+
+    <!-- ============================================================
+         الروابط
+    ============================================================ -->
+    <div class="nav-links">
+        <a href="/">🏠 الرئيسية</a>
+        <a href="/publish/publish.html">🎮واتساب2 </a>
+        <a href="/game/game-auto.html">🎮 الألعاب</a>
+        <a href="/handsa.html">🧮 هندسة الأعداد</a>
+        <a href="/journal.html">📰 المجلة</a>
+    </div>
+
+    <footer>
+        ✍ <strong class="text-gold">#عبدالله_الجبري</strong> · صنعاء — اليمن
+        <br>
+        <a href="https://github.com/jabri-com" target="_blank">🐙 GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://t.me/Jabri2025" target="_blank">📱 Telegram</a>
+    </footer>
+</div>
+
+<!-- ============================================================
+     سكربت الاستعراض التلقائي للمنشورات
+     ============================================================ -->
+<script>
+(function() {
+    'use strict';
+
+    // ============================================================
+    //   قاعدة بيانات المنشورات
+    // ============================================================
+    const POSTS_DB = [
+        {
+            id: 'shamk1',
+            title: '🇾🇪 ياخيول الزعيم',
+            file: 'shamk1.html',
+            icon: '📜',
+            type: 'شعر',
+            desc: 'قصيدة وطنية يمنية للشاعر ابو شامخ فضل علي الدروبي',
+            date: '29 أغسطس 2026',
+            tags: ['شعر', 'وطني', 'يمني']
+        },
+        {
+            id: 'publish',
+            title: '💬 واتساب الواحة',
+            file: 'publish.html',
+            icon: '💬',
+            type: 'منصة',
+            desc: 'منصة التواصل والمحادثات في واحة الجبري',
+            date: '29 أغسطس 2026',
+            tags: ['تواصل', 'محادثات', 'منصة']
+        }
+    ];
+
+    // ============================================================
+    //   العناصر
+    // ============================================================
+    const grid = document.getElementById('postsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const postCount = document.getElementById('postCount');
+    const fileCount = document.getElementById('fileCount');
+    const otherCount = document.getElementById('otherCount');
+    const fileList = document.getElementById('fileList');
+    const dateDisplay = document.getElementById('dateDisplay');
+
+    let currentSearch = '';
+
+    // ============================================================
+    //   عرض المنشورات
+    // ============================================================
+    function renderPosts() {
+        const filtered = POSTS_DB.filter(post => {
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                const titleMatch = post.title.toLowerCase().includes(searchLower);
+                const descMatch = post.desc.toLowerCase().includes(searchLower);
+                const tagsMatch = post.tags.some(t => t.toLowerCase().includes(searchLower));
+                if (!titleMatch && !descMatch && !tagsMatch) return false;
+            }
+            return true;
+        });
+
+        postCount.textContent = filtered.length;
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `
+                <div class="no-results">
+                    <span class="big-icon">🔍</span>
+                    لا توجد منشورات تطابق بحثك
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = filtered.map(post => `
+            <a href="${post.file}" class="post-card">
+                <span class="badge">📤</span>
+                <span class="type-badge">${post.type}</span>
+                <span class="date-badge">${post.date}</span>
+                <span class="icon">${post.icon}</span>
+                <div class="title">${post.title}</div>
+                <div class="desc">${post.desc}</div>
+            </a>
+        `).join('');
+    }
+
+    // ============================================================
+    //   عرض الملفات الأخرى
+    // ============================================================
+    function renderOtherFiles() {
+        const allLinks = document.querySelectorAll('a[href$=".html"]');
+        const postFiles = POSTS_DB.map(p => p.file);
+        const otherFiles = [];
+
+        allLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.includes('publish-auto.html') && !postFiles.includes(href)) {
+                if (!otherFiles.includes(href)) {
+                    otherFiles.push(href);
+                }
+            }
+        });
+
+        fileCount.textContent = otherFiles.length;
+        otherCount.textContent = otherFiles.length;
+
+        if (otherFiles.length === 0) {
+            fileList.innerHTML = '<span style="color:#444;font-size:0.8rem;">لا توجد ملفات إضافية</span>';
+            return;
+        }
+
+        fileList.innerHTML = otherFiles.map(file => {
+            const icon = file.endsWith('.html') ? '🌐' : '📄';
+            return `<a href="${file}"><span class="file-icon">${icon}</span> ${file}</a>`;
+        }).join('');
+    }
+
+    // ============================================================
+    //   عرض التاريخ
+    // ============================================================
+    function updateDate() {
+        const now = new Date();
+        dateDisplay.textContent = now.toLocaleDateString('ar-EG', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // ============================================================
+    //   الأحداث
+    // ============================================================
+    searchInput.addEventListener('input', function() {
+        currentSearch = this.value.trim();
+        renderPosts();
+    });
+
+    // ============================================================
+    //   🚀 التشغيل
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        renderPosts();
+        renderOtherFiles();
+        updateDate();
+        
+        console.log('📤 publish-auto.html | واحة الجبري');
+        console.log(`📊 ${POSTS_DB.length} منشور تم اكتشافه`);
+        console.log('📅 ' + new Date().toLocaleDateString('ar-EG'));
+    });
+
+})();
+</script>
+
+</body>
+</html>
