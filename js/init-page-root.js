@@ -1,9 +1,13 @@
 // ================================================================
-//  init-page-root.js - v5.7.2
+//  init-page-root.js - v5.8
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  🔒 v5.7.2 (أمان + Smart 404 + تحويل لغة فوري):
-//    • حذف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت
+//  🆕 v5.8 (شبكة + أمان + Smart 404 + تحويل لغة فوري):
+//    • ✨ إضافة initNetworkMonitor() — إشعار حالة الشبكة
+//    • 🟢 إشعار "عاد الاتصال"
+//    • 🔴 إشعار "غير متصل"
+//    • 🟡 إشعار "اتصال بطيء"
+//    • كشف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت
 //    • loginLocal / loginGoogle معطّلة رسمياً
 //    • Smart 404 نظيف: يضيف .html + يجرب ar/en/ فقط
 //    • switchLanguage فوري — صفر فحوصات، صفر انتظار
@@ -12,7 +16,7 @@
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] الدرع المطلق (v5.7.2 - Secure + Fast Lang)...');
+  console.log('🛡️ [init] الدرع المطلق (v5.8 - Secure + Fast Lang + Network)...');
 
   // ✅ كشف البيئة
   const PROTO = window.location.protocol;
@@ -27,6 +31,112 @@
 
   let splashHidden = false;
   let splashAutoHideTimer = null;
+
+  /* ================================================================
+     📡 Network Monitor — v5.8 (جديد)
+     ─────────────────────────────────────────────────────────────
+     • إشعار المستخدم بحالة الشبكة
+     • Online/Offline indicator
+     • Slow connection warning
+     • يعمل على: ويب + APK
+     • لا يعمل في: Googlebot (يظهر فوراً ويختفي)
+     ================================================================ */
+  function initNetworkMonitor() {
+    var banner = null;
+    var hideTimer = null;
+
+    function ensureBanner() {
+      if (banner) return banner;
+      banner = document.createElement('div');
+      banner.id = 'waha-network-banner';
+      banner.style.cssText =
+        'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);' +
+        'z-index:999999;padding:12px 24px;border-radius:30px;' +
+        'font-family:"Cairo","Tajawal",sans-serif;font-weight:700;' +
+        'font-size:14px;direction:rtl;' +
+        'box-shadow:0 8px 30px rgba(0,0,0,0.5);' +
+        'transition:opacity 0.3s,transform 0.3s;' +
+        'opacity:0;pointer-events:none;text-align:center;' +
+        'max-width:calc(100vw - 40px);';
+      document.body.appendChild(banner);
+      return banner;
+    }
+
+    function showBanner(text, type) {
+      var b = ensureBanner();
+      var colors = {
+        'offline': { bg: '#2a0d0d', border: '#ff4444', color: '#ff7b72' },
+        'online':  { bg: '#0f2417', border: '#2ea043', color: '#7ee787' },
+        'slow':    { bg: '#2a1f00', border: '#ffd700', color: '#ffd700' }
+      };
+      var c = colors[type] || colors.offline;
+      b.style.background = c.bg;
+      b.style.border = '2px solid ' + c.border;
+      b.style.color = c.color;
+      b.textContent = text;
+      b.style.opacity = '1';
+      b.style.pointerEvents = 'auto';
+      b.style.transform = 'translateX(-50%) translateY(0)';
+      if (hideTimer) clearTimeout(hideTimer);
+      // إخفاء تلقائي بعد 3.5 ثانية (ما عدا offline — يبقى)
+      if (type !== 'offline') {
+        hideTimer = setTimeout(function() {
+          b.style.opacity = '0';
+          b.style.pointerEvents = 'none';
+          b.style.transform = 'translateX(-50%) translateY(20px)';
+        }, type === 'online' ? 2500 : 4000);
+      }
+    }
+
+    function hideBanner() {
+      if (banner) {
+        banner.style.opacity = '0';
+        banner.style.pointerEvents = 'none';
+        banner.style.transform = 'translateX(-50%) translateY(20px)';
+      }
+    }
+
+    // 1. عند قطع الاتصال
+    window.addEventListener('offline', function() {
+      console.log('📡 [network] offline');
+      showBanner('🔴 أنت غير متصل بالإنترنت', 'offline');
+    });
+
+    // 2. عند عودة الاتصال
+    window.addEventListener('online', function() {
+      console.log('📡 [network] online');
+      showBanner('🟢 عاد الاتصال بنجاح', 'online');
+    });
+
+    // 3. عند بطء الاتصال
+    if (navigator.connection && navigator.connection.addEventListener) {
+      navigator.connection.addEventListener('change', function() {
+        var type = navigator.connection.effectiveType;
+        var downlink = navigator.connection.downlink;
+        console.log('📡 [network] connection:', type, '| downlink:', downlink, 'Mbps');
+        if (type === '2g' || type === 'slow-2g') {
+          showBanner('🟡 الاتصال بطيء — قد يتأخر التحميل', 'slow');
+        }
+      });
+    }
+
+    // 4. فحص أولي — إذا كان المستخدم غير متصل عند التحميل
+    if (!navigator.onLine) {
+      showBanner('🔴 أنت غير متصل بالإنترنت', 'offline');
+    }
+
+    // كشف عام للاستخدام لاحقاً
+    window.WAHA_NETWORK = {
+      isOnline: function() { return navigator.onLine; },
+      getConnectionType: function() {
+        return navigator.connection ? navigator.connection.effectiveType : 'unknown';
+      },
+      showBanner: showBanner,
+      hideBanner: hideBanner
+    };
+
+    console.log('📡 [network] Network Monitor جاهز');
+  }
 
   /* ================================================================
      🔒 WahaAuth — نظام الدخول
@@ -102,7 +212,7 @@
   };
 
   /* ================================================================
-     ✅ Lang Switcher — v5.7.2 (تحويل فوري — صفر فحوصات)
+     ✅ Lang Switcher — v5.8 (تحويل فوري — صفر فحوصات)
      ─────────────────────────────────────────────────────────────
      • لا فحص HEAD مسبق
      • لا انتظار
@@ -238,40 +348,40 @@
     });
   }
 
-function detect404() {
-  // ① علامة صريحة في body — الأكثر موثوقية
-  if (document.body && document.body.dataset && document.body.dataset.waha404 === 'true') {
-    console.log('✅ [404] تم الاكتشاف عبر data-waha-404');
-    return true;
-  }
-  
-  // ② فحوصات نصية
-  if (document.title && /404/i.test(document.title)) return true;
-  
-  const bodyHTML = (document.body && document.body.innerHTML) || '';
-  if (/404\s*Not\s*Found/i.test(bodyHTML)) return true;
-  if (/Page\s*Not\s*Found/i.test(bodyHTML)) return true;
-  if (/NOT_FOUND/i.test(bodyHTML)) return true;
-  if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
-  if (/هذا\s*الدرب\s*غير\s*موجود/.test(bodyHTML)) return true;
-  
-  // ③ Performance API
-  if (window.performance) {
-    try {
-      const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-      if (nav && nav.responseStatus === 404) return true;
-    } catch (e) {}
-    const entries = performance.getEntries();
-    const href = location.href;
-    for (let i = 0; i < entries.length; i++) {
-      if (entries[i].name === href && entries[i].responseStatus === 404) {
-        return true;
+  function detect404() {
+    // ① علامة صريحة في body — الأكثر موثوقية
+    if (document.body && document.body.dataset && document.body.dataset.waha404 === 'true') {
+      console.log('✅ [404] تم الاكتشاف عبر data-waha-404');
+      return true;
+    }
+    
+    // ② فحوصات نصية
+    if (document.title && /404/i.test(document.title)) return true;
+    
+    const bodyHTML = (document.body && document.body.innerHTML) || '';
+    if (/404\s*Not\s*Found/i.test(bodyHTML)) return true;
+    if (/Page\s*Not\s*Found/i.test(bodyHTML)) return true;
+    if (/NOT_FOUND/i.test(bodyHTML)) return true;
+    if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
+    if (/هذا\s*الدرب\s*غير\s*موجود/.test(bodyHTML)) return true;
+    
+    // ③ Performance API
+    if (window.performance) {
+      try {
+        const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        if (nav && nav.responseStatus === 404) return true;
+      } catch (e) {}
+      const entries = performance.getEntries();
+      const href = location.href;
+      for (let i = 0; i < entries.length; i++) {
+        if (entries[i].name === href && entries[i].responseStatus === 404) {
+          return true;
+        }
       }
     }
+    
+    return false;
   }
-  
-  return false;
-}
 
   /* ================================================================
      مولّد المرشحات — نظيف
@@ -587,6 +697,8 @@ function detect404() {
     initLang();
     initTheme();
 
+    initNetworkMonitor();  // 🆕 v5.8 — مراقبة الشبكة
+
     createSplash();
 
     var quick404 = false;
@@ -647,5 +759,5 @@ function detect404() {
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.7.2 - Secure + Fast Lang)');
+  console.log('✅ init-page-root.js جاهز (v5.8 - Secure + Fast Lang + Network)');
 })();
