@@ -1,13 +1,12 @@
 // ============================================================
-//   menu.js - v6.4 (Bot-Proof + Fixed APK Paths + XSS-Safe)
+//   menu.js - v7.1 (Header-Compatible Edition)
 //   Heaven Al-Jabri | واحة الجبري
 //   ─────────────────────────────────────────────────────────
-//   🔒 v6.4 (إصلاحات GSC + مسارات APK):
-//     • IS_BOT: كشف Googlebot/Bingbot/etc وإخفاء روابط التنزيل
-//     • تصحيح مسار APK/ZIP إلى /apk/jabri-heaven-v2.0.{apk,zip}
-//     • حذف /unified-calc.html (غير موجود) من MENU_TOP
-//     • downloadWaha لا تعمل إلا لغير الروبوتات
-//     • كل إصلاحات v6.3 محفوظة (XSS-safe, buildUrl, ...)
+//   🆕 v7.1:
+//     • ✅ يستدعى مرة واحدة فقط — مفيش Polling — مفيش تعليق
+//     • ✅ زر اللغة منسّق مع زر اللغة في الهيدر (نفس المنطق)
+//     • ✅ زر اللغة يقلب المجلد فقط (/ar/ ⇄ /en/) — بدون fetch
+//     • ✅ كل أزرار الهيدر شغالة زي ما هي (📖 ⚙️ 🔑)
 // ============================================================
 
 (function() {
@@ -16,54 +15,15 @@
     // ============================================================
     //   🌍 كشف البيئة
     // ============================================================
-    const PROTO   = location.protocol;
-    const IS_FILE = PROTO === 'file:';
-    const IS_WV   = (navigator.userAgent || '').indexOf('wv') !== -1;
-    const IS_APK  = IS_FILE || IS_WV ||
-                    (PROTO !== 'http:' && PROTO !== 'https:' &&
-                     (location.hostname || '').indexOf('vercel') === -1 &&
-                     (location.hostname || '').indexOf('github') === -1);
-
-    // 🛡️ [v6.4] كشف الروبوتات — لا نعرض لهم روابط الملفات
     const UA = navigator.userAgent || '';
     const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot/i.test(UA);
 
-    console.log('🌍 [menu.js] البيئة:', IS_APK ? '📱 APK' : '🌐 Web',
-                IS_BOT ? '| 🤖 BOT' : '| 👤 Human');
+    console.log('🌍 [menu.js v7.1] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
 
-    // ============================================================
-    //   📁 اكتشاف جذر التطبيق على APK
-    // ============================================================
-    let APP_ROOT = '/';
-    if (IS_APK) {
-        const p = location.pathname.replace(/\\/g, '/');
-        const KNOWN_ROOTS = [
-            '/android_asset/www/',
-            '/android_asset/public/',
-            '/assets/www/',
-            '/assets/public/',
-            '/www/'
-        ];
-        for (let i = 0; i < KNOWN_ROOTS.length; i++) {
-            const idx = p.indexOf(KNOWN_ROOTS[i]);
-            if (idx !== -1) {
-                APP_ROOT = p.substring(0, idx + KNOWN_ROOTS[i].length);
-                break;
-            }
-        }
-        if (APP_ROOT === '/' && p.lastIndexOf('/') !== -1) {
-            APP_ROOT = p.substring(0, p.lastIndexOf('/') + 1);
-        }
-        console.log('📁 [menu.js] APP_ROOT =', APP_ROOT);
-    }
-
-    // ✅ [v6.4] النطاق الرسمي للموقع
+    // ✅ النطاق الرسمي
     const SITE_URL = 'https://jabri-com.vercel.app';
 
-    // ✅ [v6.4] المسارات الحقيقية للملفات (موجودة في /apk/)
-    const APK_DOWNLOAD_PATH = '/apk/jabri-heaven-v2.0.apk';
-    const ZIP_DOWNLOAD_PATH = '/apk/jabri-heaven-v2.0.zip';
-
+    // ✅ اكتشاف اللغة من المسار
     const currentPath = location.pathname;
     let langDir = '';
     let isArabic = true;
@@ -80,22 +40,36 @@
     //   🔗 بناء الروابط
     // ============================================================
     function buildUrl(path) {
-        if (IS_APK) {
-            const target = String(path || '/').replace(/^\//, '');
-            const currentDir = location.pathname.substring(
-                0, location.pathname.lastIndexOf('/') + 1
-            );
-            let relFromRoot = currentDir;
-            if (relFromRoot.indexOf(APP_ROOT) === 0) {
-                relFromRoot = relFromRoot.substring(APP_ROOT.length);
-            } else {
-                relFromRoot = '';
-            }
-            const depth = (relFromRoot.match(/\//g) || []).length;
-            const upPrefix = depth > 0 ? '../'.repeat(depth) : '';
-            return upPrefix + target;
+        return SITE_URL + langDir + (path || '/');
+    }
+
+    // ============================================================
+    //   🔄 زر اللغة: يقلب المجلد فقط — بدون قراءة ملفات
+    //   ✅ منسّق مع window.toggleLang في header.html
+    // ============================================================
+    function buildLangUrl(targetLang) {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        var newPath;
+
+        if (path.indexOf('/ar/') === 0) {
+            newPath = path.replace('/ar/', '/' + targetLang + '/');
+        } else if (path.indexOf('/en/') === 0) {
+            newPath = path.replace('/en/', '/' + targetLang + '/');
+        } else {
+            newPath = '/' + targetLang + '/';
         }
-        return SITE_URL + langDir + path;
+
+        return newPath + search + hash;
+    }
+
+    // ✅ نُعرّف toggleLang هنا كمان لو مش موجود في header.html
+    if (!window.toggleLang) {
+        window.toggleLang = function() {
+            var target = isArabic ? 'en' : 'ar';
+            window.location.href = buildLangUrl(target);
+        };
     }
 
     // ============================================================
@@ -129,7 +103,6 @@
         { name: 'مستكشف الواحة', nameEn: 'Explore', path: '/explore.html', icon: '🗂️' },
         { name: 'رسالة من صنعاء', nameEn: 'Message from Sanaa', path: '/journal3.html', icon: '✉️' },
         { name: 'مختبر Z(x)', nameEn: 'Z(x) Lab', path: '/Pages-Researches.html', icon: '🧮' },
-        // ⛔ [v6.4] حُذف: unified-calc.html (غير موجود في الموقع)
         { name: 'معرض صنعاء', nameEn: 'Sanaa Gallery', path: '/gallery.html', icon: '🖼️' },
         { name: '🎮 مركز الألعاب', nameEn: '🎮 Games Hub', path: '/game/game-auto.html', icon: '🎮' }
     ];
@@ -225,204 +198,56 @@
                     isChat: true
                 }];
             }
-            buildDropdownMenu();
-            buildMainMenu();
+
+            renderDropdown();
         } catch (e) {
             console.warn('⚠️ [menu] فشل تحديث القائمة:', e);
         }
     }
 
     // ============================================================
-    //   🧱 بناء عنصر قائمة
+    //   🎨 أنماط مشتركة
     // ============================================================
-    function buildMenuItem(item) {
-        const finalHref = item.href || buildUrl(item.path || '/');
-        const isActive = !IS_APK &&
-                         finalHref !== '#' &&
-                         location.pathname.indexOf(finalHref.split('/').pop()) !== -1;
-        const activeStyle = isActive
-            ? 'background:rgba(255,215,0,0.08);border-right:3px solid #ffd700;'
-            : '';
+    const SECTION_STYLE = 'border-bottom:2px solid rgba(255,215,0,0.15);' +
+                          ' padding-bottom:6px; margin-bottom:8px;';
+    const SECTION_TITLE = 'color:#ffd700; font-size:0.68rem; font-weight:bold;' +
+                          ' letter-spacing:1px; margin-bottom:4px;';
+    const LINK_STYLE = 'color:#fff;padding:5px 10px;border-radius:6px;' +
+                       'text-decoration:none;display:flex;align-items:center;gap:8px;' +
+                       'border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;' +
+                       'transition:0.2s;';
 
-        const isChatItem     = item.isChat === true;
-        const isDownloadItem = item.isDownload === true;
-        const isWikiItem     = item.isWiki === true;
-
-        const onClick = isChatItem
-            ? ' onclick="window.openChatPrompt(); return false;"'
-            : isDownloadItem
-            ? ' onclick="window.downloadWaha(\'' + esc(item.type) + '\'); return false;"'
-            : isWikiItem
-            ? ' onclick="window.openWiki(); return false;"'
-            : '';
-
-        const cursor = (isChatItem || isDownloadItem || isWikiItem) ? 'cursor:pointer;' : '';
-        const target = item.external ? ' target="_blank" rel="noopener noreferrer"' : '';
-        const label  = esc(isArabic ? item.name : item.nameEn);
-        const icon   = esc(item.icon || '📄');
-        const hrefAttr = finalHref === '#'
-            ? '#'
-            : (item.external ? finalHref : finalHref);
+    // ============================================================
+    //   🧱 بناء عنصر رابط
+    // ============================================================
+    function buildLink(item) {
+        var href = item.href || buildUrl(item.path || '/');
+        var target = item.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+        var onClick = item.isChat ? ' onclick="window.openChatPrompt(); return false;"'
+                    : item.isWiki ? ' onclick="window.openWiki(); return false;"'
+                    : '';
+        var label = esc(isArabic ? item.name : item.nameEn);
+        var icon = esc(item.icon || '📄');
+        var hrefAttr = href === '#' ? '#' : esc(href);
 
         return '<a href="' + hrefAttr + '"' + target + onClick +
-               ' style="color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;' +
-               'display:flex;align-items:center;gap:8px;transition:0.3s;' +
-               'border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.85rem;' +
-               activeStyle + cursor + '">' +
-               '<span style="font-size:1rem;">' + icon + '</span> ' + label +
+               ' style="' + LINK_STYLE + '">' +
+               '<span style="font-size:0.9rem;">' + icon + '</span> ' + label +
                '</a>';
     }
 
     // ============================================================
-    //   📋 القائمة الرئيسية
+    //   📋 بناء القائمة المنسدلة كاملة
     // ============================================================
-    function buildMainMenu() {
-        const nav = document.querySelector('#main-menu');
-        if (!nav) return;
-
-        let html = '';
-
-        html += '<div class="menu-section" style="border-bottom:2px solid rgba(255,215,0,0.2);' +
-                ' padding-bottom:8px; margin-bottom:10px;">' +
-                '<div style="color:#ffd700; font-size:0.7rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">📌 ' +
-                (isArabic ? 'الأساسيات' : 'Essentials') + '</div>';
-        MENU_TOP.forEach(function(item) { html += buildMenuItem(item); });
-        html += '</div>';
-
-        html += '<div class="menu-section" style="border-bottom:2px solid rgba(0,255,128,0.2);' +
-                ' padding-bottom:8px; margin-bottom:10px;">' +
-                '<div style="color:#00ff88; font-size:0.7rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">🎮 ' +
-                (isArabic ? 'مركز الألعاب' : 'Games Hub') + '</div>';
-        GAMES.forEach(function(item) { html += buildMenuItem(item); });
-        html += '</div>';
-
-        html += '<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2);' +
-                ' padding-bottom:8px; margin-bottom:10px;">' +
-                '<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">🧠 ' +
-                (isArabic ? 'النظرية' : 'Theory') + '</div>';
-        MENU_MIDDLE.forEach(function(item) { html += buildMenuItem(item); });
-        html += '</div>';
-
-        // 🛡️ [v6.4] قسم التنزيل — يُبنى فقط لغير الروبوتات
-        if (!IS_APK && !IS_BOT) {
-            html += '<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2);' +
-                    ' padding-bottom:8px; margin-bottom:10px;">' +
-                    '<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold;' +
-                    ' letter-spacing:1px; margin-bottom:4px;">⬇️ ' +
-                    (isArabic ? 'تنزيل الواحة' : 'Download Waha') + '</div>';
-            html += buildMenuItem({ name: '📱 تنزيل APK', nameEn: '📱 Download APK',
-                                    href: '#', icon: '📱', isDownload: true, type: 'apk' });
-            html += buildMenuItem({ name: '📦 تنزيل ZIP', nameEn: '📦 Download ZIP',
-                                    href: '#', icon: '📦', isDownload: true, type: 'zip' });
-            html += '</div>';
-        } else if (IS_APK) {
-            html += '<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2);' +
-                    ' padding-bottom:8px; margin-bottom:10px;">' +
-                    '<div style="color:#888; font-size:0.75rem; padding:6px 12px;' +
-                    ' text-align:center;">✅ ' +
-                    (isArabic ? 'أنت تستخدم التطبيق بالفعل' : 'You are already using the app') +
-                    '</div></div>';
-        }
-        // ⛔ للـ BOT: لا قسم تنزيل إطلاقاً
-
-        html += '<div class="menu-section" style="border-bottom:2px solid rgba(106,227,255,0.2);' +
-                ' padding-bottom:8px; margin-bottom:10px;">' +
-                '<div style="color:#6ae3ff; font-size:0.7rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">📖 ' +
-                (isArabic ? 'ويكيبيديا' : 'Wikipedia') + '</div>';
-        html += buildMenuItem({
-            name: '📖 عربي - ويكيبيديا',
-            nameEn: '📖 English - Wikipedia',
-            href: 'https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html',
-            icon: '📖',
-            isWiki: true,
-            external: true
-        });
-        html += '</div>';
-
-        html += '<div class="menu-section" style="border-bottom:2px solid rgba(255,106,106,0.2);' +
-                ' padding-bottom:8px; margin-bottom:10px;">' +
-                '<div style="color:#ff6a6a; font-size:0.7rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">💬 ' +
-                (isArabic ? 'آخر المحادثات' : 'Recent Chats') +
-                ' <span style="font-size:0.6rem; opacity:0.6;">(' + MENU_BOTTOM.length + ')</span>' +
-                '</div>';
-        MENU_BOTTOM.forEach(function(item) { html += buildMenuItem(item); });
-        html += '</div>';
-
-        const today = new Date();
-        const dateStr = today.toLocaleDateString(isArabic ? 'ar-EG' : 'en-US', {
-            year: 'numeric', month: 'long', day: 'numeric'
-        });
-
-        html +=
-            '<div style="border-top:2px solid #ffd700; margin:12px 0 8px 0; padding-top:10px;">' +
-                '<div style="color:#ffd700; font-size:0.7rem; font-weight:bold;' +
-                ' text-align:center; letter-spacing:1px; margin-bottom:6px;">' +
-                    '⭐ ' + (isArabic ? 'إنجازات اليوم - ' : "Today's Achievements — ") + esc(dateStr) +
-                '</div>' +
-                '<div style="display:flex; flex-direction:column; gap:4px;' +
-                ' font-size:0.78rem; color:#ccc; padding:0 4px;">' +
-                    '<div style="display:flex; align-items:center; gap:8px;' +
-                    ' background:rgba(255,215,0,0.04); padding:5px 10px;' +
-                    ' border-radius:6px; border-right:3px solid #ffd700;">' +
-                        '<span>🧮</span> <span>' +
-                        (isArabic ? 'الدالة الأم - اشتقاق ثابت الجاذبية'
-                                  : 'Mother Function — Gravitational Constant') +
-                        '</span></div>' +
-                    '<div style="display:flex; align-items:center; gap:8px;' +
-                    ' background:rgba(255,215,0,0.04); padding:5px 10px;' +
-                    ' border-radius:6px; border-right:3px solid #ffd700;">' +
-                        '<span>🌌</span> <span>' +
-                        (isArabic ? 'النظرية الموحدة Zx = Z + C + A'
-                                  : 'Unified Theory Zx = Z + C + A') +
-                        '</span></div>' +
-                    '<div style="display:flex; align-items:center; gap:8px;' +
-                    ' background:rgba(0,255,128,0.04); padding:5px 10px;' +
-                    ' border-radius:6px; border-right:3px solid #00ff88;">' +
-                        '<span>🎮</span> <span>' +
-                        (isArabic ? 'مركز الألعاب - 3 ألعاب جديدة'
-                                  : 'Games Hub - 3 new games') +
-                        '</span></div>' +
-                '</div>' +
-            '</div>';
-
-        html +=
-            '<div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0;' +
-            ' padding-top:6px;"></div>' +
-            '<a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:8px 12px;border-radius:8px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:10px;' +
-            ' border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">' +
-            '<span style="font-size:1.1rem;">🌐</span> Wikipedia</a>' +
-            '<a href="https://github.com/jabri-com" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:8px 12px;border-radius:8px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:10px;' +
-            ' border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">' +
-            '<span style="font-size:1.1rem;">🐙</span> GitHub</a>' +
-            '<a href="https://orcid.org/0009-0003-3319-3822" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:8px 12px;border-radius:8px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:10px;font-size:0.9rem;">' +
-            '<span style="font-size:1.1rem;">🆔</span> ORCID</a>';
-
-        nav.innerHTML = html;
-        if (!IS_APK) highlightActiveLink();
-    }
-
-    // ============================================================
-    //   📋 القائمة المنسدلة
-    // ============================================================
-    function buildDropdownMenu() {
-        const dropdown = document.getElementById('menu-dropdown');
+    function renderDropdown() {
+        var dropdown = document.getElementById('menu-dropdown');
         if (!dropdown) return;
 
-        const arHref = IS_APK ? buildUrl('/index.html') : '/ar/';
-        const enHref = IS_APK ? buildUrl('/index.html') : '/en/';
+        // ✅ زر اللغة — منسّق مع الهيدر (يقلب المجلد بس)
+        var arHref = buildLangUrl('ar');
+        var enHref = buildLangUrl('en');
 
-        let html =
+        var html =
             '<div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px;' +
             ' border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">' +
                 '<a href="' + esc(arHref) + '" style="color:' +
@@ -439,88 +264,47 @@
                 '; font-size:0.85rem;">🇬🇧 English</a>' +
             '</div>';
 
-        html += '<div style="border-bottom:2px solid rgba(255,215,0,0.15);' +
-                ' padding-bottom:6px; margin-bottom:8px;">' +
-                '<div style="color:#ffd700; font-size:0.65rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">📌 ' +
+        // ─── الأساسيات ───
+        html += '<div style="' + SECTION_STYLE + '">' +
+                '<div style="' + SECTION_TITLE + '">📌 ' +
                 (isArabic ? 'الأساسيات' : 'Essentials') + '</div>';
-        MENU_TOP.forEach(function(item) {
-            html += '<a href="' + esc(buildUrl(item.path)) + '"' +
-                    ' style="color:#fff;padding:5px 10px;border-radius:6px;' +
-                    ' text-decoration:none;display:flex;align-items:center;gap:8px;' +
-                    ' border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">' +
-                    '<span style="font-size:0.9rem;">' + esc(item.icon) + '</span> ' +
-                    esc(isArabic ? item.name : item.nameEn) + '</a>';
-        });
+        MENU_TOP.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        html += '<div style="border-bottom:2px solid rgba(0,255,128,0.15);' +
-                ' padding-bottom:6px; margin-bottom:8px;">' +
-                '<div style="color:#00ff88; font-size:0.65rem; font-weight:bold;' +
+        // ─── الألعاب ───
+        html += '<div style="' + SECTION_STYLE + '">' +
+                '<div style="color:#00ff88; font-size:0.68rem; font-weight:bold;' +
                 ' letter-spacing:1px; margin-bottom:4px;">🎮 ' +
                 (isArabic ? 'مركز الألعاب' : 'Games Hub') + '</div>';
-        GAMES.forEach(function(item) {
-            html += '<a href="' + esc(buildUrl(item.path)) + '"' +
-                    ' style="color:#fff;padding:5px 10px;border-radius:6px;' +
-                    ' text-decoration:none;display:flex;align-items:center;gap:8px;' +
-                    ' border-bottom:1px solid rgba(0,255,128,0.03);font-size:0.82rem;">' +
-                    '<span style="font-size:0.9rem;">' + esc(item.icon) + '</span> ' +
-                    esc(isArabic ? item.name : item.nameEn) + '</a>';
-        });
+        GAMES.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        html += '<div style="border-bottom:2px solid rgba(106,227,255,0.15);' +
-                ' padding-bottom:6px; margin-bottom:8px;">' +
-                '<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold;' +
+        // ─── النظرية ───
+        html += '<div style="' + SECTION_STYLE + '">' +
+                '<div style="color:#6ae3ff; font-size:0.68rem; font-weight:bold;' +
                 ' letter-spacing:1px; margin-bottom:4px;">🧠 ' +
                 (isArabic ? 'النظرية' : 'Theory') + '</div>';
-        MENU_MIDDLE.forEach(function(item) {
-            html += '<a href="' + esc(buildUrl(item.path)) + '"' +
-                    ' style="color:#fff;padding:5px 10px;border-radius:6px;' +
-                    ' text-decoration:none;display:flex;align-items:center;gap:8px;' +
-                    ' border-bottom:1px solid rgba(106,227,255,0.03);font-size:0.82rem;">' +
-                    '<span style="font-size:0.9rem;">' + esc(item.icon) + '</span> ' +
-                    esc(isArabic ? item.name : item.nameEn) + '</a>';
-        });
+        MENU_MIDDLE.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        // 🛡️ [v6.4] قسم التنزيل — يُبنى فقط لغير الروبوتات
-        if (!IS_APK && !IS_BOT) {
-            html += '<div style="border-bottom:2px solid rgba(255,106,106,0.15);' +
-                    ' padding-bottom:6px; margin-bottom:8px;">' +
-                    '<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold;' +
-                    ' letter-spacing:1px; margin-bottom:4px;">⬇️ ' +
-                    (isArabic ? 'تنزيل الواحة' : 'Download Waha') + '</div>' +
-                    '<div onclick="window.downloadWaha(\'apk\')" style="color:#fff;' +
-                    ' padding:5px 10px;border-radius:6px;display:flex;align-items:center;' +
-                    ' gap:8px;cursor:pointer;font-size:0.82rem;' +
-                    ' border-bottom:1px solid rgba(255,106,106,0.03);">' +
-                    '<span>📱</span> ' + (isArabic ? 'تنزيل APK' : 'Download APK') + '</div>' +
-                    '<div onclick="window.downloadWaha(\'zip\')" style="color:#fff;' +
-                    ' padding:5px 10px;border-radius:6px;display:flex;align-items:center;' +
-                    ' gap:8px;cursor:pointer;font-size:0.82rem;' +
-                    ' border-bottom:1px solid rgba(255,106,106,0.03);">' +
-                    '<span>📦</span> ' + (isArabic ? 'تنزيل ZIP' : 'Download ZIP') + '</div>' +
-                    '</div>';
-        }
-
-        html += '<div style="border-bottom:2px solid rgba(106,227,255,0.15);' +
-                ' padding-bottom:6px; margin-bottom:8px;">' +
-                '<div style="color:#6ae3ff; font-size:0.65rem; font-weight:bold;' +
-                ' letter-spacing:1px; margin-bottom:4px;">📖 ' +
+        // ─── ويكيبيديا ───
+        html += '<div style="' + SECTION_STYLE + '">' +
+                '<div style="' + SECTION_TITLE + '">📖 ' +
                 (isArabic ? 'ويكيبيديا' : 'Wikipedia') + '</div>' +
-                '<a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"' +
-                ' target="_blank" rel="noopener noreferrer" style="color:#6ae3ff;' +
-                ' padding:5px 10px;border-radius:6px;text-decoration:none;display:flex;' +
-                ' align-items:center;gap:8px;font-size:0.82rem;' +
-                ' border-bottom:1px solid rgba(106,227,255,0.03);">' +
-                '<span>📖</span> ' +
-                (isArabic ? 'عربي - ويكيبيديا' : 'English - Wikipedia') + '</a>' +
+                buildLink({
+                    name: '📖 عربي - ويكيبيديا',
+                    nameEn: '📖 English - Wikipedia',
+                    href: 'https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html',
+                    icon: '📖',
+                    isWiki: true,
+                    external: true
+                }) +
                 '</div>';
 
+        // ─── المحادثات ───
         html += '<div style="border-bottom:2px solid rgba(255,106,106,0.15);' +
                 ' padding-bottom:6px; margin-bottom:8px;">' +
-                '<div style="color:#ff6a6a; font-size:0.65rem; font-weight:bold;' +
+                '<div style="color:#ff6a6a; font-size:0.68rem; font-weight:bold;' +
                 ' letter-spacing:1px; margin-bottom:4px;">💬 ' +
                 (isArabic ? 'آخر المحادثات' : 'Recent Chats') +
                 ' <span style="font-size:0.6rem; opacity:0.6;">(' + MENU_BOTTOM.length + ')</span>' +
@@ -534,9 +318,9 @@
                     '</div>';
         } else {
             MENU_BOTTOM.forEach(function(item) {
-                const chat = item.chatData || {};
-                const msgText = String(chat.message || '');
-                const timeText = String(chat.time || '');
+                var chat = item.chatData || {};
+                var msgText = String(chat.message || '');
+                var timeText = String(chat.time || '');
                 html += '<div onclick="window.openChatPrompt()" style="padding:4px 10px;' +
                         ' border-radius:6px; font-size:0.75rem; color:#ccc; display:flex;' +
                         ' justify-content:space-between; cursor:pointer;' +
@@ -549,132 +333,96 @@
         }
         html += '</div>';
 
+        // ─── الروابط الخارجية ───
         html +=
             '<div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0;' +
             ' padding-top:6px;"></div>' +
             '<a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:6px 10px;border-radius:6px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:8px;' +
-            ' border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">' +
+            ' rel="noopener noreferrer" style="' + LINK_STYLE + '">' +
             '<span style="font-size:0.9rem;">🌐</span> Wikipedia</a>' +
             '<a href="https://github.com/jabri-com" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:6px 10px;border-radius:6px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:8px;' +
-            ' border-bottom:1px solid rgba(255,215,0,0.03);font-size:0.82rem;">' +
+            ' rel="noopener noreferrer" style="' + LINK_STYLE + '">' +
             '<span style="font-size:0.9rem;">🐙</span> GitHub</a>' +
             '<a href="https://orcid.org/0009-0003-3319-3822" target="_blank"' +
-            ' rel="noopener noreferrer" style="color:#fff;padding:6px 10px;border-radius:6px;' +
-            ' text-decoration:none;display:flex;align-items:center;gap:8px;font-size:0.82rem;">' +
+            ' rel="noopener noreferrer" style="' + LINK_STYLE + '">' +
             '<span style="font-size:0.9rem;">🆔</span> ORCID</a>';
 
         dropdown.innerHTML = html;
     }
 
     // ============================================================
-    //   ☰ قائمة الهامبرغر
+    //   ☰ بناء نظام القائمة
     // ============================================================
-    function buildHamburgerMenu() {
-        const oldDropdown = document.getElementById('menu-dropdown');
-        if (oldDropdown) oldDropdown.remove();
-        const oldYellowBtn = document.getElementById('hamburger-menu');
-        if (oldYellowBtn) oldYellowBtn.remove();
+    function buildMenuSystem() {
+        // ① إنشاء القائمة المنسدلة مرة واحدة
+        var dropdown = document.getElementById('menu-dropdown');
+        if (!dropdown) {
+            dropdown = document.createElement('div');
+            dropdown.id = 'menu-dropdown';
+            dropdown.style.cssText =
+                'display: none;' +
+                'position: fixed;' +
+                'top: 75px;' +
+                (isArabic ? 'right: 20px;' : 'left: 20px;') +
+                'background: rgba(10, 10, 20, 0.97);' +
+                'border: 2px solid #ffd700;' +
+                'border-radius: 16px;' +
+                'padding: 18px 16px;' +
+                'min-width: 300px;' +
+                'max-width: 90vw;' +
+                'max-height: 70vh;' +
+                'overflow-y: auto;' +
+                'z-index: 9998;' +
+                'flex-direction: column;' +
+                'direction: ' + (isArabic ? 'rtl' : 'ltr') + ';' +
+                "font-family: 'Cairo', 'Tahoma', sans-serif;" +
+                'backdrop-filter: blur(16px);' +
+                'box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);';
+            document.body.appendChild(dropdown);
+        }
 
-        const dropdown = document.createElement('div');
-        dropdown.id = 'menu-dropdown';
-        dropdown.style.cssText =
-            'display: none !important;' +
-            'position: fixed !important;' +
-            'top: 75px !important;' +
-            (isArabic ? 'right: 20px' : 'left: 20px') + ' !important;' +
-            'background: rgba(10, 10, 20, 0.97) !important;' +
-            'border: 2px solid #ffd700 !important;' +
-            'border-radius: 16px !important;' +
-            'padding: 18px 16px !important;' +
-            'min-width: 300px !important;' +
-            'max-width: 90vw !important;' +
-            'max-height: 70vh !important;' +
-            'overflow-y: auto !important;' +
-            'z-index: 9998 !important;' +
-            'flex-direction: column !important;' +
-            'direction: ' + (isArabic ? 'rtl' : 'ltr') + ' !important;' +
-            "font-family: 'Cairo', 'Tahoma', sans-serif !important;" +
-            'backdrop-filter: blur(16px) !important;' +
-            'box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;';
+        // ② بناء محتوى القائمة
+        renderDropdown();
 
-        document.body.appendChild(dropdown);
-        buildDropdownMenu();
-
-        let isOpen = false;
-
-        function toggleDropdown(e) {
-            if (e) {
+        // ③ ربط زر القائمة (☰) — مرة واحدة بس
+        var btn = document.querySelector('.top-btn.menu');
+        if (btn && btn.dataset.wahaBound !== '1') {
+            btn.dataset.wahaBound = '1';
+            btn.removeAttribute('onclick');
+            btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 e.preventDefault();
-            }
-            isOpen = !isOpen;
-            dropdown.style.display = isOpen ? 'flex' : 'none';
+                var isOpen = dropdown.style.display === 'flex';
+                dropdown.style.display = isOpen ? 'none' : 'flex';
+            });
+            console.log('✅ [menu] زر ☰ مربوط');
+        } else if (!btn) {
+            console.warn('⚠️ [menu] زر .top-btn.menu غير موجود في الهيدر');
         }
 
-        function closeDropdown() {
-            isOpen = false;
-            dropdown.style.display = 'none';
-        }
-
-        function bindHeaderMenuBtn() {
-            const headerBtn = document.querySelector('.top-btn.menu');
-            if (!headerBtn) return false;
-            if (headerBtn.dataset.wahaBound === '1') return true;
-
-            headerBtn.removeAttribute('onclick');
-            headerBtn.dataset.wahaBound = '1';
-            headerBtn.addEventListener('click', toggleDropdown);
-
-            console.log('✅ [menu] زر ☰ مربوط بنجاح');
-            return true;
-        }
-
-        if (!bindHeaderMenuBtn()) {
-            document.addEventListener('headerLoaded', bindHeaderMenuBtn);
-            setTimeout(bindHeaderMenuBtn, 500);
-            setTimeout(bindHeaderMenuBtn, 1500);
-            setTimeout(bindHeaderMenuBtn, 3000);
-        }
-
-        window.toggleMenu = toggleDropdown;
-
+        // ④ إغلاق القائمة عند الضغط خارجها
         document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target) && !e.target.closest('.top-btn.menu')) {
-                closeDropdown();
+            if (dropdown.style.display === 'flex' &&
+                !dropdown.contains(e.target) &&
+                !e.target.closest('.top-btn.menu')) {
+                dropdown.style.display = 'none';
             }
         });
 
-        console.log('🌴 [menu] buildHamburgerMenu v6.4');
-    }
-
-    // ============================================================
-    //   🔧 دوال مساعدة
-    // ============================================================
-    function highlightActiveLink() {
-        const links = document.querySelectorAll('#main-menu a');
-        const current = location.pathname.split('/').pop() || 'index.html';
-        links.forEach(function(link) {
-            const hrefAttr = link.getAttribute('href');
-            if (!hrefAttr) return;
-            const href = hrefAttr.split('/').pop();
-            if (href === current || (current === '' && href === 'index.html')) {
-                link.style.background = 'rgba(255, 215, 0, 0.08)';
-                link.style.borderRight = '3px solid #ffd700';
-                link.style.color = '#ffd700';
-            }
+        // ⑤ إغلاق بمفتاح Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') dropdown.style.display = 'none';
         });
+
+        console.log('🌴 [menu.js v7.1] تم بناء نظام القائمة بنجاح');
     }
 
     // ============================================================
     //   🌐 دوال عامة
     // ============================================================
     window.openChatPrompt = function() {
-        if (IS_BOT) return; // ⛔ لا prompt للروبوتات
-        const message = prompt(isArabic ? '💬 اكتب رسالتك:' : '💬 Write your message:');
+        if (IS_BOT) return;
+        var message = prompt(isArabic ? '💬 اكتب رسالتك:' : '💬 Write your message:');
         if (message && message.trim()) {
             window.saveChatMessage(message.trim());
             alert(isArabic ? '✅ تم إرسال رسالتك بنجاح!' : '✅ Message sent successfully!');
@@ -689,67 +437,20 @@
         );
     };
 
-    // ✅ [v6.4] downloadWaha — يستخدم المسار الصحيح + لا يعمل للروبوتات
-    window.downloadWaha = function(type) {
-        // ⛔ حماية مزدوجة: لا تنزيل للروبوتات
-        if (IS_BOT) {
-            console.log('🤖 [menu] downloadWaha تم استدعاؤها من روبوت — تجاهل');
-            return;
-        }
-
-        if (IS_APK) {
-            alert(isArabic ? '✅ أنت تستخدم التطبيق بالفعل!'
-                           : '✅ You are already using the app!');
-            return;
-        }
-
-        const defaultName = type === 'apk'
-            ? 'jabri-heaven-v2.0.apk'
-            : 'jabri-heaven-v2.0.zip';
-
-        const folder = prompt(
-            isArabic ? '📁 ادخل اسم المجلد للحفظ:' : '📁 Enter folder name to save:',
-            '11-Jabri-com/apk'
-        );
-        if (folder === null) return;
-
-        const filename = prompt(
-            isArabic ? '📝 ادخل اسم الملف:' : '📝 Enter file name:',
-            defaultName
-        );
-        if (filename === null) return;
-
-        // ✅ [v6.4] المسار الصحيح — الملف موجود فعلاً في /apk/
-        const downloadUrl = type === 'apk'
-            ? SITE_URL + APK_DOWNLOAD_PATH
-            : SITE_URL + ZIP_DOWNLOAD_PATH;
-
-        console.log('📥 [menu] تنزيل:', downloadUrl);
-
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = filename;
-        a.rel = 'noopener noreferrer';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-        alert(isArabic
-            ? '✅ بدأ التنزيل!\nالمجلد: ' + folder + '\nالملف: ' + filename
-            : '✅ Download started!\nFolder: ' + folder + '\nFile: ' + filename);
-    };
+    window.updateChatMenu = updateBottomMenu;
+    window.saveChat = window.saveChatMessage;
 
     // ============================================================
-    //   🚀 التهيئة
+    //   🚀 التهيئة — مرة واحدة فقط
     // ============================================================
     function init() {
         try {
+            console.log('🌴 [menu] بدء التهيئة v7.1...');
+
             updateBottomMenu();
-            buildMainMenu();
-            buildHamburgerMenu();
-            console.log('🌴 menu.js v6.4 — ' +
-                        (IS_APK ? '📱 APK Mode' : '🌐 Web Mode') +
-                        (IS_BOT ? ' | 🤖 BOT detected — download links hidden' : ''));
+            buildMenuSystem();
+
+            console.log('✅ [menu] التهيئة اكتملت');
         } catch (e) {
             console.error('❌ [menu] خطأ في التشغيل:', e);
         }
@@ -760,9 +461,5 @@
     } else {
         init();
     }
-
-    // تصدير عام
-    window.updateChatMenu = updateBottomMenu;
-    window.saveChat = window.saveChatMessage;
 
 })();
