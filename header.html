@@ -827,21 +827,28 @@
         window.toggleMenu = window.toggleSideMenu;
     }
 
-    // ========== تبديل اللغة (يعتمد على init-page-root.js) ==========
-    if (!window.toggleLang) {
-        window.toggleLang = function() {
-            if (window.switchLanguage) {
-                window.switchLanguage();
-            } else {
-                // fallback بسيط
-                var path = location.pathname;
-                var isAr = path.indexOf('/en/') === -1;
-                var fileName = path.split('/').pop() || 'index.html';
-                if (!fileName || fileName.indexOf('.') === -1) fileName = 'index.html';
-                location.href = (isAr ? '/en/' : '/ar/') + fileName;
-            }
-        };
-    }
+    // ============================================================
+    //   ✅ [v2.9] تبديل اللغة — يقلب المجلد فقط (بدون fetch)
+    //   السبب: switchLanguage كانت تقرأ ملفات → FORBIDDEN
+    //   الآن: نغيّر /ar/ ⇄ /en/ مع الحفاظ على اسم الصفحة
+    // ============================================================
+    window.toggleLang = function() {
+        var path = location.pathname;      // مثال: /ar/index.html
+        var search = location.search;      // ?v=...
+        var hash = location.hash;          // #...
+        var newPath;
+
+        if (path.indexOf('/ar/') === 0) {
+            newPath = path.replace('/ar/', '/en/');
+        } else if (path.indexOf('/en/') === 0) {
+            newPath = path.replace('/en/', '/ar/');
+        } else {
+            // إنت في الروت → روح للعربي
+            newPath = '/ar/';
+        }
+
+        location.href = newPath + search + hash;
+    };
 
     // ========== التهيئة ==========
     document.addEventListener('DOMContentLoaded', function() {
@@ -986,4 +993,4 @@
 
 <!--
 <script src="/js/link-checker.js?v=2.4" async></script>
---
+-->
