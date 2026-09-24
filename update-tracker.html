@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="index, follow">
+<title>مركز الرصد والفحص الشامل — واحة الجبري</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121c;
+  --bg-item: #0f0f1a;
+  --bd: #2a2a3e;
+  --txt: #e8e8f0;
+  --txt-dim: #8a8a9e;
+  --acc: #6ae3ff;
+  --green: #00ff88;
+  --red: #ff4444;
+  --gold: #ffd700;
+  --purple: #a855f7;
+  --orange: #ff8800;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  padding: 20px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ═══ الهيدر ═══ */
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #0a3d62, #1e6f9f);
+  border: 2px solid var(--acc);
+  border-radius: 20px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/image/Jabri-photo.webp') center/cover;
+  opacity: 0.08;
+}
+.header > * { position: relative; z-index: 1; }
+.header h1 { color: #fff; font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
+.header h1 i { color: var(--gold); margin: 0 8px; }
+.header p { color: var(--acc); font-size: 1rem; }
+.header .sub { color: var(--txt-dim); font-size: 0.9rem; margin-top: 5px; }
+
+/* ═══ التبويبات ═══ */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tab {
+  background: var(--bg-card);
+  border: 2px solid var(--bd);
+  color: var(--txt-dim);
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tab:hover { border-color: var(--acc); color: var(--acc); }
+.tab.active {
+  background: var(--acc);
+  color: var(--bg);
+  border-color: var(--acc);
+}
+
+/* ═══ لوحات التبويب ═══ */
+.panel { display: none; }
+.panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ الملاحظات ═══ */
+.note {
+  background: #1a1a2e;
+  border-right: 3px solid var(--acc);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--txt-dim);
+}
+.note strong { color: var(--acc); }
+.note code {
+  background: var(--bg);
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+/* ═══ الأزرار ═══ */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+button {
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+button:hover { transform: scale(1.05); }
+button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-primary { background: linear-gradient(135deg, #00ff88, #00cc6a); color: #0a0a0f; }
+.btn-cyan { background: linear-gradient(135deg, #6ae3ff, #4dd4ff); color: #0a0a0f; }
+.btn-danger { background: linear-gradient(135deg, #ff4444, #cc0000); color: #fff; }
+.btn-warning { background: linear-gradient(135deg, #ffd700, #f0a500); color: #0a0a0f; }
+.btn-purple { background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; }
+.btn-orange { background: linear-gradient(135deg, #ff8800, #cc6600); color: #fff; }
+
+/* ═══ الإحصائيات ═══ */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.stat {
+  background: var(--bg-card);
+  border: 2px solid var(--bd);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+.stat .num { font-size: 1.7rem; font-weight: 900; display: block; }
+.stat .lbl { font-size: 0.8rem; color: var(--txt-dim); }
+.stat.total { border-color: var(--acc); }
+.stat.total .num { color: var(--acc); }
+.stat.new { border-color: var(--green); }
+.stat.new .num { color: var(--green); }
+.stat.deleted { border-color: var(--red); }
+.stat.deleted .num { color: var(--red); }
+.stat.same { border-color: var(--txt-dim); }
+.stat.same .num { color: var(--txt-dim); }
+.stat.ok { border-color: var(--green); }
+.stat.ok .num { color: var(--green); }
+.stat.redirect { border-color: var(--gold); }
+.stat.redirect .num { color: var(--gold); }
+.stat.error { border-color: var(--red); }
+.stat.error .num { color: var(--red); }
+
+/* ═══ حقل الإدخال ═══ */
+.input-box {
+  background: var(--bg-card);
+  border: 2px solid var(--bd);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.input-box label {
+  display: block;
+  color: var(--acc);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.input-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.input-row input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 18px;
+  background: var(--bg);
+  border: 2px solid var(--bd);
+  border-radius: 10px;
+  color: var(--txt);
+  font-size: 15px;
+  font-family: 'Courier New', monospace;
+  direction: ltr;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.input-row input:focus {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 3px rgba(106, 227, 255, 0.15);
+}
+
+/* ═══ نتيجة الفحص الفردي ═══ */
+.single-result {
+  display: none;
+  background: var(--bg-item);
+  border: 2px solid var(--bd);
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-top: 15px;
+}
+.single-result.visible { display: block; }
+.single-result.ok { border-color: var(--green); background: rgba(0, 255, 136, 0.05); }
+.single-result.redirect { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
+.single-result.error { border-color: var(--red); background: rgba(255, 68, 68, 0.05); }
+.single-result .label { color: var(--txt-dim); font-size: 0.85rem; }
+.single-result .url-display {
+  color: #b8e6ff;
+  word-break: break-all;
+  direction: ltr;
+  font-family: monospace;
+  margin: 5px 0;
+}
+.single-result .url-display a { color: #b8e6ff; text-decoration: none; }
+.single-result .url-display a:hover { text-decoration: underline; }
+.single-result .status-badge { font-weight: 900; font-size: 1.2rem; margin-top: 8px; }
+
+/* ═══ شريط التقدم ═══ */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--acc), var(--green));
+  transition: width 0.3s;
+  width: 0%;
+}
+
+/* ═══ السجلات ═══ */
+.log-box {
+  background: var(--bg-item);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+.log-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #1a1a2e;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.log-item:last-child { border-bottom: none; }
+.status {
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  min-width: 70px;
+  text-align: center;
+}
+.status.ok { background: var(--green); color: #0a0a0f; }
+.status.redirect { background: var(--gold); color: #0a0a0f; }
+.status.error { background: var(--red); color: #fff; }
+.status.pending { background: #333; color: #888; }
+.status.new { background: var(--green); color: #0a0a0f; }
+.status.deleted { background: var(--red); color: #fff; }
+.status.same { background: #444; color: #aaa; }
+.url { flex: 1; word-break: break-all; color: #b8e6ff; }
+.url a { color: #b8e6ff; text-decoration: none; }
+.url a:hover { text-decoration: underline; }
+
+/* ═══ الأقسام ═══ */
+.section-box {
+  background: var(--bg-item);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+.section-box h2 {
+  color: var(--acc);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--bd);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-box h2.green { color: var(--green); }
+.section-box h2.red { color: var(--red); }
+.section-box h2 .count {
+  background: var(--bd);
+  color: var(--txt-dim);
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+.empty {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* ═══ خيارات الرصد ═══ */
+.source-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg-card);
+  border: 2px solid var(--bd);
+  border-radius: 12px;
+}
+.source-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--bg);
+  border: 2px solid var(--bd);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  user-select: none;
+}
+.source-option:hover { border-color: var(--acc); }
+.source-option.selected {
+  background: var(--acc);
+  color: var(--bg);
+  border-color: var(--acc);
+}
+.source-option input { display: none; }
+
+/* ═══ الفوتر ═══ */
+.footer {
+  text-align: center;
+  color: var(--txt-dim);
+  font-size: 13px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--bd);
+}
+.timestamp { color: var(--green); font-weight: 700; }
+
+/* ═══ استجابة ═══ */
+@media (max-width: 700px) {
+  body { padding: 12px; }
+  .header h1 { font-size: 1.4rem; }
+  .tab { padding: 8px 16px; font-size: 0.8rem; }
+  button { padding: 10px 20px; font-size: 13px; }
+  .stat .num { font-size: 1.5rem; }
+  .input-row button { width: 100%; }
+  .log-item { font-size: 11px; }
+  .status { min-width: 55px; font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══ الهيدر ═══ -->
+  <div class="header">
+    <h1>
+      <i class="fas fa-satellite-dish"></i>
+      مركز الرصد والفحص الشامل
+    </h1>
+    <p>🛰️ واحة الجبري — Heaven Al-Jabri</p>
+    <p class="sub">رصد التحديثات + فحص الروابط + فحص الملفات — كل شيء في مكان واحد</p>
+  </div>
+
+  <!-- ═══ التبويبات ═══ -->
+  <div class="tabs">
+    <button class="tab active" data-tab="tracker">
+      <i class="fas fa-radar"></i> رصد التحديثات
+    </button>
+    <button class="tab" data-tab="single">
+      <i class="fas fa-crosshairs"></i> فحص رابط
+    </button>
+    <button class="tab" data-tab="bulk">
+      <i class="fas fa-list-check"></i> فحص شامل
+    </button>
+    <button class="tab" data-tab="files">
+      <i class="fas fa-file-code"></i> فحص الملفات
+    </button>
+    <button class="tab" data-tab="report">
+      <i class="fas fa-file-alt"></i> التقارير
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 1. تبويب رصد التحديثات                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="panel active" id="panel-tracker">
+    <div class="note">
+      💡 <strong>كيف يعمل؟</strong> تحفظ الأداة نسخة من <code>sitemap.xml</code> (110+ رابط)
+      أو من <code>explore.html</code> (159 ملف) في متصفحك، ثم في كل مرة تضغط "رصد التحديثات"،
+      تقارن وتُظهر: <strong>ما الجديد 🆕</strong> — <strong>ما المحذوف 🗑️</strong> — <strong>ما لم يتغير ✅</strong>.
+    </div>
+
+    <div class="source-selector">
+      <label class="source-option selected" data-source="sitemap">
+        <input type="radio" name="source" value="sitemap" checked>
+        🗺️ sitemap.xml (110+ رابط)
+      </label>
+      <label class="source-option" data-source="explore">
+        <input type="radio" name="source" value="explore">
+        🔍 explore.html (159 ملف)
+      </label>
+    </div>
+
+    <div class="controls">
+      <button class="btn-primary" id="trackerCheck">
+        <i class="fas fa-radar"></i> رصد التحديثات الآن
+      </button>
+      <button class="btn-cyan" id="trackerSave">
+        <i class="fas fa-save"></i> حفظ الحالة الحالية
+      </button>
+      <button class="btn-warning" id="trackerExport" disabled>
+        <i class="fas fa-download"></i> تصدير التقرير
+      </button>
+      <button class="btn-danger" id="trackerReset">
+        <i class="fas fa-trash"></i> إعادة تعيين
+      </button>
+    </div>
+
+    <div class="stats">
+      <div class="stat total">
+        <span class="num" id="statTotal">0</span>
+        <span class="lbl">الإجمالي</span>
+      </div>
+      <div class="stat new">
+        <span class="num" id="statNew">0</span>
+        <span class="lbl">🆕 جديد</span>
+      </div>
+      <div class="stat deleted">
+        <span class="num" id="statDeleted">0</span>
+        <span class="lbl">🗑️ محذوف</span>
+      </div>
+      <div class="stat same">
+        <span class="num" id="statSame">0</span>
+        <span class="lbl">✅ لم يتغير</span>
+      </div>
+    </div>
+
+    <div class="section-box" id="newSection" style="display:none;">
+      <h2 class="green">
+        <i class="fas fa-plus-circle"></i> عناصر جديدة
+        <span class="count" id="newCount">0</span>
+      </h2>
+      <div id="newList"></div>
+    </div>
+
+    <div class="section-box" id="deletedSection" style="display:none;">
+      <h2 class="red">
+        <i class="fas fa-minus-circle"></i> عناصر محذوفة
+        <span class="count" id="deletedCount">0</span>
+      </h2>
+      <div id="deletedList"></div>
+    </div>
+
+    <div class="section-box" id="sameSection">
+      <h2>
+        <i class="fas fa-check-circle"></i> عناصر لم تتغير
+        <span class="count" id="sameCount">0</span>
+      </h2>
+      <div id="sameList">
+        <div class="empty">اضغط "رصد التحديثات" للبدء</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 2. تبويب فحص رابط فردي                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-single">
+    <div class="note">
+      💡 <strong>فحص رابط واحد:</strong> أدخل أي رابط (داخلي أو خارجي) واضغط "افحص"،
+      أو اضغط <code>Enter</code>. الأداة تُظهر حالة الرابط (200/301/404) وزمن الاستجابة.
+    </div>
+
+    <div class="input-box">
+      <label for="singleUrl"><i class="fas fa-link"></i> أدخل الرابط:</label>
+      <div class="input-row">
+        <input type="url" id="singleUrl" placeholder="https://jabri-com.vercel.app/ar/profile.html" dir="ltr">
+        <button class="btn-primary" id="checkSingleBtn">
+          <i class="fas fa-bolt"></i> افحص الرابط
+        </button>
+      </div>
+      <div class="single-result" id="singleResult"></div>
+    </div>
+
+    <div class="note">
+      💡 <strong>روابط سريعة للفحص:</strong>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn-cyan" onclick="quickCheck('/ar/profile.html')" style="padding:6px 14px;font-size:12px">/ar/profile.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/en/profile.html')" style="padding:6px 14px;font-size:12px">/en/profile.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/ar/project.html')" style="padding:6px 14px;font-size:12px">/ar/project.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/en/project.html')" style="padding:6px 14px;font-size:12px">/en/project.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/link-checker.html')" style="padding:6px 14px;font-size:12px">/link-checker.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/update-tracker.html')" style="padding:6px 14px;font-size:12px">/update-tracker.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/explore.html')" style="padding:6px 14px;font-size:12px">/explore.html</button>
+        <button class="btn-cyan" onclick="quickCheck('/sitemap.xml')" style="padding:6px 14px;font-size:12px">/sitemap.xml</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 3. تبويب الفحص الشامل                                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-bulk">
+    <div class="note">
+      💡 <strong>الفحص الشامل:</strong> يفحص <strong>كل روابط sitemap.xml</strong> (110+ رابطاً)
+      ويُظهر حالة كل رابط. قد يستغرق دقائق حسب عدد الروابط.
+    </div>
+
+    <div class="controls">
+      <button class="btn-primary" id="bulkStart">
+        <i class="fas fa-play"></i> ابدأ الفحص الشامل
+      </button>
+      <button class="btn-danger" id="bulkStop" disabled>
+        <i class="fas fa-stop"></i> إيقاف
+      </button>
+      <button class="btn-warning" id="bulkExport" disabled>
+        <i class="fas fa-download"></i> تصدير النتائج
+      </button>
+    </div>
+
+    <div class="stats">
+      <div class="stat total">
+        <span class="num" id="bulkTotal">0</span>
+        <span class="lbl">الإجمالي</span>
+      </div>
+      <div class="stat ok">
+        <span class="num" id="bulkOk">0</span>
+        <span class="lbl">200 OK</span>
+      </div>
+      <div class="stat redirect">
+        <span class="num" id="bulkRedirect">0</span>
+        <span class="lbl">301/302</span>
+      </div>
+      <div class="stat error">
+        <span class="num" id="bulkError">0</span>
+        <span class="lbl">404/أخطاء</span>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="bulkProgress"></div>
+    </div>
+
+    <div class="log-box" id="bulkLog">
+      <div class="empty">اضغط "ابدأ الفحص الشامل" للبدء</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 4. تبويب فحص الملفات (explore.html)                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-files">
+    <div class="note">
+      💡 <strong>فحص الملفات من explore.html:</strong> يستخرج قائمة كاملة بالملفات من صفحة
+      <code>explore.html</code> (159 ملف)، ثم يفحص كل ملف منها للتأكد من وجوده على الموقع.
+      يعرض: الملفات الموجودة، المفقودة، وحالاتها.
+    </div>
+
+    <div class="controls">
+      <button class="btn-purple" id="filesScan">
+        <i class="fas fa-file-search"></i> فحص كل الملفات
+      </button>
+      <button class="btn-orange" id="filesExtract">
+        <i class="fas fa-list"></i> استخراج القائمة فقط
+      </button>
+      <button class="btn-danger" id="filesStop" disabled>
+        <i class="fas fa-stop"></i> إيقاف
+      </button>
+      <button class="btn-warning" id="filesExport" disabled>
+        <i class="fas fa-download"></i> تصدير
+      </button>
+    </div>
+
+    <div class="stats">
+      <div class="stat total">
+        <span class="num" id="filesTotal">0</span>
+        <span class="lbl">الإجمالي</span>
+      </div>
+      <div class="stat ok">
+        <span class="num" id="filesOk">0</span>
+        <span class="lbl">✅ موجود</span>
+      </div>
+      <div class="stat error">
+        <span class="num" id="filesMissing">0</span>
+        <span class="lbl">❌ مفقود</span>
+      </div>
+      <div class="stat redirect">
+        <span class="num" id="filesOther">0</span>
+        <span class="lbl">🔀 أخرى</span>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="filesProgress"></div>
+    </div>
+
+    <div class="log-box" id="filesLog">
+      <div class="empty">اضغط "فحص كل الملفات" للبدء</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 5. تبويب التقارير                                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="panel" id="panel-report">
+    <div class="note">
+      💡 <strong>التقارير:</strong> هنا تُحفظ ملخصات كل عمليات الرصد والفحص.
+      يمكنك تصديرها كملفات نصية.
+    </div>
+
+    <div class="controls">
+      <button class="btn-primary" id="reportGenerate">
+        <i class="fas fa-file-export"></i> إنشاء تقرير شامل
+      </button>
+      <button class="btn-cyan" id="reportDownload" disabled>
+        <i class="fas fa-download"></i> تنزيل التقرير
+      </button>
+    </div>
+
+    <div class="section-box">
+      <h2><i class="fas fa-list-alt"></i> ملخص العمليات</h2>
+      <div id="reportContent">
+        <div class="empty">اضغط "إنشاء تقرير شامل" لتوليد التقرير</div>
+      </div>
+    </div>
+
+    <div class="note">
+      💡 <strong>يتضمن التقرير:</strong>
+      <ul style="margin:8px 0 0 20px;color:var(--txt-dim)">
+        <li>آخر رصد تحديثات</li>
+        <li>ملخص العناصر الجديدة والمحذوفة</li>
+        <li>نتائج الفحص الشامل الأخير</li>
+        <li>نتائج فحص الملفات</li>
+        <li>إحصائيات الموقع</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ الفوتر ═══ -->
+  <div class="footer">
+    <p>آخر تحديث: <span class="timestamp" id="lastUpdate">—</span></p>
+    <p style="margin-top:8px">© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة</p>
+  </div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   مركز الرصد والفحص الشامل — update-tracker.html
+   ═══════════════════════════════════════════════════════════════ */
+
+const SITEMAP_URL = 'https://jabri-com.vercel.app/sitemap.xml';
+const EXPLORE_URL = 'https://jabri-com.vercel.app/explore.html';
+const STORAGE_SITEMAP = 'jabri_snapshot_sitemap';
+const STORAGE_EXPLORE = 'jabri_snapshot_explore';
+const STORAGE_TIME = 'jabri_last_check_time';
+const STORAGE_BULK = 'jabri_last_bulk_result';
+const STORAGE_FILES = 'jabri_last_files_result';
+const STORAGE_REPORT = 'jabri_last_report';
+
+let currentLinks = [];
+let previousLinks = [];
+let diffResult = { new: [], deleted: [], same: [] };
+let currentSource = 'sitemap';
+
+let bulkResults = [];
+let isBulkRunning = false;
+
+let filesResults = [];
+let isFilesRunning = false;
+
+/* ═══ التبويبات ═══ */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ═══ اختيار المصدر ═══ */
+document.querySelectorAll('.source-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.source-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    opt.querySelector('input').checked = true;
+    currentSource = opt.dataset.source;
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   استخراج القوائم
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══ استخراج روابط من sitemap.xml ═══ */
+async function fetchSitemapLinks() {
+  try {
+    const res = await fetch(SITEMAP_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'text/xml');
+    const urlTags = xml.querySelectorAll('url > loc');
+    return Array.from(urlTags).map(u => u.textContent.trim()).sort();
+  } catch (e) {
+    console.error('فشل تحميل sitemap:', e);
+    return [];
+  }
+}
+
+/* ═══ استخراج قائمة الملفات من explore.html ═══ */
+async function fetchExploreLinks() {
+  try {
+    const res = await fetch(EXPLORE_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const html = await res.text();
+
+    // استخدام DOMParser لاستخراج الملفات من HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // جمع كل الروابط والنصوص
+    const files = new Set();
+
+    // 1. من عناصر <a> التي تشير إلى ملفات
+    doc.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && /\.(html|js|json|txt|md|png|jpg|jpeg|webp|svg|xml|css|ico|py|ipynb)$/i.test(href)) {
+        // تنظيف المسار
+        const clean = href.replace(/^https?:\/\/[^\/]+/, '').replace(/^\/+/, '');
+        if (clean && !clean.startsWith('http')) files.add(clean);
+      }
+    });
+
+    // 2. من أي نص يبدو كاسم ملف
+    const textContent = doc.body.textContent || '';
+    const fileRegex = /([\w\-.]+\.(?:html|js|json|txt|md|png|jpg|jpeg|webp|svg|xml|css|ico|py|ipynb))/gi;
+    const matches = textContent.match(fileRegex);
+    if (matches) {
+      matches.forEach(m => files.add(m));
+    }
+
+    // 3. من الـ data attributes إن وُجدت
+    doc.querySelectorAll('[data-file]').forEach(el => {
+      const f = el.getAttribute('data-file');
+      if (f) files.add(f);
+    });
+
+    return Array.from(files).sort();
+  } catch (e) {
+    console.error('فشل تحميل explore:', e);
+    return [];
+  }
+}
+
+/* ═══ الحصول على القائمة حسب المصدر ═══ */
+async function getCurrentList() {
+  if (currentSource === 'explore') {
+    return await fetchExploreLinks();
+  }
+  return await fetchSitemapLinks();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الجزء 1: رصد التحديثات
+   ═══════════════════════════════════════════════════════════════ */
+
+function compareLinks(prev, curr) {
+  const prevSet = new Set(prev);
+  const currSet = new Set(curr);
+  return {
+    new: curr.filter(l => !prevSet.has(l)),
+    deleted: prev.filter(l => !currSet.has(l)),
+    same: curr.filter(l => prevSet.has(l))
+  };
+}
+
+function displayDiff() {
+  document.getElementById('statTotal').textContent = currentLinks.length;
+  document.getElementById('statNew').textContent = diffResult.new.length;
+  document.getElementById('statDeleted').textContent = diffResult.deleted.length;
+  document.getElementById('statSame').textContent = diffResult.same.length;
+
+  const newSection = document.getElementById('newSection');
+  if (diffResult.new.length > 0) {
+    newSection.style.display = 'block';
+    document.getElementById('newCount').textContent = diffResult.new.length;
+    document.getElementById('newList').innerHTML = diffResult.new.map(url => `
+      <div class="log-item">
+        <span class="status new">🆕 NEW</span>
+        <span class="url"><a href="/${url.replace(/^\//, '')}" target="_blank" rel="noopener">${url}</a></span>
+      </div>
+    `).join('');
+  } else {
+    newSection.style.display = 'none';
+  }
+
+  const deletedSection = document.getElementById('deletedSection');
+  if (diffResult.deleted.length > 0) {
+    deletedSection.style.display = 'block';
+    document.getElementById('deletedCount').textContent = diffResult.deleted.length;
+    document.getElementById('deletedList').innerHTML = diffResult.deleted.map(url => `
+      <div class="log-item">
+        <span class="status deleted">🗑️ DEL</span>
+        <span class="url">${url}</span>
+      </div>
+    `).join('');
+  } else {
+    deletedSection.style.display = 'none';
+  }
+
+  document.getElementById('sameCount').textContent = diffResult.same.length;
+  if (diffResult.same.length > 0) {
+    document.getElementById('sameList').innerHTML = diffResult.same.map(url => `
+      <div class="log-item">
+        <span class="status same">✅ SAME</span>
+        <span class="url">${url}</span>
+      </div>
+    `).join('');
+  } else {
+    document.getElementById('sameList').innerHTML = '<div class="empty">لا توجد عناصر</div>';
+  }
+}
+
+async function trackerCheck() {
+  const btn = document.getElementById('trackerCheck');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الرصد...';
+
+  const storageKey = currentSource === 'explore' ? STORAGE_EXPLORE : STORAGE_SITEMAP;
+  currentLinks = await getCurrentList();
+
+  if (currentLinks.length === 0) {
+    alert('❌ فشل تحميل القائمة من: ' + currentSource);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-radar"></i> رصد التحديثات الآن';
+    return;
+  }
+
+  previousLinks = JSON.parse(localStorage.getItem(storageKey) || 'null');
+
+  if (!previousLinks) {
+    localStorage.setItem(storageKey, JSON.stringify(currentLinks));
+    localStorage.setItem(STORAGE_TIME, new Date().toISOString());
+    diffResult = { new: [], deleted: [], same: currentLinks };
+    document.getElementById('trackerExport').disabled = true;
+    alert('ℹ️ هذه أول مرة للـ ' + currentSource + '. تم حفظ ' + currentLinks.length + ' عنصراً.');
+  } else {
+    diffResult = compareLinks(previousLinks, currentLinks);
+    document.getElementById('trackerExport').disabled = false;
+    if (diffResult.new.length === 0 && diffResult.deleted.length === 0) {
+      alert('✅ لا توجد تحديثات جديدة (' + currentLinks.length + ' عنصراً).');
+    } else {
+      alert('🔔 تم رصد تحديثات في ' + currentSource + '!\n\n🆕 جديد: ' + diffResult.new.length + '\n🗑️ محذوف: ' + diffResult.deleted.length + '\n✅ لم يتغير: ' + diffResult.same.length);
+    }
+  }
+
+  displayDiff();
+  updateLastUpdate();
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-radar"></i> رصد التحديثات الآن';
+}
+
+function trackerSave() {
+  if (currentLinks.length === 0) {
+    alert('⚠️ حمّل القائمة أولاً عبر "رصد التحديثات"');
+    return;
+  }
+  const storageKey = currentSource === 'explore' ? STORAGE_EXPLORE : STORAGE_SITEMAP;
+  localStorage.setItem(storageKey, JSON.stringify(currentLinks));
+  localStorage.setItem(STORAGE_TIME, new Date().toISOString());
+  alert('✅ تم حفظ ' + currentLinks.length + ' عنصراً من ' + currentSource + '.');
+  updateLastUpdate();
+}
+
+function trackerExport() {
+  let report = '═══════════════════════════════════════════\n';
+  report += '📊 تقرير رصد التحديثات — واحة الجبري\n';
+  report += '📅 ' + new Date().toLocaleString('ar-EG') + '\n';
+  report += '📂 المصدر: ' + currentSource + '\n';
+  report += '═══════════════════════════════════════════\n\n';
+  report += '📈 الإحصائيات:\n';
+  report += '   الإجمالي: ' + currentLinks.length + '\n';
+  report += '   🆕 جديد: ' + diffResult.new.length + '\n';
+  report += '   🗑️ محذوف: ' + diffResult.deleted.length + '\n';
+  report += '   ✅ لم يتغير: ' + diffResult.same.length + '\n\n';
+
+  if (diffResult.new.length > 0) {
+    report += '🆕 العناصر الجديدة:\n';
+    diffResult.new.forEach(url => { report += '   + ' + url + '\n'; });
+    report += '\n';
+  }
+  if (diffResult.deleted.length > 0) {
+    report += '🗑️ العناصر المحذوفة:\n';
+    diffResult.deleted.forEach(url => { report += '   - ' + url + '\n'; });
+    report += '\n';
+  }
+  report += '✅ جميع العناصر:\n';
+  currentLinks.forEach((url, i) => { report += '   ' + (i + 1) + '. ' + url + '\n'; });
+
+  const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'update-report-' + currentSource + '-' + new Date().toISOString().slice(0, 10) + '.txt';
+  link.click();
+}
+
+function trackerReset() {
+  if (!confirm('⚠️ هل أنت متأكد من مسح الحالة المحفوظة للـ ' + currentSource + '؟')) return;
+  const storageKey = currentSource === 'explore' ? STORAGE_EXPLORE : STORAGE_SITEMAP;
+  localStorage.removeItem(storageKey);
+  alert('✅ تم المسح.');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الجزء 2: فحص رابط فردي
+   ═══════════════════════════════════════════════════════════════ */
+
+async function checkSingleUrl(url) {
+  return new Promise((resolve) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => {
+      controller.abort();
+      resolve({ url, status: 'error', statusText: '⏰ مهلة', httpCode: 0, time: 0 });
+    }, 10000);
+
+    const start = performance.now();
+    fetch(url, { method: 'HEAD', signal: controller.signal, redirect: 'follow' })
+      .then(res => {
+        clearTimeout(timeout);
+        const time = Math.round(performance.now() - start);
+        const code = res.status;
+        if (code >= 200 && code < 300) {
+          resolve({ url, status: 'ok', statusText: '✅ 200 OK', httpCode: code, time });
+        } else if (code >= 300 && code < 400) {
+          resolve({ url, status: 'redirect', statusText: '🔀 ' + code, httpCode: code, time });
+        } else {
+          resolve({ url, status: 'error', statusText: '❌ ' + code, httpCode: code, time });
+        }
+      })
+      .catch(() => {
+        clearTimeout(timeout);
+        resolve({ url, status: 'error', statusText: '⚠️ خطأ', httpCode: 0, time: Math.round(performance.now() - start) });
+      });
+  });
+}
+
+async function doSingleCheck() {
+  let url = document.getElementById('singleUrl').value.trim();
+  if (!url) { alert('⚠️ الرجاء إدخال رابط'); return; }
+  if (!/^https?:\/\//i.test(url)) {
+    url = 'https://jabri-com.vercel.app' + (url.startsWith('/') ? url : '/' + url);
+  }
+
+  const resultBox = document.getElementById('singleResult');
+  resultBox.className = 'single-result visible';
+  resultBox.innerHTML = '<p class="status-badge" style="color:var(--acc)">⏳ جاري الفحص...</p>';
+
+  const btn = document.getElementById('checkSingleBtn');
+  btn.disabled = true;
+
+  const result = await checkSingleUrl(url);
+
+  resultBox.className = 'single-result visible ' + result.status;
+  let color = 'var(--green)';
+  if (result.status === 'redirect') color = 'var(--gold)';
+  if (result.status === 'error') color = 'var(--red)';
+
+  resultBox.innerHTML = `
+    <div class="label">🔗 الرابط المفحوص:</div>
+    <div class="url-display"><a href="${result.url}" target="_blank" rel="noopener">${result.url}</a></div>
+    <div class="status-badge" style="color:${color}">${result.statusText}</div>
+    <div class="label" style="margin-top:5px">HTTP Code: ${result.httpCode || '—'} | الوقت: ${result.time}ms</div>
+  `;
+
+  btn.disabled = false;
+}
+
+function quickCheck(path) {
+  const url = 'https://jabri-com.vercel.app' + path;
+  document.getElementById('singleUrl').value = url;
+  doSingleCheck();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الجزء 3: الفحص الشامل (sitemap)
+   ═══════════════════════════════════════════════════════════════ */
+
+async function runBulkCheck() {
+  if (isBulkRunning) return;
+  isBulkRunning = true;
+
+  const startBtn = document.getElementById('bulkStart');
+  const stopBtn = document.getElementById('bulkStop');
+  const exportBtn = document.getElementById('bulkExport');
+  const logBox = document.getElementById('bulkLog');
+  const progress = document.getElementById('bulkProgress');
+
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+  exportBtn.disabled = true;
+  bulkResults = [];
+  logBox.innerHTML = '';
+  progress.style.width = '0%';
+
+  addBulkLog('📥 جاري تحميل sitemap.xml...', 'pending');
+  const urls = await fetchSitemapLinks();
+
+  if (urls.length === 0) {
+    addBulkLog('❌ فشل تحميل sitemap.xml', 'error');
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    isBulkRunning = false;
+    return;
+  }
+
+  logBox.innerHTML = '';
+  addBulkLog('✅ تم تحميل ' + urls.length + ' رابط', 'ok');
+  document.getElementById('bulkTotal').textContent = urls.length;
+
+  let okCount = 0, redirectCount = 0, errorCount = 0;
+
+  for (let i = 0; i < urls.length; i++) {
+    if (!isBulkRunning) break;
+    const url = urls[i];
+    addBulkLog(url, 'pending');
+
+    const result = await checkSingleUrl(url);
+    bulkResults.push(result);
+
+    const lastChild = logBox.lastElementChild;
+    if (lastChild) lastChild.remove();
+
+    if (result.status === 'ok') okCount++;
+    else if (result.status === 'redirect') redirectCount++;
+    else errorCount++;
+
+    addBulkLog(url, result.status, result.statusText, result.httpCode, result.time);
+
+    document.getElementById('bulkOk').textContent = okCount;
+    document.getElementById('bulkRedirect').textContent = redirectCount;
+    document.getElementById('bulkError').textContent = errorCount;
+
+    progress.style.width = ((i + 1) / urls.length * 100) + '%';
+  }
+
+  addBulkLog('', 'ok', '✅ اكتمل الفحص');
+  localStorage.setItem(STORAGE_BULK, JSON.stringify({
+    date: new Date().toISOString(),
+    total: urls.length,
+    ok: okCount,
+    redirect: redirectCount,
+    error: errorCount,
+    results: bulkResults
+  }));
+
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+  exportBtn.disabled = false;
+  isBulkRunning = false;
+}
+
+function addBulkLog(url, status, statusText, httpCode, time) {
+  const logBox = document.getElementById('bulkLog');
+  const div = document.createElement('div');
+  div.className = 'log-item';
+  if (status === 'pending') {
+    div.innerHTML = `<span class="status pending">⏳ جاري</span><span class="url">${url}</span>`;
+  } else {
+    const label = statusText || (status === 'ok' ? '✅ OK' : status === 'redirect' ? '🔀' : '❌');
+    div.innerHTML = `
+      <span class="status ${status}">${label}</span>
+      <span class="url"><a href="${url}" target="_blank" rel="noopener">${url}</a></span>
+      ${httpCode ? `<span style="color:#666;font-size:11px">[${httpCode}] ${time}ms</span>` : ''}
+    `;
+  }
+  logBox.appendChild(div);
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+function stopBulkCheck() {
+  isBulkRunning = false;
+  document.getElementById('bulkStop').disabled = true;
+  document.getElementById('bulkStart').disabled = false;
+}
+
+function exportBulkResults() {
+  if (bulkResults.length === 0) return;
+  let csv = 'URL,Status,HTTP Code,Time (ms)\n';
+  bulkResults.forEach(r => {
+    csv += `"${r.url}","${r.statusText}",${r.httpCode},${r.time}\n`;
+  });
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'bulk-check-' + new Date().toISOString().slice(0, 10) + '.csv';
+  link.click();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الجزء 4: فحص الملفات من explore.html
+   ═══════════════════════════════════════════════════════════════ */
+
+async function extractFromExplore() {
+  const btn = document.getElementById('filesExtract');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الاستخراج...';
+
+  const files = await fetchExploreLinks();
+
+  if (files.length === 0) {
+    alert('❌ فشل استخراج الملفات من explore.html');
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-list"></i> استخراج القائمة فقط';
+    return;
+  }
+
+  document.getElementById('filesTotal').textContent = files.length;
+  document.getElementById('filesLog').innerHTML = files.map(f => `
+    <div class="log-item">
+      <span class="status same">📄 FILE</span>
+      <span class="url">${f}</span>
+    </div>
+  `).join('');
+
+  alert('✅ تم استخراج ' + files.length + ' ملفاً من explore.html');
+
+  // حفظ النتيجة
+  localStorage.setItem(STORAGE_FILES, JSON.stringify({
+    date: new Date().toISOString(),
+    total: files.length,
+    files: files
+  }));
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-list"></i> استخراج القائمة فقط';
+}
+
+async function runFilesScan() {
+  if (isFilesRunning) return;
+  isFilesRunning = true;
+
+  const scanBtn = document.getElementById('filesScan');
+  const stopBtn = document.getElementById('filesStop');
+  const exportBtn = document.getElementById('filesExport');
+  const logBox = document.getElementById('filesLog');
+  const progress = document.getElementById('filesProgress');
+
+  scanBtn.disabled = true;
+  stopBtn.disabled = false;
+  exportBtn.disabled = true;
+  filesResults = [];
+  logBox.innerHTML = '';
+  progress.style.width = '0%';
+
+  addFilesLog('📥 جاري تحميل explore.html...', 'pending');
+  const files = await fetchExploreLinks();
+
+  if (files.length === 0) {
+    addFilesLog('❌ فشل تحميل explore.html', 'error');
+    scanBtn.disabled = false;
+    stopBtn.disabled = true;
+    isFilesRunning = false;
+    return;
+  }
+
+  logBox.innerHTML = '';
+  addFilesLog('✅ تم استخراج ' + files.length + ' ملفاً', 'ok');
+  document.getElementById('filesTotal').textContent = files.length;
+
+  let okCount = 0, missingCount = 0, otherCount = 0;
+
+  for (let i = 0; i < files.length; i++) {
+    if (!isFilesRunning) break;
+    const file = files[i];
+    const fullUrl = 'https://jabri-com.vercel.app/' + file.replace(/^\/+/, '');
+
+    addFilesLog(file, 'pending');
+    const result = await checkSingleUrl(fullUrl);
+    filesResults.push({ file, ...result });
+
+    const lastChild = logBox.lastElementChild;
+    if (lastChild) lastChild.remove();
+
+    if (result.status === 'ok') { okCount++; addFilesLog(file, 'ok', '✅', result.httpCode, result.time); }
+    else if (result.status === 'error' && result.httpCode === 404) { missingCount++; addFilesLog(file, 'error', '❌ 404', result.httpCode, result.time); }
+    else { otherCount++; addFilesLog(file, 'redirect', '🔀 ' + (result.httpCode || '—'), result.httpCode, result.time); }
+
+    document.getElementById('filesOk').textContent = okCount;
+    document.getElementById('filesMissing').textContent = missingCount;
+    document.getElementById('filesOther').textContent = otherCount;
+
+    progress.style.width = ((i + 1) / files.length * 100) + '%';
+  }
+
+  addFilesLog('', 'ok', '✅ اكتمل الفحص');
+  localStorage.setItem(STORAGE_FILES, JSON.stringify({
+    date: new Date().toISOString(),
+    total: files.length,
+    ok: okCount,
+    missing: missingCount,
+    other: otherCount,
+    results: filesResults
+  }));
+
+  scanBtn.disabled = false;
+  stopBtn.disabled = true;
+  exportBtn.disabled = false;
+  isFilesRunning = false;
+}
+
+function addFilesLog(file, status, label, httpCode, time) {
+  const logBox = document.getElementById('filesLog');
+  const div = document.createElement('div');
+  div.className = 'log-item';
+  if (status === 'pending') {
+    div.innerHTML = `<span class="status pending">⏳</span><span class="url">${file}</span>`;
+  } else {
+    div.innerHTML = `
+      <span class="status ${status}">${label}</span>
+      <span class="url">${file}</span>
+      ${httpCode ? `<span style="color:#666;font-size:11px">[${httpCode}] ${time}ms</span>` : ''}
+    `;
+  }
+  logBox.appendChild(div);
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+function stopFilesScan() {
+  isFilesRunning = false;
+  document.getElementById('filesStop').disabled = true;
+  document.getElementById('filesScan').disabled = false;
+}
+
+function exportFilesResults() {
+  if (filesResults.length === 0) return;
+  let csv = 'File,Status,HTTP Code,Time (ms)\n';
+  filesResults.forEach(r => {
+    csv += `"${r.file}","${r.statusText}",${r.httpCode},${r.time}\n`;
+  });
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'files-check-' + new Date().toISOString().slice(0, 10) + '.csv';
+  link.click();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الجزء 5: التقارير
+   ═══════════════════════════════════════════════════════════════ */
+
+function generateReport() {
+  const lastCheck = localStorage.getItem(STORAGE_TIME);
+  const bulkData = JSON.parse(localStorage.getItem(STORAGE_BULK) || 'null');
+  const filesData = JSON.parse(localStorage.getItem(STORAGE_FILES) || 'null');
+
+  let report = '';
+  report += '═══════════════════════════════════════════\n';
+  report += '📊 التقرير الشامل — واحة الجبري\n';
+  report += '📅 ' + new Date().toLocaleString('ar-EG') + '\n';
+  report += '═══════════════════════════════════════════\n\n';
+
+  report += '🔍 آخر رصد تحديثات:\n';
+  report += '   ' + (lastCheck ? new Date(lastCheck).toLocaleString('ar-EG') : 'لا يوجد') + '\n\n';
+
+  report += '📈 إحصائيات sitemap:\n';
+  report += '   الإجمالي: ' + (currentLinks.length || '—') + '\n';
+  report += '   🆕 جديد: ' + diffResult.new.length + '\n';
+  report += '   🗑️ محذوف: ' + diffResult.deleted.length + '\n\n';
+
+  if (bulkData) {
+    report += '✅ آخر فحص شامل (sitemap):\n';
+    report += '   ' + new Date(bulkData.date).toLocaleString('ar-EG') + '\n';
+    report += '   الإجمالي: ' + bulkData.total + '\n';
+    report += '   ✅ 200 OK: ' + bulkData.ok + '\n';
+    report += '   🔀 Redirect: ' + bulkData.redirect + '\n';
+    report += '   ❌ أخطاء: ' + bulkData.error + '\n\n';
+  }
+
+  if (filesData && filesData.results) {
+    report += '📂 آخر فحص ملفات (explore):\n';
+    report += '   ' + new Date(filesData.date).toLocaleString('ar-EG') + '\n';
+    report += '   الإجمالي: ' + filesData.total + '\n';
+    report += '   ✅ موجود: ' + filesData.ok + '\n';
+    report += '   ❌ مفقود: ' + filesData.missing + '\n';
+    report += '   🔀 أخرى: ' + filesData.other + '\n\n';
+  }
+
+  report += '═══════════════════════════════════════════\n';
+  report += '© 2026 م/ عبدالله محمد ناصر الجبري\n';
+  report += '═══════════════════════════════════════════\n';
+
+  localStorage.setItem(STORAGE_REPORT, report);
+  document.getElementById('reportContent').innerHTML = '<pre style="white-space:pre-wrap;color:var(--txt);font-family:\'Courier New\',monospace;font-size:13px">' + report + '</pre>';
+  document.getElementById('reportDownload').disabled = false;
+}
+
+function downloadReport() {
+  const report = localStorage.getItem(STORAGE_REPORT);
+  if (!report) return;
+  const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'full-report-' + new Date().toISOString().slice(0, 10) + '.txt';
+  link.click();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   الأحداث والتهيئة
+   ═══════════════════════════════════════════════════════════════ */
+
+function updateLastUpdate() {
+  const t = localStorage.getItem(STORAGE_TIME);
+  document.getElementById('lastUpdate').textContent = t ? new Date(t).toLocaleString('ar-EG') : '—';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  /* ربط أزرار تبويب الرصد */
+  document.getElementById('trackerCheck').addEventListener('click', trackerCheck);
+  document.getElementById('trackerSave').addEventListener('click', trackerSave);
+  document.getElementById('trackerExport').addEventListener('click', trackerExport);
+  document.getElementById('trackerReset').addEventListener('click', trackerReset);
+
+  /* ربط أزرار الفحص الفردي */
+  document.getElementById('checkSingleBtn').addEventListener('click', doSingleCheck);
+  document.getElementById('singleUrl').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); doSingleCheck(); }
+  });
+
+  /* ربط أزرار الفحص الشامل */
+  document.getElementById('bulkStart').addEventListener('click', runBulkCheck);
+  document.getElementById('bulkStop').addEventListener('click', stopBulkCheck);
+  document.getElementById('bulkExport').addEventListener('click', exportBulkResults);
+
+  /* ربط أزرار فحص الملفات */
+  document.getElementById('filesScan').addEventListener('click', runFilesScan);
+  document.getElementById('filesExtract').addEventListener('click', extractFromExplore);
+  document.getElementById('filesStop').addEventListener('click', stopFilesScan);
+  document.getElementById('filesExport').addEventListener('click', exportFilesResults);
+
+  /* ربط أزرار التقارير */
+  document.getElementById('reportGenerate').addEventListener('click', generateReport);
+  document.getElementById('reportDownload').addEventListener('click', downloadReport);
+
+  updateLastUpdate();
+});
+</script>
+
+
+    <!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js"></script>
+<script src="/js/menu.js"></script>
+
+    
+
+</body>
+</html>
