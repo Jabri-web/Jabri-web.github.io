@@ -1,17 +1,20 @@
 // ============================================================
-//   menu.js - v7.3 (Header-Compatible + Triple Lang Cycle)
+//   menu.js - v7.5 (Header-Compatible + Triple Lang Cycle)
 //   Heaven Al-Jabri | واحة الجبري
 //   ─────────────────────────────────────────────────────────
-//   🆕 v7.3:
-//     • ✅ زر اللغة يدور ثلاثي: root ⇄ ar ⇄ en ⇄ root
-//     • ✅ زر واحد ذكي يعرض الوجهة التالية (لا دوخة)
-//     • ✅ دالة __wahaGetLangCycle() للاستخدام العام
-//     • ✅ توافق كامل مع init-page-root.js v6.0
+//   🆕 v7.5:
+//     • ✅ إخراج menu.js من زحمة toggleLang
+//     • ✅ menu.js يُساعد فقط (__wahaBuildLangUrl)
+//     • ✅ toggleLang مسؤولية init-page-root.js
+//     • ✅ header.html يعرض الزر فقط
+//   ✅ v7.4 (محفوظ):
+//     • ✅ الدورة الثلاثية root ⇄ ar ⇄ en
+//     • ✅ __wahaBuildLangUrl للاستخدام العام
+//   ✅ v7.3 (محفوظ):
+//     • زر اللغة يدور ثلاثي
 //   ✅ v7.2 (محفوظ):
-//     • ✅ ينتظر حدث headerLoaded إذا الزر غير موجود
-//     • ✅ MutationObserver كحل احتياطي (3 ثواني)
-//     • ✅ يعمل وحده أو مع init-page-root.js
-//     • ✅ كل أزرار الهيدر شغالة (📖 ⚙️ 🔑)
+//     • ينتظر headerLoaded إذا الزر غير موجود
+//     • MutationObserver كحل احتياطي
 // ============================================================
 
 (function() {
@@ -23,7 +26,7 @@
     const UA = navigator.userAgent || '';
     const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot/i.test(UA);
 
-    console.log('🌍 [menu.js v7.3] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
+    console.log('🌍 [menu.js v7.5] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
 
     // ✅ النطاق الرسمي
     const SITE_URL = 'https://jabri-com.vercel.app';
@@ -49,11 +52,12 @@
     }
 
     // ============================================================
-    //   🔄 زر اللغة — v7.3: دورة ثلاثية كاملة
+    //   🔄 منطق اللغة — v7.5: يُساعد فقط (لا يعرّف toggleLang)
     //   🎯 /  ⇄  /ar/  ⇄  /en/  ⇄  /
     //   ─────────────────────────────────────────────────────────
-    //   المستخدم العربي:  /  →  /ar/  →  /en/  →  /
-    //   المستخدم الإنجليزي: /  →  /en/  →  /ar/  →  /
+    //   ⚠️ ملاحظة: menu.js لا يعرّف toggleLang
+    //              فقط يُصدّر __wahaBuildLangUrl
+    //              المسؤول: init-page-root.js
     // ============================================================
     const LANG_KEY = 'waha_lang';
 
@@ -75,7 +79,7 @@
             : { 'root': 'en', 'en': 'ar', 'ar': 'root' };
     }
 
-    // 🆕 v7.3 — بناء رابط اللغة التالي في الدورة (بدون targetLang — يقرر بنفسه)
+    // 🆕 v7.3 — بناء رابط اللغة التالي في الدورة
     function buildLangUrl() {
         var cycle = _getLangCycle();
         var currentZone = _getCurrentZone();
@@ -103,25 +107,16 @@
         return newPath + search + hash;
     }
 
-    // 🆕 v7.3 — الحصول على الوجهة التالية (للعرض أو للاستخدام)
+    // 🆕 v7.3 — الحصول على الوجهة التالية
     function getNextZone() {
         var cycle = _getLangCycle();
         return cycle[_getCurrentZone()];
     }
 
-    // ✅ نُعرّف toggleLang هنا كمان لو مش موجود في header.html
-    // 🆕 v7.3 — يستخدم الدورة الثلاثية
-    if (!window.toggleLang) {
-        window.toggleLang = function() {
-            var target = buildLangUrl();
-            var currentZone = _getCurrentZone();
-            var nextZone = getNextZone();
-            console.log('🌐 [lang] دورة:', currentZone, '→', nextZone, '|', target);
-            window.location.href = target;
-        };
-    }
+    // ⚠️ v7.5 — لا نعرّف toggleLang هنا!
+    //    menu.js يُساعد فقط. toggleLang في init-page-root.js.
 
-    // 🆕 v7.3 — نصدّر الدوال للاستخدام من init-page-root أو أي مكان
+    // 🆕 v7.3 — نصدّر الدوال للاستخدام من header.html أو init-page-root
     window.__wahaGetLangCycle = _getLangCycle;
     window.__wahaGetCurrentZone = _getCurrentZone;
     window.__wahaGetNextZone = getNextZone;
@@ -292,19 +287,13 @@
     }
 
     // ============================================================
-    //   🌐 زر اللغة الذكي — v7.3
-    //   ─────────────────────────────────────────────────────────
-    //   زر واحد يعرض الوجهة التالية في الدورة:
-    //   - من root  →  🇾🇪 عربي
-    //   - من /ar/  →  🇬🇧 English
-    //   - من /en/  →  🌐 الرئيسية
+    //   🌐 زر اللغة الذكي — v7.5
     // ============================================================
     function buildSmartLangButton() {
         var currentZone = _getCurrentZone();
         var nextZone = getNextZone();
         var targetUrl = buildLangUrl();
 
-        // نص الزر حسب الوجهة
         var label, icon, color;
         if (nextZone === 'root') {
             icon = '🌐';
@@ -320,7 +309,6 @@
             color = '#6ae3ff';
         }
 
-        // مؤشر الموقع الحالي
         var zoneLabel;
         if (currentZone === 'root') zoneLabel = isArabic ? '🌐 روت' : '🌐 Root';
         else if (currentZone === 'ar') zoneLabel = '🇾🇪 عربي';
@@ -329,13 +317,11 @@
         return '<div style="display:flex; flex-direction:column; gap:6px;' +
             ' padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12);' +
             ' margin-bottom:10px;">' +
-            // الموقع الحالي
             '<div style="text-align:center; font-size:0.65rem; color:#888;' +
             ' letter-spacing:1px;">' +
             (isArabic ? 'أنت الآن في: ' : 'You are in: ') +
             '<span style="color:#aaa; font-weight:bold;">' + zoneLabel + '</span>' +
             '</div>' +
-            // الزر الذكي
             '<a href="' + esc(targetUrl) + '" ' +
             'style="display:flex; align-items:center; justify-content:center; gap:8px;' +
             ' color:' + color + '; padding:8px 18px; border:2px solid ' + color + ';' +
@@ -355,17 +341,14 @@
         var dropdown = document.getElementById('menu-dropdown');
         if (!dropdown) return;
 
-        // 🆕 v7.3 — زر اللغة الذكي بدل زرين
         var html = buildSmartLangButton();
 
-        // ─── الأساسيات ───
         html += '<div style="' + SECTION_STYLE + '">' +
                 '<div style="' + SECTION_TITLE + '">📌 ' +
                 (isArabic ? 'الأساسيات' : 'Essentials') + '</div>';
         MENU_TOP.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        // ─── الألعاب ───
         html += '<div style="' + SECTION_STYLE + '">' +
                 '<div style="color:#00ff88; font-size:0.68rem; font-weight:bold;' +
                 ' letter-spacing:1px; margin-bottom:4px;">🎮 ' +
@@ -373,7 +356,6 @@
         GAMES.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        // ─── النظرية ───
         html += '<div style="' + SECTION_STYLE + '">' +
                 '<div style="color:#6ae3ff; font-size:0.68rem; font-weight:bold;' +
                 ' letter-spacing:1px; margin-bottom:4px;">🧠 ' +
@@ -381,7 +363,6 @@
         MENU_MIDDLE.forEach(function(item) { html += buildLink(item); });
         html += '</div>';
 
-        // ─── ويكيبيديا ───
         html += '<div style="' + SECTION_STYLE + '">' +
                 '<div style="' + SECTION_TITLE + '">📖 ' +
                 (isArabic ? 'ويكيبيديا' : 'Wikipedia') + '</div>' +
@@ -395,7 +376,6 @@
                 }) +
                 '</div>';
 
-        // ─── المحادثات ───
         html += '<div style="border-bottom:2px solid rgba(255,106,106,0.15);' +
                 ' padding-bottom:6px; margin-bottom:8px;">' +
                 '<div style="color:#ff6a6a; font-size:0.68rem; font-weight:bold;' +
@@ -427,7 +407,6 @@
         }
         html += '</div>';
 
-        // ─── الروابط الخارجية ───
         html +=
             '<div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0;' +
             ' padding-top:6px;"></div>' +
@@ -505,18 +484,15 @@
         renderDropdown();
 
         if (!bindMenuButton()) {
-            // 🆕 v7.2 — انتظر headerLoaded
             console.log('⏳ [menu] انتظار headerLoaded...');
             document.addEventListener('headerLoaded', function handler() {
                 document.removeEventListener('headerLoaded', handler);
                 console.log('🔄 [menu] headerLoaded وصل — إعادة بناء');
                 if (!bindMenuButton()) {
-                    // 🆕 حل احتياطي: MutationObserver
                     const observer = new MutationObserver(() => {
                         if (bindMenuButton()) observer.disconnect();
                     });
                     observer.observe(document.body, { childList: true, subtree: true });
-                    // محاولة أخيرة بعد 3 ثواني
                     setTimeout(() => {
                         bindMenuButton();
                         observer.disconnect();
@@ -525,7 +501,6 @@
             });
         }
 
-        // إغلاق القائمة عند الضغط خارجها
         document.addEventListener('click', (e) => {
             const dd = document.getElementById('menu-dropdown');
             if (dd && dd.style.display === 'flex' &&
@@ -535,7 +510,6 @@
             }
         });
 
-        // إغلاق بمفتاح Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const dd = document.getElementById('menu-dropdown');
@@ -543,7 +517,7 @@
             }
         });
 
-        console.log('🌴 [menu.js v7.3] تم بناء نظام القائمة بنجاح');
+        console.log('🌴 [menu.js v7.5] تم بناء نظام القائمة بنجاح');
     }
 
     // ============================================================
@@ -570,16 +544,15 @@
     window.saveChat = window.saveChatMessage;
 
     // ============================================================
-    //   🚀 التهيئة — ذكية
+    //   🚀 التهيئة
     // ============================================================
     function init() {
         try {
-            console.log('🌴 [menu] بدء التهيئة v7.3...');
+            console.log('🌴 [menu] بدء التهيئة v7.5...');
 
             updateBottomMenu();
             buildMenuSystem();
 
-            // 🆕 v7.2 — استمع لتحميل الهيدر المتأخر
             document.addEventListener('headerLoaded', function() {
                 setTimeout(buildMenuSystem, 100);
             });
@@ -590,7 +563,6 @@
         }
     }
 
-    // ✅ يشتغل في الحالتين: مستقل أو مع init-page-root
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
