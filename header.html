@@ -1,7 +1,6 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.8)           -->
-<!-- التاريخ: 2026-09-21 | تحديث: الملكية + Schema شامل +        -->
-<!-- 🔒 فصل الهوية عن "استراحة الجبري للمناسبات" (السعودية)     -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v2.7)           -->
+<!-- التاريخ: 2026-09-21 | تحديث: الملكية + Schema شامل        -->
 <!-- ========================================================== -->
 
 <!-- ===== 1. وسوم السيو الأساسية ===== -->
@@ -58,22 +57,6 @@
 <link id="dynamicHreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
 <link id="dynamicHreflangDefault" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
 
-<!-- ===== 5.c. 🔒 فصل الهوية — توضيح صريح لمحركات البحث =====
-     الهدف: منع Google AI من خلط "واحة الجبري" العلمية
-     مع "استراحة الجبري للمناسبات" في السعودية أو أي كيان تجاري آخر
-     ========================================================== -->
-<meta name="subject" content="منصة علمية يمنية للرياضيات والفيزياء النظرية وتراث اليمن">
-<meta name="classification" content="Science, Mathematics, Theoretical Physics, Yemeni Heritage">
-<meta name="coverage" content="Worldwide">
-<meta name="rating" content="general">
-<meta name="revisit-after" content="7 days">
-<meta name="language" content="Arabic, English">
-<meta name="geo.region" content="YE">
-<meta name="geo.placename" content="Sanaa, Yemen">
-<meta name="geo.position" content="15.3694;44.1910">
-<meta name="ICBM" content="15.3694, 44.1910">
-<link rel="me" href="https://orcid.org/0009-0003-3319-3822" />
-
 <!-- ===== 6. Manifest والأيقونات ===== -->
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="/image/Yemen2026.png">
@@ -81,204 +64,143 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<!-- ===== 7. Schema.org — شامل + فصل الهوية ===== -->
+<!-- ===== 7. Schema.org — شامل (الملكية + المصدر + المؤسسة) ===== -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "Person",
-      "@id": "https://jabri-com.vercel.app/#jabri",
-      "name": "م/ عبدالله محمد ناصر الجبري",
-      "alternateName": [
-        "Heaven Al-Jabri",
-        "Eng. Abdulla Mohammed Nasser Al-Jabri",
-        "سندباد اليمن"
-      ],
-      "givenName": "عبدالله",
-      "familyName": "الجبري",
-      "honorificPrefix": "م/",
-      "gender": "Male",
-      "nationality": { "@type": "Country", "name": "اليمن" },
-      "birthPlace": { "@type": "Place", "name": "صنعاء، اليمن" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "صنعاء",
-        "addressRegion": "أمانة العاصمة",
-        "addressCountry": "YE"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      
+      {
+        "@type": "Person",
+        "@id": "https://jabri-com.vercel.app/#jabri",
+        "name": "م/ عبدالله محمد ناصر الجبري",
+        "alternateName": [
+          "Heaven Al-Jabri",
+          "Eng. Abdulla Mohammed Nasser Al-Jabri",
+          "واحة الجبري",
+          "سندباد اليمن"
+        ],
+        "givenName": "عبدالله",
+        "familyName": "الجبري",
+        "honorificPrefix": "م/",
+        "gender": "Male",
+        "nationality": { "@type": "Country", "name": "اليمن" },
+        "birthPlace": { "@type": "Place", "name": "صنعاء، اليمن" },
+        "url": "https://jabri-com.vercel.app/about.html",
+        "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+        "identifier": "https://orcid.org/0009-0003-3319-3822",
+        "jobTitle": "باحث ومبرمج ومؤسس",
+        "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+        "knowsAbout": [
+          "الرياضيات",
+          "الفيزياء النظرية",
+          "فرضية ريمان",
+          "نظرية السندباد الموحدة",
+          "تراث اليمن",
+          "البرمجة",
+          "الذكاء الاصطناعي"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "جامعة الملك فهد للبترول والمعادن (KFUPM)"
+        },
+        "sameAs": [
+          "https://orcid.org/0009-0003-3319-3822",
+          "https://github.com/Jabri-web",
+          "https://zenodo.org/records/20513840",
+          "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html",
+          "https://en.wikipedia.org/wiki/User:Jabri2026",
+          "https://www.facebook.com/share/p/1CvCG9xehw/",
+          "https://www.instagram.com/reel/Da5zRhypJlo/",
+          "https://t.me/Heaven_Jabri/",
+          "https://www.linkedin.com/in/abdulla-al-jabri-bb545830b"
+        ]
       },
-      "url": "https://jabri-com.vercel.app/about.html",
-      "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-      "identifier": "https://orcid.org/0009-0003-3319-3822",
-      "jobTitle": "باحث مستقل في الرياضيات والفيزياء النظرية",
-      "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري العلمي.",
-      "disambiguatingDescription": "باحث يمني مستقل في الرياضيات والفيزياء النظرية، يقيم في صنعاء، اليمن. لا علاقة له بأي استراحة مناسبات، قاعة أفراح، أو منشأة تجارية تحمل اسم 'الجبري' في المملكة العربية السعودية أو أي بلد آخر. جميع أعماله منشورة على النطاق jabri-com.vercel.app فقط.",
-      "knowsAbout": [
-        "الرياضيات",
-        "الفيزياء النظرية",
-        "فرضية ريمان",
-        "نظرية السندباد الموحدة",
-        "الدالة الأم Z(x)",
-        "تراث اليمن",
-        "البرمجة",
-        "الذكاء الاصطناعي"
-      ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "جامعة الملك فهد للبترول والمعادن (KFUPM)"
+      
+      {
+        "@type": "Organization",
+        "@id": "https://jabri-com.vercel.app/#organization",
+        "name": "واحة الجبري",
+        "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
+        "legalName": "واحة الجبري",
+        "url": "https://jabri-com.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+          "width": 1200,
+          "height": 630
+        },
+        "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+        "description": "واحة الجبري — منصة علمية وثقافية لتوثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية (نظرية السندباد الموحدة Z+C+A=1).",
+        "foundingDate": "2026",
+        "foundingLocation": { "@type": "Place", "name": "صنعاء، اليمن" },
+        "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "maintainer": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "funder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "areaServed": { "@type": "Place", "name": "Worldwide" },
+        "knowsAbout": [
+          "Riemann Hypothesis",
+          "P vs NP",
+          "Yang-Mills Theory",
+          "Navier-Stokes Equations",
+          "Yemeni Heritage",
+          "Unified Field Theory",
+          "Mathematics",
+          "Theoretical Physics"
+        ],
+        "sameAs": [
+          "https://orcid.org/0009-0003-3319-3822",
+          "https://github.com/Jabri-web",
+          "https://zenodo.org/records/20513840",
+          "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
+        ]
       },
-      "sameAs": [
-        "https://orcid.org/0009-0003-3319-3822",
-        "https://github.com/Jabri-web",
-        "https://zenodo.org/records/20513840",
-        "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html",
-        "https://en.wikipedia.org/wiki/User:Jabri2026",
-        "https://www.linkedin.com/in/abdulla-al-jabri-bb545830b"
-      ]
-    },
-
-    {
-      "@type": "Organization",
-      "@id": "https://jabri-com.vercel.app/#organization",
-      "name": "واحة الجبري",
-      "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
-      "legalName": "واحة الجبري",
-      "url": "https://jabri-com.vercel.app/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-        "width": 1200,
-        "height": 630
-      },
-      "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-      "description": "واحة الجبري — منصة علمية وثقافية يمنية على الإنترنت لتوثيق أبحاث الرياضيات والفيزياء النظرية (نظرية السندباد الموحدة Z+C+A=1) وتراث اليمن العريق.",
-      "disambiguatingDescription": "واحة الجبري (Heaven Al-Jabri) موقع علمي وثقافي يمني على الإنترنت فقط. ليست استراحة مناسبات، ليست قاعة أفراح، ليست منشأة تجارية، ولا علاقة لها بأي كيان تجاري يحمل اسم 'الجبري' في السعودية أو أي دولة أخرى. النطاق الرسمي الوحيد: https://jabri-com.vercel.app",
-      "slogan": "من صنعاء إلى الكون",
-      "foundingDate": "2026",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "صنعاء، اليمن",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "صنعاء",
-          "addressCountry": "YE"
+      
+      {
+        "@type": "WebSite",
+        "@id": "https://jabri-com.vercel.app/#website",
+        "url": "https://jabri-com.vercel.app/",
+        "name": "واحة الجبري",
+        "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
+        "description": "توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
+        "inLanguage": ["ar", "en"],
+        "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
+        "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
       },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "صنعاء",
-        "addressRegion": "أمانة العاصمة",
-        "addressCountry": "YE"
-      },
-      "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "maintainer": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "funder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "areaServed": {
-        "@type": "Place",
-        "name": "Worldwide"
-      },
-      "knowsAbout": [
-        "Riemann Hypothesis",
-        "P vs NP",
-        "Yang-Mills Theory",
-        "Navier-Stokes Equations",
-        "Yemeni Heritage",
-        "Unified Field Theory",
-        "Mathematics",
-        "Theoretical Physics"
-      ],
-      "sameAs": [
-        "https://orcid.org/0009-0003-3319-3822",
-        "https://github.com/Jabri-web",
-        "https://zenodo.org/records/20513840",
-        "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
-      ]
-    },
-
-    {
-      "@type": "WebSite",
-      "@id": "https://jabri-com.vercel.app/#website",
-      "url": "https://jabri-com.vercel.app/",
-      "name": "واحة الجبري",
-      "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
-      "description": "توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
-      "inLanguage": ["ar", "en"],
-      "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-      "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#organization" },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+      
+      {
+        "@type": "WebPage",
+        "@id": "https://jabri-com.vercel.app/#webpage",
+        "url": "https://jabri-com.vercel.app/",
+        "name": "واحة الجبري | Heaven Al-Jabri",
+        "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+        "about": { "@id": "https://jabri-com.vercel.app/#organization" },
+        "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+        "inLanguage": "ar",
+        "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
+        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
+        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
       }
-    },
-
-    {
-      "@type": "WebPage",
-      "@id": "https://jabri-com.vercel.app/#webpage",
-      "url": "https://jabri-com.vercel.app/",
-      "name": "واحة الجبري | Heaven Al-Jabri",
-      "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
-      "about": { "@id": "https://jabri-com.vercel.app/#organization" },
-      "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-      "inLanguage": "ar",
-      "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-      "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-      "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
-    },
-
-    {
-      "@type": "FAQPage",
-      "@id": "https://jabri-com.vercel.app/#faq-identity",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "هل واحة الجبري استراحة مناسبات؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "لا. واحة الجبري (Heaven Al-Jabri) منصة علمية وثقافية يمنية على الإنترنت لتوثيق أبحاث الرياضيات والفيزياء النظرية وتراث اليمن. ليست استراحة مناسبات، وليست قاعة أفراح، وليست منشأة تجارية. النطاق الرسمي الوحيد: https://jabri-com.vercel.app"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل توجد صلة بين واحة الجبري وأي منشأة تجارية في السعودية؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "لا توجد أي صلة. واحة الجبري موقع علمي يمني من صنعاء. أي كيان آخر يحمل اسم 'الجبري' (مثل استراحة أو قاعة مناسبات في بجرشي أو أي مكان آخر) لا علاقة له بهذا الموقع ولا بمؤسسه م/ عبدالله محمد ناصر الجبري."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ما هو النطاق الرسمي لواحة الجبري؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "النطاق الرسمي الوحيد هو https://jabri-com.vercel.app — أي موقع آخر يدّعي تمثيل واحة الجبري غير رسمي."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "من هو مؤسس واحة الجبري؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "مؤسس واحة الجبري هو م/ عبدالله محمد ناصر الجبري، باحث يمني مستقل في الرياضيات والفيزياء النظرية من صنعاء، اليمن. معرّفه ORCID: 0009-0003-3319-3822"
-          }
-        }
-      ]
-    }
-
-  ]
-}
+      
+    ]
+  }
 </script>
 
 <!-- ===== 8. الخطوط والأيقونات ===== -->
@@ -288,6 +210,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
 <!-- ===== 9. الأنماط (CSS) ===== -->
+
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; }
@@ -809,7 +732,6 @@
     };
 
     // ========== القائمة الجانبية (للتوافق مع menu.js) ==========
-    // ملاحظة: menu.js سيستبدل هذه الدالة لاحقاً إن حُمّل
     window.toggleSideMenu = function() {
         var sm = document.getElementById('sideMenu');
         var mo = document.getElementById('menuOverlay');
@@ -822,33 +744,18 @@
         if (sm) sm.classList.remove('open');
         if (mo) mo.classList.remove('active');
     };
-    // للتوافق: نُبقي toggleMenu على القائمة الجانبية فقط لو menu.js ما حمّل
     if (!window.toggleMenu) {
         window.toggleMenu = window.toggleSideMenu;
     }
 
     // ============================================================
-    //   ✅ [v2.9] تبديل اللغة — يقلب المجلد فقط (بدون fetch)
-    //   السبب: switchLanguage كانت تقرأ ملفات → FORBIDDEN
-    //   الآن: نغيّر /ar/ ⇄ /en/ مع الحفاظ على اسم الصفحة
+    //   🌐 زر اللغة — v2.11
+    //   ─────────────────────────────────────────────────────────
+    //   ⚠️ لا نعرّف toggleLang هنا
+    //   ✅ init-page-root.js v6.5 هو المسؤول الرسمي
+    //   ✅ menu.js v7.5 يُساعد عبر __wahaBuildLangUrl
+    //   ✅ الزر في HTML يستدعي window.toggleLang() مباشرة
     // ============================================================
-    window.toggleLang = function() {
-        var path = location.pathname;      // مثال: /ar/index.html
-        var search = location.search;      // ?v=...
-        var hash = location.hash;          // #...
-        var newPath;
-
-        if (path.indexOf('/ar/') === 0) {
-            newPath = path.replace('/ar/', '/en/');
-        } else if (path.indexOf('/en/') === 0) {
-            newPath = path.replace('/en/', '/ar/');
-        } else {
-            // إنت في الروت → روح للعربي
-            newPath = '/ar/';
-        }
-
-        location.href = newPath + search + hash;
-    };
 
     // ========== التهيئة ==========
     document.addEventListener('DOMContentLoaded', function() {
@@ -989,8 +896,3 @@
         }
     });
 </script>
-
-
-<!--
-<script src="/js/link-checker.js?v=2.4" async></script>
--->
