@@ -331,6 +331,18 @@ C09. technical-guide.html
 #    وممنوع تغيير أي شيء إلا للضرورة،
 #    تناغماً مع متطلبات الفهرسة.
 
+
+
+
+نهاية كل ملف html بعد التوثيق يحتوي
+
+
+:<script src="js/link-checker.js"></script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+
 # ═══════════════════════════════════════════════════════════════
 #  نهاية الدليل - EOF
 # ═══════════════════════════════════════════════════════════════
