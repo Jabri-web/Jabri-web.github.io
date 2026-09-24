@@ -1,13 +1,14 @@
 // ================================================================
-//  init-page-root.js - v5.8
+//  init-page-root.js - v5.9
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  🆕 v5.8 (شبكة + أمان + Smart 404 + تحويل لغة فوري):
-//    • ✨ إضافة initNetworkMonitor() — إشعار حالة الشبكة
-//    • 🟢 إشعار "عاد الاتصال"
-//    • 🔴 إشعار "غير متصل"
-//    • 🟡 إشعار "اتصال بطيء"
-//    • كشف كامل لـ AUTH_USERS — لا كلمات سر في الفرونت
+//  🆕 v5.9 (إصلاح الشاشة المعطلة + أزرار Auth):
+//    • ✨ hideSplash() قسري حتى لو فشل header.html
+//    • ✨ updateAuthUI() — إظهار/إخفاء أزرار login حسب الحالة
+//    • ✨ fallback مؤقت 3.5s للويب / 2.5s للـ APK
+//    • ✨ حدث waha:auth-changed لتحديث كل الأزرار
+//    • ✨ data-auth="loggedIn" / "loggedOut" للتحكم
+//    • 🛡️ AUTH_USERS محذوفة — لا كلمات سر في الفرونت
 //    • loginLocal / loginGoogle معطّلة رسمياً
 //    • Smart 404 نظيف: يضيف .html + يجرب ar/en/ فقط
 //    • switchLanguage فوري — صفر فحوصات، صفر انتظار
@@ -16,7 +17,7 @@
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] الدرع المطلق (v5.8 - Secure + Fast Lang + Network)...');
+  console.log('🛡️ [init] الدرع المطلق (v5.9 - Fixed Splash + Auth UI)...');
 
   // ✅ كشف البيئة
   const PROTO = window.location.protocol;
@@ -33,13 +34,7 @@
   let splashAutoHideTimer = null;
 
   /* ================================================================
-     📡 Network Monitor — v5.8 (جديد)
-     ─────────────────────────────────────────────────────────────
-     • إشعار المستخدم بحالة الشبكة
-     • Online/Offline indicator
-     • Slow connection warning
-     • يعمل على: ويب + APK
-     • لا يعمل في: Googlebot (يظهر فوراً ويختفي)
+     📡 Network Monitor — v5.9 (كامل)
      ================================================================ */
   function initNetworkMonitor() {
     var banner = null;
@@ -78,7 +73,6 @@
       b.style.pointerEvents = 'auto';
       b.style.transform = 'translateX(-50%) translateY(0)';
       if (hideTimer) clearTimeout(hideTimer);
-      // إخفاء تلقائي بعد 3.5 ثانية (ما عدا offline — يبقى)
       if (type !== 'offline') {
         hideTimer = setTimeout(function() {
           b.style.opacity = '0';
@@ -96,19 +90,16 @@
       }
     }
 
-    // 1. عند قطع الاتصال
     window.addEventListener('offline', function() {
       console.log('📡 [network] offline');
       showBanner('🔴 أنت غير متصل بالإنترنت', 'offline');
     });
 
-    // 2. عند عودة الاتصال
     window.addEventListener('online', function() {
       console.log('📡 [network] online');
       showBanner('🟢 عاد الاتصال بنجاح', 'online');
     });
 
-    // 3. عند بطء الاتصال
     if (navigator.connection && navigator.connection.addEventListener) {
       navigator.connection.addEventListener('change', function() {
         var type = navigator.connection.effectiveType;
@@ -120,12 +111,10 @@
       });
     }
 
-    // 4. فحص أولي — إذا كان المستخدم غير متصل عند التحميل
     if (!navigator.onLine) {
       showBanner('🔴 أنت غير متصل بالإنترنت', 'offline');
     }
 
-    // كشف عام للاستخدام لاحقاً
     window.WAHA_NETWORK = {
       isOnline: function() { return navigator.onLine; },
       getConnectionType: function() {
@@ -139,11 +128,10 @@
   }
 
   /* ================================================================
-     🔒 WahaAuth — نظام الدخول
+     🔒 WahaAuth — نظام الدخول + Auth UI
      ─────────────────────────────────────────────────────────────
      ⚠️ لا كلمات سر مكشوفة.
      ⚠️ المصادقة الحقيقية تحتاج backend (Supabase/Firebase/…).
-     ⚠️ الملف ده عامّ ومفهرس — أي سر فيه = مكشوف.
      ================================================================ */
   const AUTH_KEY = 'waha_user';
 
@@ -158,9 +146,27 @@
       if (_currentUser) localStorage.setItem(AUTH_KEY, JSON.stringify(_currentUser));
       else localStorage.removeItem(AUTH_KEY);
     } catch (e) {}
+    updateAuthUI();
     window.dispatchEvent(new CustomEvent('waha:auth-changed', {
       detail: { user: _currentUser ? Object.assign({}, _currentUser) : null }
     }));
+  }
+
+  // 🆕 v5.9 — تحديث واجهة الأزرار حسب حالة الدخول
+  function updateAuthUI() {
+    try {
+      const loggedIn = !!_currentUser;
+      document.querySelectorAll('[data-auth="loggedIn"]').forEach(function(el) {
+        el.style.display = loggedIn ? '' : 'none';
+      });
+      document.querySelectorAll('[data-auth="loggedOut"]').forEach(function(el) {
+        el.style.display = !loggedIn ? '' : 'none';
+      });
+      const nameEl = document.getElementById('userNameLabel');
+      if (nameEl) nameEl.textContent = loggedIn ? (_currentUser.name || '') : '';
+    } catch (e) {
+      console.warn('⚠️ [auth] فشل تحديث الواجهة:', e);
+    }
   }
 
   window.WahaAuth = {
@@ -211,12 +217,12 @@
     }
   };
 
+  // 🆕 v5.9 — استمع للأحداث لتحديث الواجهة
+  document.addEventListener('headerLoaded', updateAuthUI);
+  window.addEventListener('waha:auth-changed', updateAuthUI);
+
   /* ================================================================
-     ✅ Lang Switcher — v5.8 (تحويل فوري — صفر فحوصات)
-     ─────────────────────────────────────────────────────────────
-     • لا فحص HEAD مسبق
-     • لا انتظار
-     • Smart 404 يتولى لو الملف غير موجود
+     ✅ Lang Switcher — v5.9 (تحويل فوري)
      ================================================================ */
   const LANG_KEY = 'waha_lang';
   const SUPPORTED_LANGS = ['ar', 'en'];
@@ -251,7 +257,6 @@
 
     try { localStorage.setItem(LANG_KEY, target); } catch (e) {}
 
-    // ─── APK: تحويل نسبي مباشر ───
     if (IS_APK) {
       const relUrl = target + '/' + file;
       console.log('🌐 [lang/APK]', current, '→', target, '|', file, '→', relUrl);
@@ -259,7 +264,6 @@
       return;
     }
 
-    // ─── الويب: تحويل فوري — Smart 404 يتولى الباقي ───
     const newUrl = '/' + target + '/' + file;
     console.log('🌐 [lang]', current, '→', target, '|', file, '→', newUrl);
     window.location.href = newUrl;
@@ -269,8 +273,10 @@
     const lang = _getCurrentLang();
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.body.classList.toggle('lang-en', lang === 'en');
-    document.body.classList.toggle('lang-ar', lang === 'ar');
+    if (document.body) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.body.classList.toggle('lang-ar', lang === 'ar');
+    }
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
     const label = document.getElementById('langLabel');
     if (label) label.textContent = lang === 'ar' ? 'English' : 'عربي';
@@ -279,6 +285,7 @@
   function initTheme() {
     const t = localStorage.getItem('theme') || 'night';
     const d = localStorage.getItem('device') || 'desktop';
+    if (!document.body) return;
     document.body.classList.remove('day', 'night', 'device-desktop', 'device-phone');
     document.body.classList.add(t, 'device-' + d);
   }
@@ -289,17 +296,9 @@
 
   /* ================================================================
      ✨ Smart 404 Handler — نظيف
-     ─────────────────────────────────────────────────────────────
-     ① ما نعيد روابط Google القديمة
-     ② نصلّح فقط: إضافة .html لو ناقص
-     ③ نجرّب /ar/ /en/ / — روابط موقعنا الحقيقية
-     ④ لو ما لقينا → الرئيسية بهدوء
      ================================================================ */
-
-  // كاش النتائج
   const _EXISTS_CACHE = new Map();
 
-  // فحص وجود ملف — fetch على الويب، XHR على APK
   function _pathExists(url) {
     if (_EXISTS_CACHE.has(url)) return Promise.resolve(_EXISTS_CACHE.get(url));
     if (IS_APK) {
@@ -349,23 +348,20 @@
   }
 
   function detect404() {
-    // ① علامة صريحة في body — الأكثر موثوقية
     if (document.body && document.body.dataset && document.body.dataset.waha404 === 'true') {
       console.log('✅ [404] تم الاكتشاف عبر data-waha-404');
       return true;
     }
-    
-    // ② فحوصات نصية
+
     if (document.title && /404/i.test(document.title)) return true;
-    
+
     const bodyHTML = (document.body && document.body.innerHTML) || '';
     if (/404\s*Not\s*Found/i.test(bodyHTML)) return true;
     if (/Page\s*Not\s*Found/i.test(bodyHTML)) return true;
     if (/NOT_FOUND/i.test(bodyHTML)) return true;
     if (/لا\s*توجد\s*هذه\s*الصفحة/.test(bodyHTML)) return true;
     if (/هذا\s*الدرب\s*غير\s*موجود/.test(bodyHTML)) return true;
-    
-    // ③ Performance API
+
     if (window.performance) {
       try {
         const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
@@ -379,15 +375,10 @@
         }
       }
     }
-    
+
     return false;
   }
 
-  /* ================================================================
-     مولّد المرشحات — نظيف
-     ⛔ لا جدول خاص، لا hyphen، لا تخمين
-     ✅ .html + ar/en/ + /
-     ================================================================ */
   function generateCandidates(pathname) {
     var path = String(pathname || '/').split('?')[0].split('#')[0];
     path = path.replace(/\/+$/, '') || '/';
@@ -497,7 +488,7 @@
   }
 
   /* ================================================================
-     ✅ Splash Screen
+     ✅ Splash Screen — v5.9
      ================================================================ */
   function createSplash() {
     if (document.getElementById('splashScreen')) return;
@@ -549,6 +540,12 @@
     var scripts = Array.prototype.slice.call(container.querySelectorAll('script'));
     scripts.forEach(function(oldScript) {
       try {
+        // 🆕 v5.9 — تخطي menu.js إذا كان مُستدعى من الخارج
+        var src = oldScript.src || '';
+        if (src.indexOf('menu.js') !== -1) {
+          console.log('⏭️ [init] تخطي إعادة تشغيل menu.js');
+          return;
+        }
         var newScript = document.createElement('script');
         Array.prototype.slice.call(oldScript.attributes).forEach(function(attr) {
           newScript.setAttribute(attr.name, attr.value);
@@ -627,11 +624,15 @@
       'header.html',
       function() {
         document.dispatchEvent(new CustomEvent('headerLoaded'));
-        setTimeout(hideSplash, 300);
+        // 🆕 v5.9 — إخفاء الـ splash مباشرة بعد نجاح الهيدر
+        setTimeout(hideSplash, 200);
       },
       function(err) {
         console.warn('⚠️ [header] تخطي:', err.message);
-        setTimeout(hideSplash, 500);
+        // 🆕 v5.9 — لا تترك الشاشة معطلة حتى لو فشل الهيدر
+        var ph = document.getElementById('header-placeholder');
+        if (ph) ph.innerHTML = '<div style="height:60px"></div>';
+        setTimeout(hideSplash, 300);
       }
     );
   }
@@ -697,7 +698,7 @@
     initLang();
     initTheme();
 
-    initNetworkMonitor();  // 🆕 v5.8 — مراقبة الشبكة
+    initNetworkMonitor();
 
     createSplash();
 
@@ -743,14 +744,16 @@
       setDynamicCanonical();
       addDynamicLinks();
       initLang();
+      updateAuthUI();
     });
 
+    // 🆕 v5.9 — إخفاء قسري بعد 3.5s (ويب) أو 2.5s (APK)
     splashAutoHideTimer = setTimeout(function() {
       if (!splashHidden) {
-        console.warn('⏰ إخفاء الـ splash قسراً');
+        console.warn('⏰ [init] إخفاء الـ splash قسرياً (v5.9)');
         hideSplash();
       }
-    }, IS_APK ? 2500 : 5000);
+    }, IS_APK ? 2500 : 3500);
   }
 
   if (document.readyState === 'loading') {
@@ -759,5 +762,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.8 - Secure + Fast Lang + Network)');
+  console.log('✅ init-page-root.js جاهز (v5.9 - Fixed Splash + Auth UI)');
 })();

@@ -1,12 +1,13 @@
 // ============================================================
-//   menu.js - v7.1 (Header-Compatible Edition)
+//   menu.js - v7.2 (Header-Compatible Edition — Fixed Dependency)
 //   Heaven Al-Jabri | واحة الجبري
 //   ─────────────────────────────────────────────────────────
-//   🆕 v7.1:
-//     • ✅ يستدعى مرة واحدة فقط — مفيش Polling — مفيش تعليق
-//     • ✅ زر اللغة منسّق مع زر اللغة في الهيدر (نفس المنطق)
-//     • ✅ زر اللغة يقلب المجلد فقط (/ar/ ⇄ /en/) — بدون fetch
-//     • ✅ كل أزرار الهيدر شغالة زي ما هي (📖 ⚙️ 🔑)
+//   🆕 v7.2:
+//     • ✅ ينتظر حدث headerLoaded إذا الزر غير موجود
+//     • ✅ MutationObserver كحل احتياطي (3 ثواني)
+//     • ✅ زر اللغة منسّق مع الهيدر (نفس المنطق)
+//     • ✅ يعمل وحده أو مع init-page-root.js
+//     • ✅ كل أزرار الهيدر شغالة (📖 ⚙️ 🔑)
 // ============================================================
 
 (function() {
@@ -18,7 +19,7 @@
     const UA = navigator.userAgent || '';
     const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot/i.test(UA);
 
-    console.log('🌍 [menu.js v7.1] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
+    console.log('🌍 [menu.js v7.2] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
 
     // ✅ النطاق الرسمي
     const SITE_URL = 'https://jabri-com.vercel.app';
@@ -45,7 +46,6 @@
 
     // ============================================================
     //   🔄 زر اللغة: يقلب المجلد فقط — بدون قراءة ملفات
-    //   ✅ منسّق مع window.toggleLang في header.html
     // ============================================================
     function buildLangUrl(targetLang) {
         var path = window.location.pathname;
@@ -243,7 +243,6 @@
         var dropdown = document.getElementById('menu-dropdown');
         if (!dropdown) return;
 
-        // ✅ زر اللغة — منسّق مع الهيدر (يقلب المجلد بس)
         var arHref = buildLangUrl('ar');
         var enHref = buildLangUrl('en');
 
@@ -351,70 +350,105 @@
     }
 
     // ============================================================
-    //   ☰ بناء نظام القائمة
+    //   🧱 إنشاء Dropdown Container
+    // ============================================================
+    function createDropdown() {
+        var dd = document.getElementById('menu-dropdown');
+        if (dd) return dd;
+        dd = document.createElement('div');
+        dd.id = 'menu-dropdown';
+        dd.style.cssText =
+            'display: none;' +
+            'position: fixed;' +
+            'top: 75px;' +
+            (isArabic ? 'right: 20px;' : 'left: 20px;') +
+            'background: rgba(10, 10, 20, 0.97);' +
+            'border: 2px solid #ffd700;' +
+            'border-radius: 16px;' +
+            'padding: 18px 16px;' +
+            'min-width: 300px;' +
+            'max-width: 90vw;' +
+            'max-height: 70vh;' +
+            'overflow-y: auto;' +
+            'z-index: 9998;' +
+            'flex-direction: column;' +
+            'direction: ' + (isArabic ? 'rtl' : 'ltr') + ';' +
+            "font-family: 'Cairo', 'Tahoma', sans-serif;" +
+            'backdrop-filter: blur(16px);' +
+            'box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);';
+        document.body.appendChild(dd);
+        return dd;
+    }
+
+    // ============================================================
+    //   🔗 ربط زر القائمة (☰) بالـ dropdown
+    // ============================================================
+    function bindMenuButton() {
+        const btn = document.querySelector('.top-btn.menu');
+        const dropdown = document.getElementById('menu-dropdown') || createDropdown();
+        if (!btn) {
+            console.log('⏳ [menu] الزر غير موجود بعد، سأنتظر...');
+            return false;
+        }
+        if (btn.dataset.wahaBound === '1') return true;
+        btn.dataset.wahaBound = '1';
+        btn.removeAttribute('onclick');
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+        console.log('✅ [menu] زر ☰ مربوط بنجاح');
+        return true;
+    }
+
+    // ============================================================
+    //   🧱 بناء نظام القائمة الكامل
     // ============================================================
     function buildMenuSystem() {
-        // ① إنشاء القائمة المنسدلة مرة واحدة
-        var dropdown = document.getElementById('menu-dropdown');
-        if (!dropdown) {
-            dropdown = document.createElement('div');
-            dropdown.id = 'menu-dropdown';
-            dropdown.style.cssText =
-                'display: none;' +
-                'position: fixed;' +
-                'top: 75px;' +
-                (isArabic ? 'right: 20px;' : 'left: 20px;') +
-                'background: rgba(10, 10, 20, 0.97);' +
-                'border: 2px solid #ffd700;' +
-                'border-radius: 16px;' +
-                'padding: 18px 16px;' +
-                'min-width: 300px;' +
-                'max-width: 90vw;' +
-                'max-height: 70vh;' +
-                'overflow-y: auto;' +
-                'z-index: 9998;' +
-                'flex-direction: column;' +
-                'direction: ' + (isArabic ? 'rtl' : 'ltr') + ';' +
-                "font-family: 'Cairo', 'Tahoma', sans-serif;" +
-                'backdrop-filter: blur(16px);' +
-                'box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);';
-            document.body.appendChild(dropdown);
-        }
-
-        // ② بناء محتوى القائمة
+        createDropdown();
         renderDropdown();
 
-        // ③ ربط زر القائمة (☰) — مرة واحدة بس
-        var btn = document.querySelector('.top-btn.menu');
-        if (btn && btn.dataset.wahaBound !== '1') {
-            btn.dataset.wahaBound = '1';
-            btn.removeAttribute('onclick');
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                var isOpen = dropdown.style.display === 'flex';
-                dropdown.style.display = isOpen ? 'none' : 'flex';
+        if (!bindMenuButton()) {
+            // 🆕 v7.2 — انتظر headerLoaded
+            console.log('⏳ [menu] انتظار headerLoaded...');
+            document.addEventListener('headerLoaded', function handler() {
+                document.removeEventListener('headerLoaded', handler);
+                console.log('🔄 [menu] headerLoaded وصل — إعادة بناء');
+                if (!bindMenuButton()) {
+                    // 🆕 حل احتياطي: MutationObserver
+                    const observer = new MutationObserver(() => {
+                        if (bindMenuButton()) observer.disconnect();
+                    });
+                    observer.observe(document.body, { childList: true, subtree: true });
+                    // محاولة أخيرة بعد 3 ثواني
+                    setTimeout(() => {
+                        bindMenuButton();
+                        observer.disconnect();
+                    }, 3000);
+                }
             });
-            console.log('✅ [menu] زر ☰ مربوط');
-        } else if (!btn) {
-            console.warn('⚠️ [menu] زر .top-btn.menu غير موجود في الهيدر');
         }
 
-        // ④ إغلاق القائمة عند الضغط خارجها
-        document.addEventListener('click', function(e) {
-            if (dropdown.style.display === 'flex' &&
-                !dropdown.contains(e.target) &&
+        // إغلاق القائمة عند الضغط خارجها
+        document.addEventListener('click', (e) => {
+            const dd = document.getElementById('menu-dropdown');
+            if (dd && dd.style.display === 'flex' &&
+                !dd.contains(e.target) &&
                 !e.target.closest('.top-btn.menu')) {
-                dropdown.style.display = 'none';
+                dd.style.display = 'none';
             }
         });
 
-        // ⑤ إغلاق بمفتاح Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') dropdown.style.display = 'none';
+        // إغلاق بمفتاح Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const dd = document.getElementById('menu-dropdown');
+                if (dd) dd.style.display = 'none';
+            }
         });
 
-        console.log('🌴 [menu.js v7.1] تم بناء نظام القائمة بنجاح');
+        console.log('🌴 [menu.js v7.2] تم بناء نظام القائمة بنجاح');
     }
 
     // ============================================================
@@ -441,14 +475,19 @@
     window.saveChat = window.saveChatMessage;
 
     // ============================================================
-    //   🚀 التهيئة — مرة واحدة فقط
+    //   🚀 التهيئة — ذكية
     // ============================================================
     function init() {
         try {
-            console.log('🌴 [menu] بدء التهيئة v7.1...');
+            console.log('🌴 [menu] بدء التهيئة v7.2...');
 
             updateBottomMenu();
             buildMenuSystem();
+
+            // 🆕 v7.2 — استمع لتحميل الهيدر المتأخر
+            document.addEventListener('headerLoaded', function() {
+                setTimeout(buildMenuSystem, 100);
+            });
 
             console.log('✅ [menu] التهيئة اكتملت');
         } catch (e) {
@@ -456,6 +495,7 @@
         }
     }
 
+    // ✅ يشتغل في الحالتين: مستقل أو مع init-page-root
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
