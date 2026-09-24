@@ -656,13 +656,16 @@ h3{
   });
 </script>
 
-<script src="/js/menu.js" defer></script>
 
-<script src="/js/link-checker.js?v=2.4" async></script>
-<script src="/js/config.js"></script>
-<script src="/js/utils.js"></script>
-<script src="/js/ui.js"></script>
-<script src="/js/app.js"></script>
+
+
+
+<div id="header-placeholder"></div>   <!-- ✅ قبل السكربتات -->
+<div id="footer-placeholder"></div>   <!-- ✅ بعد المحتوى -->
+<!-- السكربتات الثلاثة: -->
+<script src="/js/init-page-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
+<script src="/js/link-checker.js" async></script>
 
 </body>
 </html>
