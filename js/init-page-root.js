@@ -1,23 +1,19 @@
 // ================================================================
-//  init-page-root.js - v5.9
+//  init-page-root.js - v6.0
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  🆕 v5.9 (إصلاح الشاشة المعطلة + أزرار Auth):
-//    • ✨ hideSplash() قسري حتى لو فشل header.html
-//    • ✨ updateAuthUI() — إظهار/إخفاء أزرار login حسب الحالة
-//    • ✨ fallback مؤقت 3.5s للويب / 2.5s للـ APK
-//    • ✨ حدث waha:auth-changed لتحديث كل الأزرار
-//    • ✨ data-auth="loggedIn" / "loggedOut" للتحكم
-//    • 🛡️ AUTH_USERS محذوفة — لا كلمات سر في الفرونت
-//    • loginLocal / loginGoogle معطّلة رسمياً
-//    • Smart 404 نظيف: يضيف .html + يجرب ar/en/ فقط
-//    • switchLanguage فوري — صفر فحوصات، صفر انتظار
-//    • لا شاشة بيضاء أبداً — splash يبقى أثناء الفحص
+//  🆕 v6.0 (Auto-Detect Page Mode):
+//    • 🎯 كشف تلقائي لوضع كل صفحة (full / safe / minimal)
+//    • 🛡️ safeMode — بدون splash + بدون 404 للصفحات الحساسة
+//    • 🛡️ minimalMode — فقط الهيدر/الفوتر (بدون أي إضافات)
+//    • 🔍 كشف ذكي: حجم الصفحة + data attributes + مسارات محمية
+//    • ⚙️ تحكم يدوي عبر data-page-mode="safe|minimal|full"
+//    • ✅ كل ميزات v5.9 محفوظة (Splash + Auth UI + 404 + Network)
 // ================================================================
 
 (function() {
   'use strict';
-  console.log('🛡️ [init] الدرع المطلق (v5.9 - Fixed Splash + Auth UI)...');
+  console.log('🛡️ [init] الدرع المطلق (v6.0 - Auto-Detect Page Mode)...');
 
   // ✅ كشف البيئة
   const PROTO = window.location.protocol;
@@ -30,13 +26,128 @@
 
   console.log('🌍 [init] البيئة:', IS_APK ? '📱 APK' : '🌐 Web', '| Proto:', PROTO);
 
+  /* ================================================================
+     🎯 v6.0 — كشف وضع الصفحة تلقائياً
+     ─────────────────────────────────────────────────────────────
+     الأوضاع المتاحة:
+       FULL    — كل الميزات (splash + 404 + network + auth)
+       SAFE    — بدون splash + بدون 404 (للصفحات الحساسة)
+       MINIMAL — فقط header/footer (بدون أي شيء إضافي)
+     ─────────────────────────────────────────────────────────────
+     🎯 أولويات الكشف:
+       1. data-page-mode على <body> أو <html> أو <script>
+       2. data-no-splash / data-no-404 على <script>
+       3. حجم الصفحة + المسار المحمي
+       4. افتراضي: FULL
+     ================================================================ */
+  const PAGE_MODE = (function detectPageMode() {
+    // ─── ① تحكم يدوي عبر data-page-mode ───
+    var scriptTag = document.currentScript;
+
+    // على <body>
+    if (document.body && document.body.dataset && document.body.dataset.pageMode) {
+      var bm = String(document.body.dataset.pageMode).toLowerCase();
+      if (bm === 'safe' || bm === 'minimal' || bm === 'full') {
+        console.log('🎯 [mode] يدوي (body):', bm);
+        return bm;
+      }
+    }
+
+    // على <html>
+    if (document.documentElement && document.documentElement.dataset &&
+        document.documentElement.dataset.pageMode) {
+      var hm = String(document.documentElement.dataset.pageMode).toLowerCase();
+      if (hm === 'safe' || hm === 'minimal' || hm === 'full') {
+        console.log('🎯 [mode] يدوي (html):', hm);
+        return hm;
+      }
+    }
+
+    // على <script src="init-page-root.js">
+    if (scriptTag && scriptTag.dataset && scriptTag.dataset.pageMode) {
+      var sm = String(scriptTag.dataset.pageMode).toLowerCase();
+      if (sm === 'safe' || sm === 'minimal' || sm === 'full') {
+        console.log('🎯 [mode] يدوي (script):', sm);
+        return sm;
+      }
+    }
+
+    // ─── ② data-no-splash / data-no-404 → يرفع للـ SAFE ───
+    if (scriptTag) {
+      var noSplash = scriptTag.hasAttribute('data-no-splash');
+      var no404    = scriptTag.hasAttribute('data-no-404');
+      if (noSplash && no404) {
+        console.log('🎯 [mode] data-no-splash + data-no-404 → safe');
+        return 'safe';
+      }
+      if (noSplash) {
+        console.log('🎯 [mode] data-no-splash → safe');
+        return 'safe';
+      }
+      if (no404) {
+        console.log('🎯 [mode] data-no-404 → safe');
+        return 'safe';
+      }
+    }
+
+    // ─── ③ كشف تلقائي حسب حجم الصفحة ───
+    try {
+      var html = document.documentElement ? document.documentElement.innerHTML : '';
+      var htmlLen = html.length;
+
+      // صفحة صغيرة جداً (اختبار، admin، redirect) → MINIMAL
+      if (htmlLen < 800) {
+        console.log('🎯 [mode] تلقائي: صفحة صغيرة جداً (' + htmlLen + ' حرف) → minimal');
+        return 'minimal';
+      }
+
+      // صفحة صغيرة (landing، redirect) → SAFE
+      if (htmlLen < 2000) {
+        console.log('🎯 [mode] تلقائي: صفحة صغيرة (' + htmlLen + ' حرف) → safe');
+        return 'safe';
+      }
+    } catch (e) {
+      console.warn('⚠️ [mode] فشل قياس حجم الصفحة:', e.message);
+    }
+
+    // ─── ④ كشف تلقائي حسب المسار ───
+    var path = window.location.pathname.toLowerCase();
+    var skipPaths = ['/admin', '/test', '/debug', '/temp', '/dev', '/redirect'];
+    for (var i = 0; i < skipPaths.length; i++) {
+      if (path.indexOf(skipPaths[i]) === 0) {
+        console.log('🎯 [mode] تلقائي: مسار محمي (' + skipPaths[i] + ') → safe');
+        return 'safe';
+      }
+    }
+
+    // ─── ⑤ افتراضي: FULL ───
+    console.log('🎯 [mode] افتراضي: full');
+    return 'full';
+  })();
+
+  // ✅ تصدير للاستخدام العام
+  window.__WAHA_PAGE_MODE = PAGE_MODE;
+  console.log('📋 [init] وضع الصفحة:', PAGE_MODE.toUpperCase());
+
+  // ✅ دوال مساعدة للفحص السريع
+  var isFull    = (PAGE_MODE === 'full');
+  var isSafe    = (PAGE_MODE === 'safe');
+  var isMinimal = (PAGE_MODE === 'minimal');
+
   let splashHidden = false;
   let splashAutoHideTimer = null;
 
   /* ================================================================
-     📡 Network Monitor — v5.9 (كامل)
+     📡 Network Monitor — v6.0 (كامل)
+     ─────────────────────────────────────────────────────────────
+     ⚠️ لا يعمل في وضع minimal (لتجنب أي تدخل)
      ================================================================ */
   function initNetworkMonitor() {
+    if (isMinimal) {
+      console.log('⏭️ [network] تخطي (وضع minimal)');
+      return;
+    }
+
     var banner = null;
     var hideTimer = null;
 
@@ -132,6 +243,7 @@
      ─────────────────────────────────────────────────────────────
      ⚠️ لا كلمات سر مكشوفة.
      ⚠️ المصادقة الحقيقية تحتاج backend (Supabase/Firebase/…).
+     ✅ تعمل في كل الأوضاع (full/safe/minimal) — لأنها أساسية
      ================================================================ */
   const AUTH_KEY = 'waha_user';
 
@@ -152,7 +264,6 @@
     }));
   }
 
-  // 🆕 v5.9 — تحديث واجهة الأزرار حسب حالة الدخول
   function updateAuthUI() {
     try {
       const loggedIn = !!_currentUser;
@@ -217,12 +328,14 @@
     }
   };
 
-  // 🆕 v5.9 — استمع للأحداث لتحديث الواجهة
+  // ✅ استمع للأحداث لتحديث الواجهة
   document.addEventListener('headerLoaded', updateAuthUI);
   window.addEventListener('waha:auth-changed', updateAuthUI);
 
   /* ================================================================
-     ✅ Lang Switcher — v5.9 (تحويل فوري)
+     ✅ Lang Switcher — v6.0 (تحويل فوري)
+     ─────────────────────────────────────────────────────────────
+     ✅ تعمل في كل الأوضاع (full/safe/minimal) — أساسية
      ================================================================ */
   const LANG_KEY = 'waha_lang';
   const SUPPORTED_LANGS = ['ar', 'en'];
@@ -296,6 +409,8 @@
 
   /* ================================================================
      ✨ Smart 404 Handler — نظيف
+     ─────────────────────────────────────────────────────────────
+     ⚠️ لا يعمل في وضع safe أو minimal
      ================================================================ */
   const _EXISTS_CACHE = new Map();
 
@@ -488,9 +603,15 @@
   }
 
   /* ================================================================
-     ✅ Splash Screen — v5.9
+     ✅ Splash Screen — v6.0
+     ─────────────────────────────────────────────────────────────
+     ⚠️ لا يعمل في وضع safe أو minimal
      ================================================================ */
   function createSplash() {
+    if (isSafe || isMinimal) {
+      console.log('⏭️ [splash] تخطي (وضع ' + PAGE_MODE + ')');
+      return;
+    }
     if (document.getElementById('splashScreen')) return;
     var html =
       '<div id="splashScreen">' +
@@ -695,35 +816,49 @@
   }
 
   function init() {
+    // ✅ أساسيات لا تُتجاوز أبداً (حتى في minimal)
     initLang();
     initTheme();
 
+    // ✅ Network Monitor — يعمل في full/safe فقط
     initNetworkMonitor();
 
-    createSplash();
-
-    var quick404 = false;
-    try { quick404 = detect404(); } catch (e) { quick404 = false; }
-
-    if (!IS_APK && quick404) {
-      console.log('🚨 [init] 404 مكتشف — معالج ذكي');
-      if (splashAutoHideTimer) clearTimeout(splashAutoHideTimer);
-      handle404Smart();
-      return;
+    // ✅ Splash — فقط في full
+    if (isFull) {
+      createSplash();
+    } else {
+      console.log('⏭️ [init] تخطي splash (وضع ' + PAGE_MODE + ')');
+      splashHidden = true; // نعتبرها مخفية لتجنب أي انتظار
     }
 
-    if (!IS_APK) {
-      setTimeout(function() {
-        try {
-          if (detect404() && !splashHidden) {
-            console.log('🚨 [init] 404 (متأخر) — معالج ذكي');
-            if (splashAutoHideTimer) clearTimeout(splashAutoHideTimer);
-            handle404Smart();
-          }
-        } catch (e) {}
-      }, 120);
+    // ✅ Smart 404 — فقط في full
+    if (isFull) {
+      var quick404 = false;
+      try { quick404 = detect404(); } catch (e) { quick404 = false; }
+
+      if (!IS_APK && quick404) {
+        console.log('🚨 [init] 404 مكتشف — معالج ذكي');
+        if (splashAutoHideTimer) clearTimeout(splashAutoHideTimer);
+        handle404Smart();
+        return;
+      }
+
+      if (!IS_APK) {
+        setTimeout(function() {
+          try {
+            if (detect404() && !splashHidden) {
+              console.log('🚨 [init] 404 (متأخر) — معالج ذكي');
+              if (splashAutoHideTimer) clearTimeout(splashAutoHideTimer);
+              handle404Smart();
+            }
+          } catch (e) {}
+        }, 120);
+      }
+    } else {
+      console.log('⏭️ [init] تخطي Smart 404 (وضع ' + PAGE_MODE + ')');
     }
 
+    // ✅ الهيدر والفوتر — يعملوا في كل الأوضاع (أساسي)
     var hasHeaderPH = !!document.getElementById('header-placeholder');
     var hasFooterPH = !!document.getElementById('footer-placeholder');
 
@@ -731,7 +866,9 @@
       loadHeader();
     } else {
       console.log('ℹ️ [init] لا يوجد header-placeholder');
-      setTimeout(hideSplash, 300);
+      if (isFull) {
+        setTimeout(hideSplash, 300);
+      }
     }
 
     if (hasFooterPH) {
@@ -747,13 +884,15 @@
       updateAuthUI();
     });
 
-    // 🆕 v5.9 — إخفاء قسري بعد 3.5s (ويب) أو 2.5s (APK)
-    splashAutoHideTimer = setTimeout(function() {
-      if (!splashHidden) {
-        console.warn('⏰ [init] إخفاء الـ splash قسرياً (v5.9)');
-        hideSplash();
-      }
-    }, IS_APK ? 2500 : 3500);
+    // ✅ مؤقت إخفاء splash قسري — فقط في full
+    if (isFull) {
+      splashAutoHideTimer = setTimeout(function() {
+        if (!splashHidden) {
+          console.warn('⏰ [init] إخفاء الـ splash قسرياً (v6.0)');
+          hideSplash();
+        }
+      }, IS_APK ? 2500 : 3500);
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -762,5 +901,5 @@
     init();
   }
 
-  console.log('✅ init-page-root.js جاهز (v5.9 - Fixed Splash + Auth UI)');
+  console.log('✅ init-page-root.js جاهز (v6.0 - Auto-Detect Page Mode) | الوضع: ' + PAGE_MODE.toUpperCase());
 })();

@@ -1,11 +1,15 @@
 // ============================================================
-//   menu.js - v7.2 (Header-Compatible Edition — Fixed Dependency)
+//   menu.js - v7.3 (Header-Compatible + Triple Lang Cycle)
 //   Heaven Al-Jabri | واحة الجبري
 //   ─────────────────────────────────────────────────────────
-//   🆕 v7.2:
+//   🆕 v7.3:
+//     • ✅ زر اللغة يدور ثلاثي: root ⇄ ar ⇄ en ⇄ root
+//     • ✅ زر واحد ذكي يعرض الوجهة التالية (لا دوخة)
+//     • ✅ دالة __wahaGetLangCycle() للاستخدام العام
+//     • ✅ توافق كامل مع init-page-root.js v6.0
+//   ✅ v7.2 (محفوظ):
 //     • ✅ ينتظر حدث headerLoaded إذا الزر غير موجود
 //     • ✅ MutationObserver كحل احتياطي (3 ثواني)
-//     • ✅ زر اللغة منسّق مع الهيدر (نفس المنطق)
 //     • ✅ يعمل وحده أو مع init-page-root.js
 //     • ✅ كل أزرار الهيدر شغالة (📖 ⚙️ 🔑)
 // ============================================================
@@ -19,7 +23,7 @@
     const UA = navigator.userAgent || '';
     const IS_BOT = /googlebot|bingbot|slurp|duckduckbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|petalbot/i.test(UA);
 
-    console.log('🌍 [menu.js v7.2] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
+    console.log('🌍 [menu.js v7.3] Web' + (IS_BOT ? ' | 🤖 BOT' : ' | 👤 Human'));
 
     // ✅ النطاق الرسمي
     const SITE_URL = 'https://jabri-com.vercel.app';
@@ -45,32 +49,83 @@
     }
 
     // ============================================================
-    //   🔄 زر اللغة: يقلب المجلد فقط — بدون قراءة ملفات
+    //   🔄 زر اللغة — v7.3: دورة ثلاثية كاملة
+    //   🎯 /  ⇄  /ar/  ⇄  /en/  ⇄  /
+    //   ─────────────────────────────────────────────────────────
+    //   المستخدم العربي:  /  →  /ar/  →  /en/  →  /
+    //   المستخدم الإنجليزي: /  →  /en/  →  /ar/  →  /
     // ============================================================
-    function buildLangUrl(targetLang) {
+    const LANG_KEY = 'waha_lang';
+
+    function _getCurrentZone() {
+        var p = window.location.pathname.toLowerCase();
+        if (p.indexOf('/ar/') === 0 || p === '/ar') return 'ar';
+        if (p.indexOf('/en/') === 0 || p === '/en') return 'en';
+        return 'root';
+    }
+
+    function _getLangCycle() {
+        // نحدد ترتيب الدورة حسب تفضيل المستخدم
+        var prefAr = true;
+        try {
+            prefAr = (localStorage.getItem(LANG_KEY) !== 'en');
+        } catch (e) {}
+        return prefAr
+            ? { 'root': 'ar', 'ar': 'en', 'en': 'root' }
+            : { 'root': 'en', 'en': 'ar', 'ar': 'root' };
+    }
+
+    // 🆕 v7.3 — بناء رابط اللغة التالي في الدورة (بدون targetLang — يقرر بنفسه)
+    function buildLangUrl() {
+        var cycle = _getLangCycle();
+        var currentZone = _getCurrentZone();
+        var nextZone = cycle[currentZone];
+
         var path = window.location.pathname;
         var search = window.location.search;
         var hash = window.location.hash;
-        var newPath;
 
-        if (path.indexOf('/ar/') === 0) {
-            newPath = path.replace('/ar/', '/' + targetLang + '/');
-        } else if (path.indexOf('/en/') === 0) {
-            newPath = path.replace('/en/', '/' + targetLang + '/');
+        // نستخرج المسار بدون بادئة اللغة
+        var cleanPath = path.replace(/^\/(ar|en)(\/|$)/i, '/');
+        if (cleanPath === '' || cleanPath === '/') cleanPath = '/';
+
+        // نبني المسار الجديد
+        var newPath;
+        if (nextZone === 'root') {
+            newPath = cleanPath;
         } else {
-            newPath = '/' + targetLang + '/';
+            newPath = '/' + nextZone + (cleanPath === '/' ? '/' : cleanPath);
         }
+
+        // تنظيف الشرطات المزدوجة
+        newPath = newPath.replace(/\/+/g, '/');
 
         return newPath + search + hash;
     }
 
+    // 🆕 v7.3 — الحصول على الوجهة التالية (للعرض أو للاستخدام)
+    function getNextZone() {
+        var cycle = _getLangCycle();
+        return cycle[_getCurrentZone()];
+    }
+
     // ✅ نُعرّف toggleLang هنا كمان لو مش موجود في header.html
+    // 🆕 v7.3 — يستخدم الدورة الثلاثية
     if (!window.toggleLang) {
         window.toggleLang = function() {
-            var target = isArabic ? 'en' : 'ar';
-            window.location.href = buildLangUrl(target);
+            var target = buildLangUrl();
+            var currentZone = _getCurrentZone();
+            var nextZone = getNextZone();
+            console.log('🌐 [lang] دورة:', currentZone, '→', nextZone, '|', target);
+            window.location.href = target;
         };
     }
+
+    // 🆕 v7.3 — نصدّر الدوال للاستخدام من init-page-root أو أي مكان
+    window.__wahaGetLangCycle = _getLangCycle;
+    window.__wahaGetCurrentZone = _getCurrentZone;
+    window.__wahaGetNextZone = getNextZone;
+    window.__wahaBuildLangUrl = buildLangUrl;
 
     // ============================================================
     //   🛡️ تهريب HTML
@@ -237,31 +292,71 @@
     }
 
     // ============================================================
+    //   🌐 زر اللغة الذكي — v7.3
+    //   ─────────────────────────────────────────────────────────
+    //   زر واحد يعرض الوجهة التالية في الدورة:
+    //   - من root  →  🇾🇪 عربي
+    //   - من /ar/  →  🇬🇧 English
+    //   - من /en/  →  🌐 الرئيسية
+    // ============================================================
+    function buildSmartLangButton() {
+        var currentZone = _getCurrentZone();
+        var nextZone = getNextZone();
+        var targetUrl = buildLangUrl();
+
+        // نص الزر حسب الوجهة
+        var label, icon, color;
+        if (nextZone === 'root') {
+            icon = '🌐';
+            label = isArabic ? 'الرئيسية' : 'Home';
+            color = '#00ff88';
+        } else if (nextZone === 'ar') {
+            icon = '🇾🇪';
+            label = 'عربي';
+            color = '#ffd700';
+        } else {
+            icon = '🇬🇧';
+            label = 'English';
+            color = '#6ae3ff';
+        }
+
+        // مؤشر الموقع الحالي
+        var zoneLabel;
+        if (currentZone === 'root') zoneLabel = isArabic ? '🌐 روت' : '🌐 Root';
+        else if (currentZone === 'ar') zoneLabel = '🇾🇪 عربي';
+        else zoneLabel = '🇬🇧 English';
+
+        return '<div style="display:flex; flex-direction:column; gap:6px;' +
+            ' padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12);' +
+            ' margin-bottom:10px;">' +
+            // الموقع الحالي
+            '<div style="text-align:center; font-size:0.65rem; color:#888;' +
+            ' letter-spacing:1px;">' +
+            (isArabic ? 'أنت الآن في: ' : 'You are in: ') +
+            '<span style="color:#aaa; font-weight:bold;">' + zoneLabel + '</span>' +
+            '</div>' +
+            // الزر الذكي
+            '<a href="' + esc(targetUrl) + '" ' +
+            'style="display:flex; align-items:center; justify-content:center; gap:8px;' +
+            ' color:' + color + '; padding:8px 18px; border:2px solid ' + color + ';' +
+            ' border-radius:10px; text-decoration:none; font-weight:bold;' +
+            ' background:rgba(255,215,0,0.08); font-size:0.9rem; transition:0.2s;' +
+            ' text-align:center;">' +
+            '<span style="font-size:1.1rem;">' + icon + '</span> ' +
+            '<span>' + label + '</span>' +
+            '</a>' +
+            '</div>';
+    }
+
+    // ============================================================
     //   📋 بناء القائمة المنسدلة كاملة
     // ============================================================
     function renderDropdown() {
         var dropdown = document.getElementById('menu-dropdown');
         if (!dropdown) return;
 
-        var arHref = buildLangUrl('ar');
-        var enHref = buildLangUrl('en');
-
-        var html =
-            '<div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px;' +
-            ' border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">' +
-                '<a href="' + esc(arHref) + '" style="color:' +
-                (isArabic ? '#ffd700' : '#888') + '; padding:4px 14px; border:1px solid ' +
-                (isArabic ? '#ffd700' : '#444') + '; border-radius:8px; text-decoration:none;' +
-                ' font-weight:bold; background:' +
-                (isArabic ? 'rgba(255,215,0,0.12)' : 'transparent') +
-                '; font-size:0.85rem;">🇾🇪 عربي</a>' +
-                '<a href="' + esc(enHref) + '" style="color:' +
-                (!isArabic ? '#ffd700' : '#888') + '; padding:4px 14px; border:1px solid ' +
-                (!isArabic ? '#ffd700' : '#444') + '; border-radius:8px; text-decoration:none;' +
-                ' font-weight:bold; background:' +
-                (!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent') +
-                '; font-size:0.85rem;">🇬🇧 English</a>' +
-            '</div>';
+        // 🆕 v7.3 — زر اللغة الذكي بدل زرين
+        var html = buildSmartLangButton();
 
         // ─── الأساسيات ───
         html += '<div style="' + SECTION_STYLE + '">' +
@@ -448,7 +543,7 @@
             }
         });
 
-        console.log('🌴 [menu.js v7.2] تم بناء نظام القائمة بنجاح');
+        console.log('🌴 [menu.js v7.3] تم بناء نظام القائمة بنجاح');
     }
 
     // ============================================================
@@ -479,7 +574,7 @@
     // ============================================================
     function init() {
         try {
-            console.log('🌴 [menu] بدء التهيئة v7.2...');
+            console.log('🌴 [menu] بدء التهيئة v7.3...');
 
             updateBottomMenu();
             buildMenuSystem();
