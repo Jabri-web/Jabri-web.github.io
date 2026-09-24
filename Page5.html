@@ -11,9 +11,10 @@
 <meta name="description" content="واحة الجبري Heaven Al-Jabri: توثيق تراث اليمن العريق (صنعاء، شبام، سقطرى) والبحوث العلمية نظرية السندباد الموحدة Z+C+A=1. الباحث م/ عبدالله الجبري.">
 <meta name="author" content="م/ عبدالله محمد ناصر الجبري">
 
-<link rel="canonical" href="https://jabri-com.vercel.app/Page5.html">
-<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Page5.html">
-<link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/Page5.html">
+<link rel="canonical" id="dynamicCanonical" href="https://jabri-com.vercel.app/Page5.html">
+<link rel="alternate" hreflang="ar" id="hreflangAr" href="https://jabri-com.vercel.app/Page5.html">
+<link rel="alternate" hreflang="en" id="hreflangEn" href="https://jabri-com.vercel.app/en/Page5.html">
+<link rel="alternate" hreflang="x-default" id="hreflangX" href="https://jabri-com.vercel.app/Page5.html">
 
 <meta property="og:locale" content="ar_YE">
 <meta property="og:type" content="website">
@@ -39,7 +40,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQBMJKBC24"></script>
@@ -160,7 +160,8 @@ a:focus-visible,button:focus-visible,video:focus-visible{
 /* ===== رأس الصفحة ===== */
 .header-icon{
   display:flex;justify-content:center;gap:20px;
-  font-size:2.4rem;color:var(--acc);margin-bottom:8px;
+  font-size:2.4rem;margin-bottom:8px;
+  align-items:center;
 }
 h1{
   font-family:"Cairo";font-size:2.6rem;font-weight:900;
@@ -187,7 +188,7 @@ h1 .sub-line{
   border-inline-end:5px solid var(--acc);
   padding-inline-end:18px;
 }
-.section-title i{font-size:1.7rem;color:var(--orange)}
+.section-title .ico{font-size:1.7rem}
 .section-title .tag{
   font-size:.9rem;color:var(--mut);font-weight:400;
 }
@@ -212,15 +213,16 @@ h1 .sub-line{
   color:var(--txt);text-decoration:none;
 }
 .card-icon{
-  font-size:2.6rem;color:var(--acc);margin-bottom:10px;
+  font-size:2.4rem;margin-bottom:10px;
   background:var(--bg-dark);width:70px;height:70px;
-  line-height:70px;border-radius:50%;text-align:center;
+  border-radius:50%;text-align:center;
   border:2px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  line-height:1;
 }
 .card .en-title{font-weight:800;font-size:1.25rem;color:#f0f6fc;margin-top:8px}
 .card .ar-title{font-weight:700;font-size:1rem;color:var(--txt-dim);margin-top:4px}
 .card .repo-desc{font-size:.85rem;color:var(--mut);margin-top:10px;line-height:1.5}
-.card .repo-desc i{color:var(--orange)}
 
 /* ===== شارات P1-P4 ===== */
 .badge{
@@ -248,9 +250,8 @@ h1 .sub-line{
 .paper-card:hover{
   border-color:var(--acc);background:#1f2b3b;transform:scale(1.02);
 }
-.paper-card i{
-  font-size:2rem;color:var(--orange);
-  margin-bottom:6px;display:block;
+.paper-card .paper-ico{
+  font-size:2rem;margin-bottom:6px;display:block;
 }
 .paper-card .paper-name{font-weight:800;font-size:1rem;color:#f0f6fc}
 .paper-card .paper-sub{font-size:.8rem;color:var(--mut);margin:4px 0 8px}
@@ -276,7 +277,7 @@ h1 .sub-line{
   font-weight:700;color:var(--txt-dim);
   transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease;
 }
-.dev-tag i{margin-inline-end:8px;color:var(--orange)}
+.dev-tag .ico{margin-inline-end:8px}
 .dev-tag:hover{
   background:var(--bd);border-color:var(--acc);
   color:#f0f6fc;transform:scale(1.04);
@@ -296,8 +297,6 @@ h1 .sub-line{
   border-color:var(--acc);background:var(--card2);
   color:var(--acc);text-decoration:none;transform:translateY(-2px);
 }
-.btn i{color:var(--orange)}
-.btn:hover i{color:var(--acc)}
 
 /* ===== أزرار متعددة في صف ===== */
 .btn-row{
@@ -362,7 +361,7 @@ h1 .sub-line{
   gap:10px;transition:color .2s ease,transform .2s ease;
 }
 .contact-box a:hover{color:var(--orange);transform:scale(1.05);text-decoration:none}
-.contact-box i{font-size:1.6rem}
+.contact-box .ico{font-size:1.6rem}
 
 /* ===== التذييل ===== */
 .footer-note{
@@ -371,7 +370,7 @@ h1 .sub-line{
   padding-top:30px;font-style:italic;
   display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
 }
-.footer-note i{color:var(--orange);margin:0 6px}
+.footer-note .ico{margin:0 6px}
 
 /* ===== استجابة الشاشات الصغيرة ===== */
 @media (max-width:600px){
@@ -381,17 +380,17 @@ h1 .sub-line{
   h1 .sub-line{font-size:1rem}
   .subtitle{font-size:.95rem}
   .section-title{font-size:1.3rem;padding-inline-end:14px}
-  .section-title i{font-size:1.3rem}
+  .section-title .ico{font-size:1.3rem}
   .grid-cards{grid-template-columns:1fr 1fr;gap:14px}
   .card{padding:18px 12px}
-  .card-icon{width:56px;height:56px;line-height:56px;font-size:2rem}
+  .card-icon{width:56px;height:56px;font-size:2rem}
   .card .en-title{font-size:1.05rem}
   .card .ar-title{font-size:.88rem}
   .paper-grid{grid-template-columns:1fr}
   .media-grid{grid-template-columns:1fr 1fr}
   .contact-box{padding:16px}
   .contact-box a{font-size:.9rem}
-  .contact-box i{font-size:1.3rem}
+  .contact-box .ico{font-size:1.3rem}
 }
 
 /* ===== تقليل الحركة ===== */
@@ -425,9 +424,9 @@ h1 .sub-line{
 
   <!-- ===== الرأس ===== -->
   <div class="header-icon" aria-hidden="true">
-    <i class="fas fa-crow"></i>
-    <i class="fas fa-atom"></i>
-    <i class="fas fa-brain"></i>
+    <span>🐦‍⬛</span>
+    <span>⚛️</span>
+    <span>🧠</span>
   </div>
 
   <h1>
@@ -436,55 +435,55 @@ h1 .sub-line{
   </h1>
 
   <p class="subtitle">
-    <i class="fas fa-quote-right" style="color:var(--acc);margin-inline-end:10px" aria-hidden="true"></i>
+    <span class="ico" style="margin-inline-end:10px" aria-hidden="true">💬</span>
     باحث مستقل في دالة زيتا لريمان، علم الكونيات الحسابي، والفيزياء الرياضية
     <span class="en">Independent researcher — Riemann zeta, computational cosmology &amp; mathematical physics</span>
   </p>
 
   <!-- ===== المشاريع الرئيسية ===== -->
   <h2 class="section-title">
-    <i class="fas fa-flag" aria-hidden="true"></i>
+    <span class="ico" aria-hidden="true">🚩</span>
     المشاريع الرئيسية
     <span class="tag">P1 → P4</span>
   </h2>
 
   <div class="grid-cards">
     <a href="Page1.html" class="card">
-      <div class="card-icon"><i class="fas fa-ship" aria-hidden="true"></i></div>
+      <div class="card-icon" aria-hidden="true">🚢</div>
       <span class="badge p1">P1</span>
       <span class="en-title">Yemen Sindbad</span>
       <span class="ar-title">سندباد اليمن</span>
-      <div class="repo-desc">تراث وحكايات اليمن<br><i class="fas fa-scroll" aria-hidden="true"></i></div>
+      <div class="repo-desc">تراث وحكايات اليمن<br>📜</div>
     </a>
 
     <a href="Page2.html" class="card">
-      <div class="card-icon"><i class="fas fa-dove" aria-hidden="true"></i></div>
+      <div class="card-icon" aria-hidden="true">🕊️</div>
       <span class="badge p2">P2</span>
       <span class="en-title">Yemen Bird</span>
       <span class="ar-title">طائر اليمن</span>
-      <div class="repo-desc">خوارزميات محسّنة v1.2<br><i class="fas fa-code" aria-hidden="true"></i></div>
+      <div class="repo-desc">خوارزميات محسّنة v1.2<br>💻</div>
     </a>
 
     <a href="Page3.html" class="card">
-      <div class="card-icon"><i class="fas fa-spider" aria-hidden="true"></i></div>
+      <div class="card-icon" aria-hidden="true">🕷️</div>
       <span class="badge p3">P3</span>
       <span class="en-title">Yemen Ankaboot</span>
       <span class="ar-title">عنكبوت اليمن</span>
-      <div class="repo-desc">النظرية الأساسية — الدالة الأم<br><i class="fas fa-infinity" aria-hidden="true"></i></div>
+      <div class="repo-desc">النظرية الأساسية — الدالة الأم<br>♾️</div>
     </a>
 
     <a href="Page4.html" class="card">
-      <div class="card-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+      <div class="card-icon" aria-hidden="true">📂</div>
       <span class="badge p4">P4</span>
       <span class="en-title">Pages &amp; Researches</span>
       <span class="ar-title">الصفحات والبحوث</span>
-      <div class="repo-desc">المركز الرئيسي — كل المشاريع<br><i class="fas fa-folder-open" aria-hidden="true"></i></div>
+      <div class="repo-desc">المركز الرئيسي — كل المشاريع<br>📁</div>
     </a>
   </div>
 
   <!-- ===== الأبحاث المنشورة ===== -->
   <h2 class="section-title">
-    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+    <span class="ico" aria-hidden="true">📄</span>
     الأبحاث المنشورة
     <span class="tag">Jabri-Nobble</span>
   </h2>
@@ -492,81 +491,81 @@ h1 .sub-line{
   <div class="paper-grid">
 
     <div class="paper-card">
-      <i class="fas fa-square-root-variable" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">√</span>
       <div class="paper-name">Jabri Riemann</div>
       <div class="paper-sub">فرضية ريمان</div>
-      <a href="https://doi.org/10.5281/zenodo.20139904" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20139904</a>
+      <a href="https://doi.org/10.5281/zenodo.20139904" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20139904</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-code-branch" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">🔀</span>
       <div class="paper-name">Jabri P vs NP</div>
       <div class="paper-sub">P مقابل NP</div>
-      <a href="https://doi.org/10.5281/zenodo.20145279" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20145279</a>
+      <a href="https://doi.org/10.5281/zenodo.20145279" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20145279</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-bolt" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">⚡</span>
       <div class="paper-name">Jabri Gap</div>
       <div class="paper-sub">فجوة كتلة يانغ-ميلز</div>
-      <a href="https://doi.org/10.5281/zenodo.20148344" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20148344</a>
+      <a href="https://doi.org/10.5281/zenodo.20148344" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20148344</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-water" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">🌊</span>
       <div class="paper-name">Jabri Navier</div>
       <div class="paper-sub">معادلات نافيير-ستوكس</div>
-      <a href="https://doi.org/10.5281/zenodo.20149618" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20149618</a>
+      <a href="https://doi.org/10.5281/zenodo.20149618" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20149618</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-chart-line" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">📈</span>
       <div class="paper-name">Jabri Birch</div>
       <div class="paper-sub">حدسية بيرش وسوينرتون-داير</div>
-      <a href="https://doi.org/10.5281/zenodo.20145337" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20145337</a>
+      <a href="https://doi.org/10.5281/zenodo.20145337" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20145337</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-cubes" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">🧊</span>
       <div class="paper-name">Jabri Hodge</div>
       <div class="paper-sub">حدسية هودج</div>
-      <a href="https://doi.org/10.5281/zenodo.20114317" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20114317</a>
+      <a href="https://doi.org/10.5281/zenodo.20114317" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20114317</a>
     </div>
 
     <div class="paper-card">
-      <i class="fas fa-equals" aria-hidden="true"></i>
+      <span class="paper-ico" aria-hidden="true">🟰</span>
       <div class="paper-name">Jabri Identity</div>
       <div class="paper-sub">هوية الجبري</div>
-      <a href="https://doi.org/10.5281/zenodo.20100622" class="doi-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> 10.5281/zenodo.20100622</a>
+      <a href="https://doi.org/10.5281/zenodo.20100622" class="doi-link" target="_blank" rel="noopener noreferrer">🔗 10.5281/zenodo.20100622</a>
     </div>
 
   </div>
 
   <!-- ===== بحوث قيد العمل ===== -->
   <h2 class="section-title">
-    <i class="fas fa-flask" aria-hidden="true"></i>
+    <span class="ico" aria-hidden="true">🧪</span>
     بحوث قيد العمل
     <span class="tag">Jabri-lab</span>
   </h2>
 
   <div class="dev-list">
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-5</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-28</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Zx</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Gravity</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Spacetime</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Darkenergy</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Planck</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-Hubble</span>
-    <span class="dev-tag"><i class="fas fa-microscope" aria-hidden="true"></i> Jabri-all</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-5</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-28</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Zx</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Gravity</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Spacetime</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Darkenergy</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Planck</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-Hubble</span>
+    <span class="dev-tag"><span class="ico">🔬</span> Jabri-all</span>
   </div>
 
   <!-- ===== أزرار سريعة ===== -->
   <div class="btn-row">
-    <a href="Dbase.html" class="btn"><i class="fas fa-database" aria-hidden="true"></i> قاعدة البيانات (12 مستودعاً)</a>
-    <a href="/dashboard.html" class="btn"><i class="fas fa-gauge-high" aria-hidden="true"></i> لوحة التحكم</a>
-    <a href="/Check.html" class="btn"><i class="fas fa-circle-check" aria-hidden="true"></i> فحص</a>
-    <a href="/explore.html" class="btn"><i class="fas fa-magnifying-glass" aria-hidden="true"></i> المستكشف</a>
+    <a href="Dbase.html" class="btn">🗄️ قاعدة البيانات (12 مستودعاً)</a>
+    <a href="/dashboard.html" class="btn">📊 لوحة التحكم</a>
+    <a href="/Check.html" class="btn">✅ فحص</a>
+    <a href="/explore.html" class="btn">🔍 المستكشف</a>
   </div>
 
   <!-- ===== الملصقات ===== -->
@@ -615,27 +614,27 @@ h1 .sub-line{
 
   <!-- ===== التواصل ===== -->
   <h2 class="section-title">
-    <i class="fas fa-envelope" aria-hidden="true"></i>
+    <span class="ico" aria-hidden="true">✉️</span>
     التواصل
   </h2>
 
   <div class="contact-box">
     <a href="mailto:jabri62018@gmail.com">
-      <i class="fas fa-envelope" aria-hidden="true"></i> jabri62018@gmail.com
+      <span class="ico" aria-hidden="true">✉️</span> jabri62018@gmail.com
     </a>
     <a href="Page1.html">
-      <i class="fas fa-globe" aria-hidden="true"></i> Sindbad
+      <span class="ico" aria-hidden="true">🌐</span> Sindbad
     </a>
     <a href="https://github.com/jabri-web" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-github" aria-hidden="true"></i> GitHub
+      <span class="ico" aria-hidden="true">🐙</span> GitHub
     </a>
   </div>
 
   <!-- ===== التذييل ===== -->
   <footer class="footer-note">
-    <span><i class="fas fa-robot" aria-hidden="true"></i> كل الأبحاث حسابية وقابلة للتكرار</span>
-    <span><i class="fas fa-play" aria-hidden="true"></i> شغلها. تحقق منها. جرب تكسرها.</span>
-    <span><i class="fas fa-code" aria-hidden="true"></i> Run it. Check it. Break it.</span>
+    <span><span class="ico" aria-hidden="true">🤖</span> كل الأبحاث حسابية وقابلة للتكرار</span>
+    <span><span class="ico" aria-hidden="true">▶️</span> شغلها. تحقق منها. جرب تكسرها.</span>
+    <span><span class="ico" aria-hidden="true">💻</span> Run it. Check it. Break it.</span>
   </footer>
 
 </main>
@@ -661,8 +660,14 @@ h1 .sub-line{
     if (xLink)     xLink.href     = base + path;
   });
 </script>
-<script src="/js/init-page-root.js" defer></script>
+
 <script src="/js/menu.js" defer></script>
+
+<script src="/js/link-checker.js?v=2.4" async></script>
+<script src="/js/config.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/app.js"></script>
 
 </body>
 </html>
