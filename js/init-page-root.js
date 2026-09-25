@@ -1,8 +1,9 @@
-// init-page-root.js — v8.3.8 "المرعبة FBI — Ghost Fix Final"
+// init-page-root.js — v8.3.9 "المرعبة FBI — Triple Focus"
 // Smart 404 + Sequential Boot + Tri-Lang + Network Diagnostics + Splash Recovery
+// + 🆕 Triple Focus: البحث فقط في (/, /ar/, /en/) + رفض /image/ فوراً
 (function(){
   'use strict';
-  console.log('👁️ [init] v8.3.8 — FBI Ghost Fix... locked & armed');
+  console.log('👁️ [init] v8.3.9 — FBI Triple Focus... locked & armed');
 
   const IS_APK = location.protocol === 'file:' || navigator.userAgent.includes('wv');
 
@@ -85,7 +86,6 @@
        .then(html=>{
           ph.innerHTML = html;
           ph.dataset.loaded = 'true';
-          // إعادة تفعيل السكربتات مع حجب menu.js
           const scripts = [...ph.querySelectorAll('script')];
           scripts.forEach(old=>{
             if(old.src && old.src.toLowerCase().includes('menu.js')){ old.remove(); return; }
@@ -101,9 +101,9 @@
     });
   }
 
-  /* ============ 5) اكتشاف 404 — FBI Edition محصن ============ */
+  /* ============ 5) اكتشاف 404 — FBI Triple Focus ============ */
   async function fileExists(url){
-    if(IS_APK) return true; // في الـ APK الملفات المحلية تعتبر موجودة
+    if(IS_APK) return true;
     try{
       let r = await fetch(asset(url), {method:'HEAD', cache:'no-store'});
       if(!r.ok && [400, 405, 501].includes(r.status)){
@@ -117,8 +117,19 @@
     const path = location.pathname;
     const pathClean = path.replace(/\/+$/, '') || '/';
 
+    // تجاهل الصفحات الرئيسية
     if(['/','/ar','/en','/index.html','/index','/ar/index','/en/index'].includes(pathClean.toLowerCase())) return;
+
+    // 🛡️ حماية الملفات الثابتة
     if(/\.(js|css|png|jpg|jpeg|gif|svg|webp|avif|ico|woff2?|map|json|txt|xml|pdf|mp3|mp4|webm|php)$/i.test(path)) return;
+
+    // 🆕 رفض المسارات غير المرغوبة (مثل /image/ أو /assets/) فوراً
+    if(/^\/(image|images|assets|css|js|fonts|uploads|media)(\/|$)/i.test(pathClean)) {
+      console.log('🚫 [404] مسار غير مرغوب، توجيه للرئيسية:', pathClean);
+      const lang = path.toLowerCase().startsWith('/en') ? 'en' : 'ar';
+      location.replace(`/${lang}/` + location.search + location.hash);
+      return;
+    }
 
     const key = 'waha_404_' + pathClean;
     try{
@@ -126,9 +137,11 @@
       sessionStorage.setItem(key,'1');
     }catch(e){}
 
+    // تنظيف بسيط (إزالة /ar أو /en)
     const clean = pathClean.replace(/^\/(ar|en)(\/|$)/i, '/') || '/';
     if(clean === '/' || clean === '') return;
 
+    // هل الصفحة فيها محتوى حقيقي؟
     const hasHeader = document.getElementById('header-placeholder')?.dataset?.loaded === 'true';
     const hasFooter = document.getElementById('footer-placeholder')?.dataset?.loaded === 'true';
     const hasMain = document.querySelector('main')?.children.length >= 3;
@@ -149,22 +162,27 @@
       const directHtml = clean + '.html';
       if(await fileExists(directHtml)){
         setSplashMsg('✅ وجدناها! جارٍ الفتح...');
-        console.log('🔄 [404] إضافة.html تلقائياً:', directHtml);
+        console.log('🔄 [404] إضافة .html تلقائياً:', directHtml);
         location.replace(directHtml + location.search + location.hash);
         return;
       }
     }
 
+    // 🆕 البحث فقط في الثلاثي: /, /ar/, /en/
     let candidates;
     if(hasHtml){
-      candidates = ['/ar' + basePath + '.html','/en' + basePath + '.html', basePath + '.html'];
+      candidates = ['/ar' + basePath + '.html', '/en' + basePath + '.html', basePath + '.html'];
     } else {
       candidates = [
-        basePath + '.html','/ar' + basePath + '.html','/en' + basePath + '.html',
-        basePath,'/ar' + basePath,'/en' + basePath,
+        basePath + '.html',
+        '/ar' + basePath + '.html',
+        '/en' + basePath + '.html',
+        basePath,
+        '/ar' + basePath,
+        '/en' + basePath,
       ];
     }
-    candidates = [...new Set(candidates)].filter(c => c.replace(/\/+$/,'')!== pathClean);
+    candidates = [...new Set(candidates)].filter(c => c.replace(/\/+$/,'') !== pathClean);
 
     console.log('%c🔎 [smart404] غير موجودة:', 'color:#f59e0b;font-weight:bold', pathClean, candidates);
 
@@ -179,12 +197,13 @@
     // خريطة الموقع
     setSplashMsg('🗺️ فتح خريطة الموقع...');
     for(const c of ['/all-links.html','/ar/all-links.html','/en/all-links.html']){
-      if(c.replace(/\/+$/,'')!== pathClean && await fileExists(c)){
+      if(c.replace(/\/+$/,'') !== pathClean && await fileExists(c)){
         location.replace(c);
         return;
       }
     }
 
+    // العودة للرئيسية
     setSplashMsg('🏠 العودة للرئيسية...');
     setTimeout(()=>{
       const lang = path.toLowerCase().startsWith('/en')? 'en' : 'ar';
