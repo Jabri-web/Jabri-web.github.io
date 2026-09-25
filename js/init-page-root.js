@@ -1,9 +1,18 @@
-// init-page-root.js — v7.3.4 (Clean URLs + Auto .html)
+// init-page-root.js — v7.3.4 (No White Screen + Safe 404 + Auto .html)
 (function(){
   'use strict';
-  console.log('🛡️ [init] v7.3.4 (المرعبة المبسطة)...');
+  console.log('🛡️ [init] v7.3.4 (المرعبة الكاملة)...');
 
-  // ✅✅✅ هذا هو السطر السحري الذي كنت تطلبه من البداية ✅✅✅
+  const IS_APK = location.protocol === 'file:' || navigator.userAgent.includes('wv');
+
+  // 🛡️ حماية فورية: تنظيف الرابط من أي سلاش مزدوج (//)
+  if (location.pathname.includes('//')) {
+      const cleanUrl = location.pathname.replace(/\/+/g, '/');
+      window.history.replaceState(null, '', cleanUrl + location.search + location.hash);
+      console.log('🧹 [المرعبة] تم تنظيف الرابط المزدوج:', cleanUrl);
+  }
+
+  // ✅✅✅ هذا هو السطر الذي كنت تطلبه من البداية ✅✅✅
   // يضيف .html تلقائياً إذا لم تكن موجودة في الرابط
   (function() {
       const path = location.pathname;
@@ -12,11 +21,9 @@
           const newPath = path + '.html' + location.search + location.hash;
           console.log('🔄 [المرعبة] تحويل الرابط إلى:', newPath);
           window.location.replace(newPath);
-          return; // إيقاف التنفيذ لأننا سننتقل لصفحة جديدة
+          return; 
       }
   })();
-
-  const IS_APK = location.protocol === 'file:' || navigator.userAgent.includes('wv');
 
   function asset(path){
     const clean = path.replace(/^\//,'');
@@ -86,6 +93,64 @@
      .catch(()=>{ onOk?.(); });
   }
 
+  // ✅ دالة 404 الأصلية (المرعبة) - احتفظنا بها كما هي
+  function handle404NonBlocking(){
+    const path = location.pathname;
+    
+    if (path.endsWith('.html') || ['/', '/ar','/ar/','/en','/en/'].includes(path)) {
+      return;
+    }
+
+    let clean = path.replace(/^\/(ar|en)(\/|$)/i,'/');
+    if(clean==='/' || clean==='') return;
+    clean = clean.replace(/\/+/g, '/');
+
+    const key='waha_404_'+path;
+    try{ if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,'1'); }catch(e){}
+
+    let candidates = [];
+    
+    const addCandidate = (c) => {
+        let safe = c.replace(/\/+/g, '/'); 
+        if (!safe.startsWith('/')) safe = '/' + safe;
+        if (safe !== path) candidates.push(safe);
+    };
+
+    addCandidate(clean);
+    addCandidate(clean + '.html');
+    addCandidate(clean + '/index.html');
+
+    if (!path.startsWith('/ar/') && !path.startsWith('/en/')) {
+        addCandidate('/ar' + clean);
+        addCandidate('/ar' + clean + '.html');
+        addCandidate('/en' + clean);
+        addCandidate('/en' + clean + '.html');
+    }
+
+    candidates = [...new Set(candidates)]
+        .filter(c => !c.includes('//'))
+        .slice(0, 8);
+
+    console.log('🔍 [المرعبة] تجرب:', candidates);
+
+    setTimeout(()=>{
+      let i=0;
+      const tryNext=()=>{
+        if(i>=candidates.length) return;
+        fetch(asset(candidates[i]), {method:'HEAD', cache:'no-store'})
+        .then(r=>{
+           if(r.ok){
+             console.log('✅ وجدتها:', candidates[i]);
+             const finalUrl = candidates[i].replace(/\/+/g, '/');
+             location.replace(finalUrl + location.search + location.hash);
+           }else{ i++; tryNext(); }
+         })
+        .catch(()=>{ i++; tryNext(); });
+      };
+      tryNext();
+    }, 700);
+  }
+
   // اللغة - تحافظ على المسار الفرعي
   window.switchLanguage = function(){
     const isEn = location.pathname.toLowerCase().startsWith('/en');
@@ -116,6 +181,8 @@
       });
 
       if(!document.getElementById('header-placeholder')) hideSplash();
+
+      handle404NonBlocking(); 
 
     }catch(e){ console.error(e); hideSplash(); }
   }
