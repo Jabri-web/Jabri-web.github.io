@@ -1,201 +1,219 @@
-// init-page-root.js — v8.3.9 "المرعبة FBI — Triple Focus"
-// Smart 404 + Sequential Boot + Tri-Lang + Network Diagnostics + Splash Recovery
-// + 🆕 Triple Focus: البحث فقط في (/, /ar/, /en/) + رفض /image/ فوراً
+// init-page-root.js — v8.5 "Fixed Regex + Smart Fallback + Polished"
+// Auto-Load FileList + Full Fallback + Triple Focus + Safe Inject
 (function(){
   'use strict';
-  console.log('👁️ [init] v8.3.9 — FBI Triple Focus... locked & armed');
+  console.log('👁️ [init] v8.5 — polished & armed');
 
-  const IS_APK = location.protocol === 'file:' || navigator.userAgent.includes('wv');
+  const IS_APK = location.protocol === 'file:' || location.hostname === '' || !!window.AndroidBridge;
+
+  /* ============ 0) المصفوفة الاحتياطية الكاملة ============ */
+  const FALLBACK_LIST = [
+    // الجذر الرئيسي
+    "index.html", "logo.html", "catalog.html", "all-links.html", "table-all.html", "monitor.html",
+    "Page1.html", "Page2.html", "Page3.html", "Page4.html", "Page5.html", "Page6.html",
+    "Page7.html", "Page8.html", "Page9.html", "Page10.html", "Page11.html", "Page12.html",
+    "about.html", "about-ar.html", "about-en.html", "about-waha.html",
+    "Author-cv.html", "author-history.html", "cv-2026a.html", "cv-2026e.html", "founder.html", "profile.html", "profile-en.html",
+    "theory-ar.html", "theory-en.html", "Sindbad-theory.html", "Sindbad-Brdoni.html",
+    "research.html", "research-deep.html", "Pages-Researches.html",
+    "Sanaa.html", "Shibam.html", "Soqatra.html", "Yemen-library.html", "gallery.html", "yemen-photo.html", "yemen-photo2.html", "yemen-photo-api.html", "yemen-photo-php.html",
+    "journal.html", "journal2.html", "journal3.html", "journal4.html", "History-pdf.html",
+    "calculator.html", "handsa.html", "char-balance.html", "Check.html", "magic-translator.html", "diagnose.html", "link-checker.html",
+    "Dbase.html", "Dbase-deep.html", "microtik.html", "microtik-deep.html",
+    "Office.html", "source.html", "citations.html", "music.html", "taraif.html", "Nezar.html", "wonder.html", "heaven-info.html", "visitor.html", "who-we.html", "project.html", "project-ar.html", "poster.html",
+    "contact.html", "FAQPage.html", "FAQPage-en.html", "privacy-policy.html", "404.html",
+    "file-structure.html", "file-structure2.html", "Router-all.html", "repos-auto.html", "repos-sqr.html", "current-auto.html",
+    "kfupm-msg.html", "explore.html",
+    // مجلد ar
+    "ar/index.html", "ar/about.html", "ar/contact.html", "ar/journal.html", "ar/profile.html", "ar/project.html", "ar/Router-all.html", "ar/Page4.html", "ar/Page10.html", "ar/Page11.html", "ar/Page12.html",
+    // مجلد en
+    "en/index.html", "en/about.html", "en/contact.html", "en/journal.html", "en/profile.html", "en/project.html", "en/Router-all.html", "en/Page4.html", "en/Page10.html", "en/Page11.html", "en/Page12.html",
+    // مجلدات فرعية أخرى
+    "game/game-auto.html", "publish/publish.html",
+    // ملفات محدثة
+    "technical-guide.html", "all-link-doc.html", "update-tracker.html"
+  ];
+
+  let FILE_LIST = [];
+  let fileListReady = false;
 
   /* ============ 1) أدوات المسار ============ */
   function asset(path){
     const clean = String(path||'').replace(/^\//,'');
-    return IS_APK? clean : '/' + clean;
+    return IS_APK ? clean : '/' + clean;
   }
 
-  /* ============ 2) وضع الصفحة ============ */
+  /* ============ 2) تحميل قائمة الملفات آلياً ============ */
+  async function loadFileList(){
+    if(IS_APK){
+      FILE_LIST = FALLBACK_LIST;
+      fileListReady = true;
+      console.log('📁 [APK] المصفوفة الاحتياطية:', FILE_LIST.length, 'ملف');
+      return;
+    }
+    try{
+      const res = await fetch(asset('file-all3.txt') + '?_t=' + Date.now(), {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const set = new Set();
+
+      // ✅ إصلاح: إضافة g لمنع الحلقة اللانهائية
+      const regex = /^\s*\d{1,4}[\.\)\-]\s*([a-z0-9\/\-_]+\.(?:html|txt|json|xml|js|css))\b/gim;
+      let m;
+      while((m = regex.exec(text)) !== null){
+        const f = m[1].trim();
+        if(!f.includes('dashboard.html')) set.add(f);
+      }
+
+      // طريقة احتياطية ثانية لو التنسيق مختلف
+      if(set.size < 10){
+        text.split('\n').forEach(line => {
+          const t = line.trim();
+          if(!t || t.startsWith('#')) return;
+          const clean = t.split(/\s+/).pop();
+          if(/\.html$/i.test(clean) && !clean.includes('dashboard.html')) set.add(clean);
+        });
+      }
+
+      FILE_LIST = set.size > 10 ? [...set] : FALLBACK_LIST;
+      console.log(`✅ [FileList] ${FILE_LIST.length} ملف من file-all3.txt`);
+    }catch(e){
+      console.warn('⚠️ [FileList] فشل، استخدام المصفوفة الكاملة:', e.message);
+      FILE_LIST = FALLBACK_LIST;
+    }
+    fileListReady = true;
+  }
+
+  /* ============ 3) وضع الصفحة ============ */
   function detectPageMode(){
     const s = document.currentScript;
-    const m = [document.body?.dataset?.pageMode,
-               document.documentElement?.dataset?.pageMode,
-               s?.dataset?.pageMode]
-     .map(v=>String(v||'').toLowerCase())
-     .find(v=>['safe','full','minimal'].includes(v));
+    const m = [document.body?.dataset?.pageMode, document.documentElement?.dataset?.pageMode, s?.dataset?.pageMode]
+     .map(v => String(v||'').toLowerCase()).find(v => ['safe','full','minimal'].includes(v));
     if(m) return m;
     if(s?.hasAttribute('data-no-splash')) return 'safe';
     if(location.pathname.toLowerCase().startsWith('/app/catalog')) return 'safe';
     return 'full';
   }
   const PAGE_MODE = detectPageMode();
-  window.__WAHA_PAGE_MODE = PAGE_MODE;
 
-  /* ============ 3) شاشة الانتظار - محصنة ============ */
+  /* ============ 4) شاشة الانتظار ============ */
   let splashEl = null;
   function createSplash(msg){
-    if(PAGE_MODE!== 'full' || document.getElementById('splashScreen')) return;
-    const st = document.createElement('style');
-    st.id = 'splash-style';
-    st.textContent = `
-      #splashScreen{position:fixed;inset:0;background:#0a0a0f;display:flex;flex-direction:column;
-        align-items:center;justify-content:center;z-index:999999;transition:opacity.5s ease}
-      #splashScreen.hidden{opacity:0;pointer-events:none}
-      #splashScreen.msg{color:#6ae3ff;font-weight:900;margin-top:15px;font-size:15px;min-height:22px;text-align:center;padding:0 20px}
-      #splashScreen.bar{width:180px;height:3px;background:#1a1a25;border-radius:3px;margin-top:14px;overflow:hidden}
-      #splashScreen.bar::after{content:'';display:block;height:100%;width:40%;background:#c9a84c;
-        animation:sp 1.2s infinite ease-in-out}
-      @keyframes sp{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-    `;
-    document.head.appendChild(st);
-    const d = document.createElement('div');
-    d.id = 'splashScreen';
-    d.innerHTML = `
-      <img src="${asset('icon-192.png')}" style="width:90px;height:90px;border-radius:50%;border:3px solid #c9a84c" onerror="this.style.display='none'">
-      <div class="msg" id="splashMsg">${msg || 'جارٍ التحميل...'}</div>
-      <div class="bar"></div>
-    `;
-    document.body.prepend(d);
-    splashEl = d;
+    if(PAGE_MODE !== 'full' || document.getElementById('splashScreen')) return;
+    const style = document.createElement('style');
+    style.textContent = `#splashScreen{position:fixed;inset:0;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;transition:opacity .5s}#splashScreen.hidden{opacity:0;pointer-events:none}#splashScreen .msg{color:#6ae3ff;font-weight:900;margin-top:15px;font-size:15px;text-align:center;padding:0 20px}#splashScreen .bar{width:180px;height:3px;background:#1a1a25;border-radius:3px;margin-top:14px;overflow:hidden}#splashScreen .bar::after{content:'';display:block;height:100%;width:40%;background:#c9a84c;animation:sp 1.2s infinite ease-in-out}@keyframes sp{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}`;
+    document.head.appendChild(style);
+    const d = document.createElement('div'); d.id='splashScreen';
+    d.innerHTML = `<img src="${asset('icon-192.png')}" style="width:90px;height:90px;border-radius:50%;border:3px solid #c9a84c" onerror="this.remove()"><div class="msg" id="splashMsg">${msg||'جارٍ التحميل...'}</div><div class="bar"></div>`;
+    document.body.prepend(d); splashEl = d;
   }
-  function setSplashMsg(msg){
-    const el = document.getElementById('splashMsg');
-    if(el) el.textContent = msg;
-  }
-  function hideSplash(){
-    if(!splashEl) return;
-    const el = splashEl;
-    splashEl = null;
-    el.classList.add('hidden');
-    setTimeout(()=>{
-      el.remove();
-      document.getElementById('splash-style')?.remove();
-    }, 700);
-  }
-  window.addEventListener('load', ()=> setTimeout(hideSplash, 1000));
-  setTimeout(hideSplash, 6000);
+  const setSplashMsg = (m) => { const e = document.getElementById('splashMsg'); if(e) e.textContent = m; };
+  const hideSplash = () => { if(!splashEl) return; const el = splashEl; splashEl = null; el.classList.add('hidden'); setTimeout(()=>el.remove(), 700); };
+  window.addEventListener('load', () => setTimeout(hideSplash, 800));
+  setTimeout(hideSplash, 5000);
 
-  /* ============ 4) تحميل HTML مع فلترة menu.js ============ */
-  function loadHTMLFile(id, file){
-    return new Promise(resolve=>{
-      const ph = document.getElementById(id);
-      if(!ph){ resolve(false); return; }
-      const url = asset(file) + (IS_APK? '' : '?_t=' + Date.now());
-      if(!ph.innerHTML.trim()) ph.innerHTML = '<div style="height:60px"></div>';
-
-      fetch(url, {cache:'no-store'})
-       .then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); })
-       .then(html=>{
-          ph.innerHTML = html;
-          ph.dataset.loaded = 'true';
-          const scripts = [...ph.querySelectorAll('script')];
-          scripts.forEach(old=>{
-            if(old.src && old.src.toLowerCase().includes('menu.js')){ old.remove(); return; }
-            const s = document.createElement('script');
-            [...old.attributes].forEach(a=>s.setAttribute(a.name, a.value));
-            s.textContent = old.textContent;
-            if(old.src) s.src = old.src;
-            old.replaceWith(s);
-          });
-          resolve(true);
-        })
-       .catch(()=> resolve(false));
-    });
-  }
-
-  /* ============ 5) اكتشاف 404 — FBI Triple Focus ============ */
-  async function fileExists(url){
-    if(IS_APK) return true;
+  /* ============ 5) تحميل HTML (مبسط) ============ */
+  async function loadHTMLFile(id, file){
+    const ph = document.getElementById(id);
+    if(!ph) return false;
     try{
-      let r = await fetch(asset(url), {method:'HEAD', cache:'no-store'});
-      if(!r.ok && [400, 405, 501].includes(r.status)){
-        r = await fetch(asset(url), {method:'GET', cache:'no-store'});
-      }
-      return r.ok;
-    }catch(e){ return false; }
+      const res = await fetch(asset(file) + '?_t=' + Date.now(), {cache:'no-store'});
+      if(!res.ok) throw new Error(res.status);
+      const html = await res.text();
+      ph.innerHTML = html;
+      ph.dataset.loaded = 'true';
+      ph.querySelectorAll('script').forEach(old => {
+        if(old.src && old.src.toLowerCase().includes('menu.js')) return;
+        const s = document.createElement('script');
+        [...old.attributes].forEach(a => s.setAttribute(a.name, a.value));
+        s.textContent = old.textContent;
+        if(old.src) s.src = old.src;
+        old.replaceWith(s);
+      });
+      return true;
+    }catch{ return false; }
   }
 
+  /* ============ 6) fileExists مع Cache ============ */
+  const existsCache = new Map();
+  async function fileExists(url){
+    if(IS_APK) return false;
+    const key = url.toLowerCase();
+    if(existsCache.has(key)) return existsCache.get(key);
+    try{
+      const r = await fetch(asset(url), {method:'GET', cache:'no-store'});
+      const ok = r.ok;
+      existsCache.set(key, ok);
+      return ok;
+    }catch{ existsCache.set(key, false); return false; }
+  }
+
+  /* ============ 7) المطابقة الذكية v3 ============ */
+  function findInArray(requestPath){
+    if(!fileListReady || !FILE_LIST.length) return null;
+    let clean = requestPath.replace(/^\/+/, '').replace(/\.html$/i, '').toLowerCase().trim();
+    if(clean.length < 2) return null;
+    const lower = FILE_LIST.map(f => f.toLowerCase());
+
+    // 1. مطابقة مباشرة 100%
+    let idx = lower.indexOf(clean + '.html');
+    if(idx !== -1) return FILE_LIST[idx];
+    idx = lower.indexOf(clean);
+    if(idx !== -1) return FILE_LIST[idx];
+
+    // 2. مطابقة بعد إزالة ar/en/ (يحافظ على اللغة)
+    let withoutLang = clean.replace(/^(ar|en)\//, '');
+    if(withoutLang !== clean){
+      idx = lower.indexOf(withoutLang + '.html');
+      if(idx !== -1) return FILE_LIST[idx];
+    }
+
+    // 3. مطابقة اسم الملف الأساسي
+    let base = withoutLang.split('/').pop();
+    idx = lower.findIndex(f => f.toLowerCase().split('/').pop().replace('.html', '') === base);
+    return idx !== -1 ? FILE_LIST[idx] : null;
+  }
+
+  /* ============ 8) Smart 404 ============ */
   async function smart404(){
+    if(IS_APK) return;
     const path = location.pathname;
     const pathClean = path.replace(/\/+$/, '') || '/';
 
-    // تجاهل الصفحات الرئيسية
     if(['/','/ar','/en','/index.html','/index','/ar/index','/en/index'].includes(pathClean.toLowerCase())) return;
-
-    // 🛡️ حماية الملفات الثابتة
     if(/\.(js|css|png|jpg|jpeg|gif|svg|webp|avif|ico|woff2?|map|json|txt|xml|pdf|mp3|mp4|webm|php)$/i.test(path)) return;
+    if(/^\/(image|images|assets|css|js|fonts|uploads|media)\//i.test(pathClean) && !pathClean.includes('.')) return;
 
-    // 🆕 رفض المسارات غير المرغوبة (مثل /image/ أو /assets/) فوراً
-    if(/^\/(image|images|assets|css|js|fonts|uploads|media)(\/|$)/i.test(pathClean)) {
-      console.log('🚫 [404] مسار غير مرغوب، توجيه للرئيسية:', pathClean);
-      const lang = path.toLowerCase().startsWith('/en') ? 'en' : 'ar';
-      location.replace(`/${lang}/` + location.search + location.hash);
+    if(document.getElementById('header-placeholder')?.dataset?.loaded === 'true') return;
+    if(document.getElementById('footer-placeholder')?.dataset?.loaded === 'true') return;
+    if(document.querySelector('main')?.children.length >= 3) return;
+
+    const key = 'waha_404_' + pathClean;
+    try{ if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key, '1'); }catch(e){}
+
+    if(!splashEl) createSplash('🔍 جارٍ البحث...');
+    else document.getElementById('splashScreen')?.classList.remove('hidden');
+    setSplashMsg('🔍 جارٍ البحث عن الصفحة...');
+
+    // 1. البحث في المصفوفة
+    const found = findInArray(pathClean);
+    if(found && await fileExists('/' + found)){
+      setSplashMsg('✅ وجدناها!');
+      console.log('🎯 [404] مصفوفة:', found);
+      location.replace('/' + found + location.search + location.hash);
       return;
     }
 
-    const key = 'waha_404_' + pathClean;
-    try{
-      if(sessionStorage.getItem(key)) return;
-      sessionStorage.setItem(key,'1');
-    }catch(e){}
-
-    // تنظيف بسيط (إزالة /ar أو /en)
-    const clean = pathClean.replace(/^\/(ar|en)(\/|$)/i, '/') || '/';
-    if(clean === '/' || clean === '') return;
-
-    // هل الصفحة فيها محتوى حقيقي؟
-    const hasHeader = document.getElementById('header-placeholder')?.dataset?.loaded === 'true';
-    const hasFooter = document.getElementById('footer-placeholder')?.dataset?.loaded === 'true';
-    const hasMain = document.querySelector('main')?.children.length >= 3;
-    if(hasHeader || hasFooter || hasMain) return;
-
-    if(!splashEl){
-      createSplash('🔍 جارٍ البحث عن الصفحة...');
-    } else {
-      document.getElementById('splashScreen')?.classList.remove('hidden');
-    }
-    setSplashMsg('🔍 جارٍ البحث عن الصفحة...');
-
-    const hasHtml = clean.toLowerCase().endsWith('.html');
-    const basePath = hasHtml? clean.slice(0, -5) : clean;
-
-    // 🆕 الحل السحري: ar-page → ar-page.html
-    if(!hasHtml){
-      const directHtml = clean + '.html';
-      if(await fileExists(directHtml)){
-        setSplashMsg('✅ وجدناها! جارٍ الفتح...');
-        console.log('🔄 [404] إضافة .html تلقائياً:', directHtml);
-        location.replace(directHtml + location.search + location.hash);
-        return;
-      }
+    // 2. إضافة .html تلقائياً
+    if(!path.toLowerCase().endsWith('.html') && await fileExists(pathClean + '.html')){
+      setSplashMsg('✅ وجدناها!');
+      console.log('🔄 [404] .html:', pathClean + '.html');
+      location.replace(pathClean + '.html' + location.search + location.hash);
+      return;
     }
 
-    // 🆕 البحث فقط في الثلاثي: /, /ar/, /en/
-    let candidates;
-    if(hasHtml){
-      candidates = ['/ar' + basePath + '.html', '/en' + basePath + '.html', basePath + '.html'];
-    } else {
-      candidates = [
-        basePath + '.html',
-        '/ar' + basePath + '.html',
-        '/en' + basePath + '.html',
-        basePath,
-        '/ar' + basePath,
-        '/en' + basePath,
-      ];
-    }
-    candidates = [...new Set(candidates)].filter(c => c.replace(/\/+$/,'') !== pathClean);
-
-    console.log('%c🔎 [smart404] غير موجودة:', 'color:#f59e0b;font-weight:bold', pathClean, candidates);
-
-    for(const c of candidates){
-      if(await fileExists(c)){
-        setSplashMsg('✅ وجدناها! جارٍ الفتح...');
-        location.replace(c + location.search + location.hash);
-        return;
-      }
-    }
-
-    // خريطة الموقع
-    setSplashMsg('🗺️ فتح خريطة الموقع...');
+    // 3. خريطة الموقع
+    setSplashMsg('🗺️ خريطة الموقع...');
     for(const c of ['/all-links.html','/ar/all-links.html','/en/all-links.html']){
       if(c.replace(/\/+$/,'') !== pathClean && await fileExists(c)){
         location.replace(c);
@@ -203,91 +221,42 @@
       }
     }
 
-    // العودة للرئيسية
+    // 4. الرئيسية
     setSplashMsg('🏠 العودة للرئيسية...');
-    setTimeout(()=>{
-      const lang = path.toLowerCase().startsWith('/en')? 'en' : 'ar';
+    setTimeout(() => {
+      const lang = path.toLowerCase().startsWith('/en') ? 'en' : 'ar';
       location.replace(`/${lang}/` + location.search + location.hash);
     }, 600);
   }
 
-  /* ============ 6) toggleLanguage ============ */
-  window.switchLanguage = window.toggleLang = window.toggleLanguage = function(){
+  /* ============ 9) تبديل اللغة ============ */
+  window.switchLanguage = window.toggleLanguage = function(){
     const path = location.pathname;
     const clean = path.replace(/^\/(ar|en)(\/|$)/i, '/') || '/';
     const isAr = /^\/ar(\/|$)/i.test(path);
-    const newPath = (isAr? '/en' : '/ar') + (clean === '/'? '/' : clean);
-    location.href = newPath + location.search + location.hash;
+    location.href = (isAr ? '/en' : '/ar') + (clean === '/' ? '/' : clean) + location.search + location.hash;
   };
 
-  /* ============ 7) تشخيص الشبكة — IT Analyst ============ */
-  (function networkNotifier(){
-    if(!('onLine' in navigator) || document.getElementById('netBar')) return;
-    const st = document.createElement('style');
-    st.id = 'netBar-style';
-    st.textContent = `#netBar{position:fixed;top:0;left:0;right:0;z-index:999998;padding:9px 14px;text-align:center;font-weight:900;font-size:13px;color:#fff;font-family:system-ui;transform:translateY(-100%);transition:transform.35s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 12px rgba(0,0,0,.35);pointer-events:none}#netBar.show{transform:translateY(0)}`;
-    document.head.appendChild(st);
-    const bar = document.createElement('div'); bar.id='netBar'; document.body.appendChild(bar);
-    let hideTimer=null;
-    const LOG_KEY='waha_net_log'; const MAX_LOG=100;
-    function logEvent(m){ try{ const l=JSON.parse(sessionStorage.getItem(LOG_KEY)||'[]'); l.push({t:new Date().toISOString(),m}); if(l.length>MAX_LOG) l.shift(); sessionStorage.setItem(LOG_KEY,JSON.stringify(l)); }catch(e){} }
-    function getLog(){ try{ return JSON.parse(sessionStorage.getItem(LOG_KEY)||'[]'); }catch(e){ return []; } }
-    function show(msg,bg,autoHide){ bar.textContent=msg; bar.style.background=bg; bar.classList.add('show'); clearTimeout(hideTimer); if(autoHide) hideTimer=setTimeout(()=>bar.classList.remove('show'),autoHide); logEvent(msg); }
-    async function checkRealInternet(){
-      if(IS_APK) return navigator.onLine;
-      try{ const ctrl=new AbortController(); const timer=setTimeout(()=>ctrl.abort(),3000); await fetch(asset('favicon.ico')+'?_='+Date.now(),{method:'HEAD',cache:'no-store',signal:ctrl.signal}); clearTimeout(timer); return true; }catch(e){ return false; }
-    }
-    async function measureSpeed(){
-      try{ const ctrl=new AbortController(); const timer=setTimeout(()=>ctrl.abort(),5000); const t0=performance.now(); await fetch(asset('favicon.ico')+'?_='+Date.now(),{cache:'no-store',signal:ctrl.signal}); clearTimeout(timer); return Math.round(performance.now()-t0); }catch(e){ return -1; }
-    }
-    let lastState=null, checking=false;
-    async function updateStatus(){
-      if(checking) return; checking=true;
-      const online=await checkRealInternet(); checking=false;
-      if(lastState===null){ lastState=online; if(!online) show('⚠️ لا يوجد اتصال بالإنترنت','linear-gradient(90deg,#b91c1c,#dc2626)',0); return; }
-      if(online===lastState) return; lastState=online;
-      if(online) show('✅ عاد الاتصال بالإنترنت','linear-gradient(90deg,#059669,#10b981)',2500);
-      else show('⚠️ لا يوجد اتصال بالإنترنت','linear-gradient(90deg,#b91c1c,#dc2626)',0);
-    }
-    window.addEventListener('online', ()=>setTimeout(updateStatus,300));
-    window.addEventListener('offline', ()=>setTimeout(updateStatus,300));
-    setInterval(updateStatus,20000); setTimeout(updateStatus,2000);
-
-    window.__testNetBar={
-      offline:()=>show('⚠️ لا يوجد اتصال بالإنترنت','linear-gradient(90deg,#b91c1c,#dc2626)',0),
-      online:()=>show('✅ عاد الاتصال بالإنترنت','linear-gradient(90deg,#059669,#10b981)',2500),
-      slow:()=>show('🐌 الاتصال بطيء — قد يتأخر التحميل','linear-gradient(90deg,#b45309,#f59e0b)',3500),
-      hide:()=>bar.classList.remove('show'),
-      check:()=>updateStatus(),
-      speed: async()=>{ const ms=await measureSpeed(); if(ms<0){ show('❌ فشل قياس السرعة','linear-gradient(90deg,#b91c1c,#dc2626)',2500); return -1; } const label=ms<200?'⚡ سريع':ms<800?'👍 جيد':'🐌 بطيء'; show(`${label} — ${ms}ms`,'linear-gradient(90deg,#0369a1,#0ea5e9)',3000); return ms; },
-      log:()=>{ const log=getLog(); if(!log.length){ console.log('📋 السجل فارغ'); return []; } console.table(log); return log; },
-      clear:()=>{ try{sessionStorage.removeItem(LOG_KEY);}catch(e){} console.log('🗑️ تم مسح السجل'); },
-      status: async()=>{ const online=await checkRealInternet(); const ms=online?await measureSpeed():-1; const info={online,latency_ms:ms,effectiveType:navigator.connection?.effectiveType||'unknown',downlink:navigator.connection?.downlink||'unknown',log_count:getLog().length,protocol:location.protocol}; console.table(info); return info; }
-    };
-  })();
-
-  /* ============ 8) التهيئة ============ */
+  /* ============ 10) التهيئة ============ */
   async function init(){
     try{
-      const lang = location.pathname.toLowerCase().startsWith('/en')? 'en' : 'ar';
+      const lang = location.pathname.toLowerCase().startsWith('/en') ? 'en' : 'ar';
       document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar'? 'rtl' : 'ltr';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       if(PAGE_MODE === 'full') createSplash('جارٍ التحميل...');
 
-      setSplashMsg('📥 تحميل الهيدر...');
-      const headerOK = await loadHTMLFile('header-placeholder', 'header.html');
-      document.dispatchEvent(new CustomEvent('headerLoaded', {detail:{ok:headerOK}}));
+      setSplashMsg('📋 تحميل قائمة الملفات...');
+      await loadFileList();
 
-      setSplashMsg('📥 تحميل الفوتر...');
+      setSplashMsg('📥 تحميل الهيدر...');
+      await loadHTMLFile('header-placeholder', 'header.html');
       await loadHTMLFile('footer-placeholder', 'footer.html');
 
-      if(!document.getElementById('header-placeholder') &&!document.getElementById('footer-placeholder')){
-        hideSplash();
-      } else {
-        setSplashMsg('✨ جاهز');
-        setTimeout(hideSplash, 250);
-      }
+      // ✅ تشغيل smart404 قبل إخفاء الـ splash
       await smart404();
+
+      setSplashMsg('✨ جاهز');
+      setTimeout(hideSplash, 200);
     }catch(e){
       console.error('❌ init error:', e);
       hideSplash();
