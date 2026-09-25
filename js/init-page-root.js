@@ -1,9 +1,16 @@
-// init-page-root.js — v7.3.2 (No White Screen + Safe 404)
+// init-page-root.js — v7.3.2 (No White Screen + Safe 404 + Clean URLs)
 (function(){
   'use strict';
-  console.log('🛡️ [init] v7.3.2...');
+  console.log('🛡️ [init] v7.3.2 (المرعبة المصححة)...');
 
   const IS_APK = location.protocol === 'file:' || navigator.userAgent.includes('wv');
+
+  // 🛡️ حماية فورية: تنظيف الرابط من أي سلاش مزدوج (//) قبل أي عملية
+  if (location.pathname.includes('//')) {
+      const cleanUrl = location.pathname.replace(/\/+/g, '/');
+      window.history.replaceState(null, '', cleanUrl + location.search + location.hash);
+      console.log('🧹 [المرعبة] تم تنظيف الرابط المزدوج:', cleanUrl);
+  }
 
   // حل مشكلة المسارات
   function asset(path){
@@ -18,7 +25,7 @@
     if(m) return m;
     if(s?.hasAttribute('data-no-splash')) return 'safe';
     if(location.pathname.toLowerCase().startsWith('/app/catalog')) return 'safe';
-    return 'full'; // ✅ full افتراضياً
+    return 'full'; 
   }
 
   let PAGE_MODE = detectPageMode();
@@ -31,7 +38,7 @@
     const el = document.getElementById('splashScreen');
     if(el){ el.classList.add('hidden'); setTimeout(()=>{ el.remove(); document.getElementById('splash-style')?.remove(); },700); }
   }
-  // fail-safe لا يترك شاشة بيضاء أبداً
+  
   window.addEventListener('load', ()=> setTimeout(hideSplash, 800));
   setTimeout(hideSplash, 3500);
 
@@ -48,13 +55,11 @@
     document.body.prepend(d);
   }
 
-  // تحميل لا يخرب التصميم
   function loadHTMLFile(id, file, onOk){
     const ph=document.getElementById(id);
     if(!ph){ onOk?.(); return; }
     const url = asset(file);
 
-    // هيكل مؤقت يمنع التخربش
     if(!ph.innerHTML.trim()) ph.innerHTML = '<div style="height:60px"></div>';
 
     fetch(url + (IS_APK?'':'?_t='+Date.now()), {cache:'no-store'})
@@ -62,7 +67,6 @@
      .then(html=>{
         ph.innerHTML = html;
         ph.dataset.loaded='true';
-        // تنفيذ السكربتات بالترتيب
         const scripts=[...ph.querySelectorAll('script')];
         scripts.forEach(old=>{
           if(old.src && old.src.includes('menu.js')) return;
@@ -77,39 +81,53 @@
      .catch(()=>{ onOk?.(); });
   }
 
-  // ✅ v7.3.2: لا يتدخل إذا المسار .html
+  // ✅ دالة 404 المصححة (تمنع السلاش المزدوج نهائياً)
   function handle404NonBlocking(){
     const path = location.pathname;
-
-    // ✅ ① إذا المسار ينتهي بـ .html → تخطي (الصفحة موجودة)
-    if (path.endsWith('.html')) {
-      console.log('ℹ️ [404] مسار .html — تخطي');
+    
+    // 1. إذا كان الرابط ينتهي بـ .html أو صفحة رئيسية، لا تتدخل
+    if (path.endsWith('.html') || ['/', '/ar','/ar/','/en','/en/'].includes(path)) {
       return;
     }
 
-    // ✅ ② روابط خاصة
-    if(['/','/ar','/ar/','/en','/en/'].includes(path)) return;
-
-    // ✅ ③ استخرج المسار النظيف
-    const clean = path.replace(/^\/(ar|en)(\/|$)/i,'/');
+    // 2. استخرج المسار النظيف (بدون /ar أو /en)
+    let clean = path.replace(/^\/(ar|en)(\/|$)/i,'/');
     if(clean==='/' || clean==='') return;
 
-    // ✅ ④ حماية ضد loop
+    // 3. تنظيف المسار من أي سلاش مزدوج
+    clean = clean.replace(/\/+/g, '/');
+
     const key='waha_404_'+path;
     try{ if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,'1'); }catch(e){}
 
-    // ✅ ⑤ المرشحات في الثلاثي (مع + بدون .html)
-    const bases = [`/ar${clean}`, `/en${clean}`, clean];
+    // 4. بناء المرشحات بشكل ذكي
     let candidates = [];
-    bases.forEach(b=>{
-      if(b===path) return;
-      candidates.push(b);                    // /about-waha
-      candidates.push(b + '.html');          // /about-waha.html
-      candidates.push(b + '/index.html');    // /about-waha/index.html
-    });
-    candidates = [...new Set(candidates)].slice(0,8);
+    
+    const addCandidate = (c) => {
+        let safe = c.replace(/\/+/g, '/'); // إزالة أي سلاش مزدوج
+        if (!safe.startsWith('/')) safe = '/' + safe;
+        if (safe !== path) candidates.push(safe);
+    };
 
-    console.log('🔍 [404] تجرب:', candidates);
+    // إضافة المرشحات: كما هو، مع .html، مع index.html
+    addCandidate(clean);
+    addCandidate(clean + '.html');
+    addCandidate(clean + '/index.html');
+
+    // إضافة مرشحات اللغات فقط إذا لم تكن موجودة في الرابط الأصلي
+    if (!path.startsWith('/ar/') && !path.startsWith('/en/')) {
+        addCandidate('/ar' + clean);
+        addCandidate('/ar' + clean + '.html');
+        addCandidate('/en' + clean);
+        addCandidate('/en' + clean + '.html');
+    }
+
+    // إزالة التكرارات وأي رابط يحتوي على //
+    candidates = [...new Set(candidates)]
+        .filter(c => !c.includes('//'))
+        .slice(0, 8);
+
+    console.log('🔍 [المرعبة] تجرب:', candidates);
 
     setTimeout(()=>{
       let i=0;
@@ -119,7 +137,9 @@
         .then(r=>{
            if(r.ok){
              console.log('✅ وجدتها:', candidates[i]);
-             location.replace(candidates[i]+location.search+location.hash);
+             // تأكد من نظافة الرابط النهائي قبل الانتقال
+             const finalUrl = candidates[i].replace(/\/+/g, '/');
+             location.replace(finalUrl + location.search + location.hash);
            }else{ i++; tryNext(); }
          })
         .catch(()=>{ i++; tryNext(); });
@@ -159,7 +179,7 @@
 
       if(!document.getElementById('header-placeholder')) hideSplash();
 
-      handle404NonBlocking(); // ✅ غير معطل للصفحة
+      handle404NonBlocking(); 
 
     }catch(e){ console.error(e); hideSplash(); }
   }
