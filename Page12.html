@@ -94,179 +94,49 @@
 </script>
 
 <style>
-/* ===== المتغيرات ===== */
-:root{
-  --bg:#0a0a0f; --bg-alt:#0f0f1a;
-  --card:#1a1a2e; --card2:#22223e;
-  --bd:#2a2a3e; --bd2:#2a2a4e;
-  --txt:#e8e8f0; --txt-dim:#8a8a9e; --txt-soft:#b8e8ff;
-  --acc:#6ae3ff; --acc2:#4dd4ff;
-  --danger:#ff3333;
-  --radius:15px;
-}
-
-/* ===== إعادة الضبط ===== */
+:root{--bg:#0a0a0f;--bg-alt:#0f0f1a;--card:#1a1a2e;--card2:#22223e;--bd:#2a2a3e;--bd2:#2a2a4e;--txt:#e8e8f0;--txt-dim:#8a8a9e;--txt-soft:#b8e8ff;--acc:#6ae3ff;--acc2:#4dd4ff;--danger:#ff3333;--radius:15px;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  background:var(--bg);color:var(--txt);
-  font-family:"Cairo","Tajawal",system-ui,-apple-system,"Segoe UI",sans-serif;
-  margin:0;min-height:100vh;line-height:1.8;
-  display:flex;flex-direction:column;
-  text-align:center;transition:background .3s ease;
-}
+body{background:var(--bg);color:var(--txt);font-family:"Cairo","Tajawal",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;min-height:100vh;line-height:1.8;display:flex;flex-direction:column;text-align:center;transition:background .3s ease;}
 body.en{direction:ltr;font-family:"Segoe UI",system-ui,sans-serif}
 img{max-width:100%;height:auto;display:block}
-
-/* ===== الوصولية ===== */
-.skip-link{
-  position:absolute;top:-100px;right:12px;z-index:9999;
-  background:var(--acc);color:#000;padding:10px 18px;
-  border-radius:8px;font-weight:700;text-decoration:none;
-  transition:top .2s ease;
-}
+.skip-link{position:absolute;top:-100px;right:12px;z-index:9999;background:var(--acc);color:#000;padding:10px 18px;border-radius:8px;font-weight:700;text-decoration:none;transition:top .2s ease;}
 .skip-link:focus{top:12px}
-a:focus-visible,button:focus-visible,.card:focus-visible,.project-link:focus-visible{
-  outline:2px solid var(--acc);outline-offset:3px;border-radius:8px;
-}
-
-/* ===== زر تبديل اللغة ===== */
-.lang-switch{
-  position:fixed;top:20px;z-index:999;
-  display:flex;gap:4px;background:var(--card);
-  padding:6px 12px;border-radius:30px;
-  border:1px solid var(--bd2);
-  box-shadow:0 4px 20px rgba(0,0,0,.5);
-}
+a:focus-visible,button:focus-visible,.card:focus-visible,.project-link:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:8px;}
+.lang-switch{position:fixed;top:20px;z-index:999;display:flex;gap:4px;background:var(--card);padding:6px 12px;border-radius:30px;border:1px solid var(--bd2);box-shadow:0 4px 20px rgba(0,0,0,.5);}
 body.ar .lang-switch{left:20px}
 body.en .lang-switch{right:20px}
-.lang-switch button{
-  background:none;border:none;color:#8888bb;
-  padding:6px 14px;border-radius:25px;cursor:pointer;
-  font-size:.85rem;font-weight:600;font-family:inherit;
-  transition:color .25s ease,background .25s ease;
-}
+.lang-switch button{background:none;border:none;color:#8888bb;padding:6px 14px;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:600;font-family:inherit;transition:color .25s ease,background .25s ease;}
 .lang-switch button:hover{color:#d0d0ea;background:var(--bd2)}
 .lang-switch button.active{background:var(--acc);color:#0b0b16}
-
-/* ===== عدّاد الزوار ===== */
-#visitorCounter{
-  position:fixed;top:75px;left:20px;
-  background:linear-gradient(135deg,var(--card),var(--card2));
-  color:var(--acc);padding:6px 18px;border-radius:50px;
-  font-size:14px;font-weight:700;z-index:999;
-  border:1px solid var(--acc);
-  display:flex;align-items:center;gap:8px;
-  box-shadow:0 4px 15px rgba(106,227,255,.15);
-}
+#visitorCounter{position:fixed;top:75px;left:20px;background:linear-gradient(135deg,var(--card),var(--card2));color:var(--acc);padding:6px 18px;border-radius:50px;font-size:14px;font-weight:700;z-index:999;border:1px solid var(--acc);display:flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(106,227,255,.15);}
 body.en #visitorCounter{left:auto;right:20px}
-
-/* ===== الهيدر الرئيسي ===== */
-.header{
-  background:linear-gradient(135deg,#0a3d62 0%,#1e6f9f 100%);
-  padding:60px 20px;border-bottom:3px solid var(--acc);
-  position:relative;overflow:hidden;text-align:center;
-}
-.header::before{
-  content:'';position:absolute;inset:0;
-  background:url('/image/Jabri-photo.webp') center/cover;
-  opacity:.1;z-index:0;
-}
+.header{background:linear-gradient(135deg,#0a3d62 0%,#1e6f9f 100%);padding:60px 20px;border-bottom:3px solid var(--acc);position:relative;overflow:hidden;text-align:center;}
+.header::before{content:'';position:absolute;inset:0;background:url('/image/Jabri-photo.webp') center/cover;opacity:.1;z-index:0;}
 .header-content{position:relative;z-index:1}
-.header img{
-  width:120px;height:120px;border-radius:50%;
-  border:4px solid var(--acc);
-  box-shadow:0 0 20px rgba(106,227,255,.5);
-  margin:0 auto 20px;background:var(--bg);
-}
-.header h1{
-  font-family:"Cairo";font-weight:900;
-  font-size:2.4rem;color:#fff;margin:0 0 10px;
-  line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.5);
-}
+.header img{width:120px;height:120px;border-radius:50%;border:4px solid var(--acc);box-shadow:0 0 20px rgba(106,227,255,.5);margin:0 auto 20px;background:var(--bg);}
+.header h1{font-family:"Cairo";font-weight:900;font-size:2.4rem;color:#fff;margin:0 0 10px;line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.5);}
 .header .subtitle{font-size:1.15rem;color:var(--txt-soft);margin:5px 0}
-.header .equation{
-  font-size:1.5rem;font-weight:700;color:var(--acc);
-  margin-top:15px;font-family:"Cairo";
-}
-
-/* ===== الحاوية ===== */
-.container{
-  flex:1;max-width:1200px;margin:40px auto 0;
-  padding:0 20px 40px;width:100%;
-}
-
-/* ===== عناوين الأقسام ===== */
-.section-title{
-  font-family:"Cairo";font-size:1.9rem;font-weight:800;
-  color:var(--acc);margin:44px 0 20px;text-align:center;
-}
-
-/* ===== شبكة الكروت ===== */
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;margin:30px 0;
-}
-.card{
-  background:var(--card);border:2px solid var(--bd);
-  border-radius:var(--radius);padding:25px;
-  text-decoration:none;color:var(--txt);
-  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
-  display:block;text-align:center;
-}
-.card:hover{
-  border-color:var(--acc);transform:translateY(-6px);
-  box-shadow:0 10px 30px rgba(106,227,255,.2);
-  color:var(--txt);text-decoration:none;
-}
+.header .equation{font-size:1.5rem;font-weight:700;color:var(--acc);margin-top:15px;font-family:"Cairo";}
+.container{flex:1;max-width:1200px;margin:40px auto 0;padding:0 20px 40px;width:100%;}
+.section-title{font-family:"Cairo";font-size:1.9rem;font-weight:800;color:var(--acc);margin:44px 0 20px;text-align:center;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin:30px 0;}
+.card{background:var(--card);border:2px solid var(--bd);border-radius:var(--radius);padding:25px;text-decoration:none;color:var(--txt);transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;display:block;text-align:center;}
+.card:hover{border-color:var(--acc);transform:translateY(-6px);box-shadow:0 10px 30px rgba(106,227,255,.2);color:var(--txt);text-decoration:none;}
 .card-icon{font-size:2.8rem;margin-bottom:14px;line-height:1}
-.card h3{
-  color:var(--acc);font-family:"Cairo";
-  font-size:1.25rem;margin:0 0 10px;
-}
+.card h3{color:var(--acc);font-family:"Cairo";font-size:1.25rem;margin:0 0 10px;}
 .card p{color:var(--txt-dim);font-size:.92rem;line-height:1.6;margin:0}
-
-/* ===== صندوق المشاريع ===== */
-.projects-box{
-  max-width:900px;margin:0 auto;
-  background:#15151f;border:2px solid #333;
-  border-radius:var(--radius);padding:18px;
-}
-.projects-box .box-title{
-  font-size:1.1rem;font-weight:700;color:var(--danger);
-  text-align:center;margin-bottom:14px;
-}
-.project-link{
-  display:flex;justify-content:space-between;align-items:center;
-  width:100%;margin:10px 0;padding:16px 20px;
-  background:#000;color:#fff;font-size:16px;font-weight:700;
-  border-radius:12px;text-decoration:none;
-  border:2px solid #333;
-  transition:border-color .25s ease,background .25s ease,color .25s ease;
-}
-.project-link:hover{
-  border-color:var(--acc);background:#0a0a14;
-  color:var(--acc);text-decoration:none;
-}
+.projects-box{max-width:900px;margin:0 auto;background:#15151f;border:2px solid #333;border-radius:var(--radius);padding:18px;}
+.projects-box .box-title{font-size:1.1rem;font-weight:700;color:var(--danger);text-align:center;margin-bottom:14px;}
+.project-link{display:flex;justify-content:space-between;align-items:center;width:100%;margin:10px 0;padding:16px 20px;background:#000;color:#fff;font-size:16px;font-weight:700;border-radius:12px;text-decoration:none;border:2px solid #333;transition:border-color .25s ease,background .25s ease,color .25s ease;}
+.project-link:hover{border-color:var(--acc);background:#0a0a14;color:var(--acc);text-decoration:none;}
 .project-link .num{color:var(--acc);font-family:"Cairo"}
-
-/* ===== التذييل ===== */
-.site-footer{
-  background:var(--bg-alt);color:var(--txt-dim);
-  padding:30px 15px;border-top:1px solid var(--bd);
-  text-align:center;font-size:.9rem;
-  margin-top:auto;
-}
+.site-footer{background:var(--bg-alt);color:var(--txt-dim);padding:30px 15px;border-top:1px solid var(--bd);text-align:center;font-size:.9rem;margin-top:auto;}
 .site-footer a{color:var(--acc)}
-
-/* ===== اللغة ===== */
 .ar-text{display:inline}
 .en-text{display:none}
 body.en .ar-text{display:none}
 body.en .en-text{display:inline}
-
-/* ===== استجابة الشاشات ===== */
 @media (max-width:600px){
   .lang-switch{top:10px;padding:4px 8px}
   body.ar .lang-switch{left:10px}
@@ -285,53 +155,29 @@ body.en .en-text{display:inline}
   .container{padding:0 16px 32px}
   .project-link{padding:14px 16px;font-size:.92rem}
 }
-
-/* ===== تقليل الحركة ===== */
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
-  }
-}
-
-/* ===== الطباعة ===== */
-@media print{
-  body{background:#fff;color:#000}
-  .lang-switch,#visitorCounter,.header::before{display:none}
-  .card,.project-link{border-color:#999;background:#f5f5f5;color:#000}
-  .card h3,.section-title,.project-link .num{color:#000}
-  a{color:#000;text-decoration:underline}
-}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}}
+@media print{body{background:#fff;color:#000}.lang-switch,#visitorCounter,.header::before{display:none}.card,.project-link{border-color:#999;background:#f5f5f5;color:#000}.card h3,.section-title,.project-link .num{color:#000}a{color:#000;text-decoration:underline}}
 </style>
 </head>
 
 <body class="ar">
 
 <a class="skip-link" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
-
-<!-- ===== الهيدر المحمّل ديناميكياً ===== -->
 <div id="header-placeholder"></div>
 
-<!-- ===== زر تبديل اللغة ===== -->
 <div class="lang-switch" role="group" aria-label="تبديل اللغة">
   <button id="lang-ar" type="button" class="active" aria-label="العربية">🇾🇪 عربي</button>
   <button id="lang-en" type="button" aria-label="English">🇬🇧 English</button>
 </div>
 
-<!-- ===== عدّاد الزوار ===== -->
 <div id="visitorCounter" role="status" aria-live="polite">
   <span id="counterText" data-ar="👥 زوار:" data-en="👥 Visitors:">👥 زوار:</span>
   <span id="counterNumber">1</span>
 </div>
 
-<!-- ===== الهيدر الرئيسي ===== -->
 <header class="header">
   <div class="header-content">
-    <img src="/image/Jabri-photo.webp"
-         alt="م/ عبدالله محمد ناصر الجبري"
-         width="120" height="120"
-         fetchpriority="high" decoding="async">
+    <img src="/image/Jabri-photo.webp" alt="م/ عبدالله محمد ناصر الجبري" width="120" height="120" fetchpriority="high" decoding="async" onerror="this.src='/image/Jabri-photo.png';">
     <h1>
       <span class="ar-text">واحة الجبري</span>
       <span class="en-text">Heaven Al-Jabri</span>
@@ -348,70 +194,33 @@ body.en .en-text{display:inline}
   </div>
 </header>
 
-<!-- ===== المحتوى الرئيسي ===== -->
 <main id="main" class="container">
 
-  <!-- ===== المشاريع والبوابات ===== -->
   <h2 class="section-title">
     <span class="ar-text">المشاريع والبوابات</span>
     <span class="en-text">Projects &amp; Portals</span>
   </h2>
 
   <div class="cards-grid">
-    <a href="Page11.html" class="card">
-      <div class="card-icon" aria-hidden="true">🏛️</div>
-      <h3><span class="ar-text">الواحة الرئيسية</span><span class="en-text">Main Oasis</span></h3>
-      <p><span class="ar-text">بوابة تراث اليمن العريق</span><span class="en-text">Yemeni Heritage Gateway</span></p>
-    </a>
-    <a href="Page1.html" class="card">
-      <div class="card-icon" aria-hidden="true">🗺️</div>
-      <h3><span class="ar-text">سندباد اليمن</span><span class="en-text">Sindbad Yemen</span></h3>
-      <p><span class="ar-text">رحلة الاكتشاف والمعرفة</span><span class="en-text">Journey of Discovery</span></p>
-    </a>
-    <a href="Page4.html" class="card">
-      <div class="card-icon" aria-hidden="true">🔬</div>
-      <h3><span class="ar-text">المكتب والبحوث</span><span class="en-text">Office &amp; Research</span></h3>
-      <p><span class="ar-text">أبحاث ريمان ونظرية سندس</span><span class="en-text">Riemann &amp; Sundus Theory</span></p>
-    </a>
-    <a href="Page6.html" class="card">
-      <div class="card-icon" aria-hidden="true">🧪</div>
-      <h3><span class="ar-text">مختبر الجبري</span><span class="en-text">Jabri Lab</span></h3>
-      <p><span class="ar-text">تجارب وتطبيقات علمية</span><span class="en-text">Scientific Experiments</span></p>
-    </a>
-    <a href="Yemen-library.html" class="card">
-      <div class="card-icon" aria-hidden="true">📚</div>
-      <h3><span class="ar-text">مكتبة اليمن</span><span class="en-text">Yemen Library</span></h3>
-      <p><span class="ar-text">تراث ومعرفة وتاريخ</span><span class="en-text">Heritage &amp; Knowledge</span></p>
-    </a>
-    <a href="about.html" class="card">
-      <div class="card-icon" aria-hidden="true">👤</div>
-      <h3><span class="ar-text">عن المؤلف</span><span class="en-text">About Author</span></h3>
-      <p><span class="ar-text">السيرة الذاتية والأعمال</span><span class="en-text">CV &amp; Publications</span></p>
-    </a>
+    <a href="Page11.html" class="card"><div class="card-icon" aria-hidden="true">🏛️</div><h3><span class="ar-text">الواحة الرئيسية</span><span class="en-text">Main Oasis</span></h3><p><span class="ar-text">بوابة تراث اليمن العريق</span><span class="en-text">Yemeni Heritage Gateway</span></p></a>
+    <a href="Page1.html" class="card"><div class="card-icon" aria-hidden="true">🗺️</div><h3><span class="ar-text">سندباد اليمن</span><span class="en-text">Sindbad Yemen</span></h3><p><span class="ar-text">رحلة الاكتشاف والمعرفة</span><span class="en-text">Journey of Discovery</span></p></a>
+    <a href="Page4.html" class="card"><div class="card-icon" aria-hidden="true">🔬</div><h3><span class="ar-text">المكتب والبحوث</span><span class="en-text">Office &amp; Research</span></h3><p><span class="ar-text">أبحاث ريمان ونظرية سندس</span><span class="en-text">Riemann &amp; Sundus Theory</span></p></a>
+    <a href="Page6.html" class="card"><div class="card-icon" aria-hidden="true">🧪</div><h3><span class="ar-text">مختبر الجبري</span><span class="en-text">Jabri Lab</span></h3><p><span class="ar-text">تجارب وتطبيقات علمية</span><span class="en-text">Scientific Experiments</span></p></a>
+    <a href="Yemen-library.html" class="card"><div class="card-icon" aria-hidden="true">📚</div><h3><span class="ar-text">مكتبة اليمن</span><span class="en-text">Yemen Library</span></h3><p><span class="ar-text">تراث ومعرفة وتاريخ</span><span class="en-text">Heritage &amp; Knowledge</span></p></a>
+    <a href="about.html" class="card"><div class="card-icon" aria-hidden="true">👤</div><h3><span class="ar-text">عن المؤلف</span><span class="en-text">About Author</span></h3><p><span class="ar-text">السيرة الذاتية والأعمال</span><span class="en-text">CV &amp; Publications</span></p></a>
   </div>
 
-  <!-- ===== تراث اليمن ===== -->
   <h2 class="section-title">
     <span class="ar-text">تراث اليمن</span>
     <span class="en-text">Yemen Heritage</span>
   </h2>
 
   <div class="cards-grid">
-    <a href="Sanaa.html" class="card">
-      <div class="card-icon" aria-hidden="true">🏙️</div>
-      <h3><span class="ar-text">صنعاء القديمة</span><span class="en-text">Old Sana'a</span></h3>
-    </a>
-    <a href="Shibam.html" class="card">
-      <div class="card-icon" aria-hidden="true">🏰</div>
-      <h3><span class="ar-text">شبام حضرموت</span><span class="en-text">Shibam Hadramout</span></h3>
-    </a>
-    <a href="Soqatra.html" class="card">
-      <div class="card-icon" aria-hidden="true">🏝️</div>
-      <h3><span class="ar-text">سقطرى</span><span class="en-text">Socotra</span></h3>
-    </a>
+    <a href="Sanaa.html" class="card"><div class="card-icon" aria-hidden="true">🏙️</div><h3><span class="ar-text">صنعاء القديمة</span><span class="en-text">Old Sana'a</span></h3></a>
+    <a href="Shibam.html" class="card"><div class="card-icon" aria-hidden="true">🏰</div><h3><span class="ar-text">شبام حضرموت</span><span class="en-text">Shibam Hadramout</span></h3></a>
+    <a href="Soqatra.html" class="card"><div class="card-icon" aria-hidden="true">🏝️</div><h3><span class="ar-text">سقطرى</span><span class="en-text">Socotra</span></h3></a>
   </div>
 
-  <!-- ===== بوابة سندباد ===== -->
   <h2 class="section-title">
     <span class="ar-text">سندباد اليمن — البوابة العامة 1→12</span>
     <span class="en-text">Yemen Sindbad — Main Gateway 1→12</span>
@@ -442,7 +251,6 @@ body.en .en-text{display:inline}
     <a href="Page12.html" class="project-link" aria-current="page"><span>jabri.com</span><span class="num">12</span></a>
   </div>
 
-  <!-- ===== السيرة الذاتية ===== -->
   <div class="projects-box" style="margin-top:30px">
     <div class="box-title">
       <span class="ar-text">السيرة الذاتية</span>
@@ -455,9 +263,19 @@ body.en .en-text{display:inline}
     <a href="logo.html" class="project-link"><span><span class="ar-text">الواحة</span><span class="en-text">Waha</span></span></a>
   </div>
 
+  <!-- ═══ زر لوحة التحكم الاحترافية ═══ -->
+  <div style="text-align:center;margin:40px 0 20px;">
+    <a href="/dashboard-pro.html"
+       style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#d4af37,#f4e5a1);color:#0a0a0f;padding:14px 30px;border-radius:50px;font-family:'Tajawal',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;box-shadow:0 6px 20px rgba(212,175,55,0.35);transition:transform 0.3s,box-shadow 0.3s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(212,175,55,0.55)';"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 20px rgba(212,175,55,0.35)';">
+      📊 لوحة التحكم الاحترافية | Dashboard Pro
+    </a>
+  </div>
+  <!-- ═══ نهاية الزر ═══ -->
+
 </main>
 
-<!-- ===== التذييل الثابت ===== -->
 <footer class="site-footer">
   <p style="margin:0">
     CC BY 4.0 | Jabri Identity, Z + C + A = 1<br>
@@ -465,82 +283,64 @@ body.en .en-text{display:inline}
   </p>
 </footer>
 
-<!-- ===== الفوتر المحمّل ديناميكياً ===== -->
 <div id="footer-placeholder"></div>
 
-<!-- ===== السكربتات ===== -->
 <script>
-/* ===== ضبط Canonical و hreflang ديناميكياً ===== */
 document.addEventListener('DOMContentLoaded', function () {
   var base = location.origin;
   var path = location.pathname.replace(/^\/en\//, '/');
-
   var canonical = document.getElementById('dynamicCanonical');
-  var arLink    = document.getElementById('hreflangAr');
-  var enLink    = document.getElementById('hreflangEn');
-  var xLink     = document.getElementById('hreflangX');
-
+  var arLink = document.getElementById('hreflangAr');
+  var enLink = document.getElementById('hreflangEn');
+  var xLink = document.getElementById('hreflangX');
   if (canonical) canonical.href = base + path;
-  if (arLink)    arLink.href    = base + path;
-  if (enLink)    enLink.href    = base + '/en' + path;
-  if (xLink)     xLink.href     = base + path;
+  if (arLink) arLink.href = base + path;
+  if (enLink) enLink.href = base + '/en' + path;
+  if (xLink) xLink.href = base + path;
 });
 
-/* ===== تبديل اللغة (متوافق مع باقي الموقع) ===== */
 (function () {
   var STORAGE_KEY = 'jabri-lang';
-
   function applyLanguage(lang) {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.body.classList.remove('ar', 'en');
     document.body.classList.add(lang);
-
     var btnAr = document.getElementById('lang-ar');
     var btnEn = document.getElementById('lang-en');
     if (btnAr && btnEn) {
       btnAr.classList.toggle('active', lang === 'ar');
       btnEn.classList.toggle('active', lang === 'en');
     }
-
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
     updateCounterLang();
   }
-
   window.toggleLang = function () {
     var current = document.documentElement.lang || 'ar';
     applyLanguage(current === 'en' ? 'ar' : 'en');
   };
-
   var btnAr = document.getElementById('lang-ar');
   var btnEn = document.getElementById('lang-en');
   if (btnAr) btnAr.addEventListener('click', function () { applyLanguage('ar'); });
   if (btnEn) btnEn.addEventListener('click', function () { applyLanguage('en'); });
-
   window.applyLanguage = applyLanguage;
-
   var saved = 'ar';
   try { saved = localStorage.getItem(STORAGE_KEY) || 'ar'; } catch (e) {}
   applyLanguage(saved);
 })();
 
-/* ===== عدّاد الزوار ===== */
 (function () {
   var counterEl = document.getElementById('counterNumber');
   var textEl = document.getElementById('counterText');
   if (!counterEl) return;
-
   var STORAGE_KEY = 'jabri_visitor_count_final';
   var SESSION_KEY = 'jabri_visited_final';
-
   var count = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
-
   if (!sessionStorage.getItem(SESSION_KEY)) {
     sessionStorage.setItem(SESSION_KEY, 'true');
     count++;
     try { localStorage.setItem(STORAGE_KEY, count); } catch (e) {}
   }
-
   window.updateCounterLang = function () {
     var isEn = document.documentElement.lang === 'en';
     counterEl.textContent = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
@@ -550,7 +350,6 @@ document.addEventListener('DOMContentLoaded', function () {
         : textEl.getAttribute('data-ar');
     }
   };
-
   updateCounterLang();
 })();
 </script>
