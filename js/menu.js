@@ -1,7 +1,8 @@
 // ============================================================
 //   menu.js - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 4.0.2 FINAL - 18 أغسطس 2026
-//   التصحيحات: مسار الموسيقى، رابط المشاريع، target="_blank"، aria-label
+//   الإصدار: 4.0.1 - 18 أغسطس 2026
+//   يتحكم في: القائمة، الأزرار، الموسيقى، الزوار، اللغة
+//   مع تحسين موضع القائمة لتظهر خلف الأزرار
 // ============================================================
 
 (function() {
@@ -39,7 +40,7 @@
         { name: 'المكتبة', nameEn: 'Library', href: `${langDir}/Office.html` },
         { name: 'السيرة', nameEn: 'CV', href: `${langDir}/Author-cv.html` },
         { name: 'عن الواحة', nameEn: 'About', href: `${langDir}/about.html` },
-        { name: 'المشاريع', nameEn: 'Projects', href: `${langDir}/project.html` }
+        { name: 'المشاريع', nameEn: 'Projects', href: `${langDir}/jabri-projects.html` },
     ];
 
     function buildMainMenu() {
@@ -91,7 +92,7 @@
     }
 
     // ============================================================
-    //   🎵 التحكم في الموسيقى (مسار مطلق - مصحح)
+    //   🎵 التحكم في الموسيقى
     // ============================================================
     let audioElement = null;
     let isMusicPlaying = false;
@@ -100,26 +101,22 @@
         const btn = document.getElementById('musicToggleBtn');
         if (!btn) return;
 
-        // ✅ مسار مطلق لتفادي مشكلة ../ 
-        audioElement = new Audio('/image/music.mp3');
+        audioElement = new Audio('../image/music.mp3');
         audioElement.loop = true;
         audioElement.volume = 0.3;
 
-        btn.setAttribute('aria-label', isArabic ? 'تشغيل الموسيقى' : 'Toggle music');
-
         btn.addEventListener('click', function() {
-            const statusSpan = this.querySelector('#music-status');
             if (isMusicPlaying) {
                 audioElement.pause();
                 isMusicPlaying = false;
-                if (statusSpan) statusSpan.textContent = isArabic ? 'موسيقى' : 'Music';
+                this.querySelector('#music-status').textContent = 'موسيقى';
                 this.style.background = 'rgba(255,215,0,0.08)';
                 this.style.color = '#d6d1c8';
                 localStorage.setItem('jabri_music_state', 'paused');
             } else {
                 audioElement.play().catch(() => {});
                 isMusicPlaying = true;
-                if (statusSpan) statusSpan.textContent = '🔊';
+                this.querySelector('#music-status').textContent = '🔊';
                 this.style.background = 'rgba(255,215,0,0.25)';
                 this.style.color = '#ffd700';
                 localStorage.setItem('jabri_music_state', 'playing');
@@ -130,8 +127,7 @@
             setTimeout(() => {
                 audioElement.play().catch(() => {});
                 isMusicPlaying = true;
-                const statusSpan = btn.querySelector('#music-status');
-                if (statusSpan) statusSpan.textContent = '🔊';
+                btn.querySelector('#music-status').textContent = '🔊';
                 btn.style.background = 'rgba(255,215,0,0.25)';
                 btn.style.color = '#ffd700';
             }, 500);
@@ -185,6 +181,7 @@
                 localStorage.setItem('jabri_lang', 'en');
             }
             buildMainMenu();
+            // تحديث زر القائمة
             const menuBtn = document.getElementById('hamburger-menu');
             if (menuBtn) {
                 const span = menuBtn.querySelector('span:last-child');
@@ -196,16 +193,17 @@
         enBtn.addEventListener('click', () => setLanguage('en'));
 
         const savedLang = localStorage.getItem('jabri_lang');
-        if (savedLang) setLanguage(savedLang);
+        if (savedLang) {
+            setLanguage(savedLang);
+        }
     }
 
     // ============================================================
-    //   🍔 زر القائمة المنسدلة (Hamburger Menu)
+    //   🍔 زر القائمة المنسدلة (الجانبية) - معدل الموضع
     // ============================================================
     function buildHamburgerMenu() {
         const menuContainer = document.createElement('div');
         menuContainer.id = 'hamburger-menu';
-        menuContainer.setAttribute('aria-label', isArabic ? 'القائمة الرئيسية' : 'Main menu');
         menuContainer.style.cssText = `
             position: fixed !important;
             top: 75px !important;
@@ -239,6 +237,7 @@
             <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">${isArabic ? 'القائمة' : 'Menu'}</span>
         `;
 
+        // القائمة المنسدلة - موضعها تحت الزر مباشرة
         const dropdown = document.createElement('div');
         dropdown.id = 'menu-dropdown';
         dropdown.style.cssText = `
@@ -262,7 +261,7 @@
             font-family: 'Cairo', 'Tahoma', sans-serif !important;
         `;
 
-        // محتوى القائمة
+        // بناء محتوى القائمة المنسدلة
         let dropdownHTML = `
             <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
                 <a href="/" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:0.3s; font-size:0.85rem;">🇾🇪 عربي</a>
@@ -293,13 +292,13 @@
                 </div>
             </div>
             <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
-            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" rel="noopener" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
                 <span style="font-size:1.1rem;">🌐</span> Wikipedia
             </a>
-            <a href="https://github.com/jabri-com" target="_blank" rel="noopener" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+            <a href="https://github.com/jabri-com" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
                 <span style="font-size:1.1rem;">🐙</span> GitHub
             </a>
-            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;font-size:0.9rem;">
+            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;font-size:0.9rem;">
                 <span style="font-size:1.1rem;">🆔</span> ORCID
             </a>
         `;
@@ -308,7 +307,7 @@
         document.body.appendChild(menuContainer);
         document.body.appendChild(dropdown);
 
-        // الفتح/الإغلاق
+        // التحكم في الفتح/الإغلاق
         let isOpen = false;
         let closeTimer;
 
@@ -355,14 +354,17 @@
     //   🚀 التهيئة النهائية
     // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 menu.js v4.0.2 FINAL - القائمة تحت الأزرار');
+        console.log('🌴 menu.js v4.0.1 - القائمة تحت الأزرار');
+
         buildMainMenu();
         initMusic();
         initVisitorCounter();
         initLanguageSwitcher();
         buildHamburgerMenu();
+
         console.log('📅 18 أغسطس 2026');
         console.log('📜 Zx = Z + C + A | Z + C + A = 1');
+        console.log('🧮 Z(x) = x^5 ln(x) sin(2π/x) exp(-x/xp)');
         console.log('🇾🇪 اليمن - صنعاء');
     });
 
