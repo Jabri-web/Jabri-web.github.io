@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JABRI-WEB Organization Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cairo:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 100%);
+    color: #e8e8f0;
+    font-family: 'Tajawal', sans-serif;
+    padding: 40px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #0d1117, #161b22);
+    border: 2px solid #d4af37;
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  }
+  .header h1 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #d4af37, #f4e5a1, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  .header .author {
+    color: #6ae3ff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .header .identity {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  .header .verified {
+    color: #8a8a9e;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ===== الصورة ===== */
+  .dbase-image {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: #0a0a0f;
+    border: 1px solid #1f2233;
+    border-radius: 16px;
+  }
+  .dbase-image img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+  }
+  .dbase-image .caption {
+    color: #8a8a9e;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .tree {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.9;
+    background: #0a0a0f;
+    border: 1px solid #1f2233;
+    border-radius: 16px;
+    padding: 30px;
+    overflow-x: auto;
+    color: #c9d1d9;
+  }
+  .tree .folder { color: #d4af37; font-weight: 700; }
+  .tree .doi { color: #6ae3ff; }
+  .tree .url { color: #25c26e; text-decoration: underline; }
+  .tree .desc { color: #8a8a9e; font-style: italic; }
+  .tree .num { color: #f85149; font-weight: 700; }
+  .tree .key { color: #a855f7; font-weight: 700; }
+  .requirements {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+  }
+  .requirements h3 {
+    color: #d4af37;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  .requirements ol {
+    padding-right: 20px;
+    color: #c9d1d9;
+    line-height: 2;
+  }
+  .requirements ol li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    color: #8a8a9e;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>JABRI-WEB GITHUB ORGANIZATION MAP</h1>
+      <div class="author">Author: Eng. Abdulla Mohammed Nasser Al-Jabri</div>
+      <div class="identity">Identity: Z + C + A = 1</div>
+      <div class="verified">Verified: 2026-06-09</div>
+    </div>
+
+    <!-- ===== صورة الخريطة ===== -->
+    <div class="dbase-image">
+      <img 
+        src="/image/dbase.png" 
+        alt="خريطة مستودعات Jabri-web على GitHub - 12 مستودعاً رئيسياً مع المجموعات الفرعية (Jabri-Nobble Millennium Problems و Jabri-lab) و DOIs، من إعداد م/ عبدالله محمد ناصر الجبري"
+        width="900"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="caption">📊 dbase.png — Heaven Al-Jabri Organization Map</div>
+    </div>
+
+    <div class="tree">
+<pre>
+<span class="folder">📁 Jabri-web/</span> <span class="desc">&lt;-- Organization Root</span>
+│
+├── <span class="num">1.</span> <span class="folder">Jabri6218.github.io</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.20403864
+│   <span class="url">Pages:</span> https://jabri-web.github.io/jabri62018.github.io/
+│   <span class="desc">Desc: Main Portal Index - Central hub for all projects</span>
+│
+├── <span class="num">2.</span> <span class="folder">Zx-RieOS-v1.2</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.20100622 [x2]
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Zx_RieOS_v1.2/
+│   <span class="desc">Desc: Experimental OS based on Zx Function &amp; Riemann Zeros</span>
+│
+├── <span class="num">3.</span> <span class="folder">Zx-Mother-Function-Jabri</span>
+│   <span class="doi">DOI:</span> -
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Zx_Mother_Function_Jabri/
+│   <span class="desc">Desc: Core Zx Mother Function Implementation</span>
+│
+├── <span class="num">4.</span> <span class="folder">Jabri-web.github.io</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.20499365 / 10.5281/zenodo.20404167
+│   <span class="url">Pages:</span> https://jabri-web.github.io/
+│   <span class="desc">Desc: Secondary Main Portal</span>
+│
+├── <span class="num">5.</span> <span class="folder">Jabri-Nobble</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.20148770
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Jabri_Nobble/
+│   <span class="desc">Desc: Millennium Problems Research Suite</span>
+│   │
+│   ├── <span class="num">5-1.</span> <span class="folder">Jabri-Riemann</span>
+│   │   <span class="doi">DOI:</span> 10.5281/zenodo.20139904 / 10.5281/zenodo.20145337
+│   │   <span class="desc">Desc: Riemann Hypothesis Module</span>
+│   │
+│   ├── <span class="num">5-2.</span> <span class="folder">Jabri-np</span>
+│   │   <span class="doi">DOI:</span> 10.5281/zenodo.20145279
+│   │   <span class="desc">Desc: P vs NP Module</span>
+│   │
+│   ├── <span class="num">5-3.</span> <span class="folder">Jabri-gab</span>
+│   │   <span class="doi">DOI:</span> 10.5281/zenodo.20148344
+│   │   <span class="desc">Desc: Yang-Mills Module</span>
+│   │
+│   ├── <span class="num">5-4.</span> <span class="folder">Jabri-Navier</span>
+│   │   <span class="doi">DOI:</span> 10.5281/zenodo.20149618
+│   │   <span class="desc">Desc: Navier-Stokes Module</span>
+│   │
+│   ├── <span class="num">5-5.</span> <span class="folder">Jabri-Birch</span>
+│   │   <span class="doi">DOI:</span> -
+│   │   <span class="desc">Desc: Birch and Swinnerton-Dyer Module</span>
+│   │
+│   ├── <span class="num">5-6.</span> <span class="folder">Jabri-Hodge</span>
+│   │   <span class="doi">DOI:</span> -
+│   │   <span class="desc">Desc: Hodge Conjecture Module</span>
+│   │
+│   └── <span class="num">5-7.</span> <span class="folder">Jabri-S-care [Jabri-Identity]</span>
+│       <span class="doi">DOI:</span> 10.5281/zenodo.20114317
+│       <span class="desc">Desc: Al-Jabri Identity Module Z+C+A=1</span>
+│
+├── <span class="num">6.</span> <span class="folder">Jabri-lab</span>
+│   <span class="doi">DOI:</span> Publishing
+│   <span class="url">Pages:</span> https://jabri-web.github.io/jabri_lab/
+│   <span class="desc">Desc: Digital Laboratory for Experiments</span>
+│   │
+│   ├── <span class="num">6-1.</span> <span class="folder">Jabri-5</span>
+│   ├── <span class="num">6-2.</span> <span class="folder">Jabri-28</span>
+│   ├── <span class="num">6-3.</span> <span class="folder">Jabri-Gravity</span>
+│   ├── <span class="num">6-4.</span> <span class="folder">Jabri-Spacetime</span>
+│   ├── <span class="num">6-5.</span> <span class="folder">Jabri-DarkEnergy</span>
+│   ├── <span class="num">6-6.</span> <span class="folder">Jabri-Planck</span>
+│   ├── <span class="num">6-7.</span> <span class="folder">Jabri-Hubble</span>
+│   ├── <span class="num">6-8.</span> <span class="folder">Jabri-Periodic</span>
+│   └── <span class="num">6-9.</span> <span class="folder">Jabri-all</span>
+│
+├── <span class="num">7.</span> <span class="folder">Zx-RieOS-v1.1</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.19981688 / 10.5281/zenodo.20070594
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Zx_RieOS_v1.1/
+│   <span class="desc">Desc: Previous version of RieOS</span>
+│
+├── <span class="num">8.</span> <span class="folder">Jabri-RiemannOS</span>
+│   <span class="doi">DOI:</span> -
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Jabri-RiemannOS/
+│   <span class="desc">Desc: Dedicated Riemann OS</span>
+│
+├── <span class="num">9.</span> <span class="folder">Jabri-Checkout</span>
+│   <span class="doi">DOI:</span> 10.5281/zenodo.20513840
+│   <span class="url">Pages:</span> https://jabri-web.github.io/Jabri_Checkout/
+│   <span class="desc">Desc: Checkout and Validation System</span>
+│
+├── <span class="num">10.</span> <span class="folder">Jabri-web [ROUTER FOR GITHUB]</span>
+│   <span class="doi">DOI:</span> -
+│   <span class="url">Pages:</span> https://github.com/Jabri-web
+│   <span class="desc">Desc: Main GitHub Organization Router - Gateway to all 1-9 repos</span>
+│
+├── <span class="num">11.</span> <span class="folder">jabri-com [ROUTER FOR AL-WAHA &amp; VERCEL]</span>
+│   <span class="doi">DOI:</span> -
+│   <span class="url">Pages:</span> https://jabri-com.vercel.app
+│   <span class="desc">Desc: Main Website Router - Al-Waha Platform with AR/EN versions</span>
+│
+└── <span class="num">12.</span> <span class="folder">jabri.com [ROUTER FOR 10++ 11]</span>
+    <span class="doi">DOI:</span> -
+    <span class="url">Pages:</span> https://jabri.com
+    <span class="desc">Desc: Master Domain Router - Redirects to GitHub Org + Al-Waha</span>
+</pre>
+    </div>
+
+    <div class="requirements">
+      <h3>📋 REQUIREMENTS FOR EACH REPO:</h3>
+      <ol>
+        <li>README.md + README-AR.md</li>
+        <li>ABOUT.md + ABOUT-AR.md <span class="desc">&lt;-- with language switch bar</span></li>
+        <li>Link to main website: <span class="url">https://jabri-com.vercel.app</span></li>
+        <li>License: <span class="doi">CC BY 4.0</span></li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      © 2026 Eng. Abdulla Mohammed Nasser Al-Jabri — All Rights Reserved
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  <style>
+  .lang-btn { position: fixed; top: 15px; left: 15px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 14px; z-index: 9999; box-shadow: 0 4px 12px rgba(106,227,255,0.4); font-family: inherit; }
+  .lang-btn:hover { background: #4dd4ff; }
+  html[lang="ar"] .en { display:none } 
+  html[lang="en"] .ar { display:none }
+</style>
+
+<button class="lang-btn" onclick="toggleLang()">
+  <span class="ar">EN</span>
+  <span class="en">عربي</span>
+</button>
+
+<script>
+function toggleLang(){
+  const path = location.pathname;
+  const qs = location.search + location.hash;
+  // شيل /ar/ او /en/ من البداية
+  const pure = path.replace(/^\/(ar|en)(\/|$)/i, '/').replace(/^\/+/, '');
+  const file = pure || 'all-links.html'; // لو في الروت
+
+  const lower = path.toLowerCase();
+  if(lower.startsWith('/en/') || lower === '/en'){
+    location.href = '/ar/' + file + qs;
+  } else if(lower.startsWith('/ar/') || lower === '/ar'){
+    location.href = '/en/' + file + qs;
+  } else {
+    // انت في /catalog.html -> روح للعكس حسب لغة المتصفح
+    const goEn = document.documentElement.lang === 'ar';
+    location.href = (goEn ? '/en/' : '/ar/') + file + qs;
+  }
+}
+// نفس الاسم القديم عشان ما ينكسر v12.1
+window.switchLanguage = window.toggleLanguage = toggleLang;
+</script>
+</body>
+</html>
