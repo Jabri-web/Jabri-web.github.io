@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>رسالة إلى العالم | واحة الجبري</title>
   <meta name="description" content="رسالة المهندس عبدالله الجبري إلى العالم - تراث اليمن العريق ونظرية السندباد الموحدة" />
-  
+
   <!-- ===== الميتادات الذكية ===== -->
   <link id="linkCanon" rel="canonical" href="https://jabri-com.vercel.app/journal3.html" />
   <link id="linkAltAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/journal3.html" />
@@ -32,6 +32,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
 
+  <!-- 🛡️ المرعبة -->
+  <script src="/js/init-page-root.js?v=6.2.0" defer></script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -43,24 +46,18 @@
       overflow-x: hidden;
     }
 
-    /* ===== الخلفية المتحركة ===== */
+    /* ===== الخلفية ===== */
     .bg-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
       background: radial-gradient(ellipse at 20% 50%, #1a1a2e, #0a0a0f 70%);
       z-index: -2;
     }
     .bg-particles::after {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
         radial-gradient(2px 2px at 20% 30%, #ffd700, transparent),
         radial-gradient(2px 2px at 40% 70%, #ffd700, transparent),
         radial-gradient(2px 2px at 60% 20%, #ffd700, transparent),
@@ -77,7 +74,6 @@
       100% { opacity: 0.6; }
     }
 
-    /* ===== الحاوية الرئيسية ===== */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -86,7 +82,6 @@
       z-index: 1;
     }
 
-    /* ===== الهيدر ===== */
     .header {
       text-align: center;
       padding: 40px 0 30px;
@@ -109,18 +104,9 @@
       margin-top: 8px;
       letter-spacing: 2px;
     }
-    .header .date {
-      font-size: 0.9rem;
-      opacity: 0.4;
-      margin-top: 5px;
-    }
-    .header .flag {
-      font-size: 2.5rem;
-      display: block;
-      margin-top: 10px;
-    }
+    .header .date { font-size: 0.9rem; opacity: 0.4; margin-top: 5px; }
+    .header .flag { font-size: 2.5rem; display: block; margin-top: 10px; }
 
-    /* ===== المحتوى ===== */
     .content {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
@@ -135,10 +121,7 @@
       margin-bottom: 20px;
       opacity: 0.9;
     }
-    .content .highlight {
-      color: #ffd700;
-      font-weight: 700;
-    }
+    .content .highlight { color: #ffd700; font-weight: 700; }
     .content .formula {
       text-align: center;
       font-size: 2rem;
@@ -162,7 +145,6 @@
       font-style: italic;
     }
 
-    /* ===== الصور ===== */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -184,7 +166,6 @@
       box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
     }
 
-    /* ===== الفيديو ===== */
     .video-section {
       margin: 30px 0;
       display: grid;
@@ -200,22 +181,14 @@
       object-fit: cover;
     }
 
-    /* ===== التوقيع ===== */
     .signature {
       text-align: center;
       margin-top: 40px;
       padding-top: 30px;
       border-top: 2px solid rgba(255, 215, 0, 0.15);
     }
-    .signature .name {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: #ffd700;
-    }
-    .signature .title {
-      font-size: 1rem;
-      opacity: 0.6;
-    }
+    .signature .name { font-size: 1.6rem; font-weight: 900; color: #ffd700; }
+    .signature .title { font-size: 1rem; opacity: 0.6; }
     .signature .social {
       display: flex;
       justify-content: center;
@@ -238,7 +211,6 @@
       transform: translateY(-2px);
     }
 
-    /* ===== زر العودة ===== */
     .back-btn {
       display: inline-block;
       margin-top: 25px;
@@ -260,7 +232,6 @@
       box-shadow: 0 0 50px rgba(255, 215, 0, 0.4);
     }
 
-    /* ===== موسيقى ===== */
     .music-player {
       position: fixed;
       bottom: 20px;
@@ -284,15 +255,9 @@
       color: #ffd700;
       transition: all 0.3s ease;
     }
-    .music-player button:hover {
-      transform: scale(1.2);
-    }
-    .music-player .track {
-      font-size: 0.75rem;
-      opacity: 0.5;
-    }
+    .music-player button:hover { transform: scale(1.2); }
+    .music-player .track { font-size: 0.75rem; opacity: 0.5; }
 
-    /* ===== استجابة ===== */
     @media (max-width: 600px) {
       .header h1 { font-size: 1.8rem; }
       .content { padding: 25px 18px; }
@@ -313,22 +278,22 @@
 </head>
 <body>
 
-  <!-- ===== خلفية متحركة ===== -->
+  <!-- خلفية متحركة -->
   <div class="bg-particles"></div>
 
-  <!-- ===== مشغل الموسيقى ===== -->
+  <!-- 🎵 مشغل الموسيقى (بدون inline script) -->
   <div class="music-player" id="musicPlayer">
-    <button id="musicBtn" onclick="toggleMusic()">🔊</button>
+    <button id="musicBtn" onclick="Jabri.toggleMusic()">🔊</button>
     <span class="track" id="trackName">🎵 تراث اليمن</span>
     <audio id="bgMusic" loop preload="auto">
-      <source src="/image/musicq1.mp3" type="audio/mpeg">
+      <source src="/image/music1.mp3" type="audio/mpeg">
     </audio>
   </div>
 
-  <!-- ===== الحاوية ===== -->
+  <!-- الحاوية -->
   <div class="container">
 
-    <!-- ===== الهيدر ===== -->
+    <!-- الهيدر -->
     <div class="header">
       <span class="flag">🇾🇪</span>
       <h1>🌍 رسالة إلى العالم</h1>
@@ -336,10 +301,9 @@
       <p class="date">صنعاء - اليمن · 2026</p>
     </div>
 
-    <!-- ===== المحتوى ===== -->
+    <!-- المحتوى -->
     <div class="content">
 
-      <!-- الصورة الأولى -->
       <div class="gallery">
         <img src="/image/id1.webp" alt="صنعاء القديمة" loading="lazy" onclick="openImage(this.src)" />
         <img src="/image/id2.webp" alt="شبام حضرموت" loading="lazy" onclick="openImage(this.src)" />
@@ -348,29 +312,20 @@
         <img src="/image/id5.webp" alt="تراث اليمن" loading="lazy" onclick="openImage(this.src)" />
       </div>
 
-      <!-- المقدمة -->
-      <div class="verse">
-        "بسم الله الرحمن الرحيم"
-      </div>
+      <div class="verse">"بسم الله الرحمن الرحيم"</div>
 
-      <p>
-        <span class="highlight">السلام عليكم ورحمة الله وبركاته،</span>
-      </p>
+      <p><span class="highlight">السلام عليكم ورحمة الله وبركاته،</span></p>
 
       <p>
         أنا <span class="highlight">عبدالله محمد ناصر الجبري</span>، ابن اليمن، تلك الأرض التي حملت مشعل الحضارة الإنسانية منذ فجر التاريخ. من <span class="highlight">صنعاء</span>، عاصمة الحضارة السبئية، إلى <span class="highlight">شبام حضرموت</span>، أقدم ناطحات السحاب في العالم، إلى <span class="highlight">سقطرى</span>، جزيرة العجائب التي أبهرت المستكشفين عبر العصور، ومن <span class="highlight">عدن</span> البندر العريق... أبعث إليكم هذه الرسالة.
       </p>
 
-      <!-- نظرية السندباد -->
-      <div class="formula">
-        Z + C + A = 1
-      </div>
+      <div class="formula">Z + C + A = 1</div>
 
       <p>
         من خلال <span class="highlight">نظرية السندباد الموحدة (Z + C + A = 1)</span>، أسعى إلى تقريب المسافات بين الرياضيات والفيزياء والفلسفة. العلم لا يعرف حدوداً، ولا جنسية، ولا لوناً. <span class="highlight">الحقيقة واحدة</span>، ونحن نبحث عنها جميعاً.
       </p>
 
-      <!-- مقطع فيديو -->
       <div class="video-section">
         <video controls preload="metadata" poster="/image/id1.webp">
           <source src="/image/heaven1.mp4" type="video/mp4">
@@ -389,9 +344,7 @@
         </video>
       </div>
 
-      <div class="verse">
-        "التراث ليس ماضياً، بل جسر إلى المستقبل"
-      </div>
+      <div class="verse">"التراث ليس ماضياً، بل جسر إلى المستقبل"</div>
 
       <p>
         التراث اليمني ليس مجرد حجارة قديمة أو مخطوطات في المتاحف. هو <span class="highlight">روح الأمة</span>، هو <span class="highlight">الهوية</span>، هو الذاكرة الجمعية لكل إنسان يعتز بجذوره. توثيقه ليس رفاهية، بل <span class="highlight">واجب إنساني</span> تجاه الأجيال القادمة.
@@ -405,7 +358,6 @@
         "من صنعاء إلى الكون، ومن التراث إلى المستقبل، ومن العدد الصرف إلى نظرية موحدة... واحة الجبري هي رسالة حب للعلم، للتراث، وللإنسانية."
       </div>
 
-      <!-- ===== التوقيع ===== -->
       <div class="signature">
         <p class="name">م/ عبدالله محمد ناصر الجبري</p>
         <p class="title">مؤسس واحة الجبري · باحث في الرياضيات والفيزياء النظرية</p>
@@ -425,45 +377,13 @@
     </div>
   </div>
 
-  <!-- ===== السكربت ===== -->
+  <!-- ===== placeholders ===== -->
+  <div id="header-placeholder"></div>
+  <div id="footer-placeholder"></div>
+
+  <!-- ===== السكربت المتبقي (صور + اختصارات فقط) ===== -->
   <script>
-    // ============================================================
-    // 1. الموسيقى
-    // ============================================================
-    let musicIndex = 1;
-    const musicFiles = ['musicq1.mp3', 'musicq2.mp3', 'musicq3.mp3', 'musicq4.mp3', 'musicq5.mp3'];
-    const trackNames = ['🎵 تراث اليمن', '🎵 سندباد', '🎵 صنعاء', '🎵 شبام', '🎵 سقطرى'];
-    let isMusicPlaying = false;
-    const audio = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const trackName = document.getElementById('trackName');
-
-    function toggleMusic() {
-      if (isMusicPlaying) {
-        audio.pause();
-        isMusicPlaying = false;
-        musicBtn.textContent = '🔇';
-      } else {
-        audio.play().catch(() => {});
-        isMusicPlaying = true;
-        musicBtn.textContent = '🔊';
-      }
-    }
-
-    audio.addEventListener('ended', function() {
-      musicIndex = (musicIndex % 5) + 1;
-      audio.src = '/image/' + musicFiles[musicIndex - 1];
-      trackName.textContent = trackNames[musicIndex - 1];
-      audio.play().catch(() => {});
-    });
-
-    // تحميل أول مقطع
-    audio.src = '/image/' + musicFiles[0];
-    trackName.textContent = trackNames[0];
-
-    // ============================================================
-    // 2. فتح الصور بحجم كبير
-    // ============================================================
+    // فتح الصور بحجم كبير
     function openImage(src) {
       const win = window.open('', '_blank', 'width=800,height=600');
       if (win) {
@@ -483,13 +403,11 @@
       }
     }
 
-    // ============================================================
-    // 3. تشغيل/إيقاف بالمسافة
-    // ============================================================
+    // مسافة = تشغيل/إيقاف
     document.addEventListener('keydown', function(e) {
       if (e.key === ' ' || e.key === 'Space') {
         e.preventDefault();
-        toggleMusic();
+        if (window.Jabri) Jabri.toggleMusic();
       }
     });
 
@@ -497,17 +415,7 @@
     console.log('🇾🇪 اليمن - صنعاء - 2026');
     console.log('🧮 Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp)');
     console.log('📐 Z + C + A = 1');
-    console.log('📁 الصور: id1.webp → id5.webp');
-    console.log('🎵 الموسيقى: musicq1.mp3 → musicq5.mp3');
-    console.log('🎬 المقاطع: heaven1.mp4 → heaven5.mp4');
   </script>
-
-
-<!-- في كل صفحة HTML -->
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<script src="/js/init-page-root.js"></script>
-
 
 </body>
 </html>
