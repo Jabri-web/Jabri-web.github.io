@@ -755,7 +755,7 @@
         toast.textContent = `🔄 نسخة جديدة (v${data.version}) — اضغط للتحديث`;
         toast.onclick = forceReload;
         document.body.appendChild(toast);
-        setTimeout(forceReload, 30000);
+        setTimeout(forceReload, 3000);
       }
     } catch (e) {}
   }
