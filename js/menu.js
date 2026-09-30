@@ -206,9 +206,9 @@
         menuContainer.id = 'hamburger-menu';
         menuContainer.style.cssText = `
             position: fixed !important;
-            top: 75px !important;
-            right: 20px !important;
-            z-index: 9999999 !important;
+            top: 12px !important;
+            right: 12px !important;
+            z-index: 99999 !important;
             cursor: pointer !important;
             background: linear-gradient(135deg, #ffd700, #f0a500) !important;
             color: #0a0a0f !important;
@@ -243,8 +243,8 @@
         dropdown.style.cssText = `
             display: none !important;
             position: fixed !important;
-            top: 125px !important;
-            right: 20px !important;
+            top: 52px !important;
+            right: 12px !important;
             background: rgba(10, 10, 20, 0.97) !important;
             backdrop-filter: blur(16px) !important;
             border: 2px solid #ffd700 !important;
@@ -254,7 +254,7 @@
             max-height: 70vh !important;
             overflow-y: auto !important;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
-            z-index: 9999998 !important;
+            z-index: 9998 !important;
             flex-direction: column !important;
             gap: 2px !important;
             direction: ${isArabic ? 'rtl' : 'ltr'} !important;
