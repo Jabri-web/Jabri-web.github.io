@@ -1,13 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════
    /js/file.js — واحة الجبري (Heaven Al-Jabri)
-   محمّل القائمة الاحتياطية — v2.0
+   محمّل القائمة الاحتياطية — v2.1
    ✅ يعمل على الويب + APK (file://)
    ✅ يستعمل XHR كاحتياط لو fetch ممنوع
    ✅ قائمة ثابتة مدمجة (تعمل دائماً بدون شبكة)
+   ✅ 🆕 يرجع STATIC فوراً + يحدّث في الخلفية
+   ✅ 🆕 إشعار عند تحديث القائمة الديناميكية
 
    الاستخدام:
      <script src="/js/file.js"></script>
      window.WAHA_FILE_LOADER()  →  Promise<Array<paths>>
+     window.WAHA_ON_DYNAMIC_UPDATE = fn  →  callback عند التحديث
    ═══════════════════════════════════════════════════════════════ */
 (function () {
     'use strict';
@@ -17,7 +20,7 @@
     var IS_WV   = (navigator.userAgent || '').indexOf('wv') !== -1;
     var IS_APK  = IS_FILE || IS_WV;
 
-    console.log('%c📂 /js/file.js — v2.0 (' + (IS_APK ? 'APK' : 'Web') + ')',
+    console.log('%c📂 /js/file.js — v2.1 (' + (IS_APK ? 'APK' : 'Web') + ')',
                 'color:#ffd700;font-weight:700');
 
     /* ─── ① القائمة الثابتة (تعمل دائماً بدون شبكة) ─── */
@@ -203,7 +206,7 @@
         return await xhrGet(url);
     }
 
-    /* ─── ⑤ المحمّل الرئيسي ─── */
+    /* ─── ⑤ المحمّل الرئيسي (v2.1 — STATIC فوراً + تحديث في الخلفية) ─── */
     window.WAHA_FILE_LOADER = async function () {
 
         /* ① الكاش المحلي أولاً (سريع + بدون شبكة) */
@@ -220,44 +223,57 @@
             }
         } catch (e) {}
 
-        /* ② المصادر الديناميكية */
-        for (var i = 0; i < DYNAMIC_SOURCES.length; i++) {
-            var src = DYNAMIC_SOURCES[i];
-            try {
-                var text = await fetchText(src.url);
-                if (!text) continue;
+        /* ② 🆕 نبدأ بالـ STATIC فوراً — بدون انتظار */
+        var immediate = STATIC_FILES.slice();
 
-                var paths = [];
-                if (src.type === 'xml')  paths = parseXML(text);
-                else if (src.type === 'json') {
-                    try { paths = parseJSON(JSON.parse(text)); }
-                    catch (e) { continue; }
-                }
-                else if (src.type === 'text') paths = parseText(text);
+        /* ③ 🔄 نحدّث في الخلفية (ما نستناش) */
+        (async function loadDynamic() {
+            for (var i = 0; i < DYNAMIC_SOURCES.length; i++) {
+                var src = DYNAMIC_SOURCES[i];
+                try {
+                    var text = await fetchText(src.url);
+                    if (!text) continue;
 
-                // إزالة التكرار
-                var uniq = [];
-                var seen = {};
-                paths.forEach(function(p) {
-                    if (!seen[p]) { seen[p] = 1; uniq.push(p); }
-                });
+                    var paths = [];
+                    if (src.type === 'xml')  paths = parseXML(text);
+                    else if (src.type === 'json') {
+                        try { paths = parseJSON(JSON.parse(text)); }
+                        catch (e) { continue; }
+                    }
+                    else if (src.type === 'text') paths = parseText(text);
 
-                if (uniq.length) {
-                    try {
-                        localStorage.setItem(CACHE_KEY, JSON.stringify(uniq));
-                        localStorage.setItem(CACHE_TS, String(Date.now()));
-                    } catch (e) {}
-                    console.log('%c📡 /js/file.js — من ' + src.url + ' (' + uniq.length + ')',
-                                'color:#ffd700');
-                    return uniq;
-                }
-            } catch (e) {}
-        }
+                    // إزالة التكرار
+                    var uniq = [];
+                    var seen = {};
+                    paths.forEach(function(p) {
+                        if (!seen[p]) { seen[p] = 1; uniq.push(p); }
+                    });
 
-        /* ③ القائمة الثابتة (تعمل دائماً) */
-        console.log('%c🛡️ /js/file.js — القائمة الثابتة (' + STATIC_FILES.length + ')',
-                    'color:#ff7b72');
-        return STATIC_FILES.slice();
+                    if (uniq.length) {
+                        try {
+                            localStorage.setItem(CACHE_KEY, JSON.stringify(uniq));
+                            localStorage.setItem(CACHE_TS, String(Date.now()));
+                        } catch (e) {}
+                        console.log('%c📡 /js/file.js — محدث من ' + src.url + ' (' + uniq.length + ')',
+                                    'color:#ffd700');
+
+                        // ✅ إشعار أي أحد مستني التحديث
+                        if (typeof window.WAHA_ON_DYNAMIC_UPDATE === 'function') {
+                            try { window.WAHA_ON_DYNAMIC_UPDATE(uniq); }
+                            catch (e) { console.warn('⚠️ [file.js] callback error:', e); }
+                        }
+                        return;
+                    }
+                } catch (e) {}
+            }
+            console.log('%c🛡️ /js/file.js — استخدمنا القائمة الثابتة',
+                        'color:#ff7b72');
+        })();
+
+        /* ④ نرجع STATIC فوراً */
+        console.log('%c⚡ /js/file.js — STATIC فوراً (' + immediate.length + ')',
+                    'color:#7ee787');
+        return immediate;
     };
 
     /* ─── ⑥ إتاحة القائمة الثابتة للاستخدام المباشر ─── */
@@ -273,7 +289,7 @@
         } catch (e) { return false; }
     };
 
-    console.log('%c✅ /js/file.js v2.0 جاهز — WAHA_FILE_LOADER()',
+    console.log('%c✅ /js/file.js v2.1 جاهز — WAHA_FILE_LOADER()',
                 'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 6px;border-radius:4px');
 
 })();

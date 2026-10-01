@@ -1,6 +1,6 @@
 // ============================================================
-//   menu.js - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 4.0.1 - 18 أغسطس 2026
+//   menu.js -v4.2.0- القائمة الذكية الشاملة - واحة الجبري
+//   الإصدار: 4.0.2 - 18 أغسطس 2026
 //   يتحكم في: القائمة، الأزرار، الموسيقى، الزوار، اللغة
 //   مع تحسين موضع القائمة لتظهر خلف الأزرار
 // ============================================================
@@ -292,7 +292,9 @@
                 </div>
             </div>
             <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
-            <a href="https://en.wikipedia.org/wiki/User:Jabri2026" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+           
+            <a  href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" 
+                target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
                 <span style="font-size:1.1rem;">🌐</span> Wikipedia
             </a>
             <a href="https://github.com/jabri-com" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
