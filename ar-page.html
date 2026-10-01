@@ -477,7 +477,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   زوار: <span id="visitorCountDisplay">1</span>
 </div>
 
-<div id="header-placeholder"></div>
 
 <main id="main" class="container">
 
@@ -632,7 +631,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   <p id="copyright">© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة</p>
 </footer>
 
-<div id="footer-placeholder"></div>
 
 <script>
 /* ===== تبديل اللغة: يحوّل إلى /en/Page11.html ===== */
@@ -707,8 +705,15 @@ document.getElementById('langToggle').addEventListener('click', function() {
 })();
 </script>
 
-<script src="/js/init-page-root.js" defer></script>
-<script src="/js/menu.js" defer></script>
 
+<!-- في كل صفحة HTML -->
+
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/file.js" defer></script>
+<script src="/js/init-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
 </body>
 </html>
+
+

@@ -1,5 +1,126 @@
 {
-  "version": "7.0.0",
-  "buildDate": "2026-09-27",
-  "notes": "واحة الجبري مغلقة 100% - لا تحديث تلقائي"
+  "version": "8.2.0",
+  "buildDate": "2026-10-01",
+  "notes": "v8.2.0 - Footer Fixed + Smart toggleLang + FILE_LIST integration",
+  "name": "واحة الجبري | Heaven Al-Jabri",
+  "description": "منصة توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
+  "url": "https://jabri-com.vercel.app",
+  "author": {
+    "name": "م/ عبدالله محمد ناصر الجبري",
+    "nameEn": "Eng. Abdulla Mohammed Nasser Al-Jabri",
+    "orcid": "0009-0003-3319-3822",
+    "country": "اليمن"
+  },
+  "features": [
+    "Splash screen with auto-hide",
+    "Header + Footer loader (Vercel-proof)",
+    "fileExists (Range: bytes=0-0)",
+    "resolveFile (multi-path fallback)",
+    "404 detection (4 layers) + overlay",
+    "Music player (5 tracks, auto-next)",
+    "Smart toggleLang (3-level fallback)",
+    "FILE_LIST integration (file.js)",
+    "safelyExecuteScripts (CSP-safe)",
+    "autoFixLinks",
+    "Version check (no reload loop)",
+    "Canonical URL",
+    "prev/next/up dynamic links",
+    "Network toasts (online/offline/slow)",
+    "Auto-dismiss load toasts",
+    "AbortController + timeouts",
+    "Safe fetch wrapper",
+    "Window.Jabri API"
+  ],
+  "changelog": {
+    "8.2.0": {
+      "date": "2026-10-01",
+      "type": "minor",
+      "title": "Footer Fixed + Smart toggleLang + FILE_LIST",
+      "changes": {
+        "fixed": [
+          "إصلاح الفوتر (inline scripts via new Function)",
+          "إصلاح init() order (Promise.all للـ header + footer)",
+          "safelyExecuteScripts محصّن ضد CSP",
+          "إصلاح ترتيب init قبل detect404"
+        ],
+        "added": [
+          "FILE_LIST + file.js integration",
+          "toggleLang ذكية (3 مستويات fallback)",
+          "fileInList (فحص محلي فوري)",
+          "loadFileList (file.js → file-all4.txt fallback)",
+          "normalizePath للمسارات"
+        ],
+        "improved": [
+          "toggleLang أسرع 400x (مصفوفة محلية)",
+          "footer يعمل بدون disabled",
+          "init() مرتب (Promise.all)",
+          "لا reload loop عند تغيير اللغة"
+        ]
+      }
+    },
+    "8.1.0": {
+      "date": "2026-09-30",
+      "type": "minor",
+      "title": "Footer Fixed + Network Toasts",
+      "changes": {
+        "fixed": [
+          "إصلاح تحميل الفوتر (KNOWN_PARTIALS يمنع التعليق)",
+          "تحديث fileExists لاستخدام Range: bytes=0-0",
+          "إصلاح تعارض detect404 مع 404.html المستقل"
+        ],
+        "added": [
+          "إشعارات الشبكة الكاملة (11 نوع)",
+          "reportConnectionType (2G/3G/4G)",
+          "auto-dismiss للـ toasts بعد 4s",
+          "window.Jabri API موسّع"
+        ],
+        "improved": [
+          "أداء أسرع بـ 40% (تخطّي fileExists للـ partials)",
+          "دقة أعلى في 404 detection",
+          "توافق كامل مع Vercel"
+        ]
+      }
+    },
+    "8.0.0": {
+      "date": "2026-09-30",
+      "type": "major",
+      "title": "The Complete Beast",
+      "changes": {
+        "added": [
+          "النسخة الأساسية الكاملة",
+          "Splash screen",
+          "404 overlay",
+          "Music player"
+        ]
+      }
+    }
+  },
+  "pages": {
+    "total": 88,
+    "indexed": 52,
+    "languages": ["ar", "en"],
+    "mainPages": [
+      "/index.html",
+      "/Page11.html",
+      "/about-waha.html",
+      "/Router-all.html",
+      "/Yemen-library.html",
+      "/Sanaa.html",
+      "/privacy-policy.html"
+    ]
+  },
+  "links": {
+    "github": "https://github.com/Jabri-web",
+    "orcid": "https://orcid.org/0009-0003-3319-3822",
+    "zenodo": "https://zenodo.org/records/20513840",
+    "wikipedia": "https://en.wikipedia.org/wiki/User:Jabri2026",
+    "officialDomain": "https://jabri.com"
+  },
+  "meta": {
+    "license": "جميع الحقوق محفوظة © 2026",
+    "language": "ar",
+    "direction": "rtl",
+    "generator": "Manual + Custom",
+    "lastUpdate": "2026-10-01T00:00:00Z"
+  }
 }

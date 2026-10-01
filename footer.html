@@ -1,9 +1,8 @@
 <!-- footer.html - الفوتر العام للموقع - النسخة النهائية -->
-<footer id="site-footer" style="background:#0a0a0f;color:#e8e8f0;padding:30px 15px;border-top:1px solid #2a2a3e;font-family:'Cairo','Tajawal',Arial,sans-serif;">
-  
+  <footer id="site-footer" style="background:#0a0a0f !important;color:#e8e8f0 !important;padding:30px 15px !important;border-top:1px solid #2a2a3e !important;font-family:'Cairo','Tajawal',Arial,sans-serif !important;display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:relative !important;z-index:10 !important;">
   <!-- البحث عن الباحث -->
   <section aria-labelledby="searchTitle" style="text-align:center;margin:20px 0;border-top:1px solid #2a2a3e;padding-top:20px;">
-    <p id="searchTitle"><strong>🔍 البحث عن الباحث:</strong></p>
+    <p id="searchTitle"><strong>🔍 البحث عن الباحث:آليا-</strong></p>
     <nav aria-label="روابط البحث">
       <ul style="list-style:none;padding:0;margin:0;display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
         <li><a href="https://www.google.com/search?q=الدالة+الأم+Z(x)+نظرية+السندباد+الموحدة&udm=50" target="_blank" rel="noopener" style="color:#6ae3ff;text-decoration:none;">🏛️ <span class="txt" data-ar="الدالة الأم" data-en="Mother Function">الدالة الأم</span></a></li>
@@ -49,7 +48,7 @@
       <li><a href="/about.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">ℹ️ <span class="txt" data-ar="عن الباحث" data-en="About">About</span></a></li>
       <li><a href="/who-we.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">👥 <span class="txt" data-ar="من نحن" data-en="Who We">من نحن</span></a></li>
       <li><a href="/all-links.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🗺️ <span class="txt" data-ar="خريطة المسارات" data-en="All Links">خريطة المسارات</span></a></li>
-      <li><a href="/sitemap.xml" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🗺️ <span class="txt" data-ar="خارطة الموقع" data-en="Sitemap">خارطة الموقع</span></a></li>
+      <li><a href="/profile.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">🗺️ <span class="txt" data-ar="ملف المؤلف" data-en="Profile">Profile</span></a></li>
       <li><a href="/project.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📁 <span class="txt" data-ar="المشروع" data-en="Project">المشروع</span></a></li>
       <li><a href="/contact.html" style="color:#6ae3ff;text-decoration:none;display:flex;align-items:center;gap:5px;">📞 <span class="txt" data-ar="اتصل بنا" data-en="Contact us">اتصل بنا</span></a></li>
       
@@ -79,32 +78,71 @@
 </footer>
 
 <!-- ====== سكريبت تحديث الفوتر ====== -->
+
+
 <script>
+(function() {
+  'use strict';
+
   function updateFooterLang() {
-    const isEnglish = document.documentElement.lang === 'en';
-    const footer = document.getElementById('site-footer');
-    if (footer) footer.dir = isEnglish ? "ltr" : "rtl";
-    
-    const searchTitle = document.getElementById('searchTitle');
-    if (searchTitle) {
-      searchTitle.innerHTML = isEnglish ? "<strong>🔍 Search for Researcher:</strong>" : "<strong>🔍 البحث عن الباحث:</strong>";
+    try {
+      var isEnglish = document.documentElement.lang === 'en';
+      var footer = document.getElementById('site-footer');
+      if (footer) footer.dir = isEnglish ? "ltr" : "rtl";
+
+      var searchTitle = document.getElementById('searchTitle');
+      if (searchTitle) {
+        searchTitle.innerHTML = isEnglish
+          ? "<strong>🔍 Search for Researcher-auto:</strong>"
+          : "<strong>🔍 البحث عن الباحث-اليا:</strong>";
+      }
+
+      var copyright = document.getElementById('copyright');
+      if (copyright) {
+        copyright.innerHTML = isEnglish
+          ? "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved"
+          : "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
+      }
+
+      var items = document.querySelectorAll('#site-footer .txt');
+      for (var i = 0; i < items.length; i++) {
+        var el = items[i];
+        var newText = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+        if (newText) el.textContent = newText;
+      }
+    } catch (e) {
+      console.error('❌ updateFooterLang:', e);
     }
-    
-    const copyright = document.getElementById('copyright');
-    if (copyright) {
-      copyright.innerHTML = isEnglish ?
-        "© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri - All Rights Reserved" :
-        "© 2026 م/ عبدالله محمد ناصر الجبري - جميع الحقوق محفوظة";
-    }
-    
-    document.querySelectorAll('#site-footer .txt').forEach(el => {
-      const newText = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
-      if (newText) el.textContent = newText;
-    });
   }
-  
+
   window.updateFooterLang = updateFooterLang;
-  document.addEventListener('DOMContentLoaded', updateFooterLang);
+
+  // ✅ نفّذ فوراً
+  updateFooterLang();
+
+  // ✅ 5 محاولات إضافية (ضمان لو DOM تأخر)
+  var tries = 0;
+  var timer = setInterval(function() {
+    updateFooterLang();
+    tries++;
+    if (tries >= 5) clearInterval(timer);
+  }, 300);
+
+  // ✅ listeners احتياطية
   document.addEventListener('footerLoaded', updateFooterLang);
-  console.log('✅ footer.html - النسخة النهائية (89 رابط)');
+  document.addEventListener('headerLoaded', updateFooterLang);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateFooterLang);
+  }
+
+  // ✅ عند تغيير اللغة
+  if (window.MutationObserver) {
+    new MutationObserver(updateFooterLang).observe(
+      document.documentElement,
+      { attributes: true, attributeFilter: ['lang'] }
+    );
+  }
+
+  console.log('✅ footer.html v8.2.0 — ready');
+})();
 </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO -->
     <title>عبدالله الجبري - السيرة الذاتية | Abdulla Al-Jabri CV</title>
     <meta name="description" content="السيرة الذاتية لعبدالله محمد ناصر صالح الجبري - مهندس حاسب آلي، محلل شبكات وأنظمة، خبرة 25+ عام في تكنولوجيا المعلومات">
@@ -12,7 +12,7 @@
     <meta name="owner" content="Abdulla Mohammed Nasser Al-Jabri">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jabri-com.vercel.app/Author-cv.html">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="عبدالله الجبري - السيرة الذاتية">
     <meta property="og:description" content="مهندس حاسب آلي، محلل شبكات وأنظمة، خبرة 25+ عام">
@@ -21,7 +21,7 @@
     <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
     <meta property="profile:first_name" content="Abdulla">
     <meta property="profile:last_name" content="Al-Jabri">
-    
+
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
@@ -43,7 +43,7 @@
       "knowsLanguage": ["Arabic", "English"]
     }
     </script>
-    
+
     <style>
         /* ===== RESET ===== */
         * {
@@ -51,7 +51,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', 'Tahoma', Arial, sans-serif;
             background: linear-gradient(145deg, #eef1f7 0%, #d5dce6 100%);
@@ -60,7 +60,7 @@
             padding: 30px 20px;
             min-height: 100vh;
         }
-        
+
         /* ===== MAIN CONTAINER ===== */
         .container {
             max-width: 1100px;
@@ -72,8 +72,7 @@
             position: relative;
             overflow: hidden;
         }
-        
-        /* Decorative top bar */
+
         .container::before {
             content: '';
             position: absolute;
@@ -85,12 +84,12 @@
             background-size: 300% 100%;
             animation: shimmer 4s ease-in-out infinite;
         }
-        
+
         @keyframes shimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        
+
         /* ===== LANGUAGE SWITCHER ===== */
         .lang-switch {
             display: flex;
@@ -98,7 +97,7 @@
             gap: 12px;
             margin-bottom: 18px;
         }
-        
+
         .lang-btn {
             padding: 8px 26px;
             border: 2px solid #1a1a2e;
@@ -110,18 +109,18 @@
             font-size: 14px;
             transition: all 0.3s ease;
         }
-        
+
         .lang-btn.active {
             background: #1a1a2e;
             color: #ffffff;
             box-shadow: 0 4px 16px rgba(26, 26, 46, 0.3);
         }
-        
+
         .lang-btn:hover:not(.active) {
             background: #1a1a2e;
             color: #fff;
         }
-        
+
         /* ===== TOP NAVIGATION ===== */
         .top-nav {
             background: linear-gradient(135deg, #f7f8fc, #eef1f7);
@@ -135,7 +134,7 @@
             align-items: center;
             gap: 6px 14px;
         }
-        
+
         .top-nav a {
             color: #1a1a2e;
             text-decoration: none;
@@ -148,19 +147,19 @@
             align-items: center;
             gap: 5px;
         }
-        
+
         .top-nav a:hover {
             background: #1a1a2e;
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 14px rgba(26, 26, 46, 0.2);
         }
-        
+
         .top-nav .separator {
             color: #bbb;
             font-weight: 300;
         }
-        
+
         .top-nav .nav-brand {
             font-weight: 800;
             font-size: 17px;
@@ -169,7 +168,7 @@
             padding: 4px 18px;
             border-radius: 50px;
         }
-        
+
         .top-nav .nav-brand a {
             background: transparent;
             padding: 0;
@@ -180,7 +179,7 @@
             transform: none;
             box-shadow: none;
         }
-        
+
         /* ===== PROFILE HEADER ===== */
         .profile-header {
             display: flex;
@@ -191,12 +190,12 @@
             margin-bottom: 28px;
             flex-wrap: wrap;
         }
-        
+
         .profile-image {
             flex-shrink: 0;
             position: relative;
         }
-        
+
         .profile-image::after {
             content: '👨‍💻';
             position: absolute;
@@ -208,7 +207,7 @@
             padding: 4px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .profile-image img {
             width: 160px;
             height: 160px;
@@ -218,43 +217,43 @@
             box-shadow: 0 8px 30px rgba(26, 26, 46, 0.2);
             transition: all 0.4s ease;
         }
-        
+
         .profile-image img:hover {
             transform: scale(1.05) rotate(-3deg);
             box-shadow: 0 12px 45px rgba(26, 26, 46, 0.3);
         }
-        
+
         .profile-title {
             flex: 1;
         }
-        
+
         .profile-title .name-ar {
             font-size: 30px;
             color: #1a1a2e;
             font-weight: 700;
             margin-bottom: 2px;
         }
-        
+
         .profile-title .name-en {
             font-size: 22px;
             color: #4a4a6a;
             font-weight: 500;
             margin-bottom: 4px;
         }
-        
+
         .profile-title .subhead {
             font-size: 17px;
             color: #6a6a8a;
             font-weight: 500;
             margin-bottom: 10px;
         }
-        
+
         .profile-title .badge-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px 12px;
         }
-        
+
         .badge {
             background: #1a1a2e;
             color: #fff;
@@ -263,13 +262,13 @@
             font-size: 13px;
             font-weight: 600;
         }
-        
+
         .badge-light {
             background: #eef1f7;
             color: #1a1a2e;
             border: 1px solid #dde1f0;
         }
-        
+
         /* ===== CONTACT CARD ===== */
         .contact-card {
             background: linear-gradient(135deg, #f7f8fc, #eef1f7);
@@ -282,24 +281,24 @@
             margin: 20px 0 30px 0;
             border: 1px solid #dde1f0;
         }
-        
+
         .contact-card a {
             color: #1a1a2e;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
         }
-        
+
         .contact-card a:hover {
             color: #4a4a7a;
             text-decoration: underline;
         }
-        
+
         .contact-card .label {
             font-weight: 400;
             color: #777;
         }
-        
+
         /* ===== SECTION STYLES ===== */
         h2 {
             font-size: 24px;
@@ -311,7 +310,7 @@
             display: inline-block;
             position: relative;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -321,51 +320,51 @@
             height: 3px;
             background: #4a4a7a;
         }
-        
+
         h3 {
             font-size: 20px;
             color: #1a1a2e;
             margin-top: 26px;
             margin-bottom: 10px;
         }
-        
+
         .section {
             margin-bottom: 28px;
         }
-        
+
         .section p {
             margin-bottom: 5px;
         }
-        
+
         .sub-title {
             font-weight: 700;
             color: #1a1a2e;
             display: inline-block;
             min-width: 110px;
         }
-        
+
         ul {
             padding-right: 30px;
             margin: 6px 0 10px 0;
         }
-        
+
         ul li {
             margin-bottom: 4px;
             list-style-type: '✦ ';
             padding-right: 6px;
         }
-        
+
         ul li::marker {
             color: #1a1a2e;
             font-size: 1.1em;
         }
-        
+
         .grid-2col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px 30px;
         }
-        
+
         /* ===== EXPERIENCE BOX ===== */
         .exp-box {
             background: #fafbff;
@@ -376,30 +375,30 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
         }
-        
+
         .exp-box:hover {
             transform: translateX(-4px);
             box-shadow: 0 6px 24px rgba(0,0,0,0.07);
             border-right-color: #4a4a7a;
         }
-        
+
         .exp-box .title {
             font-weight: 700;
             font-size: 18px;
             color: #1a1a2e;
         }
-        
+
         .exp-box .meta {
             color: #4a4a6a;
             font-size: 14px;
             margin-bottom: 6px;
             display: block;
         }
-        
+
         .exp-box ul {
             margin-top: 4px;
         }
-        
+
         /* ===== SKILLS TAGS ===== */
         .skills-tags {
             display: flex;
@@ -407,7 +406,7 @@
             gap: 8px 12px;
             margin: 12px 0;
         }
-        
+
         .skill-tag {
             background: #eef1f7;
             color: #1a1a2e;
@@ -418,14 +417,14 @@
             border: 1px solid #dde1f0;
             transition: all 0.3s ease;
         }
-        
+
         .skill-tag:hover {
             background: #1a1a2e;
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(26, 26, 46, 0.15);
         }
-        
+
         /* ===== FOOTER ===== */
         .footer-links {
             text-align: center;
@@ -433,7 +432,7 @@
             padding-top: 25px;
             border-top: 3px solid #eef1f7;
         }
-        
+
         .footer-links a {
             color: #1a1a2e;
             text-decoration: none;
@@ -441,18 +440,18 @@
             margin: 0 12px;
             transition: all 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: #4a4a7a;
             text-decoration: underline;
         }
-        
+
         .footer-links .copy {
             font-size: 13px;
             color: #888;
             margin-top: 12px;
         }
-        
+
         /* ===== LANGUAGE TOGGLE ===== */
         .lang-ar, .lang-en {
             display: block;
@@ -466,7 +465,7 @@
         body.show-en .lang-en {
             display: block;
         }
-        
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
@@ -520,7 +519,7 @@
                 justify-content: center;
             }
         }
-        
+
         @media print {
             body { background: #fff; padding: 0; }
             .container { box-shadow: none; border-radius: 0; padding: 20px; }
@@ -558,21 +557,20 @@
     </nav>
 
     <!-- ========================================================== -->
-    <!-- ===== الأزرار العلوية (المضافة) ===== -->
+    <!-- ===== الأزرار العلوية ===== -->
     <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
 
-        <!-- زر السيرة العربية -->
         <a href="/cv-2026a.html" target="_blank"
            style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 السيرة - العربية (cv-2026a)
         </a>
 
-        <!-- زر السيرة الإنجليزية -->
         <a href="/cv-2026e.html" target="_blank"
            style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 C.V - English (cv-2026e)
         </a>
-            <a href="/author-history.html" target="_blank"
+
+        <a href="/author-history.html" target="_blank"
            style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 قصة الباحث (Author-history)
         </a>
@@ -634,14 +632,14 @@
         <!-- ===== EDUCATION ===== -->
         <div class="section" id="education">
             <h2>التعليم والمؤهلات</h2>
-            
+
             <h3>🎓 الشهادات الأكاديمية</h3>
             <ul>
                 <li><strong>بكالوريوس هندسة الحاسب الآلي</strong> – جامعة البترول والمعادن (KFUPM)، الظهران، السعودية (1986-1991) – المعدل: 3.2 من 4.0</li>
                 <li>مرتبة الشرف مرتين في الكلية – KFUPM (1988-1989)</li>
                 <li>شهادة تقدير وامتياز فنية – شركة هنت اليمن (YHOC) – 1998</li>
             </ul>
-            
+
             <h3>📜 الشهادات المهنية</h3>
             <ul>
                 <li>مديرو تكنولوجيا المعلومات ومراكز البيانات – يونيكس – UIT (2010)</li>
@@ -649,14 +647,14 @@
                 <li>صيانة الشبكات – UIT (1999)</li>
                 <li>تنفيذ وإعداد الشبكة – UIT (1999)</li>
             </ul>
-            
+
             <h3>🇬🇧 شهادات اللغة الإنجليزية</h3>
             <ul>
                 <li>المستوى 4 – المعهد الأمريكي YALI (1998) – تقدير A</li>
                 <li>المستوى المتقدم 5 – YALI (1999) – تقدير A</li>
                 <li>شهادة تحضير التوفل – YALI (1999) – تقدير A</li>
             </ul>
-            
+
             <p><strong>📌 شهادة إدارة المشروع:</strong> حل مشكلة عام 2000 (Y2K) – أجهزة/برامج/مستودعات/مشتريات – صنعاء/مارب – YHOC (1999).</p>
             <p><strong>⏳ الخبرة:</strong> منذ مارس 1991 – حتى الآن كمحلل (شبكات / أنظمة / أعمال).</p>
         </div>
@@ -664,7 +662,7 @@
         <!-- ===== WORK HISTORY ===== -->
         <div class="section" id="experience">
             <h2>الخبرات المهنية</h2>
-            
+
             <div class="exp-box">
                 <div class="title">🏢 (1) ITT – النظم والاتصالات</div>
                 <span class="meta">محلل (تكنولوجيا المعلومات / شبكات / أعمال) | 01/2002 – حتى الآن | صنعاء، اليمن</span>
@@ -678,7 +676,7 @@
                     <li>إعداد التقارير للإدارة العليا بالإنجازات الأسبوعية/الشهرية/السنوية.</li>
                 </ul>
             </div>
-            
+
             <div class="exp-box">
                 <div class="title">🛢️ (2) YHOC – شركة هنت اليمنية للنفط</div>
                 <span class="meta">محلل شبكات / أنظمة معلومات | 01/1996 – 02/2002 | صنعاء / مأرب، اليمن</span>
@@ -691,7 +689,7 @@
                     <li>دعم Active Directory و DHCP و DNS و Group Policy و IIS.</li>
                 </ul>
             </div>
-            
+
             <div class="exp-box">
                 <div class="title">📺 (3) MI – وزارة الإعلام</div>
                 <span class="meta">مدير فني – مركز التوثيق الإعلامي | 03/1992 – 01/1999 | صنعاء – تعز – عدن، اليمن</span>
@@ -709,7 +707,7 @@
         <div class="section" id="skills">
             <h2>الهدف والمهارات</h2>
             <p><strong>🎯 الهدف:</strong> العمل في تكنولوجيا المعلومات، البرمجيات، الأجهزة، الشبكات، الاتصالات، إدارة قواعد البيانات، الإدارة، التسويق، والتخطيط.</p>
-            
+
             <h3>⚡ المهارات الرئيسية</h3>
             <div class="skills-tags">
                 <span class="skill-tag">البنية التحتية لتكنولوجيا المعلومات</span>
@@ -730,17 +728,14 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- ===== الأزرار السفلية (من نسخة 24-8-2026) ===== -->
+        <!-- ===== الأزرار السفلية ===== -->
         <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
 
-            <!-- زر تحميل PDF -->
             <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
                style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📄 تحميل السيرة الذاتية (PDF)
             </a>
 
-            <!-- زر عرض الجدول -->
             <button onclick="toggleTable()"
                     style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📊 عرض جدول المشاريع والـ DOIs
@@ -748,7 +743,7 @@
 
         </div>
 
-        <!-- ===== جدول المشاريع (مخفي افتراضيًا) ===== -->
+        <!-- ===== جدول المشاريع ===== -->
         <div id="projectsTable" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
 
             <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 المشاريع البحثية والـ DOIs</h3>
@@ -798,7 +793,6 @@
                 }
             }
         </script>
-        <!-- ========================================================== -->
 
         <!-- ===== FOOTER ===== -->
         <div class="footer-links">
@@ -821,7 +815,7 @@
     <div class="lang-en">
 
         <!-- ===== PROFILE HEADER ===== -->
-        <div class="profile-header" id="profile">
+        <div class="profile-header" id="profile-en">
             <div class="profile-image">
                 <img src="https://jabri-com.vercel.app/image/Jabri-photo.png" alt="Abdulla Al-Jabri Photo">
             </div>
@@ -867,16 +861,16 @@
         </div>
 
         <!-- ===== EDUCATION ===== -->
-        <div class="section" id="education">
+        <div class="section" id="education-en">
             <h2>Education & Qualifications</h2>
-            
+
             <h3>🎓 Academic Degrees</h3>
             <ul>
                 <li><strong>Bachelor of Computer Engineering</strong> – KFUPM, Dhahran, Saudi Arabia (1986-1991) – GPA: 3.2/4.0</li>
                 <li>Dean's Honor List (twice) – KFUPM (1988-1989)</li>
                 <li>Certificate of Appreciation & Technical Excellence – YHOC (1998)</li>
             </ul>
-            
+
             <h3>📜 Professional Certificates</h3>
             <ul>
                 <li>IT & Data Center Managers – Unix – UIT (2010)</li>
@@ -884,22 +878,22 @@
                 <li>Network Maintenance – UIT (1999)</li>
                 <li>Network Implementation & Setup – UIT (1999)</li>
             </ul>
-            
+
             <h3>🇬🇧 English Certificates</h3>
             <ul>
                 <li>Level 4 – YALI American Institute (1998) – Grade A</li>
                 <li>Advanced Level 5 – YALI (1999) – Grade A</li>
                 <li>TOEFL Preparation – YALI (1999) – Grade A</li>
             </ul>
-            
+
             <p><strong>📌 Project Management Certificate:</strong> Y2K Problem Solution (Hardware/Software/Warehouses/Procurement) – Sana'a/Marib – YHOC (1999).</p>
             <p><strong>⏳ Experience:</strong> Since March 1991 – Present as Analyst (Networks / Systems / Business).</p>
         </div>
 
         <!-- ===== WORK HISTORY ===== -->
-        <div class="section" id="experience">
+        <div class="section" id="experience-en">
             <h2>Professional Experience</h2>
-            
+
             <div class="exp-box">
                 <div class="title">🏢 (1) ITT – Systems & Communications</div>
                 <span class="meta">Analyst (IT / Networks / Business) | 01/2002 – Present | Sana'a, Yemen</span>
@@ -913,7 +907,7 @@
                     <li>Report weekly/monthly/annual achievements to senior management.</li>
                 </ul>
             </div>
-            
+
             <div class="exp-box">
                 <div class="title">🛢️ (2) YHOC – Hunt Yemen Oil Company</div>
                 <span class="meta">Network / Information Systems Analyst | 01/1996 – 02/2002 | Sana'a / Marib, Yemen</span>
@@ -926,7 +920,7 @@
                     <li>Support Active Directory, DHCP, DNS, Group Policy, and IIS.</li>
                 </ul>
             </div>
-            
+
             <div class="exp-box">
                 <div class="title">📺 (3) MI – Ministry of Information</div>
                 <span class="meta">Technical Director – Media Documentation Center | 03/1992 – 01/1999 | Sana'a – Taiz – Aden, Yemen</span>
@@ -941,10 +935,10 @@
         </div>
 
         <!-- ===== OBJECTIVE & SKILLS ===== -->
-        <div class="section" id="skills">
+        <div class="section" id="skills-en">
             <h2>Objective & Skills</h2>
             <p><strong>🎯 Objective:</strong> Work in IT, Software, Hardware, Networking, Communication, Database Management, Management, Marketing, and Planning.</p>
-            
+
             <h3>⚡ Key Skills</h3>
             <div class="skills-tags">
                 <span class="skill-tag">IT Infrastructure</span>
@@ -965,17 +959,14 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- ===== الأزرار السفلية (من نسخة 24-8-2026) ===== -->
+        <!-- ===== الأزرار السفلية ===== -->
         <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
 
-            <!-- زر تحميل PDF -->
             <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
                style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📄 Download CV (PDF)
             </a>
 
-            <!-- زر عرض الجدول -->
             <button onclick="toggleTableEn()"
                     style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📊 View Projects & DOIs Table
@@ -983,7 +974,7 @@
 
         </div>
 
-        <!-- ===== Projects Table (Hidden by default) ===== -->
+        <!-- ===== Projects Table ===== -->
         <div id="projectsTableEn" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
 
             <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 Research Projects & DOIs</h3>
@@ -1033,7 +1024,6 @@
                 }
             }
         </script>
-        <!-- ========================================================== -->
 
         <!-- ===== FOOTER ===== -->
         <div class="footer-links">
@@ -1057,7 +1047,7 @@
         const body = document.body;
         const arBtn = document.getElementById('lang-ar-btn');
         const enBtn = document.getElementById('lang-en-btn');
-        
+
         if (lang === 'ar') {
             body.classList.remove('show-en');
             arBtn.classList.add('active');
@@ -1072,66 +1062,84 @@
             document.documentElement.dir = 'ltr';
         }
     }
-    
+
     // Default: Arabic
     setLanguage('ar');
 </script>
 
 
-<!-- أيقونة العداد - شمال نصف المسافة -->
+<!-- ========================================================== -->
+<!-- أيقونة العداد — بدون Firebase -->
+<!-- ========================================================== -->
 <div id="visitorCounter" style="position:fixed; top:65px; left:25%; transform:translateX(-50%) scale(0.5); transform-origin:center; background:linear-gradient(135deg,#8B4513,#A0522D); color:white; padding:10px 20px; border-radius:50px; font-size:18px; font-weight:bold; box-shadow:0 4px 15px rgba(139,69,19,0.5); z-index:9999; display:flex; align-items:center; gap:8px; border:1px solid #D2B48C;">
-    <span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار:</span>
-    <span id="counterNumber">1</span>
+    <span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار visitor:</span>
+    <span id="counterNumber">١</span>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <script>
-    // 1. بيانات Firebase (حط بياناتك الحقيقية)
-    const firebaseConfig = {
-        apiKey: "AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        authDomain: "jabri-waha.firebaseapp.com",
-        databaseURL: "https://jabri-waha-default-rtdb.firebaseio.com",
-        projectId: "jabri-waha",
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-    const counterRef = db.ref('visitorCount');
-    
-    const counterTextEl = document.getElementById('counterText');
-    const counterNumberEl = document.getElementById('counterNumber');
-    
-    // دالة تحديث اللغة
-    function updateLang() {
-        const isEn = document.body.classList.contains('en');
-        counterTextEl.textContent = isEn ? counterTextEl.getAttribute('data-en') : counterTextEl.getAttribute('data-ar');
+(function() {
+    'use strict';
+
+    var counterTextEl = document.getElementById('counterText');
+    var counterNumberEl = document.getElementById('counterNumber');
+
+    // رقم البداية
+    var BASE_COUNT = 1247;
+
+    var STORAGE_KEY = 'jabri_visitor_count';
+    var VISIT_FLAG = 'jabri_visited_today';
+
+    var count = parseInt(localStorage.getItem(STORAGE_KEY) || BASE_COUNT, 10);
+
+    // زيادة العداد مرة واحدة يومياً
+    var today = new Date().toDateString();
+    var lastVisit = localStorage.getItem(VISIT_FLAG);
+
+    if (lastVisit !== today) {
+        count += 1;
+        localStorage.setItem(STORAGE_KEY, count);
+        localStorage.setItem(VISIT_FLAG, today);
     }
-    
-    // 2. استماع فوري للتغييرات (تحديث الرقم لكل الزوار لحظياً)
-    counterRef.on('value', (s) => {
-        const count = s.val() || 1;
-        const isEn = document.body.classList.contains('en');
-        counterNumberEl.textContent = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
-        updateLang();
-    });
-    
-    // 3. تسجيل الزائر الجديد فقط (الحقيقي)
-    if (!sessionStorage.getItem('visited')) {
-        sessionStorage.setItem('visited', 'true');
-        // لو أول زائر في التاريخ يبدا من 1، واللي بعده 2، 3، 4...
-        counterRef.transaction(c => (c || 0) + 1);
-    }
-    
-    // 4. ربط اللغة بزر التبديل
-    const oldToggle = window.toggleLang;
-    if (typeof oldToggle === 'function') {
-        window.toggleLang = function() {
-            oldToggle();
-            updateLang();
+
+    // تحديث الرقم حسب اللغة
+    function updateCounter() {
+        var isEn = document.body.classList.contains('show-en') ||
+                   document.documentElement.lang === 'en';
+        var formatted = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
+
+        if (counterNumberEl) counterNumberEl.textContent = formatted;
+        if (counterTextEl) {
+            counterTextEl.textContent = isEn
+                ? (counterTextEl.getAttribute('data-en') || '👥 Visitors:')
+                : (counterTextEl.getAttribute('data-ar') || '👥 زوار visitor:');
         }
     }
-</script>
-<!-- نهاية زر الزوار -->
 
+    updateCounter();
+
+    // تحديث عند تبديل اللغة
+    var oldSetLang = window.setLanguage;
+    if (typeof oldSetLang === 'function') {
+        window.setLanguage = function(lang) {
+            oldSetLang(lang);
+            setTimeout(updateCounter, 50);
+        };
+    }
+
+    console.log('✅ عداد الزوار — بدون Firebase');
+})();
+</script>
+
+
+
+
+
+<!-- في كل صفحة HTML -->
+
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/file.js" defer></script>
+<script src="/js/init-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
 </body>
 </html>

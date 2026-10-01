@@ -1,216 +1,328 @@
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v2.7)           -->
-<!-- التاريخ: 2026-09-21 | تحديث: الملكية + Schema شامل        -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v3.0)           -->
+<!-- التاريخ: 2026-10-01 | تحديث: ديناميكي كامل + إصلاح المسارات -->
 <!-- ========================================================== -->
 
-<!-- ===== 1. وسوم السيو الأساسية ===== -->
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-<meta name="theme-color" content="#0a0a0f">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-
-<!-- ===== 2. ⚖️ الملكية والمصدر — تثبيت هوية "واحة الجبري" ===== -->
-<meta property="og:site_name" content="واحة الجبري">
-<meta name="application-name" content="واحة الجبري">
-<meta name="apple-mobile-web-app-title" content="واحة الجبري">
-
-<meta name="author" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="owner" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="publisher" content="واحة الجبري">
-<meta name="creator" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="designer" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="developer" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="editor" content="م/ عبدالله محمد ناصر الجبري">
-<meta name="source" content="واحة الجبري">
-<meta name="origin" content="صنعاء، اليمن">
-<meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة">
-
-<meta property="article:publisher" content="واحة الجبري">
-<meta property="article:author" content="م/ عبدالله محمد ناصر الجبري">
-
-<!-- ===== 3. العنوان والوصف (يُحدّث ديناميكياً) ===== -->
-<title id="dynamicTitle">واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة</title>
-<meta id="dynamicDescription" name="description" content="الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري">
-
-<!-- ===== 4. كروت المشاركة (Open Graph & Twitter) ===== -->
-<meta id="dynamicOgLocale" property="og:locale" content="ar_YE">
-<meta id="dynamicOgTitle" property="og:title" content="واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة">
-<meta id="dynamicOgDescription" property="og:description" content="اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون">
-<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:type" content="website">
-<meta id="dynamicOgUrl" property="og:url" content="https://jabri-com.vercel.app/">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
-<meta id="dynamicTwitterTitle" name="twitter:title" content="واحة الجبري - نظرية السندباد الموحدة">
-<meta id="dynamicTwitterDescription" name="twitter:description" content="الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري">
-
-<!-- ===== 5.a. Canonical ===== -->
-<link id="dynamicCanonical" rel="canonical" href="https://jabri-com.vercel.app/" />
-
-<!-- ===== 5.b. البدائل اللغوية (hreflang) ===== -->
-<link id="dynamicHreflangAr" rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/" />
-<link id="dynamicHreflangEn" rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/" />
-<link id="dynamicHreflangDefault" rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
-
-<!-- ===== 6. Manifest والأيقونات ===== -->
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="/image/Yemen2026.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
-<!-- ===== 7. Schema.org — شامل (الملكية + المصدر + المؤسسة) ===== -->
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      
-      {
-        "@type": "Person",
-        "@id": "https://jabri-com.vercel.app/#jabri",
-        "name": "م/ عبدالله محمد ناصر الجبري",
-        "alternateName": [
-          "Heaven Al-Jabri",
-          "Eng. Abdulla Mohammed Nasser Al-Jabri",
-          "واحة الجبري",
-          "سندباد اليمن"
-        ],
-        "givenName": "عبدالله",
-        "familyName": "الجبري",
-        "honorificPrefix": "م/",
-        "gender": "Male",
-        "nationality": { "@type": "Country", "name": "اليمن" },
-        "birthPlace": { "@type": "Place", "name": "صنعاء، اليمن" },
-        "url": "https://jabri-com.vercel.app/about.html",
-        "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-        "identifier": "https://orcid.org/0009-0003-3319-3822",
-        "jobTitle": "باحث ومبرمج ومؤسس",
-        "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
-        "knowsAbout": [
-          "الرياضيات",
-          "الفيزياء النظرية",
-          "فرضية ريمان",
-          "نظرية السندباد الموحدة",
-          "تراث اليمن",
-          "البرمجة",
-          "الذكاء الاصطناعي"
-        ],
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "جامعة الملك فهد للبترول والمعادن (KFUPM)"
-        },
-        "sameAs": [
-          "https://orcid.org/0009-0003-3319-3822",
-          "https://github.com/Jabri-web",
-          "https://zenodo.org/records/20513840",
-          "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html",
-          "https://en.wikipedia.org/wiki/User:Jabri2026",
-          "https://www.facebook.com/share/p/1CvCG9xehw/",
-          "https://www.instagram.com/reel/Da5zRhypJlo/",
-          "https://t.me/Heaven_Jabri/",
-          "https://www.linkedin.com/in/abdulla-al-jabri-bb545830b"
-        ]
-      },
-      
-      {
-        "@type": "Organization",
-        "@id": "https://jabri-com.vercel.app/#organization",
-        "name": "واحة الجبري",
-        "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
-        "legalName": "واحة الجبري",
-        "url": "https://jabri-com.vercel.app/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-          "width": 1200,
-          "height": 630
-        },
-        "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-        "description": "واحة الجبري — منصة علمية وثقافية لتوثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية (نظرية السندباد الموحدة Z+C+A=1).",
-        "foundingDate": "2026",
-        "foundingLocation": { "@type": "Place", "name": "صنعاء، اليمن" },
-        "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "maintainer": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "funder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "areaServed": { "@type": "Place", "name": "Worldwide" },
-        "knowsAbout": [
-          "Riemann Hypothesis",
-          "P vs NP",
-          "Yang-Mills Theory",
-          "Navier-Stokes Equations",
-          "Yemeni Heritage",
-          "Unified Field Theory",
-          "Mathematics",
-          "Theoretical Physics"
-        ],
-        "sameAs": [
-          "https://orcid.org/0009-0003-3319-3822",
-          "https://github.com/Jabri-web",
-          "https://zenodo.org/records/20513840",
-          "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
-        ]
-      },
-      
-      {
-        "@type": "WebSite",
-        "@id": "https://jabri-com.vercel.app/#website",
-        "url": "https://jabri-com.vercel.app/",
-        "name": "واحة الجبري",
-        "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
-        "description": "توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
-        "inLanguage": ["ar", "en"],
-        "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-        "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#organization" },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      },
-      
-      {
-        "@type": "WebPage",
-        "@id": "https://jabri-com.vercel.app/#webpage",
-        "url": "https://jabri-com.vercel.app/",
-        "name": "واحة الجبري | Heaven Al-Jabri",
-        "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
-        "about": { "@id": "https://jabri-com.vercel.app/#organization" },
-        "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
-        "inLanguage": "ar",
-        "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-        "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-        "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+<!-- ===== 1-7. SEO & Schema — تُضاف ديناميكياً إلى <head> ===== -->
+<script>
+(function() {
+  'use strict';
+  
+  // ═══════════════════════════════════════════════════
+  //  🎯 إضافة meta tags إلى <head> (لا تعمل داخل body)
+  //  ⚠️ نتحقق أولاً — لا نُكرّر
+  // ═══════════════════════════════════════════════════
+  function addMetaTags() {
+    var head = document.head;
+    if (!head) return;
+    
+    // ═══════ 1. SEO الأساسية ═══════
+    var seoTags = [
+      { name: 'theme-color', content: '#0a0a0f' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+      { name: 'google-site-verification', content: 'SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U' }
+    ];
+    seoTags.forEach(function(tag) {
+      if (!head.querySelector('meta[name="' + tag.name + '"]')) {
+        var m = document.createElement('meta');
+        m.name = tag.name;
+        m.content = tag.content;
+        head.appendChild(m);
       }
+    });
+    
+    // ═══════ 2. الملكية والمصدر ═══════
+    var ownershipTags = [
+      { prop: 'og:site_name', content: 'واحة الجبري' },
+      { name: 'application-name', content: 'واحة الجبري' },
+      { name: 'apple-mobile-web-app-title', content: 'واحة الجبري' }
+    ];
+    ownershipTags.forEach(function(tag) {
+      if (tag.prop && !head.querySelector('meta[property="' + tag.prop + '"]')) {
+        var m = document.createElement('meta');
+        m.setAttribute('property', tag.prop);
+        m.content = tag.content;
+        head.appendChild(m);
+      } else if (tag.name && !head.querySelector('meta[name="' + tag.name + '"]')) {
+        var m2 = document.createElement('meta');
+        m2.name = tag.name;
+        m2.content = tag.content;
+        head.appendChild(m2);
+      }
+    });
+    
+    // ═══════ 3. Author/Owner/Publisher ═══════
+    var authorTags = [
+      { name: 'author', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'owner', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'publisher', content: 'واحة الجبري' },
+      { name: 'creator', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'designer', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'developer', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'editor', content: 'م/ عبدالله محمد ناصر الجبري' },
+      { name: 'source', content: 'واحة الجبري' },
+      { name: 'origin', content: 'صنعاء، اليمن' },
+      { name: 'copyright', content: '© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة' }
+    ];
+    authorTags.forEach(function(tag) {
+      if (!head.querySelector('meta[name="' + tag.name + '"]')) {
+        var m = document.createElement('meta');
+        m.name = tag.name;
+        m.content = tag.content;
+        head.appendChild(m);
+      }
+    });
+    
+    var articleTags = [
+      { prop: 'article:publisher', content: 'واحة الجبري' },
+      { prop: 'article:author', content: 'م/ عبدالله محمد ناصر الجبري' }
+    ];
+    articleTags.forEach(function(tag) {
+      if (!head.querySelector('meta[property="' + tag.prop + '"]')) {
+        var m = document.createElement('meta');
+        m.setAttribute('property', tag.prop);
+        m.content = tag.content;
+        head.appendChild(m);
+      }
+    });
+    
+    // ═══════ 4. Title (إن لم يكن موجوداً) ═══════
+    if (!document.getElementById('dynamicTitle') && !document.title) {
+      document.title = 'واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة';
+    }
+    
+    // ═══════ 5. Description (إن لم يكن موجوداً) ═══════
+    if (!document.getElementById('dynamicDescription') && !head.querySelector('meta[name="description"]')) {
+      var desc = document.createElement('meta');
+      desc.id = 'dynamicDescription';
+      desc.name = 'description';
+      desc.content = 'الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري';
+      head.appendChild(desc);
+    }
+    
+    // ═══════ 6. Open Graph & Twitter (إن لم تكن موجودة) ═══════
+    var ogTags = [
+      { prop: 'og:locale', content: 'ar_YE', id: 'dynamicOgLocale' },
+      { prop: 'og:title', content: 'واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة', id: 'dynamicOgTitle' },
+      { prop: 'og:description', content: 'اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون', id: 'dynamicOgDescription' },
+      { prop: 'og:image', content: 'https://jabri-com.vercel.app/image/Jabri-photo.webp' },
+      { prop: 'og:image:width', content: '1200' },
+      { prop: 'og:image:height', content: '630' },
+      { prop: 'og:type', content: 'website' },
+      { prop: 'og:url', content: 'https://jabri-com.vercel.app/', id: 'dynamicOgUrl' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: 'https://jabri-com.vercel.app/image/Jabri-photo.webp' },
+      { name: 'twitter:title', content: 'واحة الجبري - نظرية السندباد الموحدة', id: 'dynamicTwitterTitle' },
+      { name: 'twitter:description', content: 'الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري', id: 'dynamicTwitterDescription' }
+    ];
+    ogTags.forEach(function(tag) {
+      var existing = tag.prop 
+        ? head.querySelector('meta[property="' + tag.prop + '"]')
+        : head.querySelector('meta[name="' + tag.name + '"]');
+      if (!existing) {
+        var m = document.createElement('meta');
+        if (tag.prop) m.setAttribute('property', tag.prop);
+        if (tag.name) m.setAttribute('name', tag.name);
+        if (tag.id) m.id = tag.id;
+        m.content = tag.content;
+        head.appendChild(m);
+      }
+    });
+    
+    // ═══════ 7. Canonical ═══════
+    if (!document.getElementById('dynamicCanonical') && !head.querySelector('link[rel="canonical"]')) {
+      var link = document.createElement('link');
+      link.id = 'dynamicCanonical';
+      link.rel = 'canonical';
+      link.href = 'https://jabri-com.vercel.app/';
+      head.appendChild(link);
+    }
+    
+    // ═══════ 8. hreflang ═══════
+    var hreflangs = [
+      { hreflang: 'ar', href: 'https://jabri-com.vercel.app/', id: 'dynamicHreflangAr' },
+      { hreflang: 'en', href: 'https://jabri-com.vercel.app/en/', id: 'dynamicHreflangEn' },
+      { hreflang: 'x-default', href: 'https://jabri-com.vercel.app/', id: 'dynamicHreflangDefault' }
+    ];
+    hreflangs.forEach(function(h) {
+      if (!document.getElementById(h.id) && !head.querySelector('link[hreflang="' + h.hreflang + '"]')) {
+        var link = document.createElement('link');
+        link.id = h.id;
+        link.rel = 'alternate';
+        link.hreflang = h.hreflang;
+        link.href = h.href;
+        head.appendChild(link);
+      }
+    });
+    
+    // ═══════ 9. Manifest & Icons (مسارات مطلقة!) ═══════
+    if (!head.querySelector('link[rel="manifest"]')) {
+      var manifest = document.createElement('link');
+      manifest.rel = 'manifest';
+      manifest.href = '/manifest.json';
+      head.appendChild(manifest);
+    }
+    
+    var icons = [
+      { rel: 'apple-touch-icon', href: '/image/Yemen2026.png' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/image/Yemen2026.png' },
+      { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/image/Yemen2026.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ];
+    icons.forEach(function(ic) {
+      var selector = 'link[rel="' + ic.rel + '"]' + (ic.sizes ? '[sizes="' + ic.sizes + '"]' : '');
+      if (!head.querySelector(selector)) {
+        var link = document.createElement('link');
+        link.rel = ic.rel;
+        if (ic.type) link.type = ic.type;
+        if (ic.sizes) link.sizes = ic.sizes;
+        link.href = ic.href;
+        head.appendChild(link);
+      }
+    });
+    
+    // ═══════ 10. Schema.org (JSON-LD) ═══════
+    if (!document.getElementById('jabriSchemaLD')) {
+      var schema = document.createElement('script');
+      schema.id = 'jabriSchemaLD';
+      schema.type = 'application/ld+json';
+      schema.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://jabri-com.vercel.app/#jabri",
+            "name": "م/ عبدالله محمد ناصر الجبري",
+            "alternateName": ["Heaven Al-Jabri", "Eng. Abdulla Mohammed Nasser Al-Jabri", "واحة الجبري", "سندباد اليمن"],
+            "givenName": "عبدالله",
+            "familyName": "الجبري",
+            "honorificPrefix": "م/",
+            "gender": "Male",
+            "nationality": { "@type": "Country", "name": "اليمن" },
+            "birthPlace": { "@type": "Place", "name": "صنعاء، اليمن" },
+            "url": "https://jabri-com.vercel.app/about.html",
+            "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "identifier": "https://orcid.org/0009-0003-3319-3822",
+            "jobTitle": "باحث ومبرمج ومؤسس",
+            "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
+            "knowsAbout": ["الرياضيات", "الفيزياء النظرية", "فرضية ريمان", "نظرية السندباد الموحدة", "تراث اليمن", "البرمجة", "الذكاء الاصطناعي"],
+            "alumniOf": { "@type": "CollegeOrUniversity", "name": "جامعة الملك فهد للبترول والمعادن (KFUPM)" },
+            "sameAs": [
+              "https://orcid.org/0009-0003-3319-3822",
+              "https://github.com/Jabri-web",
+              "https://zenodo.org/records/20513840",
+              "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html",
+              "https://en.wikipedia.org/wiki/User:Jabri2026",
+              "https://www.facebook.com/share/p/1CvCG9xehw/",
+              "https://www.instagram.com/reel/Da5zRhypJlo/",
+              "https://t.me/Heaven_Jabri/",
+              "https://www.linkedin.com/in/abdulla-al-jabri-bb545830b"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://jabri-com.vercel.app/#organization",
+            "name": "واحة الجبري",
+            "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
+            "legalName": "واحة الجبري",
+            "url": "https://jabri-com.vercel.app/",
+            "logo": { "@type": "ImageObject", "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp", "width": 1200, "height": 630 },
+            "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "description": "واحة الجبري — منصة علمية وثقافية لتوثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية (نظرية السندباد الموحدة Z+C+A=1).",
+            "foundingDate": "2026",
+            "foundingLocation": { "@type": "Place", "name": "صنعاء، اليمن" },
+            "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "maintainer": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "funder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "areaServed": { "@type": "Place", "name": "Worldwide" },
+            "knowsAbout": ["Riemann Hypothesis", "P vs NP", "Yang-Mills Theory", "Navier-Stokes Equations", "Yemeni Heritage", "Unified Field Theory", "Mathematics", "Theoretical Physics"],
+            "sameAs": [
+              "https://orcid.org/0009-0003-3319-3822",
+              "https://github.com/Jabri-web",
+              "https://zenodo.org/records/20513840",
+              "https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://jabri-com.vercel.app/#website",
+            "url": "https://jabri-com.vercel.app/",
+            "name": "واحة الجبري",
+            "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
+            "description": "توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
+            "inLanguage": ["ar", "en"],
+            "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
+            "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#organization" },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://jabri-com.vercel.app/#webpage",
+            "url": "https://jabri-com.vercel.app/",
+            "name": "واحة الجبري | Heaven Al-Jabri",
+            "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+            "about": { "@id": "https://jabri-com.vercel.app/#organization" },
+            "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "inLanguage": "ar",
+            "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
+            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+          }
+        ]
+      });
+      head.appendChild(schema);
+    }
+    
+    // ═══════ 11. الخطوط والأيقونات ═══════
+    if (!head.querySelector('link[href*="fonts.googleapis.com"]')) {
+      var pre1 = document.createElement('link');
+      pre1.rel = 'preconnect';
+      pre1.href = 'https://fonts.googleapis.com';
+      head.appendChild(pre1);
       
-    ]
+      var pre2 = document.createElement('link');
+      pre2.rel = 'preconnect';
+      pre2.href = 'https://fonts.gstatic.com';
+      pre2.crossOrigin = 'anonymous';
+      head.appendChild(pre2);
+      
+      var fa = document.createElement('link');
+      fa.rel = 'stylesheet';
+      fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+      head.appendChild(fa);
+      
+      var fonts = document.createElement('link');
+      fonts.rel = 'stylesheet';
+      fonts.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap';
+      head.appendChild(fonts);
+    }
+    
+    console.log('✅ [header] تمت إضافة SEO + Schema + Manifest + الخطوط إلى <head>');
   }
+  
+  // تشغيل فوراً (قبل DOMContentLoaded لأن head موجود)
+  addMetaTags();
+})();
 </script>
 
-<!-- ===== 8. الخطوط والأيقونات ===== -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-
-<!-- ===== 9. الأنماط (CSS) ===== -->
-
+<!-- ===== 12. الأنماط (CSS) — داخل <style> ===== -->
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; }
@@ -229,17 +341,11 @@
         z-index: 0; object-fit: cover; opacity: 0.12;
     }
     
-    
-    
-    
-      .top-header-buttons {
+    .top-header-buttons {
         position: fixed; top: 12px; left: 12px; right: 65px; width: auto; z-index: 9998;
         display: flex; justify-content: space-between; align-items: center; gap: 10px;
         padding: 0; pointer-events: none;
     }
-
-    
-    
     .top-header-buttons > * { pointer-events: auto; }
     .top-btn {
         background: rgba(10, 10, 15, 0.85) !important;
@@ -459,7 +565,7 @@
 </style>
 
 <!-- ========================================================== -->
-<!-- 8. خلفية الفيديو + الصوت الأساسي                          -->
+<!-- خلفية الفيديو + الصوت الأساسي                              -->
 <!-- ========================================================== -->
 <video class="bg-video" id="bgVideo" autoplay muted playsinline loop poster="/image/oasis-poster.jpg">
     <source src="/image/heaven3.mp4" type="video/mp4" />
@@ -472,12 +578,17 @@
 </audio>
 
 <!-- ========================================================== -->
-<!-- 9. الأزرار العلوية                                        -->
+<!-- الأزرار العلوية                                            -->
 <!-- ========================================================== -->
 <div class="top-header-buttons">
     <div style="display:flex; gap:8px;">
-        <button class="top-btn menu" title="القائمة">☰</button>
-        <button class="top-btn lang" id="langTopBtn" onclick="window.toggleLang && window.toggleLang()" title="تبديل اللغة">
+        <button class="top-btn menu" onclick="window.toggleSideMenu && window.toggleSideMenu()" title="القائمة">☰</button>
+        <button class="top-btn lang" id="langTopBtn" onclick="(function(){
+            if (window.toggleLang) return window.toggleLang();
+            if (window.Jabri && window.Jabri.toggleLang) return window.Jabri.toggleLang();
+            if (window.switchLanguage) return window.switchLanguage();
+            console.warn('⚠️ دالة تبديل اللغة غير محمّلة');
+        })()" title="تبديل اللغة">
             <span class="ar">🇾🇪 عربي</span>
             <span class="en">🇬🇧 EN</span>
         </button>
@@ -490,7 +601,7 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- 11. نافذة تسجيل الدخول                                    -->
+<!-- نافذة تسجيل الدخول                                        -->
 <!-- ========================================================== -->
 <div class="login-modal" id="loginModal">
     <div class="modal-content">
@@ -518,7 +629,7 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- 12. نافذة الإعدادات                                        -->
+<!-- نافذة الإعدادات                                            -->
 <!-- ========================================================== -->
 <div class="settings-overlay" id="settingsOverlay">
     <div class="settings-box">
@@ -541,7 +652,7 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- 13. الأزرار السفلية (يسار)                                -->
+<!-- الأزرار السفلية (يسار)                                    -->
 <!-- ========================================================== -->
 <div class="bottom-buttons">
     <button class="bottom-btn music" id="musicBottomBtn" onclick="window.toggleMusic()">🎵</button>
@@ -549,22 +660,16 @@
 </div>
 
 <!-- ========================================================== -->
-<!-- 14. زر صوت الخلفية (يمين أسفل)                            -->
+<!-- زر صوت الخلفية (يمين أسفل)                                -->
 <!-- ========================================================== -->
 <button class="sound-toggle-btn" id="soundBtn" onclick="window.toggleBgSound()">🔊 تشغيل الصوت</button>
 
 <!-- ========================================================== -->
-<!-- 16. JavaScript الموحّد (يستخدم WahaAuth + switchLanguage)  -->
-<!-- ⚠️ ملاحظة v2.6: تم إزالة كود "حذف الكاش عند كل تحميل"      -->
-<!--    لأنه كان يمنع العمل بدون إنترنت على APK و PWA           -->
+<!-- JavaScript الموحّد                                          -->
 <!-- ========================================================== -->
 <script>
 (function() {
     'use strict';
-
-    // ⚠️ [v2.6] تم حذف كود تنظيف الكاش الذي كان هنا
-    // السبب: كان يمحو cache كل تحميل → يكسر offline تماماً
-    // الكاش يُدار الآن عبر sw.js فقط
 
     // ========== كشف البيئة ==========
     var IS_APK = (location.protocol === 'file:') ||
@@ -737,7 +842,7 @@
         window.open('/publish/publish-auto.html', '_blank');
     };
 
-    // ========== القائمة الجانبية (للتوافق مع menu.js) ==========
+    // ========== القائمة الجانبية ==========
     window.toggleSideMenu = function() {
         var sm = document.getElementById('sideMenu');
         var mo = document.getElementById('menuOverlay');
@@ -753,15 +858,6 @@
     if (!window.toggleMenu) {
         window.toggleMenu = window.toggleSideMenu;
     }
-
-    // ============================================================
-    //   🌐 زر اللغة — v2.11
-    //   ─────────────────────────────────────────────────────────
-    //   ⚠️ لا نعرّف toggleLang هنا
-    //   ✅ init-page-root.js v6.5 هو المسؤول الرسمي
-    //   ✅ menu.js v7.5 يُساعد عبر __wahaBuildLangUrl
-    //   ✅ الزر في HTML يستدعي window.toggleLang() مباشرة
-    // ============================================================
 
     // ========== التهيئة ==========
     document.addEventListener('DOMContentLoaded', function() {
@@ -804,7 +900,7 @@
 </script>
 
 <!-- ========================================================== -->
-<!-- 17. Popup التحديث + Service Worker (ويب فقط)              -->
+<!-- Popup التحديث + Service Worker (ويب فقط)                  -->
 <!-- ========================================================== -->
 <div id="updatePopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
     <div style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d); border:2px solid #c9a227; border-radius:24px; padding:32px 24px; max-width:90%; width:400px; text-align:center; box-shadow:0 20px 60px rgba(201,162,39,0.4);">
@@ -821,7 +917,6 @@
 </div>
 
 <script>
-    // ✅ [v2.6] نسجّل SW فقط على الويب (https/http)، وليس على file://
     if ('serviceWorker' in navigator &&
         (location.protocol === 'https:' || location.protocol === 'http:')) {
 
@@ -853,6 +948,8 @@
 </script>
 
 <!-- ========================================================== -->
+<!-- Overlay تحميل APK                                          -->
+<!-- ========================================================== -->
 <div id="apk-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 999999; justify-content: center; align-items: center; font-family: 'Cairo', sans-serif; direction: rtl; backdrop-filter: blur(5px);">
     <div style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); padding: 30px; border-radius: 20px; text-align: center; max-width: 350px; width: 90%; border: 2px solid #c9a227; box-shadow: 0 20px 60px rgba(201, 162, 39, 0.5); position: relative;">
         <span id="apk-close-x" style="position: absolute; top: 10px; left: 15px; font-size: 28px; cursor: pointer; color: #c9a84c; transition: 0.3s;" onmouseover="this.style.color='#ffd700'" onmouseout="this.style.color='#c9a84c'">&times;</span>
@@ -862,18 +959,10 @@
         <a href="/app-release.apk" download style="display: block; background: linear-gradient(135deg, #c9a227, #e6c34a); color: #0d1117; text-decoration: none; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 16px; margin-bottom: 15px; transition: transform 0.3s; box-shadow: 0 6px 20px rgba(201,162,39,0.5);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">⬇️ تحميل التطبيق (APK)</a>
         <button id="apk-close-btn" style="background: transparent; border: none; color: #888; cursor: pointer; font-size: 14px; padding: 5px; font-family: 'Cairo', sans-serif;">لاحقاً</button>
     </div>
-    
-    
 </div>
-
-
-
-
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // لا نعرض نافذة تحميل APK داخل APK نفسه
         var isAPK = (location.protocol === 'file:') ||
                     (navigator.userAgent.indexOf('wv') !== -1);
 

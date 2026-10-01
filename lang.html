@@ -1,0 +1,172 @@
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Switcher - Test 404</title>
+  
+  <style>
+  .lang-btn { position: fixed; top: 15px; left: 15px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 14px; z-index: 9999; box-shadow: 0 4px 12px rgba(106,227,255,0.4); font-family: inherit; }
+  .lang-btn:hover { background: #4dd4ff; }
+  html[lang="ar"] .en { display:none } 
+  html[lang="en"] .ar { display:none }
+
+
+  </style>
+</head>
+<body>
+
+<button class="lang-btn" onclick="toggleLang()">
+  <span class="ar">EN</span>
+  <span class="en">عربي</span>
+</button>
+
+
+  <div class="container">
+    <h1>Welcome I am in root </h1>
+    <p>Press language buttomn to test</p>
+    <p style="margin-top: 30px; padding: 15px; background: #f0f9ff; border-radius: 8px; font-size: 13px; color: #0369a1;">
+      🧪 <strong>اختبار 404</strong><br>
+      افتح console (F12) لمشاهدة السجلات.<br>
+      اضغط الزر الأحمر بالأسفل لاختبار شاشة 404.
+    </p>
+  </div>
+
+
+
+
+  
+<script>
+function toggleLang-long(){
+  const p = location.pathname;
+  const qs = location.search + location.hash;
+
+  // دور /ar/ او /en/ في أي مكان في الرابط
+  const hasLang = p.match(/\/(ar|en)(\/|$)/i);
+
+  if(hasLang){
+    // موجودة -> اعكسها في نفس مكانها بالضبط
+    const cur = hasLang[1].toLowerCase();
+    const to = cur === 'ar'? 'en' : 'ar';
+    location.href = p.replace(/\/(ar|en)(\/|$)/i, '/'+to+'$2') + qs;
+  } else {
+    // مش موجودة -> احنا في الروت /file.html
+    // اعرف اللغة الحالية من <html lang="">
+    const cur = document.documentElement.lang === 'ar'? 'ar' : 'en';
+    const to = cur === 'ar'? 'en' : 'ar';
+
+    // لو الرابط / -> خليه /en/ أو /ar/
+    // لو الرابط /file.html -> خليه /en/file.html
+    if(p === '/' || p === ''){
+      location.href = '/'+to+'/' + qs;
+    } else {
+      // هذا السطر هو اللي يصلح مشكلتك: يضيف اللغة بعد الدومين مباشرة
+      // /technical-guide.html -> /en/technical-guide.html
+      // /11-Jabri-com/technical-guide.html -> /11-Jabri-com/en/technical-guide.html لا، هذا يضيفها في البداية فقط
+      // عشان نعممها: نضيفها بعد أول /
+      // الحل العام: لو في فولدر مشروع، نحافظ عليه
+      const parts = p.split('/').filter(Boolean);
+      // لو أول جزء مش ملف (مافيه نقطة) وهو مش ar/en، اعتبره base
+      let base = '';
+      if(parts.length > 0 &&!parts[0].includes('.') &&!['ar','en'].includes(parts[0].toLowerCase())){
+        // ممكن يكون اسم مشروع زي 11-Jabri-com
+        // نشيك هل الجزء الثاني هو ملف؟ لو ايه، هذا base
+        if(parts.length === 1 || parts[1].includes('.') || parts.length > 1){
+          // لو المسار /11-Jabri-com/file.html -> base = /11-Jabri-com
+          if(p.includes('/11-Jabri-com/') || parts.length >=2){
+            base = '/' + parts[0];
+            const file = parts.slice(1).join('/') || 'all-links.html';
+            location.href = base + '/' + to + '/' + file + qs;
+            return;
+          }
+        }
+      }
+      // مافي base -> روت صافي
+      location.href = '/' + to + p + qs;
+    }
+  }
+}
+window.switchLanguage = window.toggleLanguage = toggleLang;
+</script>
+
+
+
+<script>
+function toggleLang(){
+  const p = location.pathname, q = location.search+location.hash;
+  const m = p.match(/\/(ar|en)(\/|$)/i);
+  if(m){
+    const t = m[1].toLowerCase()==='ar'?'en':'ar';
+    location.href = p.replace(/\/(ar|en)(\/|$)/i,'/'+t+'$2')+q;
+  }else{
+    const cur = document.documentElement.lang==='ar'?'ar':'en';
+    const t = cur==='ar'?'en':'ar';
+    // يشتغل روت + لوكال
+    const base = p.startsWith('/11-Jabri-com/')? '/11-Jabri-com' : '';
+    const file = p.replace('/11-Jabri-com/','/').replace(/^\/+/,'') || 'all-links.html';
+    location.href = base + '/' + t + '/' + file + q;
+  }
+}
+</script>
+
+
+
+
+<script>
+function toggleLang-wa(){
+  const path = location.pathname;
+  const qs = location.search + location.hash;
+  // شيل /ar/ او /en/ من البداية
+  const pure = path.replace(/^\/(ar|en)(\/|$)/i, '/').replace(/^\/+/, '');
+  const file = pure || 'all-links.html'; // لو في الروت
+
+  const lower = path.toLowerCase();
+  if(lower.startsWith('/en/') || lower === '/en'){
+    location.href = '/ar/' + file + qs;
+  } else if(lower.startsWith('/ar/') || lower === '/ar'){
+    location.href = '/en/' + file + qs;
+  } else {
+    // انت في /catalog.html -> روح للعكس حسب لغة المتصفح
+    const goEn = document.documentElement.lang === 'ar';
+    location.href = (goEn ? '/en/' : '/ar/') + file + qs;
+  }
+}
+// نفس الاسم القديم عشان ما ينكسر v12.1
+window.switchLanguage = window.toggleLanguage = toggleLang;
+</script>
+
+
+
+<script>
+  
+  function toggleLang-deep() {
+  const path = location.pathname;
+  const qs = location.search + location.hash;
+  
+  // 1. تحديد ما إذا كان الرابط يبدأ بـ /ar/ أو /en/
+  const isAr = path.startsWith('/ar/') || path === '/ar';
+  const isEn = path.startsWith('/en/') || path === '/en';
+  
+  let newPath = path;
+  
+  if (isAr) {
+    // إذا كان عربي، استبدل /ar/ بـ /en/ في نفس المكان
+    newPath = path.replace(/^\/ar(\/|$)/, '/en$1');
+  } else if (isEn) {
+    // إذا كان إنجليزي، استبدل /en/ بـ /ar/ في نفس المكان
+    newPath = path.replace(/^\/en(\/|$)/, '/ar$1');
+  } else {
+    // إذا لم تكن هناك لغة في الرابط، أضف اللغة المعاكسة حسب لغة الصفحة الحالية
+    const goEn = document.documentElement.lang === 'ar';
+    newPath = (goEn ? '/en' : '/ar') + path;
+  }
+  
+  // توجيه المستخدم للمسار الجديد
+  location.href = newPath + qs;
+}
+  
+</script>
+
+<script src="/js/init-page-root.js"></script>
+
+

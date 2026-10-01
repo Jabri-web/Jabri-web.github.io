@@ -420,7 +420,6 @@ img{max-width:100%;height:auto;display:block}
   Visitors: <span id="visitorCountDisplay">1</span>
 </div>
 
-<div id="header-placeholder"></div>
 
 <main id="main" class="container">
 
@@ -574,7 +573,6 @@ img{max-width:100%;height:auto;display:block}
   <p id="copyright">© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri — All Rights Reserved</p>
 </footer>
 
-<div id="footer-placeholder"></div>
 
 <script>
 /* ===== Language switch: redirect to /ar/Page11.html ===== */
@@ -649,8 +647,15 @@ document.getElementById('langToggle').addEventListener('click', function() {
 })();
 </script>
 
-<script src="/js/init-page-root.js" defer></script>
-<script src="/js/menu.js" defer></script>
+
+
+    <!-- في كل صفحة HTML -->
+    
+    <div id="header-placeholder"></div>
+    <div id="footer-placeholder"></div>
+    <script src="/js/file.js" defer></script>
+    <script src="/js/init-root.js" defer></script>
+    <script src="/js/menu.js" defer></script>
 
 </body>
 </html>
