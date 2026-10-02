@@ -593,12 +593,69 @@ body:not(.en) .en{display:none}
         <span class="ar">📊 تشخيص المستودعات</span>
         <span class="en">📊 Repo Diagnosis</span>
       </button>
-      <button class="explore-btn" onclick="window.location.href='/current-auto.html'" type="button">
-        <i class="fas fa-compass" aria-hidden="true"></i>
-        <span class="ar">🧭 المستكشف</span>
-        <span class="en">🧭 Explore</span>
-      </button>
-    </div>
+      
+      
+      
+
+    
+    
+    
+    
+    <button class="explore-btn" onclick="window.location.href='/current-auto.html'" type="button">
+  <i class="fas fa-compass" aria-hidden="true"></i>
+  <span class="ar">🧭 المستكشف</span>
+  <span class="en">🧭 Explore</span>
+</button>
+</div>
+
+<!-- ═══ 🛡️ أزرار التشخيص المباشر ═══ -->
+<div class="scan-buttons" style="margin-top:20px;border-top:2px dashed var(--bd);padding-top:20px;">
+  <h3 style="width:100%;text-align:center;color:var(--gold);font-size:1rem;margin:0 0 15px;">
+    <i class="fas fa-shield-alt"></i>
+    <span class="ar">🛡️ تشخيص مباشر (Jabri Live)</span>
+    <span class="en">🛡️ Live Diagnostic</span>
+  </h3>
+  
+  <button class="run-btn" onclick="jabriLive.run()" type="button">
+    <i class="fas fa-play-circle"></i>
+    <span class="ar">🚀 فحص شامل</span>
+    <span class="en">🚀 Full Check</span>
+  </button>
+  
+  <button class="run-btn speed" onclick="jabriLive.sw()" type="button">
+    <i class="fas fa-cog"></i>
+    <span class="ar">⚙️ فحص SW</span>
+    <span class="en">⚙️ Check SW</span>
+  </button>
+  
+  <button class="run-btn structure" onclick="jabriLive.caches()" type="button">
+    <i class="fas fa-database"></i>
+    <span class="ar">💾 فحص الكاش</span>
+    <span class="en">💾 Check Caches</span>
+  </button>
+  
+  <button class="run-btn error" onclick="jabriLive.disabled()" type="button">
+    <i class="fas fa-lock"></i>
+    <span class="ar">🔒 المعطّلة</span>
+    <span class="en">🔒 Disabled</span>
+  </button>
+  
+  <button class="run-btn" onclick="jabriLive.env()" type="button">
+    <i class="fas fa-mobile-alt"></i>
+    <span class="ar">📱 البيئة (APK?)</span>
+    <span class="en">📱 Env (APK?)</span>
+  </button>
+  
+  <button class="run-btn clear" onclick="jabriLive.copy()" type="button">
+    <i class="fas fa-clipboard"></i>
+    <span class="ar">📋 نسخ التقرير</span>
+    <span class="en">📋 Copy Report</span>
+  </button>
+</div>
+    
+    
+    
+    
 
     <div class="progress-bar">
       <div class="fill" id="progressFill"></div>
@@ -669,61 +726,15 @@ body:not(.en) .en{display:none}
         <span class="tool-title">🧭 المستكشف</span>
         <span class="tool-desc"><span class="ar">استكشاف الواحة</span><span class="en">Explore</span></span>
       </a>
-
+      <a href="/explore.html" class="tool-card" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-binoculars icon-orange" aria-hidden="true"></i>
+        <span class="tool-title">🔭 Explore</span>
+        <span class="tool-desc"><span class="ar">استكشاف عام</span><span class="en">General explore</span></span>
+      </a>
       
       
       
-      <button class="explore-btn" onclick="window.location.href='/current-auto.html'" type="button">
-  <i class="fas fa-compass" aria-hidden="true"></i>
-  <span class="ar">🧭 المستكشف</span>
-  <span class="en">🧭 Explore</span>
-</button>
-</div>
-
-<!-- ═══ 🛡️ أزرار التشخيص المباشر ═══ -->
-<div class="scan-buttons" style="margin-top:20px;border-top:2px dashed var(--bd);padding-top:20px;">
-  <h3 style="width:100%;text-align:center;color:var(--gold);font-size:1rem;margin:0 0 15px;">
-    <i class="fas fa-shield-alt"></i>
-    <span class="ar">🛡️ تشخيص مباشر (Jabri Live)</span>
-    <span class="en">🛡️ Live Diagnostic</span>
-  </h3>
-  
-  <button class="run-btn" onclick="jabriLive.run()" type="button">
-    <i class="fas fa-play-circle"></i>
-    <span class="ar">🚀 فحص شامل</span>
-    <span class="en">🚀 Full Check</span>
-  </button>
-  
-  <button class="run-btn speed" onclick="jabriLive.sw()" type="button">
-    <i class="fas fa-cog"></i>
-    <span class="ar">⚙️ فحص SW</span>
-    <span class="en">⚙️ Check SW</span>
-  </button>
-  
-  <button class="run-btn structure" onclick="jabriLive.caches()" type="button">
-    <i class="fas fa-database"></i>
-    <span class="ar">💾 فحص الكاش</span>
-    <span class="en">💾 Check Caches</span>
-  </button>
-  
-  <button class="run-btn error" onclick="jabriLive.disabled()" type="button">
-    <i class="fas fa-lock"></i>
-    <span class="ar">🔒 المعطّلة</span>
-    <span class="en">🔒 Disabled</span>
-  </button>
-  
-  <button class="run-btn" onclick="jabriLive.env()" type="button">
-    <i class="fas fa-mobile-alt"></i>
-    <span class="ar">📱 البيئة (APK?)</span>
-    <span class="en">📱 Env (APK?)</span>
-  </button>
-  
-  <button class="run-btn clear" onclick="jabriLive.copy()" type="button">
-    <i class="fas fa-clipboard"></i>
-    <span class="ar">📋 نسخ التقرير</span>
-    <span class="en">📋 Copy Report</span>
-  </button>
-</div>
+      
       
       
       <a href="/monitor.html" class="tool-card" target="_blank" rel="noopener noreferrer">
@@ -1309,7 +1320,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<script src="/js/menu.js" defer></script>
+<script src="/js/menu.js?v=8.2.0" defer></script>
 
 </body>
 </html>
