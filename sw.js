@@ -1,23 +1,19 @@
 // ================================================================
-//  sw.js - v10.0 (Dual Cache Architecture + Bot-Proof)
+//  sw.js - v10.2 (Dual Cache + APK-Proof + Network-First JS)
 //  Heaven Al-Jabri | واحة الجبري
 //  ─────────────────────────────────────────────────────────────
-//  🎯 الفكرة:
-//    كاش واحد = فشل مزدوج. كاشين = نجاح مزدوج.
-//    • CACHE_SHELL   → يخدم offline (ثابت، مُرقَّم بالإصدار)
-//    • CACHE_RUNTIME → يخدم الأداء (متحرك، يُنظَّف مع كل إصدار)
-//  ─────────────────────────────────────────────────────────────
-//  🔄 v10.0: قفزة إصدار كبرى لإجبار كل الزوار + Googlebot
-//           على تحميل menu.js v6.4 + link-checker.js v2.3
+//  🎯 التغييرات في v10.2:
+//    1. JS/HTML حساسة → Network First (تحديث فوري)
+//    2. SHELL_FILES يحتوي فقط الملفات الثابتة
+//    3. منع disable في APK بسبب السكربتات القديمة
 // ================================================================
 
-const VERSION = '10.0';                            // ← تغيّر من 9.2
+const VERSION = '10.2';
 const CACHE_SHELL   = 'waha-shell-v'   + VERSION;
 const CACHE_RUNTIME = 'waha-runtime-v' + VERSION;
 
 // ─────────────────────────────────────────────────────────────
-//  الملفات الجوهرية — تُخزَّن عند التثبيت (خدمة Offline)
-//  ⚠️ أضف/احذف بحذر — هذي هي أساس الـ APK offline
+//  ملفات ثابتة فقط — لا JS، لا HTML متغير
 // ─────────────────────────────────────────────────────────────
 const SHELL_FILES = [
   '/',
@@ -25,17 +21,21 @@ const SHELL_FILES = [
   '/manifest.json',
   '/favicon.ico',
   '/icon-192.png',
-  '/icon-512.png',
-  '/404.html',
-  '/js/file.js',
+  '/icon-512.png'
+];
+
+// ─────────────────────────────────────────────────────────────
+//  ملفات حساسة — Network First دائماً (تحديث فوري)
+// ─────────────────────────────────────────────────────────────
+const NETWORK_FIRST_PATHS = [
+  '/js/init-page-root.js',   // ← المرعبة
   '/js/menu.js',
-  '/js/init-page-root.js',
   '/js/link-checker.js',
+  '/js/file.js',
   '/js/update-tracker.js',
-  '/link-checker.html',
   '/header.html',
   '/footer.html',
-  '/explore.html'
+  '/version.json'
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -52,7 +52,6 @@ self.addEventListener('install', event => {
 
     const shell = await caches.open(CACHE_SHELL);
 
-    // نحمّل كل ملف على حدة — لو واحد فشل، لا نفشل الكل
     const results = await Promise.all(
       SHELL_FILES.map(async (url) => {
         try {
@@ -68,13 +67,12 @@ self.addEventListener('install', event => {
     const okCount = results.filter(r => r.ok).length;
     console.log('✅ [sw] Shell جاهز: ' + okCount + '/' + SHELL_FILES.length + ' ملف');
 
-    // ننتقل للتفعيل فوراً
     await self.skipWaiting();
   })());
 });
 
 // ================================================================
-//  activate — نحذف كل النسخ القديمة (Shell + Runtime)
+//  activate — نحذف كل النسخ القديمة
 // ================================================================
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
@@ -88,7 +86,6 @@ self.addEventListener('activate', event => {
       return caches.delete(k);
     }));
 
-    // نسيطر على كل التبويبات المفتوحة
     await self.clients.claim();
 
     console.log('✅ [sw] v' + VERSION + ' نشط — حُذف ' + oldKeys.length + ' كاش قديم');
@@ -96,7 +93,7 @@ self.addEventListener('activate', event => {
 });
 
 // ================================================================
-//  fetch — 4 استراتيجيات حسب نوع المورد
+//  fetch — 5 استراتيجيات + استثناء Googlebot
 // ================================================================
 self.addEventListener('fetch', event => {
   const req = event.request;
@@ -104,17 +101,25 @@ self.addEventListener('fetch', event => {
   // ① نتجاهل غير GET
   if (req.method !== 'GET') return;
 
-  // ② نتجاهل النطاقات الخارجية (CDN، fonts.googleapis، إلخ)
+  // ② نتجاهل النطاقات الخارجية
   if (!req.url.startsWith(self.location.origin)) return;
 
-  // ③ نتجاهل المسارات الحساسة
+  // ③ 🛑 حماية محركات البحث
+  const userAgent = req.headers.get('user-agent') || '';
+  if (userAgent.includes('Googlebot') || 
+      userAgent.includes('Bingbot') || 
+      userAgent.includes('YandexBot')) {
+    return;
+  }
+
+  // ④ نتجاهل المسارات الحساسة
   if (BYPASS_PATTERN.test(req.url)) return;
 
   const url = new URL(req.url);
   const path = url.pathname;
 
   // ─────────────────────────────────────────────────────────────
-  //  ④ الصفحات (navigate) → Network First
+  //  ⑤ الصفحات (navigate) → Network First
   // ─────────────────────────────────────────────────────────────
   if (req.mode === 'navigate') {
     event.respondWith(networkFirst(req, CACHE_RUNTIME));
@@ -122,7 +127,16 @@ self.addEventListener('fetch', event => {
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  ⑤ ملفات جوهرية (Shell) → Shell First
+  //  ⑥ ✅ ملفات حساسة → Network First (v10.2 جديد)
+  // ─────────────────────────────────────────────────────────────
+  if (NETWORK_FIRST_PATHS.indexOf(path) !== -1) {
+    console.log('🌐 [sw] network-first (حساس):', path);
+    event.respondWith(networkFirst(req, CACHE_RUNTIME));
+    return;
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  //  ⑦ ملفات جوهرية → Shell First
   // ─────────────────────────────────────────────────────────────
   if (SHELL_FILES.indexOf(path) !== -1) {
     event.respondWith(shellFirst(req));
@@ -130,7 +144,7 @@ self.addEventListener('fetch', event => {
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  ⑥ صور/أيقونات → Cache First Forever
+  //  ⑧ صور/أيقونات → Cache First Forever
   // ─────────────────────────────────────────────────────────────
   if (/\.(png|jpg|jpeg|webp|svg|gif|ico|bmp|avif)$/i.test(path)) {
     event.respondWith(cacheFirstForever(req, CACHE_RUNTIME));
@@ -138,7 +152,7 @@ self.addEventListener('fetch', event => {
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  ⑦ فيديو/صوت → Cache First Forever
+  //  ⑨ فيديو/صوت → Cache First Forever
   // ─────────────────────────────────────────────────────────────
   if (/\.(mp4|webm|mp3|ogg|wav|m4a)$/i.test(path)) {
     event.respondWith(cacheFirstForever(req, CACHE_RUNTIME));
@@ -146,17 +160,17 @@ self.addEventListener('fetch', event => {
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  ⑧ الباقي (JS/CSS/خطوط) → Stale-While-Revalidate
+  //  ⑩ الباقي (CSS/خطوط) → Stale-While-Revalidate
   // ─────────────────────────────────────────────────────────────
   event.respondWith(staleWhileRevalidate(req, CACHE_RUNTIME));
 });
 
 // ================================================================
-//  الاستراتيجيات الأربع
+//  الاستراتيجيات
 // ================================================================
 
 /**
- * 🌐 Network First — للصفحات
+ * 🌐 Network First — للصفحات والملفات الحساسة
  */
 async function networkFirst(req, cacheName) {
   try {
@@ -172,17 +186,15 @@ async function networkFirst(req, cacheName) {
       console.log('📦 [sw] offline fallback:', req.url);
       return cached;
     }
-    // آخر حل — الصفحة الرئيسية
-    const home = await caches.match('/') || await caches.match('/index.html');
-    if (home) return home;
-
+    
+    console.warn('⚠️ [sw] networkFirst فشل ولا يوجد كاش:', req.url);
     return new Response(
       '<html dir="rtl"><body style="background:#0a0a0f;color:#ffd700;font-family:sans-serif;text-align:center;padding:50px;">' +
       '<h2>🌴 واحة الجبري</h2>' +
-      '<p>أنت غير متصل بالإنترنت</p>' +
-      '<p style="font-size:0.9em;opacity:0.7;">You are offline</p>' +
+      '<p>عذراً، هذه الصفحة غير متوفرة حالياً.</p>' +
+      '<p style="font-size:0.9em;opacity:0.7;">Page Not Found</p>' +
       '</body></html>',
-      { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+      { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
     );
   }
 }
@@ -230,7 +242,7 @@ async function cacheFirstForever(req, cacheName) {
 }
 
 /**
- * ⚡ Stale-While-Revalidate — للـ JS/CSS/خطوط
+ * ⚡ Stale-While-Revalidate — للـ CSS/خطوط
  */
 async function staleWhileRevalidate(req, cacheName) {
   const cached = await caches.match(req);
@@ -254,13 +266,13 @@ async function staleWhileRevalidate(req, cacheName) {
 }
 
 // ================================================================
-//  message — SKIP_WAITING + أوامر إضافية
+//  message — أوامر
 // ================================================================
 self.addEventListener('message', event => {
   const data = event.data;
 
   if (data === 'SKIP_WAITING') {
-    console.log('⏩ [sw] SKIP_WAITING — تفعيل النسخة الجديدة');
+    console.log('⏩ [sw] SKIP_WAITING');
     self.skipWaiting();
     return;
   }
@@ -269,7 +281,7 @@ self.addEventListener('message', event => {
     event.waitUntil((async () => {
       const keys = await caches.keys();
       await Promise.all(keys.map(k => caches.delete(k)));
-      console.log('🗑️ [sw] تم حذف كل الكاش — ' + keys.length + ' كاش');
+      console.log('🗑️ [sw] حذف كل الكاش — ' + keys.length);
       const clients = await self.clients.matchAll();
       clients.forEach(c => c.postMessage('CACHES_CLEARED'));
     })());
@@ -294,5 +306,5 @@ self.addEventListener('message', event => {
 // ================================================================
 //  تسجيل بدء التشغيل
 // ================================================================
-console.log('%c🌴 [sw] Heaven Al-Jabri v' + VERSION + ' loaded',
+console.log('%c🌴 [sw] Heaven Al-Jabri v' + VERSION + ' loaded (APK-Proof)',
             'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 8px;border-radius:4px');
