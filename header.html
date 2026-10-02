@@ -1,28 +1,43 @@
+
 <!-- ========================================================== -->
-<!-- header.html - الهيدر العام الكامل الموحّد (v3.0)           -->
-<!-- التاريخ: 2026-10-01 | تحديث: ديناميكي كامل + إصلاح المسارات -->
+<!-- header.html - الهيدر العام الكامل الموحّد (v4.1)           -->
+<!-- التاريخ: 2026-10-03 | مقفل 100% لأخبار قوقل              -->
+<!-- التحديثات: NewsMediaOrganization + pub_time per-page      -->
 <!-- ========================================================== -->
 
-<!-- ===== 1-7. SEO & Schema — تُضاف ديناميكياً إلى <head> ===== -->
+<!-- ===== 1-14. SEO & Schema — تُضاف ديناميكياً إلى <head> ===== -->
 <script>
 (function() {
   'use strict';
-  
+
   // ═══════════════════════════════════════════════════
-  //  🎯 إضافة meta tags إلى <head> (لا تعمل داخل body)
-  //  ⚠️ نتحقق أولاً — لا نُكرّر
+  //  🎯 دالة واحدة شاملة لكل meta tags — v4.1
+  //  ⚠️ لا تكرار — تتحقق قبل الإضافة
+  //  ✅ NewsMediaOrganization لقوقل أخبار
+  //  ✅ pub_time مستقل لكل صفحة
   // ═══════════════════════════════════════════════════
   function addMetaTags() {
     var head = document.head;
     if (!head) return;
-    
-    // ═══════ 1. SEO الأساسية ═══════
+
+    var BASE_URL = 'https://jabri-com.vercel.app';
+    var VERSION = '8.2.0';
+
+    // ─────────────────────────────────────────────
+    //  1. SEO + فهرسة
+    // ─────────────────────────────────────────────
     var seoTags = [
-      { name: 'theme-color', content: '#0a0a0f' },
+      { name: 'theme-color', content: '#0A0A0F' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+
       { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+      { name: 'googlebot', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
+      { name: 'bingbot', content: 'index, follow' },
       { name: 'google-site-verification', content: 'SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U' }
     ];
+
     seoTags.forEach(function(tag) {
       if (!head.querySelector('meta[name="' + tag.name + '"]')) {
         var m = document.createElement('meta');
@@ -31,29 +46,11 @@
         head.appendChild(m);
       }
     });
-    
-    // ═══════ 2. الملكية والمصدر ═══════
+
+    // ─────────────────────────────────────────────
+    //  2. الملكية والمصدر
+    // ─────────────────────────────────────────────
     var ownershipTags = [
-      { prop: 'og:site_name', content: 'واحة الجبري' },
-      { name: 'application-name', content: 'واحة الجبري' },
-      { name: 'apple-mobile-web-app-title', content: 'واحة الجبري' }
-    ];
-    ownershipTags.forEach(function(tag) {
-      if (tag.prop && !head.querySelector('meta[property="' + tag.prop + '"]')) {
-        var m = document.createElement('meta');
-        m.setAttribute('property', tag.prop);
-        m.content = tag.content;
-        head.appendChild(m);
-      } else if (tag.name && !head.querySelector('meta[name="' + tag.name + '"]')) {
-        var m2 = document.createElement('meta');
-        m2.name = tag.name;
-        m2.content = tag.content;
-        head.appendChild(m2);
-      }
-    });
-    
-    // ═══════ 3. Author/Owner/Publisher ═══════
-    var authorTags = [
       { name: 'author', content: 'م/ عبدالله محمد ناصر الجبري' },
       { name: 'owner', content: 'م/ عبدالله محمد ناصر الجبري' },
       { name: 'publisher', content: 'واحة الجبري' },
@@ -63,9 +60,12 @@
       { name: 'editor', content: 'م/ عبدالله محمد ناصر الجبري' },
       { name: 'source', content: 'واحة الجبري' },
       { name: 'origin', content: 'صنعاء، اليمن' },
-      { name: 'copyright', content: '© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة' }
+      { name: 'copyright', content: '© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة' },
+      { name: 'application-name', content: 'واحة الجبري' },
+      { name: 'apple-mobile-web-app-title', content: 'واحة الجبري' }
     ];
-    authorTags.forEach(function(tag) {
+
+    ownershipTags.forEach(function(tag) {
       if (!head.querySelector('meta[name="' + tag.name + '"]')) {
         var m = document.createElement('meta');
         m.name = tag.name;
@@ -73,11 +73,70 @@
         head.appendChild(m);
       }
     });
-    
+
+    // ─────────────────────────────────────────────
+    //  3. Description (fallback)
+    // ─────────────────────────────────────────────
+    if (!head.querySelector('meta[name="description"]')) {
+      var desc = document.createElement('meta');
+      desc.name = 'description';
+      desc.content = 'الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 — اشتقاق ثابت الجاذبية من الأعداد الصرفة — الباحث اليمني عبدالله محمد ناصر الجبري';
+      head.appendChild(desc);
+    }
+
+    // ─────────────────────────────────────────────
+    //  4. Title (fallback)
+    // ─────────────────────────────────────────────
+    if (!document.title) {
+      document.title = 'واحة الجبري | Heaven Al-Jabri — Z(x) ونظرية السندباد الموحدة';
+    }
+
+    // ─────────────────────────────────────────────
+    //  5. Open Graph + Twitter Cards
+    // ─────────────────────────────────────────────
+    var ogImage = BASE_URL + '/image/Jabri-photo.webp';
+    var descContent = (document.querySelector('meta[name="description"]')?.content) ||
+                     'واحة الجبري — تراث اليمن العريق وأبحاث الرياضيات';
+    var titleContent = document.title || 'واحة الجبري';
+
+    var ogTags = [
+      { prop: 'og:site_name', content: 'واحة الجبري' },
+      { prop: 'og:locale', content: 'ar_YE' },
+      { prop: 'og:type', content: 'article' },
+      { prop: 'og:title', content: titleContent },
+      { prop: 'og:description', content: descContent },
+      { prop: 'og:url', content: location.href.split('?')[0].split('#')[0] },
+      { prop: 'og:image', content: ogImage },
+      { prop: 'og:image:width', content: '1200' },
+      { prop: 'og:image:height', content: '630' },
+      { prop: 'og:image:alt', content: 'واحة الجبري — Heaven Al-Jabri' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: titleContent },
+      { name: 'twitter:description', content: descContent },
+      { name: 'twitter:image', content: ogImage }
+    ];
+
+    ogTags.forEach(function(tag) {
+      var sel = tag.prop
+        ? 'meta[property="' + tag.prop + '"]'
+        : 'meta[name="' + tag.name + '"]';
+      if (!head.querySelector(sel)) {
+        var m = document.createElement('meta');
+        if (tag.prop) m.setAttribute('property', tag.prop);
+        if (tag.name) m.name = tag.name;
+        m.content = tag.content;
+        head.appendChild(m);
+      }
+    });
+
+    // ─────────────────────────────────────────────
+    //  6. Article meta
+    // ─────────────────────────────────────────────
     var articleTags = [
       { prop: 'article:publisher', content: 'واحة الجبري' },
       { prop: 'article:author', content: 'م/ عبدالله محمد ناصر الجبري' }
     ];
+
     articleTags.forEach(function(tag) {
       if (!head.querySelector('meta[property="' + tag.prop + '"]')) {
         var m = document.createElement('meta');
@@ -86,103 +145,135 @@
         head.appendChild(m);
       }
     });
-    
-    // ═══════ 4. Title (إن لم يكن موجوداً) ═══════
-    if (!document.getElementById('dynamicTitle') && !document.title) {
-      document.title = 'واحة الجبري | Heaven Al-Jabri - Z(x) ونظرية السندباد الموحدة';
-    }
-    
-    // ═══════ 5. Description (إن لم يكن موجوداً) ═══════
-    if (!document.getElementById('dynamicDescription') && !head.querySelector('meta[name="description"]')) {
-      var desc = document.createElement('meta');
-      desc.id = 'dynamicDescription';
-      desc.name = 'description';
-      desc.content = 'الدالة الأم Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) ونظرية السندباد الموحدة Z+C+A=1 - اشتقاق ثابت الجاذبية من الأعداد الصرفة - الباحث اليمني عبدالله محمد ناصر الجبري';
-      head.appendChild(desc);
-    }
-    
-    // ═══════ 6. Open Graph & Twitter (إن لم تكن موجودة) ═══════
-    var ogTags = [
-      { prop: 'og:locale', content: 'ar_YE', id: 'dynamicOgLocale' },
-      { prop: 'og:title', content: 'واحة الجبري Z(x) = x⁵ ln(x) sin(2π/x) exp(-x/xp) - نظرية الجبري الموحدة', id: 'dynamicOgTitle' },
-      { prop: 'og:description', content: 'اشتقاق ثابت الجاذبية من الأعداد الصرفة (19, 137, 1836, 2464) بدقة 99.95% - Zx = Z + C + A - من صنعاء إلى الكون', id: 'dynamicOgDescription' },
-      { prop: 'og:image', content: 'https://jabri-com.vercel.app/image/Jabri-photo.webp' },
-      { prop: 'og:image:width', content: '1200' },
-      { prop: 'og:image:height', content: '630' },
-      { prop: 'og:type', content: 'website' },
-      { prop: 'og:url', content: 'https://jabri-com.vercel.app/', id: 'dynamicOgUrl' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: 'https://jabri-com.vercel.app/image/Jabri-photo.webp' },
-      { name: 'twitter:title', content: 'واحة الجبري - نظرية السندباد الموحدة', id: 'dynamicTwitterTitle' },
-      { name: 'twitter:description', content: 'الدالة الأم Z(x) ونظرية السندباد الموحدة Z+C+A=1 - الباحث اليمني عبدالله محمد ناصر الجبري', id: 'dynamicTwitterDescription' }
-    ];
-    ogTags.forEach(function(tag) {
-      var existing = tag.prop 
-        ? head.querySelector('meta[property="' + tag.prop + '"]')
-        : head.querySelector('meta[name="' + tag.name + '"]');
-      if (!existing) {
-        var m = document.createElement('meta');
-        if (tag.prop) m.setAttribute('property', tag.prop);
-        if (tag.name) m.setAttribute('name', tag.name);
-        if (tag.id) m.id = tag.id;
-        m.content = tag.content;
-        head.appendChild(m);
-      }
-    });
-    
-    // ═══════ 7. Canonical ═══════
-    if (!document.getElementById('dynamicCanonical') && !head.querySelector('link[rel="canonical"]')) {
-      var link = document.createElement('link');
-      link.id = 'dynamicCanonical';
-      link.rel = 'canonical';
-      link.href = 'https://jabri-com.vercel.app/';
-      head.appendChild(link);
-    }
-    
-    // ═══════ 8. hreflang ═══════
-    var hreflangs = [
-      { hreflang: 'ar', href: 'https://jabri-com.vercel.app/', id: 'dynamicHreflangAr' },
-      { hreflang: 'en', href: 'https://jabri-com.vercel.app/en/', id: 'dynamicHreflangEn' },
-      { hreflang: 'x-default', href: 'https://jabri-com.vercel.app/', id: 'dynamicHreflangDefault' }
-    ];
-    hreflangs.forEach(function(h) {
-      if (!document.getElementById(h.id) && !head.querySelector('link[hreflang="' + h.hreflang + '"]')) {
-        var link = document.createElement('link');
-        link.id = h.id;
-        link.rel = 'alternate';
-        link.hreflang = h.hreflang;
-        link.href = h.href;
-        head.appendChild(link);
-      }
-    });
-    
-    // ═══════ 9. Manifest & Icons (مسارات مطلقة!) ═══════
+
+    // ─────────────────────────────────────────────
+    //  7. Manifest
+    // ─────────────────────────────────────────────
     if (!head.querySelector('link[rel="manifest"]')) {
       var manifest = document.createElement('link');
       manifest.rel = 'manifest';
-      manifest.href = '/manifest.json';
+      manifest.href = '/manifest.json?v=' + VERSION;
       head.appendChild(manifest);
     }
-    
-    var icons = [
+
+    // ─────────────────────────────────────────────
+    //  8. Canonical
+    // ─────────────────────────────────────────────
+    if (!head.querySelector('link[rel="canonical"]')) {
+      var canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.href = location.href.split('?')[0].split('#')[0];
+      head.appendChild(canonical);
+    }
+
+    // ─────────────────────────────────────────────
+    //  9. Favicons + Apple Touch
+    // ─────────────────────────────────────────────
+    var favicons = [
       { rel: 'apple-touch-icon', href: '/image/Yemen2026.png' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/image/Yemen2026.png' },
       { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/image/Yemen2026.png' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ];
-    icons.forEach(function(ic) {
-      var selector = 'link[rel="' + ic.rel + '"]' + (ic.sizes ? '[sizes="' + ic.sizes + '"]' : '');
-      if (!head.querySelector(selector)) {
+
+    favicons.forEach(function(f) {
+      var sel = 'link[rel="' + f.rel + '"]' + (f.sizes ? '[sizes="' + f.sizes + '"]' : '');
+      if (!head.querySelector(sel)) {
         var link = document.createElement('link');
-        link.rel = ic.rel;
-        if (ic.type) link.type = ic.type;
-        if (ic.sizes) link.sizes = ic.sizes;
-        link.href = ic.href;
+        link.rel = f.rel;
+        if (f.type) link.type = f.type;
+        if (f.sizes) link.sizes = f.sizes;
+        link.href = f.href;
         head.appendChild(link);
       }
     });
-    
-    // ═══════ 10. Schema.org (JSON-LD) ═══════
+
+    // ─────────────────────────────────────────────
+    //  10. hreflang — يُزيل ar و en
+    // ─────────────────────────────────────────────
+    var path = location.pathname.replace(/^\/(en|ar)\//, '/');
+
+    var hreflangs = [
+      { lang: 'ar', href: BASE_URL + path },
+      { lang: 'en', href: BASE_URL + '/en' + path },
+      { lang: 'x-default', href: BASE_URL + path }
+    ];
+
+    hreflangs.forEach(function(h) {
+      if (!head.querySelector('link[hreflang="' + h.lang + '"]')) {
+        var link = document.createElement('link');
+        link.rel = 'alternate';
+        link.hreflang = h.lang;
+        link.href = h.href;
+        head.appendChild(link);
+      }
+    });
+
+    // ─────────────────────────────────────────────
+    //  11. prev/next/up — للكتاب
+    // ─────────────────────────────────────────────
+    var pageLinks = {
+      '/Page1.html':   { prev: null,           next: '/Page2.html',  up: '/research.html' },
+      '/Page2.html':   { prev: '/Page1.html',  next: '/Page3.html',  up: '/research.html' },
+      '/Page3.html':   { prev: '/Page2.html',  next: '/Page4.html',  up: '/research.html' },
+      '/Page4.html':   { prev: '/Page3.html',  next: '/Page5.html',  up: '/research.html' },
+      '/Page5.html':   { prev: '/Page4.html',  next: '/Page6.html',  up: '/research.html' },
+      '/Page6.html':   { prev: '/Page5.html',  next: '/Page7.html',  up: '/research.html' },
+      '/Page7.html':   { prev: '/Page6.html',  next: '/Page8.html',  up: '/research.html' },
+      '/Page8.html':   { prev: '/Page7.html',  next: '/Page9.html',  up: '/research.html' },
+      '/Page9.html':   { prev: '/Page8.html',  next: '/Page10.html', up: '/research.html' },
+      '/Page10.html':  { prev: '/Page9.html',  next: '/Page11.html', up: '/research.html' },
+      '/Page11.html':  { prev: '/Page10.html', next: '/Page12.html', up: '/research.html' },
+      '/Page12.html':  { prev: '/Page11.html', next: null,           up: '/research.html' }
+    };
+
+    var links = pageLinks[location.pathname];
+    if (links) {
+      ['prev', 'next', 'up'].forEach(function(rel) {
+        if (!links[rel]) return;
+        if (!head.querySelector('link[rel="' + rel + '"]')) {
+          var link = document.createElement('link');
+          link.rel = rel;
+          link.href = BASE_URL + links[rel];
+          head.appendChild(link);
+        }
+      });
+    }
+
+    // ─────────────────────────────────────────────
+    //  12. Google News — pub_time مستقل لكل صفحة
+    // ─────────────────────────────────────────────
+    var now = new Date().toISOString();
+    var pageKey = 'jabri_pub_' + location.pathname;
+    var publishedTime = localStorage.getItem(pageKey) || now;
+    if (!localStorage.getItem(pageKey)) {
+      try { localStorage.setItem(pageKey, now); } catch (e) {}
+    }
+
+    var newsTags = [
+      { name: 'news_keywords', content: 'واحة الجبري, تراث اليمن, Z(x), نظرية السندباد, عبدالله الجبري' },
+      { prop: 'article:publisher', content: BASE_URL },
+      { prop: 'article:published_time', content: publishedTime },
+      { prop: 'article:modified_time', content: now },
+      { prop: 'article:author', content: BASE_URL + '/Author-cv.html' }
+    ];
+
+    newsTags.forEach(function(tag) {
+      var sel = tag.prop
+        ? 'meta[property="' + tag.prop + '"]'
+        : 'meta[name="' + tag.name + '"]';
+      if (!head.querySelector(sel)) {
+        var m = document.createElement('meta');
+        if (tag.prop) m.setAttribute('property', tag.prop);
+        if (tag.name) m.name = tag.name;
+        m.content = tag.content;
+        head.appendChild(m);
+      }
+    });
+
+    // ─────────────────────────────────────────────
+    //  13. Schema.org JSON-LD — NewsMediaOrganization
+    // ─────────────────────────────────────────────
     if (!document.getElementById('jabriSchemaLD')) {
       var schema = document.createElement('script');
       schema.id = 'jabriSchemaLD';
@@ -192,7 +283,7 @@
         "@graph": [
           {
             "@type": "Person",
-            "@id": "https://jabri-com.vercel.app/#jabri",
+            "@id": BASE_URL + "/#jabri",
             "name": "م/ عبدالله محمد ناصر الجبري",
             "alternateName": ["Heaven Al-Jabri", "Eng. Abdulla Mohammed Nasser Al-Jabri", "واحة الجبري", "سندباد اليمن"],
             "givenName": "عبدالله",
@@ -201,8 +292,8 @@
             "gender": "Male",
             "nationality": { "@type": "Country", "name": "اليمن" },
             "birthPlace": { "@type": "Place", "name": "صنعاء، اليمن" },
-            "url": "https://jabri-com.vercel.app/about.html",
-            "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "url": BASE_URL + "/about.html",
+            "image": BASE_URL + "/image/Jabri-photo.webp",
             "identifier": "https://orcid.org/0009-0003-3319-3822",
             "jobTitle": "باحث ومبرمج ومؤسس",
             "description": "الباحث اليمني، المؤسس، المالك، الناشر، المحرر، المصمم، المبرمج، وصاحب حقوق النشر لموقع واحة الجبري.",
@@ -221,27 +312,32 @@
             ]
           },
           {
-            "@type": "Organization",
-            "@id": "https://jabri-com.vercel.app/#organization",
+            "@type": "NewsMediaOrganization",
+            "@id": BASE_URL + "/#organization",
             "name": "واحة الجبري",
             "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
             "legalName": "واحة الجبري",
-            "url": "https://jabri-com.vercel.app/",
-            "logo": { "@type": "ImageObject", "url": "https://jabri-com.vercel.app/image/Jabri-photo.webp", "width": 1200, "height": 630 },
-            "image": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "url": BASE_URL + "/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": BASE_URL + "/image/Jabri-photo.webp",
+              "width": 1200,
+              "height": 630
+            },
+            "image": BASE_URL + "/image/Jabri-photo.webp",
             "description": "واحة الجبري — منصة علمية وثقافية لتوثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية (نظرية السندباد الموحدة Z+C+A=1).",
             "foundingDate": "2026",
             "foundingLocation": { "@type": "Place", "name": "صنعاء، اليمن" },
-            "founder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "publisher": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "maintainer": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "funder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#jabri" },
+            "founder": { "@id": BASE_URL + "/#jabri" },
+            "owner": { "@id": BASE_URL + "/#jabri" },
+            "publisher": { "@id": BASE_URL + "/#jabri" },
+            "creator": { "@id": BASE_URL + "/#jabri" },
+            "author": { "@id": BASE_URL + "/#jabri" },
+            "editor": { "@id": BASE_URL + "/#jabri" },
+            "copyrightHolder": { "@id": BASE_URL + "/#jabri" },
+            "maintainer": { "@id": BASE_URL + "/#jabri" },
+            "funder": { "@id": BASE_URL + "/#jabri" },
+            "sourceOrganization": { "@id": BASE_URL + "/#jabri" },
             "areaServed": { "@type": "Place", "name": "Worldwide" },
             "knowsAbout": ["Riemann Hypothesis", "P vs NP", "Yang-Mills Theory", "Navier-Stokes Equations", "Yemeni Heritage", "Unified Field Theory", "Mathematics", "Theoretical Physics"],
             "sameAs": [
@@ -253,74 +349,88 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://jabri-com.vercel.app/#website",
-            "url": "https://jabri-com.vercel.app/",
+            "@id": BASE_URL + "/#website",
+            "url": BASE_URL + "/",
             "name": "واحة الجبري",
             "alternateName": ["Heaven Al-Jabri", "Jabri Oasis"],
             "description": "توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
             "inLanguage": ["ar", "en"],
-            "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-            "owner": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "creator": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "sourceOrganization": { "@id": "https://jabri-com.vercel.app/#organization" },
+            "publisher": { "@id": BASE_URL + "/#organization" },
+            "owner": { "@id": BASE_URL + "/#jabri" },
+            "creator": { "@id": BASE_URL + "/#jabri" },
+            "author": { "@id": BASE_URL + "/#jabri" },
+            "copyrightHolder": { "@id": BASE_URL + "/#jabri" },
+            "sourceOrganization": { "@id": BASE_URL + "/#organization" },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://jabri-com.vercel.app/search?q={search_term_string}",
+              "target": BASE_URL + "/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           },
           {
             "@type": "WebPage",
-            "@id": "https://jabri-com.vercel.app/#webpage",
-            "url": "https://jabri-com.vercel.app/",
-            "name": "واحة الجبري | Heaven Al-Jabri",
-            "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
-            "about": { "@id": "https://jabri-com.vercel.app/#organization" },
-            "primaryImageOfPage": "https://jabri-com.vercel.app/image/Jabri-photo.webp",
+            "@id": BASE_URL + "/#webpage",
+            "url": location.href.split('?')[0].split('#')[0],
+            "name": document.title,
+            "isPartOf": { "@id": BASE_URL + "/#website" },
+            "about": { "@id": BASE_URL + "/#organization" },
+            "primaryImageOfPage": BASE_URL + "/image/Jabri-photo.webp",
             "inLanguage": "ar",
-            "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-            "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
-            "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+            "publisher": { "@id": BASE_URL + "/#organization" },
+            "author": { "@id": BASE_URL + "/#jabri" },
+            "editor": { "@id": BASE_URL + "/#jabri" },
+            "copyrightHolder": { "@id": BASE_URL + "/#jabri" }
           }
         ]
       });
       head.appendChild(schema);
     }
-    
-    // ═══════ 11. الخطوط والأيقونات ═══════
+
+    // ─────────────────────────────────────────────
+    //  14. الخطوط + Font Awesome
+    // ─────────────────────────────────────────────
     if (!head.querySelector('link[href*="fonts.googleapis.com"]')) {
       var pre1 = document.createElement('link');
       pre1.rel = 'preconnect';
       pre1.href = 'https://fonts.googleapis.com';
       head.appendChild(pre1);
-      
+
       var pre2 = document.createElement('link');
       pre2.rel = 'preconnect';
       pre2.href = 'https://fonts.gstatic.com';
       pre2.crossOrigin = 'anonymous';
       head.appendChild(pre2);
-      
+    }
+
+    if (!head.querySelector('link[href*="font-awesome"]')) {
       var fa = document.createElement('link');
       fa.rel = 'stylesheet';
       fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
       head.appendChild(fa);
-      
+    }
+
+    if (!head.querySelector('link[href*="Cairo"]')) {
       var fonts = document.createElement('link');
       fonts.rel = 'stylesheet';
       fonts.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap';
       head.appendChild(fonts);
     }
-    
-    console.log('✅ [header] تمت إضافة SEO + Schema + Manifest + الخطوط إلى <head>');
+
+    console.log('✅ [header v4.1] SEO + NewsMediaOrganization + pub_time per-page — ready');
   }
-  
-  // تشغيل فوراً (قبل DOMContentLoaded لأن head موجود)
+
+  // ✅ تشغيل فوري (head موجود دائماً)
   addMetaTags();
+
 })();
 </script>
+
+<!-- ===== 12. الأنماط (CSS) — داخل <style> ===== -->
+<style>
+
+
+<!-- ===== 12. الأنماط (CSS) — داخل <style> ===== -->
+<style>
 
 <!-- ===== 12. الأنماط (CSS) — داخل <style> ===== -->
 <style>
