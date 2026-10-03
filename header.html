@@ -672,6 +672,38 @@
         .bottom-btn.music { font-size: 17px; min-width: 60px; padding: 0 14px; }
         .sound-toggle-btn { bottom: 18px; right: 18px; font-size: 12px; padding: 10px 14px; }
     }
+    
+    
+    
+    
+    /* ===== درع صنعاء للبار العلوي v4.2 ===== */
+.top-header-buttons{
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  width: 100% !important;
+  height: 68px;
+  z-index: 2147483647 !important; /* أعلى رقم في الكون */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  background: rgba(10,10,15,0.92) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,215,0,0.15);
+  pointer-events: none;
+}
+.top-header-buttons > *{ pointer-events: auto; }
+
+/* عشان الواحة ما تطلعش تحته */
+body{
+  padding-top: 68px !important;
+}
+
+/* صفحات الواحة نفسها - ننزلها */
+[class*="waha"], [class*="Waha"], .oasis-hero, .waha-hero{
+  z-index: 1 !important;
+  position: relative !important;
+}
 </style>
 
 <!-- ========================================================== -->

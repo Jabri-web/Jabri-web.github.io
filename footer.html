@@ -146,3 +146,551 @@
   console.log('✅ footer.html v8.2.0 — ready');
 })();
 </script>
+
+
+
+
+<!-- ═══════════════════════════════════════════════════════
+     واحة الجبري — أزرار التفاعل (مشاركة + إعجاب)
+     الإصدار: v7.0
+     الموقع: آخر footer.html
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+
+    // ═══════════════════════════════════════════════════════
+    //  1. التصميم (CSS)
+    // ═══════════════════════════════════════════════════════
+    var style = document.createElement('style');
+    style.textContent = `
+        /* إخفاء اللغة غير النشطة */
+        .share-modal .en { display: none !important; }
+        html[lang="en"] .share-modal .ar { display: none !important; }
+        html[lang="en"] .share-modal .en { display: inline !important; }
+
+        /* ═══ زر المشاركة العائم ═══ */
+        #jabri-share-float {
+            position: fixed;
+            bottom: 180px;
+            left: 28px;
+            z-index: 99999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            border: 2px solid #ffd700;
+            color: #0a0a0f;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+            animation: sharePulse 2s ease-in-out infinite;
+        }
+        #jabri-share-float:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.9);
+        }
+        @keyframes sharePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.8); }
+        }
+
+        /* ═══ زر الإعجاب العائم ═══ */
+        #jabri-like-float {
+            position: fixed;
+            bottom: 180px;
+            left: 100px;
+            z-index: 99999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff4d6d, #d90429);
+            border: 2px solid #ff4d6d;
+            color: #fff;
+            font-size: 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+        }
+        #jabri-like-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 77, 109, 0.9);
+        }
+        #jabri-like-float.liked {
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            border-color: #ffd700;
+            color: #0a0a0f;
+            animation: likePop 0.6s ease;
+        }
+        @keyframes likePop {
+            0%   { transform: scale(1); }
+            30%  { transform: scale(1.4); }
+            50%  { transform: scale(0.9); }
+            70%  { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* ═══ عداد الإعجابات ═══ */
+        #jabri-like-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ffd700;
+            color: #0a0a0f;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 2px 7px;
+            border-radius: 20px;
+            border: 2px solid #0a0a0f;
+            min-width: 22px;
+            text-align: center;
+            font-family: 'Cairo', Tahoma, sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        #jabri-like-float.liked #jabri-like-count {
+            transform: scale(1.2);
+            background: #fff;
+        }
+
+        /* ═══ قلوب متطايرة ═══ */
+        .jabri-heart-fly {
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 9999999;
+            animation: heartFly 1.2s ease-out forwards;
+        }
+        @keyframes heartFly {
+            0%   { opacity: 1; transform: translate(0, 0) scale(0.5); }
+            50%  { opacity: 1; transform: translate(var(--tx, 0), -60px) scale(1.2); }
+            100% { opacity: 0; transform: translate(var(--tx, 0), -120px) scale(0.6); }
+        }
+
+        /* ═══ نافذة المشاركة ═══ */
+        .share-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .share-modal.active { display: flex; }
+        .share-modal-content {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            border: 2px solid #ffd700;
+            border-radius: 24px;
+            padding: 24px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(255,215,0,0.3);
+            direction: rtl;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: shareSlideUp 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes shareSlideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .share-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,215,0,0.2);
+        }
+        .share-header h3 {
+            color: #ffd700;
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin: 0;
+            font-family: 'Cairo', Tahoma, sans-serif;
+        }
+        .share-close {
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .share-close:hover {
+            background: #ffd700;
+            color: #0a0a0f;
+            transform: rotate(90deg);
+        }
+        .share-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .share-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 4px;
+            border-radius: 14px;
+            text-decoration: none;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,215,0,0.15);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .share-item:hover {
+            transform: translateY(-4px);
+            background: rgba(255,215,0,0.08);
+            border-color: rgba(255,215,0,0.4);
+        }
+        .share-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,215,0,0.3);
+            font-weight: bold;
+        }
+        .share-name {
+            font-size: 10px;
+            color: #e8e8f0;
+            font-family: 'Cairo', Tahoma, sans-serif;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .share-item.whatsapp .share-icon { background: rgba(37, 211, 102, 0.15); border-color: rgba(37, 211, 102, 0.5); }
+        .share-item.telegram .share-icon { background: rgba(0, 136, 204, 0.15); border-color: rgba(0, 136, 204, 0.5); }
+        .share-item.facebook .share-icon { background: rgba(24, 119, 242, 0.15); border-color: rgba(24, 119, 242, 0.5); }
+        .share-item.twitter .share-icon { background: rgba(0, 0, 0, 0.5); border-color: rgba(255, 255, 255, 0.3); }
+        .share-item.linkedin .share-icon { background: rgba(10, 102, 194, 0.15); border-color: rgba(10, 102, 194, 0.5); }
+        .share-item.email .share-icon { background: rgba(234, 67, 53, 0.15); border-color: rgba(234, 67, 53, 0.5); }
+        .share-item.gmail .share-icon { background: rgba(234, 67, 53, 0.15); border-color: rgba(234, 67, 53, 0.5); }
+        .share-item.chrome .share-icon { background: rgba(66, 133, 244, 0.15); border-color: rgba(66, 133, 244, 0.5); }
+        .share-item.copy .share-icon { background: rgba(255, 215, 0, 0.15); border-color: rgba(255, 215, 0, 0.5); }
+        .share-item.native .share-icon { background: rgba(106, 227, 255, 0.15); border-color: rgba(106, 227, 255, 0.5); }
+
+        /* ═══ إشعارات ═══ */
+        #jabri-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+            color: #ffd700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 10px 40px rgba(255,215,0,0.4);
+            z-index: 99999999;
+            font-family: Cairo, Tahoma, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            opacity: 0;
+            direction: rtl;
+            text-align: center;
+        }
+
+        /* ═══ الموبايل ═══ */
+        @media (max-width: 600px) {
+            #jabri-share-float {
+                bottom: 150px;
+                left: 18px;
+                width: 54px;
+                height: 54px;
+                font-size: 22px;
+            }
+            #jabri-like-float {
+                bottom: 150px;
+                left: 84px;
+                width: 54px;
+                height: 54px;
+                font-size: 22px;
+            }
+            .share-icon { width: 42px; height: 42px; font-size: 20px; }
+            .share-name { font-size: 9px; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // ═══════════════════════════════════════════════════════
+    //  2. زر المشاركة العائم
+    // ═══════════════════════════════════════════════════════
+    function injectShareButton() {
+        if (document.getElementById('jabri-share-float')) return;
+        var btn = document.createElement('button');
+        btn.id = 'jabri-share-float';
+        btn.setAttribute('aria-label', 'مشاركة');
+        btn.innerHTML = '📤';
+        btn.onclick = function() { window.openShareModal(); };
+        document.body.appendChild(btn);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  3. زر الإعجاب العائم
+    // ═══════════════════════════════════════════════════════
+    var STORAGE_KEY = 'jabri_liked_' + window.location.pathname;
+    var BASE_LIKES = 0; // يبدأ من صفر
+    var likeBtnRef = null;
+    var likeCountRef = null;
+
+    function getLikeCount() {
+        var userLiked = localStorage.getItem(STORAGE_KEY) === 'true';
+        var pageKey = 'jabri_likes_count_' + window.location.pathname;
+        var savedCount = parseInt(localStorage.getItem(pageKey) || '0', 10);
+        return BASE_LIKES + savedCount;
+    }
+
+    function injectLikeButton() {
+        if (document.getElementById('jabri-like-float')) return;
+        var btn = document.createElement('button');
+        btn.id = 'jabri-like-float';
+        btn.setAttribute('aria-label', 'إعجاب');
+        btn.innerHTML = '<span id="jabri-like-icon">🤍</span><span id="jabri-like-count">0</span>';
+
+        var userLiked = localStorage.getItem(STORAGE_KEY) === 'true';
+        if (userLiked) {
+            btn.classList.add('liked');
+            btn.querySelector('#jabri-like-icon').textContent = '❤️';
+        }
+
+        likeCountRef = btn.querySelector('#jabri-like-count');
+        likeCountRef.textContent = getLikeCount();
+        likeBtnRef = btn;
+
+        btn.addEventListener('click', handleLike);
+        document.body.appendChild(btn);
+    }
+
+    function handleLike(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var userLiked = localStorage.getItem(STORAGE_KEY) === 'true';
+        var iconSpan = likeBtnRef.querySelector('#jabri-like-icon');
+        var pageKey = 'jabri_likes_count_' + window.location.pathname;
+        var saved = parseInt(localStorage.getItem(pageKey) || '0', 10);
+        var currentCount = parseInt(likeCountRef.textContent, 10) || 0;
+
+        if (userLiked) {
+            localStorage.setItem(STORAGE_KEY, 'false');
+            if (saved > 0) localStorage.setItem(pageKey, saved - 1);
+            likeBtnRef.classList.remove('liked');
+            iconSpan.textContent = '🤍';
+            likeCountRef.textContent = Math.max(0, currentCount - 1);
+        } else {
+            localStorage.setItem(STORAGE_KEY, 'true');
+            localStorage.setItem(pageKey, saved + 1);
+            likeBtnRef.classList.add('liked');
+            iconSpan.textContent = '❤️';
+            likeCountRef.textContent = currentCount + 1;
+            flyHearts();
+            showToast('❤️ شكراً على إعجابك!');
+        }
+    }
+
+    function flyHearts() {
+        if (!likeBtnRef) return;
+        var rect = likeBtnRef.getBoundingClientRect();
+        var hearts = ['❤️', '💖', '💗', '💓', '💕', '🌸'];
+        for (var i = 0; i < 6; i++) {
+            (function(index) {
+                setTimeout(function() {
+                    var heart = document.createElement('div');
+                    heart.className = 'jabri-heart-fly';
+                    heart.textContent = hearts[index % hearts.length];
+                    heart.style.left = (rect.left + rect.width / 2 - 10) + 'px';
+                    heart.style.top = (rect.top + rect.height / 2 - 10) + 'px';
+                    heart.style.setProperty('--tx', ((Math.random() - 0.5) * 80) + 'px');
+                    document.body.appendChild(heart);
+                    setTimeout(function() { heart.remove(); }, 1300);
+                }, index * 80);
+            })(i);
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  4. نافذة المشاركة
+    // ═══════════════════════════════════════════════════════
+    function injectShareModal() {
+        if (document.getElementById('shareModal')) return;
+        var modal = document.createElement('div');
+        modal.id = 'shareModal';
+        modal.className = 'share-modal';
+        modal.innerHTML = `
+            <div class="share-modal-content">
+                <div class="share-header">
+                    <h3>📤 <span class="ar">شارك الواحة</span><span class="en">Share Oasis</span></h3>
+                    <button class="share-close" onclick="closeShareModal()">✕</button>
+                </div>
+                <div class="share-grid">
+                    <a href="#" class="share-item whatsapp" data-platform="whatsapp"><div class="share-icon">💬</div><div class="share-name"><span class="ar">واتساب</span><span class="en">WhatsApp</span></div></a>
+                    <a href="#" class="share-item telegram" data-platform="telegram"><div class="share-icon">✈️</div><div class="share-name"><span class="ar">تلجرام</span><span class="en">Telegram</span></div></a>
+                    <a href="#" class="share-item facebook" data-platform="facebook"><div class="share-icon">📘</div><div class="share-name"><span class="ar">فيسبوك</span><span class="en">Facebook</span></div></a>
+                    <a href="#" class="share-item twitter" data-platform="twitter"><div class="share-icon">𝕏</div><div class="share-name"><span class="ar">X (تويتر)</span><span class="en">X</span></div></a>
+                    <a href="#" class="share-item linkedin" data-platform="linkedin"><div class="share-icon">💼</div><div class="share-name"><span class="ar">لينكدإن</span><span class="en">LinkedIn</span></div></a>
+                    <a href="#" class="share-item gmail" data-platform="gmail"><div class="share-icon">📧</div><div class="share-name"><span class="ar">جوجل</span><span class="en">Google</span></div></a>
+                    <a href="#" class="share-item chrome" data-platform="chrome"><div class="share-icon">🌐</div><div class="share-name"><span class="ar">كروم</span><span class="en">Chrome</span></div></a>
+                    <a href="#" class="share-item email" data-platform="email"><div class="share-icon">✉️</div><div class="share-name"><span class="ar">البريد</span><span class="en">Email</span></div></a>
+                    <a href="#" class="share-item copy" data-platform="copy"><div class="share-icon">🔗</div><div class="share-name"><span class="ar">نسخ الرابط</span><span class="en">Copy Link</span></div></a>
+                    <a href="#" class="share-item native" data-platform="native"><div class="share-icon">📱</div><div class="share-name"><span class="ar">المزيد</span><span class="en">More</span></div></a>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  5. دوال المشاركة
+    // ═══════════════════════════════════════════════════════
+    function getShareData() {
+        return {
+            title: document.title || 'واحة الجبري | Heaven Al-Jabri',
+            text: 'اكتشف واحة الجبري — تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية',
+            url: window.location.href
+        };
+    }
+
+    window.openShareModal = function() {
+        var m = document.getElementById('shareModal');
+        if (m) m.classList.add('active');
+    };
+    window.closeShareModal = function() {
+        var m = document.getElementById('shareModal');
+        if (m) m.classList.remove('active');
+    };
+
+    function performShare(platform) {
+        var data = getShareData();
+        var url = encodeURIComponent(data.url);
+        var text = encodeURIComponent(data.text);
+        var title = encodeURIComponent(data.title);
+        var shareUrl = '';
+
+        switch (platform) {
+            case 'whatsapp': shareUrl = 'https://wa.me/?text=' + text + '%20' + url; break;
+            case 'telegram': shareUrl = 'https://t.me/share/url?url=' + url + '&text=' + text; break;
+            case 'facebook': shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url; break;
+            case 'twitter': shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text; break;
+            case 'linkedin': shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url; break;
+            case 'email': shareUrl = 'mailto:?subject=' + title + '&body=' + text + '%0A%0A' + url; break;
+            case 'gmail':
+            case 'chrome':
+                if (navigator.share) {
+                    navigator.share(data)
+                        .then(function() { window.closeShareModal(); })
+                        .catch(function(err) {
+                            if (err.name !== 'AbortError') copyToClipboard(data.url);
+                        });
+                } else {
+                    copyToClipboard(data.url);
+                }
+                return;
+            case 'copy':
+                copyToClipboard(data.url);
+                return;
+            case 'native':
+                if (navigator.share) { navigator.share(data).catch(function(){}); }
+                else { copyToClipboard(data.url); }
+                return;
+        }
+        if (shareUrl) { window.open(shareUrl, '_blank', 'noopener,noreferrer'); }
+        window.closeShareModal();
+    }
+
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('✅ تم نسخ الرابط بنجاح!');
+                window.closeShareModal();
+            }).catch(function() { fallbackCopy(text); });
+        } else { fallbackCopy(text); }
+    }
+
+    function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast('✅ تم نسخ الرابط!'); }
+        catch(e) { showToast('⚠️ تعذر النسخ.'); }
+        document.body.removeChild(ta); window.closeShareModal();
+    }
+
+    function showToast(message) {
+        var existing = document.getElementById('jabri-toast');
+        if (existing) existing.remove();
+        var toast = document.createElement('div');
+        toast.id = 'jabri-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        requestAnimationFrame(function() {
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+            toast.style.opacity = '1';
+        });
+        setTimeout(function() {
+            toast.style.transform = 'translateX(-50%) translateY(100px)';
+            toast.style.opacity = '0';
+            setTimeout(function() { toast.remove(); }, 400);
+        }, 3000);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    //  6. ربط الأحداث
+    // ═══════════════════════════════════════════════════════
+    document.addEventListener('click', function(e) {
+        var item = e.target.closest('.share-item');
+        if (item) {
+            e.preventDefault();
+            var p = item.dataset.platform;
+            if (p) performShare(p);
+            return;
+        }
+        var modal = document.getElementById('shareModal');
+        if (e.target === modal) { window.closeShareModal(); }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') window.closeShareModal();
+    });
+
+    // ═══════════════════════════════════════════════════════
+    //  7. التشغيل
+    // ═══════════════════════════════════════════════════════
+    function init() {
+        injectShareButton();
+        injectLikeButton();
+        injectShareModal();
+        console.log('✅ [v7.0] أزرار المشاركة والإعجاب جاهزة');
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+    setTimeout(init, 1500);
+    setTimeout(init, 3000);
+
+})();
+</script>
