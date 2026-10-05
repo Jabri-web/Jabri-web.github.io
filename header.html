@@ -734,9 +734,60 @@ body{
 <!-- ========================================================== -->
 <!-- خلفية الفيديو + الصوت الأساسي                              -->
 <!-- ========================================================== -->
+
 <video class="bg-video" id="bgVideo" autoplay muted playsinline loop poster="/image/oasis-poster.jpg">
-    <source src="/image/heaven3.mp4" type="video/mp4" />
+    <!-- المصدر يُحدد ديناميكياً حسب اليوم (فردي/زوجي) -->
 </video>
+
+<script>
+(function() {
+    'use strict';
+
+    // ═══════════════════════════════════════════════════════
+    //  🎬 تبديل فيديو الخلفية حسب اليوم
+    //  اليوم الفردي: heaven3.mp4  (واحة الجبري)
+    //  اليوم الزوجي:  sindbad-brdoni.mp4  (السندباد)
+    // ═══════════════════════════════════════════════════════
+    function getDailyVideo() {
+        var day = new Date().getDate();  // اليوم من 1 إلى 31
+        return (day % 2 === 1)
+            ? '/image/heaven3.mp4'          // فردي
+            : '/image/sindbad-brdoni.mp4';  // زوجي
+    }
+
+    function loadDailyVideo() {
+        var video = document.getElementById('bgVideo');
+        if (!video) return;
+
+        var src = getDailyVideo();
+
+        // مسح المصادر القديمة
+        video.innerHTML = '';
+
+        // إضافة المصدر الجديد
+        var source = document.createElement('source');
+        source.src = src;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+
+        // إعادة تحميل الفيديو وتشغيله
+        video.load();
+        video.play().catch(function() {});
+
+        console.log('🎬 فيديو اليوم (' + new Date().getDate() + '): ' + src);
+    }
+
+    // تشغيل عند تحميل الصفحة
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadDailyVideo);
+    } else {
+        loadDailyVideo();
+    }
+})();
+</script>
+
+
+
 
 <audio id="bgMusic" loop preload="auto" style="display:none;">
     <source src="/image/sanaani.mp3" type="audio/mpeg" />

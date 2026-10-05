@@ -155,7 +155,7 @@ a:focus-visible,button:focus-visible,.btn-home:focus-visible,.heritage-btn:focus
   background:linear-gradient(135deg,#1a1a0a,#2a2a1a);
   border:1px solid var(--heritage-bd);
   border-radius:var(--radius);padding:40px 30px;
-  margin-bottom:40px;position:relative;overflow:hidden;
+  margin-bottom:30px;position:relative;overflow:hidden;
 }
 .heritage-header::before{
   content:'🇾🇪';position:absolute;
@@ -177,6 +177,32 @@ a:focus-visible,button:focus-visible,.btn-home:focus-visible,.heritage-btn:focus
   padding:.3rem 1.5rem;border-radius:30px;font-size:.9rem;
   border:1px solid #2a4a2a;margin-top:12px;
   position:relative;z-index:1;
+}
+
+/* ═══════════════════════════════════════════ */
+/*  الفيديو — يفتح تلقائياً عند فتح الصفحة  */
+/* ═══════════════════════════════════════════ */
+.video-wrapper {
+  margin: 0 auto 40px;
+  max-width: 900px;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 50px rgba(255, 215, 0, 0.25);
+  background: #0a0a0f;
+  position: relative;
+}
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.video-caption {
+  color: var(--mut);
+  font-size: 0.85rem;
+  margin-top: 10px;
+  font-style: italic;
+  text-align: center;
 }
 
 .section-title{
@@ -324,6 +350,17 @@ body.en .en-text{display:inline}
       <span aria-hidden="true">🇾🇪</span> توثيق التراث اليمني · واحة الجبري
     </div>
   </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  الفيديو — يفتح تلقائياً عند فتح الصفحة  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="video-wrapper">
+    <video id="page8Video" autoplay muted playsinline loop controls poster="/image/Jabri-photo.webp">
+      <source src="/image/sindbad-brdoni.mp4" type="video/mp4" />
+      متصفحك لا يدعم تشغيل الفيديو
+    </video>
+  </div>
+  <p class="video-caption">🎬 فيديو تراث اليمن العريق | اضغط في أي مكان لتفعيل الصوت</p>
 
   <h2 class="section-title">
     <span aria-hidden="true">🏙️</span>
@@ -510,17 +547,43 @@ body.en .en-text{display:inline}
   })();
 </script>
 
-
-
-<div id="header-placeholder"></div>   <!-- ✅ قبل السكربتات -->
-<div id="footer-placeholder"></div>   <!-- ✅ بعد المحتوى -->
-<!-- السكربتات الثلاثة: -->
-
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  تفعيل الصوت تلقائياً عند أول تفاعل من الزائر  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+    
+    var activated = false;
+    
+    function activateSound() {
+        if (activated) return;
+        activated = true;
+        
+        var video = document.getElementById('page8Video');
+        if (!video) return;
+        
+        // فتح الصوت وتشغيل الفيديو
+        video.muted = false;
+        video.volume = 0.7;  // ⬅️ مستوى الصوت (0.0 إلى 1.0)
+        video.play().catch(function() {});
+        
+        // إزالة المستمعين بعد التفعيل
+        document.removeEventListener('click', activateSound);
+        document.removeEventListener('touchstart', activateSound);
+        document.removeEventListener('scroll', activateSound);
+        document.removeEventListener('keydown', activateSound);
+    }
+    
+    document.addEventListener('click', activateSound, { once: true });
+    document.addEventListener('touchstart', activateSound, { once: true });
+    document.addEventListener('scroll', activateSound, { once: true });
+    document.addEventListener('keydown', activateSound, { once: true });
+    
+})();
+</script>
 
 <script src="/js/file.js" defer></script>
-
-
-
 <script src="/js/init-page-root.js" defer></script>
 <script src="/js/menu.js" defer></script>
 

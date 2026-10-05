@@ -10,10 +10,44 @@
 
 
 <style>
-  body{background:#0a0a0f;color:#e8e8f0;font-family:'Cairo',Tahoma,Arial;padding:30px;line-height:2.2;text-align:center}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body{
+    background:#0a0a0f;
+    color:#e8e8f0;
+    font-family:'Cairo',Tahoma,Arial;
+    padding:30px;
+    line-height:2.2;
+    text-align:center;
+  }
   .container{max-width:800px;margin:0 auto}
   h1{color:#6ae3ff;font-size:2rem;margin-bottom:10px}
   h2{color:#b8e6ff;font-size:1.2rem;margin-bottom:30px;font-weight:400}
+
+  /* ═══════════════════════════════════════════ */
+  /*  الفيديو — يفتح تلقائياً عند فتح الصفحة  */
+  /* ═══════════════════════════════════════════ */
+  .video-wrapper {
+    margin: 20px auto 30px;
+    max-width: 720px;
+    border: 2px solid #6ae3ff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(106, 227, 255, 0.25);
+    background: #0a0a0f;
+    position: relative;
+  }
+  .video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .video-caption {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
   .poem{background:#1a1a2e;border:2px solid #2a2a3e;border-radius:12px;padding:40px 20px;text-align:right;font-size:1.1rem}
   .poem p{margin:15px 0}
   .footer-note{color:#888;margin-top:30px;font-size:0.9rem}
@@ -25,7 +59,18 @@
 <div class="container">
   <h1>السندباد اليمني</h1>
   <h2>سندباد يمني في مقعد التحقيق<br>عبدالله البردوني - ديوان وجوه دخانية في مرايا الليل 1975م</h2>
-  
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  الفيديو — يفتح تلقائياً عند فتح الصفحة  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="video-wrapper">
+    <video id="sindbadVideo" autoplay muted playsinline loop controls poster="/image/Jabri-photo.webp">
+      <source src="/image/sindbad-brdoni.mp4" type="video/mp4" />
+      متصفحك لا يدعم تشغيل الفيديو
+    </video>
+  </div>
+  <p class="video-caption">🎬 فيديو القصيدة — السندباد اليمني | اضغط في أي مكان لتفعيل الصوت</p>
+
   <div class="poem">
     <p>كما شئت فتش… أين اخفي حقائبي<br>
     اتسألني من أنت؟.. اعرف واجبي</p>
@@ -75,7 +120,7 @@
     <p>***</p>
 
     <p>أحبيت؟ لا بل مت حباً… من التي؟<br>
-    أحببت حتى لا اعي، من حبائبي</p>
+    أحبت حتى لا اعي، من حبائبي</p>
 
     <p>وكم مت مرات؟… كثيراً كعادتي<br>
     تموت وتحيا؟ تلك إحدى مصائبي</p>
@@ -94,7 +139,7 @@
     <p>وماذا؟ وأنسانا الحكايات منشد<br>
     (إذا لم يسالمك الزمان فحارب)</p>
 
-    <p>وحين خرجتم، أين خبَّأتهم، بلا<br>
+    <p>وحين خرجتم، أين خبَّأتهم، بلا<br>
     مغالطة؟ خبأتهم، في ذوائبي</p>
 
     <p>لدينا ملف عنك… شكراً لأنكم<br>
@@ -117,6 +162,43 @@
 <div id="footer-placeholder"></div>
 <script src="/js/init-page-root.js"></script>
 <script src="/js/menu.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  تفعيل الصوت تلقائياً عند أول تفاعل من الزائر  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+    
+    var activated = false;
+    
+    function activateSound() {
+        if (activated) return;
+        activated = true;
+        
+        var video = document.getElementById('sindbadVideo');
+        if (!video) return;
+        
+        // فتح الصوت وتشغيل الفيديو
+        video.muted = false;
+        video.volume = 0.7;  // ⬅️ مستوى الصوت (0.0 إلى 1.0)
+        video.play().catch(function() {});
+        
+        // إزالة المستمعين بعد التفعيل
+        document.removeEventListener('click', activateSound);
+        document.removeEventListener('touchstart', activateSound);
+        document.removeEventListener('scroll', activateSound);
+        document.removeEventListener('keydown', activateSound);
+    }
+    
+    // الاستماع لأول تفاعل من أي نوع
+    document.addEventListener('click', activateSound, { once: true });
+    document.addEventListener('touchstart', activateSound, { once: true });
+    document.addEventListener('scroll', activateSound, { once: true });
+    document.addEventListener('keydown', activateSound, { once: true });
+    
+})();
+</script>
 
 </body>
 </html>
