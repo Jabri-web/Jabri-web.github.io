@@ -6,126 +6,191 @@
     <title>سجل النشر والتوثيق | واحة الجبري</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         body {
-            font-family: 'Cairo', sans-serif;
-            background: #0a0f0d;
+            background-color: #0a0f0d;
             color: #f5efe6;
             min-height: 100vh;
-            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(20, 20, 30, 0.8);
-            border: 2px solid rgba(201, 168, 76, 0.4);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 0 40px rgba(201, 168, 76, 0.1);
-            backdrop-filter: blur(10px);
+        /* الخلفيات المتوهجة */
+        body::before {
+            content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+            width: 100%; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+            z-index: 0; pointer-events: none;
         }
-        h1 {
-            text-align: center;
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #c9a84c, #e8c96e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        body::after {
+            content: ''; position: absolute; bottom: -20%; right: -10%;
+            width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,46,40,0.8) 0%, transparent 70%);
+            z-index: 0; pointer-events: none;
         }
-        .subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 1rem;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-            padding-bottom: 20px;
-        }
-        .status-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        .status-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-        .status-card:hover {
-            border-color: #c9a84c;
-            background: rgba(201, 168, 76, 0.05);
-        }
-        .status-card h3 {
-            color: #c9a84c;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .status-card p {
-            color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-top: 8px;
-        }
-        .badge-green { background: rgba(76, 175, 80, 0.2); color: #4caf50; border: 1px solid #4caf50; }
-        .badge-gold { background: rgba(201, 168, 76, 0.2); color: #c9a84c; border: 1px solid #c9a84c; }
-        .badge-blue { background: rgba(33, 150, 243, 0.2); color: #2196f3; border: 1px solid #2196f3; }
         
-        .footer-note {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            color: #888;
-            line-height: 1.8;
+        .container {
+            max-width: 860px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
         }
-        .footer-note strong {
-            color: #c9a84c;
+
+        /* الترويسة العلوية */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;
         }
+        .badge-live {
+            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 50px;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            font-size: 11px; color: rgba(255,255,255,0.5);
+        }
+        .dot-green { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px rgba(52,211,153,0.6); }
+        .badge-gold {
+            display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 50px;
+            background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+            font-size: 11px; font-weight: 700; color: #c9a84c;
+        }
+
+        /* الصندوق الرئيسي */
+        .main-box {
+            background: rgba(18,22,28,0.72);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(201,168,76,0.28);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 0 0 1px rgba(201,168,76,0.08) inset, 0 20px 80px rgba(0,0,0,0.6), 0 0 60px rgba(201,168,76,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .main-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201,168,76,0.6), transparent);
+        }
+
+        /* العنوان */
+        .header-title { text-align: center; margin-bottom: 30px; }
+        .header-title .pill {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px;
+            background: #0a0f0d; border: 1px solid rgba(201,168,76,0.2); font-size: 11px; color: rgba(201,168,76,0.8);
+            letter-spacing: 2px; margin-bottom: 20px;
+        }
+        .header-title h1 {
+            font-size: 42px; font-weight: 900; line-height: 1.1;
+            background: linear-gradient(to bottom right, #e8c96e, #c9a84c, #a07f28);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .header-title p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.6; max-width: 520px; margin: 0 auto; }
+        .header-title .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 20px 0; }
+        .header-title .divider span { color: rgba(255,255,255,0.2); font-size: 10px; letter-spacing: 0.3em; }
+        .header-title .divider div { height: 1px; width: 50px; background: linear-gradient(to left, rgba(201,168,76,0.4), transparent); }
+        .header-title .divider div:last-child { background: linear-gradient(to right, rgba(201,168,76,0.4), transparent); }
+
+        /* الكروت */
+        .status-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            background: rgba(201,168,76,0.04);
+            border-color: rgba(201,168,76,0.3);
+        }
+        .card.zenodo {
+            background: rgba(201,168,76,0.03);
+            border-color: rgba(201,168,76,0.2);
+        }
+        .card.zenodo::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+        }
+
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .card-icon {
+            width: 40px; height: 40px; border-radius: 12px; background: #0a0f0d;
+            border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 18px; flex-shrink: 0;
+        }
+        .card-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .card-title span.badge { font-size: 10px; padding: 3px 10px; border-radius: 50px; font-weight: 700; }
+        .badge-emerald { background: rgba(16,185,129,0.1); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .badge-sky { background: rgba(14,165,233,0.1); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3); }
+        .badge-gold { background: rgba(201,168,76,0.1); color: #e8c96e; border: 1px solid rgba(201,168,76,0.3); }
+
+        .card-body p { font-size: 13.5px; line-height: 1.8; color: rgba(255,255,255,0.7); }
+        .card-body a { color: #c9a84c; text-decoration: none; font-weight: 700; }
+        .card-body a:hover { text-decoration: underline; }
+        .card-note {
+            display: inline-block; margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            padding: 4px 12px; border-radius: 50px;
+        }
+
+        /* شبكة Vercel و GitHub */
+        .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .link-box {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #0a0f0d; border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 16px; border-radius: 12px; text-decoration: none; transition: 0.3s;
+        }
+        .link-box:hover { border-color: rgba(201,168,76,0.3); }
+        .link-box .label { font-size: 11px; color: rgba(255,255,255,0.4); }
+        .link-box .url { font-size: 13px; font-weight: 700; color: #fff; }
+        .link-box .arrow { color: rgba(255,255,255,0.3); font-size: 14px; }
+
+        /* ملاحظة هامة */
+        .important-note {
+            margin-top: 30px; background: rgba(10,15,13,0.8); border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 16px; padding: 24px; position: relative;
+        }
+        .important-note::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+        }
+        .important-note h4 { color: #c9a84c; font-size: 13px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .important-note p { font-size: 13.5px; line-height: 1.9; color: rgba(255,255,255,0.6); }
+        .important-note .quote {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 15px;
+            background: linear-gradient(to bottom right, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+            border: 1px solid rgba(201,168,76,0.2); padding: 8px 16px; border-radius: 50px;
+            font-size: 13px; font-weight: 900; color: #e8c96e;
+        }
+
+        /* زر العودة */
+        .back-btn-wrapper { text-align: center; margin-top: 30px; }
         .back-btn {
-            display: block;
-            width: fit-content;
-            margin: 30px auto 0;
-            padding: 12px 40px;
-            background: linear-gradient(135deg, #c9a84c, #e8c96e);
-            color: #0a0f0d;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 900;
-            transition: transform 0.3s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(to bottom right, #c9a84c, #e8c96e);
+            color: #0a0f0d; text-decoration: none; padding: 12px 30px; border-radius: 50px;
+            font-weight: 900; font-size: 14px; transition: 0.3s;
+            box-shadow: 0 8px 24px rgba(201,168,76,0.25);
         }
-        .back-btn:hover { transform: scale(1.05); }
+        .back-btn:hover { transform: scale(1.05); box-shadow: 0 12px 32px rgba(201,168,76,0.35); }
+
+        .footer-text { text-align: center; margin-top: 20px; font-size: 10px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
 
         /* ═══════════════════════════════════════════ */
-        /* إضافات قسم الوصية والصورة */
+        /* قسم الوصية والصورة (المُضاف حديثاً) */
         /* ═══════════════════════════════════════════ */
         .will-section {
-            margin-top: 50px;
+            margin-top: 40px;
             padding-top: 30px;
-            border-top: 1px solid rgba(201, 168, 76, 0.3);
+            border-top: 1px solid rgba(201,168,76,0.3);
             text-align: center;
         }
         .heritage-img {
             width: 100%;
             max-width: 500px;
             border-radius: 16px;
-            border: 2px solid rgba(201, 168, 76, 0.6);
+            border: 2px solid rgba(201,168,76,0.6);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             object-fit: cover;
         }
         .will-title {
@@ -141,9 +206,7 @@
             margin-bottom: 25px;
             font-weight: 600;
         }
-        .will-text p {
-            margin: 5px 0;
-        }
+        .will-text p { margin: 5px 0; }
         .will-signature {
             color: #888;
             font-size: 0.9rem;
@@ -154,52 +217,131 @@
             text-decoration: none;
             font-weight: 700;
         }
-        .will-signature a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 480px) {
-            .container { padding: 20px; }
+        .will-signature a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .main-box { padding: 20px; }
+            .header-title h1 { font-size: 28px; }
+            .links-grid { grid-template-columns: 1fr; }
             .will-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📜 سجل النشر والتوثيق</h1>
-        <p class="subtitle">واحة الجبري — Heaven Al-Jabri | م/ عبدالله محمد ناصر الجبري</p>
 
+<div class="container">
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div style="display:flex; gap:8px;">
+            <span class="badge-live"><span class="dot-green"></span> سجل حي — Live Record</span>
+            <span class="badge-gold">file-all4.txt v5</span>
+        </div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.4); display:flex; gap:10px; align-items:center;">
+            <span>📅 27 سبتمبر 2026</span>
+            <span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.2);"></span>
+            <span style="color:rgba(255,255,255,0.6);">م/ عبدالله الجبري</span>
+        </div>
+    </div>
+
+    <!-- الصندوق الرئيسي -->
+    <div class="main-box">
+        <!-- الترويسة -->
+        <div class="header-title">
+            <div class="pill">◈ واحة الجبري — Heaven Al-Jabri</div>
+            <h1>سجل النشر والتوثيق 📜</h1>
+            <p>دليل موثق لحالة النشر الأكاديمي والبنية الرقمية لـ <strong>واحة الجبري</strong> — مرجع دائم للباحثين المستقلين</p>
+            <div class="divider">
+                <div></div>
+                <span>✦</span>
+                <div></div>
+            </div>
+            <p style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:700;">م/ عبدالله محمد ناصر الجبري — باحث مستقل</p>
+        </div>
+
+        <!-- شبكة الحالات -->
         <div class="status-grid">
+            
             <!-- ORCID -->
-            <div class="status-card">
-                <h3>🆔 ORCID <span class="badge badge-green">موثق</span></h3>
-                <p>تم تسجيل الباحث والأبحاث العلمية. الرابط: <a href="https://orcid.org/0009-0003-3319-3822" style="color:#c9a84c;" target="_blank">0009-0003-3319-3822</a></p>
-                <p style="font-size:0.85rem; color:#888; margin-top:5px;">لا يتطلب بريداً مؤسسياً. متاح للباحثين المستقلين.</p>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🆔</div>
+                    <div class="card-title">ORCID <span class="badge badge-emerald">موثق</span></div>
+                </div>
+                <div class="card-body">
+                    <p>تم تسجيل الباحث والأبحاث العلمية بشكل مستقل ومعتمد.</p>
+                    <p><a href="https://orcid.org/0009-0003-3319-3822" target="_blank">0009-0003-3319-3822 ↗</a></p>
+                    <span class="card-note">لا يتطلب بريداً مؤسسياً — متاح للباحثين المستقلين</span>
+                </div>
             </div>
 
             <!-- Google Scholar -->
-            <div class="status-card">
-                <h3>🎓 Google Scholar <span class="badge badge-blue">مفهرس تلقائياً</span></h3>
-                <p>يتم التقاط الأبحاث تلقائياً من الموقع (Author-cv.html و Dbase.html).</p>
-                <p style="font-size:0.85rem; color:#888; margin-top:5px;">لا يتطلب بريداً مؤسسياً. البريد المؤسسي يمنح علامة توثيق فقط وليس شرطاً للنشر.</p>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">Google Scholar <span class="badge badge-sky">مفهرس تلقائياً</span></div>
+                </div>
+                <div class="card-body">
+                    <p>يتم التقاط الأبحاث تلقائياً من صفحات الموقع <code>Author-cv.html</code> و <code>Dbase.html</code> بدون تدخل يدوي.</p>
+                    <span class="card-note">البريد المؤسسي يمنح علامة توثيق فقط وليس شرطاً للنشر</span>
+                </div>
             </div>
 
             <!-- Zenodo -->
-            <div class="status-card">
-                <h3>📦 Zenodo <span class="badge badge-green">موثق</span></h3>
-                <p>تم رفع الأوراق العلمية (PDF) والأكواد (Python) والبيانات. الرابط: <a href="https://zenodo.org/records/20513840" style="color:#c9a84c;" target="_blank">سجل Zenodo</a></p>
+            <div class="card zenodo">
+                <div class="card-header">
+                    <div class="card-icon">📦</div>
+                    <div class="card-title">Zenodo — CERN <span class="badge badge-emerald">موثق • DOI دائم</span></div>
+                </div>
+                <div class="card-body">
+                    <p>تم رفع الأوراق العلمية (PDF) والأكواد (Python) والبيانات البحثية مع معرفات دائمة.</p>
+                    <p style="margin-top:10px;"><a href="https://zenodo.org/records/20513840" target="_blank" style="background:#c9a84c; color:#0a0f0d; padding:6px 16px; border-radius:50px; font-size:12px; text-decoration:none; font-weight:900;">سجل Zenodo — فتح الأرشيف ↗</a></p>
+                </div>
             </div>
 
             <!-- Wikidata -->
-            <div class="status-card">
-                <h3>🌐 Wikidata <span class="badge badge-gold">مقبول</span></h3>
-                <p>بديل ويكيبيديا للتعريف بالمؤسسة والباحث. ويكيبيديا لا تقبل الكتابة الذاتية، لكن Wikidata تقبل التوثيق الذاتي.</p>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-title">Wikidata <span class="badge badge-gold">مقبول</span></div>
+                </div>
+                <div class="card-body">
+                    <p>بديل معرفي رسمي لويكيبيديا. ويكيبيديا لا تقبل الكتابة الذاتية، بينما Wikidata تسمح بالتوثيق الذاتي الموثق للمؤسسة والباحث.</p>
+                </div>
             </div>
 
             <!-- Vercel & GitHub -->
-            <div class="status-card">
-                <h3>💻 Vercel & GitHub <span class="badge badge-gold">المقر الرئيسي</span></h3>
-                <p>الموقع الرسمي: <a href="https://jabri-com.vercel.app" style="color:#c9a84c;" target="_blank">jabri-com.vercel.app</a></p>
-                <p>المستودع: <a href="https://github.com/Jabri-web" style="color:#c9a84c;" target="_blank">GitHub/Jabri-web</a></p>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Vercel & GitHub <span class="badge badge-gold">المقر الرئيسي</span></div>
+                </div>
+                <div class="links-grid">
+                    <a href="https://jabri-com.vercel.app" target="_blank" class="link-box">
+                        <div>
+                            <div class="label">الموقع الرسمي</div>
+                            <div class="url">jabri-com.vercel.app</div>
+                        </div>
+                        <span class="arrow">↗</span>
+                    </a>
+                    <a href="https://github.com/Jabri-web" target="_blank" class="link-box">
+                        <div>
+                            <div class="label">المستودع</div>
+                            <div class="url">GitHub/Jabri-web</div>
+                        </div>
+                        <span class="arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ملاحظة هامة -->
+        <div class="important-note">
+            <h4>⚑ ملاحظة هامة — بيان تأسيسي</h4>
+            <p>الأبحاث العلمية لا تحتاج إلى بريد مؤسسي لتكون صحيحة أو منشورة.<br>البريد المؤسسي هو مجرد أداة إدارية للجامعات، وليس مقياساً لقيمة العلم.</p>
+            <div class="quote">
+                <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;box-shadow:0 0 8px rgba(201,168,76,0.6);"></span>
+                واحة الجبري هي الجامعة، ونافذتها هي المصدر.
             </div>
         </div>
 
@@ -207,7 +349,7 @@
         <!-- قسم الوصية والصورة المضافة -->
         <!-- ═══════════════════════════════════════════ -->
         <div class="will-section">
-            <!-- الصورة -->
+            <!-- الصورة (مسار احتياطي في حال لم تكن مرفوعة) -->
             <img src="/image/heritage.jpg" alt="تراث اليمن - واحة الجبري" class="heritage-img" onerror="this.src='/image/Jabri-photo.webp'">
             
             <!-- الوصية -->
@@ -231,13 +373,16 @@
         </div>
         <!-- ═══════════════════════════════════════════ -->
 
-        <div class="footer-note">
-            <strong>ملاحظة هامة:</strong> الأبحاث العلمية لا تحتاج إلى بريد مؤسسي لتكون صحيحة أو منشورة. <br>
-            البريد المؤسسي هو مجرد أداة إدارية للجامعات، وليس مقياساً لقيمة العلم. <br>
-            <strong>واحة الجبري هي الجامعة، ونافذتها هي المصدر.</strong>
+        <!-- زر العودة -->
+        <div class="back-btn-wrapper">
+            <a href="/" class="back-btn">⬅ العودة إلى الواحة</a>
         </div>
-
-        <a href="/" class="back-btn">⬅️ العودة إلى الواحة</a>
+        
+        <div class="footer-text">
+            Heaven Al-Jabri • واحة الجبري — سجل موثق لا مركزي
+        </div>
     </div>
+</div>
+
 </body>
 </html>
