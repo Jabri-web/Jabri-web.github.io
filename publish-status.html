@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سجل النشر والتوثيق | واحة الجبري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0f0d;
+            color: #f5efe6;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(20, 20, 30, 0.8);
+            border: 2px solid rgba(201, 168, 76, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(201, 168, 76, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #c9a84c, #e8c96e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            padding-bottom: 20px;
+        }
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .status-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .status-card:hover {
+            border-color: #c9a84c;
+            background: rgba(201, 168, 76, 0.05);
+        }
+        .status-card h3 {
+            color: #c9a84c;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        .badge-green { background: rgba(76, 175, 80, 0.2); color: #4caf50; border: 1px solid #4caf50; }
+        .badge-gold { background: rgba(201, 168, 76, 0.2); color: #c9a84c; border: 1px solid #c9a84c; }
+        .badge-blue { background: rgba(33, 150, 243, 0.2); color: #2196f3; border: 1px solid #2196f3; }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.8;
+        }
+        .footer-note strong {
+            color: #c9a84c;
+        }
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 12px 40px;
+            background: linear-gradient(135deg, #c9a84c, #e8c96e);
+            color: #0a0f0d;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+        .back-btn:hover { transform: scale(1.05); }
+
+        /* ═══════════════════════════════════════════ */
+        /* إضافات قسم الوصية والصورة */
+        /* ═══════════════════════════════════════════ */
+        .will-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(201, 168, 76, 0.3);
+            text-align: center;
+        }
+        .heritage-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 16px;
+            border: 2px solid rgba(201, 168, 76, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+            object-fit: cover;
+        }
+        .will-title {
+            color: #c9a84c;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        .will-text {
+            color: #e8c96e;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .will-text p {
+            margin: 5px 0;
+        }
+        .will-signature {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .will-signature a {
+            color: #c9a84c;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .will-signature a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .container { padding: 20px; }
+            .will-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📜 سجل النشر والتوثيق</h1>
+        <p class="subtitle">واحة الجبري — Heaven Al-Jabri | م/ عبدالله محمد ناصر الجبري</p>
+
+        <div class="status-grid">
+            <!-- ORCID -->
+            <div class="status-card">
+                <h3>🆔 ORCID <span class="badge badge-green">موثق</span></h3>
+                <p>تم تسجيل الباحث والأبحاث العلمية. الرابط: <a href="https://orcid.org/0009-0003-3319-3822" style="color:#c9a84c;" target="_blank">0009-0003-3319-3822</a></p>
+                <p style="font-size:0.85rem; color:#888; margin-top:5px;">لا يتطلب بريداً مؤسسياً. متاح للباحثين المستقلين.</p>
+            </div>
+
+            <!-- Google Scholar -->
+            <div class="status-card">
+                <h3>🎓 Google Scholar <span class="badge badge-blue">مفهرس تلقائياً</span></h3>
+                <p>يتم التقاط الأبحاث تلقائياً من الموقع (Author-cv.html و Dbase.html).</p>
+                <p style="font-size:0.85rem; color:#888; margin-top:5px;">لا يتطلب بريداً مؤسسياً. البريد المؤسسي يمنح علامة توثيق فقط وليس شرطاً للنشر.</p>
+            </div>
+
+            <!-- Zenodo -->
+            <div class="status-card">
+                <h3>📦 Zenodo <span class="badge badge-green">موثق</span></h3>
+                <p>تم رفع الأوراق العلمية (PDF) والأكواد (Python) والبيانات. الرابط: <a href="https://zenodo.org/records/20513840" style="color:#c9a84c;" target="_blank">سجل Zenodo</a></p>
+            </div>
+
+            <!-- Wikidata -->
+            <div class="status-card">
+                <h3>🌐 Wikidata <span class="badge badge-gold">مقبول</span></h3>
+                <p>بديل ويكيبيديا للتعريف بالمؤسسة والباحث. ويكيبيديا لا تقبل الكتابة الذاتية، لكن Wikidata تقبل التوثيق الذاتي.</p>
+            </div>
+
+            <!-- Vercel & GitHub -->
+            <div class="status-card">
+                <h3>💻 Vercel & GitHub <span class="badge badge-gold">المقر الرئيسي</span></h3>
+                <p>الموقع الرسمي: <a href="https://jabri-com.vercel.app" style="color:#c9a84c;" target="_blank">jabri-com.vercel.app</a></p>
+                <p>المستودع: <a href="https://github.com/Jabri-web" style="color:#c9a84c;" target="_blank">GitHub/Jabri-web</a></p>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- قسم الوصية والصورة المضافة -->
+        <!-- ═══════════════════════════════════════════ -->
+        <div class="will-section">
+            <!-- الصورة -->
+            <img src="/image/heritage.jpg" alt="تراث اليمن - واحة الجبري" class="heritage-img" onerror="this.src='/image/Jabri-photo.webp'">
+            
+            <!-- الوصية -->
+            <h2 class="will-title">📜 وصية الجبري</h2>
+            <div class="will-text">
+                <p>ولدت فقيرا...</p>
+                <p>ومت فقيرا...</p>
+                <p>وعشت سعيدا...</p>
+                <p>بقول الله احد...</p>
+                <br>
+                <p>ارثي لكم العلم وواحة الجبري...</p>
+                <br>
+                <p>اتمنى للجميع: حياة دافئة سعيدة.</p>
+            </div>
+            
+            <div class="will-signature">
+                <p><strong>#عبدالله_الجبري (صنعاء-اليمن)</strong></p>
+                <p>الاثنين ...5 اكتوبر 2026م</p>
+                <p><a href="https://jabri-com.vercel.app/" target="_blank">https://jabri-com.vercel.app/</a></p>
+            </div>
+        </div>
+        <!-- ═══════════════════════════════════════════ -->
+
+        <div class="footer-note">
+            <strong>ملاحظة هامة:</strong> الأبحاث العلمية لا تحتاج إلى بريد مؤسسي لتكون صحيحة أو منشورة. <br>
+            البريد المؤسسي هو مجرد أداة إدارية للجامعات، وليس مقياساً لقيمة العلم. <br>
+            <strong>واحة الجبري هي الجامعة، ونافذتها هي المصدر.</strong>
+        </div>
+
+        <a href="/" class="back-btn">⬅️ العودة إلى الواحة</a>
+    </div>
+</body>
+</html>
