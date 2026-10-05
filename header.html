@@ -419,6 +419,38 @@
     console.log('✅ [header v4.1] SEO + NewsMediaOrganization + pub_time per-page — ready');
   }
 
+
+    // ─────────────────────────────────────────────
+    // 15. NewsArticle لكل صفحة - عجلة Publisher Center
+    // لا يمس 1-14 - إضافة فقط
+    // ─────────────────────────────────────────────
+    if (!document.getElementById('jabriNewsArticleLD')) {
+        var newsSchema = document.createElement('script');
+        newsSchema.id = 'jabriNewsArticleLD';
+        newsSchema.type = 'application/ld+json';
+        var pageTitle = document.title || 'واحة الجبري';
+        var pageDesc = (document.querySelector('meta[name="description"]')?.content) || 'واحة الجبري';
+        var pubTime = localStorage.getItem('jabri_pub_' + location.pathname) || new Date().toISOString();
+        newsSchema.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": location.href.split('?')[0].split('#')[0]
+            },
+            "headline": pageTitle,
+            "description": pageDesc,
+            "datePublished": "2026-09-27T00:00:00+03:00",
+            "dateModified": new Date().toISOString(),
+            "author": { "@id": BASE_URL + "/#jabri" },
+            "publisher": { "@id": BASE_URL + "/#organization" },
+            "image": BASE_URL + "/image/Jabri-photo.webp",
+            "isAccessibleForFree": true
+        });
+        head.appendChild(newsSchema);
+    }
+
+
   // ✅ تشغيل فوري (head موجود دائماً)
   addMetaTags();
 
