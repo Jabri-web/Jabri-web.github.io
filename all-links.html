@@ -14,6 +14,7 @@
 
 <link rel="canonical" href="https://jabri-com.vercel.app/all-links.html">
 <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/all-links.html">
+<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/all-links.html">
 <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/all-links.html">
 
 <meta property="og:locale" content="ar_YE">
@@ -22,7 +23,7 @@
 <meta property="og:title" content="خريطة المسارات الرقمية — واحة الجبري">
 <meta property="og:description" content="الفهرس الشامل لجميع منصات ومحتويات الباحث م/ عبدالله محمد ناصر الجبري.">
 <meta property="og:url" content="https://jabri-com.vercel.app/all-links.html">
-<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
 <meta property="og:image:alt" content="خريطة المسارات — Heaven Al-Jabri">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -30,7 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="خريطة المسارات الرقمية — واحة الجبري">
 <meta name="twitter:description" content="الفهرس الشامل لكل المسارات والمنصات">
-<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png">
 
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -276,6 +277,12 @@ img { max-width: 100%; display: block; }
 }
 .section-block.hidden { display: none; }
 
+/* قسم خاص للجديد */
+.section-block.new-section {
+  border-inline-end-color: #00ff88;
+  background: rgba(0, 255, 136, 0.03);
+}
+
 .section-title {
   font-family: "Cairo";
   font-size: 1.6rem;
@@ -379,16 +386,22 @@ img { max-width: 100%; display: block; }
 
 /* تمييز خاص للروابط الجديدة */
 .new-link {
-  background: rgba(0, 255, 136, 0.08) !important;
-  border-color: rgba(0, 255, 136, 0.4) !important;
+  background: rgba(0, 255, 136, 0.12) !important;
+  border-color: rgba(0, 255, 136, 0.6) !important;
   position: relative;
+  animation: pulse-new 2s ease-in-out infinite;
 }
 .new-link::after {
   content: '🆕';
   position: absolute;
-  top: -8px;
+  top: -10px;
   left: -8px;
-  font-size: 14px;
+  font-size: 16px;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 136, 0.8));
+}
+@keyframes pulse-new {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
 }
 
 .msg-box {
@@ -630,6 +643,28 @@ img { max-width: 100%; display: block; }
   <p class="hint">✅ الروابط الخارجية + الداخلية + وسائل التواصل + الملفات الجديدة</p>
 </div>
 
+<!-- ═══ 🆕 قسم الملفات الجديدة (مميز) 🆕 ═══ -->
+<section class="section-block new-section">
+  <h2 class="section-title">
+    🆕 الملفات الجديدة — New Files 🆕
+    <span class="badge">إضافات حديثة</span>
+  </h2>
+  <p style="color:var(--acc-2);margin-bottom:15px;font-weight:600">
+    📌 أحدث الملفات المضافة إلى واحة الجبري — تم رفعها وتوثيقها في 2026/10/06
+  </p>
+  <ul class="inline-list">
+    <li class="new-link"><a href="/news-01.html">📰 خبر: إطلاق نظرية السندباد الموحدة</a></li>
+    <li class="new-link"><a href="/brand-identity.html">🎨 الهوية البصرية الرسمية للواحة</a></li>
+    <li class="new-link"><a href="/project.html">📁 تقرير المشروع (English)</a></li>
+    <li class="new-link"><a href="/project-ar.html">📁 تقرير المشروع (عربي)</a></li>
+    <li class="new-link"><a href="/ar/profile.html">👤 الملف الشخصي (عربي خالص)</a></li>
+    <li class="new-link"><a href="/en/profile.html">👤 Profile (English Pure)</a></li>
+    <li class="new-link"><a href="/ar/Router-all.html">🗺️ الفهرس العام (عربي خالص)</a></li>
+    <li class="new-link"><a href="/en/Router-all.html">🗺️ General Index (English Pure)</a></li>
+    <li class="new-link"><a href="/link-checker.html">🔗 أداة فحص الروابط</a></li>
+  </ul>
+</section>
+
 <!-- ═══ A: مواقع خارجية ═══ -->
 <section class="section-block">
   <h2 class="section-title">
@@ -745,7 +780,7 @@ img { max-width: 100%; display: block; }
     </ul>
   </div>
 
-  <!-- 5: السيرة (مع الملفات الجديدة) -->
+  <!-- 5: السيرة -->
   <div class="sub-section">
     <h3>👤 5 — السيرة الذاتية والتعريف</h3>
     <ul class="inline-list">
@@ -760,6 +795,7 @@ img { max-width: 100%; display: block; }
       <li><a href="/founder.html">👑 المؤسس</a></li>
       <li><a href="/cv-2026a.html">📄 CV 2026 (عربي)</a></li>
       <li><a href="/cv-2026e.html">📄 CV 2026 (إنجليزي)</a></li>
+      <li><a href="/brand-identity.html" class="new-link">🎨 الهوية البصرية</a></li>
     </ul>
   </div>
 
@@ -784,12 +820,12 @@ img { max-width: 100%; display: block; }
     </ul>
   </div>
 
-  <!-- 7: المشاريع والأدوات (مع الملفات الجديدة) -->
+  <!-- 7: المشاريع والأدوات -->
   <div class="sub-section">
     <h3>📁 7 — المشاريع والأدوات التقنية</h3>
     <ul class="inline-list">
-      <li><a href="/project.html">📁 المشاريع البرمجية</a></li>
-      <li><a href="/project-ar.html">🇾🇪 المشاريع (عربي - مختلط)</a></li>
+      <li><a href="/project.html" class="new-link">📁 المشاريع البرمجية</a></li>
+      <li><a href="/project-ar.html" class="new-link">🇾🇪 المشاريع (عربي)</a></li>
       <li><a href="/Dbase.html">🗄️ قاعدة البيانات</a></li>
       <li><a href="/Dbase-deep.html">🗄️ قاعدة البيانات (عميق)</a></li>
       <li><a href="/explore.html">🔍 استكشاف</a></li>
@@ -800,10 +836,11 @@ img { max-width: 100%; display: block; }
       <li><a href="/microtik-deep.html">📡 مايكروتك (عميق)</a></li>
       <li><a href="/magic-translator.html">🪄 المترجم السحري</a></li>
       <li><a href="/Nezar.html">📜 نزار</a></li>
+      <li><a href="/news-01.html" class="new-link">📰 خبر: إطلاق النظرية</a></li>
     </ul>
   </div>
 
-  <!-- 8: الملفات النظامية (مع link-checker) -->
+  <!-- 8: الملفات النظامية -->
   <div class="sub-section">
     <h3>⚙️ 8 — الملفات النظامية والمساندة</h3>
     <ul class="inline-list">
@@ -824,26 +861,9 @@ img { max-width: 100%; display: block; }
     </ul>
   </div>
 
-  <!-- 9: الملفات الجديدة (النسخ العربية والإنجليزية) -->
+  <!-- 9: صفحات فرعية -->
   <div class="sub-section">
-    <h3>🆕 9 — الملفات الجديدة (النسخ اللغوية) 🆕</h3>
-    <ul class="inline-list">
-      <li class="new-link"><a href="/ar/profile.html">🇾🇪 الملف الشخصي (عربي خالص)</a></li>
-      <li class="new-link"><a href="/en/profile.html">🇬🇧 Profile (English Pure)</a></li>
-      <li class="new-link"><a href="/ar/project.html">🇾🇪 تقرير المشروع (عربي خالص)</a></li>
-      <li class="new-link"><a href="/en/project.html">🇬🇧 Project Report (English Pure)</a></li>
-      <li class="new-link"><a href="/ar/Router-all.html">🇾🇪 الفهرس العام (عربي خالص)</a></li>
-      <li class="new-link"><a href="/en/Router-all.html">🇬🇧 General Index (English Pure)</a></li>
-      <li class="new-link"><a href="/link-checker.html">🔗 أداة فحص الروابط</a></li>
-    </ul>
-    <p style="color:var(--acc-2);font-size:.85rem;margin-top:8px">
-      ✅ ملفات جديدة مع أرشفة مستقلة للنسختين العربية والإنجليزية
-    </p>
-  </div>
-
-  <!-- 10: صفحات فرعية (مجلدات) -->
-  <div class="sub-section">
-    <h3>📂 10 — صفحات فرعية (مجلدات)</h3>
+    <h3>📂 9 — صفحات فرعية (مجلدات)</h3>
     <ul class="inline-list">
       <li><a href="/publish/publish.html">📤 النشر (Publish)</a></li>
       <li><a href="/game/game-auto.html">🎮 اللعبة التلقائية</a></li>
@@ -951,21 +971,6 @@ img { max-width: 100%; display: block; }
 </button>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var base = location.origin;
-  var path = location.pathname.replace(/^\/en\//, '/');
-
-  var canonical = document.getElementById('dynamicCanonical');
-  var arLink = document.getElementById('hreflangAr');
-  var enLink = document.getElementById('hreflangEn');
-  var xLink  = document.getElementById('hreflangX');
-
-  if (canonical) canonical.href = base + path;
-  if (arLink) arLink.href = base + path;
-  if (enLink) enLink.href = base + '/en' + path;
-  if (xLink)  xLink.href  = base + path;
-});
-
 (function () {
   function init() {
     var allLinks = document.querySelectorAll('main a[href]');
@@ -1067,10 +1072,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
-
-
 <!-- في كل صفحة HTML -->
-
 <div id="footer-placeholder"></div>
 <script src="/js/file.js" defer></script>
 <script src="/js/init-page-root.js" defer></script>
