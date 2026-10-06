@@ -8,14 +8,86 @@
     
     <link rel="canonical" href="https://jabri-com.vercel.app/project-ar.html">
 
-    
     <style>
         body { background:#0a0a0f; color:#e8e8f0; font-family: "Tajawal", sans-serif; padding: 0; margin: 0; line-height: 1.8; }
-        .lang-switch { text-align:center; padding: 15px; background: #161b22; border-bottom: 1px solid #30363d; }
-        .lang-switch a { background: #6ae3ff; color: #0a0a0f; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block; }
-        .lang-switch a.inactive { background: transparent; color: #c9d1d9; border: 1px solid #30363d; }
-        .header { text-align:center; padding: 40px 20px; background: #0a0a0a; border-bottom: 1px solid #1f1f2e; }
-        .header img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #6ae3ff; object-fit: cover; margin-bottom: 15px; }
+        
+        /* ===== الهيدر اليدوي الاحترافي ===== */
+        .site-header {
+            background: #0a0a0f;
+            border-bottom: 1px solid #1f1f2e;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #6ae3ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: #6ae3ff;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+        .lang-switch a {
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-switch a.active {
+            background: #6ae3ff;
+            color: #0a0a0f;
+        }
+        .lang-switch a:not(.active) {
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+        }
+        .lang-switch a:not(.active):hover {
+            border-color: #6ae3ff;
+            color: #6ae3ff;
+        }
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .main-nav { justify-content: center; }
+            .lang-switch { justify-content: center; }
+        }
+
+        /* ===== الهيدر القديم (Hero) ===== */
+        .header-hero { text-align:center; padding: 40px 20px; background: #0a0a0f; border-bottom: 1px solid #1f1f2e; }
+        .header-hero img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #6ae3ff; object-fit: cover; margin-bottom: 15px; }
+        
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         h1, h2, h3 { color:#6ae3ff; }
         h1 { font-size: 2.2rem; text-align:center; }
@@ -39,12 +111,26 @@
 </head>
 <body>
 
-<div class="lang-switch">
-    <a href="./project.html" class="inactive">🇬🇧 English (Default)</a>
-    <a href="./project-AR.html">🇾🇪 العربية</a>
-</div>
+<!-- ===== الهيدر اليدوي الجديد ===== -->
+<header class="site-header">
+    <div class="header-container">
+        <a href="/" class="brand">🌌 واحة الجبري</a>
+        <nav class="main-nav">
+            <a href="/">الرئيسية</a>
+            <a href="/project-ar.html" class="active">المشروع</a>
+            <a href="/theory-ar.html">النظرية</a>
+            <a href="/journal.html">المجلة</a>
+            <a href="/about.html">عن الموقع</a>
+        </nav>
+        <div class="lang-switch">
+            <a href="./project.html">🇬🇧 EN</a>
+            <a href="./project-ar.html" class="active">🇾🇪 AR</a>
+        </div>
+    </div>
+</header>
 
-<div class="header">
+<!-- ===== الهيدر القديم (Hero Section) ===== -->
+<div class="header-hero">
     <img src="Image/Jabri-photo.png" alt="عبدالله الجبري">
     <h1>منظومة Jabri-web</h1>
     <p style="font-size:1.2rem; color:#a78bfa;">من أصفار ريمان إلى بنية الكون</p>
@@ -133,10 +219,8 @@
     <p><b>عن الباحث عربي :</b> <a href="/about.html" style="color:#00ff88">عبدالله الجبري</a></p>
     <p><b>عن الباحث انجليزي :</b> <a href="/about-en.html" style="color:#00ff88">Abdulla Al-Jabri</a></p>
 
-
-
     <p><b>Web site: </b><a href="/Page12.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
-    <p><b>Author-A: </b><a href="/ar/about.html" style="color:#00ff88">عبدالله الجبري</a</p>
+    <p><b>Author-A: </b><a href="/ar/about.html" style="color:#00ff88">عبدالله الجبري</a></p>
     <p><b>Author-E: </b><a href="/about-ar.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
 
     <p><b>Project-ar: </b><a href="/project.html" style="color:#00ff88"> Project </a></p>
@@ -186,7 +270,6 @@
         }
     })();
 </script>
-
 
 <!-- في كل صفحة HTML -->
 <div id="header-placeholder"></div>

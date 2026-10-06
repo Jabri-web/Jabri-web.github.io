@@ -6,17 +6,88 @@
     <title>Project Report | Jabri-web Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    
     <link rel="canonical" href="https://jabri-com.vercel.app/project.html">
 
-    
     <style>
         body { background:#0a0a0f; color:#e8e8f0; font-family: "Tajawal", sans-serif; padding: 0; margin: 0; line-height: 1.8; }
-        .lang-switch { text-align:center; padding: 15px; background: #161b22; border-bottom: 1px solid #30363d; }
-        .lang-switch a { background: #6ae3ff; color: #0a0a0f; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block; }
-        .lang-switch a.inactive { background: transparent; color: #c9d1d9; border: 1px solid #30363d; }
-        .header { text-align:center; padding: 40px 20px; background: #0a0a0a; border-bottom: 1px solid #1f1f2e; }
-        .header img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #6ae3ff; object-fit: cover; margin-bottom: 15px; }
+        
+        /* ===== الهيدر اليدوي الاحترافي ===== */
+        .site-header {
+            background: #0a0a0f;
+            border-bottom: 1px solid #1f1f2e;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #6ae3ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: #6ae3ff;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+        .lang-switch a {
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-switch a.active {
+            background: #6ae3ff;
+            color: #0a0a0f;
+        }
+        .lang-switch a:not(.active) {
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+        }
+        .lang-switch a:not(.active):hover {
+            border-color: #6ae3ff;
+            color: #6ae3ff;
+        }
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .main-nav { justify-content: center; }
+            .lang-switch { justify-content: center; }
+        }
+
+        /* ===== الهيدر القديم (Hero) ===== */
+        .header-hero { text-align:center; padding: 40px 20px; background: #0a0a0a; border-bottom: 1px solid #1f1f2e; }
+        .header-hero img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #6ae3ff; object-fit: cover; margin-bottom: 15px; }
+        
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         h1, h2, h3 { color:#6ae3ff; }
         h1 { font-size: 2.2rem; text-align:center; }
@@ -36,23 +107,40 @@
 </head>
 <body>
 
-<div class="lang-switch">
-    <a href="./project.html">🇬🇧 English (Default)</a>
-    <a href="./project-AR.html" class="inactive">🇾🇪 العربية</a>
-</div>
+<!-- ===== الهيدر اليدوي الجديد ===== -->
+<header class="site-header">
+    <div class="header-container">
+        <a href="/" class="brand">🌌 Heaven Al-Jabri</a>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="/project.html" class="active">Project</a>
+            <a href="/theory-en.html">Theory</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/about.html">About</a>
+        </nav>
+        <div class="lang-switch">
+            <a href="./project.html" class="active">🇬🇧 EN</a>
+            <a href="./project-AR.html">🇾🇪 AR</a>
+        </div>
+    </div>
+</header>
 
-<div class="header">
+<!-- ===== الهيدر القديم (Hero Section) ===== -->
+<div class="header-hero">
     <img src="Image/Jabri-photo.png" alt="Abdulla Al-Jabri">
     <h1>Jabri-web Ecosystem</h1>
     <p style="font-size:1.2rem; color:#a78bfa;">From Riemann Zeros to the Structure of the Universe</p>
     <p><b>Identity:</b> Z + C + A = 1 | <b>License:</b> CC BY 4.0</p>
 </div>
-    <img src="Image/dbase.png" alt="Dbase">
-
 
 <div class="container">
 
-    <div class="highlight-box">
+    <!-- الصورة التي كانت عائمة، تم وضعها في مكانها الصحيح -->
+    <div style="text-align:center; margin-top: 20px;">
+        <img src="Image/dbase.png" alt="Dbase" style="max-width:100%; border-radius:12px; border:1px solid #30363d;">
+    </div>
+
+    <div class="highlight-box" style="margin-top: 30px;">
         <h2>📌 Executive Summary</h2>
         <p>The <strong>Jabri-web Ecosystem</strong> is a unified digital and theoretical framework that bridges pure mathematics (Riemann Hypothesis) with theoretical physics (General Relativity, Dark Energy) and digital infrastructure. It consists of <strong>12 interconnected repositories</strong> (1 Main Portal, 5 Core Research repos, 3 Experimental Systems, and 3 Router/Gateway repos) that collectively realize the Al-Jabri Identity: <strong>Z + C + A = 1</strong>.</p>
     </div>
@@ -120,23 +208,18 @@
     </div>
     
     <p><b>Web site: </b><a href="/Page11.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
-    <p><b>Author-A: </b><a href="/about.html" style="color:#00ff88">عبدالله الجبري</a</p>
+    <p><b>Author-A: </b><a href="/about.html" style="color:#00ff88">عبدالله الجبري</a></p>
     <p><b>Author-E: </b><a href="/about-en.html" style="color:#00ff88"> Heaven Al-Jabri</a></p>
 
     <p><b>Project-ar: </b><a href="/project-ar.html" style="color:#00ff88"> Project ar</a></p>
     
     <p><b>Jabri proects: </b><a href="/jabri-projects.html" style="color:#00ff88"> Jabri projects</a></p>
 
-    
-
     <footer>
         <p>© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri</p>
         <p style="font-size:0.9rem; color:#666;"><i>"From Riemann zeros to the structure of the universe"</i></p>
     </footer>
 </div>
-
-
-<!-- في كل صفحة HTML -->
 
 <script src="/js/menu.js"></script>
 
