@@ -1,15 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <url><loc>https://jabri-com.vercel.app/</loc><lastmod>2026-10-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🏠 الأولوية القصوى: الرئيسية + الواحة (Page11) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://jabri-com.vercel.app/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/"/>
+  </url>
+
+  <url>
+    <loc>https://jabri-com.vercel.app/Page11.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Page11.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/Page11.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/Page11.html"/>
+  </url>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🥇 أولوية 0.9: الصفحات الرئيسية للمحتوى -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
   <url><loc>https://jabri-com.vercel.app/explore.html</loc><lastmod>2026-10-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jabri-com.vercel.app/cv-2026a.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jabri-com.vercel.app/cv-2026e.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jabri-com.vercel.app/project.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url>
+    <loc>https://jabri-com.vercel.app/project.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/project-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/project.html"/>
+  </url>
+
   <url><loc>https://jabri-com.vercel.app/project-ar.html</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jabri-com.vercel.app/news-01.html</loc><lastmod>2026-10-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
-  <url><loc>https://jabri-com.vercel.app/profile.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🥈 أولوية 0.8: السيرة، النظرية، المدن اليمنية -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://jabri-com.vercel.app/profile.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/profile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/profile-en.html"/>
+  </url>
+
   <url><loc>https://jabri-com.vercel.app/profile-en.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://jabri-com.vercel.app/Author-cv.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://jabri-com.vercel.app/author-history.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
@@ -22,8 +70,20 @@
   <url><loc>https://jabri-com.vercel.app/Sanaa.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://jabri-com.vercel.app/Shibam.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://jabri-com.vercel.app/Soqatra.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Office.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
 
-  <url><loc>https://jabri-com.vercel.app/about.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🥉 أولوية 0.7: عن الموقع، البحوث، المعرض -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://jabri-com.vercel.app/about.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/about-en.html"/>
+  </url>
+
   <url><loc>https://jabri-com.vercel.app/about-ar.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/about-en.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/about-waha.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
@@ -34,15 +94,20 @@
   <url><loc>https://jabri-com.vercel.app/Pages-Researches.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/gallery.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/yemen-photo.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/yemen-photo2.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/calculator.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Dbase.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+  <url><loc>https://jabri-com.vercel.app/Dbase-deep.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 📚 أولوية 0.6: الأدوات، اليوميات، الصفحات الفرعية -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url><loc>https://jabri-com.vercel.app/yemen-photo2.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/handsa.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/magic-translator.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/link-checker.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/char-balance.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/Check.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Dbase.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Dbase-deep.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/microtik.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/microtik-deep.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
 
@@ -61,8 +126,11 @@
   <url><loc>https://jabri-com.vercel.app/contact.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/FAQPage.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/FAQPage-en.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://jabri-com.vercel.app/privacy-policy.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/kfupm-msg.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 📖 سلسلة Page1-12 (Page11 مرفوعة للأعلى) -->
+  <!-- ══════════════════════════════════════════════════════════ -->
 
   <url><loc>https://jabri-com.vercel.app/Page1.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/Page2.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
@@ -74,9 +142,13 @@
   <url><loc>https://jabri-com.vercel.app/Page8.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/Page9.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/Page10.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://jabri-com.vercel.app/Page11.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/Page12.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
+
   <url><loc>https://jabri-com.vercel.app/logo.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🗺️ أولوية 0.5: الخرائط والبنية التحتية -->
+  <!-- ══════════════════════════════════════════════════════════ -->
 
   <url><loc>https://jabri-com.vercel.app/table-all.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/monitor.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
@@ -89,7 +161,11 @@
   <url><loc>https://jabri-com.vercel.app/repos-sqr.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/current-auto.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
 
-  <url><loc>https://jabri-com.vercel.app/ar/index.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🌍 النسخ العربية /ar/ -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url><loc>https://jabri-com.vercel.app/ar/index.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/about.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/contact.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/journal.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
@@ -98,10 +174,14 @@
   <url><loc>https://jabri-com.vercel.app/ar/Router-all.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/Page4.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/Page10.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
-  <url><loc>https://jabri-com.vercel.app/ar/Page11.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+  <url><loc>https://jabri-com.vercel.app/ar/Page11.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/ar/Page12.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
 
-  <url><loc>https://jabri-com.vercel.app/en/index.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 🌍 النسخ الإنجليزية /en/ -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <url><loc>https://jabri-com.vercel.app/en/index.html</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/about.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/contact.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/journal.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
@@ -110,8 +190,12 @@
   <url><loc>https://jabri-com.vercel.app/en/Router-all.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/Page4.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/Page10.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
-  <url><loc>https://jabri-com.vercel.app/en/Page11.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+  <url><loc>https://jabri-com.vercel.app/en/Page11.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/en/Page12.html</loc><lastmod>2026-10-07</lastmod><priority>0.5</priority></url>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- 📦 أولوية 0.4: صفحات داخلية -->
+  <!-- ══════════════════════════════════════════════════════════ -->
 
   <url><loc>https://jabri-com.vercel.app/publish/publish.html</loc><lastmod>2026-10-07</lastmod><priority>0.4</priority></url>
   <url><loc>https://jabri-com.vercel.app/game/game-auto.html</loc><lastmod>2026-10-07</lastmod><priority>0.4</priority></url>
