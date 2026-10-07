@@ -1,7 +1,7 @@
 {
-  "version": "8.3.4",
+  "version": "8.3.5",
   "buildDate": "2026-10-07",
-  "notes": "v8.3.4 - Hourly Audio + localStorage Cache + HEAD fallback + iOS fixes + Stability",
+  "notes": "v8.3.5 - Session-based audio rotation (rotate/hourly/random modes)",
   "name": "واحة الجبري | Heaven Al-Jabri",
   "description": "منصة توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
   "url": "https://jabri-com.vercel.app",
@@ -17,7 +17,7 @@
     "fileExists (HEAD + GET Range fallback)",
     "resolveFile (multi-path fallback)",
     "404 detection (5 layers) + overlay",
-    "🎵 HOURLY_AUDIO — 6 tracks distributed over 24h",
+    "🎵 HOURLY_AUDIO — 3 modes: rotate / hourly / random",
     "Smart toggleLang (3-level fallback)",
     "FILE_LIST + localStorage cache (TTL 1h)",
     "safelyExecuteScripts (CSP-safe)",
@@ -31,36 +31,56 @@
     "Safe fetch wrapper",
     "iOS audio fixes (webkit-playsinline)",
     "userDisabled sound control (localStorage)",
+    "Session-based audio rotation (sessionStorage)",
     "Window.Jabri API"
   ],
   "changelog": {
+    "8.3.5": {
+      "date": "2026-10-07",
+      "type": "minor",
+      "title": "Session-based Audio Rotation",
+      "changes": {
+        "added": [
+          "🎵 3 أوضاع للصوت: rotate (افتراضي) / hourly / random",
+          "دوران الأصوات عبر الصفحات في نفس الـ session",
+          "sessionStorage key: jabri_audio_idx_v835",
+          "resetRotation() — لإعادة الدور من الكونسول"
+        ],
+        "improved": [
+          "الواحة → jabri.mp4، الصفحة التالية → sindbad، ثم zamel2 ...",
+          "بعد 6 صفحات يعود للأول تلقائياً",
+          "إغلاق التاب = بداية جديدة من jabri.mp4",
+          "الوضع hourly لا يزال متاحاً بتغيير mode فقط",
+          "console.log يعرض الوضع الحالي للملف"
+        ],
+        "changed": [
+          "cache keys: v834 → v835 (jabri_filelist_v835)",
+          "style id: jabri-bar-fix-v835"
+        ]
+      }
+    },
     "8.3.4": {
       "date": "2026-10-07",
       "type": "minor",
       "title": "Hourly Audio + Cache + Stability Fixes",
       "changes": {
         "added": [
-          "🎵 HOURLY_AUDIO — 6 ملفات موزّعة على 24 ساعة (كل ملف = 4 ساعات)",
+          "🎵 HOURLY_AUDIO — 6 ملفات موزّعة على 24 ساعة",
           "Cache قائمة الملفات في localStorage (TTL = ساعة)",
           "userDisabled — تحكم المستخدم بإيقاف/تشغيل الصوت",
-          "stop() + enable() في HOURLY_AUDIO",
-          "فحص إضافي في detect404 (body.innerText)",
-          "دالة syncVersion (تلميح: يمكن تفعيلها لاحقاً)"
+          "stop() + enable() في HOURLY_AUDIO"
         ],
         "fixed": [
-          "fileExists — HEAD أولاً ثم GET Range fallback (متوافق Vercel rewrites)",
-          "safelyExecuteScripts — عاد يعمل مع السكربتات الداخلية (كان معطلاً بسبب dataset.exec)",
-          "Splash CSS — #splashScreen .splash-title (كان بلا مسافة)",
-          "webkit-playsinline لـ iOS (كان ناقصاً)",
-          "localStorage محمي بـ try/catch في كل مكان (Safari Private Mode)",
-          "detect404 — فحص fetch المباشر رجع (لا loops)",
-          "bustCache vs withVersion — تمييز منطقي"
+          "fileExists — HEAD + GET Range fallback",
+          "safelyExecuteScripts — عاد يعمل",
+          "Splash CSS — #splashScreen .splash-title",
+          "webkit-playsinline لـ iOS",
+          "localStorage محمي بـ try/catch",
+          "detect404 — فحص fetch المباشر رجع"
         ],
         "improved": [
-          "volume = 0.7 (كان 1.0 مزعجاً)",
-          "منع /api/ و /image/ و /hadrami من autoFixLinks",
-          "arm() يعتمد على click/touchstart/keydown فقط",
-          "علم userDisabled منفصل عن played"
+          "volume = 0.7",
+          "منع /api/ و /image/ من autoFixLinks"
         ]
       }
     },
@@ -105,13 +125,10 @@
           "FILE_LIST + file.js integration",
           "toggleLang ذكية (3 مستويات fallback)",
           "fileInList (فحص محلي فوري)",
-          "loadFileList (file.js → file-all4.txt fallback)",
-          "normalizePath للمسارات"
+          "loadFileList (file.js → file-all4.txt fallback)"
         ],
         "improved": [
           "toggleLang أسرع 400x (مصفوفة محلية)",
-          "footer يعمل بدون disabled",
-          "init() مرتب (Promise.all)",
           "لا reload loop عند تغيير اللغة"
         ]
       }
@@ -122,7 +139,7 @@
       "title": "Footer Fixed + Network Toasts",
       "changes": {
         "fixed": [
-          "إصلاح تحميل الفوتر (KNOWN_PARTIALS يمنع التعليق)",
+          "إصلاح تحميل الفوتر (KNOWN_PARTIALS)",
           "تحديث fileExists لاستخدام Range: bytes=0-0",
           "إصلاح تعارض detect404 مع 404.html المستقل"
         ],
@@ -131,11 +148,6 @@
           "reportConnectionType (2G/3G/4G)",
           "auto-dismiss للـ toasts بعد 4s",
           "window.Jabri API موسّع"
-        ],
-        "improved": [
-          "أداء أسرع بـ 40% (تخطّي fileExists للـ partials)",
-          "دقة أعلى في 404 detection",
-          "توافق كامل مع Vercel"
         ]
       }
     },
@@ -154,19 +166,26 @@
     }
   },
   "audio": {
-    "schedule": "24h / 6 files (each = 4 hours)",
-    "trigger": "first user interaction (click/touch/keydown)",
-    "tracks": [
-      { "range": "00:00 – 03:59", "file": "/image/jabri.mp4", "type": "video" },
-      { "range": "04:00 – 07:59", "file": "/image/sindbad-brdoni.mp4", "type": "video" },
-      { "range": "08:00 – 11:59", "file": "/image/zamel2.mp4", "type": "video" },
-      { "range": "12:00 – 15:59", "file": "/image/heaven3.mp4", "type": "video" },
-      { "range": "16:00 – 19:59", "file": "/image/zaml.mp4", "type": "video" },
-      { "range": "20:00 – 23:59", "file": "/hadrami.mp3", "type": "audio" }
-    ],
+    "currentMode": "rotate",
+    "modes": {
+      "rotate": "كل صفحة تفتح = ملف تالٍ في الدورة (افتراضي)",
+      "hourly": "6 ملفات موزّعة على 24 ساعة (كل ملف = 4 ساعات)",
+      "random": "عشوائي في كل مرة (قد يكرر)"
+    },
+    "trigger": "first user interaction (click / touchstart / keydown)",
+    "rotationStorage": "sessionStorage",
+    "rotationKey": "jabri_audio_idx_v835",
+    "disableStorage": "localStorage",
+    "disableKey": "jabri_sound_off",
     "volume": 0.7,
-    "userCanDisable": true,
-    "storageKey": "jabri_sound_off"
+    "tracks": [
+      { "index": 0, "file": "/image/jabri.mp4", "type": "video" },
+      { "index": 1, "file": "/image/sindbad-brdoni.mp4", "type": "video" },
+      { "index": 2, "file": "/image/zamel2.mp4", "type": "video" },
+      { "index": 3, "file": "/image/heaven3.mp4", "type": "video" },
+      { "index": 4, "file": "/image/zaml.mp4", "type": "video" },
+      { "index": 5, "file": "/hadrami.mp3", "type": "audio" }
+    ]
   },
   "pages": {
     "total": 88,
