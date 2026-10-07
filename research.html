@@ -7,22 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- ===== حماية المحتوى + الكانونيكال الثابت (تم التحديث إلى Vercel) ===== -->
+<!-- تم إزالة سكربت الجافاسكربت الذي كان يعدل هذه الوسوم ديناميكياً -->
 <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/research.html" />
 <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/research.html" />
 <link rel="canonical" href="https://jabri-com.vercel.app/research.html" />
 <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const base = 'https://jabri-com.vercel.app';
-    const path = window.location.pathname;
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const arAlt = document.querySelector('link[hreflang="ar"]');
-    const enAlt = document.querySelector('link[hreflang="en"]');
-    if (canonical) canonical.href = base + path;
-    if (arAlt) arAlt.href = base + path;
-    if (enAlt) enAlt.href = base + '/en' + path;
-});
-</script>
 
 <title>بحوث الجبري | 12 مشروع | نظرية السندباد Z+C+A=1 | روابط و DOIs محدثة 2026</title>
 <meta name="description" content="12 مشروع بحثي لم/ عبدالله الجبري: من أصفار ريمان إلى بنية الكون. نظرية سندس الموحدة. DOI + GitHub + ملخص لكل بحث" />
@@ -42,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://jabri-com.vercel.app/research.html" />
 
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&amp;display=swap" rel="stylesheet" />
 <style>
 :root{--bg:#0a0a0f;--card:#11131a;--border:#1f2233;--accent:#6ae3ff;--text:#e8e8f0;--muted:#8a8a9e;--green:#00ff9d}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -171,7 +159,7 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
 
 <!-- ===== الأزرار العلوية ===== -->
 <div class="top-bar">
-  <a href="index.html" class="back-btn"><span class="ar">← الرئيسية</span><span class="en">← Home</span></a>
+  <a href="/" class="back-btn"><span class="ar">← الرئيسية</span><span class="en">← Home</span></a>
   <button class="lang-btn" onclick="toggleLang()"><span class="ar">EN</span><span class="en">عربي</span></button>
 </div>
 
@@ -457,7 +445,7 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
     <p>CC BY 4.0 | Jabri Identity: Z + C + A = 1</p>
 
     <div class="footer-links">
-      <a href="index.html">🏠 الرئيسية</a>
+      <a href="/">🏠 الرئيسية</a>
       <a href="Dbase.html">📊 قاعدة البيانات</a>
       <a href="table-all.html">📜 جدول DOIs</a>
       <a href="https://jabri-com.vercel.app/magic-translator.html">🔮 الساحر</a>
@@ -606,6 +594,5 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
     </a>
 </div>
 
-<script src="/js/menu.js"></script>
-
-</body></html>
+</body>
+</html>
