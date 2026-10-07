@@ -1,11 +1,12 @@
 // ================================================================
 // 🛡️ init-page-root.js
-// Version: 8.3.4 — "المرعبة المصلحة - الإصلاح الكامل"
+// Version: 8.3.5 — "المرعبة المصلحة - الإصلاح الكامل"
 // FIX: HEAD fallback + Cache + Audio UX + 404 + SafeScripts + CSS
+// NEW: HOURLY_AUDIO rotate/hourly/random modes
 // ================================================================
 (function() {
   'use strict';
-  const VERSION    = '8.3.4';
+  const VERSION    = '8.3.5';
   const BUILD_DATE = '2026-10-07';
   const BASE_URL   = 'https://jabri-com.vercel.app';
 
@@ -19,7 +20,6 @@
   const CONFIG = Object.assign({}, DEFAULT_CONFIG, window.JABRI_CONFIG || {});
   let splashHidden = false;
 
-  // ✅ إصلاح: دالتان مختلفتان فعلاً الآن
   function withVersion(url){
     const sep = url.includes('?') ? '&' : '?';
     return url + sep + 'v=' + VERSION;
@@ -31,7 +31,6 @@
 
   // ============================================================
   // ✅ fileExists — HEAD أولاً ثم GET Range كـ fallback
-  //    (يحل مشكلة Vercel rewrites + سيرفرات ترفض HEAD)
   // ============================================================
   async function fileExists(url){
     // 1) HEAD سريع
@@ -77,8 +76,8 @@
       try{
         // 1) cache من localStorage (مع حماية كاملة)
         try{
-          const cached     = localStorage.getItem('jabri_filelist_v834');
-          const cachedTime = parseInt(localStorage.getItem('jabri_filelist_time_v834') || '0', 10);
+          const cached     = localStorage.getItem('jabri_filelist_v835');
+          const cachedTime = parseInt(localStorage.getItem('jabri_filelist_time_v835') || '0', 10);
           if(cached && (Date.now() - cachedTime < CONFIG.fileListTTL)){
             const arr = JSON.parse(cached);
             arr.forEach(p => {
@@ -120,8 +119,8 @@
 
         // 3) اكتب cache — مع حماية من quota
         try{
-          localStorage.setItem('jabri_filelist_v834', JSON.stringify([...FILE_LIST.files]));
-          localStorage.setItem('jabri_filelist_time_v834', String(Date.now()));
+          localStorage.setItem('jabri_filelist_v835', JSON.stringify([...FILE_LIST.files]));
+          localStorage.setItem('jabri_filelist_time_v835', String(Date.now()));
         }catch(e){}
 
         FILE_LIST.loaded = true;
@@ -229,7 +228,7 @@
 
   function injectBarFix(){
     const style = document.createElement('style');
-    style.id = 'jabri-bar-fix-v834';
+    style.id = 'jabri-bar-fix-v835';
     style.textContent = `
       #header-placeholder{position:fixed!important;top:0!important;left:0!important;right:0!important;height:68px!important;z-index:10001!important;background:rgba(10,10,15,0.92)!important;backdrop-filter:blur(8px);pointer-events:none!important;}
      .top-header-buttons{position:fixed!important;top:12px!important;left:12px!important;right:12px!important;width:auto!important;height:44px!important;z-index:10002!important;background:transparent!important;pointer-events:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important;}
@@ -254,7 +253,6 @@
 
   function createSplash(){
     if(!CONFIG.splash || !document.body || document.getElementById('splashScreen')) return;
-    // ✅ إصلاح CSS: مسافة بين #splashScreen و .splash-title
     const html = `<div id="splashScreen"><div class="splash-title">واحة الجبري</div><div class="splash-sub">تراث اليمن العريق</div><div class="spinner"></div><div class="splash-version">v${VERSION}</div><style>#splashScreen{position:fixed;inset:0;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10003;transition:opacity .6s ease}#splashScreen.hidden{opacity:0;pointer-events:none}#splashScreen .splash-title{color:#6ae3ff;font-size:2.5rem;font-weight:900}.splash-sub{color:#888;font-size:1.1rem;margin-top:8px}.spinner{width:40px;height:40px;margin-top:30px;border:3px solid rgba(106,227,255,.1);border-top:3px solid #6ae3ff;border-radius:50%;animation:spin 1s linear infinite}.splash-version{position:absolute;bottom:20px;color:#444;font-size:12px}@keyframes spin{to{transform:rotate(360deg)}}</style></div>`;
     const div = document.createElement('div');
     div.innerHTML = html;
@@ -262,7 +260,7 @@
     setTimeout(hideSplash, CONFIG.autoHideSplashAfter);
   }
 
-  // ✅ safelyExecuteScripts — النسخة الصحيحة (تعمل مع السكربتات الداخلية)
+  // ✅ safelyExecuteScripts — النسخة الصحيحة
   function safelyExecuteScripts(container){
     container.querySelectorAll('script').forEach(old => {
       try{
@@ -274,7 +272,6 @@
           s.async = false;
           document.head.appendChild(s);
         } else if(old.textContent.trim()){
-          // سكربت داخلي → نفّذه بأمان
           try{ new Function(old.textContent).call(window); }
           catch(e){
             const s = document.createElement('script');
@@ -360,25 +357,56 @@
   }
 
   // ============================================================
-  // 🎵 HOURLY_AUDIO v8.3.4 — نسخة مصلحة ومحمية
+  // 🎵 HOURLY_AUDIO v8.3.5 — rotate (افتراضي) / hourly / random
   // ============================================================
   const HOURLY_AUDIO = {
     files: [
-      '/image/jabri.mp4',           // 00 – 03
-      '/image/sindbad-brdoni.mp4',  // 04 – 07
-      '/image/zamel2.mp4',          // 08 – 11
-      '/image/heaven3.mp4',         // 12 – 15
-      '/image/zaml.mp4',            // 16 – 19
-      '/hadrami.mp3'                // 20 – 23
+      '/image/jabri.mp4',           // 0
+      '/image/sindbad-brdoni.mp4',  // 1
+      '/image/zamel2.mp4',          // 2
+      '/image/heaven3.mp4',         // 3
+      '/image/zaml.mp4',            // 4
+      '/hadrami.mp3'                // 5
     ],
+
+    // 🎚️ الوضع الافتراضي: rotate — كل صفحة تفتح يأخذ الملف التالي
+    // غيّرها إلى 'hourly' لتوزيع 24 ساعة، أو 'random' للعشوائي
+    mode: 'rotate',
+
+    sessionKey: 'jabri_audio_idx_v835',
     played: false,
-    userDisabled: false,   // علم منفصل: المستخدم أوقف الصوت يدوياً
+    userDisabled: false,
     currentEl: null,
 
+    // 🎯 اختيار الملف حسب الوضع
     getFileForNow(){
-      const h    = new Date().getHours();
-      const slot = Math.floor(h / 4);
-      return this.files[Math.min(slot, this.files.length - 1)];
+      // 1) الوضع الزمني (24h / 6)
+      if(this.mode === 'hourly'){
+        const h    = new Date().getHours();
+        const slot = Math.floor(h / 4);
+        return this.files[Math.min(slot, this.files.length - 1)];
+      }
+
+      // 2) الوضع العشوائي
+      if(this.mode === 'random'){
+        return this.files[Math.floor(Math.random() * this.files.length)];
+      }
+
+      // 3) الوضع الدوّار (افتراضي) — كل صفحة = ملف تالٍ
+      let idx = 0;
+      try{
+        const stored = sessionStorage.getItem(this.sessionKey);
+        if(stored !== null){
+          idx = (parseInt(stored, 10) + 1) % this.files.length;
+        }
+        // أول صفحة: idx=0 → jabri.mp4 ✅
+        // الصفحة التالية: idx=1 → sindbad-brdoni.mp4 ✅
+        // ... وهكذا حتى idx=5 → hadrami.mp3 ✅ ثم يعود لـ 0
+        sessionStorage.setItem(this.sessionKey, String(idx));
+      }catch(e){
+        idx = Math.floor(Math.random() * this.files.length);
+      }
+      return this.files[idx];
     },
 
     play(file){
@@ -386,7 +414,6 @@
       if(this.userDisabled) return;
       if(!CONFIG.music) return;
 
-      // ✅ localStorage مع حماية كاملة
       try{
         if(localStorage.getItem('jabri_sound_off') === '1'){
           this.userDisabled = true;
@@ -400,13 +427,13 @@
         const isVideo = /\.mp4$/i.test(file);
         const el = document.createElement(isVideo ? 'video' : 'audio');
 
-        el.src     = withVersion(file);
-        el.preload = 'auto';
+        el.src      = withVersion(file);
+        el.preload  = 'auto';
         el.autoplay = true;
-        el.volume  = 0.7;
-        el.muted   = false;
-        el.setAttribute('playsinline', '');        // ✅ iOS
-        el.setAttribute('webkit-playsinline', ''); // ✅ iOS قديم
+        el.volume   = 0.7;
+        el.muted    = false;
+        el.setAttribute('playsinline', '');
+        el.setAttribute('webkit-playsinline', '');
 
         Object.assign(el.style, {
           position:'fixed', left:'-9999px', top:'-9999px',
@@ -426,13 +453,15 @@
           this.currentEl = null;
         }, { once:true });
 
-        console.log('🎵 تشغيل صوت الساعة:', new Date().getHours(), '→', file);
+        const modeLabel = this.mode === 'hourly' ? `ساعة ${new Date().getHours()}`
+                        : this.mode === 'random' ? 'عشوائي'
+                        : `دور ${this.files.indexOf(file) + 1}/6`;
+        console.log('🎵 تشغيل الصوت [' + modeLabel + ']:', file);
       }catch(e){
         console.warn('🎵 خطأ:', e);
       }
     },
 
-    // ✅ arm: فقط نقرة/لمسة/زر — بدون scroll
     arm(){
       const events = ['click', 'touchstart', 'keydown'];
       const handler = () => {
@@ -442,15 +471,13 @@
       events.forEach(ev => {
         window.addEventListener(ev, handler, { capture:true, passive:true });
       });
-      console.log('🎵 HOURLY_AUDIO v834 مسلّح — ينتظر أول تفاعل');
+      console.log(`🎵 HOURLY_AUDIO v835 — الوضع: ${this.mode} — ينتظر أول تفاعل`);
     },
 
     stop(){
-      if(this.currentEl){
-        try{ this.currentEl.pause(); this.currentEl.remove(); }catch(e){}
-      }
-      this.currentEl   = null;
-      this.played      = true;
+      if(this.currentEl){ try{ this.currentEl.pause(); this.currentEl.remove(); }catch(e){} }
+      this.currentEl    = null;
+      this.played       = true;
       this.userDisabled = true;
       try{ localStorage.setItem('jabri_sound_off', '1'); }catch(e){}
     },
@@ -460,6 +487,12 @@
       this.played       = false;
       this.userDisabled = false;
       this.arm();
+    },
+
+    // 🔄 إعادة تعيين الدور (للتجربة من الكونسول)
+    resetRotation(){
+      try{ sessionStorage.removeItem(this.sessionKey); }catch(e){}
+      console.log('🔄 تم إعادة تعيين الدور');
     }
   };
 
