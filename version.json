@@ -1,7 +1,7 @@
 {
-  "version": "8.2.0",
-  "buildDate": "2026-10-01",
-  "notes": "v8.2.0 - Footer Fixed + Smart toggleLang + FILE_LIST integration",
+  "version": "8.3.4",
+  "buildDate": "2026-10-07",
+  "notes": "v8.3.4 - Hourly Audio + localStorage Cache + HEAD fallback + iOS fixes + Stability",
   "name": "واحة الجبري | Heaven Al-Jabri",
   "description": "منصة توثيق تراث اليمن العريق وأبحاث الرياضيات والفيزياء النظرية",
   "url": "https://jabri-com.vercel.app",
@@ -14,14 +14,14 @@
   "features": [
     "Splash screen with auto-hide",
     "Header + Footer loader (Vercel-proof)",
-    "fileExists (Range: bytes=0-0)",
+    "fileExists (HEAD + GET Range fallback)",
     "resolveFile (multi-path fallback)",
-    "404 detection (4 layers) + overlay",
-    "Music player (5 tracks, auto-next)",
+    "404 detection (5 layers) + overlay",
+    "🎵 HOURLY_AUDIO — 6 tracks distributed over 24h",
     "Smart toggleLang (3-level fallback)",
-    "FILE_LIST integration (file.js)",
+    "FILE_LIST + localStorage cache (TTL 1h)",
     "safelyExecuteScripts (CSP-safe)",
-    "autoFixLinks",
+    "autoFixLinks (whitelist: /api /image /hadrami)",
     "Version check (no reload loop)",
     "Canonical URL",
     "prev/next/up dynamic links",
@@ -29,9 +29,67 @@
     "Auto-dismiss load toasts",
     "AbortController + timeouts",
     "Safe fetch wrapper",
+    "iOS audio fixes (webkit-playsinline)",
+    "userDisabled sound control (localStorage)",
     "Window.Jabri API"
   ],
   "changelog": {
+    "8.3.4": {
+      "date": "2026-10-07",
+      "type": "minor",
+      "title": "Hourly Audio + Cache + Stability Fixes",
+      "changes": {
+        "added": [
+          "🎵 HOURLY_AUDIO — 6 ملفات موزّعة على 24 ساعة (كل ملف = 4 ساعات)",
+          "Cache قائمة الملفات في localStorage (TTL = ساعة)",
+          "userDisabled — تحكم المستخدم بإيقاف/تشغيل الصوت",
+          "stop() + enable() في HOURLY_AUDIO",
+          "فحص إضافي في detect404 (body.innerText)",
+          "دالة syncVersion (تلميح: يمكن تفعيلها لاحقاً)"
+        ],
+        "fixed": [
+          "fileExists — HEAD أولاً ثم GET Range fallback (متوافق Vercel rewrites)",
+          "safelyExecuteScripts — عاد يعمل مع السكربتات الداخلية (كان معطلاً بسبب dataset.exec)",
+          "Splash CSS — #splashScreen .splash-title (كان بلا مسافة)",
+          "webkit-playsinline لـ iOS (كان ناقصاً)",
+          "localStorage محمي بـ try/catch في كل مكان (Safari Private Mode)",
+          "detect404 — فحص fetch المباشر رجع (لا loops)",
+          "bustCache vs withVersion — تمييز منطقي"
+        ],
+        "improved": [
+          "volume = 0.7 (كان 1.0 مزعجاً)",
+          "منع /api/ و /image/ و /hadrami من autoFixLinks",
+          "arm() يعتمد على click/touchstart/keydown فقط",
+          "علم userDisabled منفصل عن played"
+        ]
+      }
+    },
+    "8.3.3": {
+      "date": "2026-10-07",
+      "type": "minor",
+      "title": "Hourly Audio Integration",
+      "changes": {
+        "added": [
+          "🎵 HOURLY_AUDIO — أول ظهور (6 ملفات / 24 ساعة)",
+          "تشغيل الصوت عند أول لمسة للشاشة"
+        ],
+        "fixed": [
+          "#splashScreen .splash-title (خطأ CSS)"
+        ]
+      }
+    },
+    "8.3.2": {
+      "date": "2026-10-06",
+      "type": "patch",
+      "title": "المرعبة المصلحة - النسخة النهائية",
+      "changes": {
+        "fixed": [
+          "مقارنة case-sensitive",
+          "استرجاع toggleLang",
+          "تنفيذ السكربتات (safelyExecuteScripts)"
+        ]
+      }
+    },
     "8.2.0": {
       "date": "2026-10-01",
       "type": "minor",
@@ -95,6 +153,21 @@
       }
     }
   },
+  "audio": {
+    "schedule": "24h / 6 files (each = 4 hours)",
+    "trigger": "first user interaction (click/touch/keydown)",
+    "tracks": [
+      { "range": "00:00 – 03:59", "file": "/image/jabri.mp4", "type": "video" },
+      { "range": "04:00 – 07:59", "file": "/image/sindbad-brdoni.mp4", "type": "video" },
+      { "range": "08:00 – 11:59", "file": "/image/zamel2.mp4", "type": "video" },
+      { "range": "12:00 – 15:59", "file": "/image/heaven3.mp4", "type": "video" },
+      { "range": "16:00 – 19:59", "file": "/image/zaml.mp4", "type": "video" },
+      { "range": "20:00 – 23:59", "file": "/hadrami.mp3", "type": "audio" }
+    ],
+    "volume": 0.7,
+    "userCanDisable": true,
+    "storageKey": "jabri_sound_off"
+  },
   "pages": {
     "total": 88,
     "indexed": 52,
@@ -121,6 +194,6 @@
     "language": "ar",
     "direction": "rtl",
     "generator": "Manual + Custom",
-    "lastUpdate": "2026-10-01T00:00:00Z"
+    "lastUpdate": "2026-10-07T00:00:00Z"
   }
 }
