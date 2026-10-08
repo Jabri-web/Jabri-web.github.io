@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ملاحظات علمية من رحلة البحث: من Z(x) إلى Asymptotic Safety — م/ عبدالله الجبري">
+  <meta name="author" content="Abdulla Mohammed Nasser Al-Jabri">
+  <title>Notes from the Journey | Jabri-com</title>
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-alt: #12121a;
+      --fg: #e8e8f0;
+      --fg-muted: #888;
+      --cyan: #6ae3ff;
+      --green: #00ff88;
+      --red: #ff6b6b;
+      --gold: #d4af37;
+      --border: #2a2a3e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    header {
+      text-align: center;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-size: 2em;
+      color: var(--gold);
+      margin: 0 0 10px;
+    }
+    header .subtitle {
+      color: var(--fg-muted);
+      font-size: 1em;
+    }
+    h2 {
+      color: var(--cyan);
+      border-right: 4px solid var(--cyan);
+      padding-right: 12px;
+      margin-top: 40px;
+      font-size: 1.4em;
+    }
+    h3 {
+      color: var(--gold);
+      font-size: 1.15em;
+      margin-top: 25px;
+    }
+    p, li {
+      color: var(--fg);
+    }
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--cyan);
+      transition: all 0.2s;
+    }
+    a:hover {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+    .box {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .box.warn {
+      border-right: 4px solid var(--red);
+    }
+    .box.ok {
+      border-right: 4px solid var(--green);
+    }
+    .box.note {
+      border-right: 4px solid var(--gold);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: var(--bg-alt);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: #1a1a25;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    code {
+      background: #1a1a25;
+      color: var(--green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0d0d14;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: var(--fg);
+    }
+    blockquote {
+      border-right: 4px solid var(--gold);
+      padding-right: 15px;
+      margin: 20px 0;
+      color: var(--fg-muted);
+      font-style: italic;
+    }
+    .lang-switch {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9em;
+      margin: 0 5px;
+      transition: all 0.2s;
+    }
+    .lang-switch button:hover, .lang-switch button.active {
+      background: var(--cyan);
+      color: var(--bg);
+    }
+    .en { display: none; }
+    body.lang-en .ar { display: none; }
+    body.lang-en .en { display: block; }
+    body.lang-en { direction: ltr; }
+    body.lang-en h2 { border-right: none; border-left: 4px solid var(--cyan); padding-right: 0; padding-left: 12px; }
+    body.lang-en blockquote { border-right: none; border-left: 4px solid var(--gold); padding-right: 0; padding-left: 15px; }
+    footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--fg-muted);
+      font-size: 0.9em;
+    }
+    footer a { color: var(--cyan); }
+    .badge {
+      display: inline-block;
+      background: #1a1a25;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.85em;
+      margin: 0 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1 class="ar">📓 ملاحظات من الرحلة</h1>
+      <h1 class="en">📓 Notes from the Journey</h1>
+      <p class="subtitle ar">من Z(x) إلى Asymptotic Safety — سجل بحثي</p>
+      <p class="subtitle en">From Z(x) to Asymptotic Safety — A Research Log</p>
+      <div class="lang-switch">
+        <button onclick="setLang('ar')" id="btn-ar" class="active">العربية</button>
+        <button onclick="setLang('en')" id="btn-en">English</button>
+      </div>
+    </header>
+
+    <!-- ==================== ARABIC CONTENT ==================== -->
+    <div class="ar">
+
+      <div class="box note">
+        <strong>الهدف:</strong> هذا الملف ليس ورقة علمية، ولا ادعاء نظرية. هو <em>سجل صادق</em> لرحلة بحثية، من فكرة أولية إلى فهم نقدي لمنهجية الفيزياء النظرية.
+      </div>
+
+      <h2>1. المحاولة الأولى: Z(x)</h2>
+      <p>بدأت من دالة رياضية:</p>
+      <pre><code>Z(x) = x⁵ · ln(x) · sin(2π/x) · e^(−x/xp)</code></pre>
+      <p>وادّعيت أنها قد تكون "المعادلة الأم" للكون، مع ثوابت مادية مشتقة منها (<code>H₀</code>، <code>α</code>، <code>w</code>، ...).</p>
+
+      <h3>ما فعلته بشكل صحيح:</h3>
+      <ul>
+        <li>بنيت بنية تحتية رقمية كاملة (GitHub + Zenodo + OSF).</li>
+        <li>وثّقت كل إصدار بـ DOI دائم.</li>
+        <li>طبّقت مبرهنة بل على Z(x) بشكل عددي.</li>
+      </ul>
+
+      <h3>أين أخطأت:</h3>
+      <div class="box warn">
+        <ul>
+          <li><strong>لا اشتقاق:</strong> Z(x) لم تخرج من أي مبدأ فيزيائي.</li>
+          <li><strong>معاملات حرة كثيرة:</strong> <code>xp</code>، <code>N</code>، الشكل، الاختيار — كلها قراراتي.</li>
+          <li><strong>Overfitting:</strong> بأربع معاملات، يمكن توفيق أي أرقام.</li>
+          <li><strong>لا تنبؤ:</strong> لم تتنبأ Z(x) بشيء قبل قياسه.</li>
+        </ul>
+      </div>
+
+      <h2>2. الاختبار الحاسم</h2>
+      <p>اختبرت Z(x) ضد 5 مبادئ فيزيائية مستقلة (Kaluza-Klein, QCD, DSI, Berry-Keating, Least Action):</p>
+
+      <table>
+        <thead>
+          <tr><th>المبدأ</th><th>Overlap مع Z(x)</th><th>النتيجة</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kaluza-Klein</td><td>&lt; 0.35</td><td>لا تشبه</td></tr>
+          <tr><td>QCD Cornell</td><td>لا تشبه</td><td>لا تشبه</td></tr>
+          <tr><td>DSI (α=0.5)</td><td>0.037</td><td>لا تشبه</td></tr>
+          <tr><td>DSI (α=5)</td><td>0.0006</td><td>لا تشبه</td></tr>
+          <tr><td>Berry-Keating</td><td>0.0000</td><td>لا تشبه</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box warn">
+        <strong>النتيجة:</strong> Z(x) دالة رياضية اعتباطية، وليست حلاً لأي معادلة فيزيائية معروفة.
+      </div>
+
+      <h2>3. مبرهنة بل: قيد ثانٍ</h2>
+      <p>حاولت إنقاذ الفكرة بجعل Z ثنائية غير قابلة للتفكيك:</p>
+      <pre><code>Z(x₁,x₂) = f(x₁,x₂) · e^(iΦ(x₁,x₂))</code></pre>
+      <p>لكن النتيجة العددية:</p>
+      <pre><code>Case 1 (factorizable):   |S| = 0.136
+Case 2 (non-factorizable): |S| = 1.770 (flat)
+Case 3 (Born rule):        |S| = 2.828 = 2√2</code></pre>
+
+      <div class="box warn">
+        <strong>اكتشاف رياضي:</strong> أي ارتباط من الشكل <code>E(a,b) = ∫∫ p(x₁,x₂) m_a(x₁) m_b(x₂) dx₁dx₂</code> يحقق <code>|S| ≤ 2</code> — حتى لو كانت <code>p</code> غير قابلة للتفكيك. هذا يعرف في الأدبيات باسم <em>مبرهنة Fine (1972)</em>.
+      </div>
+
+      <h2>4. ما تعلمته (الدرس الحقيقي)</h2>
+      <blockquote>
+        "الفيزياء تبدأ من مبدأ، وتنتهي بنتيجة. البناء الاعتباطي يبدأ من نتيجة، ويبحث عن مبدأ."
+      </blockquote>
+
+      <h3>قارن:</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>أينشتاين 1905</th><th>Z(x)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>المبادئ الأولى</td><td>مبدأان (النسبية + ثبات c)</td><td>لا يوجد</td></tr>
+          <tr><td>المعاملات الحرة</td><td>صفر</td><td>≥ 8</td></tr>
+          <tr><td>الاشتقاق</td><td>رياضي صارم</td><td>لا يوجد</td></tr>
+          <tr><td>التنبؤات</td><td>E = mc²، تمدد الزمن، ...</td><td>لا شيء</td></tr>
+        </tbody>
+      </table>
+
+      <h2>5. الاتجاه الجديد</h2>
+      <p>بعد إغلاق ملف Z(x)، بدأت رحلة علمية جديدة، مبنية على مبادئ حقيقية:</p>
+
+      <h3>5.1 Navier-Stokes</h3>
+      <ul>
+        <li>محاكاة 2D Euler (N=128) — كود يعمل، <code>max|∇·u| = 5×10⁻¹⁵</code>، الطاقة محفوظة.</li>
+        <li>الهدف القادم: 3D و Axisymmetric (Luo-Hou 2014).</li>
+      </ul>
+
+      <h3>5.2 Donoghue (1994): التصحيح الكمي لقانون نيوتن</h3>
+      <pre><code>V(r) = −GM/r · [1 + (41/10π) · (l_P/r)² + ...]</code></pre>
+      <p>عند <code>l_P = 1.616×10⁻³⁵ m</code>، التصحيح ضئيل جداً في كل المقاييس العملية، لكنه <strong>تنبؤ كمي حقيقي</strong> لنظرية الجاذبية الفعالة.</p>
+
+      <h3>5.3 Asymptotic Safety (Weinberg 1979)</h3>
+      <p>معادلة بيتا المبسطة:</p>
+      <pre><code>β_g = 2g − B·g²
+g* = 2/B
+θ = −β'(g*) = 2 > 0  →  UV-attractive</code></pre>
+      <p>جميع المسارات تتقارب إلى <code>g*</code> في UV بدلاً من الانهيار عند <code>E ~ M_P</code>. هذا يفتح الباب لإمكانية أن الجاذبية قابلة لإعادة التطبيع غير اضطرابياً.</p>
+
+      <h2>6. المبدأ الجديد</h2>
+      <div class="box ok">
+        <ol>
+          <li><strong>مبدأ أولاً:</strong> ابدأ من مبدأ فيزيائي، لا من دالة.</li>
+          <li><strong>اشتق:</strong> استخرج النتيجة رياضياً.</li>
+          <li><strong>اختبر:</strong> قارن بتجربة أو بحد أعلى معروف.</li>
+          <li><strong>انقد نفسك:</strong> إذا لم تنجح، فهذا علم.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <!-- ==================== ENGLISH CONTENT ==================== -->
+    <div class="en">
+
+      <div class="box note">
+        <strong>Purpose:</strong> This is not a paper, and not a theory claim. It is an <em>honest log</em> of a research journey — from an initial idea to a critical understanding of theoretical physics methodology.
+      </div>
+
+      <h2>1. First Attempt: Z(x)</h2>
+      <p>I started from a mathematical function:</p>
+      <pre><code>Z(x) = x⁵ · ln(x) · sin(2π/x) · e^(−x/xp)</code></pre>
+      <p>And claimed it might be the "mother equation" of the universe, with physical constants derived from it (<code>H₀</code>, <code>α</code>, <code>w</code>, ...).</p>
+
+      <h3>What I did right:</h3>
+      <ul>
+        <li>Built a complete digital infrastructure (GitHub + Zenodo + OSF).</li>
+        <li>Documented each release with a permanent DOI.</li>
+        <li>Applied Bell's theorem to Z(x) numerically.</li>
+      </ul>
+
+      <h3>Where I went wrong:</h3>
+      <div class="box warn">
+        <ul>
+          <li><strong>No derivation:</strong> Z(x) did not emerge from any physical principle.</li>
+          <li><strong>Too many free parameters:</strong> <code>xp</code>, <code>N</code>, the form — all my choices.</li>
+          <li><strong>Overfitting:</strong> With four parameters, any numbers can be fitted.</li>
+          <li><strong>No prediction:</strong> Z(x) predicted nothing before measurement.</li>
+        </ul>
+      </div>
+
+      <h2>2. The Decisive Test</h2>
+      <p>I tested Z(x) against 5 independent physical principles (Kaluza-Klein, QCD, DSI, Berry-Keating, Least Action):</p>
+
+      <table>
+        <thead>
+          <tr><th>Principle</th><th>Overlap with Z(x)</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kaluza-Klein</td><td>&lt; 0.35</td><td>No match</td></tr>
+          <tr><td>QCD Cornell</td><td>No match</td><td>No match</td></tr>
+          <tr><td>DSI (α=0.5)</td><td>0.037</td><td>No match</td></tr>
+          <tr><td>DSI (α=5)</td><td>0.0006</td><td>No match</td></tr>
+          <tr><td>Berry-Keating</td><td>0.0000</td><td>No match</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box warn">
+        <strong>Result:</strong> Z(x) is an arbitrary mathematical function, not a solution to any known physical equation.
+      </div>
+
+      <h2>3. Bell's Theorem: A Second Constraint</h2>
+      <p>I attempted to save the idea by making Z non-factorizable:</p>
+      <pre><code>Z(x₁,x₂) = f(x₁,x₂) · e^(iΦ(x₁,x₂))</code></pre>
+      <p>But the numerical result:</p>
+      <pre><code>Case 1 (factorizable):   |S| = 0.136
+Case 2 (non-factorizable): |S| = 1.770 (flat)
+Case 3 (Born rule):        |S| = 2.828 = 2√2</code></pre>
+
+      <div class="box warn">
+        <strong>Mathematical finding:</strong> Any correlation of the form <code>E(a,b) = ∫∫ p(x₁,x₂) m_a(x₁) m_b(x₂) dx₁dx₂</code> satisfies <code>|S| ≤ 2</code> — even if <code>p</code> is non-factorizable. This is known in the literature as <em>Fine's Theorem (1972)</em>.
+      </div>
+
+      <h2>4. What I Learned (The Real Lesson)</h2>
+      <blockquote>
+        "Physics begins from a principle, and ends in a result. Arbitrary construction begins from a result, and searches for a principle."
+      </blockquote>
+
+      <h3>Compare:</h3>
+      <table>
+        <thead>
+          <tr><th></th><th>Einstein 1905</th><th>Z(x)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>First principles</td><td>Two (relativity + constancy of c)</td><td>None</td></tr>
+          <tr><td>Free parameters</td><td>Zero</td><td>≥ 8</td></tr>
+          <tr><td>Derivation</td><td>Rigorous mathematics</td><td>None</td></tr>
+          <tr><td>Predictions</td><td>E = mc², time dilation, ...</td><td>Nothing</td></tr>
+        </tbody>
+      </table>
+
+      <h2>5. The New Direction</h2>
+      <p>After closing the Z(x) file, I began a new scientific journey, built on real principles:</p>
+
+      <h3>5.1 Navier-Stokes</h3>
+      <ul>
+        <li>2D Euler simulation (N=128) — working code, <code>max|∇·u| = 5×10⁻¹⁵</code>, energy conserved.</li>
+        <li>Next: 3D and Axisymmetric (Luo-Hou 2014).</li>
+      </ul>
+
+      <h3>5.2 Donoghue (1994): Quantum Correction to Newton's Law</h3>
+      <pre><code>V(r) = −GM/r · [1 + (41/10π) · (l_P/r)² + ...]</code></pre>
+      <p>At <code>l_P = 1.616×10⁻³⁵ m</code>, the correction is negligible at all practical scales, but it is a <strong>genuine quantum prediction</strong> of the effective gravity theory.</p>
+
+      <h3>5.3 Asymptotic Safety (Weinberg 1979)</h3>
+      <p>Simplified beta function:</p>
+      <pre><code>β_g = 2g − B·g²
+g* = 2/B
+θ = −β'(g*) = 2 > 0  →  UV-attractive</code></pre>
+      <p>All trajectories converge to <code>g*</code> in the UV instead of diverging at <code>E ~ M_P</code>. This opens the possibility that gravity is non-perturbatively renormalizable.</p>
+
+      <h2>6. The New Principle</h2>
+      <div class="box ok">
+        <ol>
+          <li><strong>Principle first:</strong> Start from a physical principle, not a function.</li>
+          <li><strong>Derive:</strong> Extract the result mathematically.</li>
+          <li><strong>Test:</strong> Compare with experiment or a known bound.</li>
+          <li><strong>Self-criticize:</strong> If it fails, that is science.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>
+        <span class="badge">📖 Note</span>
+        <span class="badge">🔬 Research Log</span>
+        <span class="badge">📅 2026-10</span>
+      </p>
+      <p class="ar">
+        © 2026 م/ عبدالله محمد ناصر الجبري — صنعاء، اليمن<br>
+        <a href="https://jabri-com.vercel.app/">🏛️ الواحة</a> ·
+        <a href="https://github.com/Jabri-web/Jabri-com">🐙 GitHub</a> ·
+        <a href="https://github.com/Jabri-web/Jabri-com/wiki">📖 Wiki</a> ·
+        <a href="https://osf.io/yc9mb/">🔬 OSF</a> ·
+        <a href="https://doi.org/10.5281/zenodo.21003989">📊 Zenodo</a>
+      </p>
+      <p class="en">
+        © 2026 Abdulla Mohammed Nasser Al-Jabri — Sana'a, Yemen<br>
+        <a href="https://jabri-com.vercel.app/">🏛️ Site</a> ·
+        <a href="https://github.com/Jabri-web/Jabri-com">🐙 GitHub</a> ·
+        <a href="https://github.com/Jabri-web/Jabri-com/wiki">📖 Wiki</a> ·
+        <a href="https://osf.io/yc9mb/">🔬 OSF</a> ·
+        <a href="https://doi.org/10.5281/zenodo.21003989">📊 Zenodo</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      try { localStorage.setItem('jabri_lang', lang); } catch(e) {}
+    }
+    // Restore saved language
+    try {
+      const saved = localStorage.getItem('jabri_lang');
+      if (saved === 'en') setLang('en');
+    } catch(e) {}
+  </script>
+
+</body>
+</html>
