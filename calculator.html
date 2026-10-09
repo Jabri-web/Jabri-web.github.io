@@ -1,257 +1,197 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة النظرية الموحدة | Unified Theory Calculator</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f0c29;
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        h1 { color: #ffd700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); font-size: 22px; }
-        h3 { color: #8ab4f8; margin-top: 0; font-size: 16px; }
-        
-        .input-group {
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            display: inline-block;
-            width: 90%;
-            max-width: 400px;
-        }
-        input {
-            padding: 12px;
-            border-radius: 8px;
-            border: 2px solid #ffd700;
-            background: transparent;
-            color: white;
-            font-size: 18px;
-            width: 100px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 12px 25px;
-            border-radius: 8px;
-            border: none;
-            background: #ffd700;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 18px;
-            width: 100%;
-            margin-top: 10px;
-        }
-        button:hover { background: #ffe066; }
-        
-        .canvas-container {
-            width: 95%;
-            max-width: 600px;
-            margin: 20px auto;
-            background: #000;
-            padding: 10px;
-            border-radius: 15px;
-            border: 1px solid #444;
-        }
-        
-        table { margin: 20px auto; border-collapse: collapse; width: 95%; max-width: 600px; background: #1a1a2e; font-size: 12px; }
-        th, td { border: 1px solid #444; padding: 6px; }
-        th { background: #0d1117; color: #ffd700; }
-        td { color: #ddd; }
-        tr:nth-child(even) { background: rgba(255, 255, 255, 0.05); }
-        .gold-line { color: #ffd700; font-weight: bold; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبة Z(x) — v3.2.2</title>
+<style>
+  body{background:#0f0c29;color:#fff;text-align:center;padding:15px;font-family:'Segoe UI',Tahoma,sans-serif}
+  h1{color:#ffd700;font-size:19px;margin:5px}
+  h2{color:#8ab4f8;font-size:13px;font-weight:normal}
+  h3{color:#ffd700;font-size:15px;margin:20px 0 8px}
+  .box{background:rgba(255,255,255,.08);padding:15px;border-radius:12px;width:96%;max-width:680px;margin:10px auto}
+  input{padding:10px;border:2px solid #ffd700;background:transparent;color:#fff;width:110px;text-align:center;border-radius:6px;font-size:16px}
+  button{padding:10px 22px;background:#ffd700;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+  #out{margin-top:12px;font-family:monospace;font-size:14px;line-height:1.8;min-height:60px}
+  canvas{width:100%;max-width:640px;background:#000;border-radius:10px;border:1px solid #333;margin:15px auto;display:block}
+  table{margin:15px auto;border-collapse:collapse;width:98%;max-width:680px;background:#1a1a2e;font-size:11px}
+  th,td{border:1px solid #444;padding:6px} th{background:#0d1117;color:#ffd700}
+  .note2{color:#ffe066;font-size:12px;margin-top:15px;background:rgba(255,215,0,.08);padding:10px;border-radius:6px;text-align:right;line-height:1.7;border:1px solid rgba(255,215,0,.3)}
+  
+  
+  .legend{background:rgba(255,255,255,.05);padding:15px;border-radius:12px;width:96%;max-width:680px;margin:25px auto;border:1px solid rgba(255,215,0,.25)}
+.legend-table{width:100%;background:transparent;font-size:12px;margin:10px 0}
+.legend-table th{background:rgba(13,17,23,.8);color:#ffd700;padding:8px}
+.legend-table td{border:1px solid #444;padding:8px;text-align:right;color:#ddd}
+.legend-table code{color:#8ab4f8;font-size:11px;background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;direction:ltr;display:inline-block}
+.legend-note{color:#ffe066;font-size:11px;background:rgba(255,215,0,.08);padding:10px;border-radius:6px;margin-top:10px;text-align:right;line-height:1.7}
+</style>
 </head>
 <body>
 
-    <h1>🌌 حاسبة النظرية الموحدة</h1>
-    <h3>Zx = Z + C + A = 1</h3>
+<h1>حاسبة Z(x) — v3.2.2</h1>
+<h2>DOI:10.5281/zenodo.23266061</h2>
 
-
-<div style="margin-top: 15px; margin-bottom: 25px;">
-  <a href="journal4.html" style="text-decoration: none; background-color: #0f3460; color: #e0c097; padding: 10px 20px; border-radius: 5px; border: 1px solid #e0c097; font-weight: bold; transition: 0.3s;">🌳 العودة إلى شجرة التوحيد (Journal 4)</a>
+<div class="box">
+  <input id="xInput" type="number" value="44" step="0.5">
+  <button id="calcBtn">احسب</button>
+  <div id="out"></div>
 </div>
 
-    <div class="input-group">
-        <label for="xInput">أدخل أقصى قيمة (x):</label><br>
-        <input type="number" id="xInput" value="5" step="0.1" min="0.1">
-        <button onclick="runCalculator()">🚀 احسب وارسم</button>
-        <button onclick="downloadImage()" style="background-color: #444; color: white; margin-top: 5px;">📥 تحميل الرسم</button>
-    </div>
+<h3>① الجدول الحقيقي: Z(x) من أصفار ريمان</h3>
+<canvas id="chart1" width="640" height="260"></canvas>
+<table>
+  <thead><tr><th>x</th><th>Z(x)</th><th>Z'(x)</th><th>Z''(x)</th><th>w_proxy</th></tr></thead>
+  <tbody id="tbody1"></tbody>
+</table>
 
-    <div class="canvas-container">
-        <h3 style="color:white;">📈 الرسم البياني</h3>
-        <canvas id="myCanvas" style="width: 100%; background: #000;"></canvas>
-    </div>
+<h3>② الجدول التعريفي: Z + C + A = 1</h3>
+<canvas id="chart2" width="640" height="240"></canvas>
+<table>
+  <thead><tr><th>x</th><th>Z(x)</th><th>A=-0.0111</th><th>C(x)=1−Z−A</th><th>Total</th></tr></thead>
+  <tbody id="tbody2"></tbody>
+</table>
+<div class="note2">
+  <b>Total=1</b> لأن <b>C مُعرَّفة لتجعله 1</b>.<br>
+  <b>C(x)</b> يتغير من ~1.34 إلى ~1.53 — ليس ثابتاً.<br>
+  الجدول ① حساب حقيقي. الجدول ② تعريف توضيحي للمقارنة.
+</div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>x</th>
-                <th>Z(x)</th>
-                <th>C(x)</th>
-                <th>A(x)</th>
-                <th>Zx (Total)</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
+<script>
+const GAMMAS=[14.13472514,21.02203963,25.01085758,30.42487612,32.93506158,37.58617815,40.91871901,43.32707328,48.00515088,49.77383247,52.97032147,56.44624769,59.347044,60.83177852,65.11254404,67.07981052,69.54640171,72.06715767,75.70469069,77.14484006,79.33737502,82.91038085,84.73549298,87.42527461,88.8091112,92.49189927,94.65134404,95.87063422,98.83119421,101.317851];
+const A_CONST = -0.011139;
+function Z(x){let s=0;for(let g of GAMMAS)s+=2*x/(x*x+g*g);return -s;}
+function Zp(x){let s=0;for(let g of GAMMAS)s+=2*(g*g-x*x)/Math.pow(x*x+g*g,2);return -s;}
+function Zpp(x){let s=0;for(let g of GAMMAS)s+=4*x*(3*g*g-x*x)/Math.pow(x*x+g*g,3);return s;}
+function Zppp(x){let s=0;for(let g of GAMMAS)s+=12*(x*x*x*x-6*x*x*g*g+g*g*g*g)/Math.pow(x*x+g*g,4);return s;}
+function wproxy(x){let zp=Zp(x);if(Math.abs(zp)<1e-12)return null;return -1+Zppp(x)/zp;}
+function Cx(x){return 1 - Z(x) - A_CONST;}
+const BASE_XS=[12,20,27.817274,32.935062,40,44,66,77];
 
-    <script>
-        // دالة التطبيع
-        function normalize(arr) {
-            var min = Math.min.apply(null, arr);
-            var max = Math.max.apply(null, arr);
-            return arr.map(function(val) { return (val - min) / (max - min); });
-        }
+function drawChart1(){
+  const c=document.getElementById('chart1'); const ctx=c.getContext('2d'); const W=c.width, H=c.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='rgba(255,255,255,.08)'; for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
+  function plot(func,color){
+    ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath(); let first=true;
+    for(let px=0;px<W;px++){
+      const x=0.5+px*(60/W); let y=func(x);
+      if(y===null||!isFinite(y)){ if(!first){ctx.stroke();ctx.beginPath();} first=true; continue; }
+      let py=H/2 - y*60; if(py<0||py>H){ if(!first){ctx.stroke();ctx.beginPath();} first=true; continue; }
+      if(first){ctx.moveTo(px,py);first=false;} else ctx.lineTo(px,py);
+    } ctx.stroke();
+  }
+  plot(x=>Z(x),'#ffd700');
+  plot(x=>Zp(x)*100,'#00bfff');
+  plot(x=>{let w=wproxy(x);if(w===null||Math.abs(w)>5)return null;return w/5;},'#ff4444');
+  let xc_px=(27.817274-0.5)*(W/60); ctx.strokeStyle='rgba(0,230,118,.7)'; ctx.setLineDash([3,3]); ctx.beginPath();ctx.moveTo(xc_px,0);ctx.lineTo(xc_px,H);ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle='#00e676'; ctx.font='10px monospace'; ctx.fillText('x_c=27.817', xc_px+4, 15);
+  ctx.fillStyle='#ffd700'; ctx.fillText('Z(x)', 10, 15); ctx.fillStyle='#00bfff'; ctx.fillText("Z'(x)×100", 10, 28); ctx.fillStyle='#ff4444'; ctx.fillText('w_proxy/5', 10, 41);
+}
 
-        function runCalculator() {
-            var maxX = parseFloat(document.getElementById('xInput').value);
-            if (isNaN(maxX) || maxX <= 0) { alert("أدخل قيمة أكبر من 0"); return; }
+function drawChart2(){
+  const c=document.getElementById('chart2'); const ctx=c.getContext('2d'); const W=c.width, H=c.height;
+  ctx.clearRect(0,0,W,H);
+  const yMin=-0.7, yMax=1.2;
+  const toY = y => H - (y - yMin)/(yMax - yMin) * H;
+  ctx.strokeStyle='rgba(255,255,255,.08)'; for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
+  ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.beginPath();ctx.moveTo(0,toY(0));ctx.lineTo(W,toY(0));ctx.stroke();
+  ctx.fillStyle='rgba(0,230,118,.08)'; ctx.fillRect(0, toY(1), W, toY(0)-toY(1));
+  ctx.strokeStyle='#00e676'; ctx.lineWidth=3; ctx.beginPath();ctx.moveTo(0,toY(1));ctx.lineTo(W,toY(1));ctx.stroke();
+  function plot(func,color,dash,width){
+    ctx.strokeStyle=color; ctx.lineWidth=width||2; ctx.setLineDash(dash||[]); ctx.beginPath();
+    for(let px=0;px<W;px++){const x=0.5+px*(60/W); const py=toY(func(x)); if(px===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);} ctx.stroke(); ctx.setLineDash([]);
+  }
+  plot(x=>Z(x), '#ffd700', [], 1.5);
+  plot(x=>Z(x)+A_CONST, '#00bfff', [5,3], 1.5);
+  plot(x=>Z(x)+A_CONST+Cx(x), '#00e676', [], 3);
+  ctx.font='11px monospace';
+  ctx.fillStyle='#ffd700'; ctx.fillText('Z(x)', 10, 15);
+  ctx.fillStyle='#00bfff'; ctx.fillText('Z+A', 10, 28);
+  ctx.fillStyle='#00e676'; ctx.fillText('Z+A+C = 1', 10, 41);
+}
 
-            // تصفير الجدول
-            document.getElementById('tableBody').innerHTML = '';
-            
-            var labels = [];
-            var rawZ = [];
-            var rawA = [];
+function buildTables(currentX){
+  let xs=[...BASE_XS]; if(currentX && !xs.some(v=>Math.abs(v-currentX)<1e-6)) xs.push(currentX); xs.sort((a,b)=>a-b);
+  let h1="", h2="";
+  for(let x of xs){
+    let w=wproxy(x); let isCur = currentX && Math.abs(x-currentX)<1e-6; let style = isCur ? ' style="background:rgba(255,215,0,.25)"' : '';
+    h1+='<tr'+style+'><td>'+x+'</td><td>'+Z(x).toFixed(6)+'</td><td>'+Zp(x).toExponential(3)+'</td><td>'+Zpp(x).toExponential(3)+'</td><td>'+(w===null||Math.abs(w)>5?"—":w.toFixed(4))+'</td></tr>';
+    h2+='<tr'+style+'><td>'+x+'</td><td>'+Z(x).toFixed(6)+'</td><td>'+A_CONST.toFixed(4)+'</td><td>'+Cx(x).toFixed(4)+'</td><td>1.0000</td></tr>';
+  }
+  document.getElementById('tbody1').innerHTML=h1;
+  document.getElementById('tbody2').innerHTML=h2;
+}
 
-            // حساب القيم الخام
-            for (var x = 0.1; x <= maxX; x += 0.1) {
-                x = Math.round(x * 10) / 10;
-                labels.push(x);
-                rawZ.push(Math.pow(x, 5) * Math.log(x) * Math.sin(Math.PI * x / 2.0) * Math.exp(-x));
-                rawA.push(Math.pow(x, 2) * Math.exp(-x));
-            }
+function calc(){
+  const x=parseFloat(document.getElementById('xInput').value); const out=document.getElementById('out');
+  if(isNaN(x)||x<=0){out.innerHTML="أدخل >0";return;}
+  let w=wproxy(x);
+  out.innerHTML="Z("+x+")=<b>"+Z(x).toFixed(6)+"</b><br>Z'="+Zp(x).toExponential(3)+" Z''="+Zpp(x).toExponential(3)+"<br>w_proxy="+(w===null?"—":w.toFixed(4))+"<br><span style='color:#ff8a8a'>C("+x+")="+Cx(x).toFixed(4)+"</span>";
+  buildTables(x);
+}
 
-            // التطبيع
-            var Z = normalize(rawZ);
-            var A = normalize(rawA);
-            var C = [];
-            var Total = [];
+function init(){ drawChart1(); drawChart2(); buildTables(); calc(); document.getElementById('calcBtn').addEventListener('click',calc); document.getElementById('xInput').addEventListener('input',calc); }
+document.addEventListener('DOMContentLoaded',init);
+window.addEventListener('resize',()=>{drawChart1();drawChart2();});
+</script>
 
-            // بناء الجدول
-            for (var i = 0; i < labels.length; i++) {
-                var c = 1 - Z[i] - A[i];
-                var total = Z[i] + c + A[i];
-                C.push(c);
-                Total.push(total);
 
-                var row = '<tr>' +
-                    '<td>' + labels[i].toFixed(2) + '</td>' +
-                    '<td>' + Z[i].toFixed(4) + '</td>' +
-                    '<td>' + c.toFixed(4) + '</td>' +
-                    '<td>' + A[i].toFixed(4) + '</td>' +
-                    '<td class="gold-line">' + total.toFixed(4) + '</td>' +
-                '</tr>';
-                document.getElementById('tableBody').innerHTML += row;
-            }
 
-            // الرسم اليدوي (Canvas)
-            drawGraph(labels, Z, C, A, Total);
-        }
+<div class="legend">
+  <h3 style="color:#ffd700;margin-top:0">📖 تعريف الرموز</h3>
+  <table class="legend-table">
+    <thead>
+      <tr><th>الرمز</th><th>التعريف</th><th>الصيغة</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b style="color:#ffd700">Z(x)</b></td>
+        <td>نواة Riemann–Weil الحقيقية، مجموع على 30 صفر ريمان</td>
+        <td><code>Z(x) = −∑ 2x / (x² + γ_k²)</code></td>
+      </tr>
+      <tr>
+        <td><b style="color:#00bfff">Z'(x)</b></td>
+        <td>المشتقة الأولى — الميل. تنعدم عند x_c ≈ 27.817</td>
+        <td><code>Z'(x) = −∑ 2(γ² − x²) / (x² + γ²)²</code></td>
+      </tr>
+      <tr>
+        <td><b style="color:#ff6666">Z''(x)</b></td>
+        <td>المشتقة الثانية — التقعر. تحدد نوع النقطة الحرجة (قاع/قمة)</td>
+        <td><code>Z''(x) = ∑ 4x(3γ² − x²) / (x² + γ²)³</code></td>
+      </tr>
+      <tr>
+        <td><b style="color:#ff4444">C(x)</b></td>
+        <td>الحد التعويضي. <b>مُعرَّف</b> ليجعل المجموع = 1. ليس ثابتاً، ولا مشتقاً من Z</td>
+        <td><code>C(x) = 1 − Z(x) − A</code></td>
+      </tr>
+      <tr>
+        <td><b style="color:#00bfff">A</b></td>
+        <td>ثابت العددي = Z'(12) كما ادّعته v3.2.1. مأخوذ كمرجع فقط، لا يفسّر H₀</td>
+        <td><code>A = −0.011139</code></td>
+      </tr>
+      <tr>
+        <td><b style="color:#00e676">w_proxy</b></td>
+        <td>مؤشر مرجعي، شبيه بمعامل معادلة الحالة. عند Z'≈0 يصبح غير معرّف</td>
+        <td><code>w_proxy = −1 + Z'''/Z'</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="legend-note">
+    <b>ملاحظة:</b> Z, Z', Z'' كلها مشتقة من أصفار ريمان فقط.<br>
+    C(x) و A ليستا مشتقتين — هما تعريف وثابت على التوالي.<br>
+    <b>لهذا</b> الجدول ① حساب حقيقي، والجدول ② توضيح أن Z+C+A=1 تعريف دائري، لا اكتشاف.
+  </div>
+</div>
 
-        function drawGraph(xLabels, zData, cData, aData, totalData) {
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
-            
-            // جعل الرسم يتكيف مع الشاشة
-            var W = canvas.parentElement.clientWidth - 20;
-            var H = W * 0.6; // نسبة الطول للعرض
-            canvas.width = W;
-            canvas.height = H;
-            
-            ctx.clearRect(0, 0, W, H);
-
-            // المحاور
-            var margin = 40;
-            var chartW = W - margin * 2;
-            var chartH = H - margin * 2;
-            var maxY = 1.2;
-            var minY = 0;
-            var minX = xLabels[0];
-            var maxX = xLabels[xLabels.length - 1];
-
-            function getX(x) { return margin + ((x - minX) / (maxX - minX)) * chartW; }
-            function getY(y) { return H - margin - ((y - minY) / (maxY - minY)) * chartH; }
-
-            // الشبكة
-            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-            ctx.lineWidth = 1;
-            for (var i = 0; i <= 5; i++) {
-                var y = minY + (maxY - minY) * (i / 5);
-                ctx.beginPath();
-                ctx.moveTo(margin, getY(y));
-                ctx.lineTo(W - margin, getY(y));
-                ctx.stroke();
-                // الأرقام
-                ctx.fillStyle = '#ccc';
-                ctx.font = '12px Arial';
-                ctx.textAlign = 'right';
-                ctx.fillText(y.toFixed(1), margin - 5, getY(y) + 4);
-            }
-
-            // رسم الخطوط
-            function plot(data, color, width, dash) {
-                ctx.strokeStyle = color;
-                ctx.lineWidth = width;
-                ctx.setLineDash(dash || []);
-                ctx.beginPath();
-                for (var i = 0; i < data.length; i++) {
-                    var px = getX(xLabels[i]);
-                    var py = getY(data[i]);
-                    if (i === 0) ctx.moveTo(px, py);
-                    else ctx.lineTo(px, py);
-                }
-                ctx.stroke();
-                ctx.setLineDash([]);
-            }
-
-            plot(zData, '#00bfff', 3);
-            plot(cData, '#32cd32', 3);
-            plot(aData, '#ff4500', 3);
-            plot(totalData, '#ffd700', 4, [8, 4]); // الذهبي المتقطع
-
-            // أسماء المحاور
-            ctx.fillStyle = '#fff';
-            ctx.font = '14px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('x', W / 2, H - 5);
-            ctx.fillText('Values', 15, H / 2);
-        }
-
-        // زر تحميل الرسم
-        function downloadImage() {
-            var canvas = document.getElementById('myCanvas');
-            var link = document.createElement('a');
-            link.download = 'Jabri_Unified_Theory.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        }
-
-        // تشغيل تلقائي عند فتح الصفحة
-        window.onload = function() {
-            runCalculator();
-        };
-    </script>
-    
-    
-    
-    
-        <!-- في كل صفحة HTML -->
 
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>
 <script src="/js/file.js" defer></script>
-<script src="/js/init-page-root.js" defer></script>
 <script src="/js/menu.js" defer></script>
+
+
+<script src="/js/init-page-root.js" defer></script>
+
 </body>
+
 </html>
-    
