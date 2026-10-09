@@ -25,8 +25,6 @@
   .legend-table code{color:#8ab4f8;font-size:11px;background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;direction:ltr;display:inline-block}
   .legend-note{color:#ffe066;font-size:11px;background:rgba(255,215,0,.08);padding:10px;border-radius:6px;margin-top:10px;text-align:right;line-height:1.7}
   .divider{border:0;height:1px;background:linear-gradient(90deg,transparent,#ffd700,transparent);margin:30px auto;max-width:680px}
-  .nav-btn{display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#00e676,#00b050);color:#000;text-decoration:none;border-radius:10px;font-weight:bold;font-size:15px;box-shadow:0 4px 12px rgba(0,230,118,.35);margin:6px}
-  .nav-btn-up{display:inline-block;padding:10px 22px;background:rgba(255,215,0,.15);color:#ffd700;text-decoration:none;border-radius:8px;font-size:13px;border:1px solid #ffd700}
 </style>
 </head>
 <body>
@@ -34,13 +32,8 @@
 <h1>حاسبة Z(x) — v3.2.2 &amp; v3.4.0</h1>
 <h2>DOI: 10.5281/zenodo.23266061 &nbsp;|&nbsp; DOI: 10.5281/zenodo.23271140</h2>
 
-<!-- زر الانتقال — أعلى الصفحة -->
-<div style="margin:20px auto;max-width:680px;text-align:center">
-  <a href="#v340" class="nav-btn">⬇ انتقل إلى حاسبة v3.4.0</a>
-</div>
-
 <!-- ==================== v3.2.2 ==================== -->
-<h3 style="color:#00e676;font-size:16px">▸ v3.2.2 — Self-Correction Note</h3>
+<h3 style="color:#00e676;font-size:16px;margin-top:25px">▸ v3.2.2 — Self-Correction Note</h3>
 
 <div class="box">
   <input id="xInput" type="number" value="44" step="0.5">
@@ -70,7 +63,7 @@
 <!-- ==================== v3.4.0 ==================== -->
 <hr class="divider">
 
-<h3 id="v340" style="color:#00e676;font-size:16px">▸ v3.4.0 — Numerical Convergence of Z_N(44)</h3>
+<h3 style="color:#00e676;font-size:16px">▸ v3.4.0 — Numerical Convergence of Z_N(44)</h3>
 
 <div class="note3" style="max-width:680px;margin:15px auto">
   نأخذ نفس الدالة Z(x) عند x = 44، ونحسب مجموعها الجزئي عند N صفر من أصفار ريمان.
@@ -87,11 +80,6 @@
   <b>الذيل:</b> |Z_∞ − Z_N| ~ 2x·(log N)²/N.<br>
   بـ N=100، الفرق من الحد ≈ 0.10 — متوافق مع العمود الثالث.<br>
   <b>الحد النهائي:</b> Z_∞(44) ≈ −1.00 ± 0.05.
-</div>
-
-<!-- زر العودة للأعلى -->
-<div style="text-align:center;margin:25px 0">
-  <a href="#" class="nav-btn-up">⬆ عودة إلى الأعلى</a>
 </div>
 
 <!-- ==================== تعريف الرموز ==================== -->
@@ -120,9 +108,9 @@
 <div style="background:rgba(0,230,118,.1);border:1px solid #00e676;padding:12px;border-radius:8px;margin:15px auto;max-width:680px;text-align:right;font-size:12px;line-height:1.8">
   <b style="color:#00e676">✅ إثبات صحة المسار:</b><br>
   1. Z(x) معرّف فقط بأصفار ريمان — قابل لإعادة الحساب<br>
-  2. أول نقطة حرجة Z'=0 عند x_c ≈ 27.817<br>
+  2. أول نقطة حرجة Z'=0 عند x_c ≈ 27.817 (بـ N=30 صفراً)<br>
   3. C(x) ليس فيزياء، بل تعريف يجعل Z+C+A=1<br>
-  4. Z_N(44) يتقارب إلى ≈ −1.00 عند N→∞<br>
+  4. Z_N(44) يتقارب إلى ≈ −1.00 عند N→∞ — نتيجة عددية حقيقية<br>
   5. كل رقم موثق بـ DOI: v3.2.2 (23266061) و v3.4.0 (23271140)
 </div>
 
@@ -139,6 +127,7 @@ function Zppp(x){let s=0;for(let g of GAMMAS)s+=12*(x*x*x*x-6*x*x*g*g+g*g*g*g)/M
 function wproxy(x){let zp=Zp(x);if(Math.abs(zp)<1e-12)return null;return -1+Zppp(x)/zp;}
 function Cx(x){return 1 - Z(x) - A_CONST;}
 
+// v3.4.0: partial sum Z_N(x) with first N zeros
 function ZN(x, N){
   let s=0;
   const lim = Math.min(N, GAMMAS.length);
@@ -153,10 +142,12 @@ const BASE_XS=[12,20,27.817274,32.935062,40,44,66,77];
 const CONV_NS = [5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100];
 const CONV_DATA = CONV_NS.map(N => [N, ZN(44, N)]);
 
+// ============ Chart 1: Z(x), Z'(x), w_proxy ============
 function drawChart1(){
   const c=document.getElementById('chart1'); const ctx=c.getContext('2d'); const W=c.width, H=c.height;
   ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle='rgba(255,255,255,.08)'; for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
+  ctx.strokeStyle='rgba(255,255,255,.08)';
+  for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
   function plot(func,color){
     ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath(); let first=true;
     for(let px=0;px<W;px++){
@@ -179,12 +170,14 @@ function drawChart1(){
   ctx.fillStyle='#ff4444'; ctx.fillText('w_proxy/5', 10, 41);
 }
 
+// ============ Chart 2: Z + A + C = 1 ============
 function drawChart2(){
   const c=document.getElementById('chart2'); const ctx=c.getContext('2d'); const W=c.width, H=c.height;
   ctx.clearRect(0,0,W,H);
   const yMin=-0.7, yMax=1.2;
   const toY = y => H - (y - yMin)/(yMax - yMin) * H;
-  ctx.strokeStyle='rgba(255,255,255,.08)'; for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
+  ctx.strokeStyle='rgba(255,255,255,.08)';
+  for(let i=0;i<=6;i++){ctx.beginPath();ctx.moveTo(0,i*H/6);ctx.lineTo(W,i*H/6);ctx.stroke();}
   ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.beginPath();ctx.moveTo(0,toY(0));ctx.lineTo(W,toY(0));ctx.stroke();
   ctx.fillStyle='rgba(0,230,118,.08)'; ctx.fillRect(0, toY(1), W, toY(0)-toY(1));
   ctx.strokeStyle='#00e676'; ctx.lineWidth=3; ctx.beginPath();ctx.moveTo(0,toY(1));ctx.lineTo(W,toY(1));ctx.stroke();
@@ -202,32 +195,40 @@ function drawChart2(){
   ctx.fillStyle='#00e676'; ctx.fillText('Z+A+C = 1', 10, 41);
 }
 
+// ============ Chart 3: Z_N(44) vs N ============
 function drawChart3(){
   const c=document.getElementById('chart3'); const ctx=c.getContext('2d');
   const W=c.width, H=c.height;
   ctx.clearRect(0,0,W,H);
+
   const m={top:35, right:55, bottom:45, left:65};
   const pw=W-m.left-m.right, ph=H-m.top-m.bottom;
+
   const yMin=-1.05, yMax=-0.10;
   const toY = y => m.top + (yMax - y)/(yMax - yMin) * ph;
+
   const maxN = CONV_NS[CONV_NS.length-1];
   const toX = n => m.left + (n / maxN) * pw;
 
+  // Grid
   ctx.strokeStyle='rgba(255,255,255,.08)';
   for(let i=0;i<=5;i++){
     const y = m.top + i*ph/5;
     ctx.beginPath(); ctx.moveTo(m.left,y); ctx.lineTo(m.left+pw,y); ctx.stroke();
   }
+  // Vertical grid every 20 N
   for(let n=0; n<=maxN; n+=20){
     const x = toX(n);
     ctx.beginPath(); ctx.moveTo(x, m.top); ctx.lineTo(x, m.top+ph); ctx.stroke();
   }
 
+  // Asymptote at -1.00
   const yA = toY(-1.00);
   ctx.strokeStyle='#ff4444'; ctx.setLineDash([5,4]); ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.moveTo(m.left,yA); ctx.lineTo(m.left+pw,yA); ctx.stroke();
   ctx.setLineDash([]);
 
+  // Curve
   ctx.strokeStyle='#00e676'; ctx.lineWidth=2.5;
   ctx.beginPath();
   for(let i=0;i<CONV_DATA.length;i++){
@@ -237,6 +238,7 @@ function drawChart3(){
   }
   ctx.stroke();
 
+  // Points
   ctx.fillStyle='#00e676';
   for(let i=0;i<CONV_DATA.length;i++){
     const [n,v] = CONV_DATA[i];
@@ -244,28 +246,33 @@ function drawChart3(){
     ctx.beginPath(); ctx.arc(px, py, 4, 0, 2*Math.PI); ctx.fill();
   }
 
+  // Highlight first and last points with value labels
   const first = CONV_DATA[0];
   const last = CONV_DATA[CONV_DATA.length-1];
   ctx.fillStyle='#fff'; ctx.font='10px monospace'; ctx.textAlign='center';
   ctx.fillText(first[1].toFixed(4), toX(first[0]), toY(first[1])-10);
   ctx.fillText(last[1].toFixed(4), toX(last[0]), toY(last[1])-10);
 
+  // X tick labels
   ctx.fillStyle='#aaa'; ctx.font='10px monospace'; ctx.textAlign='center';
   for(let n=0; n<=maxN; n+=20){
     ctx.fillText('N='+n, toX(n), H-15);
   }
 
+  // Y labels
   ctx.textAlign='right';
   for(let i=0;i<=5;i++){
     const yv = yMin + (yMax-yMin)*i/5;
     ctx.fillText(yv.toFixed(2), m.left-6, toY(yv)+3);
   }
 
+  // Legend
   ctx.textAlign='left'; ctx.font='11px monospace';
   ctx.fillStyle='#00e676'; ctx.fillText('Z_N(44)', m.left+4, 15);
   ctx.fillStyle='#ff4444'; ctx.fillText('Z_∞ ≈ -1.00', m.left+90, 15);
 }
 
+// ============ Build tables ============
 function buildTables(currentX){
   let xs=[...BASE_XS];
   if(currentX && !xs.some(v=>Math.abs(v-currentX)<1e-6)) xs.push(currentX);
@@ -282,6 +289,7 @@ function buildTables(currentX){
   document.getElementById('tbody1').innerHTML=h1;
   document.getElementById('tbody2').innerHTML=h2;
 
+  // v3.4.0 table
   let h3="";
   let prev=null;
   for(let i=0;i<CONV_DATA.length;i++){
@@ -294,6 +302,7 @@ function buildTables(currentX){
   document.getElementById('tbody3').innerHTML=h3;
 }
 
+// ============ Calculator ============
 function calc(){
   const x=parseFloat(document.getElementById('xInput').value);
   const out=document.getElementById('out');
