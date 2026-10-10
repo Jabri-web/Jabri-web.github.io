@@ -1,8 +1,11 @@
 // ============================================================
-//   menu.js -v4.2.0- القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 4.0.2 - 18 أغسطس 2026
-//   يتحكم في: القائمة، الأزرار، الموسيقى، الزوار، اللغة
-//   مع تحسين موضع القائمة لتظهر خلف الأزرار
+//   menu.js - v5.0.0 - القائمة الذكية الشاملة - واحة الجبري
+//   الإصدار: 5.0.0 - 10 أكتوبر 2026
+//   ✅ GPU-friendly (opacity+transform بدل display)
+//   ✅ backdrop-filter خفيف
+//   ✅ Prefetch ذكي بـ throttle + isolation
+//   ✅ will-change + contain
+//   ✅ Inline styles مركزية بدل تكرار
 // ============================================================
 
 (function() {
@@ -27,22 +30,140 @@
     }
 
     // ============================================================
-    //   📋 بناء القائمة الرئيسية في الهيدر
+    //   📋 عناصر القائمة
     // ============================================================
     const MENU_ITEMS = [
-        { name: 'الرئيسية', nameEn: 'Home', href: `${langDir}/` },
-        { name: 'صنعاء', nameEn: 'Sana\'a', href: `${langDir}/Sanaa.html` },
-        { name: 'شبام', nameEn: 'Shibam', href: `${langDir}/Shibam.html` },
-        { name: 'سقطرى', nameEn: 'Socotra', href: `${langDir}/Soqatra.html` },
-        { name: 'المجلة', nameEn: 'Journal', href: `${langDir}/journal.html` },
-        { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience', href: `${langDir}/journal2.html` },
-        { name: 'البحوث', nameEn: 'Research', href: `${langDir}/research.html` },
-        { name: 'المكتبة', nameEn: 'Library', href: `${langDir}/Office.html` },
-        { name: 'السيرة', nameEn: 'CV', href: `${langDir}/Author-cv.html` },
-        { name: 'عن الواحة', nameEn: 'About', href: `${langDir}/about.html` },
-        { name: 'المشاريع', nameEn: 'Projects', href: `${langDir}/jabri-projects.html` },
+        { name: 'الرئيسية',        nameEn: 'Home',              href: `${langDir}/` },
+        { name: 'صنعاء',           nameEn: 'Sana\'a',           href: `${langDir}/Sanaa.html` },
+        { name: 'شبام',            nameEn: 'Shibam',            href: `${langDir}/Shibam.html` },
+        { name: 'سقطرى',           nameEn: 'Socotra',           href: `${langDir}/Soqatra.html` },
+        { name: 'المجلة',          nameEn: 'Journal',           href: `${langDir}/journal.html` },
+        { name: 'تجربتي مع الـ AI', nameEn: 'My AI Experience',  href: `${langDir}/journal2.html` },
+        { name: 'البحوث',          nameEn: 'Research',          href: `${langDir}/research.html` },
+        { name: 'المكتبة',         nameEn: 'Library',           href: `${langDir}/Office.html` },
+        { name: 'السيرة',          nameEn: 'CV',                href: `${langDir}/Author-cv.html` },
+        { name: 'عن الواحة',       nameEn: 'About',             href: `${langDir}/about.html` },
+        { name: 'المشاريع',        nameEn: 'Projects',          href: `${langDir}/jabri-projects.html` },
     ];
 
+    // ============================================================
+    //   🎨 حقن الـ CSS المركزي (مرة واحدة فقط)
+    // ============================================================
+    function injectStyles() {
+        if (document.getElementById('waha-menu-styles')) return;
+
+        const style = document.createElement('style');
+        style.id = 'waha-menu-styles';
+        style.textContent = `
+            /* ─── القائمة الأفقية ─── */
+            #main-menu a {
+                color: #d6d1c8;
+                text-decoration: none;
+                font-size: 0.95rem;
+                padding: 4px 8px;
+                border-bottom: 2px solid transparent;
+                transition: color .2s ease, border-color .2s ease;
+                font-family: 'Cairo', 'Tahoma', sans-serif;
+            }
+            #main-menu a:hover { color: #e3b58a; }
+            #main-menu a.active {
+                border-bottom-color: #b5977a;
+                color: #f0dec6;
+            }
+
+            /* ─── زر الهامبرغر ─── */
+            #hamburger-menu {
+                position: fixed;
+                top: 12px;
+                right: 12px;
+                z-index: 99999;
+                cursor: pointer;
+                background: linear-gradient(135deg, #ffd700, #f0a500);
+                color: #0a0a0f;
+                padding: 8px 14px;
+                border-radius: 10px;
+                font-size: 13px;
+                font-weight: bold;
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+                transition: transform .2s cubic-bezier(.4,0,.2,1), box-shadow .2s;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                border: 1px solid rgba(255, 215, 0, 0.2);
+                font-family: 'Cairo', 'Tahoma', sans-serif;
+                user-select: none;
+                will-change: transform;
+            }
+            #hamburger-menu:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 0 28px rgba(255, 215, 0, 0.5);
+            }
+            #hamburger-menu:active {
+                transform: scale(0.97);
+            }
+
+            /* ─── القائمة المنسدلة ─── */
+            #menu-dropdown {
+                position: fixed;
+                top: 52px;
+                right: 12px;
+                background: rgba(10, 10, 20, 0.98);
+                border: 2px solid #ffd700;
+                border-radius: 16px;
+                padding: 18px 16px;
+                min-width: 260px;
+                max-height: 70vh;
+                overflow-y: auto;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+                z-index: 9998;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                font-family: 'Cairo', 'Tahoma', sans-serif;
+                /* ─── GPU: opacity + transform بدل display ─── */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-8px) scale(0.98);
+                transition: opacity .18s ease,
+                            transform .18s ease,
+                            visibility .18s;
+                will-change: opacity, transform;
+                contain: layout style paint;
+                pointer-events: none;
+            }
+            #menu-dropdown.is-open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+                pointer-events: auto;
+            }
+
+            /* ─── روابط القائمة المنسدلة ─── */
+            #menu-dropdown .menu-link {
+                color: #fff;
+                padding: 8px 12px;
+                border-radius: 8px;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: background .18s, color .18s, transform .18s;
+                border-bottom: 1px solid rgba(255, 215, 0, 0.04);
+                font-size: 0.9rem;
+            }
+            #menu-dropdown .menu-link:hover {
+                background: rgba(255, 215, 0, 0.08);
+                color: #ffd700;
+            }
+            #menu-dropdown.rtl .menu-link:hover { transform: translateX(-4px); }
+            #menu-dropdown.ltr .menu-link:hover { transform: translateX(4px); }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // ============================================================
+    //   📋 بناء القائمة الرئيسية في الهيدر
+    // ============================================================
     function buildMainMenu() {
         const nav = document.querySelector('#main-menu');
         if (!nav) return;
@@ -53,25 +174,6 @@
             const link = document.createElement('a');
             link.href = item.href;
             link.textContent = isArabic ? item.name : item.nameEn;
-            link.style.cssText = `
-                color: #d6d1c8;
-                text-decoration: none;
-                font-size: 0.95rem;
-                padding: 4px 8px;
-                border-bottom: 2px solid transparent;
-                transition: 0.3s;
-                font-family: 'Cairo', 'Tahoma', sans-serif;
-            `;
-            link.addEventListener('mouseenter', function() {
-                if (this.style.borderBottom !== '2px solid #b5977a') {
-                    this.style.color = '#e3b58a';
-                }
-            });
-            link.addEventListener('mouseleave', function() {
-                if (this.style.borderBottom !== '2px solid #b5977a') {
-                    this.style.color = '#d6d1c8';
-                }
-            });
             nav.appendChild(link);
         });
 
@@ -85,8 +187,9 @@
         links.forEach(link => {
             const href = link.getAttribute('href').split('/').pop();
             if (href === current || (current === '' && href === 'index.html')) {
-                link.style.borderBottom = '2px solid #b5977a';
-                link.style.color = '#f0dec6';
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
             }
         });
     }
@@ -106,17 +209,18 @@
         audioElement.volume = 0.3;
 
         btn.addEventListener('click', function() {
+            const status = this.querySelector('#music-status');
             if (isMusicPlaying) {
                 audioElement.pause();
                 isMusicPlaying = false;
-                this.querySelector('#music-status').textContent = 'موسيقى';
+                if (status) status.textContent = 'موسيقى';
                 this.style.background = 'rgba(255,215,0,0.08)';
                 this.style.color = '#d6d1c8';
                 localStorage.setItem('jabri_music_state', 'paused');
             } else {
                 audioElement.play().catch(() => {});
                 isMusicPlaying = true;
-                this.querySelector('#music-status').textContent = '🔊';
+                if (status) status.textContent = '🔊';
                 this.style.background = 'rgba(255,215,0,0.25)';
                 this.style.color = '#ffd700';
                 localStorage.setItem('jabri_music_state', 'playing');
@@ -127,7 +231,8 @@
             setTimeout(() => {
                 audioElement.play().catch(() => {});
                 isMusicPlaying = true;
-                btn.querySelector('#music-status').textContent = '🔊';
+                const status = btn.querySelector('#music-status');
+                if (status) status.textContent = '🔊';
                 btn.style.background = 'rgba(255,215,0,0.25)';
                 btn.style.color = '#ffd700';
             }, 500);
@@ -153,7 +258,6 @@
     function initLanguageSwitcher() {
         const arBtn = document.getElementById('lang-ar');
         const enBtn = document.getElementById('lang-en');
-
         if (!arBtn || !enBtn) return;
 
         function setLanguage(lang) {
@@ -181,11 +285,17 @@
                 localStorage.setItem('jabri_lang', 'en');
             }
             buildMainMenu();
-            // تحديث زر القائمة
+
             const menuBtn = document.getElementById('hamburger-menu');
             if (menuBtn) {
                 const span = menuBtn.querySelector('span:last-child');
                 if (span) span.textContent = isArabic ? 'القائمة' : 'Menu';
+            }
+            const dropdown = document.getElementById('menu-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('rtl', isArabic);
+                dropdown.classList.toggle('ltr', !isArabic);
+                dropdown.style.direction = isArabic ? 'rtl' : 'ltr';
             }
         }
 
@@ -193,41 +303,16 @@
         enBtn.addEventListener('click', () => setLanguage('en'));
 
         const savedLang = localStorage.getItem('jabri_lang');
-        if (savedLang) {
-            setLanguage(savedLang);
-        }
+        if (savedLang) setLanguage(savedLang);
     }
 
     // ============================================================
-    //   🍔 زر القائمة المنسدلة (الجانبية) - معدل الموضع
+    //   🍔 القائمة المنسدلة
     // ============================================================
     function buildHamburgerMenu() {
+        // ─── زر الهامبرغر ───
         const menuContainer = document.createElement('div');
         menuContainer.id = 'hamburger-menu';
-        menuContainer.style.cssText = `
-            position: fixed !important;
-            top: 12px !important;
-            right: 12px !important;
-            z-index: 99999 !important;
-            cursor: pointer !important;
-            background: linear-gradient(135deg, #ffd700, #f0a500) !important;
-            color: #0a0a0f !important;
-            border: none !important;
-            padding: 8px 14px !important;
-            border-radius: 10px !important;
-            font-size: 13px !important;
-            font-weight: bold !important;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            backdrop-filter: blur(6px) !important;
-            border: 1px solid rgba(255, 215, 0, 0.2) !important;
-            font-family: 'Cairo', 'Tahoma', sans-serif !important;
-            user-select: none !important;
-        `;
-
         menuContainer.innerHTML = `
             <div style="display:flex;flex-direction:column;gap:3px;width:20px;height:14px;justify-content:center;flex-shrink:0;">
                 <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
@@ -237,41 +322,23 @@
             <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">${isArabic ? 'القائمة' : 'Menu'}</span>
         `;
 
-        // القائمة المنسدلة - موضعها تحت الزر مباشرة
+        // ─── القائمة المنسدلة ───
         const dropdown = document.createElement('div');
         dropdown.id = 'menu-dropdown';
-        dropdown.style.cssText = `
-            display: none !important;
-            position: fixed !important;
-            top: 52px !important;
-            right: 12px !important;
-            background: rgba(10, 10, 20, 0.97) !important;
-            backdrop-filter: blur(16px) !important;
-            border: 2px solid #ffd700 !important;
-            border-radius: 16px !important;
-            padding: 18px 16px !important;
-            min-width: 260px !important;
-            max-height: 70vh !important;
-            overflow-y: auto !important;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
-            z-index: 9998 !important;
-            flex-direction: column !important;
-            gap: 2px !important;
-            direction: ${isArabic ? 'rtl' : 'ltr'} !important;
-            font-family: 'Cairo', 'Tahoma', sans-serif !important;
-        `;
+        dropdown.className = isArabic ? 'rtl' : 'ltr';
+        dropdown.style.direction = isArabic ? 'rtl' : 'ltr';
 
-        // بناء محتوى القائمة المنسدلة
+        // بناء المحتوى
         let dropdownHTML = `
             <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
-                <a href="/" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:0.3s; font-size:0.85rem;">🇾🇪 عربي</a>
-                <a href="/en/" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:0.3s; font-size:0.85rem;">🇬🇧 English</a>
+                <a href="/" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:.3s; font-size:.85rem;">🇾🇪 عربي</a>
+                <a href="/en/" style="color:${!isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${!isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${!isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:.3s; font-size:.85rem;">🇬🇧 English</a>
             </div>
         `;
 
         MENU_ITEMS.forEach(item => {
             dropdownHTML += `
-                <a href="${item.href}" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+                <a href="${item.href}" class="menu-link">
                     <span style="font-size:1.1rem;">📄</span> ${isArabic ? item.name : item.nameEn}
                 </a>
             `;
@@ -279,28 +346,27 @@
 
         dropdownHTML += `
             <div style="border-top:2px solid #ffd700; margin:12px 0 8px 0; padding-top:10px;">
-                <div style="color:#ffd700; font-size:0.7rem; font-weight:bold; text-align:center; letter-spacing:1px; margin-bottom:6px;">
-                    ⭐ ${isArabic ? 'إنجازات اليوم - 18 أغسطس 2026' : 'Today\'s Achievements — Aug 18, 2026'}
+                <div style="color:#ffd700; font-size:.7rem; font-weight:bold; text-align:center; letter-spacing:1px; margin-bottom:6px;">
+                    ⭐ ${isArabic ? 'إنجازات اليوم - 18 أغسطس 2026' : 'Today\\'s Achievements — Aug 18, 2026'}
                 </div>
-                <div style="display:flex; flex-direction:column; gap:4px; font-size:0.78rem; color:#ccc; padding:0 4px;">
-                    <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,0.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
+                <div style="display:flex; flex-direction:column; gap:4px; font-size:.78rem; color:#ccc; padding:0 4px;">
+                    <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
                         <span>🧮</span> <span>${isArabic ? 'الدالة الأم - اشتقاق ثابت الجاذبية' : 'Mother Function — Gravitational Constant'}</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,0.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
+                    <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
                         <span>🌌</span> <span>${isArabic ? 'النظرية الموحدة Zx = Z + C + A' : 'Unified Theory Zx = Z + C + A'}</span>
                     </div>
                 </div>
             </div>
-            <div style="border-top:1px solid rgba(255,215,0,0.08); margin:6px 0 4px 0; padding-top:6px;"></div>
-           
-            <a  href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" 
-                target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+            <div style="border-top:1px solid rgba(255,215,0,.08); margin:6px 0 4px 0; padding-top:6px;"></div>
+
+            <a href="https://wikibin.org/articles/abdulla-mohammed-nasser-al-jabri.html" target="_blank" rel="noopener" class="menu-link">
                 <span style="font-size:1.1rem;">🌐</span> Wikipedia
             </a>
-            <a href="https://github.com/jabri-com" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;border-bottom:1px solid rgba(255,215,0,0.04);font-size:0.9rem;">
+            <a href="https://github.com/jabri-com" target="_blank" rel="noopener" class="menu-link">
                 <span style="font-size:1.1rem;">🐙</span> GitHub
             </a>
-            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" style="color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;font-size:0.9rem;">
+            <a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener" class="menu-link">
                 <span style="font-size:1.1rem;">🆔</span> ORCID
             </a>
         `;
@@ -309,65 +375,112 @@
         document.body.appendChild(menuContainer);
         document.body.appendChild(dropdown);
 
-        // التحكم في الفتح/الإغلاق
+        // ─── التحكم في الفتح/الإغلاق (GPU-friendly) ───
         let isOpen = false;
         let closeTimer;
 
+        function openMenu() {
+            dropdown.classList.add('is-open');
+            isOpen = true;
+            clearTimeout(closeTimer);
+            closeTimer = setTimeout(closeMenu, 15000);
+        }
+
+        function closeMenu() {
+            dropdown.classList.remove('is-open');
+            isOpen = false;
+            clearTimeout(closeTimer);
+        }
+
         menuContainer.addEventListener('click', function(e) {
             e.stopPropagation();
-            if (isOpen) {
-                dropdown.style.display = 'none';
-                isOpen = false;
-                clearTimeout(closeTimer);
-            } else {
-                dropdown.style.display = 'flex';
-                isOpen = true;
-                clearTimeout(closeTimer);
-                closeTimer = setTimeout(() => {
-                    dropdown.style.display = 'none';
-                    isOpen = false;
-                }, 15000);
-            }
+            isOpen ? closeMenu() : openMenu();
         });
 
         document.addEventListener('click', function(e) {
             if (!menuContainer.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
-                isOpen = false;
-                clearTimeout(closeTimer);
+                closeMenu();
             }
         });
 
-        dropdown.querySelectorAll('a').forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                link.style.background = 'rgba(255, 215, 0, 0.08)';
-                link.style.color = '#ffd700';
-                link.style.transform = isArabic ? 'translateX(-4px)' : 'translateX(4px)';
-            });
-            link.addEventListener('mouseleave', () => {
-                link.style.background = 'transparent';
-                link.style.color = '#fff';
-                link.style.transform = 'translateX(0)';
-            });
+        // إغلاق بـ Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) closeMenu();
         });
     }
 
     // ============================================================
     //   🚀 التهيئة النهائية
     // ============================================================
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 menu.js v4.0.1 - القائمة تحت الأزرار');
-
+    function init() {
+        injectStyles();
         buildMainMenu();
         initMusic();
         initVisitorCounter();
         initLanguageSwitcher();
         buildHamburgerMenu();
 
-        console.log('📅 18 أغسطس 2026');
+        console.log('%c🌴 menu.js v5.0.0 — GPU-friendly',
+                    'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 8px;border-radius:4px');
+        console.log('📅 10 أكتوبر 2026');
         console.log('📜 Zx = Z + C + A | Z + C + A = 1');
         console.log('🧮 Z(x) = x^5 ln(x) sin(2π/x) exp(-x/xp)');
         console.log('🇾🇪 اليمن - صنعاء');
-    });
+    }
 
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+        init();
+    }
+
+})();
+
+
+// ============================================================
+//   ⚡ Prefetch ذكي — نسخة v2 محسّنة
+//   ✅ pointerover (يشتغل mouse+touch+pen)
+//   ✅ throttle 80ms
+//   ✅ نفس الأصل فقط
+//   ✅ يستبعد الوسائط والأرشيف
+//   ✅ سقف 30 رابط
+// ============================================================
+(function prefetchLinks() {
+    const seen = new Set();
+    let lastRun = 0;
+    let lastTarget = null;
+
+    const SKIP_EXT = /\.(pdf|zip|mp4|mp3|webp|png|jpg|jpeg|svg|ico|woff2?|ttf|apk)$/i;
+
+    function prefetch(href) {
+        if (!href || seen.has(href)) return;
+        if (seen.size > 30) return;
+        if (SKIP_EXT.test(href)) return;
+        seen.add(href);
+
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = href;
+        link.as = 'document';
+        document.head.appendChild(link);
+    }
+
+    function handler(e) {
+        const now = performance.now();
+        if (now - lastRun < 80) return;    // throttle
+        lastRun = now;
+
+        const a = e.target.closest('a[href]');
+        if (!a || a === lastTarget) return;
+        lastTarget = a;
+
+        // نفس الأصل فقط
+        try {
+            const url = new URL(a.href, location.href);
+            if (url.origin !== location.origin) return;
+            prefetch(url.pathname);
+        } catch (_) { /* تجاهل */ }
+    }
+
+    document.addEventListener('pointerover', handler, { passive: true });
 })();
