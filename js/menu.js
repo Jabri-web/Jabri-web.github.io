@@ -5,6 +5,7 @@
 //   ✅ القائمة: GPU-friendly (opacity + transform)
 //   ✅ Prefetch ذكي بـ throttle + isolation
 //   ✅ will-change + contain
+//   ✅ إصلاح: Missing } in template expression (السطر 365)
 // ============================================================
 
 (function() {
@@ -46,7 +47,7 @@
     ];
 
     // ============================================================
-    //   🎨 حقن CSS للقائمة الأفقيقية والقائمة المنسدلة فقط
+    //   🎨 حقن CSS للقائمة الأفقية والقائمة المنسدلة
     //      (زر الهامبرغر Inline كما في v4)
     // ============================================================
     function injectStyles() {
@@ -109,7 +110,6 @@
                 flex-direction: column !important;
                 gap: 2px !important;
                 font-family: 'Cairo', 'Tahoma', sans-serif !important;
-                /* ─── GPU: opacity + transform بدل display ─── */
                 opacity: 0 !important;
                 visibility: hidden !important;
                 transform: translateY(-8px) scale(0.98) !important;
@@ -362,7 +362,7 @@
         dropdownHTML += `
             <div style="border-top:2px solid #ffd700; margin:12px 0 8px 0; padding-top:10px;">
                 <div style="color:#ffd700; font-size:.7rem; font-weight:bold; text-align:center; letter-spacing:1px; margin-bottom:6px;">
-                    ⭐ ${isArabic ? 'إنجازات اليوم - 18 أغسطس 2026' : 'Today\\'s Achievements — Aug 18, 2026'}
+                    ⭐ ${isArabic ? 'إنجازات اليوم - 18 أغسطس 2026' : "Today's Achievements — Aug 18, 2026"}
                 </div>
                 <div style="display:flex; flex-direction:column; gap:4px; font-size:.78rem; color:#ccc; padding:0 4px;">
                     <div style="display:flex; align-items:center; gap:8px; background:rgba(255,215,0,.04); padding:5px 10px; border-radius:6px; border-right:3px solid #ffd700;">
@@ -489,7 +489,6 @@
         if (!a || a === lastTarget) return;
         lastTarget = a;
 
-        // نفس الأصل فقط
         try {
             const url = new URL(a.href, location.href);
             if (url.origin !== location.origin) return;
