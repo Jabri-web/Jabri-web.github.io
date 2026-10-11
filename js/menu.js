@@ -1,11 +1,10 @@
 // ============================================================
-//   menu.js - v5.0.0 - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 5.0.0 - 10 أكتوبر 2026
-//   ✅ GPU-friendly (opacity+transform بدل display)
-//   ✅ backdrop-filter خفيف
+//   menu.js - v5.0.1 - القائمة الذكية الشاملة - واحة الجبري
+//   الإصدار: 5.0.1 - 10 أكتوبر 2026
+//   ✅ الزر: Inline + !important (يظهر دائماً على أي صفحة)
+//   ✅ القائمة: GPU-friendly (opacity + transform)
 //   ✅ Prefetch ذكي بـ throttle + isolation
 //   ✅ will-change + contain
-//   ✅ Inline styles مركزية بدل تكرار
 // ============================================================
 
 (function() {
@@ -47,7 +46,8 @@
     ];
 
     // ============================================================
-    //   🎨 حقن الـ CSS المركزي (مرة واحدة فقط)
+    //   🎨 حقن CSS للقائمة الأفقيقية والقائمة المنسدلة فقط
+    //      (زر الهامبرغر Inline كما في v4)
     // ============================================================
     function injectStyles() {
         if (document.getElementById('waha-menu-styles')) return;
@@ -71,92 +71,81 @@
                 color: #f0dec6;
             }
 
-            /* ─── زر الهامبرغر ─── */
+            /* ─── زر الهامبرغر (احتياطي فقط - الأساس Inline) ─── */
             #hamburger-menu {
-                position: fixed;
-                top: 12px;
-                right: 12px;
-                z-index: 99999;
-                cursor: pointer;
-                background: linear-gradient(135deg, #ffd700, #f0a500);
-                color: #0a0a0f;
-                padding: 8px 14px;
-                border-radius: 10px;
-                font-size: 13px;
-                font-weight: bold;
-                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-                transition: transform .2s cubic-bezier(.4,0,.2,1), box-shadow .2s;
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                border: 1px solid rgba(255, 215, 0, 0.2);
-                font-family: 'Cairo', 'Tahoma', sans-serif;
-                user-select: none;
+                position: fixed !important;
+                top: 12px !important;
+                right: 12px !important;
+                z-index: 2147483647 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                visibility: visible !important;
+                opacity: 1 !important;
                 will-change: transform;
             }
             #hamburger-menu:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 0 28px rgba(255, 215, 0, 0.5);
+                transform: translateY(-1px) !important;
+                box-shadow: 0 0 28px rgba(255, 215, 0, 0.5) !important;
             }
             #hamburger-menu:active {
-                transform: scale(0.97);
+                transform: scale(0.97) !important;
             }
 
             /* ─── القائمة المنسدلة ─── */
             #menu-dropdown {
-                position: fixed;
-                top: 52px;
-                right: 12px;
-                background: rgba(10, 10, 20, 0.98);
-                border: 2px solid #ffd700;
-                border-radius: 16px;
-                padding: 18px 16px;
-                min-width: 260px;
-                max-height: 70vh;
-                overflow-y: auto;
-                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
-                z-index: 9998;
-                display: flex;
-                flex-direction: column;
-                gap: 2px;
-                font-family: 'Cairo', 'Tahoma', sans-serif;
+                position: fixed !important;
+                top: 52px !important;
+                right: 12px !important;
+                background: rgba(10, 10, 20, 0.98) !important;
+                border: 2px solid #ffd700 !important;
+                border-radius: 16px !important;
+                padding: 18px 16px !important;
+                min-width: 260px !important;
+                max-height: 70vh !important;
+                overflow-y: auto !important;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
+                z-index: 2147483646 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2px !important;
+                font-family: 'Cairo', 'Tahoma', sans-serif !important;
                 /* ─── GPU: opacity + transform بدل display ─── */
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-8px) scale(0.98);
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transform: translateY(-8px) scale(0.98) !important;
                 transition: opacity .18s ease,
                             transform .18s ease,
-                            visibility .18s;
-                will-change: opacity, transform;
+                            visibility .18s !important;
+                will-change: opacity, transform !important;
                 contain: layout style paint;
-                pointer-events: none;
+                pointer-events: none !important;
             }
             #menu-dropdown.is-open {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0) scale(1);
-                pointer-events: auto;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) scale(1) !important;
+                pointer-events: auto !important;
             }
 
             /* ─── روابط القائمة المنسدلة ─── */
             #menu-dropdown .menu-link {
-                color: #fff;
-                padding: 8px 12px;
-                border-radius: 8px;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                transition: background .18s, color .18s, transform .18s;
-                border-bottom: 1px solid rgba(255, 215, 0, 0.04);
-                font-size: 0.9rem;
+                color: #fff !important;
+                padding: 8px 12px !important;
+                border-radius: 8px !important;
+                text-decoration: none !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 10px !important;
+                transition: background .18s, color .18s, transform .18s !important;
+                border-bottom: 1px solid rgba(255, 215, 0, 0.04) !important;
+                font-size: 0.9rem !important;
             }
             #menu-dropdown .menu-link:hover {
-                background: rgba(255, 215, 0, 0.08);
-                color: #ffd700;
+                background: rgba(255, 215, 0, 0.08) !important;
+                color: #ffd700 !important;
             }
-            #menu-dropdown.rtl .menu-link:hover { transform: translateX(-4px); }
-            #menu-dropdown.ltr .menu-link:hover { transform: translateX(4px); }
+            #menu-dropdown.rtl .menu-link:hover { transform: translateX(-4px) !important; }
+            #menu-dropdown.ltr .menu-link:hover { transform: translateX(4px) !important; }
         `;
         document.head.appendChild(style);
     }
@@ -307,12 +296,38 @@
     }
 
     // ============================================================
-    //   🍔 القائمة المنسدلة
+    //   🍔 القائمة المنسدلة (الزر Inline كما في v4)
     // ============================================================
     function buildHamburgerMenu() {
-        // ─── زر الهامبرغر ───
+        // ─── زر الهامبرغر: نمط Inline مع !important ───
         const menuContainer = document.createElement('div');
         menuContainer.id = 'hamburger-menu';
+        menuContainer.style.cssText = `
+            position: fixed !important;
+            top: 12px !important;
+            right: 12px !important;
+            z-index: 2147483647 !important;
+            cursor: pointer !important;
+            background: linear-gradient(135deg, #ffd700, #f0a500) !important;
+            color: #0a0a0f !important;
+            padding: 8px 14px !important;
+            border-radius: 10px !important;
+            font-size: 13px !important;
+            font-weight: bold !important;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
+            transition: transform .2s cubic-bezier(.4,0,.2,1), box-shadow .2s !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            border: 1px solid rgba(255, 215, 0, 0.2) !important;
+            font-family: 'Cairo', 'Tahoma', sans-serif !important;
+            user-select: none !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: auto !important;
+            height: auto !important;
+        `;
+
         menuContainer.innerHTML = `
             <div style="display:flex;flex-direction:column;gap:3px;width:20px;height:14px;justify-content:center;flex-shrink:0;">
                 <span style="display:block;height:2px;background:#0a0a0f;border-radius:3px;"></span>
@@ -420,7 +435,7 @@
         initLanguageSwitcher();
         buildHamburgerMenu();
 
-        console.log('%c🌴 menu.js v5.0.0 — GPU-friendly',
+        console.log('%c🌴 menu.js v5.0.1 — الزر Inline مضمون',
                     'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 8px;border-radius:4px');
         console.log('📅 10 أكتوبر 2026');
         console.log('📜 Zx = Z + C + A | Z + C + A = 1');
