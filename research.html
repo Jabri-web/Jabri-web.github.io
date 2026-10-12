@@ -628,5 +628,88 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
     </a>
 </div>
 
+
+
+
+<!-- TRUTH ABOUT XP=21 - FINAL v5.0.1 - REAL DATA FROM COLAB -->
+<div style="margin:25px 12px; padding:18px; background:#FFFFFF; border:3px solid #2E7D32; border-radius:10px; color:#111111; font-family: 'Cairo', Tahoma, sans-serif; line-height:1.7; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+
+<h4 style="margin:0 0 12px 0; color:#1B5E20; font-size:18px;">🎯 الحقيقة عن xp = 21 (v5.0.1)</h4>
+
+<p style="margin:8px 0; color:#111; font-size:15px;">
+<b>الحالة:</b> <em>تعريف، ليس اشتقاق.</em> xp=21 دخل كـ parameter حر في <code style="background:#eee; padding:2px 6px; border-radius:4px;">jabri_5.ipynb</code>
+</p>
+
+<p style="text-align:center; font-size:20px; font-weight:900; margin:16px 0; color:#000; background:#FFF9C4; padding:10px; border-radius:6px; direction:ltr;">
+xp := ⌊γ₂⌋ = 21 &nbsp; | &nbsp; γ₂ ≈ 21.0220
+</p>
+
+<p style="color:#111; font-weight:bold;">الاختبار العددي على الخط الحرج x=0.5+it (تشغيل مباشر من 21.ipynb):</p>
+
+<table style="width:100%; border-collapse:collapse; text-align:center; direction:ltr; margin:12px 0; color:#000;">
+<thead>
+<tr style="background:#2E7D32; color:#fff;">
+<th style="padding:10px; border:1px solid #000;">xp</th>
+<th style="padding:10px; border:1px solid #000;">Zeros (0-60)</th>
+<th style="padding:10px; border:1px solid #000;">Zeros (0-100)</th>
+</tr>
+</thead>
+<tbody style="background:#fff;">
+<tr><td style="border:1px solid #333; padding:8px; font-weight:bold;">5</td><td style="border:1px solid #333; padding:8px;">11</td><td style="border:1px solid #333; padding:8px;">14</td></tr>
+<tr><td style="border:1px solid #333; padding:8px; font-weight:bold;">10</td><td style="border:1px solid #333; padding:8px;">9</td><td style="border:1px solid #333; padding:8px;">11</td></tr>
+<tr><td style="border:1px solid #333; padding:8px; font-weight:bold;">18</td><td style="border:1px solid #333; padding:8px;">8</td><td style="border:1px solid #333; padding:8px;">9</td></tr>
+<tr style="background:#FFEB3B; font-weight:900; font-size:16px;"><td style="border:2px solid #000; padding:8px;">21 ⭐</td><td style="border:2px solid #000; padding:8px;">8</td><td style="border:2px solid #000; padding:8px;">9</td></tr>
+<tr><td style="border:1px solid #333; padding:8px; font-weight:bold;">50</td><td style="border:1px solid #333; padding:8px;">8</td><td style="border:1px solid #333; padding:8px;">8</td></tr>
+</tbody>
+</table>
+
+<p style="margin:12px 0; color:#111; background:#E8F5E9; padding:10px; border-radius:6px;">
+<b>الاستنتاج:</b> xp هو <b>مقياس تخميد damping</b> — كلما كبر xp قل عدد الأصفار (11→8). ليس عتبة توليد.
+</p>
+
+<details style="margin:15px 0; background:#f5f5f5; border:1px solid #ccc; border-radius:8px; padding:10px;">
+<summary style="cursor:pointer; font-weight:bold; color:#1B5E20; font-size:14px;">📄 كود البايثون الذي أنتج الجدول (اضغط للفتح) — 21.ipynb</summary>
+<pre style="background:#000; color:#0f0; padding:12px; border-radius:6px; overflow-x:auto; font-size:12px; direction:ltr; text-align:left; margin-top:10px;">
+import numpy as np
+
+def Z_of_t(t, xp):
+    x = complex(0.5, t)
+    return np.exp(-x/xp) * (x**-5) * np.log(x) * np.sin(2*np.pi / x)
+
+def count_zeros(xp, t_max=100, step=0.02):
+    ts = np.arange(0.01, t_max, step)
+    ims = np.array([Z_of_t(t, xp).imag for t in ts])
+    c = 0
+    for i in range(1, len(ims)):
+        if ims[i-1]*ims[i] < 0:
+            c += 1
+    return c
+
+for xp in [5,10,18,21,50]:
+    print(xp, count_zeros(xp,60), count_zeros(xp,100))
+# 5 11 14
+# 10 9 11
+# 18 8 9
+# 21 8 9 ⭐
+# 50 8 8
+</pre>
+<p style="font-size:12px; color:#333; margin-top:8px;">شغل الكود في Colab وتأكد بنفسك — هذا هو العلم.</p>
+</details>
+
+<p style="margin:12px 0; color:#111;">
+<b>ملاحظة زراعية:</b> A(x)=(x/xp)² e^(-x/xp) قمته عند 2*xp=<b>42 يوم</b> — فرضية قمة ذرة صنعاء، بانتظار بيانات حقيقية.
+</p>
+
+<p style="font-size:12px; color:#000; margin-top:15px; border-top:2px solid #2E7D32; padding-top:8px; font-weight:bold;">
+بيانات حقيقية من تشغيل 21.ipynb في Colab. هذا النص يلغي أي ادعاء سابق عن "عتبة ريمان". Z+C+A=1 يبقى. xp=21 يبقى كتعريف صادق definitional.
+</p>
+
+</div>
+
+
+
+
+
+
 </body>
 </html>
