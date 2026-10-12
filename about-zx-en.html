@@ -15,17 +15,14 @@
 <meta name="geo.region" content="YE-SA">
 <meta name="geo.placename" content="Sanaa">
 
-<!-- ═══════════════ Canonical + hreflang ═══════════════ -->
 <link rel="canonical" href="https://jabri-com.vercel.app/about-zx-en.html">
 <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about-zx-ar.html">
 <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/about-zx-en.html">
 <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/about-zx-ar.html">
 
-<!-- ═══════════════ Dates (pub_time per-page) ═══════════════ -->
 <meta property="article:published_time" content="2026-09-27T00:00:00+03:00">
-<meta property="article:modified_time" content="2026-10-11T00:00:00+03:00">
+<meta property="article:modified_time" content="2026-10-12T00:00:00+03:00">
 
-<!-- ═══════════════ Open Graph ═══════════════ -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Heaven Al-Jabri | واحة الجبري">
 <meta property="og:locale" content="en_US">
@@ -43,23 +40,19 @@
 <meta property="article:tag" content="Yemeni Constant">
 <meta property="article:tag" content="21">
 
-<!-- ═══════════════ Twitter Card ═══════════════ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Zx — The Mathematical Framework | The Yemeni Constant 21">
 <meta name="twitter:description" content="A complete mathematical framework: xp=21, Z(x), A(x), C(x), and the closure Z+C+A=1.">
 <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Zx_Equations.png">
 
-<!-- ═══════════════ Icons ═══════════════ -->
 <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/image/apple-touch-icon.png">
 
-<!-- ═══════════════ Preload Zx images ═══════════════ -->
 <link rel="preload" as="image" href="/image/Zx_Equations.png">
 <link rel="preload" as="image" href="/image/Zx_Eq_figure.png">
 
-<!-- ═══════════════ JSON-LD: NewsMediaOrganization ═══════════════ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,7 +87,6 @@
 }
 </script>
 
-<!-- ═══════════════ JSON-LD: ScholarlyArticle ═══════════════ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -105,7 +97,7 @@
   "description": "A complete mathematical framework built on the Yemeni Constant xp=21, comprising the Z(x) function, the A(x) distribution function, the C(x) completion function, and the closure equation Z+C+A=1.",
   "inLanguage": "en",
   "datePublished": "2026-09-27",
-  "dateModified": "2026-10-11",
+  "dateModified": "2026-10-12",
   "author": {
     "@type": "Person",
     "name": "Abdulla Mohammed Nasser Al-Jabri",
@@ -145,11 +137,7 @@
 .zx-badge{display:inline-block;font-size:11px;background:#E8F5E9;color:#1B5E20;border:1px solid #A5D6A7;border-radius:4px;padding:2px 6px;margin:2px;direction:ltr;font-family:monospace;}
 .zx-note{background:#FFF9C4;padding:12px;border-radius:6px;text-align:center;font-size:13px;margin-top:20px;}
 .zx-img{max-width:100%;border-radius:8px;border:1px solid #ccc;margin:15px 0;display:block;}
-.zx-lang{text-align:center;margin-bottom:20px;font-family:'Cairo',sans-serif;}
-.zx-lang strong{background:#2E7D32;color:#fff;padding:8px 16px;border-radius:6px;}
-.zx-lang a{text-decoration:none;background:#E8F5E9;color:#1B5E20;padding:8px 16px;border-radius:6px;border:1px solid #A5D6A7;font-weight:bold;}
 
-/* Collapsible buttons without JavaScript */
 details.zx-details{margin:15px 0;background:#fff;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
 details.zx-details summary{
   list-style:none; background:#2E7D32; color:#fff; padding:12px 20px; border-radius:8px;
@@ -165,17 +153,85 @@ details.zx-details[open] summary{border-radius:8px 8px 0 0;}
   overflow-x:auto; white-space:pre; margin:0; border:1px solid #333; border-top:none;
   max-height: 500px; overflow-y: auto;
 }
+
+/* ═══ Zx Four-Way Dialogue Switcher ═══ */
+.zx-switch{
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-family: 'Cairo', Tahoma, sans-serif;
+  direction: ltr;
+}
+.zx-switch a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid #2E7D32;
+  background: #E8F5E9;
+  color: #1B5E20;
+  transition: all 0.25s ease;
+  flex-wrap: wrap;
+}
+.zx-switch a:hover{
+  background: #C8E6C9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46,125,50,0.25);
+}
+.zx-switch a.current{
+  background: #1B5E20;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(27,94,32,0.35);
+  cursor: default;
+  pointer-events: none;
+}
+.zx-switch .zx-tag{
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(27,94,32,0.12);
+  border: 1px solid rgba(27,94,32,0.25);
+  font-family: 'Courier New', monospace;
+}
+.zx-switch a.current .zx-tag{
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+@media (max-width: 520px){
+  .zx-switch{ grid-template-columns: 1fr; }
+}
 </style>
 </head>
 
 <body style="background:#f4f4f4; margin:0; padding:20px;">
 
-<!-- ═══════════════ Language Switcher ═══════════════ -->
-<div class="zx-lang">
-    <a href="/about-zx-ar.html">العربية</a>
-    <span style="margin: 0 10px; color: #666;">|</span>
-    <strong>English</strong>
-</div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- 🔀 Zx Four-Way Dialogue Switcher                       -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<nav class="zx-switch" aria-label="Zx Dialogue Switcher">
+  <a href="/about-zx-ar.html">
+    <span>📐</span><span>الإطار</span><span class="zx-tag">v1 AR</span>
+  </a>
+  <a href="/about-zx-en.html" class="current" aria-current="page">
+    <span>📐</span><span>Framework</span><span class="zx-tag">v1 EN</span>
+  </a>
+  <a href="/about-zx2.html">
+    <span>🌹</span><span>الحوار</span><span class="zx-tag">v2 AR</span>
+  </a>
+  <a href="/about-zx2-en.html">
+    <span>🌹</span><span>Dialogue</span><span class="zx-tag">v2 EN</span>
+  </a>
+</nav>
+<!-- ═══════════════════════════════════════════════════════ -->
 
 <!-- Display images at the top -->
 <div style="text-align: center; max-width: 1000px; margin: 0 auto 20px auto;">
@@ -191,10 +247,6 @@ details.zx-details[open] summary{border-radius:8px 8px 0 0;}
 
 <p class="zx-highlight">Zx = { xp=21, Z(x), A(x), C(x), Zt=1 } — The Closure is the Essence</p>
 
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- Part 1: The Zx Mathematical Framework -->
-<!-- ═══════════════════════════════════════════════════════ -->
-
 <h4 class="zx-section-title">Part 1: The Zx Mathematical Framework — Why 21?</h4>
 <p>Before we talk about the number 21, we must understand the framework that revealed it to us. <strong>Zx</strong> is not just a name; it is a complete mathematical system. It is what told us that the fundamental constant is <strong>21</strong>, not the other way around.</p>
 
@@ -204,7 +256,6 @@ details.zx-details[open] summary{border-radius:8px 8px 0 0;}
 <div class="zx-formula">C(x) = 1 − Z(x) − A(x) <span class="zx-badge">zx-C-01</span></div>
 <div class="zx-formula" style="background:#E8F5E9;font-weight:900;font-size:18px;">Zt = Z + C + A = 1 <span class="zx-badge">zx-Zt-01</span></div>
 
-<!-- Zx Code Button -->
 <details class="zx-details">
 <summary>📄 Show Python Code for Generating Zx Images — Click Here</summary>
 <pre class="zx-code-pre">
@@ -225,10 +276,6 @@ import matplotlib as mpl
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
 xp = 21.0
-
-# ════════════════════════════════════════════════════════════
-#  Image 1 — Zx_Equations.png (Clean equations only)
-# ════════════════════════════════════════════════════════════
 
 fig, ax = plt.subplots(figsize=(11, 7), dpi=200)
 ax.set_xlim(0, 11); ax.set_ylim(0, 7); ax.axis('off')
@@ -255,10 +302,6 @@ plt.tight_layout()
 plt.savefig('Zx_Equations.png', dpi=200, bbox_inches='tight', facecolor='white')
 plt.close()
 print("✅ Zx_Equations.png")
-
-# ════════════════════════════════════════════════════════════
-#  Image 2 — Zx_Eq_figure.png
-# ════════════════════════════════════════════════════════════
 
 fig = plt.figure(figsize=(12, 13), dpi=200)
 fig.patch.set_facecolor('white')
@@ -313,10 +356,6 @@ print("✅ Zx_Eq_figure.png")
 </pre>
 </details>
 
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- Part 2: The Number 21 Panel -->
-<!-- ═══════════════════════════════════════════════════════ -->
-
 <h4 class="zx-section-title">Part 2: The Number 21 — The Yemeni Constant</h4>
 <p>Now that we know <strong>xp = 21</strong> is the cornerstone of the Zx system, we present the properties of this number.</p>
 
@@ -349,7 +388,6 @@ print("✅ Zx_Eq_figure.png")
 <tr><td>Feature of 42</td><td>42 = 2 × 21 (peak of function A)</td><td><span class="zx-badge">zx-21-25</span></td></tr>
 </table>
 
-<!-- 21 Code Button -->
 <details class="zx-details">
 <summary>📄 Show Python Code for Analyzing Zeros of 21 — Click Here</summary>
 <pre class="zx-code-pre">
@@ -388,8 +426,6 @@ for xp in [5, 10, 18, 21, 50]:
 <span class="zx-badge">zx-Zt-01</span>
 </p>
 </div>
-
-<!-- في كل صفحة HTML -->
 
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>

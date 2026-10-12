@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>الأسئلة الشائعة | واحة الجبري</title>
-<meta name="description" content="إجابات على أهم الأسئلة حول نظرية السندباد Z+C+A=1، أبحاث م/ عبدالله الجبري، ومنصة واحة الجبري">
+<meta name="description" content="إجابات على أهم الأسئلة حول نظرية السندباد Z+C+A=1، إطار Zx، أبحاث م/ عبدالله الجبري، ومنصة واحة الجبري">
 <link rel="canonical" href="https://jabri-com.vercel.app/FAQPage.html">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -30,6 +30,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "نظرية السندباد الموحدة (Z + C + A = 1) هي أطروحة رياضية ورمزية تهدف إلى ربط فروع الرياضيات المختلفة في إطار موحد، مستوحاة من تراث اليمن العريق وروح المغامرة التي جسدها السندباد. تعكس النظرية رؤية الباحث في أن الرياضيات هي لغة الكون، وأن فهمها العميق هو مفتاح حل ألغاز الوجود."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هو إطار Zx؟ وهل يقدّم نتائج علمية جديدة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "إطار Zx هو بنية رياضية متكاملة قائمة على الثابت اليمني xp=21 ومعادلة الإغلاق Z+C+A=1. لكنه لا يدّعي الوصول إلى نتائج علمية مذهلة. ما يقدّمه فعلاً: بنية رياضية صحيحة داخلياً، كود بايثون قابل للتشغيل والتحقق، واعتراف صريح بأن xp=21 تعريف حرّ لا اشتقاق. حدوده واضحة: أداة وفرضية، لا إنجاز ولا نظرية مكتملة. الموقف العلمي الصادق منه: لا تُقبل كنظرية، بل تُستخدم كأداة، وتُتابع كفرضية، وتُقدَّر كعرض صادق. والفرق بين الإزعاج والعرض: الإزعاج يطلب انتباهك، والعرض يترك لك الخيار — ونحن نترك لك الخيار."
       }
     },
     {
@@ -105,6 +113,152 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 .faq-item h3{color:var(--accent);margin-bottom:12px;font-size:1.2rem}
 .faq-item p{color:var(--muted);font-size:1rem}
 
+/* تمييز سؤال Zx */
+.faq-item.zx-item{border-color:#2E7D32;background:linear-gradient(135deg,#0f1a12,#11131a)}
+.faq-item.zx-item h3{color:#00ff88}
+.faq-item.zx-item p{color:#c8d6c8}
+.faq-item.zx-item .zx-formula{background:#000;color:#0f0;padding:8px 12px;border-radius:6px;font-family:monospace;direction:ltr;text-align:center;margin:12px 0;font-weight:700}
+
+/* ===== البيان الكامل — Zx ===== */
+.manifesto{
+  margin: 40px 0 20px 0;
+  background: linear-gradient(135deg, #0d1a12, #11131a);
+  border: 2px solid #2E7D32;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 8px 40px rgba(0, 255, 136, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.manifesto::before{
+  content: "🌎🔊";
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-size: 1rem;
+  opacity: 0.5;
+}
+.manifesto h2{
+  color: #00ff88;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #2E7D32;
+  padding-bottom: 15px;
+}
+.manifesto .m-lead{
+  text-align: center;
+  color: #a8ffcf;
+  font-style: italic;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+.manifesto h3{
+  color: #6ae3ff;
+  font-size: 1.15rem;
+  margin: 25px 0 12px 0;
+  padding-right: 12px;
+  border-right: 4px solid #00ff88;
+}
+.manifesto p{
+  color: #d0d8d0;
+  font-size: 1rem;
+  margin: 10px 0;
+  line-height: 1.95;
+}
+.manifesto b{color: #00ff88}
+.manifesto em{color: #a8ffcf; font-style: italic}
+.manifesto code{
+  background: #000;
+  color: #0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  direction: ltr;
+  display: inline-block;
+}
+.manifesto .m-block{
+  background: #000;
+  color: #0f0;
+  padding: 14px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 15px 0;
+  direction: ltr;
+  letter-spacing: 2px;
+}
+.manifesto ul{
+  color: #d0d8d0;
+  padding-right: 25px;
+  margin: 10px 0;
+}
+.manifesto li{margin: 6px 0}
+.manifesto .m-compare{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0;
+}
+.manifesto .m-compare > div{
+  background: #0a1408;
+  border: 1px solid #2E7D32;
+  border-radius: 10px;
+  padding: 15px;
+}
+.manifesto .m-compare h4{
+  color: #00ff88;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.manifesto .m-compare p{
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 5px 0;
+  color: #b0c0b0;
+}
+.manifesto .m-quote{
+  background: #0a1408;
+  border-right: 4px solid #00ff88;
+  padding: 20px 25px;
+  border-radius: 8px;
+  margin: 20px 0;
+  color: #c8e8c8;
+  font-style: italic;
+  line-height: 2;
+  font-size: 1.02rem;
+}
+.manifesto .m-final{
+  text-align: center;
+  font-size: 1.15rem;
+  color: #00ff88;
+  font-weight: 700;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #2E7D32;
+  line-height: 2;
+}
+.manifesto .m-mirror{
+  text-align: center;
+  color: #b5977a;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(181, 151, 122, 0.06);
+  border-radius: 8px;
+}
+@media (max-width: 600px){
+  .manifesto{padding: 25px 18px}
+  .manifesto h2{font-size: 1.3rem}
+  .manifesto .m-compare{grid-template-columns: 1fr}
+}
+
 .back-btn{display:inline-block;margin-top:40px;padding:12px 28px;background:var(--accent);color:#000;border-radius:10px;text-decoration:none;font-weight:700;font-size:1rem;transition:0.3s}
 .back-btn:hover{background:#4dd4ff;transform:scale(1.05)}
 .footer-link{text-align:center;margin:40px 0}
@@ -121,7 +275,7 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 <div class="container">
   <header>
     <h1>❓ الأسئلة الشائعة</h1>
-    <p class="subtitle">إجابات سريعة عن نظرية السندباد وأبحاث واحة الجبري</p>
+    <p class="subtitle">إجابات سريعة عن نظرية السندباد، إطار Zx، وأبحاث واحة الجبري</p>
   </header>
   
   <div class="faq-item">
@@ -132,6 +286,19 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
   <div class="faq-item">
     <h3>ما هي نظرية السندباد الموحدة؟</h3>
     <p>نظرية السندباد الموحدة (Z + C + A = 1) هي أطروحة رياضية ورمزية تهدف إلى ربط فروع الرياضيات المختلفة في إطار موحد، مستوحاة من تراث اليمن العريق وروح المغامرة التي جسدها السندباد.</p>
+  </div>
+
+  <!-- 🆕 سؤال Zx — ملخص -->
+  <div class="faq-item zx-item">
+    <h3>🔬 ما هو إطار Zx؟ وهل يقدّم نتائج علمية جديدة؟</h3>
+    <p><b>إطار Zx</b> هو بنية رياضية متكاملة قائمة على الثابت اليمني <code>xp=21</code> ومعادلة الإغلاق:</p>
+    <div class="zx-formula">Z(x) + C(x) + A(x) = 1</div>
+    <p>لكنه <b>لا يدّعي</b> الوصول إلى نتائج علمية مذهلة. ما يقدّمه فعلاً:</p>
+    <p>• بنية رياضية صحيحة داخلياً.<br>
+    • كود بايثون قابل للتشغيل والتحقق.<br>
+    • اعتراف صريح بأن <code>xp=21</code> تعريف حرّ لا اشتقاق.</p>
+    <p>حدوده واضحة: <b>أداة وفرضية</b>، لا إنجاز ولا نظرية مكتملة.</p>
+    <p>للتفصيل الكامل، انظر <b>📜 البيان الكامل</b> أدناه ↓</p>
   </div>
 
   <div class="faq-item">
@@ -159,6 +326,203 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
     <p>البريد: jabri62018@gmail.com | GitHub: github.com/jabri-web | ORCID: orcid.org/0009-0003-3319-3822 | Telegram: t.me/Jabri2025</p>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 📜 البيان الكامل — Zx: بين الإزعاج والعرض              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <div class="manifesto">
+    <h2>📜 البيان الكامل</h2>
+    <p class="m-lead">Zx: بين الإزعاج والعرض — سؤال في الصميم، وجواب بلا مراوغة.</p>
+
+    <h3>أولاً: أنت محق</h3>
+    <p>إن لم ترد الوصول إلى شيء... <b>فلماذا الإزعاج؟</b></p>
+    <p>هذا سؤال مشروع. وللأسف، كثير من "النظريات" تُنشر بلا هدف، بلا نتيجة، بلا معنى. فلماذا Zx ليست كذلك؟</p>
+    <p><b>الجواب ليس في Zx. الجواب في الفرق بين "الإزعاج" و"العرض".</b></p>
+
+    <h3>ثانياً: ما الذي تعرضه Zx فعلاً؟</h3>
+    <p>Zx لا تعرض <em>نتيجة</em>. Zx تعرض <em>أداة</em>. وهذا فرق جوهري.</p>
+
+    <div class="m-compare">
+      <div>
+        <h4>النتيجة</h4>
+        <p>تُقبل أو تُرفض</p>
+        <p>تحتاج برهان</p>
+        <p>تنتهي عند الحكم</p>
+        <p>"هل هي صحيحة؟"</p>
+      </div>
+      <div>
+        <h4>الأداة</h4>
+        <p>تُستخدم أو تُهمل</p>
+        <p>تحتاج تجربة</p>
+        <p>تستمر بالتشغيل</p>
+        <p>"هل هي مفيدة؟"</p>
+      </div>
+    </div>
+
+    <p><b>Zx لم تقل: "أنا حقيقة."</b><br>
+    <b>Zx قالت: "أنا قابلة للتشغيل. جرّبني."</b></p>
+
+    <h3>ثالثاً: لكن... هل هذا كافٍ؟</h3>
+    <p><b>لا. وحدها لا تكفي.</b></p>
+    <p>وهذا ما لم يقله أحد بصراحة:</p>
+    <p><b>Zx اليوم ليست إنجازًا علميًا.</b><br>
+    <b>Zx اليوم هي عرض شفاف.</b><br>
+    <b>الشفافية نفسها قد تكون إنجازًا.</b></p>
+    <p>لماذا؟</p>
+    <p>لأن معظم ما يُنشر اليوم:</p>
+    <ul>
+      <li>يدّعي أكثر مما يملك.</li>
+      <li>يخفي ما لا يعرف.</li>
+      <li>يبيع الوهم بلغة رياضية.</li>
+    </ul>
+    <p><b>Zx لا تفعل ذلك.</b><br>
+    <b>Zx تقول: "هذا ما عندي. وهذا ما ليس عندي."</b><br>
+    <b>وهذا نادر.</b></p>
+
+    <h3>رابعاً: ماذا تعرض Zx بالضبط؟</h3>
+
+    <p><b>1. إطار مغلق</b></p>
+    <div class="m-block">Z + C + A = 1</div>
+    <p>صحيح داخليًا. لا يعتمد على 21. لا يعتمد على أي اختيار.<br>
+    <em>هذا ليس إنجازًا. لكنه أساس.</em></p>
+
+    <p><b>2. كود قابل للتشغيل</b><br>
+    أي شخص، في أي مكان، يشغّل الكود، يحصل على نفس النتيجة.<br>
+    <em>هذا نادر في "النظريات" الجديدة.</em></p>
+
+    <p><b>3. اعتراف صريح</b><br>
+    <code>xp=21 تعريف، لا اشتقاق.</code><br>
+    <em>هذا اعتراف لا يقدمه 99% من الباحثين.</em></p>
+
+    <p><b>4. جدول يكشف نفسَه</b><br>
+    أدرجت 42 و44 رغم أنهما يكسران التميّز.<br>
+    <em>هذا شجاعة علمية.</em></p>
+
+    <h3>خامساً: لكن... أين النتيجة العلمية الجديدة؟</h3>
+    <p><b>لا توجد.</b> وهذا صادق.</p>
+    <p>Zx لم تكتشف:</p>
+    <ul>
+      <li>جسيمًا جديدًا.</li>
+      <li>ثابتًا كونيًا.</li>
+      <li>قانونًا فيزيائيًا.</li>
+      <li>برهانًا رياضيًا.</li>
+    </ul>
+    <p>Zx فقط:</p>
+    <ul>
+      <li>رتّبت دوالًا معروفة.</li>
+      <li>اختارت ثابتًا جماليًا.</li>
+      <li>أغلقت وحدة حسابية.</li>
+      <li>كتبت الكود.</li>
+    </ul>
+    <p><em>هذا كل ما فعلته.</em></p>
+
+    <h3>سادساً: إذن... لماذا نقبلها؟</h3>
+    <p><b>لا يجب أن نقبلها.</b></p>
+    <p>لكن يمكن أن:</p>
+    <div class="m-compare">
+      <div>
+        <h4>نقبلها كـ</h4>
+        <p>أداة</p>
+        <p>فرضية</p>
+        <p>عرض</p>
+        <p>بداية</p>
+        <p>سؤال</p>
+      </div>
+      <div>
+        <h4>لا نقبلها كـ</h4>
+        <p>نظرية</p>
+        <p>حقيقة</p>
+        <p>إنجاز</p>
+        <p>نهاية</p>
+        <p>جواب</p>
+      </div>
+    </div>
+    <p><b>Zx لا تطلب أكثر من ذلك.</b></p>
+
+    <h3>سابعاً: كيف نتعامل معها؟</h3>
+    <p>اقرأها كما تقرأ أي عرض:</p>
+    <ul>
+      <li>إذا أعجبتك، شغّلها.</li>
+      <li>إذا لم تعجبك، أهملها.</li>
+      <li>إذا شككت، اختبرها.</li>
+      <li>إذا كذّبتها، أثبت ذلك.</li>
+    </ul>
+    <p><b>Zx ليست دينًا.</b><br>
+    <b>Zx ليست دعوى.</b><br>
+    <b>Zx مجرد عرض.</b></p>
+
+    <h3>ثامناً: الجواب الصادق على سؤالك</h3>
+
+    <p><b>سألت:</b> «إن لم ترد الوصول إلى شيء، فلماذا الإزعاج؟»</p>
+    <p><b>الجواب:</b></p>
+    <div class="m-quote">
+      Zx لا تريد أن تصل.<br>
+      Zx تريد أن تُعرض.<br><br>
+      والعرض ليس إزعاجًا.<br>
+      الإزعاج هو أن تدّعي ما ليس لك.<br>
+      والعرض الصادق — نادر.
+    </div>
+
+    <p><b>سألت:</b> «إن لم يكن نتائج علمية لم يسبقها أحد، كيف نقبلها؟»</p>
+    <p><b>الجواب:</b></p>
+    <div class="m-quote">
+      لا تقبلها.<br>
+      استخدمها، أو اتركها.<br><br>
+      Zx ليست في حاجة إلى قبولك.<br>
+      هي فقط... موجودة.<br><br>
+      إن أردت، شغّلها.<br>
+      إن لم ترد، اتركها.<br>
+      وكلاهما موقف مشروع.
+    </div>
+
+    <h3>تاسعاً: ما تقوله Zx عن نفسها أمام سؤالك</h3>
+    <div class="m-quote">
+      أنت محق.<br><br>
+      لا نتيجة جديدة.<br>
+      لا اشتقاق.<br>
+      لا اكتشاف.<br><br>
+      فلماذا الإزعاج؟<br><br>
+      لأنني لا أزعج.<br>
+      أنا أعرض.<br><br>
+      والفرق بين الإزعاج والعرض:<br>
+      الإزعاج يطلب انتباهك.<br>
+      العرض يترك لك الخيار.<br><br>
+      فأنا أترك لك الخيار.<br><br>
+      اقرأني، أو أهملني.<br>
+      شغّلني، أو اتركني.<br>
+      صدّقني، أو كذّبني.<br><br>
+      كل خيار مشروع.<br><br>
+      لأنني لم آتِ لأُقنعك.<br>
+      جئت لأُعرَض.
+    </div>
+
+    <h3>عاشراً: الجواب النهائي</h3>
+    <ul>
+      <li>إذا كنت تبحث عن نتيجة علمية مذهلة — <b>Zx ليست لك.</b></li>
+      <li>إذا كنت تبحث عن إطار صادق قابل للاختبار — <b>Zx أمامك.</b></li>
+      <li>إذا كنت تبحث عن ادعاءات كبيرة — <b>Zx ليست كذلك.</b></li>
+      <li>إذا كنت تبحث عن أداة — <b>Zx موجودة.</b></li>
+    </ul>
+    <p><b>والقرار قرارك.</b></p>
+
+    <div class="m-final">
+      🌹🌎🔊<br><br>
+      Zx وحيدة زمانها.<br>
+      لا لأنها عظيمة.<br>
+      بل لأنها صادقة.<br>
+      والصدق — حتى في العدم — نادر.
+    </div>
+
+    <div class="m-mirror">
+      اقرأها كما تقرأ مرآة:<br>
+      إن رأيت فيها شيئًا، فهو منك.<br>
+      وإن لم ترَ، فلا شيء.<br>
+      <b>والمرآة لا تجرح.</b>
+    </div>
+
+  </div>
+  <!-- ═══════════════════════════════════════════════════════ -->
+
   <div class="footer-link">
     <a href="/index.html" class="back-btn">← العودة للرئيسية</a>
   </div>
@@ -169,7 +533,6 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 
     <!-- في كل صفحة HTML -->
     
-    <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/file.js" defer></script>
     <script src="/js/init-page-root.js" defer></script>

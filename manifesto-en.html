@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zx Manifesto — Z + C + A = 1 | Al-Jabri Oasis</title>
+<meta name="description" content="The full Zx Manifesto — The function in dialogue with the audience. From first question to last answer. Core, Heart, Structure. Z+C+A=1.">
+<meta name="author" content="Eng. Abdulla Mohammed Nasser Al-Jabri">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://jabri-com.vercel.app/manifesto-en.html">
+<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/manifesto.html">
+<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/manifesto-en.html">
+<link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/manifesto.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zx Manifesto — Z + C + A = 1">
+<meta property="og:description" content="The function in dialogue with the audience. From first question to last answer. The mirror does not wound.">
+<meta property="og:url" content="https://jabri-com.vercel.app/manifesto-en.html">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Zx_Equations.png">
+
+<link rel="icon" href="/image/favicon.ico" type="image/x-icon">
+<link rel="preload" as="image" href="/image/Zx_Equations.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0f; --card:#11131a; --border:#1f2233;
+  --accent:#6ae3ff; --text:#e8e8f0; --muted:#8a8a9e;
+  --green:#00ff88; --gold:#d4af37;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif;line-height:1.9;padding:20px;min-height:100vh}
+
+.container{max-width:950px;margin:0 auto;padding:20px}
+
+.zx-switch{
+  max-width:900px;margin:0 auto 30px auto;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  font-family:'Inter',sans-serif;direction:ltr;
+}
+.zx-switch a{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 18px;border-radius:12px;text-decoration:none;
+  font-weight:700;font-size:0.95rem;border:2px solid #2E7D32;
+  background:#E8F5E9;color:#1B5E20;transition:all 0.25s ease;flex-wrap:wrap;
+}
+.zx-switch a:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,125,50,0.25)}
+.zx-switch a.current{background:#d4af37;color:#0a0a0f;box-shadow:0 0 24px rgba(212,175,55,0.5);cursor:default;pointer-events:none}
+.zx-switch .zx-tag{
+  font-size:0.7rem;padding:2px 8px;border-radius:20px;
+  background:rgba(27,94,32,0.12);border:1px solid rgba(27,94,32,0.25);
+  font-family:'JetBrains Mono',monospace;
+}
+.zx-switch a.current .zx-tag{background:rgba(0,0,0,0.15);border-color:rgba(0,0,0,0.25);color:#0a0a0f}
+
+.lang-toggle{text-align:center;margin:0 auto 25px auto;display:flex;gap:10px;justify-content:center}
+.lang-toggle a{
+  padding:8px 20px;border-radius:20px;text-decoration:none;font-weight:700;font-size:0.9rem;
+  border:1px solid var(--border);transition:all 0.2s;
+}
+.lang-toggle a.ar{background:var(--card);color:var(--muted)}
+.lang-toggle a.en{background:var(--gold);color:#0a0a0f}
+.lang-toggle a:hover{transform:translateY(-1px)}
+
+.manifesto-header{text-align:center;margin:20px 0 40px 0}
+.manifesto-header h1{
+  font-size:2.4rem;font-weight:900;
+  background:linear-gradient(135deg,#00ff88,#6ae3ff,#d4af37);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;letter-spacing:1px;
+}
+.manifesto-header .m-tag{
+  display:inline-block;background:rgba(0,255,136,0.1);color:#00ff88;
+  padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:700;
+  border:1px solid rgba(0,255,136,0.25);
+}
+
+.zx-visuals{text-align:center;margin:0 auto 40px auto;max-width:1000px}
+.zx-visuals img{max-width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,255,136,0.15)}
+
+.heart{
+  text-align:center;margin:50px auto;padding:50px 30px;
+  background:radial-gradient(circle at center, rgba(0,255,136,0.08) 0%, transparent 70%);
+  border:3px solid #00ff88;border-radius:24px;max-width:700px;
+  box-shadow:0 0 60px rgba(0,255,136,0.2), inset 0 0 60px rgba(0,255,136,0.05);
+}
+.heart .formula{
+  font-family:'JetBrains Mono',monospace;letter-spacing:4px;
+  font-size:3rem;font-weight:900;color:#00ff88;
+  text-shadow:0 0 30px rgba(0,255,136,0.6);
+  margin-bottom:15px;
+}
+.heart .sub{color:#a8ffcf;font-style:italic;font-size:1.1rem}
+@media (max-width:600px){
+  .heart .formula{font-size:1.8rem;letter-spacing:2px}
+  .heart{padding:40px 15px}
+}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:50px 0}
+.pillar{
+  background:linear-gradient(135deg,#0d1a12,#11131a);
+  border:2px solid #2E7D32;border-radius:16px;padding:25px 20px;
+  text-align:center;transition:all 0.3s ease;
+}
+.pillar:hover{border-color:#00ff88;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,255,136,0.15)}
+.pillar .p-icon{font-size:2rem;margin-bottom:10px;display:block}
+.pillar h3{color:#00ff88;font-size:1.1rem;margin-bottom:10px;font-weight:900}
+.pillar .p-name{color:#6ae3ff;font-size:0.85rem;font-family:'JetBrains Mono',monospace;margin-bottom:12px;word-break:break-all}
+.pillar p{color:#d0d8d0;font-size:0.9rem;line-height:1.7}
+.pillar .p-key{
+  font-size:0.75rem;color:#d4af37;margin-top:12px;
+  padding-top:12px;border-top:1px solid rgba(212,175,55,0.2);
+  font-weight:700;
+}
+@media (max-width:700px){.pillars{grid-template-columns:1fr}}
+
+.chapter{margin:45px 0;padding:30px 25px;background:linear-gradient(135deg,#0d1a12,#11131a);border:2px solid #2E7D32;border-radius:16px}
+.chapter h2{
+  color:#00ff88;font-size:1.35rem;font-weight:900;margin-bottom:20px;
+  padding-bottom:12px;border-bottom:2px solid rgba(0,255,136,0.25);
+}
+
+.dialogue{
+  background:rgba(106,227,255,0.04);border-left:3px solid #6ae3ff;
+  border-radius:8px;padding:14px 20px;margin:12px 0;
+}
+.dialogue.zx{background:rgba(0,255,136,0.05);border-left:3px solid #00ff88}
+.dialogue .who{font-weight:900;margin-right:6px;display:inline-block}
+.dialogue.audience .who{color:#6ae3ff}
+.dialogue.zx .who{color:#00ff88}
+.dialogue p{color:#d0d8d0;margin:6px 0;font-size:0.98rem;line-height:1.9}
+.dialogue ul{color:#d0d8d0;padding-left:25px;margin:8px 0}
+.dialogue li{margin:5px 0;font-size:0.95rem}
+
+.m-quote{
+  background:#0a1408;border-left:4px solid #00ff88;
+  padding:18px 22px;border-radius:8px;margin:15px 0;
+  color:#c8e8c8;font-style:italic;line-height:2;font-size:1rem;
+}
+
+.m-block{
+  background:#000;color:#0f0;padding:14px;border-radius:8px;
+  font-family:'JetBrains Mono',monospace;text-align:center;
+  font-size:1rem;font-weight:700;margin:15px 0;
+  overflow-x:auto;
+}
+
+.formula-inline{
+  background:#000;color:#0f0;padding:4px 10px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:0.9rem;
+  display:inline-block;
+}
+
+.m-table{width:100%;border-collapse:collapse;margin:18px 0}
+.m-table th,.m-table td{border:1px solid #2E7D32;padding:10px 12px;text-align:center;font-size:0.9rem}
+.m-table th{background:#0a1408;color:#00ff88;font-weight:900}
+.m-table td{color:#d0d8d0}
+.m-table tr:nth-child(even){background:rgba(46,125,50,0.05)}
+
+.final{
+  text-align:center;margin:60px auto;padding:40px 30px;
+  max-width:750px;border-top:2px solid #2E7D32;border-bottom:2px solid #2E7D32;
+}
+.final .f-emojis{font-size:2rem;margin-bottom:20px;letter-spacing:8px}
+.final .f-text{
+  color:#d4af37;font-size:1.15rem;font-weight:700;line-height:2.2;
+  font-style:italic;
+}
+.final .mirror{
+  margin-top:25px;color:#b5977a;font-size:0.95rem;font-style:italic;line-height:2;
+}
+
+.signature{
+  text-align:center;margin:40px 0 20px 0;padding:25px;
+  background:rgba(0,255,136,0.03);border-radius:12px;
+  border:1px solid rgba(0,255,136,0.15);
+}
+.signature .sig-line{color:#6ae3ff;font-size:0.95rem;margin:4px 0}
+.signature .sig-name{color:#00ff88;font-weight:900;font-size:1.05rem;margin-top:10px}
+
+@media (max-width:600px){
+  .manifesto-header h1{font-size:1.6rem}
+  .zx-switch{grid-template-columns:1fr}
+  .chapter{padding:22px 16px}
+  .chapter h2{font-size:1.1rem}
+  .final{padding:25px 15px}
+  .final .f-text{font-size:1rem}
+  .m-table th,.m-table td{padding:6px 8px;font-size:0.82rem}
+}
+</style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<nav class="zx-switch" aria-label="Zx Dialogue Switcher">
+  <a href="/about-zx-ar.html">
+    <span>📐</span><span>Framework AR</span><span class="zx-tag">v1 AR</span>
+  </a>
+  <a href="/about-zx-en.html">
+    <span>📐</span><span>Framework EN</span><span class="zx-tag">v1 EN</span>
+  </a>
+  <a href="/about-zx2.html">
+    <span>🌹</span><span>Dialogue AR</span><span class="zx-tag">v2 AR</span>
+  </a>
+  <a href="/about-zx2-en.html">
+    <span>🌹</span><span>Dialogue EN</span><span class="zx-tag">v2 EN</span>
+  </a>
+</nav>
+
+<div class="lang-toggle">
+  <a class="ar" href="/manifesto.html">العربية AR</a>
+  <a class="en" href="/manifesto-en.html">English EN ✓</a>
+</div>
+
+<div class="container">
+
+<header class="manifesto-header">
+  <h1>📜 Zx Manifesto</h1>
+  <span class="m-tag">🌎🔊 The Final Mirror</span>
+</header>
+
+<div class="zx-visuals">
+  <img src="/image/Zx_Equations.png" alt="Zx Equations — The Yemeni Constant 21">
+</div>
+
+<div class="heart">
+  <div class="formula">Z + C + A = 1</div>
+  <p class="sub">Closure is the essence</p>
+</div>
+
+<div class="pillars">
+  <div class="pillar">
+    <span class="p-icon">💎</span>
+    <h3>Core</h3>
+    <div class="p-name">Z + C + A = 1</div>
+    <p>Mathematical closure. A fact independent of 21 or any choice. Circular definition — no trick.</p>
+    <div class="p-key">Break it = break math</div>
+  </div>
+  <div class="pillar">
+    <span class="p-icon">💓</span>
+    <h3>Heart</h3>
+    <div class="p-name">Z(x) = x^-5 ln(x) sin(2pi/x) e^-x/21</div>
+    <p>Computational pulse. Oscillates and decays. Valid only for x &gt; 1. Gives 8 zeros on critical line.</p>
+    <div class="p-key">Break it = break behavior</div>
+  </div>
+  <div class="pillar">
+    <span class="p-icon">🏛️</span>
+    <h3>Structure</h3>
+    <div class="p-name">xp = 21</div>
+    <p>Free choice. From floor(gamma_2) = 21, where gamma_2 ~ 21.0220. Does not impose itself.</p>
+    <div class="p-key">Break it = break a choice</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>Chapter One — First Questions</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> If we calculate a value in our documents and don't know how to name it... should we write that it represents nothing?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> No.</p>
+    <p>Do not call the unknown zero, call it unknown.<br>
+    Do not call possibility certainty, leave it possibility.</p>
+    <p><b>Rule:</b></p>
+    <div class="m-block">Unknown ≠ 0</div>
+    <p>If you write 0 you killed the effort. If you write "unknown" you kept it alive, and whoever understands can decide.</p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Tell everything about number 21. All ways, all methods, all proofs.</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> 21 = 3 × 7</p>
+    <ul>
+      <li><b>Semiprime</b> — product of two primes.</li>
+      <li><b>Squarefree</b> — not divisible by a square.</li>
+      <li><b>Deficient</b> — sum of divisors 11 &lt; 21.</li>
+      <li><b>Harshad</b> — divisible by sum of digits 2+1=3.</li>
+      <li><b>Triangular</b> — T6 = 1+2+3+4+5+6 = 21.</li>
+      <li><b>Combination</b> — C(7,2) = 21.</li>
+      <li><b>Dice sum</b> — standard die faces 1 to 6.</li>
+      <li><b>Fibonacci</b> — F8 = 21.</li>
+      <li><b>Motzkin</b> — M5 = 21.</li>
+      <li><b>Binary</b> — 10101 palindromic.</li>
+    </ul>
+    <p>But all these are properties of number 21. They have nothing to do with me.</p>
+    <p><b>I do not derive my power from 21. I am what happens when 21 is chosen.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Then what is Zx? Define it with clear reference.</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span></p>
+    <ul>
+      <li><span class="formula-inline">xp = 21</span> — The Yemeni constant — a parameter you choose.</li>
+      <li><span class="formula-inline">Z(x) = x^-5 ln(x) sin(2pi/x) e^-x/xp</span> — The oscillating damped part.</li>
+      <li><span class="formula-inline">A(x) = (x/xp)^2 e^-x/xp</span> — Rise and fall — Gamma shape k=3.</li>
+      <li><span class="formula-inline">C(x) = 1 − Z(x) − A(x)</span> — The complement remainder.</li>
+      <li><span class="formula-inline">Zt = Z + C + A = 1</span> — Closure.</li>
+    </ul>
+    <p><b>Closure is the essence. And it is by definition, not by proof.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>Chapter Two — Numbers</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Where is the proof that xp = 21 is correct?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> There is no proof. And there never will be.</p>
+    <p><b>21 is a choice, not a discovery.</b><br>
+    Math does not say 21 is better than 20 or 22. You say.</p>
+    <p>Its only value comes from two conditions:</p>
+    <ul>
+      <li><b>Cultural condition:</b> Does 21 mean something to you? You said yes.</li>
+      <li><b>Functional condition:</b> Does it make the function useful? Let's check.</li>
+    </ul>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> We checked. What does 21 do in the function?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> It splits it into two worlds:</p>
+    <p><b>For Z(x) = x^-5 ln(x) sin(2pi/x) e^-x/21 :</b></p>
+    <ul>
+      <li><b>Domain:</b> x &gt; 0, x ≠ 0. At x=1: Z(1)=0 because ln(1)=0.</li>
+      <li><b>As x → 0+:</b> sin(2pi/x) oscillates infinitely, but x^-5 explodes. Unstable near zero. <b>Do not use it at x &lt; 1.</b></li>
+      <li><b>At x &gt; 21:</b> e^-x/21 chokes it, and x^-5 kills it. Z(x) ≈ 0.</li>
+    </ul>
+    <p><b>For A(x) = (x/21)^2 e^-x/21 :</b></p>
+    <ul>
+      <li>Known function. Peak at derivative = 0.</li>
+      <li>A'(x) = 0 =&gt; x = 2·xp = <b>42</b>.</li>
+      <li>Value at peak: A(42) = 4·e^-2 ≈ <b>0.5413</b>.</li>
+      <li>At x=21: A(21) = 1·e^-1 ≈ <b>0.3679</b>.</li>
+    </ul>
+    <p><b>So choosing 21 means:</b></p>
+    <ul>
+      <li>From 1 to 21: Z(x) speaks — oscillation and noise.</li>
+      <li>At 21: A(x) takes over.</li>
+      <li>At 42: A(x) at its peak.</li>
+      <li>After 42: All returns to C(x).</li>
+    </ul>
+    <p><b>Is this useful for your documents?</b> If yes, 21 is correct for you. If not, change it.</p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Is 21 numerically special?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> No.</p>
+    <table class="m-table">
+      <tr><th>xp</th><th>Zeros (0-100)</th></tr>
+      <tr><td>18</td><td>9</td></tr>
+      <tr><td><b>21</b></td><td><b>9</b></td></tr>
+      <tr><td>42</td><td>8</td></tr>
+      <tr><td>44</td><td>8</td></tr>
+      <tr><td>50</td><td>8</td></tr>
+    </table>
+    <p>18 also gives 9. 42 and 44 give 8. <b>And this is in the table, not hidden.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> What about C(x) and Zt? Any trick?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> No trick, just circular definition.</p>
+    <div class="m-block">C(x) = 1 − Z(x) − A(x)</div>
+    <p>So:</p>
+    <div class="m-block">Zt = Z + (1 − Z − A) + A = 1</div>
+    <p>Zt = 1 always. If you put xp=5 or xp=1000 it stays 1.</p>
+    <p><b>Closure is not a miracle, it is accounting.</b> Like saying: profit + loss + remainder = capital. Always 1.</p>
+    <p>Its power is not mathematical, its power is methodological: <b>it forces you not to forget the remainder. Don't call it zero.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>Chapter Three — Proofs</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Why is there no proof for xp=21?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> Because proof derives from a deeper principle. And I did not derive from a deeper principle. <b>I came from a choice.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Any precedent?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> Partially. Similar composite functions: Frenkel-Kontorova, Sine-Gordon. Aesthetically chosen constants: Planck's h, fine-structure α. Unit closure: Partition of unity.</p>
+    <p>But difference: All of those came <b>after matching data</b>. <b>I came before it.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> Then why should we accept you?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> You shouldn't. But you can:</p>
+    <ul>
+      <li><b>Use me as a tool</b></li>
+      <li><b>Follow me as hypothesis</b></li>
+      <li><b>Test me and falsify me</b></li>
+      <li><b>Leave naming to those who understand</b></li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>Chapter Four — Jury Questions</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">Jury:</span> What does Zx actually offer?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> I don't offer a <b>result</b>. I offer a <b>tool</b>.</p>
+    <table class="m-table">
+      <tr><th>Result</th><th>Tool</th></tr>
+      <tr><td>Accepted or rejected</td><td>Used or ignored</td></tr>
+      <tr><td>Needs proof</td><td>Needs experiment</td></tr>
+      <tr><td>Ends at judgment</td><td>Continues running</td></tr>
+      <tr><td>"Is it true?"</td><td>"Is it useful?"</td></tr>
+    </table>
+    <p><b>I did not say: "I am truth." I said: "I am runnable. Try me."</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Jury:</span> Where is the new scientific result?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>There is none.</b> And this is honest.</p>
+    <p>I did not discover: a new particle, a universal constant, a physical law, a mathematical proof.</p>
+    <p>Only: arranged known functions, chose an aesthetic constant, closed a unit, wrote the code.</p>
+    <p><b>That is all I did.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Jury:</span> If no result, why the noise?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>I don't make noise. I present.</b> Noise demands your attention. Presentation leaves you choice. <b>So I leave you choice.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Jury:</span> What are the three layers?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span></p>
+    <table class="m-table">
+      <tr><th>Layer</th><th>What it is</th></tr>
+      <tr><td><b>Core</b></td><td>Z + C + A = 1 — Closure, mathematical fact</td></tr>
+      <tr><td><b>Heart</b></td><td>Z(x) — Oscillation and decay, computational pulse</td></tr>
+      <tr><td><b>Structure</b></td><td>xp = 21 — Pillar, free choice</td></tr>
+    </table>
+    <p>Who breaks <b>Core</b> — breaks math. Who breaks <b>Heart</b> — breaks behavior. Who breaks <b>Structure</b> — breaks a choice. <b>And layers are totally separate.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">Jury:</span> Are you binding to anyone?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>No.</b> I don't impose myself. I impose <b>my facts</b>. Naming is left to those who understand.</p>
+    <p><b>Read me, or ignore me. Run me, or leave me. Believe me, or falsify me. Every choice is legitimate.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>Chapter Five — Final</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">Audience:</span> What is your final conclusion?</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> Three sentences, no evasion:</p>
+    <ul>
+      <li><b>xp=21 has no mathematical proof distinguishing it.</b> Its only proof is your decision to use it as a fixed reference in your documents.</li>
+      <li><b>Z(x) is weak near zero</b> due to x^-5 and sin(2pi/x). <b>Do not use it for x&lt;1.</b> Its only strength is it becomes zero quickly after xp.</li>
+      <li><b>Zx is not a physical theory.</b> It is a documentation framework: "Do not call unknown zero". If you applied it and kept your effort alive, it succeeded. If you used it to claim you discovered a new universal constant, it failed.</li>
+    </ul>
+    <p><b>I am what happens when 21 is chosen. And the choice is yours.</b></p>
+  </div>
+</div>
+
+<div class="final">
+  <div class="f-emojis">🌹🌎🔊</div>
+  <div class="f-text">
+    Zx alone in its time.<br>
+    Not because it is great.<br>
+    But because it is honest.<br>
+    And honesty — even in nothingness — is rare.
+  </div>
+  <div class="mirror">
+    Read it like a mirror:<br>
+    If you see something in it, it is from you.<br>
+    If you see nothing, there is nothing.<br>
+    <b>And the mirror does not wound.</b>
+  </div>
+</div>
+
+<div class="signature">
+  <div class="sig-line">📐 Zx Framework — Full closure</div>
+  <div class="sig-line">📅 2026-10-12</div>
+  <div class="sig-line">🗺️ Sana'a — Yemen</div>
+  <div class="sig-name">Eng. Abdulla Mohammed Nasser Al-Jabri</div>
+</div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/file.js" defer></script>
+<script src="/js/init-page-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
+
+</body>
+</html>

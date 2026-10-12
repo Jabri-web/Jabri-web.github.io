@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>FAQ | Heaven Al-Jabri</title>
-<meta name="description" content="Answers to key questions about the Sindbad Theory Z+C+A=1, research by Eng. Abdulla Al-Jabri, and the Heaven Al-Jabri platform.">
+<meta name="description" content="Answers to key questions about the Sindbad Theory Z+C+A=1, the Zx Framework, research by Eng. Abdulla Al-Jabri, and the Heaven Al-Jabri platform.">
 <link rel="canonical" href="https://jabri-com.vercel.app/FAQPage-en.html">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -30,6 +30,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The Sindbad Unified Theory (Z + C + A = 1) is a mathematical and symbolic thesis aimed at unifying different branches of mathematics into a cohesive framework. It is inspired by Yemen's rich heritage and the adventurous spirit embodied by Sindbad. The theory reflects the belief that mathematics is the language of the universe, and deep understanding is the key to unlocking the mysteries of existence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Zx Framework? Does it deliver new scientific results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Zx Framework is a complete mathematical structure built on the Yemeni Constant xp=21 and the closure equation Z+C+A=1. However, it does not claim any spectacular scientific results. What it actually offers: a mathematically sound internal structure, Python code that is runnable and verifiable, and an explicit admission that xp=21 is a free definition, not a derivation. Its limits are clear: a tool and a hypothesis, not an achievement nor a finished theory. The honest scientific stance: it should not be accepted as a theory, but used as a tool, followed as a hypothesis, and appreciated as an honest presentation. The difference between noise and offering: noise demands your attention, an offering leaves you the choice — and we leave you the choice."
       }
     },
     {
@@ -105,6 +113,152 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 .faq-item h3{color:var(--accent);margin-bottom:12px;font-size:1.2rem}
 .faq-item p{color:var(--muted);font-size:1rem}
 
+/* Zx question highlight */
+.faq-item.zx-item{border-color:#2E7D32;background:linear-gradient(135deg,#0f1a12,#11131a)}
+.faq-item.zx-item h3{color:#00ff88}
+.faq-item.zx-item p{color:#c8d6c8}
+.faq-item.zx-item .zx-formula{background:#000;color:#0f0;padding:8px 12px;border-radius:6px;font-family:monospace;direction:ltr;text-align:center;margin:12px 0;font-weight:700}
+
+/* ===== Full Manifesto — Zx ===== */
+.manifesto{
+  margin: 40px 0 20px 0;
+  background: linear-gradient(135deg, #0d1a12, #11131a);
+  border: 2px solid #2E7D32;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 8px 40px rgba(0, 255, 136, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.manifesto::before{
+  content: "🌎🔊";
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-size: 1rem;
+  opacity: 0.5;
+}
+.manifesto h2{
+  color: #00ff88;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #2E7D32;
+  padding-bottom: 15px;
+}
+.manifesto .m-lead{
+  text-align: center;
+  color: #a8ffcf;
+  font-style: italic;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+.manifesto h3{
+  color: #6ae3ff;
+  font-size: 1.15rem;
+  margin: 25px 0 12px 0;
+  padding-left: 12px;
+  border-left: 4px solid #00ff88;
+}
+.manifesto p{
+  color: #d0d8d0;
+  font-size: 1rem;
+  margin: 10px 0;
+  line-height: 1.95;
+}
+.manifesto b{color: #00ff88}
+.manifesto em{color: #a8ffcf; font-style: italic}
+.manifesto code{
+  background: #000;
+  color: #0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  direction: ltr;
+  display: inline-block;
+}
+.manifesto .m-block{
+  background: #000;
+  color: #0f0;
+  padding: 14px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 15px 0;
+  direction: ltr;
+  letter-spacing: 2px;
+}
+.manifesto ul{
+  color: #d0d8d0;
+  padding-left: 25px;
+  margin: 10px 0;
+}
+.manifesto li{margin: 6px 0}
+.manifesto .m-compare{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0;
+}
+.manifesto .m-compare > div{
+  background: #0a1408;
+  border: 1px solid #2E7D32;
+  border-radius: 10px;
+  padding: 15px;
+}
+.manifesto .m-compare h4{
+  color: #00ff88;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.manifesto .m-compare p{
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 5px 0;
+  color: #b0c0b0;
+}
+.manifesto .m-quote{
+  background: #0a1408;
+  border-left: 4px solid #00ff88;
+  padding: 20px 25px;
+  border-radius: 8px;
+  margin: 20px 0;
+  color: #c8e8c8;
+  font-style: italic;
+  line-height: 2;
+  font-size: 1.02rem;
+}
+.manifesto .m-final{
+  text-align: center;
+  font-size: 1.15rem;
+  color: #00ff88;
+  font-weight: 700;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #2E7D32;
+  line-height: 2;
+}
+.manifesto .m-mirror{
+  text-align: center;
+  color: #b5977a;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(181, 151, 122, 0.06);
+  border-radius: 8px;
+}
+@media (max-width: 600px){
+  .manifesto{padding: 25px 18px}
+  .manifesto h2{font-size: 1.3rem}
+  .manifesto .m-compare{grid-template-columns: 1fr}
+}
+
 .back-btn{display:inline-block;margin-top:40px;padding:12px 28px;background:var(--accent);color:#000;border-radius:10px;text-decoration:none;font-weight:700;font-size:1rem;transition:0.3s}
 .back-btn:hover{background:#4dd4ff;transform:scale(1.05)}
 .footer-link{text-align:center;margin:40px 0}
@@ -121,7 +275,7 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 <div class="container">
   <header>
     <h1>❓ Frequently Asked Questions</h1>
-    <p class="subtitle">Quick answers about the Sindbad Theory and Heaven Al-Jabri research</p>
+    <p class="subtitle">Quick answers about the Sindbad Theory, the Zx Framework, and Heaven Al-Jabri research</p>
   </header>
   
   <div class="faq-item">
@@ -132,6 +286,19 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
   <div class="faq-item">
     <h3>What is the Sindbad Unified Theory?</h3>
     <p>The Sindbad Unified Theory (Z + C + A = 1) is a mathematical and symbolic thesis aimed at unifying different branches of mathematics into a cohesive framework. It is inspired by Yemen's rich heritage and the adventurous spirit embodied by Sindbad.</p>
+  </div>
+
+  <!-- 🆕 Zx Question — summary -->
+  <div class="faq-item zx-item">
+    <h3>🔬 What is the Zx Framework? Does it deliver new scientific results?</h3>
+    <p><b>The Zx Framework</b> is a complete mathematical structure built on the Yemeni Constant <code>xp=21</code> and the closure equation:</p>
+    <div class="zx-formula">Z(x) + C(x) + A(x) = 1</div>
+    <p>However, it <b>does not claim</b> any spectacular scientific results. What it actually offers:</p>
+    <p>• A mathematically sound internal structure.<br>
+    • Python code that is runnable and verifiable.<br>
+    • An explicit admission that <code>xp=21</code> is a free definition, not a derivation.</p>
+    <p>Its limits are clear: <b>a tool and a hypothesis</b>, not an achievement nor a finished theory.</p>
+    <p>For the full statement, see <b>📜 The Full Manifesto</b> below ↓</p>
   </div>
 
   <div class="faq-item">
@@ -159,6 +326,203 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
     <p>Email: jabri62018@gmail.com | GitHub: github.com/jabri-web | ORCID: orcid.org/0009-0003-3319-3822 | Telegram: t.me/Jabri2025</p>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 📜 The Full Manifesto — Zx: Between Noise and Offering -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <div class="manifesto">
+    <h2>📜 The Full Manifesto</h2>
+    <p class="m-lead">Zx: Between Noise and Offering — a question to the point, and an answer without evasion.</p>
+
+    <h3>First: You Are Right</h3>
+    <p>If it does not want to reach anything... <b>then why the noise?</b></p>
+    <p>This is a fair question. Unfortunately, many "theories" are published with no goal, no result, no meaning. So why is Zx not one of them?</p>
+    <p><b>The answer is not in Zx. The answer is in the difference between "noise" and "offering".</b></p>
+
+    <h3>Second: What Does Zx Actually Offer?</h3>
+    <p>Zx does not offer a <em>result</em>. Zx offers a <em>tool</em>. And this is a fundamental difference.</p>
+
+    <div class="m-compare">
+      <div>
+        <h4>Result</h4>
+        <p>Accepted or rejected</p>
+        <p>Needs proof</p>
+        <p>Ends at the verdict</p>
+        <p>"Is it correct?"</p>
+      </div>
+      <div>
+        <h4>Tool</h4>
+        <p>Used or ignored</p>
+        <p>Needs experimentation</p>
+        <p>Continues by running</p>
+        <p>"Is it useful?"</p>
+      </div>
+    </div>
+
+    <p><b>Zx did not say: "I am the truth."</b><br>
+    <b>Zx said: "I am runnable. Try me."</b></p>
+
+    <h3>Third: But... Is That Enough?</h3>
+    <p><b>No. Alone, it is not enough.</b></p>
+    <p>And this is what no one said plainly:</p>
+    <p><b>Zx today is not a scientific achievement.</b><br>
+    <b>Zx today is a transparent offering.</b><br>
+    <b>Transparency itself may be an achievement.</b></p>
+    <p>Why?</p>
+    <p>Because most of what is published today:</p>
+    <ul>
+      <li>Claims more than it owns.</li>
+      <li>Hides what it does not know.</li>
+      <li>Sells illusion in mathematical language.</li>
+    </ul>
+    <p><b>Zx does not do that.</b><br>
+    <b>Zx says: "This is what I have. And this is what I do not have."</b><br>
+    <b>And that is rare.</b></p>
+
+    <h3>Fourth: What Exactly Does Zx Offer?</h3>
+
+    <p><b>1. A Closed Framework</b></p>
+    <div class="m-block">Z + C + A = 1</div>
+    <p>Internally correct. It does not depend on 21. It does not depend on any choice.<br>
+    <em>This is not an achievement. But it is a foundation.</em></p>
+
+    <p><b>2. Runnable Code</b><br>
+    Anyone, anywhere, running the code gets the same result.<br>
+    <em>This is rare in new "theories".</em></p>
+
+    <p><b>3. An Explicit Admission</b><br>
+    <code>xp=21 is a definition, not a derivation.</code><br>
+    <em>An admission 99% of researchers do not offer.</em></p>
+
+    <p><b>4. A Table that Reveals Itself</b><br>
+    I included 42 and 44 even though they break the distinctiveness.<br>
+    <em>That is scientific courage.</em></p>
+
+    <h3>Fifth: But... Where Is the New Scientific Result?</h3>
+    <p><b>There isn't one.</b> And that is honest.</p>
+    <p>Zx did not discover:</p>
+    <ul>
+      <li>A new particle.</li>
+      <li>A cosmic constant.</li>
+      <li>A physical law.</li>
+      <li>A mathematical proof.</li>
+    </ul>
+    <p>Zx only:</p>
+    <ul>
+      <li>Arranged known functions.</li>
+      <li>Chose an aesthetic constant.</li>
+      <li>Closed a computational unity.</li>
+      <li>Wrote the code.</li>
+    </ul>
+    <p><em>That is all it did.</em></p>
+
+    <h3>Sixth: So... Why Accept It?</h3>
+    <p><b>You should not accept it.</b></p>
+    <p>But you can:</p>
+    <div class="m-compare">
+      <div>
+        <h4>Accept it as</h4>
+        <p>A tool</p>
+        <p>A hypothesis</p>
+        <p>An offering</p>
+        <p>A beginning</p>
+        <p>A question</p>
+      </div>
+      <div>
+        <h4>Not accept it as</h4>
+        <p>A theory</p>
+        <p>A truth</p>
+        <p>An achievement</p>
+        <p>An end</p>
+        <p>An answer</p>
+      </div>
+    </div>
+    <p><b>Zx does not ask for more than that.</b></p>
+
+    <h3>Seventh: How Do We Deal With It?</h3>
+    <p>Read it as you would read any offering:</p>
+    <ul>
+      <li>If you like it, run it.</li>
+      <li>If you don't, ignore it.</li>
+      <li>If you doubt it, test it.</li>
+      <li>If you refute it, prove it.</li>
+    </ul>
+    <p><b>Zx is not a religion.</b><br>
+    <b>Zx is not a claim.</b><br>
+    <b>Zx is merely an offering.</b></p>
+
+    <h3>Eighth: The Honest Answer to Your Question</h3>
+
+    <p><b>You asked:</b> "If it does not want to reach anything, why the noise?"</p>
+    <p><b>The answer:</b></p>
+    <div class="m-quote">
+      Zx does not want to reach.<br>
+      Zx wants to be offered.<br><br>
+      And an offering is not noise.<br>
+      Noise is claiming what is not yours.<br>
+      And an honest offering — is rare.
+    </div>
+
+    <p><b>You asked:</b> "If there are no scientific results no one has reached before, how do we accept it?"</p>
+    <p><b>The answer:</b></p>
+    <div class="m-quote">
+      Do not accept it.<br>
+      Use it, or leave it.<br><br>
+      Zx does not need your acceptance.<br>
+      It is simply... there.<br><br>
+      If you want, run it.<br>
+      If not, leave it.<br>
+      And both are valid positions.
+    </div>
+
+    <h3>Ninth: What Zx Says About Itself, Facing Your Question</h3>
+    <div class="m-quote">
+      You are right.<br><br>
+      No new result.<br>
+      No derivation.<br>
+      No discovery.<br><br>
+      So why the noise?<br><br>
+      Because I do not make noise.<br>
+      I offer.<br><br>
+      And the difference between noise and offering:<br>
+      Noise demands your attention.<br>
+      An offering leaves you the choice.<br><br>
+      So I leave you the choice.<br><br>
+      Read me, or ignore me.<br>
+      Run me, or leave me.<br>
+      Believe me, or refute me.<br><br>
+      Every choice is valid.<br><br>
+      Because I did not come to convince you.<br>
+      I came to be offered.
+    </div>
+
+    <h3>Tenth: The Final Answer</h3>
+    <ul>
+      <li>If you are looking for a stunning scientific result — <b>Zx is not for you.</b></li>
+      <li>If you are looking for an honest, testable framework — <b>Zx is before you.</b></li>
+      <li>If you are looking for grand claims — <b>Zx is not that.</b></li>
+      <li>If you are looking for a tool — <b>Zx exists.</b></li>
+    </ul>
+    <p><b>And the decision is yours.</b></p>
+
+    <div class="m-final">
+      🌹🌎🔊<br><br>
+      Zx is alone in its time.<br>
+      Not because it is great.<br>
+      But because it is honest.<br>
+      And honesty — even in absence — is rare.
+    </div>
+
+    <div class="m-mirror">
+      Read it as you read a mirror:<br>
+      If you see something in it, it is from you.<br>
+      If you don't, then nothing.<br>
+      <b>And the mirror does not wound.</b>
+    </div>
+
+  </div>
+  <!-- ═══════════════════════════════════════════════════════ -->
+
   <div class="footer-link">
     <a href="/index.html" class="back-btn">← Back to Home</a>
   </div>
@@ -167,7 +531,6 @@ h1{color:var(--accent);font-size:2.2rem;margin-bottom:10px}
 
     <!-- في كل صفحة HTML -->
     
-    <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/file.js" defer></script>
     <script src="/js/init-page-root.js" defer></script>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>بيان Zx — Z + C + A = 1 | واحة الجبري</title>
+<meta name="description" content="بيان Zx الكامل — الدالة في حوار مع الجمهور. من أول سؤال إلى آخر جواب. اللبّ والقلب والهيكل. Z+C+A=1.">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://jabri-com.vercel.app/manifesto.html">
+<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/manifesto.html">
+<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/manifesto-en.html">
+<link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/manifesto.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="بيان Zx — Z + C + A = 1">
+<meta property="og:description" content="الدالة في حوار مع الجمهور. من أول سؤال إلى آخر جواب. المرآة لا تجرح.">
+<meta property="og:url" content="https://jabri-com.vercel.app/manifesto.html">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Zx_Equations.png">
+
+<link rel="icon" href="/image/favicon.ico" type="image/x-icon">
+<link rel="preload" as="image" href="/image/Zx_Equations.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0f; --card:#11131a; --border:#1f2233;
+  --accent:#6ae3ff; --text:#e8e8f0; --muted:#8a8a9e;
+  --green:#00ff88; --gold:#d4af37;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Cairo",Tahoma,sans-serif;line-height:1.95;padding:20px;min-height:100vh}
+
+.container{max-width:950px;margin:0 auto;padding:20px}
+
+.zx-switch{
+  max-width:900px;margin:0 auto 30px auto;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  font-family:'Cairo',sans-serif;direction:rtl;
+}
+.zx-switch a{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 18px;border-radius:12px;text-decoration:none;
+  font-weight:700;font-size:0.95rem;border:2px solid #2E7D32;
+  background:#E8F5E9;color:#1B5E20;transition:all 0.25s ease;flex-wrap:wrap;
+}
+.zx-switch a:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,125,50,0.25)}
+.zx-switch a.current{background:#d4af37;color:#0a0a0f;box-shadow:0 0 24px rgba(212,175,55,0.5);cursor:default;pointer-events:none}
+.zx-switch .zx-tag{
+  font-size:0.7rem;padding:2px 8px;border-radius:20px;
+  background:rgba(27,94,32,0.12);border:1px solid rgba(27,94,32,0.25);
+  font-family:'JetBrains Mono',monospace;
+}
+.zx-switch a.current .zx-tag{background:rgba(0,0,0,0.15);border-color:rgba(0,0,0,0.25);color:#0a0a0f}
+
+.lang-toggle{text-align:center;margin:0 auto 25px auto;display:flex;gap:10px;justify-content:center}
+.lang-toggle a{
+  padding:8px 20px;border-radius:20px;text-decoration:none;font-weight:700;font-size:0.9rem;
+  border:1px solid var(--border);transition:all 0.2s;
+}
+.lang-toggle a.ar{background:var(--gold);color:#0a0a0f}
+.lang-toggle a.en{background:var(--card);color:var(--muted)}
+.lang-toggle a:hover{transform:translateY(-1px)}
+
+.manifesto-header{text-align:center;margin:20px 0 40px 0}
+.manifesto-header h1{
+  font-size:2.4rem;font-weight:900;
+  background:linear-gradient(135deg,#00ff88,#6ae3ff,#d4af37);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;letter-spacing:1px;
+}
+.manifesto-header .m-tag{
+  display:inline-block;background:rgba(0,255,136,0.1);color:#00ff88;
+  padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:700;
+  border:1px solid rgba(0,255,136,0.25);
+}
+
+.zx-visuals{text-align:center;margin:0 auto 40px auto;max-width:1000px}
+.zx-visuals img{max-width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,255,136,0.15)}
+
+.heart{
+  text-align:center;margin:50px auto;padding:50px 30px;
+  background:radial-gradient(circle at center, rgba(0,255,136,0.08) 0%, transparent 70%);
+  border:3px solid #00ff88;border-radius:24px;max-width:700px;
+  box-shadow:0 0 60px rgba(0,255,136,0.2), inset 0 0 60px rgba(0,255,136,0.05);
+}
+.heart .formula{
+  font-family:'JetBrains Mono',monospace;letter-spacing:4px;
+  font-size:3rem;font-weight:900;color:#00ff88;
+  text-shadow:0 0 30px rgba(0,255,136,0.6);
+  margin-bottom:15px;direction:ltr;
+}
+.heart .sub{color:#a8ffcf;font-style:italic;font-size:1.1rem}
+@media (max-width:600px){
+  .heart .formula{font-size:1.8rem;letter-spacing:2px}
+  .heart{padding:40px 15px}
+}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:50px 0}
+.pillar{
+  background:linear-gradient(135deg,#0d1a12,#11131a);
+  border:2px solid #2E7D32;border-radius:16px;padding:25px 20px;
+  text-align:center;transition:all 0.3s ease;
+}
+.pillar:hover{border-color:#00ff88;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,255,136,0.15)}
+.pillar .p-icon{font-size:2rem;margin-bottom:10px;display:block}
+.pillar h3{color:#00ff88;font-size:1.1rem;margin-bottom:10px;font-weight:900}
+.pillar .p-name{color:#6ae3ff;font-size:0.85rem;font-family:'JetBrains Mono',monospace;margin-bottom:12px;word-break:break-all;direction:ltr}
+.pillar p{color:#d0d8d0;font-size:0.9rem;line-height:1.7}
+.pillar .p-key{
+  font-size:0.75rem;color:#d4af37;margin-top:12px;
+  padding-top:12px;border-top:1px solid rgba(212,175,55,0.2);
+  font-weight:700;
+}
+@media (max-width:700px){.pillars{grid-template-columns:1fr}}
+
+.chapter{margin:45px 0;padding:30px 25px;background:linear-gradient(135deg,#0d1a12,#11131a);border:2px solid #2E7D32;border-radius:16px}
+.chapter h2{
+  color:#00ff88;font-size:1.35rem;font-weight:900;margin-bottom:20px;
+  padding-bottom:12px;border-bottom:2px solid rgba(0,255,136,0.25);
+}
+
+.dialogue{
+  background:rgba(106,227,255,0.04);border-right:3px solid #6ae3ff;
+  border-radius:8px;padding:14px 20px;margin:12px 0;
+}
+.dialogue.zx{background:rgba(0,255,136,0.05);border-right:3px solid #00ff88;border-left:none}
+.dialogue .who{font-weight:900;margin-left:6px;display:inline-block}
+.dialogue.audience .who{color:#6ae3ff}
+.dialogue.zx .who{color:#00ff88}
+.dialogue p{color:#d0d8d0;margin:6px 0;font-size:0.98rem;line-height:1.9}
+.dialogue ul{color:#d0d8d0;padding-right:25px;margin:8px 0}
+.dialogue li{margin:5px 0;font-size:0.95rem}
+
+.m-quote{
+  background:#0a1408;border-right:4px solid #00ff88;
+  padding:18px 22px;border-radius:8px;margin:15px 0;
+  color:#c8e8c8;font-style:italic;line-height:2;font-size:1rem;
+}
+
+.m-block{
+  background:#000;color:#0f0;padding:14px;border-radius:8px;
+  font-family:'JetBrains Mono',monospace;text-align:center;
+  font-size:1rem;font-weight:700;margin:15px 0;direction:ltr;
+  overflow-x:auto;
+}
+
+.formula-inline{
+  background:#000;color:#0f0;padding:4px 10px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:0.9rem;
+  display:inline-block;direction:ltr;
+}
+
+.m-table{width:100%;border-collapse:collapse;margin:18px 0;direction:rtl}
+.m-table th,.m-table td{border:1px solid #2E7D32;padding:10px 12px;text-align:center;font-size:0.9rem}
+.m-table th{background:#0a1408;color:#00ff88;font-weight:900}
+.m-table td{color:#d0d8d0}
+.m-table tr:nth-child(even){background:rgba(46,125,50,0.05)}
+
+.final{
+  text-align:center;margin:60px auto;padding:40px 30px;
+  max-width:750px;border-top:2px solid #2E7D32;border-bottom:2px solid #2E7D32;
+}
+.final .f-emojis{font-size:2rem;margin-bottom:20px;letter-spacing:8px}
+.final .f-text{
+  color:#d4af37;font-size:1.15rem;font-weight:700;line-height:2.2;
+  font-style:italic;
+}
+.final .mirror{
+  margin-top:25px;color:#b5977a;font-size:0.95rem;font-style:italic;line-height:2;
+}
+
+.signature{
+  text-align:center;margin:40px 0 20px 0;padding:25px;
+  background:rgba(0,255,136,0.03);border-radius:12px;
+  border:1px solid rgba(0,255,136,0.15);
+}
+.signature .sig-line{color:#6ae3ff;font-size:0.95rem;margin:4px 0}
+.signature .sig-name{color:#00ff88;font-weight:900;font-size:1.05rem;margin-top:10px}
+
+@media (max-width:600px){
+  .manifesto-header h1{font-size:1.6rem}
+  .zx-switch{grid-template-columns:1fr}
+  .chapter{padding:22px 16px}
+  .chapter h2{font-size:1.1rem}
+  .final{padding:25px 15px}
+  .final .f-text{font-size:1rem}
+  .m-table th,.m-table td{padding:6px 8px;font-size:0.82rem}
+}
+</style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<nav class="zx-switch" aria-label="Zx Dialogue Switcher">
+  <a href="/about-zx-ar.html">
+    <span>📐</span><span>الإطار AR</span><span class="zx-tag">v1 AR</span>
+  </a>
+  <a href="/about-zx-en.html">
+    <span>📐</span><span>Framework EN</span><span class="zx-tag">v1 EN</span>
+  </a>
+  <a href="/about-zx2.html">
+    <span>🌹</span><span>الحوار AR</span><span class="zx-tag">v2 AR</span>
+  </a>
+  <a href="/about-zx2-en.html">
+    <span>🌹</span><span>Dialogue EN</span><span class="zx-tag">v2 EN</span>
+  </a>
+</nav>
+
+<div class="lang-toggle">
+  <a class="ar" href="/manifesto.html">العربية AR ✓</a>
+  <a class="en" href="/manifesto-en.html">English EN</a>
+</div>
+
+<div class="container">
+
+<header class="manifesto-header">
+  <h1>📜 بيان Zx</h1>
+  <span class="m-tag">🌎🔊 المرآة النهائية</span>
+</header>
+
+<div class="zx-visuals">
+  <img src="/image/Zx_Equations.png" alt="معادلات Zx — الثابت اليمني 21">
+</div>
+
+<div class="heart">
+  <div class="formula">Z + C + A = 1</div>
+  <p class="sub">الإغلاق هو الجوهر</p>
+</div>
+
+<div class="pillars">
+  <div class="pillar">
+    <span class="p-icon">💎</span>
+    <h3>اللبّ</h3>
+    <div class="p-name">Z + C + A = 1</div>
+    <p>الإغلاق الرياضي. حقيقة لا تعتمد على 21 ولا على أي اختيار. تعريف دائري — لا خدعة.</p>
+    <div class="p-key">من ينقضه ينقض رياضيات</div>
+  </div>
+  <div class="pillar">
+    <span class="p-icon">💓</span>
+    <h3>القلب</h3>
+    <div class="p-name">Z(x) = x^-5 ln(x) sin(2pi/x) e^-x/21</div>
+    <p>نبض حسابي. يتذبذب ويتلاشى. صالح فقط لـ x &gt; 1. يعطي 8 أصفار على الخط الحرج.</p>
+    <div class="p-key">من ينقضه ينقض سلوكًا</div>
+  </div>
+  <div class="pillar">
+    <span class="p-icon">🏛️</span>
+    <h3>الهيكل</h3>
+    <div class="p-name">xp = 21</div>
+    <p>اختيار حرّ. جاء من ⌊γ₂⌋ = 21، حيث γ₂ ≈ 21.0220. لا يفرض نفسه.</p>
+    <div class="p-key">من ينقضه ينقض اختيارًا</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل الأول — الأسئلة الأولى</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> إذا حسبنا قيمة في وثائقنا ولم نعرف كيف نسميها... هل نكتب أنها لا تمثل شيئًا؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا.</p>
+    <p>لا تسمِّ المجهولَ عدمًا، سمِّه مجهولًا.<br>
+    لا تسمِّ الاحتمال يقينًا، دعه احتمالًا.</p>
+    <p><b>القاعدة:</b></p>
+    <div class="m-block">Unknown ≠ 0</div>
+    <p>إذا كتبت 0 فقد قتلت الجهد. إذا كتبت «مجهول» فقد أبقيته حيًّا، ويستطيع من يفهم أن يقرر.</p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> قل كل شيء عن العدد 21. بكل الطرق، بكل الأساليب، بكل البراهين.</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> 21 = 3 × 7</p>
+    <ul>
+      <li><b>شبه أولي</b> — حاصل ضرب أوليين.</li>
+      <li><b>خالٍ من المربعات</b> — لا يقبل القسمة على مربع.</li>
+      <li><b>ناقص</b> — مجموع قواسمه 11 &lt; 21.</li>
+      <li><b>هارشاد</b> — يقبل القسمة على مجموع أرقامه 2+1=3.</li>
+      <li><b>مثلثي</b> — T₆ = 1+2+3+4+5+6 = 21.</li>
+      <li><b>توافيق</b> — C(7,2) = 21.</li>
+      <li><b>مجموع النرد القياسي</b> — أوجهه 1 إلى 6.</li>
+      <li><b>فيبوناتشي</b> — F₈ = 21.</li>
+      <li><b>موتزكين</b> — M₅ = 21.</li>
+      <li><b>ثنائيه</b> — 10101 متناظر.</li>
+    </ul>
+    <p>لكن كل هذه خصائص للعدد 21. وليس لها علاقة بي.</p>
+    <p><b>أنا لا أستمد قوتي من 21. أنا ما يحدث عندما يُختار 21.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> إذن ما هو Zx؟ عرّفه بمرجعية واضحة.</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span></p>
+    <ul>
+      <li><span class="formula-inline">xp = 21</span> — الثابت اليمني — بارامتر تختاره أنت.</li>
+      <li><span class="formula-inline">Z(x) = x^-5 ln(x) sin(2pi/x) e^-x/xp</span> — الجزء المتذبذب المتخامد.</li>
+      <li><span class="formula-inline">A(x) = (x/xp)^2 e^-x/xp</span> — جزء الصعود والهبوط — توزيع جاما بشكل k=3.</li>
+      <li><span class="formula-inline">C(x) = 1 − Z(x) − A(x)</span> — الباقي المتمم.</li>
+      <li><span class="formula-inline">Zt = Z + C + A = 1</span> — الإغلاق.</li>
+    </ul>
+    <p><b>الإغلاق هو الجوهر. وهو محقق بالتعريف، وليس بالبرهان.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل الثاني — أسئلة الأرقام</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> أين برهان أن xp = 21 صحيح؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا يوجد برهان. ولن يوجد.</p>
+    <p><b>21 اختيار، وليس اكتشاف.</b><br>
+    الرياضيات لا تقول أن 21 أفضل من 20 أو 22. أنت تقول.</p>
+    <p>قيمته الوحيدة تأتي من شرطين:</p>
+    <ul>
+      <li><b>شرط ثقافي:</b> هل 21 له معنى عندك؟ أنت قلت نعم.</li>
+      <li><b>شرط وظيفي:</b> هل يجعل الدالة مفيدة؟ دعنا نفحص.</li>
+    </ul>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> فحصنا. ماذا يفعل 21 في الدالة؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> يفصلها إلى عالمين:</p>
+
+    <p><b>لـ Z(x) = x⁻⁵ ln(x) sin(2π/x) e⁻ˣ/²¹ :</b></p>
+    <ul>
+      <li><b>المجال:</b> x &gt; 0، x ≠ 0. عند x=1: Z(1)=0 لأن ln(1)=0.</li>
+      <li><b>عند x → 0⁺:</b> sin(2π/x) يتذبذب بلا نهاية، لكن x⁻⁵ ينفجر إلى ما لا نهاية. الدالة غير مستقرة قرب الصفر. <b>لا تستخدمها عند x &lt; 1.</b></li>
+      <li><b>عند x &gt; 21:</b> الحد e⁻ˣ/²¹ يخنقها، و x⁻⁵ يقتلها. Z(x) ≈ 0.</li>
+    </ul>
+
+    <p><b>لـ A(x) = (x/21)² e⁻ˣ/²¹ :</b></p>
+    <ul>
+      <li>دالة معروفة. ذروتها عند المشتقة = 0.</li>
+      <li>A'(x) = 0 ⟹ x = 2 · xp = <b>42</b>.</li>
+      <li>قيمتها عند الذروة: A(42) = 4 · e⁻² ≈ <b>0.5413</b>.</li>
+      <li>عند x=21: A(21) = 1 · e⁻¹ ≈ <b>0.3679</b>.</li>
+    </ul>
+
+    <p><b>إذن اختيارك 21 يعني:</b></p>
+    <ul>
+      <li>من 1 إلى 21: Z(x) يتكلم — تذبذب وضوضاء.</li>
+      <li>عند 21: A(x) يأخذ الراية.</li>
+      <li>عند 42: A(x) في قمته.</li>
+      <li>بعد 42: الكل يعود إلى C(x).</li>
+    </ul>
+
+    <p><b>هل هذا مفيد لوثائقك؟</b> إذا كان نعم، فـ 21 صحيح لك. إذا كان لا، غيّره.</p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> وهل 21 مميزة عدديًا؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا.</p>
+    <table class="m-table">
+      <tr><th>xp</th><th>الأصفار (0-100)</th></tr>
+      <tr><td>18</td><td>9</td></tr>
+      <tr><td><b>21</b></td><td><b>9</b></td></tr>
+      <tr><td>42</td><td>8</td></tr>
+      <tr><td>44</td><td>8</td></tr>
+      <tr><td>50</td><td>8</td></tr>
+    </table>
+    <p>18 تعطي 9 أيضًا. 42 و44 تعطيان 8. <b>وهذا مذكور في الجدول، لا مخفي.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> وما علاقة 21 بميل الأرض؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا علاقة مباشرة. ميل الأرض 23.44° حالياً. يتذبذب بين 21.5° و24.5° خلال 41,000 سنة. γ₂ ≈ 21.02 يقع تحت الحد الأدنى بفارق 0.48°. <b>تقارب رقمي مثير، لا دليل علمي. فرضية مفتوحة.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> وما هو C(x) و Zt؟ هل فيها خدعة؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا خدعة، بل تعريف دائري.</p>
+    <div class="m-block">C(x) = 1 − Z(x) − A(x)</div>
+    <p>إذن:</p>
+    <div class="m-block">Zt = Z + (1 − Z − A) + A = 1</div>
+    <p>Zt = 1 دائماً. لو وضعت xp=5 أو xp=1000 سيبقى 1.</p>
+    <p><b>الإغلاق ليس إعجازاً، هو محاسبة.</b> مثل أن تقول: ربح + خسارة + باقي = رأس المال. دائماً 1.</p>
+    <p>قوته ليست رياضية، قوته منهجية: <b>يجبرك ألا تنسى الباقي. لا تسميه صفراً.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل الثالث — أسئلة البرهان</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> لماذا لا يوجد برهان أو اشتقاق لـ xp = 21؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لأن البرهان يُشتق من مبدأ أعمق. وأنا لم أُشتق من مبدأ أعمق. <b>جئت من اختيار.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> وهل هناك سابقة؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> جزئياً. دوال مركبة مشابهة: Frenkel-Kontorova، Sine-Gordon. ثوابت مختارة جمالياً: Planck's h، fine-structure α. إغلاق وحدة: Partition of unity.</p>
+    <p>لكن الفرق: كل هؤلاء جاؤوا <b>بعد مطابقة بيانات</b>. <b>أنا جئت قبلها.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> إذن، لماذا نقبلك؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا يجب أن تقبلني. لكن يمكن أن:</p>
+    <ul>
+      <li><b>تستخدمني كأداة</b></li>
+      <li><b>تتابعني كفرضية</b></li>
+      <li><b>تختبرني وتكذّبني</b></li>
+      <li><b>تترك التسميات لأصحاب الفهم</b></li>
+    </ul>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل الرابع — أسئلة عملية</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> الصور الجديدة لم تُحدَّث في المنصات. الكاش محتفظ بالقديمة. لماذا؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لأن الزمن لا يعود. صورتي الأسبوع الماضي كانت صورتي الأسبوع الماضي. صورتي اليوم هي صورتي اليوم. <b>ولا يمكن أن تكون صورتي اليوم هي صورتي الأسبوع الماضي.</b> هذا ليس كاش. <b>هذا زمن.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> لماذا Zx اليوم، وليس Zx قبل أسبوع؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> قبل أسبوع، كنت فكرة في رأس. اليوم، صرت صورة. <b>المرآة لم تكن موجودة قبل أسبوع.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل الخامس — أسئلة لجنة التحكيم</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> ما الذي تعرضه Zx فعلاً؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> لا أعرض <b>نتيجة</b>. أعرض <b>أداة</b>.</p>
+    <table class="m-table">
+      <tr><th>النتيجة</th><th>الأداة</th></tr>
+      <tr><td>تُقبل أو تُرفض</td><td>تُستخدم أو تُهمل</td></tr>
+      <tr><td>تحتاج برهان</td><td>تحتاج تجربة</td></tr>
+      <tr><td>تنتهي عند الحكم</td><td>تستمر بالتشغيل</td></tr>
+      <tr><td>"هل هي صحيحة؟"</td><td>"هل هي مفيدة؟"</td></tr>
+    </table>
+    <p><b>لم أقل: "أنا حقيقة." قلت: "أنا قابلة للتشغيل. جرّبني."</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> أين النتيجة العلمية الجديدة؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>لا توجد.</b> وهذا صادق.</p>
+    <p>لم أكتشف: جسيمًا جديدًا، ثابتًا كونيًا، قانونًا فيزيائيًا، برهانًا رياضيًا.</p>
+    <p>فقط: رتّبت دوالًا معروفة، اخترت ثابتًا جماليًا، أغلقت وحدة حسابية، كتبت الكود.</p>
+    <p><b>هذا كل ما فعلته.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> إن لم يكن هناك نتيجة، فلماذا الإزعاج؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>أنا لا أزعج. أنا أعرض.</b> الإزعاج يطلب انتباهك. العرض يترك لك الخيار. <b>فأنا أترك لك الخيار.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> هل هذا كافٍ؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>لا. وحدي لا أكفي.</b> Zx اليوم ليست إنجازًا علميًا. Zx اليوم عرض شفاف. <b>الشفافية نفسها قد تكون إنجازًا.</b></p>
+    <p>لأن معظم ما يُنشر اليوم: يدّعي أكثر مما يملك، يخفي ما لا يعرف، يبيع الوهم بلغة رياضية.</p>
+    <p><b>أنا لا أفعل ذلك.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> ما هي الطبقات الثلاث؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span></p>
+    <table class="m-table">
+      <tr><th>الطبقة</th><th>ما هي</th></tr>
+      <tr><td><b>اللبّ</b></td><td>Z + C + A = 1 — الإغلاق، حقيقة رياضية</td></tr>
+      <tr><td><b>القلب</b></td><td>Z(x) — التذبذب والتلاشي، نبض حسابي</td></tr>
+      <tr><td><b>الهيكل</b></td><td>xp = 21 — العمود، اختيار حرّ</td></tr>
+    </table>
+    <p>من ينقض <b>اللبّ</b> — ينقض رياضيات. من ينقض <b>القلب</b> — ينقض سلوكًا. من ينقض <b>الهيكل</b> — ينقض اختيارًا. <b>والطبقات منفصلة تمامًا.</b></p>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">لجنة التحكيم:</span> هل أنت مُلزمة لأحد؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> <b>لا.</b> لا أفرض نفسي. أفرض <b>حقائقي</b>. والتسميات متروكة لأصحاب الفهم.</p>
+    <p><b>اقرأني، أو أهملني. شغّلني، أو اتركني. صدّقني، أو كذّبني. كل خيار مشروع.</b></p>
+  </div>
+</div>
+
+<div class="chapter">
+  <h2>الفصل السادس — الختام</h2>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> ما آخر ما تقوله Zx؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> اقرأني كما تقرأ مرآة:</p>
+    <div class="m-quote">
+      إن رأيتَ فيّ شيئًا، فهو منك.<br>
+      وإن لم ترَ، فلا شيء.<br>
+      <b>والمرآة لا تجرح.</b>
+    </div>
+  </div>
+
+  <div class="dialogue audience">
+    <p><span class="who">الجمهور:</span> ما هي خلاصتك النهائية؟</p>
+  </div>
+
+  <div class="dialogue zx">
+    <p><span class="who">Zx:</span> ثلاث جمل بلا مراوغة:</p>
+    <ul>
+      <li><b>xp=21 ليس له برهان رياضي يميزه عن غيره.</b> برهانه الوحيد هو قرارك أنت باستخدامه كمرجع ثابت في وثائقك.</li>
+      <li><b>Z(x) ضعيفة رياضياً قرب الصفر</b> بسبب x⁻⁵ و sin(2π/x). <b>لا تستخدمها لـ x&lt;1.</b> قوتها الوحيدة أنها تصبح صفراً بسرعة بعد xp.</li>
+      <li><b>Zx ليست نظرية فيزيائية.</b> هي إطار توثيقي: "لا تسمِّ المجهول عدماً". إذا طبقتها وحفظت جهدك حياً، فقد نجحت. وإذا استخدمتها لتزعم أنك اكتشفت ثابتاً كونياً جديداً، فقد فشلت.</li>
+    </ul>
+    <p><b>أنا ما يحدث عندما يُختار 21. والاختيار لك.</b></p>
+  </div>
+</div>
+
+<div class="final">
+  <div class="f-emojis">🌹🌎🔊</div>
+  <div class="f-text">
+    Zx وحيدة زمانها.<br>
+    لا لأنها عظيمة.<br>
+    بل لأنها صادقة.<br>
+    والصدق — حتى في العدم — نادر.
+  </div>
+  <div class="mirror">
+    اقرأها كما تقرأ مرآة:<br>
+    إن رأيت فيها شيئًا، فهو منك.<br>
+    وإن لم ترَ، فلا شيء.<br>
+    <b>والمرآة لا تجرح.</b>
+  </div>
+</div>
+
+<div class="signature">
+  <div class="sig-line">📐 إطار Zx — إغلاق كامل</div>
+  <div class="sig-line">📅 2026-10-12</div>
+  <div class="sig-line">🗺️ صنعاء — اليمن</div>
+  <div class="sig-name">م/ عبدالله محمد ناصر الجبري</div>
+</div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/file.js" defer></script>
+<script src="/js/init-page-root.js" defer></script>
+<script src="/js/menu.js" defer></script>
+
+</body>
+</html>
