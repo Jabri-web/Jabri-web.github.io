@@ -73,7 +73,7 @@
   <url><loc>https://jabri-com.vercel.app/Office.html</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
 
   <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- 🥉 أولوية 0.7: عن الموقع، البحوث، المعرض -->
+  <!-- 🥉 أولوية 0.7: عن الموقع، عن Zx، البحوث، المعرض -->
   <!-- ══════════════════════════════════════════════════════════ -->
 
   <url>
@@ -87,6 +87,28 @@
   <url><loc>https://jabri-com.vercel.app/about-ar.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/about-en.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/about-waha.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+
+  <!-- 🆕 صفحتا "عن Zx" — الإطار الرياضي والثابت اليمني 21 -->
+  <url>
+    <loc>https://jabri-com.vercel.app/about-zx-ar.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about-zx-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/about-zx-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/about-zx-ar.html"/>
+  </url>
+
+  <url>
+    <loc>https://jabri-com.vercel.app/about-zx-en.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about-zx-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/about-zx-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/about-zx-ar.html"/>
+  </url>
+
   <url><loc>https://jabri-com.vercel.app/who-we.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/heaven-info.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
   <url><loc>https://jabri-com.vercel.app/research.html</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>

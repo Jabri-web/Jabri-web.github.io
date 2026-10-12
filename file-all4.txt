@@ -75,6 +75,9 @@
 20. about-ar.html
 21. about-en.html
 22. about-waha.html
+new;
+23- about-zx-ar.html
+24- about-zx-en.html
 
 # ───────────────────────────────────────────────────────────────
 # 4. المؤلف والسيرة الذاتية (Author & CV) — 7 ملفات
@@ -793,3 +796,31 @@ https://publishercenter.google.com/?publication=CAowl53ODA
 https://jabri-com.vercel.app/
 
 
+===========
+اخر خبر:
+
+تم عمل الهيدر والسيو في ملفات :
+واحة الجبري بما يناسب قوقل لتطلع الواحة في كل عناوين قوقل...
+
+وربطناها ب
+publisher.google.com
+بس باقي ان الجبري:
+يتزوج او يموووت....
+
+تحياتي...
+october 11,2026 AD.
+
+
+we always add the following for every html files:
+
+
+    <!-- في كل صفحة HTML -->
+    
+    <div id="header-placeholder"></div>
+    <div id="footer-placeholder"></div>
+    <script src="/js/file.js" defer></script>
+    <script src="/js/init-page-root.js" defer></script>
+    <script src="/js/menu.js" defer></script>
+
+</body>
+</html>
