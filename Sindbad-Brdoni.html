@@ -272,6 +272,179 @@
   <a href="index.html" class="btn-back">العودة الى واحة الجبري</a>
 </div>
 
+
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  الفوتر (التذييل)  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<footer class="jabri-footer">
+  <div class="footer-container">
+    
+    <!-- العمود الأول: عن الواحة -->
+    <div class="footer-col">
+      <h3>واحة الجبري <span>| Heaven Al-Jabri</span></h3>
+      <p>منصة رقمية توثيقية تجمع بين التراث اليمني الأصيل والأبحاث الأكاديمية. حيث يلتقي الإرث الإنساني بالعلم الحديث.</p>
+      <p class="footer-quote">"من أين أنا؟ من يدري.. أوليست لي جنسيه؟"</p>
+    </div>
+
+    <!-- العمود الثاني: روابط سريعة -->
+    <div class="footer-col">
+      <h3>روابط سريعة</h3>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="Sindbad-Brdoni.html">السندباد اليمني</a></li>
+        <li><a href="#">الأبحاث الأكاديمية</a></li>
+        <li><a href="#">تراث اليمن</a></li>
+      </ul>
+    </div>
+
+    <!-- العمود الثالث: تواصل وأكاديمي -->
+    <div class="footer-col">
+      <h3>تواصل وأكاديمي</h3>
+      <ul>
+        <li><a href="https://orcid.org/0009-0003-3319-3822" target="_blank" rel="noopener">ORCID iD</a></li>
+        <li><a href="https://juniorsystems.academia.edu/AbdullaAlJabri" target="_blank" rel="noopener">Academia.edu</a></li>
+        <li><a href="mailto:info@jabri-com.vercel.app">البريد الإلكتروني</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- الشريط السفلي: حقوق النشر + DOI -->
+  <div class="footer-bottom">
+    <p>© 2026 واحة الجبري | Heaven Al-Jabri. جميع الحقوق محفوظة.</p>
+    <p class="footer-credit">إعداد وتوثيق: عبدالله محمد ناصر الجبري (Abdulla M. N. Al-Jabri)</p>
+    
+    <!-- 🌟 سطر الـ DOI لربط Zenodo (تمت الإضافة) -->
+    <p style="color:#6ae3ff; font-size:0.8rem; direction:ltr; margin-top:8px;">
+      Concept DOI: 10.5281/zenodo.21003989 | Latest DOI v5.0.1: 10.5281/zenodo.23303899
+    </p>
+  </div>
+</footer>
+
+<style>
+  /* ═══════════════════════════════════════════ */
+  /*  تنسيقات الفوتر  */
+  /* ═══════════════════════════════════════════ */
+  .jabri-footer {
+    background: #0f0f15;
+    border-top: 2px solid rgba(106, 227, 255, 0.2);
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+    font-family: 'Cairo', Tahoma, Arial, sans-serif;
+    color: #e8e8f0;
+    text-align: right;
+  }
+
+  .footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .footer-col {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .footer-col h3 {
+    color: #6ae3ff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(106, 227, 255, 0.3);
+  }
+
+  .footer-col h3 span {
+    font-size: 0.9rem;
+    color: #b8e6ff;
+    font-weight: 400;
+  }
+
+  .footer-col p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .footer-quote {
+    color: #6ae3ff !important;
+    font-style: italic;
+    font-size: 0.9rem !important;
+    border-right: 3px solid #6ae3ff;
+    padding-right: 10px;
+    margin-top: 15px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-col ul li a:hover {
+    color: #6ae3ff;
+    padding-right: 5px;
+  }
+
+  .footer-bottom {
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  .footer-bottom p {
+    margin: 5px 0;
+  }
+
+  .footer-credit {
+    color: #6ae3ff;
+    font-size: 0.8rem;
+  }
+
+  /* التجاوب مع الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .footer-quote {
+      border-right: none;
+      border-top: 2px solid #6ae3ff;
+      padding-right: 0;
+      padding-top: 10px;
+      display: inline-block;
+    }
+    .footer-col ul li a:hover {
+      padding-right: 0;
+    }
+  }
+</style>
+
+
+
+
+
+
 <!-- في كل صفحة HTML -->
 <div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>
