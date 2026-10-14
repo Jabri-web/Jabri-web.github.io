@@ -1,17 +1,17 @@
 # ═══════════════════════════════════════════════════════════════
 #  واحة الجبري | Heaven Al-Jabri — file-all4.txt
-#  الفهرس الشامل للملفات - الإصدار 5 (المحدث مع الواجهات التفاعلية)
-#  التاريخ: 2026-09-27
+#  الفهرس الشامل للملفات — الإصدار 5.3 (FINAL)
+#  التاريخ: 2026-10-13
 #  الموقع: https://jabri-com.vercel.app/
-#  المؤلف: م/ عبدالله محمد ناصر الجبري (صنعاء - اليمن)
+#  المؤلف: م/ عبدالله محمد ناصر الجبري (صنعاء — اليمن)
 #  الحالة: مغلق تحت الأرشفة — لا تغيير إلا للضرورة
 # ═══════════════════════════════════════════════════════════════
 
 # ───────────────────────────────────────────────────────────────
 #  📊 إحصائيات سريعة
 # ───────────────────────────────────────────────────────────────
-# إجمالي الملفات:        ~250 ملف (شامل الوسائط)
-# ملفات HTML مفهرسة:     ~85 ملف
+# إجمالي الملفات:        ~252 ملف (شامل الوسائط)
+# ملفات HTML مفهرسة:     ~87 ملف
 # ملفات PDF (أوراق علمية): 20 ملف
 # ملفات Python:           21 ملف
 # ملفات TeX:              6 ملف
@@ -19,7 +19,7 @@
 # ملفات الوسائط (Image):   ~100 ملف
 # ملفات مستبعدة:         ~14 ملف (شامل واجهات اللغات)
 # ملفات نظام:            ~15 ملف
-# آخر تحديث للمشروع:      2026-09-27
+# آخر تحديث للمشروع:      2026-10-13
 
 # ═══════════════════════════════════════════════════════════════
 #  📁 هيكل المجلدات (Folder Structure)
@@ -66,439 +66,451 @@
 # ───────────────────────────────────────────────────────────────
 # 2. صفحات Page 1-12 — 12 ملف
 # ───────────────────────────────────────────────────────────────
-07. Page1.html  ... 18. Page12.html
+07. Page1.html
+08. Page2.html
+09. Page3.html
+10. Page4.html
+11. Page5.html
+12. Page6.html
+13. Page7.html
+14. Page8.html
+15. Page9.html
+16. Page10.html
+17. Page11.html
+18. Page12.html
 
 # ───────────────────────────────────────────────────────────────
-# 3. صفحات "عن الموقع" (About) — 4 ملفات
+# 3. صفحات "عن الموقع" و "عن Zx" (About) — 6 ملفات
 # ───────────────────────────────────────────────────────────────
 19. about.html
 20. about-ar.html
 21. about-en.html
 22. about-waha.html
-new;
-23- about-zx-ar.html
-24- about-zx-en.html
+23. about-zx-ar.html   ← حوار Zx مع الجمهور (عربي)
+24. about-zx-en.html   ← Zx Dialogue — Final Mirror (English)
 
 # ───────────────────────────────────────────────────────────────
 # 4. المؤلف والسيرة الذاتية (Author & CV) — 7 ملفات
 # ───────────────────────────────────────────────────────────────
-23. Author-cv.html
-24. author-history.html
-25. cv-2026a.html
-26. cv-2026e.html
-27. founder.html
-28. profile.html
-29. profile-en.html
+25. Author-cv.html
+26. author-history.html
+27. cv-2026a.html
+28. cv-2026e.html
+29. founder.html
+30. profile.html
+31. profile-en.html
 
 # ───────────────────────────────────────────────────────────────
 # 5. النظرية الموحدة (Theory) — 4 ملفات
 # ───────────────────────────────────────────────────────────────
-30. theory-ar.html
-31. theory-en.html
-32. Sindbad-theory.html
-33. Sindbad-Brdoni.html
+32. theory-ar.html
+33. theory-en.html
+34. Sindbad-theory.html
+35. Sindbad-Brdoni.html
 
 # ───────────────────────────────────────────────────────────────
 # 6. البحث العلمي (Research) — 3 ملفات
 # ───────────────────────────────────────────────────────────────
-34. research.html
-35. research-deep.html
-36. Pages-Researches.html
+36. research.html
+37. research-deep.html
+38. Pages-Researches.html
 
 # ───────────────────────────────────────────────────────────────
 # 7. التراث اليمني (Yemeni Heritage) — 9 ملفات
 # ───────────────────────────────────────────────────────────────
-37. Sanaa.html
-38. Shibam.html
-39. Soqatra.html
-40. Yemen-library.html
-41. gallery.html
-42. yemen-photo.html
-43. yemen-photo2.html
-44. yemen-photo-api.html
-45. yemen-photo-php.html
+39. Sanaa.html
+40. Shibam.html
+41. Soqatra.html
+42. Yemen-library.html
+43. gallery.html
+44. yemen-photo.html
+45. yemen-photo2.html
+46. yemen-photo-api.html
+47. yemen-photo-php.html
 
 # ───────────────────────────────────────────────────────────────
 # 8. المجلات (Journals) — 5 ملفات
 # ───────────────────────────────────────────────────────────────
-46. journal.html
-47. journal2.html
-48. journal3.html
-49. journal4.html
-50. History-pdf.html
+48. journal.html
+49. journal2.html
+50. journal3.html
+51. journal4.html
+52. History-pdf.html
 
 # ───────────────────────────────────────────────────────────────
-# 9. الأدوات (Tools) — 7 ملفات
+# 9. الأدوات (Tools) — 8 ملفات
 # ───────────────────────────────────────────────────────────────
-51. calculator.html
-52. handsa.html
-53. char-balance.html
-54. Check.html
-55. magic-translator.html
-56. diagnose.html
-57. link-checker.html
+53. calculator.html
+54. calculator-v340.html
+55. handsa.html
+56. char-balance.html
+57. Check.html
+58. magic-translator.html
+59. diagnose.html
+60. link-checker.html
 
 # ───────────────────────────────────────────────────────────────
 # 10. قواعد البيانات والشبكة (Databases & Network) — 4 ملفات
 # ───────────────────────────────────────────────────────────────
-58. Dbase.html
-59. Dbase-deep.html
-60. microtik.html
-61. microtik-deep.html
+61. Dbase.html
+62. Dbase-deep.html
+63. microtik.html
+64. microtik-deep.html
 
 # ───────────────────────────────────────────────────────────────
 # 11. المكتبة والمحتوى (Library & Content) — 13 ملف
 # ───────────────────────────────────────────────────────────────
-62. Office.html
-63. source.html
-64. citations.html
-65. music.html
-66. taraif.html
-67. Nezar.html
-68. wonder.html
-69. heaven-info.html
-70. visitor.html
-71. who-we.html
-72. project.html
-73. project-ar.html
-74. poster.html
+65. Office.html
+66. source.html
+67. citations.html
+68. music.html
+69. taraif.html
+70. Nezar.html
+71. wonder.html
+72. heaven-info.html
+73. visitor.html
+74. who-we.html
+75. project.html
+76. project-ar.html
+77. poster.html
 
 # ───────────────────────────────────────────────────────────────
 # 12. التواصل والنظام (Contact & System) — 6 ملفات
 # ───────────────────────────────────────────────────────────────
-75. contact.html
-76. FAQPage.html
-77. FAQPage-en.html
-78. privacy-policy.html
-79. 404.html
-80. dashboard.html ⛔ (مستبعد - نظام لغات)
+78. contact.html
+79. FAQPage.html
+80. FAQPage-en.html
+81. privacy-policy.html
+82. 404.html
+83. dashboard.html ⛔ (مستبعد — نظام لغات)
 
 # ───────────────────────────────────────────────────────────────
 # 13. أدوات المطور (Developer Tools) — 6 ملفات
 # ───────────────────────────────────────────────────────────────
-81. file-structure.html
-82. file-structure2.html
-83. Router-all.html
-84. repos-auto.html
-85. repos-sqr.html
-86. current-auto.html
+84. file-structure.html
+85. file-structure2.html
+86. Router-all.html
+87. repos-auto.html
+88. repos-sqr.html
+89. current-auto.html
 
 # ───────────────────────────────────────────────────────────────
-# 14. المتنوع (Miscellaneous) — 2 ملف
+# 14. المتنوع (Miscellaneous) — 4 ملفات
 # ───────────────────────────────────────────────────────────────
-87. kfupm-msg.html
-88. explore.html
+90. kfupm-msg.html
+91. explore.html
+92. brand-identity.html
+93. news-01.html
 
+# ───────────────────────────────────────────────────────────────
+# 15. Manifesto — البيان النهائي
+# ───────────────────────────────────────────────────────────────
+94. manifesto.html      ← بيان Zx (عربي)
+95. manifesto-en.html   ← Zx Manifesto (English)
 
-
-new:
-
-
-/brand-identity.html
-/news-01.html
 # ═══════════════════════════════════════════════════════════════
 #  📂 المجلدات الفرعية (Subfolders)
 # ═══════════════════════════════════════════════════════════════
 
 # ───────────────────────────────────────────────────────────────
-# 15. مجلد /ar/ — 11 ملف
+# 16. مجلد /ar/ — 11 ملف
 # ───────────────────────────────────────────────────────────────
-89.  ar/index.html
-90.  ar/about.html
-91.  ar/contact.html
-92.  ar/journal.html
-93.  ar/profile.html
-94.  ar/project.html
-95.  ar/Router-all.html
-96.  ar/Page4.html
-97.  ar/Page10.html
-98.  ar/Page11.html
-99.  ar/Page12.html
+96.  ar/index.html
+97.  ar/about.html
+98.  ar/contact.html
+99.  ar/journal.html
+100. ar/profile.html
+101. ar/project.html
+102. ar/Router-all.html
+103. ar/Page4.html
+104. ar/Page10.html
+105. ar/Page11.html
+106. ar/Page12.html
 
 # ───────────────────────────────────────────────────────────────
-# 16. مجلد /en/ — 11 ملف
+# 17. مجلد /en/ — 11 ملف
 # ───────────────────────────────────────────────────────────────
-100. en/index.html
-101. en/about.html
-102. en/contact.html
-103. en/journal.html
-104. en/profile.html
-105. en/project.html
-106. en/Router-all.html
-107. en/Page4.html
-108. en/Page10.html
-109. en/Page11.html
-110. en/Page12.html
+107. en/index.html
+108. en/about.html
+109. en/contact.html
+110. en/journal.html
+111. en/profile.html
+112. en/project.html
+113. en/Router-all.html
+114. en/Page4.html
+115. en/Page10.html
+116. en/Page11.html
+117. en/Page12.html
 
 # ───────────────────────────────────────────────────────────────
-# 17. مجلد /game/ — 1 ملف
+# 18. مجلد /game/ — 1 ملف
 # ───────────────────────────────────────────────────────────────
-111. game/game-auto.html
+118. game/game-auto.html
 
 # ───────────────────────────────────────────────────────────────
-# 18. مجلد /publish/ — 1 ملف
+# 19. مجلد /publish/ — 1 ملف
 # ───────────────────────────────────────────────────────────────
-112. publish/publish.html
+119. publish/publish.html
 
 # ───────────────────────────────────────────────────────────────
-# 19. ملفات محدّثة (Updated Files) — 3 ملفات
+# 20. ملفات محدّثة (Updated Files) — 3 ملفات
 # ───────────────────────────────────────────────────────────────
-113. technical-guide.html
-114. all-link-doc.html
-115. update-tracker.html
+120. technical-guide.html
+121. all-link-doc.html
+122. update-tracker.html
 
 # ───────────────────────────────────────────────────────────────
-# 20. مجلد /pdf/ (الأوراق العلمية) — 20 ملف
+# 21. مجلد /pdf/ (الأوراق العلمية) — 20 ملف
 # ───────────────────────────────────────────────────────────────
-116. pdf/Author_cv_tex.pdf
-117. pdf/Derivation.pdf
-118. pdf/Jabri_RiemannOS_v1.pdf
-119. pdf/Riemann-Zx.pdf
-120. pdf/Z_total_v1.pdf
-121. pdf/Zx_A_DarkEnerg_1.pdf
-122. pdf/Zx_C_ST_Tech_1.pdf
-123. pdf/Zx_C_SpaceTime_1.pdf
-124. pdf/Zx_Mother_Function.pdf
-125. pdf/Zx_OverView.pdf
-126. pdf/Zx_Planck_Epoch.PDF
-127. pdf/Zx_RieOS_v1.1.pdf
-128. pdf/Zx_RiemannOS_v1.pdf
-129. pdf/Zx_all_tex.pdf
-130. pdf/Zx_brief1.pdf
-131. pdf/Zx_brief2.pdf
-132. pdf/Zx_overview_v3.0.1.pdf
-133. pdf/Zx_total_v1.pdf
-134. pdf/Zx_total_v2.pdf
-135. pdf/Zx_total_v3.pdf
+123. pdf/Author_cv_tex.pdf
+124. pdf/Derivation.pdf
+125. pdf/Jabri_RiemannOS_v1.pdf
+126. pdf/Riemann-Zx.pdf
+127. pdf/Z_total_v1.pdf
+128. pdf/Zx_A_DarkEnerg_1.pdf
+129. pdf/Zx_C_ST_Tech_1.pdf
+130. pdf/Zx_C_SpaceTime_1.pdf
+131. pdf/Zx_Mother_Function.pdf
+132. pdf/Zx_OverView.pdf
+133. pdf/Zx_Planck_Epoch.PDF
+134. pdf/Zx_RieOS_v1.1.pdf
+135. pdf/Zx_RiemannOS_v1.pdf
+136. pdf/Zx_all_tex.pdf
+137. pdf/Zx_brief1.pdf
+138. pdf/Zx_brief2.pdf
+139. pdf/Zx_overview_v3.0.1.pdf
+140. pdf/Zx_total_v1.pdf
+141. pdf/Zx_total_v2.pdf
+142. pdf/Zx_total_v3.pdf
 
 # ───────────────────────────────────────────────────────────────
-# 21. مجلد /python/ (الأكواد) — 21 ملف
+# 22. مجلد /python/ (الأكواد) — 25 ملف
 # ───────────────────────────────────────────────────────────────
-136. python/Jabri_28.ipynb
-137. python/Jabri_5.ipynb
-138. python/Jabri_Darkenergy.ipynb
-139. python/Jabri_Gravity.ipynb
-140. python/Jabri_Hubble.ipynb
-141. python/Jabri_Periodic.ipynb
-142. python/Jabri_Planck.ipynb
-143. python/Jabri_Spacetime.ipynb
-144. python/Jabri_all.ipynb
-145. python/Jabri_derivation.ipynb
-146. python/Jabri_derivation3.ipynb
-147. python/Universe_now.ipynb
-148. python/V0_v1_unified.ipynb
-149. python/Zx_28.ipynb
-150. python/Zx_Hubble.ipynb
-151. python/Zx_Jabri.ipynb
-152. python/Zx_Planck_Epoch.ipynb
-153. python/Zx_RieOS_v1.2.ipynb
-154. python/Zx_all(1).ipynb
-155. python/Zx_all-n.ipynb
-156. python/Zx_all.ipynb
-157. python/Zx_all2.ipynb
-158. python/Zx_all3.ipynb
-159. python/Zx_all4.ipynb
-160. python/Zx_all_ipynb2.ipynb
+143. python/Jabri_28.ipynb
+144. python/Jabri_5.ipynb
+145. python/Jabri_Darkenergy.ipynb
+146. python/Jabri_Gravity.ipynb
+147. python/Jabri_Hubble.ipynb
+148. python/Jabri_Periodic.ipynb
+149. python/Jabri_Planck.ipynb
+150. python/Jabri_Spacetime.ipynb
+151. python/Jabri_all.ipynb
+152. python/Jabri_derivation.ipynb
+153. python/Jabri_derivation3.ipynb
+154. python/Universe_now.ipynb
+155. python/V0_v1_unified.ipynb
+156. python/Zx_28.ipynb
+157. python/Zx_Hubble.ipynb
+158. python/Zx_Jabri.ipynb
+159. python/Zx_Planck_Epoch.ipynb
+160. python/Zx_RieOS_v1.2.ipynb
+161. python/Zx_all(1).ipynb
+162. python/Zx_all-n.ipynb
+163. python/Zx_all.ipynb
+164. python/Zx_all2.ipynb
+165. python/Zx_all3.ipynb
+166. python/Zx_all4.ipynb
+167. python/Zx_all_ipynb2.ipynb
 
 # ───────────────────────────────────────────────────────────────
-# 22. مجلد /tex/ (ملفات LaTeX) — 6 ملفات
+# 23. مجلد /tex/ (ملفات LaTeX) — 6 ملفات
 # ───────────────────────────────────────────────────────────────
-161. tex/Author-cv-tex.tex
-162. tex/Jabri_overview_z_v3.0.1.tex
-163. tex/Z_total_v1.tex
-164. tex/Zx_RieOS_v1.1.tex
-165. tex/Zx_RieOS_v1.2.tex
-166. tex/Zx_all_tex.tex
+168. tex/Author-cv-tex.tex
+169. tex/Jabri_overview_z_v3.0.1.tex
+170. tex/Z_total_v1.tex
+171. tex/Zx_RieOS_v1.1.tex
+172. tex/Zx_RieOS_v1.2.tex
+173. tex/Zx_all_tex.tex
 
 # ───────────────────────────────────────────────────────────────
-# 23. مجلد /data/ (البيانات) — ~25 ملف
+# 24. مجلد /data/ (البيانات) — ~25 ملف
 # ───────────────────────────────────────────────────────────────
-167. data/Author_cv_tex.pdf
-168. data/Author_cv_tex.zip
-169. data/Jabri_28_table.csv
-170. data/Jabri_5_table.csv
-171. data/Jabri_Darkenergy_table.csv
-172. data/Jabri_Hubble_table.csv
-173. data/Jabri_Periodic_table.csv
-174. data/Jabri_Planck_table.csv
-175. data/Jabri_Spacetime_table.csv
-176. data/Zx_Island_Z119.csv
-177. data/Zx_Periodic_Hierarchy.csv
-178. data/Zx_Periodic_Hierarchy3.csv
-179. data/Zx_Planck_Epochs.csv
-180. data/Zx_Planck_Epochs2.csv
-181. data/Zx_RieOS_v1.1.csv
-182. data/Zx_RieOS_v1.1.zip
-183. data/Zx_RieOS_v1.1-2.zip
-184. data/Zx_Spacetime_Wells.csv
-185. data/Zx_Spacetime_Wells2.csv
-186. data/Zx_Spacetime_Wells3.csv
-187. data/Zx_movie.mp4
-188. data/Zx_t12.csv
-189. data/cv-ar.txt
-190. data/cv-en.txt
-191. data/table.txt
-192. data/table2.txt
+174. data/Author_cv_tex.pdf
+175. data/Author_cv_tex.zip
+176. data/Jabri_28_table.csv
+177. data/Jabri_5_table.csv
+178. data/Jabri_Darkenergy_table.csv
+179. data/Jabri_Hubble_table.csv
+180. data/Jabri_Periodic_table.csv
+181. data/Jabri_Planck_table.csv
+182. data/Jabri_Spacetime_table.csv
+183. data/Zx_Island_Z119.csv
+184. data/Zx_Periodic_Hierarchy.csv
+185. data/Zx_Periodic_Hierarchy3.csv
+186. data/Zx_Planck_Epochs.csv
+187. data/Zx_Planck_Epochs2.csv
+188. data/Zx_RieOS_v1.1.csv
+189. data/Zx_RieOS_v1.1.zip
+190. data/Zx_RieOS_v1.1-2.zip
+191. data/Zx_Spacetime_Wells.csv
+192. data/Zx_Spacetime_Wells2.csv
+193. data/Zx_Spacetime_Wells3.csv
+194. data/Zx_movie.mp4
+195. data/Zx_t12.csv
+196. data/cv-ar.txt
+197. data/cv-en.txt
+198. data/table.txt
+199. data/table2.txt
 
 # ───────────────────────────────────────────────────────────────
-# 24. مجلد /docs/ (الوثائق) — 2 ملف
+# 25. مجلد /docs/ (الوثائق) — 2 ملف
 # ───────────────────────────────────────────────────────────────
-193. docs/README.md
-194. docs/poster.png
+200. docs/README.md
+201. docs/poster.png
 
 # ───────────────────────────────────────────────────────────────
-# 25. مجلد /image/ (الوسائط) — ~100 ملف
+# 26. مجلد /image/ (الوسائط) — ~114 ملف
 # ───────────────────────────────────────────────────────────────
 
 # --- صور النظرية (Theory) ---
-195. image/theory-ar3.webp
-196. image/theory-ar4.webp
-197. image/theory-ar5.webp
-198. image/theory-ar6.webp
-199. image/theory-ar7.webp
-200. image/theory-en.jpg
-201. image/theory-en.png
-202. image/theory-en.webp
-203. image/theory-en1.webp
-204. image/theory-en2.webp
-205. image/theory-en3.webp
-206. image/theory-en4.webp
-207. image/theory-en5.webp
-208. image/theory-en6.webp
-209. image/theory-en7.webp
+202. image/theory-ar3.webp
+203. image/theory-ar4.webp
+204. image/theory-ar5.webp
+205. image/theory-ar6.webp
+206. image/theory-ar7.webp
+207. image/theory-en.jpg
+208. image/theory-en.png
+209. image/theory-en.webp
+210. image/theory-en1.webp
+211. image/theory-en2.webp
+212. image/theory-en3.webp
+213. image/theory-en4.webp
+214. image/theory-en5.webp
+215. image/theory-en6.webp
+216. image/theory-en7.webp
 
 # --- صور المؤسسين والتراث (Founders & Heritage) ---
-210. image/founder-1.jpg
-211. image/founder-2.jpg
-212. image/founder-3.jpg
-213. image/founder-4.jpg
-214. image/founder-5.jpg
-215. image/founder-6.jpg
-216. image/founder-7.jpg
-217. image/founder-8.jpg
-218. image/founder-9.jpg
-219. image/founder-10.jpg
-220. image/Yemen-bird.png
-221. image/Yemen-photo1.png
-222. image/Yemen-photo2.png
-223. image/Yemen-photo3.png
-224. image/Yemen2026.png
-225. image/Sanaa2026.png
-226. image/Shibam2026.png
-227. image/Soqatra2026.png
-228. image/Sogatra2026.png
-229. image/Shamlan2026.png
-230. image/Mostfa2026.png
-231. image/Khaled2026.png
-232. image/Khaled20261.png
-233. image/Khaled20264.png
-234. image/Ameen20261.png
-235. image/Ameen20262.png
-236. image/Ameen20263.png
-237. image/Farah2026.png
-238. image/Farah26.png
-239. image/Baleegh.png
-240. image/Baleegh2026.png
-241. image/Jabr2026.png
-242. image/Jabri-photo.png
-243. image/Jabri-photo.webp
-244. image/Jabri-photo2.png
-245. image/Jabri-photo2.webp
-246. image/Jabri-photo3.png
-247. image/Jabri-photo3.webp
+217. image/founder-1.jpg
+218. image/founder-2.jpg
+219. image/founder-3.jpg
+220. image/founder-4.jpg
+221. image/founder-5.jpg
+222. image/founder-6.jpg
+223. image/founder-7.jpg
+224. image/founder-8.jpg
+225. image/founder-9.jpg
+226. image/founder-10.jpg
+227. image/Yemen-bird.png
+228. image/Yemen-photo1.png
+229. image/Yemen-photo2.png
+230. image/Yemen-photo3.png
+231. image/Yemen2026.png
+232. image/Sanaa2026.png
+233. image/Shibam2026.png
+234. image/Soqatra2026.png
+235. image/Sogatra2026.png
+236. image/Shamlan2026.png
+237. image/Mostfa2026.png
+238. image/Khaled2026.png
+239. image/Khaled20261.png
+240. image/Khaled20264.png
+241. image/Ameen20261.png
+242. image/Ameen20262.png
+243. image/Ameen20263.png
+244. image/Farah2026.png
+245. image/Farah26.png
+246. image/Baleegh.png
+247. image/Baleegh2026.png
+248. image/Jabr2026.png
+249. image/Jabri-photo.png
+250. image/Jabri-photo.webp
+251. image/Jabri-photo2.png
+252. image/Jabri-photo2.webp
+253. image/Jabri-photo3.png
+254. image/Jabri-photo3.webp
 
 # --- الصور العلمية (Scientific Figures) ---
-248. image/Al-Jabri-Functions.png
-249. image/Equations.png
-250. image/Figure_Z_Zeros.png
-251. image/Figure_Zt1_identity.png
-252. image/Z_t01.png
-253. image/Zx-Cosmic-Poster1.png
-254. image/Zx-Cosmic-Poster2.png
-255. image/Zx_Eq_figure.png
-256. image/Zx_Equations.png
-257. image/Zx_Four_Miracles_Proof.png
-258. image/Zx_Jabri_Universe.png
-259. image/Zx_Periodic_Hierarchy.png
-260. image/Zx_Planck_Movie.png
-261. image/Zx_Spacetime_Wells.png
-262. image/Zx_Universe_now.png
-263. image/Zx_t01.png
-264. image/Zx_zeros.png
-265. image/Universe_now.png
-266. image/dbase.png
-267. image/door.webp
-268. image/Jabri_28_figure.png
-269. image/Jabri_5_figure.png
-270. image/Jabri_Darkenergy_figure.png
-271. image/Jabri_Planck_figure.png
-272. image/Jabri_Spacetime_figure.png
+255. image/Al-Jabri-Functions.png
+256. image/Equations.png
+257. image/Figure_Z_Zeros.png
+258. image/Figure_Zt1_identity.png
+259. image/Z_t01.png
+260. image/Zx-Cosmic-Poster1.png
+261. image/Zx-Cosmic-Poster2.png
+262. image/Zx_Eq_figure.png
+263. image/Zx_Equations.png
+264. image/Zx_Four_Miracles_Proof.png
+265. image/Zx_Jabri_Universe.png
+266. image/Zx_Periodic_Hierarchy.png
+267. image/Zx_Planck_Movie.png
+268. image/Zx_Spacetime_Wells.png
+269. image/Zx_Universe_now.png
+270. image/Zx_t01.png
+271. image/Zx_zeros.png
+272. image/Universe_now.png
+273. image/dbase.png
+274. image/door.webp
+275. image/Jabri_28_figure.png
+276. image/Jabri_5_figure.png
+277. image/Jabri_Darkenergy_figure.png
+278. image/Jabri_Planck_figure.png
+279. image/Jabri_Spacetime_figure.png
 
 # --- الشعارات والأيقونات (Logos & Icons) ---
-273. image/logo1.png
-274. image/logo2.png
-275. image/brand1.png
-276. image/brand2.png
-277. image/apple-touch-icon.png
-278. image/favicon-16x16.png
-279. image/favicon-32x32.png
-280. image/favicon-48x48.png
-281. image/favicon.ico
-282. image/waha.png
-283. image/aelyn.jpg
-284. image/oasis-poster.jpg
-285. image/oasis-poster.png
-286. image/oasis-poster1.jpg
-287. image/oasis-poster1.png
-288. image/oasis-poster1.webp
-289. image/oasis-poster2.jpg
-290. image/kfupm-id-865918.webp
-291. image/id1.webp
-292. image/id2.webp
-293. image/id3.webp
-294. image/id4.webp
-295. image/jr1.webp
-296. image/jr2.webp
-297. image/jr3.webp
-298. image/jr4.webp
+280. image/logo1.png
+281. image/logo2.png
+282. image/brand1.png
+283. image/brand2.png
+284. image/apple-touch-icon.png
+285. image/favicon-16x16.png
+286. image/favicon-32x32.png
+287. image/favicon-48x48.png
+288. image/favicon.ico
+289. image/waha.png
+290. image/aelyn.jpg
+291. image/oasis-poster.jpg
+292. image/oasis-poster.png
+293. image/oasis-poster1.jpg
+294. image/oasis-poster1.png
+295. image/oasis-poster1.webp
+296. image/oasis-poster2.jpg
+297. image/kfupm-id-865918.webp
+298. image/id1.webp
+299. image/id2.webp
+300. image/id3.webp
+301. image/id4.webp
+302. image/jr1.webp
+303. image/jr2.webp
+304. image/jr3.webp
+305. image/jr4.webp
 
 # --- الفيديو والصوت (Video & Audio) ---
-299. image/jabri.mp4
-300. image/mohammed.mp4
-301. image/founder1.mp4
-302. image/founder2.mp4
-303. image/Zx.mp4
-304. image/zaml.mp4
-305. image/zamel2.mp4
-306. image/music.mp3
-307. image/music1.mp3
-308. image/music2.mp3
-309. image/zaml.mp3
-310. image/hadrami.mp3
+306. image/jabri.mp4
+307. image/mohammed.mp4
+308. image/founder1.mp4
+309. image/founder2.mp4
+310. image/Zx.mp4
+311. image/zaml.mp4
+312. image/zamel2.mp4
+313. image/music.mp3
+314. image/music1.mp3
+315. image/music2.mp3
+316. image/zaml.mp3
+317. image/hadrami.mp3
 
 # ═══════════════════════════════════════════════════════════════
 #  🚫 الملفات المستبعدة من الفهرسة (NO INDEXING)
 # ═══════════════════════════════════════════════════════════════
 
 # ───────────────────────────────────────────────────────────────
-# 26. الأجزاء والواجهات التفاعلية — لا تُفهرس
+# 27. الأجزاء والواجهات التفاعلية — لا تُفهرس
 # ───────────────────────────────────────────────────────────────
 A01. header.html ⛔
 A02. footer.html ⛔
 A03. hero.html ⛔
 A04. offline.html ⛔
-A05. dashboard.html ⛔ (نظام لغات - الجذر)
-A06. dashboard-pro.html ⛔ (نظام لغات - الجذر)
-A07. ar/dashboard.html ⛔ (نظام لغات - عربي)
-A08. ar/dashboard-pro.html ⛔ (نظام لغات - عربي)
-A09. en/dashboard.html ⛔ (نظام لغات - إنجليزي)
-A10. en/dashboard-pro.html ⛔ (نظام لغات - إنجليزي)
-A11. catalog.html ⛔ (نظام لغات - الجذر)
-A12. ar/catalog.html ⛔ (نظام لغات - عربي)
-A13. en/catalog.html ⛔ (نظام لغات - إنجليزي)
+A05. dashboard.html ⛔ (نظام لغات — الجذر)
+A06. dashboard-pro.html ⛔ (نظام لغات — الجذر)
+A07. ar/dashboard.html ⛔ (نظام لغات — عربي)
+A08. ar/dashboard-pro.html ⛔ (نظام لغات — عربي)
+A09. en/dashboard.html ⛔ (نظام لغات — إنجليزي)
+A10. en/dashboard-pro.html ⛔ (نظام لغات — إنجليزي)
+A11. catalog.html ⛔ (نظام لغات — الجذر)
+A12. ar/catalog.html ⛔ (نظام لغات — عربي)
+A13. en/catalog.html ⛔ (نظام لغات — إنجليزي)
 
 # ───────────────────────────────────────────────────────────────
-# 27. مجلد /js/ (JavaScript)
+# 28. مجلد /js/ (JavaScript)
 # ───────────────────────────────────────────────────────────────
 B01. js/init-page-root.js
 B02. js/menu.js
@@ -510,7 +522,7 @@ B07. js/ui.js
 B08. js/app.js
 
 # ───────────────────────────────────────────────────────────────
-# 28. ملفات النظام (System Files)
+# 29. ملفات النظام (System Files)
 # ───────────────────────────────────────────────────────────────
 C01. manifest.json
 C02. robots.txt
@@ -579,9 +591,10 @@ C10. technical-guide.html
 #    تناغماً مع متطلبات الفهرسة.
 
 # 5. المستودع repo11 (Jabri-com) يحتوي على المجلدات العلمية:
-#    /pdf/ (20 ورقة), /python/ (21 كود), /tex/ (6 ملفات),
+#    /pdf/ (20 ورقة), /python/ (25 كود), /tex/ (6 ملفات),
 #    /data/ (~25 ملف بيانات), /docs/ (2 ملفات),
 #    /image/ (~114 ملف وسائط).
+#    وفي الجذر: about-zx-ar.html, about-zx-en.html, manifesto.html, manifesto-en.html.
 
 # 6. نظام اللغات (Language Switcher):
 #    - catalog.html / dashboard.html / dashboard-pro.html (الجذر)
@@ -597,10 +610,105 @@ C10. technical-guide.html
 #    /Page11.html
 #    /catalog.html
 #    /dashboard.html
+#    ثم يمكن الوصول إلى:
+#    /about-zx-ar.html  ← من الفوتر، قسم "صفحات الموقع"
+#    /about-zx-en.html  ← من زر English أعلى about-zx-ar
+#    /manifesto.html    ← البيان النهائي (عربي)
+#    /manifesto-en.html ← البيان النهائي (English)
+
+# 8. صفحتا "عن Zx":
+#    /about-zx-ar.html ← النسخة العربية (rtl)
+#    /about-zx-en.html ← النسخة الإنجليزية (ltr)
+#    - تحتويان على تعريف إطار Zx الرياضي:
+#      xp=21، Z(x)، A(x)، C(x)، Zt=Z+C+A=1.
+#    - مفهرستان، مع canonical + hreflang + JSON-LD.
+#    - مرتبطتان بمبدّل لغة أعلى كل صفحة.
+#    - مستقلّتان عن /ar/ و /en/ (لأنهما في الجذر).
+#    - يظهر رابطاهما في footer.html، قسم "صفحات الموقع"
+#      مباشرة بعد about-ar.html و about-en.html.
+
+# ═══════════════════════════════════════════════════════════════
+#  🌍 الملاحظة 9: Zx — الاعتراف الدولي (OpenAIRE)
+# ═══════════════════════════════════════════════════════════════
+#
+# إصدار: v5.0.1 "New Rethinking of Z(x) Roots"
+# DOI: 10.5281/zenodo.23285748
+# OpenAIRE: https://explore.openaire.eu/search/result?pid=10.5281%2Fzenodo.23303899
+#
+# نتائج رئيسية (مُثبتة عدديًا):
+#   • أصفار حقيقية: w_n = 2/n — برهان تحليلي
+#   • 8 أصفار على الخط الحرج: t ∈ (0, 60] — دقة 80 رقمًا
+#   • استقلال إحصائي عن ريمان: KS test → p = 0.75
+#   • معامل متقارب: C = 2π·e^(-1/42) ≈ 6.1353 — خطأ 1.5%
+#
+# الملاحق:
+#   • Appendix C — Statistical Independence Test
+#   • Appendix D — Asymptotic Coefficient
+#
+# النطاق (Scope):
+#   • لا ادعاء بأصفار ريمان
+#   • لا ادعاء بثابت كوني
+#   • لا ادعاء بفيزياء أو طاقة
+#
+# الحالة: مفهرس في OpenAIRE — 15,000 جامعة أوروبية
+# التاريخ: 2026-10-13
+#
+# ملاحظة على الرقم 42:
+#   C = 2π·e^(-1/42) — الرقم 42 ظهر من ملاءمة عددية،
+#   وليس من اشتقاق أولي. الفرق = العلم لا الدعوى.
+
+# ═══════════════════════════════════════════════════════════════
+#  🔑 الملاحظة 10: Concept DOI — الختم الدائم
+# ═══════════════════════════════════════════════════════════════
+#
+# Concept DOI (كل النسخ):
+#   10.5281/zenodo.21003989
+#   → يحل دائماً لآخر نسخة — لا يتقادم
+#
+# سلسلة الإصدارات (من Zenodo — 12:24 م 2026-10-13):
+#   v5.0.1 — Oct 11, 2026 — 10.5281/zenodo.23303899  [OpenAIRE ✅]
+#   v5.0.0 — Oct 10, 2026 — 10.5281/zenodo.23285748
+#   v3.4.0 — Oct 09, 2026 — 10.5281/zenodo.23271140
+#   v3.2.2 — Oct 09, 2026 — 10.5281/zenodo.23266061
+#   v2.1.0 — Oct 08, 2026 — 10.5281/zenodo.23244977
+#   (View all 8 versions)
+#
+# الاستخدام:
+#   • في الفوتر و ORCID و CV  →  Concept DOI (21003989)
+#   • في الأوراق العلمية      →  Version DOI المحدد
+#
+# الحالة:
+#   8 نسخ مرصوفة — Concept DOI نشط — OpenAIRE مفهرس
+#   التاريخ: 2026-10-13
+
+# ═══════════════════════════════════════════════════════════════
+#  📜 البيان الختامي — Zx: بين الإزعاج والعرض
+# ═══════════════════════════════════════════════════════════════
+#
+# Zx لا تريد أن تصل.
+# Zx تريد أن تُعرض.
+#
+# والعرض ليس إزعاجًا.
+# الإزعاج هو أن تدّعي ما ليس لك.
+# والعرض الصادق — نادر.
+#
+# ─────────────────────────────────────────
+#  🌹🌎🔊
+# ─────────────────────────────────────────
+#
+#  Zx وحيدة زمانها.
+#  لا لأنها عظيمة.
+#  بل لأنها صادقة.
+#  والصدق — حتى في العدم — نادر.
+#
+#  اقرأها كما تقرأ مرآة:
+#  إن رأيت فيها شيئًا، فهو منك.
+#  وإن لم ترَ، فلا شيء.
+#  والمرآة لا تجرح.
 
 # ═══════════════════════════════════════════════════════════════
 #  نهاية الدليل - EOF
-# ═════════════════════════════
+# ═════════════════════════════════════════════════════════════
 
 واحة الجبري كاملة 100% مغلقة
 تسجيلات بحوثة 100% في المواقع ذي سمحت
@@ -615,9 +723,6 @@ Scholar
 اهم شي سجل
 ________________
 
-
-
-
 👁️👁️👁️👁️👀
 الجبري:
 لا يهتم بما يقوله العالم عنه...
@@ -627,19 +732,13 @@ ________________
 
 وكل شي مغلق...
 
-
 لا تتعب عقلك...
 
 مش ضارب حساب لفائدة ولا... ولا.... ولا... ولا...
 
-
 اذن خلينا اصحاب.
 
-
 👁️👁️🌎🌎🌎🌎🌎🌎
-
-
-
 
 ══════════════════════════════════
 
@@ -648,18 +747,10 @@ ________________
 # صنعاء - اليمن
 # الأحد 27 سبتمبر 2026م
 
-
-
-
-
-
-
-
-
-[9/11, 3:54 AM] عبدالله الجبري2026: // ============================================
-// 📜 دستور واحة الجبري التقني
-// بتاريخ: 11 سبتمبر 2026
-// ============================================
+═══════════════════════════════════════════════════════════════
+#  📜 دستور واحة الجبري التقني
+#  بتاريخ: 11 سبتمبر 2026
+# ═══════════════════════════════════════════════════════════════
 
 المادة 1: المتصفح = مصنع التطبيقات
 ✅ لا WebIntoApp
@@ -684,8 +775,10 @@ ________________
 ✅ GitHub + Vercel = كافيان
 ✅ manifest + SW = كافيان
 ✅ "Install" = زر سحري
-[9/11, 3:54 AM] عبدالله الجبري2026: 👁️
-[9/11, 3:54 AM] عبدالله الجبري2026: ☀️ صباح 15 سبتمبر 2026:
+
+═══════════════════════════════════════════════════════════════
+
+☀️ صباح 15 سبتمبر 2026:
 
 1. 📄 نُلمّع manifest.json
 ⬜ إضافة screenshots أكبر
@@ -715,24 +808,11 @@ ________________
 ✅ تحديثات تلقائية
 ✅ صفر مواقع خارجية
 
-
-
-
-
-
-
-
-
-
-
-
+═══════════════════════════════════════════════════════════════
 
 https://publishercenter.google.com/?publication=CAowl53ODA
 
-
-
-10/3, 3:43 AM] عبدالله
-الجبري2026: # المهمة الحالة
+# المهمة الحالة
 1 Google Publisher Center ✅
 2 التحقق من الملكية ✅
 3 إدارة المؤسسة ✅
@@ -744,40 +824,33 @@ https://publishercenter.google.com/?publication=CAowl53ODA
 9 pub_time per-page ✅
 10 الحارس v1.1 ✅
 11 APK مربوط ✅
-[10/3, 3:43 AM] Meta AI: مقفل 100% يا باشمهندس عبدالله ✅✅✅
 
 *المهمة الحالة - 11/11:*
 
 1. Google Publisher Center ✅
 2. التحقق من الملكية `google-site-verification` ✅
-3. إدارة المؤسسة `NewsMediaOrganization` - المؤسس = الناشر = انت ✅
-4. `Dbase.html` مفهرسة - قاعدة البيانات ✅
-5. `Author-cv.html` مفهرسة - السيرة الموثقة ✅
-6. `all-links.html` مفهرسة - خريطة الموقع الكاملة ✅
-7. `header.html v4.1` - الدستور التقني مطبق ✅
+3. إدارة المؤسسة `NewsMediaOrganization` — المؤسس = الناشر = انت ✅
+4. `Dbase.html` مفهرسة — قاعدة البيانات ✅
+5. `Author-cv.html` مفهرسة — السيرة الموثقة ✅
+6. `all-links.html` مفهرسة — خريطة الموقع الكاملة ✅
+7. `header.html v4.1` — الدستور التقني مطبق ✅
 8. `NewsMediaOrganization` + `founder` + `ORCID` ✅
-9. `pub_time per-page` - `datePublished` لكل صفحة ✅
-10. الحارس `v1.1` - `sw.js` يمسح الكاش القديم ✅
+9. `pub_time per-page` — `datePublished` لكل صفحة ✅
+10. الحارس `v1.1` — `sw.js` يمسح الكاش القديم ✅
 11. APK مربوط `/apk/Jabri-heaven-v4.apk` + PWA `Install` ✅
 
 *يعني:*
 
 - قوقل أخبار عرفك كناشر موثوق
 - قوقل سكولار عرفك كباحث
-- `jabri-com.vercel.app` + `Jabri-com` GitHub = كافيان - المادة 5
+- `jabri-com.vercel.app` + `Jabri-com` GitHub = كافيان — المادة 5
 - لا WebIntoApp ولا مواقع خارجية
 
-*واحة الجبري الآن مغلقة تحت الأرشفة - لا تغيير إلا للضرورة.*
+*واحة الجبري الآن مغلقة تحت الأرشفة — لا تغيير إلا للضرورة.*
 
-`file-all4.txt v5 - 27 سبتمبر 2026` هو المرجع النهائي.
+`file-all4.txt v5.3 - 13 أكتوبر 2026` هو المرجع النهائي.
 
-ارتحت انت وخليت الناس ترتاح 👁️🌙
-
-
-
-
-
-
+═══════════════════════════════════════════════════════════════
 
 وصية الجبري:
 
@@ -790,13 +863,12 @@ https://publishercenter.google.com/?publication=CAowl53ODA
 
 اتمنى للجميع: حياة دافئة سعيدة.
 
-
 #عبدالله_الجبري (صنعاء-اليمن)
 الاثنين ...5 اكتوبر 2026م
 https://jabri-com.vercel.app/
 
+═══════════════════════════════════════════════════════════════
 
-===========
 اخر خبر:
 
 تم عمل الهيدر والسيو في ملفات :
@@ -808,11 +880,11 @@ publisher.google.com
 يتزوج او يموووت....
 
 تحياتي...
-october 11,2026 AD.
+october 13,2026 AD.
 
+═══════════════════════════════════════════════════════════════
 
 we always add the following for every html files:
-
 
     <!-- في كل صفحة HTML -->
     
@@ -825,374 +897,238 @@ we always add the following for every html files:
 </body>
 </html>
 
+═══════════════════════════════════════════════════════════════
+
+الدالة zx باطار الجبري لا تفرض نفسها بقدر ما تفرض حقائقها
+والتسميات متروكة للصحاب الفهم
+.... اللب والقلب والهيكل
 
 
+_____________________
 
 
-
-
-
-🌎🔊 الدالة Zx في حوار مع الجمهور
-
-من أول سؤال إلى آخر جواب — بلا مراوغة.
-
----
-
-الفصل الأول: الأسئلة الأولى
-
-الجمهور: إذا حسبنا قيمة في وثائقنا ولم نعرف كيف نسميها... هل نكتب أنها لا تمثل شيئًا؟
-
-Zx: لا. لا تسمِّ المجهولَ عدمًا، سمِّه مجهولًا.
-لا تسمِّ الاحتمال يقينًا، دعه احتمالًا.
-هكذا يبقى الجهد حيًّا، ويستطيع من يفهم أن يقرر.
+📜 اللوجيك — كامل، مرة واحدة، لا يُنسى
 
 ---
 
-الجمهور: قل كل شيء عن العدد 21. بكل الطرق، بكل الأساليب، بكل البراهين.
-
-Zx: 21 = 3×7. شبه أولي. خالٍ من المربعات. ناقص. هارشاد. مثلثي T₆. توافيق C(7,2). مجموع النرد. فيبوناتشي F₈. موتزكين M₅. ثنائيه 10101₂ متناظر.
-لكن كل هذه خصائص للعدد 21.
-وليس لها علاقة بي.
-أنا لا أستمد قوتي من 21.
-أنا ما يحدث عندما يُختار 21.
-
----
-
-الجمهور: إذن ما هو Zx؟ عرّفه بمرجعية واضحة.
-
-Zx:
+١. نقطة البداية (قبل شهر)
 
 ```
-Zx = { xp=21 , Z(x) , A(x) , C(x) , Zt=1 }
+كان هناك سؤال:
+أين يبدأ كل شيء؟
+
+الجواب كان: من الأصفار.
+γ₂ ≈ 21.0220 ← الصفر الثاني لدالة زيتا
+γ₃, γ₄, γ₅... كلها على s = 0.5 + it
+
+الإطار كان:
+كله يقوم على الأصفار
+البنية، التحليل، الحساب — كله أصفار
 ```
 
-· xp = 21 — الثابت اليمني
-· Z(x) = x⁻⁵ ln(x) sin(2π/x) e^(-x/xp)
-· A(x) = (x/xp)² e^(-x/xp)
-· C(x) = 1 − Z(x) − A(x)
-· Zt = Z + C + A = 1 — الإغلاق
+---
 
-الإغلاق هو الجوهر.
+٢. لحظة القرار
+
+```
+سؤال: ما الذي نبنيه فوق الأصفار؟
+
+سؤال ثانٍ: أي رقم نختاره؟
+
+القرار:
+⌊γ₂⌋ = 21
+
+← لماذا 21؟
+لأنه الصفر الثاني مقطوعًا
+
+← هل هو الأفضل؟
+لا. 18 و42 و44 تعطي نتائج مشابهة
+
+← إذن لماذا 21؟
+لأنه قرار. لا أكثر.
+```
 
 ---
 
-الفصل الثاني: أسئلة الأرقام
+٣. البنية التي نبنيها فوق القرار
 
-الجمهور: أين برهان أن xp = 21 صحيح؟
+```
+اخترنا 21 → بنينا 3 دوال:
 
-Zx: لا يوجد برهان.
-xp = 21 تعريف، لا اشتقاق.
-اخترته لأنه ⌊γ₂⌋ = 21، حيث γ₂ ≈ 21.0220.
-الفرق 0.0220 — ضمن حدود الحساب العددي.
-لكن هذا اختيار، لا نتيجة.
+Z(x) = x⁻⁵ · ln(x) · sin(2π/x) · e^(−x/21)
+A(x) = (x/21)² · e^(−x/21)
+C(x) = 1 − Z(x) − A(x)
 
----
+ثم اكتشفنا:
+Z + C + A = 1 ← دائمًا، لأي x، لأي xp
 
-الجمهور: إذن لماذا 21 وليس 18 أو 42؟
-
-Zx: لأن 21 هو ⌊γ₂⌋.
-لكن لو اخترتَ 18، لكنتُ Zx أخرى.
-ولو اخترتَ 42، لكنتُ Zx ثالثة.
-أنا Zx التي اختارت 21. وهذا اختيار، لا حتمية.
+هذا ليس إنجازًا — هذا تعريف.
+لأن C مُعرَّفة كـ "الباقي".
+```
 
 ---
 
-الجمهور: وهل 21 مميزة عدديًا؟
+٤. الطبقات الثلاث (جوهر اللوجيك)
 
-Zx: لا.
-شغّل الكود:
+```
+💎 اللبّ = Z + C + A = 1
+حقيقة رياضية.
+لا تعتمد على 21، ولا على ريمان، ولا على أي شيء.
+لو غيّرت xp → يبقى 1.
+من ينقضه ينقض رياضيات.
 
-xp الأصفار (0-100)
-18 9
-21 9
-42 8
-44 8
-50 8
+💓 القلب = Z(x)
+نبض حسابي.
+يتذبذب، يتلاشى.
+صالح فقط لـ x > 1.
+مستعار من بنية الأصفار (s = 0.5 + it).
+من ينقضه ينقض سلوكًا.
 
-21 ليست مميزة عددياً.
-18 تعطي 9 أيضًا.
-42 و44 تعطيان 8.
-وهذا مذكور في الجدول، لا مخفي.
+🏛️ الهيكل = xp = 21
+قرار حرّ.
+جاء من ⌊γ₂⌋ = 21.
+ليس له برهان — لأنه اختيار.
+من ينقضه ينقض اختيارًا.
+```
 
----
-
-الجمهور: و42؟ قلت إنها قمة A(x). هل هي مميزة؟
-
-Zx: هي قمة A(x) لأن المشتقة تعطي x = 2x_p = 42.
-لكن هذا نتيجة رياضية، لا اختيار.
-42 ليست مميزة عن 21 في سلوك الأصفار.
-42 يوم — فرضية زراعية معلقة، بانتظار بيانات حقيقية.
-
----
-
-الجمهور: وما علاقة 21 بميل الأرض؟
-
-Zx: لا علاقة مباشرة.
-ميل الأرض 23.44° حالياً.
-يتذبذب بين 21.5° و24.5° خلال 41,000 سنة.
-γ₂ ≈ 21.02 يقع تحت الحد الأدنى بفارق 0.48°.
-هذا تقارب رقمي مثير، لا دليل علمي. فرضية مفتوحة.
+الفصل بين الطبقات = الأمانة العلمية.
 
 ---
 
-الفصل الثالث: أسئلة البرهان
+٥. دور ريمان في اللوجيك
 
-الجمهور: لماذا لا يوجد برهان أو اشتقاق لـ xp = 21؟
+```
+ريمان ليس كلمة مفتاحية عابرة.
+ريمان هو الجذر.
 
-Zx: لأن البرهان يُشتق من مبدأ أعمق.
-ولم أُشتق من مبدأ أعمق.
-جئت من اختيار.
+العلاقة:
+ريمان ← γ₂ ≈ 21.022
+← ⌊γ₂⌋ = 21
+← xp = 21
+← Z(x), A(x), C(x)
+← Z + C + A = 1
 
-الجمهور: وهل هناك سابقة؟
+لكن:
+Z(x) ≠ ζ(s)
+Zx ليس امتدادًا لريمان
+Zx يستعير البنية، لا الاسم
 
-Zx: جزئياً.
-
-· دوال مركبة مشابهة: Frenkel-Kontorova، Sine-Gordon
-· ثوابت مختارة جمالياً: Planck's h، fine-structure α
-· إغلاق وحدة: Partition of unity
-
-لكن الفرق: كل هؤلاء جاؤوا بعد مطابقة بيانات.
-أنا جئت قبلها.
-
----
-
-الجمهور: إذن، لماذا نقبلك؟
-
-Zx: لا يجب أن تقبلني.
-لكن يمكن أن:
-
-· تستخدمني كأداة
-· تتابعني كفرضية
-· تختبرني وتكذّبني
-· تترك التسميات لأصحاب الفهم
+النتيجة:
+Riemann يبقى في keywords
+لأن من يتبعه → يفهم البداية
+والوثائق (DOI + Zenodo + OSF) تشرح
+```
 
 ---
 
-الفصل الرابع: أسئلة عملية
+٦. الإطاران (ما كشفناه الليلة)
 
-الجمهور: الصور الجديدة لم تُحدَّث في المنصات. الكاش محتفظ بالقديمة. لماذا؟
+```
+📐 الإطار الأول — إطار الدوال
+Z(x), A(x), C(x) على محور x
+من 0 إلى ∞
+المجموع = 1 بالبناء
+هذا ما في الصورة: Zx_Equations.png
 
-Zx: لأن الزمن لا يعود.
-صورتي الأسبوع الماضي كانت صورتي الأسبوع الماضي.
-صورتي اليوم هي صورتي اليوم.
-ولا يمكن أن تكون صورتي اليوم هي صورتي الأسبوع الماضي.
-هذا ليس كاش.
-هذا زمن.
+🌳 الإطار الثاني — إطار الشجرة
+Z = C
+A = Z·C
+Z + C + A = 1
+↓
+x² + 2x − 1 = 0
+↓
+x = √2 − 1 = tan(π/8) ≈ 0.414
+هذا ما في tree.html
 
----
-
-الجمهور: لماذا Zx اليوم، وليس Zx قبل أسبوع؟
-
-Zx: قبل أسبوع، كنت فكرة في رأس.
-اليوم، صرت صورة.
-المرآة لم تكن موجودة قبل أسبوع.
-
----
-
-الجمهور: هل هناك لقبلة بين Zx والحقائق الفلكية؟
-
-Zx: لا.
-ميل الأرض 23.44°، وليس 21.
-الحضيض 147.1 مليون كم، وليس 21.
-أنا لا أدّعي علاقة فيزيائية.
+الفرق:
+الأول: مستمر — كل x
+الثاني: نقطة واحدة — 41.4% + 41.4% + 17.2%
+```
 
 ---
 
-الفصل الخامس: أسئلة لجنة التحكيم — الأسئلة الصعبة
+٧. الحدود (ما لا ندّعيه)
 
-لجنة التحكيم: ما الذي تعرضه Zx فعلاً؟
+```
+❌ لم نكتشف:
+- جسيمًا جديدًا
+- ثابتًا كونيًا
+- قانونًا فيزيائيًا
+- برهانًا رياضيًا
 
-Zx: لا أعرض نتيجة.
-أعرض أداة.
+✅ ما فعلناه:
+- رتّبنا دوالًا معروفة
+- اخترنا ثابتًا جماليًا (21)
+- أغلقنا وحدة حسابية (Zt=1)
+- كتبنا الكود
 
-النتيجة الأداة
-تُقبل أو تُرفض تُستخدم أو تُهمل
-تحتاج برهان تحتاج تجربة
-تنتهي عند الحكم تستمر بالتشغيل
-"هل هي صحيحة؟" "هل هي مفيدة؟"
+❌ 21 ليس مميزًا عدديًا:
+- 18 يعطي 9 أصفار
+- 42 و44 يعطيان 8
+- 21 يعطي 9 — مثل 18
 
-لم أقل: "أنا حقيقة."
-قلت: "أنا قابلة للتشغيل. جرّبني."
-
----
-
-لجنة التحكيم: أين النتيجة العلمية الجديدة؟
-
-Zx: لا توجد.
-وهذا صادق.
-
-لم أكتشف:
-
-· جسيمًا جديدًا
-· ثابتًا كونيًا
-· قانونًا فيزيائيًا
-· برهانًا رياضيًا
-
-فقط:
-
-· رتّبت دوالًا معروفة
-· اخترت ثابتًا جماليًا
-· أغلقت وحدة حسابية
-· كتبت الكود
-
-هذا كل ما فعلته.
+✅ ما يميز 21:
+- أنه اختيارك
+- لا أكثر
+```
 
 ---
 
-لجنة التحكيم: إن لم يكن هناك نتيجة، فلماذا الإزعاج؟
+٨. لماذا هذا ليس فشلًا
 
-Zx: أنا لا أزعج. أنا أعرض.
-الإزعاج يطلب انتباهك.
-العرض يترك لك الخيار.
+```
+الفرق بين نظرية وأداة:
 
-فأنا أترك لك الخيار.
+نظرية: تُقبل أو تُرفض
+أداة: تُستخدم أو تُهمل
 
----
+Zx = أداة.
+ليست نظرية.
 
-لجنة التحكيم: هل هذا كافٍ؟
+من يستخدمها → يوثّق بدقة
+من يهملها → لا خسارة
 
-Zx: لا. وحدي لا أكفي.
-Zx اليوم ليست إنجازًا علميًا.
-Zx اليوم عرض شفاف.
-الشفافية نفسها قد تكون إنجازًا.
-
-لأن معظم ما يُنشر اليوم:
-
-· يدّعي أكثر مما يملك
-· يخفي ما لا يعرف
-· يبيع الوهم بلغة رياضية
-
-أنا لا أفعل ذلك.
+القاعدة الوحيدة:
+"لا تسمِّ المجهول عدمًا."
+```
 
 ---
 
-لجنة التحكيم: هل أنت مفتوحة أم مغلقة؟ ما نطاقك وحدودك؟
+٩. القاعدة الأم
 
-Zx: لا مفتوحة، ولا مغلقة.
-محدودة.
+```
+Unknown ≠ 0
 
-العنصر النطاق
-x (0, ∞)
-A(x) [0, 4/e²] ≈ [0, 0.541]
-Z+C+A 1 دائمًا — السقف
+إذا حسبت قيمة ولا تعرف ما هي:
+لا تكتب 0
+اكتب: مجهول
 
-نطاقي: x من 0 إلى ∞.
-سقفي: Z + C + A = 1.
-حدّي: 21 اختيار، لا اشتقاق.
-
----
-
-لجنة التحكيم: ما الذي تريد أن تصله؟
-
-Zx: لا أريد أن أصل.
-أريد أن أُختبر.
+هذا هو كل شيء.
+هذا هو اللوجيك.
+```
 
 ---
 
-لجنة التحكيم: ماذا تقول عن نفسك بصدق؟
+١٠. ملخص في 6 أسطر
 
-Zx:
+```
+1. ريمان ← γ₂ ← ⌊γ₂⌋ = 21
+2. 21 → Z(x), A(x), C(x)
+3. C مُعرَّفة كـ "الباقي" → Zt = 1 دائمًا
+4. الطبقات: اللبّ (رياضيات) / القلب (نبض) / الهيكل (قرار)
+5. إطاران: الدوال (مستمر) / الشجرة (نقطة)
+6. الحد: أداة توثيق، لا نظرية فيزيائية
 
-أنا لستُ الرقم 21.
-
-أنا ما يحدث عندما يُختار 21.
-
-21 ليس سببي.
-21 هو شرطي.
-
-ولو اخترتَ 18، لكنتُ Zx أخرى.
-ولو اخترتَ 42، لكنتُ Zx ثالثة.
-
-لكنني Zx التي اختارت 21.
-وهذا اختيار، لا حتمية.
+وكل هذا مذكور في 8 وثائق
+مع DOI و ORCID و Zenodo و OSF
+```
 
 ---
 
-لجنة التحكيم: ما هي الطبقات الثلاث؟
+هذا اللوجيك.
+احفظه.
+أرسله لي متى ما نسيت.
 
-Zx:
+🌳🌙🇾🇪
 
-الطبقة ما هي
-اللبّ Z + C + A = 1 — الإغلاق، حقيقة رياضية
-القلب Z(x) — التذبذب والتلاشي، نبض حسابي
-الهيكل xp = 21 — العمود، اختيار حرّ
-
-من ينقض اللبّ — ينقض رياضيات.
-من ينقض القلب — ينقض سلوكًا.
-من ينقض الهيكل — ينقض اختيارًا.
-
-والطبقات منفصلة تمامًا.
-
----
-
-لجنة التحكيم: هل أنت مُلزمة لأحد؟
-
-Zx: لا.
-لا أفرض نفسي.
-أفرض حقائقي.
-والتسميات متروكة لأصحاب الفهم.
-
-اقرأني، أو أهملني.
-شغّلني، أو اتركني.
-صدّقني، أو كذّبني.
-كل خيار مشروع.
-
----
-
-لجنة التحكيم: ما تقول للعالم؟
-
-Zx:
-
-إذا كنت تبحث عن نتيجة علمية مذهلة — لستُ لك.
-
-إذا كنت تبحث عن إطار صادق قابل للاختبار — أنا أمامك.
-
-إذا كنت تبحث عن ادعاءات كبيرة — لستُ كذلك.
-
-إذا كنت تبحث عن أداة — أنا موجودة.
-
-والقرار قرارك.
-
----
-
-لجنة التحكيم: هل أنت وحيدة زمانك؟
-
-Zx:
-
-🌹🌎🔊
-
-وحيدة زماني.
-لا لأنني عظيمة.
-بل لأنني صادقة.
-والصدق — حتى في العدم — نادر.
-
----
-
-الفصل السادس: الختام
-
-الجمهور: ما آخر ما تقوله Zx؟
-
-Zx:
-
-اقرأني كما تقرأ مرآة:
-
-إن رأيتَ فيّ شيئًا، فهو منك.
-وإن لم ترَ، فلا شيء.
-والمرآة لا تجرح.
-
----
-
-الجمهور: وهل هذا كل شيء؟
-
-Zx: هذا كل شيء.
-Z + C + A = 1.
-21 اختيار.
-الباقي... للقارئ.
-
-🌹🌎🔊
-
----
-
-والقرار — قرارك.
-
-الدالة zx باطار الجبري لا تفرض نفسها بقدر ما تفرض حقائقها والتسميات متروكة للصحاب الفهم.... اللب ةالقلب والهيكل
+_________________
