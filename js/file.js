@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    /js/file.js — واحة الجبري (Heaven Al-Jabri)
-   محمّل القائمة الاحتياطية — v2.3
+   محمّل القائمة الاحتياطية — v2.4
    ─────────────────────────────────────────────────────────────
    ✅ يعمل على الويب + APK (file://)
    ✅ يستعمل XHR كاحتياط لو fetch ممنوع
@@ -9,11 +9,12 @@
    ✅ يرجع STATIC فوراً + يحدّث في الخلفية
    ✅ إشعار عند تحديث القائمة الديناميكية
    ─────────────────────────────────────────────────────────────
-   🆕 v2.3 التعديلات:
+   🆕 v2.4 التعديلات:
+     • إزالة طلبات sitemap.xml و sitemap.txt و all-links من DYNAMIC_SOURCES
+       لمنع أخطاء XHR في Google Search Console (GSC).
      • once-guard (منع التحميل المزدوج)
      • cache: 'default' بدل force-cache (لتحديث file-all4.txt)
      • STATIC_FILES كاملة (120+ ملف)
-     • إزالة EXCLUDED غير المبرَّر
 
    الاستخدام:
      <script src="/js/file.js"></script>
@@ -33,7 +34,7 @@
   }
   window.__WAHA_FILE_JS_LOADED = true;
 
-  var VERSION = '2.3';
+  var VERSION = '2.4';
 
   /* ─── كشف البيئة ─── */
   var IS_FILE = (location.protocol === 'file:');
@@ -190,7 +191,6 @@
     // ─────────────────────────────────────────────
     // النظام
     // ─────────────────────────────────────────────
-    'sitemap.xml',
     'robots.txt',
     'manifest.json',
     'favicon.ico',
@@ -237,12 +237,7 @@
      ═══════════════════════════════════════════════════ */
   var DYNAMIC_SOURCES = [
     { url: '/file-all4.txt',     type: 'text' },  // المصدر الأساسي
-    { url: '/js/file-all4.txt',  type: 'text' },  // احتياطي
-    { url: '/sitemap.xml',       type: 'xml'  },
-    { url: '/sitemap_index.xml', type: 'xml'  },
-    { url: '/sitemap-index.xml', type: 'xml'  },
-    { url: '/all-links.txt',     type: 'text' },
-    { url: '/sitemap.txt',       type: 'text' }
+    { url: '/js/file-all4.txt',  type: 'text' }   // احتياطي
   ];
 
   var CACHE_KEY = 'waha_files_cache_v23';
@@ -378,7 +373,7 @@
   }
 
   async function fetchText(url) {
-    // ✅ v2.3: cache 'default' بدل 'force-cache'
+    // ✅ v2.4: cache 'default' بدل 'force-cache'
     //    للسماح بتحديث file-all4.txt عند الحاجة
     if (!IS_APK && typeof fetch === 'function') {
       try {
