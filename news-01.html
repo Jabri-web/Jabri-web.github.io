@@ -20,16 +20,28 @@
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/news-01.html">
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/news-01-en.html">
     
+    <!-- ======== الأيقونات ======== -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/image/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/image/icon-512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/image/icon-192.png">
+
+    <!-- ======== تحميل مسبق لصورة الـ LCP ======== -->
+    <link rel="preload" as="image" href="/image/theory-ar.webp" type="image/webp" fetchpriority="high">
+
     <!-- ======== Open Graph ======== -->
     <meta property="og:locale" content="ar_YE">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
     <meta property="og:title" content="واحة الجبري تطلق نظرية السندباد الموحدة Z+C+A=1">
     <meta property="og:description" content="إطار فيزيائي نظري يربط أصفار ريمان ببنية الكون">
-    <meta property="og:image" content="https://jabri-com.vercel.app/image/theory.jpg">
+    <!-- استخدام صيغة JPG لضمان التوافق مع فيسبوك وتويتر -->
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/theory-ar.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="نظرية السندباد الموحدة Z+C+A=1">
+    <!-- صورة إضافية كاحتياط -->
+    <meta property="og:image" content="https://jabri-com.vercel.app/image/oasis-poster1.webp">
     <meta property="og:url" content="https://jabri-com.vercel.app/news-01.html">
     <meta property="article:published_time" content="2026-10-06T11:17:00+03:00">
     <meta property="article:modified_time" content="2026-10-06T11:17:00+03:00">
@@ -40,7 +52,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="واحة الجبري تطلق نظرية السندباد الموحدة Z+C+A=1">
     <meta name="twitter:description" content="إطار فيزيائي نظري يربط أصفار ريمان ببنية الكون">
-    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/theory.jpg">
+    <meta name="twitter:image" content="https://jabri-com.vercel.app/image/theory-ar.jpg">
     
     <!-- ======== الخطوط ======== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +71,7 @@
           "url": "https://jabri-com.vercel.app/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://jabri-com.vercel.app/image/logo.png",
+            "url": "https://jabri-com.vercel.app/image/logo1.png",
             "width": 512,
             "height": 512
           },
@@ -94,12 +106,10 @@
           "dateModified": "2026-10-06T11:17:00+03:00",
           "author": { "@id": "https://jabri-com.vercel.app/#author" },
           "publisher": { "@id": "https://jabri-com.vercel.app/#organization" },
-          "image": {
-            "@type": "ImageObject",
-            "url": "https://jabri-com.vercel.app/image/theory.jpg",
-            "width": 1200,
-            "height": 630
-          },
+          "image": [
+            { "@type": "ImageObject", "url": "https://jabri-com.vercel.app/image/theory-ar.jpg", "width": 1200, "height": 630 },
+            { "@type": "ImageObject", "url": "https://jabri-com.vercel.app/image/oasis-poster1.webp", "width": 1200, "height": 630 }
+          ],
           "url": "https://jabri-com.vercel.app/news-01.html",
           "isAccessibleForFree": true,
           "keywords": "نظرية السندباد الموحدة, Z+C+A=1, فرضية ريمان, واحة الجبري, الفيزياء النظرية",
@@ -267,10 +277,45 @@
         }
         .author-box .info h3 { color: var(--brand); font-size: 1.1rem; margin-bottom: 3px; }
         .author-box .info p { color: var(--muted); font-size: 14px; margin: 0; }
+
+        /* ======== تنسيقات الصور والمعرض ======== */
+        .hero-poster, .poster {
+            margin: 25px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            box-shadow: 0 6px 24px rgba(0,0,0,.35);
+        }
+        .hero-poster img, .poster img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform .5s ease;
+        }
+        .poster:hover img { transform: scale(1.03); }
+        .hero-poster figcaption, .poster figcaption {
+            padding: 12px 16px;
+            font-size: 13.5px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            margin-top: 15px;
+        }
+
         @media (max-width: 600px) {
             main.container { padding: 25px 18px; border-radius: 16px; }
             h1 { font-size: 1.5rem; }
             .formula { font-size: 1rem; padding: 15px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .poster img { transition: none; }
+            .poster:hover img { transform: none; }
         }
     </style>
 </head>
@@ -290,6 +335,15 @@
     <h1>واحة الجبري تطلق نظرية السندباد الموحدة Z+C+A=1</h1>
     
     <p class="lead">إطار فيزيائي نظري خالٍ من المعاملات الحرة يربط أصفار ريمان ببنية الكون، مع نشر البحث كاملاً على منصة Zenodo الدولية.</p>
+
+    <!-- صورة المقال الرئيسية -->
+    <figure class="hero-poster">
+        <img src="/image/theory-ar.webp" 
+             alt="نظرية السندباد الموحدة Z+C+A=1 - واحة الجبري"
+             width="1200" height="630" 
+             fetchpriority="high" decoding="async">
+        <figcaption>الملصق التعريفي لنظرية السندباد الموحدة</figcaption>
+    </figure>
 
     <h2>🔬 إعلان علمي رسمي</h2>
     <p>أعلنت منصة <strong>"واحة الجبري" (Heaven Al-Jabri)</strong> اليوم رسمياً عن إطلاق <strong>نظرية السندباد الموحدة</strong>، وهي إطار نظري جديد يهدف إلى توحيد الرياضيات البحتة مع الفيزياء النظرية في صيغة واحدة متكاملة.</p>
@@ -320,6 +374,19 @@
         م/ عبدالله محمد ناصر الجبري، مهندس حاسبات من جامعة الملك فهد للبترول والمعادن (KFUPM)، ومحلل شبكات وأنظمة بخبرة تزيد عن 25 عاماً. باحث مسجل دولياً عبر <strong>ORCID: 0009-0003-3319-3822</strong>.
     </div>
 
+    <!-- معرض الصور البصري -->
+    <h2>🖼️ معرض الواحة البصري</h2>
+    <div class="gallery">
+        <figure class="poster">
+            <img src="/image/oasis-poster2.webp" alt="ملصق واحة الجبري الإضافي" width="600" height="400" loading="lazy" decoding="async">
+            <figcaption>ملصق إضافي من واحة الجبري</figcaption>
+        </figure>
+        <figure class="poster">
+            <img src="/image/logo2.png" alt="شعار واحة الجبري" width="600" height="400" loading="lazy" decoding="async">
+            <figcaption>شعار واحة الجبري</figcaption>
+        </figure>
+    </div>
+
     <h2>🌐 روابط ذات صلة</h2>
     <ul style="padding-inline-start: 25px;">
         <li><a href="https://jabri-com.vercel.app/theory-ar.html" style="color:var(--brand);">الدالة الأم Z(x) - النسخة العربية</a></li>
@@ -337,7 +404,7 @@
     </div>
 
     <div class="author-box">
-        <img src="https://jabri-com.vercel.app/image/Jabri-photo.png" alt="م/ عبدالله محمد ناصر الجبري">
+        <img src="/image/Jabri-photo.png" alt="م/ عبدالله محمد ناصر الجبري">
         <div class="info">
             <h3>م/ عبدالله محمد ناصر الجبري</h3>
             <p>باحث مستقل في الرياضيات والفيزياء النظرية | مؤسس واحة الجبري</p>
