@@ -6,10 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&amp;display=swap" rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- ===== Canonical + hreflang ===== -->
-<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/research.html" />
-<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/research.html" />
+<!-- ===== Canonical + hreflang (Self-Referencing Fix) ===== -->
 <link rel="canonical" href="https://jabri-com.vercel.app/research.html" />
+<link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/research.html" />
+<link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/research.html" />
+<link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/research.html" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
 
 <title>بحوث الجبري | 13 مشروع | نظرية السندباد Z+C+A=1 | روابط و DOIs محدثة 2026</title>
@@ -19,7 +21,7 @@
 <meta name="rights" content="© 2026 Eng. Abdulla Al-Jabri. All rights reserved." />
 <link rel="icon" href="/image/favicon.ico" type="image/x-icon" />
 
-<!-- Open Graph -->
+<!-- ===== Open Graph ===== -->
 <meta property="og:locale" content="ar_YE" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri" />
@@ -29,6 +31,76 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://jabri-com.vercel.app/research.html" />
+
+<!-- ===== Twitter Cards ===== -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@JabriAbdulla1" />
+<meta name="twitter:creator" content="@JabriAbdulla1" />
+<meta name="twitter:title" content="بحوث الجبري | 13 مشروع | نظرية السندباد Z+C+A=1" />
+<meta name="twitter:description" content="13 مشروع بحثي لم/ عبدالله الجبري. أحدثها Jabri Field v5.0.1." />
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-banner.png" />
+
+<!-- ===== JSON-LD (القالب الذهبي الموحد + CollectionPage) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://jabri-com.vercel.app/#website",
+      "url": "https://jabri-com.vercel.app/",
+      "name": "واحة الجبري | Heaven Al-Jabri",
+      "inLanguage": "ar",
+      "publisher": { "@id": "https://jabri-com.vercel.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://jabri-com.vercel.app/#organization",
+      "name": "واحة الجبري",
+      "alternateName": "Heaven Al-Jabri",
+      "url": "https://jabri-com.vercel.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jabri-com.vercel.app/image/heaven-al-jabri-logo.png",
+        "width": 512, "height": 512
+      },
+      "founder": { "@id": "https://jabri-com.vercel.app/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://jabri-com.vercel.app/#person",
+      "name": "م/ عبدالله محمد ناصر الجبري",
+      "url": "https://jabri-com.vercel.app/",
+      "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+      "jobTitle": ["باحث مستقل", "مؤسس واحة الجبري"],
+      "nationality": "YE"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://jabri-com.vercel.app/research.html#page",
+      "url": "https://jabri-com.vercel.app/research.html",
+      "name": "بحوث الجبري | 13 مشروع",
+      "description": "13 مشروع بحثي لم/ عبدالله الجبري: من أصفار ريمان إلى بنية الكون.",
+      "inLanguage": "ar",
+      "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+      "author": { "@id": "https://jabri-com.vercel.app/#person" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://jabri-com.vercel.app/image/Jabri-banner.png"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jabri-com.vercel.app/research.html#breadcrumb",
+      "name": "مسار التنقل - البحوث",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://jabri-com.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "البحوث", "item": "https://jabri-com.vercel.app/research.html" }
+      ]
+    }
+  ]
+}
+</script>
 
 <style>
 :root{--bg:#0a0a0f;--card:#11131a;--border:#1f2233;--accent:#6ae3ff;--text:#e8e8f0;--muted:#8a8a9e;--green:#00ff9d;--gold:#d4af37}
@@ -555,7 +627,7 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
     if (localStorage.getItem('lang') === 'en') toggleLang();
   });
 
-  console.log('✅ research.html v5.0.1-ready — 13 projects with DOIs + visuals');
+  console.log('✅ research.html v5.5.1 — 13 projects with DOIs + visuals + SEO Fix');
 </script>
 
 <!-- ===== القائمة العلوية ===== -->
@@ -627,13 +699,6 @@ body.en .table-wrapper .sub{padding-left:25px;padding-right:0}
         <span style="font-size:0.9rem;">🆔</span> ORCID
     </a>
 </div>
-
-
-
-
-
-
-
 
 <!-- TRUTH ABOUT XP=21 - FINAL v5.0.2 - REAL DATA 42/44 INCLUDED -->
 <div style="margin:25px 12px; padding:18px; background:#FFFFFF; border:3px solid #2E7D32; border-radius:10px; color:#111111; font-family: 'Cairo', Tahoma, sans-serif; line-height:1.7; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
@@ -722,10 +787,6 @@ for xp in [5,10,18,21,42,44,50]:
 </p>
 
 </div>
-
-
-
-
 
 </body>
 </html>
