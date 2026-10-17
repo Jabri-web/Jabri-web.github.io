@@ -6,7 +6,10 @@
   <title>المترجم السحري - واحة الجبري</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- إضافة DOMPurify للأمان -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
   <style>
+    :root { --muted: #8a8a9e; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Cairo', sans-serif; background: #0a0a0f; color: #e8e8f0; padding: 20px; }
     .container { max-width: 900px; margin: 0 auto; background: #1a1a2e; border-radius: 20px; padding: 30px; border: 1px solid #2a2a3e; }
@@ -14,11 +17,16 @@
     .btn { padding: 10px 25px; border: 2px solid #6ae3ff; border-radius: 30px; background: #6ae3ff; color: #0a0a0f; font-weight: 700; cursor: pointer; text-decoration: none; transition: 0.3s; font-family: 'Cairo', sans-serif; }
     .btn:hover { transform: scale(1.05); }
     .btn-alt { background: transparent; color: #6ae3ff; }
-    .content { background: #0a0a0f; border-radius: 12px; padding: 30px; border: 1px solid #2a2a3e; line-height: 1.8; min-height: 300px; }
+    .content { background: #0a0a0f; border-radius: 12px; padding: 30px; border: 1px solid #2a2a3e; line-height: 1.8; min-height: 300px; overflow-x: auto; }
     .content h1, .content h2, .content h3 { color: #6ae3ff; margin: 15px 0; }
     .content a { color: #6affb5; }
     .content pre { background: #1a1a2e; padding: 15px; border-radius: 8px; overflow-x: auto; }
     .content img { max-width: 100%; border-radius: 8px; }
+    .content table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    .content th, .content td { border: 1px solid #2a2a3e; padding: 10px; text-align: right; }
+    .content th { background: #1a1a2e; color: #6ae3ff; }
+    .content details { background: #12121f; padding: 10px; border-radius: 8px; margin: 10px 0; border: 1px solid #2a2a3e; }
+    .content summary { cursor: pointer; font-weight: bold; color: #6ae3ff; }
     .loading { text-align: center; color: #888; padding: 40px; font-size: 1.2rem; }
     .error { text-align: center; color: #ff6a6a; padding: 40px; }
     .info-bar { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; font-size: 14px; color: var(--muted); }
@@ -46,10 +54,9 @@
 
 <script>
 // ======================================================================
-// 1. قاموس الترجمة – زوده براحتك (يُفضل إضافة المصطلحات الخاصة بك)
+// 1. قاموس الترجمة – تمت إضافة مصطلحات الـ README الجديد
 // ======================================================================
 const DICT = {
-  // عام
   "Repository": "المستودع", "About": "حول", "Description": "الوصف",
   "Installation": "التثبيت", "Usage": "طريقة الاستخدام", "Features": "المميزات",
   "License": "الرخصة", "Contributing": "المساهمة", "Author": "المؤلف",
@@ -77,48 +84,83 @@ const DICT = {
   "Dependency graph": "رسم التبعيات", "Dependabot": "ديبندابوت",
   "Code scanning": "فحص الكود", "Secrets": "أسرار", "Environments": "البيئات",
   "Pages": "الصفحات",
-  // نظرية السندباد – مصطلحات خاصة
-  "Unified Sinbad Theory": "نظرية السندباد الموحدة",
-  "Yemen Heritage": "تراث اليمن",
-  "Al-Jabri Oasis": "واحة الجبري",
-  "Heaven Al-Jabri": "واحة الجبري",
-  "Research": "بحث",
+  
+  // مصطلحات من الـ README الجديد
+  "General README": "ملف التعريف العام",
+  "English Version": "النسخة الإنجليزية",
+  "Arabic": "العربية",
   "Researcher": "باحث",
-  "Digital Archivist": "أمين أرشيف رقمي",
+  "Heritage": "التراث",
+  "Digital Archivist": "أمين الأرشيف الرقمي",
+  "Education": "التعليم",
+  "Official Portfolio": "الملف الرسمي",
   "Mission": "المهمة",
-  "Gateway": "بوابة",
-  "Router": "موجه",
-  "Dashboard": "لوحة التحكم"
+  "Bachelor of Science": "بكالوريوس العلوم",
+  "Computer Engineering": "هندسة الحاسوب",
+  "Independent Researcher": "باحث مستقل",
+  "Mathematics": "الرياضيات",
+  "Theoretical Physics": "الفيزياء النظرية",
+  "Research Focus": "محور البحث",
+  "Achievements": "الإنجازات",
+  "Main Links": "الروابط الرئيسية",
+  "Project Links": "روابط المشاريع",
+  "Database": "قاعدة البيانات",
+  "of All Links and DOIs": "لجميع الروابط ومعرفات الكائنات الرقمية",
+  "Click here to view all links": "اضغط هنا لعرض جميع الروابط",
+  "Verified": "تم التحقق",
+  "About This Repo": "حول هذا المستودع",
+  "GitHub Stats": "إحصائيات جيتهاب",
+  "Partnerships & Contact": "الشراكات والتواصل",
+  "Interested in research collaboration": "مهتم بالتعاون البحثي",
+  "Financial Support": "الدعم المالي",
+  "Become a Sponsor": "كن راعياً",
+  "From Riemann zeros to the structure of the universe": "من أصفار ريمان إلى بنية الكون"
 };
 
+// دالة ذكية لترجمة النصوص دون المساس بالروابط
 function translateText(text) {
   if (!text) return text;
-  let result = text;
-  // ترتيب المفاتيح من الأطول للأقصر لتجنب الترجمات الجزئية
+  
+  // 1. عزل الروابط والصور (Markdown Links, Images, and HTML tags with href/src)
+  const protectedItems = [];
+  let protectedText = text.replace(/(\!?\[.*?\]\(.*?\)|<a\s[^>]*>.*?<\/a>|<img\s[^>]*>)/gi, function(match) {
+    protectedItems.push(match);
+    return `___PROTECTED_${protectedItems.length - 1}___`;
+  });
+
+  // 2. ترجمة النص المتبقي
+  let result = protectedText;
   const keys = Object.keys(DICT).sort((a, b) => b.length - a.length);
   for (const en of keys) {
     const regex = new RegExp(`\\b${en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
     result = result.replace(regex, DICT[en]);
   }
+
+  // 3. استعادة الروابط والصور كما كانت
+  result = result.replace(/___PROTECTED_(\d+)___/g, function(match, index) {
+    return protectedItems[index];
+  });
+
   return result;
 }
 
 // ======================================================================
-// 2. قراءة البارامترات: repo و file
+// 2. قراءة البارامترات
 // ======================================================================
 const params = new URLSearchParams(window.location.search);
-const repo = params.get('repo') || 'Jabri-web';
+const repo = params.get('repo') || 'Jabri-com';
 const file = params.get('file') || 'README.md';
 const lang = params.get('lang') || 'ar';
+const user = params.get('user') || 'Jabri-web';
 
 document.getElementById('repoDisplay').textContent = repo;
 document.getElementById('fileDisplay').textContent = file;
 
 // ======================================================================
-// 3. بناء الرابط الخام من GitHub
+// 3. بناء الرابط
 // ======================================================================
-const rawUrl = `https://raw.githubusercontent.com/Jabri-web/${repo}/main/${file}`;
-const githubUrl = `https://github.com/Jabri-web/${repo}/blob/main/${file}`;
+const rawUrl = `https://raw.githubusercontent.com/${user}/${repo}/main/${file}`;
+const githubUrl = `https://github.com/${user}/${repo}/blob/main/${file}`;
 
 document.getElementById('backBtn').href = githubUrl;
 
@@ -136,10 +178,9 @@ async function load() {
 
     // تصحيح روابط الصور لتكون مطلقة
     md = md.replace(/!\[([^\]]*)\]\((?!https?:\/\/)([^)]+)\)/g, function(match, alt, src) {
-      return `![${alt}](https://raw.githubusercontent.com/Jabri-web/${repo}/main/${src})`;
+      return `![${alt}](https://raw.githubusercontent.com/${user}/${repo}/main/${src})`;
     });
 
-    // إذا كانت اللغة عربية، نترجم (مع الاحتفاظ بالنصوص الإنجليزية غير المترجمة)
     if (lang === 'ar') {
       md = translateText(md);
       document.documentElement.dir = 'rtl';
@@ -148,12 +189,14 @@ async function load() {
     } else {
       document.documentElement.dir = 'ltr';
       document.documentElement.lang = 'en';
-      document.getElementById('langBtn').innerHTML = '🇸🇦 العربية';
+      document.getElementById('langBtn').innerHTML = '🇾🇪 العربية';
     }
 
-    // تحويل Markdown إلى HTML
-    const html = marked.parse(md);
-    contentDiv.innerHTML = html;
+    // تحويل Markdown إلى HTML وتنظيفه
+    const rawHtml = marked.parse(md);
+    const cleanHtml = DOMPurify.sanitize(rawHtml, { ADD_TAGS: ['iframe', 'details', 'summary'], ADD_ATTR: ['target'] });
+    
+    contentDiv.innerHTML = cleanHtml;
 
   } catch (e) {
     contentDiv.innerHTML = `
@@ -170,23 +213,17 @@ async function load() {
 }
 
 // ======================================================================
-// 5. زر تبديل اللغة – يغير فقط lang
+// 5. زر تبديل اللغة
 // ======================================================================
 document.getElementById('langBtn').onclick = function() {
   const newLang = lang === 'ar' ? 'en' : 'ar';
-  window.location.href = `?repo=${repo}&file=${file}&lang=${newLang}`;
+  window.location.href = `?user=${user}&repo=${repo}&file=${file}&lang=${newLang}`;
 };
 
 // ======================================================================
 // 6. تشغيل التحميل
 // ======================================================================
 load();
-
-console.log('🔮 المترجم السحري جاهز (ديناميكي)');
-console.log(`📂 المستودع: ${repo}`);
-console.log(`📄 الملف: ${file}`);
-console.log(`🌍 اللغة: ${lang}`);
-console.log(`🔗 الرابط الخام: ${rawUrl}`);
 </script>
 
 </body>
