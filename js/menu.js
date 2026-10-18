@@ -1,15 +1,19 @@
 // ============================================================
-//   menu.js - v5.0.1 - القائمة الذكية الشاملة - واحة الجبري
-//   الإصدار: 5.0.1 - 10 أكتوبر 2026
-//   ✅ الزر: Inline + !important (يظهر دائماً على أي صفحة)
+//   menu.js - v5.1 - المرعبة الخفيفة (المدير الواحد)
+//   الإصدار: 5.1 - 17 أكتوبر 2026
+//   ✅ حارس التكرار (__jabriMenuLoaded)
+//   ✅ انتظار headerLoaded قبل البناء
+//   ✅ إزالة الصوت والعداد (نُقلا إلى init-root.js)
 //   ✅ القائمة: GPU-friendly (opacity + transform)
 //   ✅ Prefetch ذكي بـ throttle + isolation
-//   ✅ will-change + contain
-//   ✅ إصلاح: Missing } in template expression (السطر 365)
 // ============================================================
 
 (function() {
     'use strict';
+
+    // 🛡️ حارس المدير الواحد — لا تبني القائمة مرتين
+    if (window.__jabriMenuLoaded) return;
+    window.__jabriMenuLoaded = true;
 
     // ============================================================
     //   🎯 تحديد اللغة والمسار
@@ -47,8 +51,7 @@
     ];
 
     // ============================================================
-    //   🎨 حقن CSS للقائمة الأفقية والقائمة المنسدلة
-    //      (زر الهامبرغر Inline كما في v4)
+    //   🎨 حقن CSS للقائمة
     // ============================================================
     function injectStyles() {
         if (document.getElementById('waha-menu-styles')) return;
@@ -56,94 +59,50 @@
         const style = document.createElement('style');
         style.id = 'waha-menu-styles';
         style.textContent = `
-            /* ─── القائمة الأفقية ─── */
             #main-menu a {
-                color: #d6d1c8;
-                text-decoration: none;
-                font-size: 0.95rem;
-                padding: 4px 8px;
-                border-bottom: 2px solid transparent;
+                color: #d6d1c8; text-decoration: none; font-size: 0.95rem;
+                padding: 4px 8px; border-bottom: 2px solid transparent;
                 transition: color .2s ease, border-color .2s ease;
                 font-family: 'Cairo', 'Tahoma', sans-serif;
             }
             #main-menu a:hover { color: #e3b58a; }
-            #main-menu a.active {
-                border-bottom-color: #b5977a;
-                color: #f0dec6;
-            }
+            #main-menu a.active { border-bottom-color: #b5977a; color: #f0dec6; }
 
-            /* ─── زر الهامبرغر (احتياطي فقط - الأساس Inline) ─── */
             #hamburger-menu {
-                position: fixed !important;
-                top: 12px !important;
-                right: 12px !important;
-                z-index: 2147483647 !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                will-change: transform;
+                position: fixed !important; top: 12px !important; right: 12px !important;
+                z-index: 2147483647 !important; display: inline-flex !important;
+                align-items: center !important; visibility: visible !important;
+                opacity: 1 !important; will-change: transform;
             }
-            #hamburger-menu:hover {
-                transform: translateY(-1px) !important;
-                box-shadow: 0 0 28px rgba(255, 215, 0, 0.5) !important;
-            }
-            #hamburger-menu:active {
-                transform: scale(0.97) !important;
-            }
+            #hamburger-menu:hover { transform: translateY(-1px) !important; box-shadow: 0 0 28px rgba(255, 215, 0, 0.5) !important; }
+            #hamburger-menu:active { transform: scale(0.97) !important; }
 
-            /* ─── القائمة المنسدلة ─── */
             #menu-dropdown {
-                position: fixed !important;
-                top: 52px !important;
-                right: 12px !important;
-                background: rgba(10, 10, 20, 0.98) !important;
-                border: 2px solid #ffd700 !important;
-                border-radius: 16px !important;
-                padding: 18px 16px !important;
-                min-width: 260px !important;
-                max-height: 70vh !important;
-                overflow-y: auto !important;
-                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
-                z-index: 2147483646 !important;
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 2px !important;
+                position: fixed !important; top: 52px !important; right: 12px !important;
+                background: rgba(10, 10, 20, 0.98) !important; border: 2px solid #ffd700 !important;
+                border-radius: 16px !important; padding: 18px 16px !important;
+                min-width: 260px !important; max-height: 70vh !important; overflow-y: auto !important;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important; z-index: 2147483646 !important;
+                display: flex !important; flex-direction: column !important; gap: 2px !important;
                 font-family: 'Cairo', 'Tahoma', sans-serif !important;
-                opacity: 0 !important;
-                visibility: hidden !important;
+                opacity: 0 !important; visibility: hidden !important;
                 transform: translateY(-8px) scale(0.98) !important;
-                transition: opacity .18s ease,
-                            transform .18s ease,
-                            visibility .18s !important;
-                will-change: opacity, transform !important;
-                contain: layout style paint;
+                transition: opacity .18s ease, transform .18s ease, visibility .18s !important;
+                will-change: opacity, transform !important; contain: layout style paint;
                 pointer-events: none !important;
             }
             #menu-dropdown.is-open {
-                opacity: 1 !important;
-                visibility: visible !important;
-                transform: translateY(0) scale(1) !important;
-                pointer-events: auto !important;
+                opacity: 1 !important; visibility: visible !important;
+                transform: translateY(0) scale(1) !important; pointer-events: auto !important;
             }
 
-            /* ─── روابط القائمة المنسدلة ─── */
             #menu-dropdown .menu-link {
-                color: #fff !important;
-                padding: 8px 12px !important;
-                border-radius: 8px !important;
-                text-decoration: none !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 10px !important;
-                transition: background .18s, color .18s, transform .18s !important;
-                border-bottom: 1px solid rgba(255, 215, 0, 0.04) !important;
-                font-size: 0.9rem !important;
+                color: #fff !important; padding: 8px 12px !important; border-radius: 8px !important;
+                text-decoration: none !important; display: flex !important; align-items: center !important;
+                gap: 10px !important; transition: background .18s, color .18s, transform .18s !important;
+                border-bottom: 1px solid rgba(255, 215, 0, 0.04) !important; font-size: 0.9rem !important;
             }
-            #menu-dropdown .menu-link:hover {
-                background: rgba(255, 215, 0, 0.08) !important;
-                color: #ffd700 !important;
-            }
+            #menu-dropdown .menu-link:hover { background: rgba(255, 215, 0, 0.08) !important; color: #ffd700 !important; }
             #menu-dropdown.rtl .menu-link:hover { transform: translateX(-4px) !important; }
             #menu-dropdown.ltr .menu-link:hover { transform: translateX(4px) !important; }
         `;
@@ -151,7 +110,7 @@
     }
 
     // ============================================================
-    //   📋 بناء القائمة الرئيسية في الهيدر
+    //   📋 بناء القائمة الرئيسية
     // ============================================================
     function buildMainMenu() {
         const nav = document.querySelector('#main-menu');
@@ -184,64 +143,6 @@
     }
 
     // ============================================================
-    //   🎵 التحكم في الموسيقى
-    // ============================================================
-    let audioElement = null;
-    let isMusicPlaying = false;
-
-    function initMusic() {
-        const btn = document.getElementById('musicToggleBtn');
-        if (!btn) return;
-
-        audioElement = new Audio('../image/music.mp3');
-        audioElement.loop = true;
-        audioElement.volume = 0.3;
-
-        btn.addEventListener('click', function() {
-            const status = this.querySelector('#music-status');
-            if (isMusicPlaying) {
-                audioElement.pause();
-                isMusicPlaying = false;
-                if (status) status.textContent = 'موسيقى';
-                this.style.background = 'rgba(255,215,0,0.08)';
-                this.style.color = '#d6d1c8';
-                localStorage.setItem('jabri_music_state', 'paused');
-            } else {
-                audioElement.play().catch(() => {});
-                isMusicPlaying = true;
-                if (status) status.textContent = '🔊';
-                this.style.background = 'rgba(255,215,0,0.25)';
-                this.style.color = '#ffd700';
-                localStorage.setItem('jabri_music_state', 'playing');
-            }
-        });
-
-        if (localStorage.getItem('jabri_music_state') === 'playing') {
-            setTimeout(() => {
-                audioElement.play().catch(() => {});
-                isMusicPlaying = true;
-                const status = btn.querySelector('#music-status');
-                if (status) status.textContent = '🔊';
-                btn.style.background = 'rgba(255,215,0,0.25)';
-                btn.style.color = '#ffd700';
-            }, 500);
-        }
-    }
-
-    // ============================================================
-    //   👥 عداد الزوار
-    // ============================================================
-    function initVisitorCounter() {
-        const numberDisplay = document.getElementById('visitor-number');
-        if (!numberDisplay) return;
-
-        let count = parseInt(localStorage.getItem('jabri_visitor_count') || '0', 10);
-        count += 1;
-        localStorage.setItem('jabri_visitor_count', count);
-        numberDisplay.textContent = count.toLocaleString('ar-EG');
-    }
-
-    // ============================================================
     //   🌐 تبديل اللغة
     // ============================================================
     function initLanguageSwitcher() {
@@ -251,25 +152,15 @@
 
         function setLanguage(lang) {
             if (lang === 'ar') {
-                arBtn.style.background = 'rgba(255,215,0,0.12)';
-                arBtn.style.color = '#ffd700';
-                arBtn.style.borderColor = '#ffd700';
-                enBtn.style.background = 'transparent';
-                enBtn.style.color = '#888';
-                enBtn.style.borderColor = '#444';
-                document.documentElement.dir = 'rtl';
-                document.documentElement.lang = 'ar';
+                arBtn.style.background = 'rgba(255,215,0,0.12)'; arBtn.style.color = '#ffd700'; arBtn.style.borderColor = '#ffd700';
+                enBtn.style.background = 'transparent'; enBtn.style.color = '#888'; enBtn.style.borderColor = '#444';
+                document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar';
                 isArabic = true;
                 localStorage.setItem('jabri_lang', 'ar');
             } else {
-                enBtn.style.background = 'rgba(255,215,0,0.12)';
-                enBtn.style.color = '#ffd700';
-                enBtn.style.borderColor = '#ffd700';
-                arBtn.style.background = 'transparent';
-                arBtn.style.color = '#888';
-                arBtn.style.borderColor = '#444';
-                document.documentElement.dir = 'ltr';
-                document.documentElement.lang = 'en';
+                enBtn.style.background = 'rgba(255,215,0,0.12)'; enBtn.style.color = '#ffd700'; enBtn.style.borderColor = '#ffd700';
+                arBtn.style.background = 'transparent'; arBtn.style.color = '#888'; arBtn.style.borderColor = '#444';
+                document.documentElement.dir = 'ltr'; document.documentElement.lang = 'en';
                 isArabic = false;
                 localStorage.setItem('jabri_lang', 'en');
             }
@@ -296,36 +187,26 @@
     }
 
     // ============================================================
-    //   🍔 القائمة المنسدلة (الزر Inline كما في v4)
+    //   🍔 القائمة المنسدلة
     // ============================================================
     function buildHamburgerMenu() {
-        // ─── زر الهامبرغر: نمط Inline مع !important ───
+        if (document.getElementById('hamburger-menu')) return;
+
         const menuContainer = document.createElement('div');
         menuContainer.id = 'hamburger-menu';
         menuContainer.style.cssText = `
-            position: fixed !important;
-            top: 12px !important;
-            right: 12px !important;
-            z-index: 2147483647 !important;
-            cursor: pointer !important;
+            position: fixed !important; top: 12px !important; right: 12px !important;
+            z-index: 2147483647 !important; cursor: pointer !important;
             background: linear-gradient(135deg, #ffd700, #f0a500) !important;
-            color: #0a0a0f !important;
-            padding: 8px 14px !important;
-            border-radius: 10px !important;
-            font-size: 13px !important;
-            font-weight: bold !important;
+            color: #0a0a0f !important; padding: 8px 14px !important; border-radius: 10px !important;
+            font-size: 13px !important; font-weight: bold !important;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
             transition: transform .2s cubic-bezier(.4,0,.2,1), box-shadow .2s !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
+            display: inline-flex !important; align-items: center !important; gap: 6px !important;
             border: 1px solid rgba(255, 215, 0, 0.2) !important;
             font-family: 'Cairo', 'Tahoma', sans-serif !important;
-            user-select: none !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            width: auto !important;
-            height: auto !important;
+            user-select: none !important; visibility: visible !important; opacity: 1 !important;
+            width: auto !important; height: auto !important;
         `;
 
         menuContainer.innerHTML = `
@@ -337,13 +218,11 @@
             <span style="font-size:12px;color:#0a0a0f;font-weight:bold;">${isArabic ? 'القائمة' : 'Menu'}</span>
         `;
 
-        // ─── القائمة المنسدلة ───
         const dropdown = document.createElement('div');
         dropdown.id = 'menu-dropdown';
         dropdown.className = isArabic ? 'rtl' : 'ltr';
         dropdown.style.direction = isArabic ? 'rtl' : 'ltr';
 
-        // بناء المحتوى
         let dropdownHTML = `
             <div style="display:flex; gap:8px; justify-content:center; padding-bottom:12px; border-bottom:2px solid rgba(255,215,0,0.12); margin-bottom:10px; flex-wrap:wrap;">
                 <a href="/" style="color:${isArabic ? '#ffd700' : '#888'}; padding:4px 14px; border:1px solid ${isArabic ? '#ffd700' : '#444'}; border-radius:8px; text-decoration:none; font-weight:bold; background:${isArabic ? 'rgba(255,215,0,0.12)' : 'transparent'}; transition:.3s; font-size:.85rem;">🇾🇪 عربي</a>
@@ -390,7 +269,6 @@
         document.body.appendChild(menuContainer);
         document.body.appendChild(dropdown);
 
-        // ─── التحكم في الفتح/الإغلاق (GPU-friendly) ───
         let isOpen = false;
         let closeTimer;
 
@@ -418,29 +296,31 @@
             }
         });
 
-        // إغلاق بـ Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && isOpen) closeMenu();
         });
     }
 
     // ============================================================
-    //   🚀 التهيئة النهائية
+    //   🚀 التهيئة النهائية (v5.1)
     // ============================================================
     function init() {
         injectStyles();
-        buildMainMenu();
-        initMusic();
-        initVisitorCounter();
-        initLanguageSwitcher();
-        buildHamburgerMenu();
 
-        console.log('%c🌴 menu.js v5.0.1 — الزر Inline مضمون',
-                    'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 8px;border-radius:4px');
-        console.log('📅 10 أكتوبر 2026');
-        console.log('📜 Zx = Z + C + A | Z + C + A = 1');
-        console.log('🧮 Z(x) = x^5 ln(x) sin(2π/x) exp(-x/xp)');
-        console.log('🇾🇪 اليمن - صنعاء');
+        // انتظر الهيدر — المدير يناديك بعد الهيدر
+        if (!document.querySelector('#main-menu')) {
+            document.addEventListener('headerLoaded', () => {
+                buildMainMenu();
+                buildHamburgerMenu();
+                initLanguageSwitcher(); // تفعيل تبديل اللغة بعد بناء القائمة
+            }, { once: true });
+            return;
+        }
+
+        // إذا كان الهيدر جاهزاً مسبقاً (لأن المدير انتظر تحميله)
+        buildMainMenu();
+        buildHamburgerMenu();
+        initLanguageSwitcher();
     }
 
     if (document.readyState === 'loading') {
@@ -449,18 +329,19 @@
         init();
     }
 
+    console.log('%c🌴 menu.js v5.1 (المرعبة الخفيفة) جاهز',
+                'color:#ffd700;font-weight:700;background:#0d1117;padding:2px 8px;border-radius:4px');
+
 })();
 
 
 // ============================================================
-//   ⚡ Prefetch ذكي — نسخة v2 محسّنة
-//   ✅ pointerover (يشتغل mouse+touch+pen)
-//   ✅ throttle 80ms
-//   ✅ نفس الأصل فقط
-//   ✅ يستبعد الوسائط والأرشيف
-//   ✅ سقف 30 رابط
+//   ⚡ Prefetch ذكي — نسخة v2 محسّنة (محمي من التكرار)
 // ============================================================
 (function prefetchLinks() {
+    if (window.__jabriPrefetchLoaded) return;
+    window.__jabriPrefetchLoaded = true;
+
     const seen = new Set();
     let lastRun = 0;
     let lastTarget = null;
@@ -482,7 +363,7 @@
 
     function handler(e) {
         const now = performance.now();
-        if (now - lastRun < 80) return;    // throttle
+        if (now - lastRun < 80) return;
         lastRun = now;
 
         const a = e.target.closest('a[href]');

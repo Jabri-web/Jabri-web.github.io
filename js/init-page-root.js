@@ -1,18 +1,22 @@
 // ================================================================
 // 🛡️ init-page-root.js
-// Version: 8.3.6 — "لا تجمد الأزرار"
-// Build:   2026-10-16
-// FIXES:
-//   1. injectBarFix — إزالة pointer-events:none
-//   2. createSplash — 1500ms بدل 4000ms
-//   3. HOURLY_AUDIO.arm — capture:false + 300ms delay
-//   4. أزرار Page11 العلوية (top:80px, z:10005)
+// Version: 8.4.1 — "المدير الواحد" (The Master Loader) + diag.js
+// Build:   2026-10-17
+// IDEA:    Single Entry Point — Z + C + A = 1
 // ================================================================
 (function() {
   'use strict';
-  const VERSION    = '8.3.6';
-  const BUILD_DATE = '2026-10-16';
+  const VERSION    = '8.4.1';
+  const BUILD_DATE = '2026-10-17';
   const BASE_URL   = 'https://jabri-com.vercel.app';
+
+  // 🚀 قائمة "المرعبة" التي سيديرها هذا الملف
+  const CORE_SCRIPTS = [
+    '/js/config.js',      // 1. المرعبة: إصلاح المسارات المطلقة (image, publish, game)
+    '/js/file.js'         // 2. فهرس الملفات
+    // ملاحظة: menu.js تأجل إلى ما بعد تحميل الهيدر
+    // ملاحظة: diag.js يتم استدعاؤه شرطياً في دالة init()
+  ];
 
   const DEFAULT_CONFIG = {
     splash:true, header:true, footer:true, detect404:true,
@@ -34,15 +38,35 @@
   }
 
   // ============================================================
-  // ✅ fileExists — HEAD ثم GET Range
+  // 🧠 نظام تحميل السكربتات الذكي (Dynamic Script Loader)
+  // ============================================================
+  function loadScript(src) {
+    return new Promise(resolve => {
+      if (document.querySelector(`script[src^="${src}"]`)) return resolve();
+      
+      const s = document.createElement('script');
+      s.src = withVersion(src);
+      s.defer = true;
+      s.onload = () => {
+        console.log(`📦 محمّل: ${src}`);
+        resolve();
+      };
+      s.onerror = () => {
+        console.warn(`⚠️ فشل تحميل: ${src}`);
+        resolve();
+      };
+      document.head.appendChild(s);
+    });
+  }
+
+  // ============================================================
+  // ✅ fileExists
   // ============================================================
   async function fileExists(url){
     try{
       const c = new AbortController();
       const tid = setTimeout(() => c.abort(), 1500);
-      const res = await fetch(url, {
-        method:'HEAD', cache:'no-store', signal:c.signal, redirect:'manual'
-      });
+      const res = await fetch(url, { method:'HEAD', cache:'no-store', signal:c.signal, redirect:'manual' });
       clearTimeout(tid);
       if(res.status === 200 || res.status === 206) return true;
       if(res.status === 404) return false;
@@ -50,16 +74,12 @@
     try{
       const c = new AbortController();
       const tid = setTimeout(() => c.abort(), 2000);
-      const res = await fetch(url, {
-        method:'GET', headers:{ 'Range':'bytes=0-0' },
-        signal:c.signal, cache:'no-store', redirect:'manual'
-      });
+      const res = await fetch(url, { method:'GET', headers:{ 'Range':'bytes=0-0' }, signal:c.signal, cache:'no-store', redirect:'manual' });
       clearTimeout(tid); c.abort();
       return res.ok || res.status === 206 || res.status === 0;
     }catch(e){ return false; }
   }
 
-  // 📂 قائمة الملفات
   const FILE_LIST = { files:new Set(), loaded:false, loading:null, lowerMap:new Map() };
 
   async function loadFileList(){
@@ -68,8 +88,8 @@
     FILE_LIST.loading = (async () => {
       try{
         try{
-          const cached     = localStorage.getItem('jabri_filelist_v836');
-          const cachedTime = parseInt(localStorage.getItem('jabri_filelist_time_v836') || '0', 10);
+          const cached     = localStorage.getItem('jabri_filelist_v841');
+          const cachedTime = parseInt(localStorage.getItem('jabri_filelist_time_v841') || '0', 10);
           if(cached && (Date.now() - cachedTime < CONFIG.fileListTTL)){
             JSON.parse(cached).forEach(p => {
               const full = p.startsWith('/') ? p : '/' + p;
@@ -105,8 +125,8 @@
         });
 
         try{
-          localStorage.setItem('jabri_filelist_v836', JSON.stringify([...FILE_LIST.files]));
-          localStorage.setItem('jabri_filelist_time_v836', String(Date.now()));
+          localStorage.setItem('jabri_filelist_v841', JSON.stringify([...FILE_LIST.files]));
+          localStorage.setItem('jabri_filelist_time_v841', String(Date.now()));
         }catch(e){}
 
         FILE_LIST.loaded = true;
@@ -150,7 +170,6 @@
     return null;
   }
 
-  // ✅ autoFixLinks — لا يكسر /api/ /image/ /hadrami ولا الوسائط
   function autoFixLinks(){
     if(!CONFIG.autoFixLinks) return;
     document.querySelectorAll('a[href]').forEach(a => {
@@ -188,10 +207,7 @@
       try{
         const c = new AbortController();
         const tid = setTimeout(() => c.abort(), 2000);
-        const res = await fetch(location.href, {
-          method:'GET', headers:{ 'Range':'bytes=0-0' },
-          signal:c.signal, cache:'no-store', redirect:'manual'
-        });
+        const res = await fetch(location.href, { method:'GET', headers:{ 'Range':'bytes=0-0' }, signal:c.signal, cache:'no-store', redirect:'manual' });
         clearTimeout(tid); c.abort();
         if(res.status === 404) is404 = true;
       }catch(e){}
@@ -199,15 +215,10 @@
     if(is404) await handle404Redirect();
   }
 
-  // ============================================================
-  // 🎨 injectBarFix v8.3.6 — بدون pointer-events:none
-  //    + رفع أزرار Page11 العلوية
-  // ============================================================
   function injectBarFix(){
     const style = document.createElement('style');
-    style.id = 'jabri-bar-fix-v836';
+    style.id = 'jabri-bar-fix-v841';
     style.textContent = `
-      /* ─── الهيدر ─── */
       #header-placeholder{
         position:fixed!important; top:0!important; left:0!important; right:0!important;
         height:68px!important; z-index:10001!important;
@@ -220,27 +231,16 @@
         background:transparent!important;
         display:flex!important; justify-content:space-between!important; align-items:center!important;
       }
-
-      /* ─── الجسم ─── */
       body{ padding-top:68px!important; }
-
-      /* ─── أزرار Page11 العلوية (كانت تحت الهيدر) ─── */
       .lang-btn, .music-btn-fixed, #visitorCounter{
-        top: 80px!important;
-        z-index: 10005!important;
+        top: 80px!important; z-index: 10005!important;
       }
       @media (max-width:600px){
         .lang-btn, .music-btn-fixed, #visitorCounter{ top: 76px!important; }
       }
-
-      /* ─── عناصر المحتوى ─── */
       .brand-card, .btn-b{ position:relative!important; z-index:5!important; }
-
-      /* ─── الفوتر والشريط السفلي ─── */
       #site-footer{ z-index:2!important; padding-bottom:90px!important; }
       .bottom-bar{ z-index:10000!important; }
-
-      /* ─── السبلاش يختفي تماماً ─── */
       #splashScreen.hidden{ display:none!important; pointer-events:none!important; }
     `;
     document.head.appendChild(style);
@@ -256,14 +256,13 @@
     }
   }
 
-  // ✅ v8.3.6: 1500ms بدل 4000ms
   function createSplash(){
     if(!CONFIG.splash || !document.body || document.getElementById('splashScreen')) return;
     const html = `<div id="splashScreen"><div class="splash-title">واحة الجبري</div><div class="splash-sub">تراث اليمن العريق</div><div class="spinner"></div><div class="splash-version">v${VERSION}</div><style>#splashScreen{position:fixed;inset:0;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10003;transition:opacity .4s ease}#splashScreen.hidden{opacity:0;pointer-events:none}#splashScreen .splash-title{color:#6ae3ff;font-size:2.5rem;font-weight:900}.splash-sub{color:#888;font-size:1.1rem;margin-top:8px}.spinner{width:40px;height:40px;margin-top:30px;border:3px solid rgba(106,227,255,.1);border-top:3px solid #6ae3ff;border-radius:50%;animation:spin 1s linear infinite}.splash-version{position:absolute;bottom:20px;color:#444;font-size:12px}@keyframes spin{to{transform:rotate(360deg)}}</style></div>`;
     const div = document.createElement('div');
     div.innerHTML = html;
     document.body.prepend(div.firstElementChild);
-    setTimeout(hideSplash, CONFIG.autoHideSplashAfter); // 1500ms
+    setTimeout(hideSplash, CONFIG.autoHideSplashAfter);
   }
 
   function safelyExecuteScripts(container){
@@ -361,168 +360,116 @@
     location.href = CONFIG.allLinksPath;
   }
 
-  // ============================================================
-  // 🎵 HOURLY_AUDIO v8.3.6
-  //    capture:false + 300ms delay — لا يسرق أول ضغطة
-  // ============================================================
   const HOURLY_AUDIO = {
     files: [
-      '/image/jabri.mp4',
-      '/image/sindbad-brdoni.mp4',
-      '/image/zamel2.mp4',
-      '/image/heaven3.mp4',
-      '/image/zaml.mp4',
-      '/hadrami.mp3'
+      '/image/jabri.mp4', '/image/sindbad-brdoni.mp4', '/image/zamel2.mp4',
+      '/image/heaven3.mp4', '/image/zaml.mp4', '/hadrami.mp3'
     ],
-    mode: 'rotate',
-    sessionKey: 'jabri_audio_idx_v836',
-    played: false,
-    userDisabled: false,
-    currentEl: null,
-
+    mode: 'rotate', sessionKey: 'jabri_audio_idx_v841', played: false, userDisabled: false, currentEl: null,
     getFileForNow(){
-      if(this.mode === 'hourly'){
-        const h    = new Date().getHours();
-        const slot = Math.floor(h / 4);
-        return this.files[Math.min(slot, this.files.length - 1)];
-      }
-      if(this.mode === 'random'){
-        return this.files[Math.floor(Math.random() * this.files.length)];
-      }
+      if(this.mode === 'hourly'){ return this.files[Math.min(Math.floor(new Date().getHours() / 4), this.files.length - 1)]; }
+      if(this.mode === 'random'){ return this.files[Math.floor(Math.random() * this.files.length)]; }
       let idx = 0;
       try{
         const stored = sessionStorage.getItem(this.sessionKey);
-        if(stored !== null){
-          idx = (parseInt(stored, 10) + 1) % this.files.length;
-        }
+        if(stored !== null){ idx = (parseInt(stored, 10) + 1) % this.files.length; }
         sessionStorage.setItem(this.sessionKey, String(idx));
-      }catch(e){
-        idx = Math.floor(Math.random() * this.files.length);
-      }
+      }catch(e){ idx = Math.floor(Math.random() * this.files.length); }
       return this.files[idx];
     },
-
     play(file){
-      if(this.played || !file) return;
-      if(this.userDisabled) return;
-      if(!CONFIG.music) return;
-      try{
-        if(localStorage.getItem('jabri_sound_off') === '1'){
-          this.userDisabled = true;
-          return;
-        }
-      }catch(e){}
+      if(this.played || !file || this.userDisabled || !CONFIG.music) return;
+      try{ if(localStorage.getItem('jabri_sound_off') === '1'){ this.userDisabled = true; return; } }catch(e){}
       this.played = true;
       try{
         const isVideo = /\.mp4$/i.test(file);
         const el = document.createElement(isVideo ? 'video' : 'audio');
-        el.src      = withVersion(file);
-        el.preload  = 'auto';
-        el.autoplay = true;
-        el.volume   = 0.7;
-        el.muted    = false;
-        el.setAttribute('playsinline', '');
-        el.setAttribute('webkit-playsinline', '');
-        Object.assign(el.style, {
-          position:'fixed', left:'-9999px', top:'-9999px',
-          width:'1px', height:'1px', opacity:'0', pointerEvents:'none'
-        });
+        el.src = withVersion(file); el.preload = 'auto'; el.autoplay = true; el.volume = 0.7; el.muted = false;
+        el.setAttribute('playsinline', ''); el.setAttribute('webkit-playsinline', '');
+        Object.assign(el.style, { position:'fixed', left:'-9999px', top:'-9999px', width:'1px', height:'1px', opacity:'0', pointerEvents:'none' });
         document.body.appendChild(el);
         this.currentEl = el;
         const p = el.play();
-        if(p && typeof p.catch === 'function'){
-          p.catch(err => console.warn('🎵 المتصفح منع التشغيل:', err));
-        }
-        el.addEventListener('ended', () => {
-          try{ el.remove(); }catch(e){}
-          this.currentEl = null;
-        }, { once:true });
+        if(p && typeof p.catch === 'function'){ p.catch(err => console.warn('🎵 المتصفح منع التشغيل:', err)); }
+        el.addEventListener('ended', () => { try{ el.remove(); }catch(e){} this.currentEl = null; }, { once:true });
         console.log('🎵 تشغيل [' + this.mode + ']:', file);
       }catch(e){ console.warn('🎵 خطأ:', e); }
     },
-
-    // ✅ v8.3.6: capture:false + delay 300ms — لا يسرق أول ضغطة
     arm(){
       const events = ['click', 'touchstart'];
       const handler = () => {
-        // لا تشغّل بنفس لحظة الضغطة — انتظر 300ms
         setTimeout(() => this.play(this.getFileForNow()), 300);
         events.forEach(ev => window.removeEventListener(ev, handler, false));
       };
-      events.forEach(ev => {
-        window.addEventListener(ev, handler, { capture:false, passive:true });
-      });
-      console.log(`🎵 HOURLY_AUDIO v836 — ${this.mode} — بانتظار تفاعل`);
+      events.forEach(ev => window.addEventListener(ev, handler, { capture:false, passive:true }));
+      console.log(`🎵 HOURLY_AUDIO v841 — ${this.mode} — بانتظار تفاعل`);
     },
-
-    stop(){
-      if(this.currentEl){ try{ this.currentEl.pause(); this.currentEl.remove(); }catch(e){} }
-      this.currentEl    = null;
-      this.played       = true;
-      this.userDisabled = true;
-      try{ localStorage.setItem('jabri_sound_off', '1'); }catch(e){}
-    },
-    enable(){
-      try{ localStorage.removeItem('jabri_sound_off'); }catch(e){}
-      this.played       = false;
-      this.userDisabled = false;
-      this.arm();
-    },
-    resetRotation(){
-      try{ sessionStorage.removeItem(this.sessionKey); }catch(e){}
-      console.log('🔄 تم إعادة تعيين الدور');
-    }
+    stop(){ if(this.currentEl){ try{ this.currentEl.pause(); this.currentEl.remove(); }catch(e){} } this.currentEl = null; this.played = true; this.userDisabled = true; try{ localStorage.setItem('jabri_sound_off', '1'); }catch(e){} },
+    enable(){ try{ localStorage.removeItem('jabri_sound_off'); }catch(e){} this.played = false; this.userDisabled = false; this.arm(); },
+    resetRotation(){ try{ sessionStorage.removeItem(this.sessionKey); }catch(e){} console.log('🔄 تم إعادة تعيين الدور'); }
   };
 
   // ============================================================
-  // 🚀 init
+  // 🚀 init — المدير الواحد
   // ============================================================
-  function init(){
-    loadFileList();
+  async function init(){
+    // 1. تشغيل الأساسيات فوراً
     createSplash();
     injectBarFix();
     
+    // 2. تحميل "المرعبة" الأساسية (config.js + file.js)
+    for (const script of CORE_SCRIPTS) {
+      await loadScript(script);
+    }
+
+    // 3. تحميل أداة التشخيص شرطياً (قبل تحميل الهيدر لاصطياد طلباته)
+    const isHomePage = location.pathname === '/' || location.pathname.endsWith('/index.html') || location.pathname.endsWith('/index');
+    let isDiagEnabled = false;
+    try { isDiagEnabled = localStorage.getItem('jabri_diag_on') === '1'; } catch(e) {}
+    const hasDiagParam = new URLSearchParams(location.search).has('diag');
     
-    // ============================================================
-// 🌐 الاستدعاء التلقائي لملف config.js (مرة واحدة فقط)
-// ============================================================
-(function loadConfigJS() {
-  if (document.getElementById('jabri-config-js')) return; // منع التكرار
-  const script = document.createElement('script');
-  script.id = 'jabri-config-js';
-  script.src = '/js/config.js?v=' + VERSION; // ربطه بنسخة init-page-root لتفادي الكاش
-  script.defer = true;
-  document.head.appendChild(script);
-})();
-    
-    
-    
+    if (isHomePage && (hasDiagParam || isDiagEnabled)) {
+      await loadScript('/js/diag.js');
+    }
+
+    // 4. تحميل الهيدر (يجب أن يسبق menu.js)
+    if(CONFIG.header) {
+      await loadPartial('header-placeholder', '/header.html', 'headerLoaded', true);
+    }
+
+    // 5. تحميل القائمة (بعد أن أصبح الهيدر جاهزاً في الـ DOM)
+    await loadScript('/js/menu.js');
+
+    // 6. تحميل الفوتر
+    if(CONFIG.footer) {
+      await loadPartial('footer-placeholder', '/footer.html', 'footerLoaded', false);
+    }
+
+    // 7. باقي العمليات
     if(CONFIG.music) HOURLY_AUDIO.arm();
-    if(CONFIG.header) loadPartial('header-placeholder', '/header.html', 'headerLoaded', true);
-    if(CONFIG.footer) loadPartial('footer-placeholder', '/footer.html', 'footerLoaded', false);
     if(CONFIG.autoFixLinks) autoFixLinks();
     setTimeout(() => detect404(), 800);
+    
     window.addEventListener('load', () => setTimeout(hideSplash, 800));
-    // إخفاء السبلاش عند أول ضغطة
     document.addEventListener('click', () => { if(!splashHidden) hideSplash(); }, { once:true });
     document.addEventListener('touchstart', () => { if(!splashHidden) hideSplash(); }, { once:true });
+    
+    // تحميل قائمة الملفات في الخلفية
+    loadFileList();
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 
   window.Jabri = {
-    version: VERSION,
-    buildDate: BUILD_DATE,
-    config: CONFIG,
-    fileExists, resolveFileSmart, generateVariants,
-    handle404Redirect, loadPartial, loadFileList, fileInList,
-    hideSplash, autoFixLinks, FILE_LIST, toggleLang,
-    HOURLY_AUDIO
+    version: VERSION, buildDate: BUILD_DATE, config: CONFIG,
+    fileExists, resolveFileSmart, generateVariants, handle404Redirect, 
+    loadPartial, loadFileList, fileInList, hideSplash, autoFixLinks, 
+    FILE_LIST, toggleLang, HOURLY_AUDIO
   };
   window.toggleLang     = toggleLang;
   window.switchLanguage = toggleLang;
   window.toggleLanguage = toggleLang;
 
-  console.log(`✅ v${VERSION} جاهز — ${BUILD_DATE}`);
+  console.log(`✅ v${VERSION} — "المدير الواحد" + diag جاهز — ${BUILD_DATE}`);
 })();
