@@ -481,6 +481,22 @@
     loadFileList();
     createSplash();
     injectBarFix();
+    
+    
+    // ============================================================
+// 🌐 الاستدعاء التلقائي لملف config.js (مرة واحدة فقط)
+// ============================================================
+(function loadConfigJS() {
+  if (document.getElementById('jabri-config-js')) return; // منع التكرار
+  const script = document.createElement('script');
+  script.id = 'jabri-config-js';
+  script.src = '/js/config.js?v=' + VERSION; // ربطه بنسخة init-page-root لتفادي الكاش
+  script.defer = true;
+  document.head.appendChild(script);
+})();
+    
+    
+    
     if(CONFIG.music) HOURLY_AUDIO.arm();
     if(CONFIG.header) loadPartial('header-placeholder', '/header.html', 'headerLoaded', true);
     if(CONFIG.footer) loadPartial('footer-placeholder', '/footer.html', 'footerLoaded', false);
