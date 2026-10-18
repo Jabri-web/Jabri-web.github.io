@@ -16,7 +16,9 @@
   <meta name="bingbot" content="index, follow" />
   <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
   
-  <!-- ② الملكية -->
+  <!-- ═══════════════════════════════════════════════════════
+         ② الملكية
+         ═══════════════════════════════════════════════════════ -->
   <meta property="og:site_name" content="واحة الجبري">
   <meta name="application-name" content="واحة الجبري">
   <meta name="apple-mobile-web-app-title" content="واحة الجبري">
@@ -31,7 +33,9 @@
   <meta name="origin" content="صنعاء، اليمن">
   <meta name="copyright" content="© 2026 م/ عبدالله محمد ناصر الجبري — جميع الحقوق محفوظة">
   
-  <!-- ③ SEO -->
+  <!-- ═══════════════════════════════════════════════════════
+         ③ SEO — أساسي
+         ═══════════════════════════════════════════════════════ -->
   <title>واحة الجبري - البوابة الرئيسية | Heaven Al-Jabri</title>
   <meta name="description" content="بوابة واحة الجبري - تراث اليمن العريق | Heaven Al-Jabri - Yemen Heritage Portal" />
   <meta name="keywords" content="واحة الجبري, Heaven Al-Jabri, تراث اليمن, صنعاء, شبام, سقطرى, عبدالله الجبري, Z(x), نظرية السندباد" />
@@ -43,7 +47,9 @@
   <link rel="alternate" hreflang="en-US" href="https://jabri-com.vercel.app/en/" />
   <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/" />
 
-  <!-- ④ Open Graph -->
+  <!-- ═══════════════════════════════════════════════════════
+         ④ Open Graph — Facebook, LinkedIn, WhatsApp
+         ═══════════════════════════════════════════════════════ -->
   <meta property="og:locale" content="ar_YE" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="واحة الجبري - البوابة الرئيسية | Heaven Al-Jabri" />
@@ -53,32 +59,47 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="واحة الجبري — Heaven Al-Jabri" />
+
+  <!-- ═══════════════════════════════════════════════════════
+         ⑤ Twitter Card — مع site & creator (من قالب journal)
+         ═══════════════════════════════════════════════════════ -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@JabriAbdulla1" />
+  <meta name="twitter:creator" content="@JabriAbdulla1" />
   <meta name="twitter:title" content="واحة الجبري - البوابة الرئيسية | Heaven Al-Jabri" />
   <meta name="twitter:description" content="بوابة واحة الجبري - تراث اليمن العريق" />
   <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp" />
-  
-  <!-- ⑤ Google News -->
+
+  <!-- ═══════════════════════════════════════════════════════
+         ⑥ Google News + Article Meta (من قالب journal)
+         ═══════════════════════════════════════════════════════ -->
   <meta name="news_keywords" content="واحة الجبري, تراث اليمن, Z(x), نظرية السندباد, عبدالله الجبري" />
   <meta property="article:publisher" content="https://jabri-com.vercel.app/" />
   <meta property="article:author" content="https://jabri-com.vercel.app/Author-cv.html" />
   <meta property="article:published_time" content="2026-10-03T17:51:39.023Z" />
   <meta property="article:modified_time" content="2026-10-05T00:00:00+03:00" />
+  <meta property="article:section" content="علوم وتكنولوجيا" />
   
-  <!-- ⑥ الأيقونات -->
+  <!-- ═══════════════════════════════════════════════════════
+         ⑦ الأيقونات
+         ═══════════════════════════════════════════════════════ -->
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/image/Yemen2026.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/image/Yemen2026.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/image/Yemen2026.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   
-  <!-- ⑦ الخطوط -->
+  <!-- ═══════════════════════════════════════════════════════
+         ⑧ الخطوط
+         ═══════════════════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   
-  <!-- ⑧ Schema.org — ثابت -->
+  <!-- ═══════════════════════════════════════════════════════
+         ⑨ Schema.org — @graph موحد (قالب journal)
+         ═══════════════════════════════════════════════════════ -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -155,12 +176,24 @@
         "author": { "@id": "https://jabri-com.vercel.app/#jabri" },
         "editor": { "@id": "https://jabri-com.vercel.app/#jabri" },
         "copyrightHolder": { "@id": "https://jabri-com.vercel.app/#jabri" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://jabri-com.vercel.app/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "https://jabri-com.vercel.app/"
+          }
+        ]
       }]
     }
   </script>
 
   <!-- ═══════════════════════════════════════════════════════
-         ⑨ NewsArticle — عجلة Publisher Center (إضافة فقط)
+         ⑩ NewsArticle — عجلة Publisher Center
          ═══════════════════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
@@ -178,15 +211,51 @@
   }
   </script>
 
-    <!-- ⑩ الأنماط -->
+  <!-- ═══════════════════════════════════════════════════════
+         ⑪ FAQPage — من قالب journal (أسئلة شائعة)
+         ═══════════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://jabri-com.vercel.app/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما هي واحة الجبري؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "واحة الجبري (Heaven Al-Jabri) هي منصة علمية وثقافية يمنية أسسها م/ عبدالله محمد ناصر الجبري، تهدف إلى توثيق تراث اليمن العريق (صنعاء، شبام، سقطرى) ونشر أبحاث الرياضيات والفيزياء النظرية، ومن أبرزها نظرية السندباد الموحدة (Z+C+A=1)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "من هو المهندس عبدالله الجبري؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "المهندس عبدالله محمد ناصر الجبري هو باحث يمني مستقل في الرياضيات والفيزياء النظرية، ومؤسس منصة واحة الجبري، ومبتكر نظرية السندباد الموحدة. خريج جامعة الملك فهد للبترول والمعادن (KFUPM)، ونشر أبحاثه عبر ORCID وZenodo وGitHub وResearchGate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي نظرية السندباد الموحدة Z+C+A=1؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نظرية السندباد الموحدة هي إطار رياضي وفيزيائي يربط بين بنية الكون والتراث والوعي عبر معادلة Z+C+A=1، وهي من ابتكار الباحث اليمني م/ عبدالله الجبري، منشورة وموثقة عبر منصات بحثية دولية."
+        }
+      }
+    ]
+  }
+  </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         ⑫ الأنماط
+         ═══════════════════════════════════════════════════════ -->
     <style>
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 
-        /* ═══════════════════════════════════════════════════════ */
-        /*  الخلفية الشفافة — يظهر فيديو heaven3.mp4 من header.html  */
-        /* ═══════════════════════════════════════════════════════ */
         body {
             background: transparent;
             color: #f5efe6;
@@ -196,7 +265,6 @@
             display: flex; flex-direction: column;
         }
 
-        /* طبقة تظليل داكنة شفافة فوق الفيديو لقراءة النص */
         body::before {
             content: '';
             position: fixed;
@@ -208,9 +276,6 @@
             transition: 0.4s ease;
         }
 
-        /* ═══════════════════════════════════════════ */
-        /*  الوضع النهاري — شفاف  */
-        /* ═══════════════════════════════════════════ */
         body.day { background: transparent; color: #1a1a1a; }
         body.day::before {
             background: linear-gradient(180deg, rgba(245,239,230,0.75) 0%, rgba(245,239,230,0.9) 100%);
@@ -227,9 +292,6 @@
         body.day .video-timer { background: rgba(245,239,230,0.8); color: #8a6d2b; }
         body.day .hero-badge { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.3); }
 
-        /* ═══════════════════════════════════════════ */
-        /*  الوضع الليلي — شفاف  */
-        /* ═══════════════════════════════════════════ */
         body.night { background: transparent; color: #f5efe6; }
         body.night .hero-title { color: #f5efe6; }
         body.night .hero-sub { color: #c9a84c; }
@@ -334,6 +396,7 @@
             border: 1px solid rgba(201,168,76,0.15);
             border-radius: 16px; padding: 18px 15px;
             text-align: center; transition: 0.4s; cursor: pointer;
+            position: relative;
         }
         .brand-card:hover {
             border-color: rgba(201,168,76,0.4);
@@ -352,6 +415,24 @@
         .brand-card:nth-child(2) .card-icon { color: #2d8f5c; }
         .brand-card:nth-child(3) .card-icon { color: #e8c96e; }
         .brand-card:nth-child(4) .card-icon { color: #ffd700; }
+
+        .brand-card .card-badge {
+            position: absolute;
+            top: -8px; left: -8px;
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0f0d;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 3px 10px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(255,215,0,0.4);
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
 
         .bottom-bar {
             position: fixed; bottom: 15px; left: 50%;
@@ -416,11 +497,6 @@
             .brand-card .card-name { font-size: 12px; }
         }
         
-        
-        
-        /* ═══════════════════════════════════════════════════════ */
-        /*  درع البار العلوي — شفاف يسمح برؤية الفيديو  */
-        /* ═══════════════════════════════════════════════════════ */
         #header-placeholder{
             position: fixed !important;
             top: 0; left: 0; right: 0;
@@ -433,7 +509,7 @@
             width: 100% !important;
             height: 68px !important;
             z-index: 2147483647 !important;
-            background: rgba(10,10,15,0.35) !important;  /* ⬅️ شفاف بدل 0.92 */
+            background: rgba(10,10,15,0.35) !important;
             backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255,215,0,0.15);
             display: flex !important;
@@ -447,10 +523,8 @@
 </head>
 <body class="night device-desktop">
 
-    <!-- ========= الهيدر عبر placeholder ========= -->
     <div id="header-placeholder"></div>
 
-    <!-- ========= المحتوى الرئيسي ========= -->
     <main class="main-content">
         <section class="hero-section">
             <div class="hero-badge">
@@ -490,32 +564,63 @@
         <div class="brand-grid">
             <div class="brand-card" data-page="/Page11.html">
                 <div class="card-icon"><i class="fas fa-crown"></i></div>
-                <div class="card-name">واحة الجبري</div>
+                <div class="card-name">واحة الجبري11</div>
                 <div class="card-sub">تراث اليمن العريق</div>
                 <div class="card-formula">[Z + C + A] = 1</div>
             </div>
+
+            <div class="brand-card" data-page="/Page12.html">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <div class="card-name">واحة الجبري12</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+
+            <div class="brand-card" data-page="/Page10.html">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <div class="card-name">واحة الجبري10</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+
+            <div class="brand-card" data-page="/Page4.html">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <div class="card-name">واحة الجبري4</div>
+                <div class="card-sub">تراث اليمن العريق</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
+
             <div class="brand-card" data-page="/about-waha.html">
                 <div class="card-icon"><i class="fas fa-tree"></i></div>
                 <div class="card-name">About Waha</div>
                 <div class="card-sub">تراث اليمن العريق</div>
                 <div class="card-formula">[Z + C + A] = 1</div>
             </div>
-            <div class="brand-card" data-page="/dashboard.html">
+
+            <div class="brand-card" data-page="/tree/tree2.html">
                 <div class="card-icon"><i class="fas fa-landmark"></i></div>
-                <div class="card-name">لوحة التحكم</div>
+                <div class="card-name">شجرة التوحيد</div>
                 <div class="card-sub">تراث اليمن العربي</div>
                 <div class="card-formula">[Z + C + A] = 1</div>
             </div>
+
             <div class="brand-card" data-page="/catalog.html">
                 <div class="card-icon"><i class="fas fa-unity"></i></div>
                 <div class="card-name">الكاتلوج</div>
                 <div class="card-sub">تراث اليمن العربي</div>
                 <div class="card-formula">[Z + C + A] = 1</div>
             </div>
+
+            <div class="brand-card" data-page="/journal.html">
+                <span class="card-badge">NEW</span>
+                <div class="card-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="card-name">المجلة</div>
+                <div class="card-sub">مقالات وأبحاث</div>
+                <div class="card-formula">[Z + C + A] = 1</div>
+            </div>
         </div>
     </main>
 
-    <!-- ========= الشريط السفلي ========= -->
     <nav class="bottom-bar" aria-label="روابط سريعة">
         <a class="btn-b" data-action="chat">
             <i class="fas fa-comment-dots"></i>
@@ -544,13 +649,10 @@
         </a>
     </nav>
 
-    <!-- ========= مؤشر الفيديو ========= -->
     <div class="video-timer">
         <span id="timeDisplay">00:00 / 00:45</span>
         <div class="progress"><div class="fill" id="progressFill"></div></div>
     </div>
-
-
 
     <script>
     (function () {
@@ -620,7 +722,7 @@
             });
 
             video.play().catch(function () {});
-        });
+        }, 10000);
 
         document.addEventListener('DOMContentLoaded', function () {
             var t = localStorage.getItem('theme') || 'night';
@@ -629,7 +731,7 @@
             document.body.classList.add(t, 'device-' + d);
         });
 
-        console.log('🌴 واحة الجبري v6.3 — الرئيسية الشفافة');
+        console.log('🌴 واحة الجبري v6.5 — الرئيسية + SEO Template');
     })();
     </script>
 
@@ -643,61 +745,35 @@
     }
     </script>
 
-    <!-- ========= الفوتر عبر placeholder ========= -->
     <div id="footer-placeholder"></div>
-    
-<script src="/js/file.js" defer></script>
-<script src="/js/menu.js" defer></script>
+
 <script src="/js/init-page-root.js" defer></script>
-
-
-
-
-
-
-
-
-
-
 
 <script>
     (function() {
         'use strict';
-        
-        // ═══════════════════════════════════════════
-        //  تفعيل صوت الفيديو عند أول تفاعل من الزائر
-        // ═══════════════════════════════════════════
         var activated = false;
-        
+
         function activateSound() {
             if (activated) return;
-            activated = true;
-            
             var video = document.getElementById('bgVideo');
             if (!video) return;
-            
-            // فتح الصوت وتشغيل الفيديو
+            activated = true;
             video.muted = false;
-            video.volume = 0.4; // ⬅️ مستوى الصوت (0.0 إلى 1.0)
+            video.volume = 0.4;
             video.play().catch(function() {});
-            
-            // تحديث زر الصوت إن وُجد
             var btn = document.getElementById('soundBtn');
             if (btn) btn.innerHTML = '🔇 كتم صوت الخلفية';
-            
-            // إزالة المستمعين بعد التفعيل
             document.removeEventListener('click', activateSound);
             document.removeEventListener('touchstart', activateSound);
             document.removeEventListener('scroll', activateSound);
             document.removeEventListener('keydown', activateSound);
         }
-        
-        // الاستماع لأول تفاعل من أي نوع
-        document.addEventListener('click', activateSound, { once: true });
-        document.addEventListener('touchstart', activateSound, { once: true });
-        document.addEventListener('scroll', activateSound, { once: true });
-        document.addEventListener('keydown', activateSound, { once: true });
-        
+
+        document.addEventListener('click', activateSound, { passive: true });
+        document.addEventListener('touchstart', activateSound, { passive: true });
+        document.addEventListener('scroll', activateSound, { passive: true });
+        document.addEventListener('keydown', activateSound);
     })();
 </script>
 </body>

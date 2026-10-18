@@ -1,3 +1,245 @@
+<!--
+╔══════════════════════════════════════════════════════════════════════╗
+║  🏝️  404.html — "Self-Sufficient 404"                                ║
+║  Version: 9.0.0                                                      ║
+║  Build:   2026-10-18                                                 ║
+║  IDEA:    Z + C + A = 1 — كل الحلول داخل ملف واحد                    ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+📋 ماذا تفعل هذه الصفحة (كل الوظائف):
+════════════════════════════════════════════════════════════════════════
+
+🎯 1) DUAL-MODE — وضعان في ملف واحد
+   • Standalone Mode:
+       يعمل بمفرده عند فتحه مباشرة (/404.html)
+       أو عندما يفشل init-page-root في التحميل
+       → يستخدم كل منطقه الداخلي (لا اعتماد خارجي)
+
+   • Delegated Mode:
+       عندما يكتشف window.Jabri أو __JABRI_ROOT__
+       → يخفي نفسه ويترك init-page-root يتولى المهمة
+       → يمنع ازدواج العمل
+
+🔗 2) FROM-PARAM (استقبال المسار الأصلي)
+   • يقرأ ?from=/path من init-page-root
+   • أو sessionStorage['jabri404From']
+   • أو location.pathname (احتياطي)
+   • يعرض المسار الحقيقي في REQUESTED PATH
+   → يحل مشكلة "location.pathname دائمًا /404.html"
+
+🛡️ 3) LOOP GUARD (حماية من الحلقات اللانهائية)
+   • عداد في sessionStorage['jabri404Count']
+   • بعد 3 محاولات → تحويل قسري إلى /all-links.html
+   • يصفّر العداد عند النجاح
+   → يمنع: 404 → ملف محذوف → 404 → ملف محذوف ...
+
+📂 4) FILE LIST LOADER (فهرس الملفات)
+   • يجلب /file-all4.txt (بكسر كاش: ?v=timestamp)
+   • ينظّف السطور:
+       - يحذف: ⛔ ... ⭐ # تعليقات
+       - يحذف: أرقام البداية (1. 2. 3.)
+       - يحذف: علامات تنصيص
+       - يستخرج: أول عمود فقط
+   • يستبعد: 404/dashboard/catalog/header/footer/hero/offline
+   • cache في localStorage (TTL: 5 دقائق)
+   • cache keys: jabri_404_filelist_v900
+   → أسرع + لا يعيد التحميل في كل مرة
+
+🔄 5) SMART FETCH (جلب ذكي مع إعادة محاولة)
+   • smartFetch(url, options, retries=3)
+   • retry عند فشل الشبكة (backoff: 800ms × attempt)
+   • لا يعيد المحاولة عند 404 (فشل نهائي)
+   • يحدّث __jabriNetStats (total/ok/err)
+   • يسجّل slow fetch (>5s) في السجل
+   → يعالج الشبكات المتقطعة
+
+🎯 6) RESOLVE FROM LIST (بحث بـ 6 مستويات)
+   كل مستوى يعيد أول تطابق:
+
+   L1: تطابق تام
+       /about.html → /about.html
+       /about → /about.html
+
+   L2: اسم الملف فقط (بدون مسار)
+       /any/dir/about → /about.html
+
+   L3: بادئة اللغة
+       /ar/about → /ar/about.html
+       /en/about → /en/about.html
+
+   L4: بحث في كل المسارات (filename)
+       /about → /pages/about.html
+
+   L5: AR/EN variants
+       /about → /about-ar.html, /about-en.html
+       /about_ar → /about.html, /about-ar.html
+       /about-ar → /about.html, /about-en.html
+
+   L6: Fuzzy match (≥4 أحرف)
+       /jabri → /jabri-projects.html (startsWith)
+       /jabri-projects → /jabri.html (reverse)
+
+   • يقفز الوسائط (mp3/mp4/png/…) → null مباشرة
+   → يجد أي ملف تقريبًا
+
+🔄 7) HANDLE 404 (المنطق الرئيسي)
+   الخطوات:
+     1. عرض fromPath + المسار الأصلي
+     2. إذا offline → انتظار (يعيد عند online)
+     3. تحميل الفهرس (loadFileList)
+     4. resolveFromList(fromPath)
+     5. إعادة محاولة بدون .html
+     6. إعادة محاولة مع .html
+     7. نجاح → تحويل إلى resolved (location.href)
+     8. فشل → تحويل إلى /all-links.html
+
+   • عرض النتيجة في RESULT box (أخضر/أحمر)
+   • toast عند النجاح/الفشل
+   • تصفير عدّاد الحلقة عند النجاح
+
+📡 8) NETWORK TOASTS (إشعارات الشبكة)
+   • 🔴 "لا يوجد اتصال" عند التحميل offline
+   • 🔴 "انقطع الاتصال" عند حدث offline
+   • 🟢 "تم استعادة الاتصال" عند حدث online
+   • 🐢 "اتصال 2G" (navigator.connection)
+   • عند online → إعادة محاولة handle404Redirect تلقائيًا
+
+   5 ألوان: info/ok/warn/err/offline
+   • auto-dismiss بعد timeout (قابل للتحديد)
+   • توست "دائم" بـ duration=0 (يبقى حتى online)
+   → المستخدم يعرف لماذا الانتظار
+
+📊 9) STATS BAR (شريط الإحصائيات)
+   5 مؤشرات مباشرة:
+     • NET   — إجمالي طلبات الشبكة
+     • OK    — عدد النجاح
+     • ERR   — عدد الفشل
+     • CACHE — عدد الملفات في الفهرس
+     • MS    — الوقت منذ بدء الصفحة
+
+   • يتحدث كل ثانية (setInterval)
+   • عرض مباشر للأداء أثناء التشخيص
+
+📝 10) PROCESS LOG (سجل العمليات)
+    • عرض كل خطوة من handler مع prefix [1/4] [2/4] …
+    • ألوان: info/ok/warn/err/step
+    • حد أقصى 120 سطر (maxLogLines)
+    • auto-scroll لآخر سطر
+    • يسجل: LIST/NET/RESOLVE/LOOP/FROM/result
+    → تشخيص فوري بدون فتح DevTools
+
+👥 11) VISITOR COUNTER
+   • localStorage['jabriVisitorCount']
+   • قيمة أولية عشوائية (20-99) للزوار الأوائل
+   • زيادة +1 في كل زيارة
+   → إحساس بأن الموقع "حي"
+
+⏱️ 12) COUNTDOWN + AUTO-TRY
+   • يبدأ من 7 ثوانٍ
+   • يتناقص كل ثانية (عرض فقط)
+   • عند انتهاء العداد → لا يوقف handle404Redirect
+   • handle404Redirect يُشغَّل بعد autoTryAfter=600ms
+   • العداد للعرض فقط (معلوماتي)
+   → المستخدم يعرف أن هناك بحثًا جاريًا
+
+🚪 13) EXIT BUTTON (زر الخروج)
+   • window.close() (يعمل فقط لو فتحه script)
+   • history.back() (احتياطي)
+   • about:blank (احتياطي ثانٍ)
+   • / (احتياطي أخير)
+   4 مستويات من المحاولة
+   → لا يترك المستخدم عالقًا
+
+🧭 14) NAVIGATION BUTTONS (أزرار التنقل)
+   • 🗺️ خريطة   → /all-links.html
+   • 🏠 افتتاح   → /index.html
+   • 🏝️ الواحة   → /Page11.html
+   • 🚪 خروج     → exitPage()
+   4 وجهات فورية — المستخدم لا يحتاج انتظار البحث
+
+🎨 15) UI COMPONENTS (المكونات المرئية)
+   • Header: "404" كبير + رسالة ترحيب
+   • 3 صناديق معلومات:
+       - REQUESTED PATH (المسار الأصلي)
+       - TARGET PATH (المسار المحلول)
+       - RESULT (نتيجة البحث)
+   • Stats bar (5 مؤشرات)
+   • Network log (سجل حي)
+   • Visitor counter
+   • Loader (spinner متحرك)
+   • Countdown (7s)
+   • 4 أزرار تنقل
+   • Footer + version
+
+════════════════════════════════════════════════════════════════════════
+
+🔧 DEPENDENCIES (الاعتماديات):
+   • /file-all4.txt  — فهرس الملفات (المصدر الرئيسي)
+   • /all-links.html — fallback دائم
+   • /index.html     — الصفحة الرئيسية
+   • /Page11.html    — صفحة الواحة
+   • navigator.onLine / navigator.connection
+   • localStorage / sessionStorage
+
+⚙️ CONFIG (قابل للتعديل داخل السكربت):
+   • allLinksPath     = '/all-links.html'
+   • indexPath        = '/index.html'
+   • wahaPath         = '/Page11.html'
+   • autoTryAfter     = 600ms
+   • maxRetries       = 3
+   • retryDelay       = 800ms
+   • fileListTTL      = 5 دقائق
+   • maxLogLines      = 120
+   • excludedPattern  = /^(404|dashboard|catalog|header|footer|hero|offline)\.html$/i
+   • mediaExt         = /\.(mp3|mp4|png|…)$/i
+
+📊 COMPARISON: v8.3.8 → v9.0.0
+════════════════════════════════════════════════════════════════════════
+v8.3.8 (القديم):
+   ❌ location.pathname يعطي /404.html دائمًا
+   ❌ لا loop guard → infinite loop
+   ❌ fuzzy match بـ indexOf عشوائي
+   ❌ لا smartFetch (لا retry)
+   ❌ لا cache للفهرس
+   ❌ لا AR/EN variants كاملة
+   ❌ لا from-param
+
+v9.0.0 (هذه النسخة):
+   ✅ from-param + sessionStorage → المسار الأصلي محفوظ
+   ✅ loop guard (3 محاولات كحد أقصى)
+   ✅ fuzzy match آمن (startsWith فقط، ≥4 أحرف)
+   ✅ smartFetch مع retry × 3
+   ✅ cache للفهرس (TTL 5 دقائق)
+   ✅ AR/EN variants كاملة (_ar, -ar, _en, -en)
+   ✅ from-param من init-page-root
+   ✅ stats bar مباشر
+   ✅ network toasts مدمجة
+
+⚠️ ملاحظات مهمة:
+   • هذا الملف يعمل بشكل مستقل تمامًا
+   • لا يحتاج init-page-root ليعمل
+   • لكنه يتعاون معه إن وُجد (Delegated mode)
+   • إذا فتحته مباشرة (/404.html) — يعمل standalone
+   • إذا جاء من init-page-root (?from=) — يستخدم المسار
+   • أي تعديل في resolveFromList يؤثر على دقة البحث
+
+🔐 الأمان:
+   • URL-encoded ?from= → آمن من injection
+   • sessionStorage → لا يبقى بعد إغلاق التبويب
+   • لا eval / لا new Function
+   • لا innerHTML مع بيانات مستخدم
+
+📱 الاستجابة (Responsive):
+   • body: flex + min-height 100vh
+   • container: max-width 560px
+   • grid للأزرار: 1fr 1fr
+   • يعمل على الجوال (فقط لا يوجد media query)
+   • TODO: إضافة @media (max-width: 500px) لتحسين الجوال
+
+════════════════════════════════════════════════════════════════════════
+IDEA: Z + C + A = 1 — "كل شيء في مكانه"
+════════════════════════════════════════════════════════════════════════
+-->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -79,13 +321,29 @@
     .ov-btn-exit { background: linear-gradient(135deg, #ff6b6b, #e85555); color: #fff; }
     .footer { margin-top: 16px; font-size: 0.82rem; color: #b48b5a; }
     .version { margin-top: 6px; font-size: 11px; color: #444; font-family: monospace; }
+    .net-toast-container { position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 999998; display: flex; flex-direction: column; gap: 8px;
+      pointer-events: none; font-family: 'Cairo', sans-serif; direction: rtl; max-width: 90vw; }
+    .net-toast { padding: 12px 22px; border-radius: 30px; font-weight: 700;
+      font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      pointer-events: auto; display: flex; align-items: center; gap: 8px;
+      opacity: 0; transform: translateY(-20px);
+      transition: opacity .3s, transform .3s; }
+    .net-toast.show { opacity: 1; transform: translateY(0); }
+    .net-toast.info { background: linear-gradient(135deg,#6ae3ff,#3aa0c4); color: #0a0a0f; }
+    .net-toast.ok { background: linear-gradient(135deg,#06d6a0,#05b98a); color: #0a0a0f; }
+    .net-toast.warn { background: linear-gradient(135deg,#ffd166,#f0a500); color: #0a0a0f; }
+    .net-toast.err { background: linear-gradient(135deg,#ff6b6b,#e85555); color: #fff; }
+    .net-toast.offline { background: linear-gradient(135deg,#8b0000,#5c0000); color: #fff; }
   </style>
 </head>
 <body>
+  <div class="net-toast-container" id="netToasts"></div>
+
   <div class="container" id="jabri404Container">
     <h1>404</h1>
     <div class="sub">🏝️ عذرًا، هذا الدرب غير موجود</div>
-    <div class="box"><div class="box-label">🔍 CURRENT PATH</div><div class="box-value" id="ovCurrent">—</div></div>
+    <div class="box"><div class="box-label">🔍 REQUESTED PATH</div><div class="box-value" id="ovCurrent">—</div></div>
     <div class="box"><div class="box-label">➡️ TARGET PATH</div><div class="box-value" id="ovTarget">—</div></div>
     <div class="box"><div class="box-label">📊 RESULT</div><div class="box-value" id="ovResult">⏳ Initializing...</div></div>
     <div class="stats-bar">
@@ -95,7 +353,7 @@
       <div class="stat-item"><span class="stat-num" id="statCache">0</span><span class="stat-lbl">CACHE</span></div>
       <div class="stat-item"><span class="stat-num" id="statMs">0</span><span class="stat-lbl">MS</span></div>
     </div>
-    <div class="network-log" id="networkLog"><div class="network-log-title">🌐 PROCESS LOG — file-all4.txt v5.4</div></div>
+    <div class="network-log" id="networkLog"><div class="network-log-title">🌐 PROCESS LOG — v9.0.0 Full Brain</div></div>
     <div class="visitor-box">👥 عدد الزوار: <span id="visitorCount">1</span></div>
     <div class="loader"></div>
     <div class="ov-countdown" id="ovCountdown">⏱️ 7s</div>
@@ -106,21 +364,21 @@
       <button onclick="exitPage()" class="ov-btn ov-btn-exit">🚪 خروج</button>
     </div>
     <div class="footer">🏛️ من صنعاء إلى الكون 🇾🇪</div>
-    <div class="version">v8.3.8 — FIXED — file-all4.txt Beast</div>
+    <div class="version">v9.0.0 — Self-Sufficient 404</div>
   </div>
 
   <script>
     (function() {
       'use strict';
-      // ✅ إصلاح الثغرة 1: لا تستخدم sessionHandled للصفحة البيضاء
+      var on404 = /\/404\.html?$/i.test(location.pathname);
       var hasInitRoot = !!window.Jabri || !!window.__JABRI_ROOT__ || !!window.__JABRI_MOUNTED__;
-      if (hasInitRoot) {
+      if (hasInitRoot && !on404) {
         console.log('🛡️ [404.html] Yielding to init-page-root.js');
         document.getElementById('jabri404Container').style.display = 'none';
         window.__jabri404Delegated = true;
         return;
       }
-      console.log('🚀 [404.html] Standalone v8.3.8');
+      console.log('🚀 [404.html] Standalone v9.0.0 — Full Brain');
       window.__jabri404Standalone = true;
     })();
   </script>
@@ -130,150 +388,407 @@
       'use strict';
       if (window.__jabri404Delegated) return;
 
-      var CONFIG = { allLinksPath: '/all-links.html', autoTryAfter: 800, maxLogLines: 100 };
-      var VERSION = '8.3.8';
+      // ═══════════════════════════════════════════════════════
+      //  ⚙️ CONFIG
+      // ═══════════════════════════════════════════════════════
+      var CONFIG = {
+        allLinksPath: '/all-links.html',
+        indexPath: '/index.html',
+        wahaPath: '/Page11.html',
+        autoTryAfter: 600,
+        maxLogLines: 120,
+        maxRetries: 3,
+        retryDelay: 800,
+        fileListTTL: 5 * 60 * 1000,
+        fileListCacheKey: 'jabri_404_filelist_v900',
+        fileListCacheTimeKey: 'jabri_404_filelist_time_v900',
+        excludedPattern: /^(404|dashboard|dashboard-pro|catalog|header|footer|hero|offline)\.html$/i,
+        mediaExt: /\.(mp3|mp4|png|webp|jpg|jpeg|ico|pdf|csv|zip|js|css|json|svg|woff2?|ttf)$/i
+      };
+      var VERSION = '9.0.0';
+
+      // ═══════════════════════════════════════════════════════
+      //  📊 STATS
+      // ═══════════════════════════════════════════════════════
       window.__jabriNetStats = { total: 0, ok: 0, err: 0, cache: 0, startTime: performance.now() };
 
+      // ═══════════════════════════════════════════════════════
+      //  🔔 NETWORK TOASTS (داخل 404.html — مستقل)
+      // ═══════════════════════════════════════════════════════
+      var NET = {
+        container: document.getElementById('netToasts'),
+        timeout: 4000,
+        slowThreshold: 5000
+      };
+
+      function showToast(msg, type, duration) {
+        if (!NET.container) return;
+        type = type || 'info';
+        duration = duration === undefined ? NET.timeout : duration;
+        var t = document.createElement('div');
+        t.className = 'net-toast ' + type;
+        t.textContent = msg;
+        NET.container.appendChild(t);
+        requestAnimationFrame(function(){ t.classList.add('show'); });
+        if (duration > 0) {
+          setTimeout(function(){
+            t.classList.remove('show');
+            setTimeout(function(){ try{ t.remove(); }catch(e){} }, 300);
+          }, duration);
+        }
+        return t;
+      }
+
+      function initNetworkWatcher() {
+        if (!navigator.onLine) {
+          showToast('🔴 لا يوجد اتصال بالإنترنت', 'offline', 0);
+        }
+        window.addEventListener('online', function(){
+          console.log('🟢 [net] online');
+          showToast('🟢 تم استعادة الاتصال', 'ok', 3000);
+          if (!FILE_LIST) setTimeout(handle404Redirect, 500);
+        });
+        window.addEventListener('offline', function(){
+          console.log('🔴 [net] offline');
+          showToast('🔴 انقطع الاتصال بالإنترنت', 'offline', 0);
+        });
+
+        try {
+          var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+          if (conn && conn.effectiveType) {
+            if (conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g') {
+              showToast('🐢 اتصال ' + conn.effectiveType.toUpperCase() + ' — قد يكون التحميل بطيئاً', 'warn', 5000);
+            }
+          }
+        } catch(e) {}
+      }
+
+      // ═══════════════════════════════════════════════════════
+      //  🛠️ HELPERS
+      // ═══════════════════════════════════════════════════════
       function logStep(step, message, type) {
         var logEl = document.getElementById('networkLog');
         if (!logEl) return;
         var line = document.createElement('div');
-        line.className = 'log-line ' + (type||'info');
-        line.textContent = (step ? '['+step+'] ' : '') + message;
+        line.className = 'log-line ' + (type || 'info');
+        line.textContent = (step ? '[' + step + '] ' : '') + message;
         logEl.appendChild(line);
         while (logEl.children.length > CONFIG.maxLogLines + 1) logEl.removeChild(logEl.children[1]);
         logEl.scrollTop = logEl.scrollHeight;
       }
+
       function updateResult(text, cls) {
         var el = document.getElementById('ovResult');
         if (!el) return;
         el.textContent = text;
-        el.className = 'box-value ' + (cls||'');
+        el.className = 'box-value ' + (cls || '');
       }
+
       function updateStatsBar() {
         var s = window.__jabriNetStats;
         var ms = Math.round(performance.now() - s.startTime);
         var e;
-        if ((e=document.getElementById('statNet'))) e.textContent = s.total;
-        if ((e=document.getElementById('statOk'))) e.textContent = s.ok;
-        if ((e=document.getElementById('statErr'))) e.textContent = s.err;
-        if ((e=document.getElementById('statCache'))) e.textContent = s.cache;
-        if ((e=document.getElementById('statMs'))) e.textContent = ms;
+        if ((e = document.getElementById('statNet'))) e.textContent = s.total;
+        if ((e = document.getElementById('statOk'))) e.textContent = s.ok;
+        if ((e = document.getElementById('statErr'))) e.textContent = s.err;
+        if ((e = document.getElementById('statCache'))) e.textContent = s.cache;
+        if ((e = document.getElementById('statMs'))) e.textContent = ms;
       }
-      window.exitPage = function() {
-        try { window.close(); } catch(e){}
-        setTimeout(function(){ try { history.back(); } catch(e){} }, 200);
-        setTimeout(function(){ location.href='about:blank'; }, 600);
-        setTimeout(function(){ location.href='/'; }, 1200);
-      };
 
+      async function smartFetch(url, options, retries) {
+        retries = retries === undefined ? CONFIG.maxRetries : retries;
+        options = options || {};
+        var start = Date.now();
+        window.__jabriNetStats.total++;
+
+        for (var attempt = 1; attempt <= retries; attempt++) {
+          try {
+            var res = await fetch(url, options);
+            var dur = Date.now() - start;
+            if (dur > NET.slowThreshold) {
+              logStep('NET', '🐢 Slow: ' + url + ' (' + dur + 'ms)', 'warn');
+            }
+            if (res.ok) {
+              window.__jabriNetStats.ok++;
+              updateStatsBar();
+              return res;
+            }
+            if (res.status === 404) {
+              window.__jabriNetStats.err++;
+              updateStatsBar();
+              return res;
+            }
+            throw new Error('HTTP ' + res.status);
+          } catch (e) {
+            if (attempt === retries) {
+              window.__jabriNetStats.err++;
+              updateStatsBar();
+              throw e;
+            }
+            logStep('NET', '⚠️ Attempt ' + attempt + '/' + retries + ' failed: ' + e.message, 'warn');
+            if (!navigator.onLine) throw e;
+            await new Promise(function(r){ setTimeout(r, CONFIG.retryDelay * attempt); });
+          }
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════
+      //  📂 FILE LIST
+      // ═══════════════════════════════════════════════════════
       var FILE_LIST = null;
-      var EXCLUDED = /^(404|dashboard|dashboard-pro|catalog|header|footer|hero|offline)\.html$/i;
+      var FILE_LIST_MAP = {};
 
       async function loadFileList() {
         if (FILE_LIST) return FILE_LIST;
+
         try {
-          logStep('LIST', 'Loading file-all4.txt v5.4...', 'step');
-          var res = await fetch('/file-all4.txt?v='+Date.now(), {cache:'no-store'});
+          var cached = localStorage.getItem(CONFIG.fileListCacheKey);
+          var cachedTime = parseInt(localStorage.getItem(CONFIG.fileListCacheTimeKey) || '0', 10);
+          if (cached && (Date.now() - cachedTime < CONFIG.fileListTTL)) {
+            FILE_LIST = JSON.parse(cached);
+            FILE_LIST_MAP = {};
+            FILE_LIST.forEach(function(f){ FILE_LIST_MAP[f.toLowerCase()] = f; });
+            window.__jabriNetStats.cache = FILE_LIST.length;
+            logStep('LIST', '⚡ From cache: ' + FILE_LIST.length + ' files', 'ok');
+            updateStatsBar();
+            return FILE_LIST;
+          }
+        } catch(e) {}
+
+        try {
+          logStep('LIST', 'Loading file-all4.txt...', 'step');
+          var res = await smartFetch('/file-all4.txt?v=' + Date.now(), { cache: 'no-store' });
           var txt = await res.text();
           var lines = txt.split('\n')
             .map(function(s){ return s.trim(); })
-            .filter(function(s){ return s && !s.startsWith('#') && s.includes('.html') && !s.includes('⛔'); })
-            .map(function(s){ return s.replace(/^\d+\.\s*/, '').replace(/^\s*[-*]\s*/, '').trim().split(' ')[0]; })
-            .filter(function(s){ return s.endsWith('.html'); })
-            .filter(function(s){ return !EXCLUDED.test(s.split('/').pop()); })
-            .filter(function(s){ return !s.startsWith('ar/') && !s.startsWith('en/') || true; }); // احتفظ بـ ar/en لكن لا تكرر
+            .filter(function(s){ return s && !s.startsWith('#') && s.indexOf('⛔') === -1 && s.toLowerCase().indexOf('.html') !== -1; })
+            .map(function(s){
+              return s.replace(/^[A-Z]?\d+\.\s+/, '')
+                      .replace(/^\s*[-*]\s*/, '')
+                      .replace(/\s*⭐.*$/, '')
+                      .replace(/["']/g, '')
+                      .trim()
+                      .split(/\s+/)[0];
+            })
+            .filter(function(s){ return s && /\.html$/i.test(s); })
+            .filter(function(s){ return !CONFIG.excludedPattern.test(s.split('/').pop()); });
 
           var uniq = [];
-          lines.forEach(function(l){ if(uniq.indexOf(l)===-1) uniq.push(l); });
-          
+          var seen = {};
+          lines.forEach(function(l){
+            var key = l.toLowerCase().replace(/^\/+/, '');
+            if (!seen[key]) {
+              seen[key] = true;
+              uniq.push(l.startsWith('/') ? l : '/' + l);
+            }
+          });
+
           FILE_LIST = uniq;
-          window.__jabriNetStats.total++; window.__jabriNetStats.ok++; window.__jabriNetStats.cache = uniq.length;
+          FILE_LIST_MAP = {};
+          FILE_LIST.forEach(function(f){ FILE_LIST_MAP[f.toLowerCase()] = f; });
+
+          try {
+            localStorage.setItem(CONFIG.fileListCacheKey, JSON.stringify(FILE_LIST));
+            localStorage.setItem(CONFIG.fileListCacheTimeKey, String(Date.now()));
+          } catch(e) {}
+
+          window.__jabriNetStats.cache = FILE_LIST.length;
+          logStep('LIST', '✅ Loaded ' + uniq.length + ' files', 'ok');
           updateStatsBar();
-          logStep('LIST', '✅ Loaded '+uniq.length+' files (excluded ⛔ + 404/dashboard/catalog)', 'ok');
           return FILE_LIST;
-        } catch (e) {
-          logStep('LIST', '❌ Failed: '+e.message, 'err');
-          window.__jabriNetStats.err++;
+        } catch(e) {
+          logStep('LIST', '❌ Failed: ' + e.message, 'err');
           return [];
         }
       }
 
-      async function resolveFile(rawPath) {
-        // ✅ إصلاح الثغرة 2: فلترة الوسائط + الأنظمة
-        if (/\.(mp3|mp4|png|webp|jpg|jpeg|ico|pdf|csv|zip|js|css|mp3)$/i.test(rawPath)) {
-          logStep('SKIP', 'Media/System → 404 pure: '+rawPath, 'warn');
+      // ═══════════════════════════════════════════════════════
+      //  🎯 RESOLVE — Multi-level
+      // ═══════════════════════════════════════════════════════
+      function resolveFromList(rawPath) {
+        var path = rawPath.split('?')[0].split('#')[0];
+        var clean = path.replace(/^\/+|\/+$/g, '').toLowerCase();
+
+        if (!clean) return CONFIG.indexPath;
+
+        if (CONFIG.mediaExt.test(clean)) {
+          logStep('RESOLVE', 'Media/System file — skip', 'warn');
           return null;
         }
-        var list = await loadFileList();
-        if (!list.length) return null;
 
-        var clean = rawPath.replace(/^\/+|\/+$/g, '').toLowerCase();
-        if (!clean) return '/index.html';
-        var last = clean.split('/').pop().replace('.html','').toLowerCase();
-        if (!last) return '/index.html';
+        var parts = clean.split('/');
+        var lastPart = parts[parts.length - 1] || '';
+        var lastNoExt = lastPart.replace(/\.(html?|php|asp|aspx|jsp)$/i, '');
+        var langPrefix = parts.length > 1 ? parts[0] : '';
 
-        logStep('RESOLVE', 'Searching: '+last, 'step');
+        logStep('RESOLVE', 'Searching: ' + lastNoExt, 'step');
 
-        var found = null;
-        // 1- تطابق تام
-        found = list.find(function(f){ var lf=f.toLowerCase(); return lf===clean || lf===clean+'.html' || lf===''+clean; });
-        // 2- يطابق /Page11.html
-        if (!found) found = list.find(function(f){ return f.toLowerCase().endsWith('/'+last+'.html') || f.toLowerCase()===last+'.html'; });
-        
-        // ✅ إصلاح الثغرة 3: لا indexOf عشوائي — ≥4 أحرف + startsWith
-        if (!found && last.length >= 4) {
-          found = list.find(function(f){
-            var base = f.toLowerCase().split('/').pop().replace('.html','');
-            return base.startsWith(last) || last.startsWith(base);
-          });
+        var target = '/' + clean;
+        if (FILE_LIST_MAP[target]) return FILE_LIST_MAP[target];
+        if (FILE_LIST_MAP[target + '.html']) return FILE_LIST_MAP[target + '.html'];
+        if (FILE_LIST_MAP[clean]) return FILE_LIST_MAP[clean];
+
+        var baseTarget = lastNoExt + '.html';
+        if (FILE_LIST_MAP['/' + baseTarget]) return FILE_LIST_MAP['/' + baseTarget];
+
+        if (langPrefix === 'ar' || langPrefix === 'en') {
+          var langTarget = '/' + langPrefix + '/' + baseTarget;
+          if (FILE_LIST_MAP[langTarget]) return FILE_LIST_MAP[langTarget];
         }
 
-        if (found) {
-          var path = '/' + found.replace(/^\/+/, '');
-          logStep('HIT', '✅ '+path, 'ok');
-          return path;
+        for (var i = 0; i < FILE_LIST.length; i++) {
+          var f = FILE_LIST[i].toLowerCase();
+          if (f.endsWith('/' + baseTarget) || f === baseTarget) {
+            return FILE_LIST[i];
+          }
         }
-        logStep('MISS', '❌ Not in file-all4.txt', 'err');
+
+        var variants = generateVariants(lastNoExt);
+        for (var v = 0; v < variants.length; v++) {
+          var vt = variants[v].toLowerCase();
+          if (FILE_LIST_MAP[vt]) return FILE_LIST_MAP[vt];
+        }
+
+        if (lastNoExt.length >= 4) {
+          for (var j = 0; j < FILE_LIST.length; j++) {
+            var base = FILE_LIST[j].toLowerCase().split('/').pop().replace('.html','');
+            if (base.startsWith(lastNoExt) || lastNoExt.startsWith(base)) {
+              logStep('RESOLVE', '🔍 Fuzzy: ' + FILE_LIST[j], 'warn');
+              return FILE_LIST[j];
+            }
+          }
+        }
+
+        logStep('RESOLVE', '❌ Not found', 'err');
         return null;
       }
 
-      async function handle404Redirect() {
-        var path = location.pathname;
-        var targetEl = document.getElementById('ovTarget');
-        logStep('1/3', 'Handler v8.3.8', 'step');
-        logStep('1/3', 'Path: '+path, 'info');
-        updateResult('🔍 Searching in file-all4.txt...', '');
+      function generateVariants(baseName) {
+        var out = [];
+        var m = baseName.match(/^(.+?)[-_](ar|en)$/i);
+        if (m) {
+          out.push('/' + m[1] + '.html');
+          out.push('/' + m[1] + '-' + m[2].toLowerCase() + '.html');
+          out.push('/' + m[1] + '_' + m[2].toLowerCase() + '.html');
+        }
+        out.push('/' + baseName + '-ar.html');
+        out.push('/' + baseName + '-en.html');
+        out.push('/' + baseName + '_ar.html');
+        out.push('/' + baseName + '_en.html');
+        return out;
+      }
 
-        var resolved = await resolveFile(path);
-        if (resolved && resolved.toLowerCase() !== path.toLowerCase()) {
-          if (targetEl) targetEl.textContent = resolved;
-          logStep('2/3', '✅ → '+resolved, 'ok');
-          updateResult('✅ FOUND → '+resolved, 'ok');
-          setTimeout(function(){ location.href = resolved; }, 1200);
+      // ═══════════════════════════════════════════════════════
+      //  🔄 HANDLE 404
+      // ═══════════════════════════════════════════════════════
+      var fromPath = new URLSearchParams(location.search).get('from')
+                   || sessionStorage.getItem('jabri404From')
+                   || location.pathname;
+
+      var loopCount = parseInt(sessionStorage.getItem('jabri404Count') || '0', 10) + 1;
+      sessionStorage.setItem('jabri404Count', String(loopCount));
+
+      if (loopCount >= 3) {
+        console.warn('🚨 [404] loop detected');
+        sessionStorage.removeItem('jabri404Count');
+        sessionStorage.removeItem('jabri404From');
+        logStep('LOOP', '🚨 Infinite loop — forcing all-links', 'err');
+        setTimeout(function(){ location.replace(CONFIG.allLinksPath); }, 500);
+        return;
+      }
+
+      async function handle404Redirect() {
+        var targetEl = document.getElementById('ovTarget');
+        logStep('1/4', 'Handler v' + VERSION, 'step');
+        logStep('1/4', 'From: ' + fromPath, 'info');
+
+        if (!navigator.onLine) {
+          logStep('1/4', '📴 Offline — will retry when online', 'warn');
+          updateResult('📴 بانتظار الاتصال...', 'err');
           return;
         }
+
+        updateResult('🔍 جاري البحث...', '');
+
+        await loadFileList();
+
+        if (!FILE_LIST || !FILE_LIST.length) {
+          logStep('2/4', 'No file list — fallback', 'err');
+          updateResult('❌ لا يمكن تحميل الفهرس', 'err');
+          setTimeout(function(){ location.href = CONFIG.allLinksPath; }, 1500);
+          return;
+        }
+
+        logStep('2/4', 'Resolving: ' + fromPath, 'step');
+        var resolved = resolveFromList(fromPath);
+
+        if (!resolved) {
+          var noExt = fromPath.replace(/\.html?$/i, '');
+          if (noExt !== fromPath) {
+            logStep('3/4', 'Retry without .html: ' + noExt, 'step');
+            resolved = resolveFromList(noExt);
+          }
+        }
+
+        if (!resolved && !/\.html?$/i.test(fromPath)) {
+          logStep('3/4', 'Retry with .html', 'step');
+          resolved = resolveFromList(fromPath + '.html');
+        }
+
+        if (resolved && resolved.toLowerCase() !== fromPath.toLowerCase()) {
+          if (targetEl) targetEl.textContent = resolved;
+          logStep('4/4', '✅ → ' + resolved, 'ok');
+          updateResult('✅ FOUND → ' + resolved, 'ok');
+          showToast('✅ تم إيجاد الصفحة', 'ok', 2000);
+          sessionStorage.removeItem('jabri404Count');
+          sessionStorage.removeItem('jabri404From');
+          setTimeout(function(){ location.href = resolved; }, 900);
+          return;
+        }
+
         if (targetEl) targetEl.textContent = CONFIG.allLinksPath;
-        logStep('2/3', 'Fallback → '+CONFIG.allLinksPath, 'warn');
-        updateResult('❌ Fallback → /all-links.html', 'err');
+        logStep('4/4', '❌ Fallback → ' + CONFIG.allLinksPath, 'err');
+        updateResult('❌ → /all-links.html', 'err');
+        showToast('❌ الصفحة غير موجودة — تحويل للخريطة', 'err', 2500);
+        sessionStorage.removeItem('jabri404Count');
+        sessionStorage.removeItem('jabri404From');
         setTimeout(function(){ location.href = CONFIG.allLinksPath; }, 1500);
       }
 
+      window.exitPage = function() {
+        try { window.close(); } catch(e){}
+        setTimeout(function(){ try { history.back(); } catch(e){} }, 200);
+        setTimeout(function(){ location.href = 'about:blank'; }, 600);
+        setTimeout(function(){ location.href = '/'; }, 1200);
+      };
+
+      // ═══════════════════════════════════════════════════════
+      //  🚀 INIT
+      // ═══════════════════════════════════════════════════════
+      initNetworkWatcher();
+
       var count = localStorage.getItem('jabriVisitorCount');
-      count = count===null ? Math.floor(Math.random()*80)+20 : Number(count)+1;
+      count = count === null ? Math.floor(Math.random() * 80) + 20 : Number(count) + 1;
       localStorage.setItem('jabriVisitorCount', count);
       document.getElementById('visitorCount').textContent = count;
-      document.getElementById('ovCurrent').textContent = location.pathname;
+      document.getElementById('ovCurrent').textContent = fromPath;
 
-      logStep('', '🚀 404 v'+VERSION+' FIXED — file-all4.txt Beast', 'ok');
+      logStep('', '🚀 404 v' + VERSION + ' — from: ' + fromPath, 'ok');
       updateStatsBar();
 
       var seconds = 7;
       var countdownEl = document.getElementById('ovCountdown');
-      var iv = setInterval(function(){ seconds--; if(countdownEl) countdownEl.textContent='⏱️ '+seconds+'s'; if(seconds<=0) clearInterval(iv); }, 1000);
+      var iv = setInterval(function(){
+        seconds--;
+        if (countdownEl) countdownEl.textContent = '⏱️ ' + seconds + 's';
+        if (seconds <= 0) clearInterval(iv);
+      }, 1000);
+
       setInterval(updateStatsBar, 1000);
+
       setTimeout(handle404Redirect, CONFIG.autoTryAfter);
-      console.log('🏝️ Jabri 404 v'+VERSION+' FIXED ready');
+
+      console.log('🏝️ Jabri 404 v' + VERSION + ' — Full Brain ready — from=' + fromPath);
     })();
   </script>
 </body>
