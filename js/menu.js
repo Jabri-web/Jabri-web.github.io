@@ -377,5 +377,7 @@
         } catch (_) { /* تجاهل */ }
     }
 
-    document.addEventListener('pointerover', handler, { passive: true });
+
+document.addEventListener('click', handler, { passive: true });
+
 })();
