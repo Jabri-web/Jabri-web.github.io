@@ -2,29 +2,34 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         ⓪ Golden Template (Icons)
+         ═══════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
+    <link rel="shortcut icon" href="/icon-192.png">
+    <link rel="icon" href="/image/icon-192.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ======== اللغات و الكانونيكال ======== -->
+    <!-- ======== Languages & Canonical ======== -->
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/ar/contact.html" />
-    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/contact.html" />
-    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/en/contact.html" />
-    <link rel="canonical" href="https://jabri-com.vercel.app/en/contact.html" />
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/contact.html" />
+    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/contact.html" />
+    <link rel="canonical" href="https://jabri-com.vercel.app/contact.html" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
-    <!-- ======== العنوان والوصف الأساسي ======== -->
+    <!-- ======== SEO ======== -->
     <title>Contact Us | Heaven Al-Jabri &amp; Researcher Al-Jabri</title>
     <meta name="description" content="Ways to contact Heaven Al-Jabri Network and researcher Abdulla Al-Jabri. Official Telegram bot @AlAnkaboot_YE_Bot and email." />
     <meta name="keywords" content="Contact Us, Heaven Al-Jabri Network, Abdulla Al-Jabri, Telegram Bot, AlAnkaboot_YE_Bot" />
     <meta name="author" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
     <link rel="author" href="https://jabri-com.vercel.app/about.html" />
 
-    <!-- ======== Dublin Core ======== -->
-    <meta name="DC.title" content="Contact Us - Heaven Al-Jabri" />
-    <meta name="DC.creator" content="Eng. Abdulla Mohammed Nasser Al-Jabri" />
-    <meta name="DC.subject" content="Contact, Yemen, Research, Telegram" />
-    <meta name="copyright" content="© 2026 Eng. Abdulla Mohammed Nasser Al-Jabri" />
-
-    <!-- ======== ملكية جوجل ======== -->
+    <!-- ======== Google Verification ======== -->
     <meta name="google-site-verification" content="SN_zKidXbtB2FBxIPwlPgV-L24kJR2eHE9SQRIE76U" />
 
     <!-- ======== Open Graph ======== -->
@@ -34,7 +39,7 @@
     <meta property="og:title" content="Contact Us | Al-Ankaboot Network &amp; Researcher Al-Jabri" />
     <meta property="og:description" content="Ways to contact Heaven Al-Jabri, Network and researcher Abdulla Al-Jabri." />
     <meta property="og:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png" />
-    <meta property="og:url" content="https://jabri-com.vercel.app/en/contact.html" />
+    <meta property="og:url" content="https://jabri-com.vercel.app/contact.html" />
 
     <!-- ======== Twitter Cards ======== -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,16 +47,16 @@
     <meta name="twitter:description" content="Contact Heaven Al-Jabri Network and researcher Abdulla Al-Jabri." />
     <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.png" />
 
-    <!-- ======== البيانات المنظمة (JSON-LD) ======== -->
+    <!-- ======== Schema.org JSON-LD ======== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@graph": [{
                 "@type": "ContactPage",
-                "@id": "https://jabri-com.vercel.app/en/contact.html",
+                "@id": "https://jabri-com.vercel.app/contact.html",
                 "name": "Contact Us",
                 "description": "Ways to contact Heaven Al-Jabri, Network and researcher Abdulla Al-Jabri.",
-                "url": "https://jabri-com.vercel.app/en/contact.html",
+                "url": "https://jabri-com.vercel.app/contact.html",
                 "publisher": { "@id": "https://jabri-com.vercel.app/#org" }
             }, {
                 "@type": "Person",
@@ -70,297 +75,137 @@
 
     <style>
         /* ===== Unified styles (LTR) ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e8e8f0; font-family: 'Segoe UI', 'Tahoma', Arial, sans-serif; padding: 20px; line-height: 1.8; transition: 0.3s; }
+        body.en { direction: ltr; }
+        
+        .lang-btn { position: fixed; top: 20px; left: 40px; background: #6ae3ff; border: none; color: #0a0a0f; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; z-index: 999; text-decoration: none; }
+        .container { max-width: 1000px; margin: 60px auto 0; }
+        
+        header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #0a3d62, #1e6f9f); border-radius: 12px; margin-bottom: 30px; border: 2px solid #6ae3ff; }
+        header h1 { font-size: 2.2rem; color: #fff; margin-bottom: 8px; }
+        header .subtitle { font-size: 1.3rem; font-weight: 700; color: #6ae3ff; margin: 8px 0; }
+        header p { color: #b8e6ff; }
+        
+        .section { background: #1a1a2e; border: 2px solid #2a2a3e; border-radius: 12px; padding: 30px; margin: 25px 0; }
+        .section h1, .section h2 { color: #6ae3ff; margin-bottom: 15px; text-align: center; font-size: 1.8rem; }
+        
+        .btn { background: #6ae3ff; color: #0a0a0f; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 700; cursor: pointer; margin: 10px 5px; font-size: 15px; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn:hover { background: #4dd4ff; transform: scale(1.05); }
+
+        /* ===== Yemen Map & Location Pin ===== */
+        .map-wrapper {
+            background: #1a1a2e; padding: 25px; border-radius: 16px; width: 100%; max-width: 600px; margin: 0 auto 30px auto;
+            border: 2px solid #6ae3ff; text-align: center;
         }
-        body {
-            background: #0a0a0f;
-            color: #e8e8f0;
-            font-family: 'Segoe UI', 'Tahoma', Arial, sans-serif;
-            padding: 20px;
-            line-height: 1.8;
-            transition: 0.3s;
+        .map-container {
+            position: relative; display: inline-block; max-width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
-        body.ar {
-            direction: rtl;
-        }
-        body.en {
-            direction: ltr;
-        }
-        .lang-btn {
-            position: fixed;
-            top: 20px;
-            left: 40px;
-            background: #6ae3ff;
-            border: none;
-            color: #0a0a0f;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 700;
-            z-index: 999;
-            text-decoration: none;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 60px auto 0;
-        }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0a3d62, #1e6f9f);
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border: 2px solid #6ae3ff;
-        }
-        header h1 {
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        header .subtitle {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #6ae3ff;
-            margin: 8px 0;
-        }
-        header p {
-            color: #b8e6ff;
-        }
-        footer {
-            background: #0a0a0f;
-            color: #e8e8f0;
-            padding: 30px 15px;
-            border-top: 1px solid #2a2a3e;
-            font-family: 'Segoe UI', 'Tahoma', Arial, sans-serif;
-        }
-        footer a {
-            color: #6ae3ff;
-            text-decoration: none;
-        }
-        footer .footer-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 15px 0;
-        }
-        footer .footer-search {
-            text-align: center;
-            margin: 20px 0;
-            border-top: 1px solid #2a2a3e;
-            padding-top: 20px;
-        }
-        footer .footer-search a {
-            margin: 5px;
-        }
-        footer p {
-            margin-top: 20px;
-            color: #666;
-            font-size: 14px;
-            text-align: center;
-        }
-        .section {
-            background: #1a1a2e;
-            border: 2px solid #2a2a3e;
-            border-radius: 12px;
-            padding: 30px;
-            margin: 25px 0;
-        }
-        .section h1,
-        .section h2 {
-            color: #6ae3ff;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.8rem;
-        }
-        .section .desc {
-            text-align: center;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-        .btn {
-            background: #6ae3ff;
-            color: #0a0a0f;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 10px 5px;
-            font-size: 15px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn:hover {
-            background: #4dd4ff;
-            transform: scale(1.05);
-        }
-        .chat-wrapper {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 998;
-        }
-        .chat-label {
-            background: #1a1a2e;
-            color: #6ae3ff;
-            padding: 10px 18px;
-            border-radius: 25px;
-            border: 2px solid #6ae3ff;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(106, 227, 255, 0.3);
-        }
-        .chat-btn {
-            background: #6ae3ff;
-            color: #0a0a0f;
-            border: none;
+        .map-container img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 0 10px rgba(106,227,255,0.2)); }
+        
+        /* Location Pin (Sana'a) */
+        .location-pin {
+            position: absolute;
+            top: 45%; /* Approximate location of Sana'a on the map */
+            left: 45%;
+            width: 16px; height: 16px;
+            background: #ff4757;
+            border: 3px solid #fff;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(106, 227, 255, 0.4);
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.8);
+            z-index: 2;
+            transform: translate(-50%, -50%);
         }
-        .chat-btn:hover {
-            transform: scale(1.1);
+        .location-pulse {
+            position: absolute;
+            top: 45%; left: 45%;
+            width: 50px; height: 50px;
+            background: rgba(255, 71, 87, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+            z-index: 1;
         }
-        .chat-box {
-            position: fixed;
-            bottom: 95px;
-            right: 25px;
-            width: 320px;
-            background: #1a1a2e;
-            border: 2px solid #6ae3ff;
-            border-radius: 12px;
-            padding: 15px;
-            display: none;
-            z-index: 998;
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
         }
-        .chat-box textarea {
-            width: 100%;
-            height: 80px;
-            background: #0a0a0f;
-            border: 1px solid #2a2a3e;
-            color: #fff;
-            border-radius: 6px;
-            padding: 8px;
-            margin: 10px 0;
+        .map-label { margin-top: 15px; font-size: 1.1rem; color: #fff; font-weight: bold; }
+        .map-label span { color: #6ae3ff; }
+
+        /* ===== Google Maps Box (from about-waha.html) ===== */
+        .location-box {
+            background: #0f172b; border: 3px solid #ffd700; border-radius: 20px;
+            padding: 25px; text-align: center; margin: 0 auto 30px auto; max-width: 600px; width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        .music-btn-fixed {
-            position: fixed;
-            top: 20px;
-            left: 200px;
-            background: linear-gradient(135deg, #6ae3ff, #3b9fcb);
-            color: #0a0a0f;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
+        .location-box h2 { color: #ffd700; margin-bottom: 10px; font-size: 1.5rem; }
+        .location-box p { color: #d6d1c8; font-weight: 700; line-height: 1.8; margin-bottom: 15px; font-size: 0.95rem; }
+        .location-box iframe {
+            width: 100%; height: 360px; border: 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .location-box a {
+            display: inline-block; margin-top: 15px; background: #ffd700; color: #0a0a0f;
+            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800;
             transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 0 0 10px rgba(106, 227, 255, 0.3);
-            z-index: 1000;
         }
-        .music-btn-fixed.playing {
-            background: linear-gradient(135deg, #ff6a6a, #cb3b3b);
-            color: #fff;
-        }
-        .music-btn-fixed:hover {
-            transform: scale(1.08);
-        }
+        .location-box a:hover { background: #e6c200; transform: scale(1.05); }
+
+        /* ===== Other Elements ===== */
+        footer { background: #0a0a0f; color: #e8e8f0; padding: 30px 15px; border-top: 1px solid #2a2a3e; font-family: 'Segoe UI','Tahoma',Arial,sans-serif; margin-top: 40px; }
+        footer a { color: #6ae3ff; text-decoration: none; }
+        footer .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
+        footer .footer-search { text-align: center; margin: 20px 0; border-top: 1px solid #2a2a3e; padding-top: 20px; }
+        footer .footer-search a { margin: 5px; }
+        footer p { margin-top: 20px; color: #666; font-size: 14px; text-align: center; }
+        
+        .chat-wrapper { position: fixed; bottom: 25px; right: 25px; display: flex; align-items: center; gap: 10px; z-index: 998; }
+        .chat-label { background: #1a1a2e; color: #6ae3ff; padding: 10px 18px; border-radius: 25px; border: 2px solid #6ae3ff; font-weight: 700; font-size: 14px; box-shadow: 0 4px 15px rgba(106,227,255,0.3); }
+        .chat-btn { background: #6ae3ff; color: #0a0a0f; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 28px; cursor: pointer; box-shadow: 0 4px 15px rgba(106,227,255,0.4); }
+        .chat-btn:hover { transform: scale(1.1); }
+        .chat-box { position: fixed; bottom: 95px; right: 25px; width: 320px; background: #1a1a2e; border: 2px solid #6ae3ff; border-radius: 12px; padding: 15px; display: none; z-index: 998; }
+        .chat-box textarea { width: 100%; height: 80px; background: #0a0a0f; border: 1px solid #2a2a3e; color: #fff; border-radius: 6px; padding: 8px; margin: 10px 0; }
+        
+        .music-btn-fixed { position: fixed; top: 20px; left: 200px; background: linear-gradient(135deg, #6ae3ff, #3b9fcb); color: #0a0a0f; border: none; padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 0 10px rgba(106,227,255,0.3); z-index: 1000; }
+        .music-btn-fixed.playing { background: linear-gradient(135deg, #ff6a6a, #cb3b3b); color: #fff; }
+        .music-btn-fixed:hover { transform: scale(1.08); }
+        
         .visitor-counter {
-            position: fixed;
-            top: 10px;
-            left: 70%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
-            color: #6ae3ff;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(106, 227, 255, 0.3);
-            z-index: 9999;
-            border: 1px solid #6ae3ff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
+            position: fixed; top: 10px; left: 70%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #1a1a2e, #2a2a3e); color: #6ae3ff;
+            padding: 8px 20px; border-radius: 50px; font-size: 16px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(106, 227, 255, 0.3); z-index: 9999;
+            border: 1px solid #6ae3ff; display: flex; align-items: center; gap: 8px; white-space: nowrap;
         }
-        .header-img-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        .header-img-wrapper img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid #6ae3ff;
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(106, 227, 255, 0.3);
-        }
-        .header-text {
-            text-align: center;
-        }
-        .hidden {
-            display: none !important;
-        }
+        
+        .header-img-wrapper { display: flex; align-items: center; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .header-img-wrapper img { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #6ae3ff; object-fit: cover; box-shadow: 0 0 20px rgba(106,227,255,0.3); }
+        .header-text { text-align: center; }
+        
         @media (max-width: 600px) {
-            .header-img-wrapper {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .header-img-wrapper img {
-                width: 80px;
-                height: 80px;
-            }
-            .visitor-counter {
-                font-size: 13px;
-                padding: 4px 14px;
-                top: 5px;
-            }
-            .lang-btn {
-                top: 10px;
-                left: 10px;
-                padding: 5px 10px;
-                font-size: 12px;
-            }
-            .music-btn-fixed {
-                top: 10px;
-                left: 100px;
-                padding: 5px 10px;
-                font-size: 12px;
-            }
+            .header-img-wrapper { flex-direction: column; gap: 15px; }
+            .header-img-wrapper img { width: 80px; height: 80px; }
+            .visitor-counter { font-size: 13px; padding: 4px 14px; top: 5px; }
+            .lang-btn { top: 10px; left: 10px; padding: 5px 10px; font-size: 12px; }
+            .music-btn-fixed { top: 10px; left: 100px; padding: 5px 10px; font-size: 12px; }
+            .chat-box { width: calc(100% - 50px); right: 25px; }
+            .location-box { padding: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== عداد الزوار ===== -->
+    <!-- ===== Visitor Counter ===== -->
     <div class="visitor-counter" id="visitorCounter">
         👥 Visitors: <span id="visitorCountDisplay">1</span>
     </div>
 
-    <!-- ===== زر اللغة ===== -->
-    <a href="../ar/contact.html" class="lang-btn">🇾🇪🇦 العربية</a>
+    <!-- ===== Language Button ===== -->
+    <a href="../ar/contact.html" class="lang-btn">🇾🇪 العربية</a>
 
     <div class="container">
 
-        <!-- ===== الهيدر ===== -->
+        <!-- ===== Header ===== -->
         <header role="banner">
             <div class="header-img-wrapper">
                 <img src="/image/Jabri-photo.png" alt="Photo of Yemeni researcher Eng. Abdulla Al-Jabri" />
@@ -372,7 +217,7 @@
             </div>
         </header>
 
-        <!-- ===== المحتوى الرئيسي ===== -->
+        <!-- ===== Main Content ===== -->
         <main role="main">
             <section class="section">
                 <h1>📞 Contact Us</h1>
@@ -380,7 +225,30 @@
 
                 <div style="display:flex; flex-direction:column; align-items:center; gap:25px; margin-top:10px;">
 
-                    <!-- بطاقة البوت -->
+                    <!-- Yemen Map -->
+                    <div class="map-wrapper">
+                        <h3 style="color:#6ae3ff; margin-bottom:15px;">📍 Our Location Map</h3>
+                        <div class="map-container">
+                            <img src="/image/atlas.png" alt="Yemen Map - Heaven Al-Jabri">
+                            <div class="location-pulse"></div>
+                            <div class="location-pin" title="Sana'a, Yemen"></div>
+                        </div>
+                        <div class="map-label">Based in <span>Sana'a</span>, Yemen 🇾🇪</div>
+                    </div>
+
+                    <!-- Google Maps Box (from about-waha.html) -->
+                    <div class="location-box">
+                        <h2>📍 Our House - Abdulla Al-Jabri</h2>
+                        <p>
+                            Yemen - Sana'a - Safia Hizez - East of Layali Al-Arab Restaurant & Nujoom Al-Asimah Mall<br>
+                            Next to Al-Qasim Mosque - 67M4+MR
+                        </p>
+                        <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" loading="lazy" title="Google Maps Location"></iframe>
+                        <br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank">🗺️ Open in Google Maps - 67M4+MR</a>
+                    </div>
+
+                    <!-- Telegram Bot Card -->
                     <div style="background:#1a1a2e; padding:25px; border-radius:16px; width:100%; max-width:450px; text-align:center; border:2px solid #6ae3ff; transition:0.3s;">
                         <div style="font-size:3rem;">🤖</div>
                         <h3 style="color:#6ae3ff; margin:10px 0;">Telegram Bot</h3>
@@ -389,14 +257,14 @@
                         <a href="https://t.me/AlAnkaboot_YE_Bot" target="_blank" class="btn" style="margin-top:10px;">🚀 Chat with the Bot</a>
                     </div>
 
-                    <!-- بطاقة الإيميل -->
+                    <!-- Email Card -->
                     <div style="background:#1a1a2e; padding:25px; border-radius:16px; width:100%; max-width:450px; text-align:center; border:2px solid #6ae3ff; transition:0.3s;">
                         <div style="font-size:3rem;">📧</div>
                         <h3 style="color:#6ae3ff; margin:10px 0;">Email</h3>
                         <p style="font-size:1.2rem;"><a href="mailto:jabri62018@gmail.com" style="color:#6ae3ff; text-decoration:none;">jabri62018@gmail.com</a></p>
                     </div>
 
-                    <!-- بطاقة وسائل التواصل -->
+                    <!-- Social Media Card -->
                     <div style="background:#1a1a2e; padding:25px; border-radius:16px; width:100%; max-width:450px; text-align:center; border:2px solid #6ae3ff; transition:0.3s;">
                         <div style="font-size:3rem;">🌐</div>
                         <h3 style="color:#6ae3ff; margin:10px 0;">Social Media</h3>
@@ -412,7 +280,7 @@
             </section>
         </main>
 
-        <!-- ===== الفوتر ===== -->
+        <!-- ===== Footer ===== -->
         <footer role="contentinfo">
             <div class="footer-search">
                 <p><strong>🔍 Search for the Researcher:</strong></p>
@@ -456,6 +324,7 @@
                     <a href="/source.html">📜 Source</a>
                     <a href="/about-ar.html">👥 Author</a>
                     <a href="/about.html">ℹ️ About</a>
+                    <a href="/yemen-photo.html">ℹ️ Photos</a>
                     <a href="/who-we.html">👥 Who We</a>
                     <a href="../ar/contact.html">📧 Contact us</a>
                     <a href="mailto:jabri62018@gmail.com">📧 Email</a>
@@ -466,7 +335,7 @@
 
     </div>
 
-    <!-- ===== العناصر الثابتة (المحادثة، الموسيقى) ===== -->
+    <!-- ===== Fixed Elements (Chat, Music) ===== -->
     <div class="chat-wrapper">
         <div class="chat-label">💬 Chat</div>
         <button class="chat-btn" onclick="toggleChat()">💬</button>
@@ -480,31 +349,36 @@
     <audio id="oasisMusic" src="../image/music.mp3" loop preload="auto"></audio>
     <button class="music-btn-fixed" id="musicToggle" onclick="toggleMusic()">🎵</button>
 
-    <!-- ===== السكريبتات ===== -->
+    <!-- ===== Scripts ===== -->
     <script>
-        // عداد الزوار (localStorage)
+        // Visitor Counter (localStorage)
         (function() {
             try {
-                let count = localStorage.getItem('jabri_visitor_count_en_contact');
-                if (count === null) count = 0;
-                else count = parseInt(count, 10);
+                let count = localStorage.getItem('jabri_visitor_count_en_root');
+                if (count === null) {
+                    count = 0;
+                } else {
+                    count = parseInt(count, 10);
+                }
                 count = count + 1;
-                localStorage.setItem('jabri_visitor_count_en_contact', count.toString());
+                localStorage.setItem('jabri_visitor_count_en_root', count.toString());
                 const display = document.getElementById('visitorCountDisplay');
-                if (display) display.innerText = count.toLocaleString('en-US');
+                if (display) {
+                    display.innerText = count.toLocaleString('en-US');
+                }
             } catch (e) {
                 const display = document.getElementById('visitorCountDisplay');
                 if (display) display.innerText = '⚠️';
             }
         })();
 
-        // تبديل المحادثة
+        // Toggle Chat
         function toggleChat() {
             let box = document.getElementById('chatBox');
             box.style.display = box.style.display === 'block' ? 'none' : 'block';
         }
 
-        // تشغيل/إيقاف الموسيقى
+        // Toggle Music
         const music = document.getElementById('oasisMusic');
         const musicBtn = document.getElementById('musicToggle');
         let isPlaying = false;
@@ -540,9 +414,7 @@
         }
     </script>
 
-
-    <!-- في كل صفحة HTML -->
-    
+    <!-- Standard Layout Inclusions -->
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/file.js" defer></script>
