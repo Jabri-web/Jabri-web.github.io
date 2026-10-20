@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
 #  واحة الجبري | Heaven Al-Jabri — file-all4.txt
-#  الفهرس الشامل للملفات — الإصدار 5.4 (FINAL)
-#  التاريخ: 2026-10-15
+#  الفهرس الشامل للملفات — الإصدار 5.5 (FINAL)
+#  التاريخ: 2026-10-21
 #  الموقع: https://jabri-com.vercel.app/
 #  المؤلف: م/ عبدالله محمد ناصر الجبري (صنعاء — اليمن)
 #  الحالة: مغلق تحت الأرشفة — لا تغيير إلا للضرورة
@@ -10,16 +10,16 @@
 # ───────────────────────────────────────────────────────────────
 #  📊 إحصائيات سريعة
 # ───────────────────────────────────────────────────────────────
-# إجمالي الملفات:        ~248 ملف (شامل الوسائط)
-# ملفات HTML مفهرسة:     ~87 ملف
+# إجمالي الملفات:        ~330 ملف (شامل الوسائط)
+# ملفات HTML مفهرسة:     ~110 ملف
 # ملفات PDF (أوراق علمية): 20 ملف
-# ملفات Python:           21 ملف
+# ملفات Python:           25 ملف
 # ملفات TeX:              6 ملف
-# ملفات Data:             ~25 ملف
-# ملفات الوسائط (Image):   ~100 ملف
+# ملفات Data:             ~26 ملف
+# ملفات الوسائط (Image):   ~116 ملف
 # ملفات مستبعدة:         ~14 ملف (شامل واجهات اللغات)
 # ملفات نظام:            ~12 ملف
-# آخر تحديث للمشروع:      2026-10-15
+# آخر تحديث للمشروع:      2026-10-21
 
 # ═══════════════════════════════════════════════════════════════
 #  📁 هيكل المجلدات (Folder Structure)
@@ -30,6 +30,7 @@
 # /js/             → ملفات الجافاسكريبت
 # /publish/        → النشر والمشاركة
 # /game/           → الألعاب
+# /tree/           → مشروع الشجرة (نظرية Z+C+A=1)
 # /image/          → جميع الوسائط (صور، فيديو، صوت)
 # /pdf/            → الأوراق العلمية (PDF)
 # /python/         → الأكواد (Python .ipynb)
@@ -253,247 +254,263 @@
 119. publish/publish.html
 
 # ───────────────────────────────────────────────────────────────
-# 20. ملفات محدّثة (Updated Files) — 3 ملفات
+# 20. مجلد /tree/ (مشروع الشجرة) — 12 ملف (عربي + إنجليزي)
 # ───────────────────────────────────────────────────────────────
-120. technical-guide.html
-121. all-link-doc.html
-122. update-tracker.html
+120. tree/tree.html
+121. tree/tree2.html
+122. tree/tree3.html
+123. tree/tree3-pdf.html
+124. tree/card.html
+125. tree/hindara.html
+126. tree/tree-en.html
+127. tree/tree2-en.html
+128. tree/tree3-en.html
+129. tree/tree3-pdf-en.html
+130. tree/card-en.html
+131. tree/hindara-en.html
 
 # ───────────────────────────────────────────────────────────────
-# 21. مجلد /pdf/ (الأوراق العلمية) — 20 ملف
+# 21. ملفات محدّثة (Updated Files) — 3 ملفات
 # ───────────────────────────────────────────────────────────────
-123. pdf/Author_cv_tex.pdf
-124. pdf/Derivation.pdf
-125. pdf/Jabri_RiemannOS_v1.pdf
-126. pdf/Riemann-Zx.pdf
-127. pdf/Z_total_v1.pdf
-128. pdf/Zx_A_DarkEnerg_1.pdf
-129. pdf/Zx_C_ST_Tech_1.pdf
-130. pdf/Zx_C_SpaceTime_1.pdf
-131. pdf/Zx_Mother_Function.pdf
-132. pdf/Zx_OverView.pdf
-133. pdf/Zx_Planck_Epoch.PDF
-134. pdf/Zx_RieOS_v1.1.pdf
-135. pdf/Zx_RiemannOS_v1.pdf
-136. pdf/Zx_all_tex.pdf
-137. pdf/Zx_brief1.pdf
-138. pdf/Zx_brief2.pdf
-139. pdf/Zx_overview_v3.0.1.pdf
-140. pdf/Zx_total_v1.pdf
-141. pdf/Zx_total_v2.pdf
-142. pdf/Zx_total_v3.pdf
+132. technical-guide.html
+133. all-link-doc.html
+134. update-tracker.html
 
 # ───────────────────────────────────────────────────────────────
-# 22. مجلد /python/ (الأكواد) — 25 ملف
+# 22. مجلد /pdf/ (الأوراق العلمية) — 20 ملف
 # ───────────────────────────────────────────────────────────────
-143. python/Jabri_28.ipynb
-144. python/Jabri_5.ipynb
-145. python/Jabri_Darkenergy.ipynb
-146. python/Jabri_Gravity.ipynb
-147. python/Jabri_Hubble.ipynb
-148. python/Jabri_Periodic.ipynb
-149. python/Jabri_Planck.ipynb
-150. python/Jabri_Spacetime.ipynb
-151. python/Jabri_all.ipynb
-152. python/Jabri_derivation.ipynb
-153. python/Jabri_derivation3.ipynb
-154. python/Universe_now.ipynb
-155. python/V0_v1_unified.ipynb
-156. python/Zx_28.ipynb
-157. python/Zx_Hubble.ipynb
-158. python/Zx_Jabri.ipynb
-159. python/Zx_Planck_Epoch.ipynb
-160. python/Zx_RieOS_v1.2.ipynb
-161. python/Zx_all(1).ipynb
-162. python/Zx_all-n.ipynb
-163. python/Zx_all.ipynb
-164. python/Zx_all2.ipynb
-165. python/Zx_all3.ipynb
-166. python/Zx_all4.ipynb
-167. python/Zx_all_ipynb2.ipynb
+135. pdf/Author_cv_tex.pdf
+136. pdf/Derivation.pdf
+137. pdf/Jabri_RiemannOS_v1.pdf
+138. pdf/Riemann-Zx.pdf
+139. pdf/Z_total_v1.pdf
+140. pdf/Zx_A_DarkEnerg_1.pdf
+141. pdf/Zx_C_ST_Tech_1.pdf
+142. pdf/Zx_C_SpaceTime_1.pdf
+143. pdf/Zx_Mother_Function.pdf
+144. pdf/Zx_OverView.pdf
+145. pdf/Zx_Planck_Epoch.PDF
+146. pdf/Zx_RieOS_v1.1.pdf
+147. pdf/Zx_RiemannOS_v1.pdf
+148. pdf/Zx_all_tex.pdf
+149. pdf/Zx_brief1.pdf
+150. pdf/Zx_brief2.pdf
+151. pdf/Zx_overview_v3.0.1.pdf
+152. pdf/Zx_total_v1.pdf
+153. pdf/Zx_total_v2.pdf
+154. pdf/Zx_total_v3.pdf
 
 # ───────────────────────────────────────────────────────────────
-# 23. مجلد /tex/ (ملفات LaTeX) — 6 ملفات
+# 23. مجلد /python/ (الأكواد) — 25 ملف
 # ───────────────────────────────────────────────────────────────
-168. tex/Author-cv-tex.tex
-169. tex/Jabri_overview_z_v3.0.1.tex
-170. tex/Z_total_v1.tex
-171. tex/Zx_RieOS_v1.1.tex
-172. tex/Zx_RieOS_v1.2.tex
-173. tex/Zx_all_tex.tex
+155. python/Jabri_28.ipynb
+156. python/Jabri_5.ipynb
+157. python/Jabri_Darkenergy.ipynb
+158. python/Jabri_Gravity.ipynb
+159. python/Jabri_Hubble.ipynb
+160. python/Jabri_Periodic.ipynb
+161. python/Jabri_Planck.ipynb
+162. python/Jabri_Spacetime.ipynb
+163. python/Jabri_all.ipynb
+164. python/Jabri_derivation.ipynb
+165. python/Jabri_derivation3.ipynb
+166. python/Universe_now.ipynb
+167. python/V0_v1_unified.ipynb
+168. python/Zx_28.ipynb
+169. python/Zx_Hubble.ipynb
+170. python/Zx_Jabri.ipynb
+171. python/Zx_Planck_Epoch.ipynb
+172. python/Zx_RieOS_v1.2.ipynb
+173. python/Zx_all(1).ipynb
+174. python/Zx_all-n.ipynb
+175. python/Zx_all.ipynb
+176. python/Zx_all2.ipynb
+177. python/Zx_all3.ipynb
+178. python/Zx_all4.ipynb
+179. python/Zx_all_ipynb2.ipynb
 
 # ───────────────────────────────────────────────────────────────
-# 24. مجلد /data/ (البيانات) — ~25 ملف
+# 24. مجلد /tex/ (ملفات LaTeX) — 6 ملفات
 # ───────────────────────────────────────────────────────────────
-174. data/Author_cv_tex.pdf
-175. data/Author_cv_tex.zip
-176. data/Jabri_28_table.csv
-177. data/Jabri_5_table.csv
-178. data/Jabri_Darkenergy_table.csv
-179. data/Jabri_Hubble_table.csv
-180. data/Jabri_Periodic_table.csv
-181. data/Jabri_Planck_table.csv
-182. data/Jabri_Spacetime_table.csv
-183. data/Zx_Island_Z119.csv
-184. data/Zx_Periodic_Hierarchy.csv
-185. data/Zx_Periodic_Hierarchy3.csv
-186. data/Zx_Planck_Epochs.csv
-187. data/Zx_Planck_Epochs2.csv
-188. data/Zx_RieOS_v1.1.csv
-189. data/Zx_RieOS_v1.1.zip
-190. data/Zx_RieOS_v1.1-2.zip
-191. data/Zx_Spacetime_Wells.csv
-192. data/Zx_Spacetime_Wells2.csv
-193. data/Zx_Spacetime_Wells3.csv
-194. data/Zx_movie.mp4
-195. data/Zx_t12.csv
-196. data/cv-ar.txt
-197. data/cv-en.txt
-198. data/table.txt
-199. data/table2.txt
+180. tex/Author-cv-tex.tex
+181. tex/Jabri_overview_z_v3.0.1.tex
+182. tex/Z_total_v1.tex
+183. tex/Zx_RieOS_v1.1.tex
+184. tex/Zx_RieOS_v1.2.tex
+185. tex/Zx_all_tex.tex
 
 # ───────────────────────────────────────────────────────────────
-# 25. مجلد /docs/ (الوثائق) — 2 ملف
+# 25. مجلد /data/ (البيانات) — 26 ملف
 # ───────────────────────────────────────────────────────────────
-200. docs/README.md
-201. docs/poster.png
+186. data/Author_cv_tex.pdf
+187. data/Author_cv_tex.zip
+188. data/Jabri_28_table.csv
+189. data/Jabri_5_table.csv
+190. data/Jabri_Darkenergy_table.csv
+191. data/Jabri_Hubble_table.csv
+192. data/Jabri_Periodic_table.csv
+193. data/Jabri_Planck_table.csv
+194. data/Jabri_Spacetime_table.csv
+195. data/Zx_Island_Z119.csv
+196. data/Zx_Periodic_Hierarchy.csv
+197. data/Zx_Periodic_Hierarchy3.csv
+198. data/Zx_Planck_Epochs.csv
+199. data/Zx_Planck_Epochs2.csv
+200. data/Zx_RieOS_v1.1.csv
+201. data/Zx_RieOS_v1.1.zip
+202. data/Zx_RieOS_v1.1-2.zip
+203. data/Zx_Spacetime_Wells.csv
+204. data/Zx_Spacetime_Wells2.csv
+205. data/Zx_Spacetime_Wells3.csv
+206. data/Zx_movie.mp4
+207. data/Zx_t12.csv
+208. data/cv-ar.txt
+209. data/cv-en.txt
+210. data/table.txt
+211. data/table2.txt
 
 # ───────────────────────────────────────────────────────────────
-# 26. مجلد /image/ (الوسائط) — ~114 ملف
+# 26. مجلد /docs/ (الوثائق) — 2 ملف
+# ───────────────────────────────────────────────────────────────
+212. docs/README.md
+213. docs/poster.png
+
+# ───────────────────────────────────────────────────────────────
+# 27. مجلد /image/ (الوسائط) — 116 ملف
 # ───────────────────────────────────────────────────────────────
 
 # --- صور النظرية (Theory) ---
-202. image/theory-ar3.webp
-203. image/theory-ar4.webp
-204. image/theory-ar5.webp
-205. image/theory-ar6.webp
-206. image/theory-ar7.webp
-207. image/theory-en.jpg
-208. image/theory-en.png
-209. image/theory-en.webp
-210. image/theory-en1.webp
-211. image/theory-en2.webp
-212. image/theory-en3.webp
-213. image/theory-en4.webp
-214. image/theory-en5.webp
-215. image/theory-en6.webp
-216. image/theory-en7.webp
+214. image/theory-ar3.webp
+215. image/theory-ar4.webp
+216. image/theory-ar5.webp
+217. image/theory-ar6.webp
+218. image/theory-ar7.webp
+219. image/theory-en.jpg
+220. image/theory-en.png
+221. image/theory-en.webp
+222. image/theory-en1.webp
+223. image/theory-en2.webp
+224. image/theory-en3.webp
+225. image/theory-en4.webp
+226. image/theory-en5.webp
+227. image/theory-en6.webp
+228. image/theory-en7.webp
 
 # --- صور المؤسسين والتراث (Founders & Heritage) ---
-217. image/founder-1.jpg
-218. image/founder-2.jpg
-219. image/founder-3.jpg
-220. image/founder-4.jpg
-221. image/founder-5.jpg
-222. image/founder-6.jpg
-223. image/founder-7.jpg
-224. image/founder-8.jpg
-225. image/founder-9.jpg
-226. image/founder-10.jpg
-227. image/Yemen-bird.png
-228. image/Yemen-photo1.png
-229. image/Yemen-photo2.png
-230. image/Yemen-photo3.png
-231. image/Yemen2026.png
-232. image/Sanaa2026.png
-233. image/Shibam2026.png
-234. image/Soqatra2026.png
-235. image/Sogatra2026.png
-236. image/Shamlan2026.png
-237. image/Mostfa2026.png
-238. image/Khaled2026.png
-239. image/Khaled20261.png
-240. image/Khaled20264.png
-241. image/Ameen20261.png
-242. image/Ameen20262.png
-243. image/Ameen20263.png
-244. image/Farah2026.png
-245. image/Farah26.png
-246. image/Baleegh.png
-247. image/Baleegh2026.png
-248. image/Jabr2026.png
-249. image/Jabri-photo.png
-250. image/Jabri-photo.webp
-251. image/Jabri-photo2.png
-252. image/Jabri-photo2.webp
-253. image/Jabri-photo3.png
-254. image/Jabri-photo3.webp
+229. image/founder-1.jpg
+230. image/founder-2.jpg
+231. image/founder-3.jpg
+232. image/founder-4.jpg
+233. image/founder-5.jpg
+234. image/founder-6.jpg
+235. image/founder-7.jpg
+236. image/founder-8.jpg
+237. image/founder-9.jpg
+238. image/founder-10.jpg
+239. image/Yemen-bird.png
+240. image/Yemen-photo1.png
+241. image/Yemen-photo2.png
+242. image/Yemen-photo3.png
+243. image/Yemen2026.png
+244. image/Sanaa2026.png
+245. image/Shibam2026.png
+246. image/Soqatra2026.png
+247. image/Sogatra2026.png
+248. image/Shamlan2026.png
+249. image/Mostfa2026.png
+250. image/Khaled2026.png
+251. image/Khaled20261.png
+252. image/Khaled20264.png
+253. image/Ameen20261.png
+254. image/Ameen20262.png
+255. image/Ameen20263.png
+256. image/Farah2026.png
+257. image/Farah26.png
+258. image/Baleegh.png
+259. image/Baleegh2026.png
+260. image/Jabr2026.png
+261. image/Jabri-photo.png
+262. image/Jabri-photo.webp
+263. image/Jabri-photo2.png
+264. image/Jabri-photo2.webp
+265. image/Jabri-photo3.png
+266. image/Jabri-photo3.webp
 
 # --- الصور العلمية (Scientific Figures) ---
-255. image/Al-Jabri-Functions.png
-256. image/Equations.png
-257. image/Figure_Z_Zeros.png
-258. image/Figure_Zt1_identity.png
-259. image/Z_t01.png
-260. image/Zx-Cosmic-Poster1.png
-261. image/Zx-Cosmic-Poster2.png
-262. image/Zx_Eq_figure.png
-263. image/Zx_Equations.png
-264. image/Zx_Four_Miracles_Proof.png
-265. image/Zx_Jabri_Universe.png
-266. image/Zx_Periodic_Hierarchy.png
-267. image/Zx_Planck_Movie.png
-268. image/Zx_Spacetime_Wells.png
-269. image/Zx_Universe_now.png
-270. image/Zx_t01.png
-271. image/Zx_zeros.png
-272. image/Universe_now.png
-273. image/dbase.png
-274. image/door.webp
-275. image/Jabri_28_figure.png
-276. image/Jabri_5_figure.png
-277. image/Jabri_Darkenergy_figure.png
-278. image/Jabri_Planck_figure.png
-279. image/Jabri_Spacetime_figure.png
+267. image/Al-Jabri-Functions.png
+268. image/Equations.png
+269. image/Figure_Z_Zeros.png
+270. image/Figure_Zt1_identity.png
+271. image/Z_t01.png
+272. image/Zx-Cosmic-Poster1.png
+273. image/Zx-Cosmic-Poster2.png
+274. image/Zx_Eq_figure.png
+275. image/Zx_Equations.png
+276. image/Zx_Four_Miracles_Proof.png
+277. image/Zx_Jabri_Universe.png
+278. image/Zx_Periodic_Hierarchy.png
+279. image/Zx_Planck_Movie.png
+280. image/Zx_Spacetime_Wells.png
+281. image/Zx_Universe_now.png
+282. image/Zx_t01.png
+283. image/Zx_zeros.png
+284. image/Universe_now.png
+285. image/dbase.png
+286. image/door.webp
+287. image/Jabri_28_figure.png
+288. image/Jabri_5_figure.png
+289. image/Jabri_Darkenergy_figure.png
+290. image/Jabri_Planck_figure.png
+291. image/Jabri_Spacetime_figure.png
 
 # --- الشعارات والأيقونات (Logos & Icons) ---
-280. image/logo1.png
-281. image/logo2.png
-282. image/brand1.png
-283. image/brand2.png
-284. image/apple-touch-icon.png
-285. image/favicon-16x16.png
-286. image/favicon-32x32.png
-287. image/favicon-48x48.png
-288. image/favicon.ico
-289. image/waha.png
-290. image/aelyn.jpg
-291. image/oasis-poster.jpg
-292. image/oasis-poster.png
-293. image/oasis-poster1.jpg
-294. image/oasis-poster1.png
-295. image/oasis-poster1.webp
-296. image/oasis-poster2.jpg
-297. image/kfupm-id-865918.webp
-298. image/id1.webp
-299. image/id2.webp
-300. image/id3.webp
-301. image/id4.webp
-302. image/jr1.webp
-303. image/jr2.webp
-304. image/jr3.webp
-305. image/jr4.webp
+292. image/logo1.png
+293. image/logo2.png
+294. image/brand1.png
+295. image/brand2.png
+296. image/apple-touch-icon.png
+297. image/favicon-16x16.png
+298. image/favicon-32x32.png
+299. image/favicon-48x48.png
+300. image/favicon.ico
+301. image/waha.png
+302. image/aelyn.jpg
+303. image/oasis-poster.jpg
+304. image/oasis-poster.png
+305. image/oasis-poster1.jpg
+306. image/oasis-poster1.png
+307. image/oasis-poster1.webp
+308. image/oasis-poster2.jpg
+309. image/kfupm-id-865918.webp
+310. image/id1.webp
+311. image/id2.webp
+312. image/id3.webp
+313. image/id4.webp
+314. image/jr1.webp
+315. image/jr2.webp
+316. image/jr3.webp
+317. image/jr4.webp
 
 # --- الفيديو والصوت (Video & Audio) ---
-306. image/jabri.mp4
-307. image/mohammed.mp4
-308. image/founder1.mp4
-309. image/founder2.mp4
-310. image/Zx.mp4
-311. image/zaml.mp4
-312. image/zamel2.mp4
-313. image/music.mp3
-314. image/music1.mp3
-315. image/music2.mp3
-316. image/zaml.mp3
-317. image/hadrami.mp3
+318. image/jabri.mp4
+319. image/mohammed.mp4
+320. image/founder1.mp4
+321. image/founder2.mp4
+322. image/Zx.mp4
+323. image/zaml.mp4
+324. image/zamel2.mp4
+325. image/music.mp3
+326. image/music1.mp3
+327. image/music2.mp3
+328. image/zaml.mp3
+329. image/hadrami.mp3
 
 # ═══════════════════════════════════════════════════════════════
 #  🚫 الملفات المستبعدة من الفهرسة (NO INDEXING)
 # ═══════════════════════════════════════════════════════════════
 
 # ───────────────────────────────────────────────────────────────
-# 27. الأجزاء والواجهات التفاعلية — لا تُفهرس
+# 28. الأجزاء والواجهات التفاعلية — لا تُفهرس
 # ───────────────────────────────────────────────────────────────
 A01. header.html ⛔
 A02. footer.html ⛔
@@ -510,7 +527,7 @@ A12. ar/catalog.html ⛔ (نظام لغات — عربي)
 A13. en/catalog.html ⛔ (نظام لغات — إنجليزي)
 
 # ───────────────────────────────────────────────────────────────
-# 28. مجلد /js/ (JavaScript)
+# 29. مجلد /js/ (JavaScript)
 # ───────────────────────────────────────────────────────────────
 B01. js/init-page-root.js
 B02. js/menu.js
@@ -522,7 +539,7 @@ B07. js/ui.js
 B08. js/app.js
 
 # ───────────────────────────────────────────────────────────────
-# 29. ملفات النظام (System Files)
+# 30. ملفات النظام (System Files)
 # ───────────────────────────────────────────────────────────────
 C01. manifest.json
 C02. robots.txt
@@ -588,9 +605,10 @@ C06. file-all4.txt ⭐ (هذا الملف)
 
 # 5. المستودع repo11 (Jabri-com) يحتوي على المجلدات العلمية:
 #    /pdf/ (20 ورقة), /python/ (25 كود), /tex/ (6 ملفات),
-#    /data/ (~25 ملف بيانات), /docs/ (2 ملفات),
-#    /image/ (~114 ملف وسائط).
+#    /data/ (~26 ملف بيانات), /docs/ (2 ملفات),
+#    /image/ (~116 ملف وسائط).
 #    وفي الجذر: about-zx-ar.html, about-zx-en.html, manifesto.html, manifesto-en.html.
+#    ومجلد /tree/ (12 ملف - مشروع الشجرة Z+C+A=1).
 
 # 6. نظام اللغات (Language Switcher):
 #    - catalog.html / dashboard.html / dashboard-pro.html (الجذر)
@@ -611,6 +629,7 @@ C06. file-all4.txt ⭐ (هذا الملف)
 #    /about-zx-en.html  ← من زر English أعلى about-zx-ar
 #    /manifesto.html    ← البيان النهائي (عربي)
 #    /manifesto-en.html ← البيان النهائي (English)
+#    /tree/tree.html    ← مشروع الشجرة (متوفر بالعربية والإنجليزية)
 
 # 8. صفحتا "عن Zx":
 #    /about-zx-ar.html ← النسخة العربية (rtl)
@@ -704,11 +723,4 @@ C06. file-all4.txt ⭐ (هذا الملف)
 
 # ═══════════════════════════════════════════════════════════════
 #  نهاية الدليل - EOF
-# ═════════════════════════════════════════════════════════════
-
-
-انا لا ارفع الا ل github
-
-وهي تحدث كل المنصات
-
-_________________________
+# ═══════════════════════════════════════════════════════════════
