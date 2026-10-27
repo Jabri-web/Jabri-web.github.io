@@ -1,42 +1,128 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ======== أساسي ======== -->
 <title>سقطرى | Socotra - واحة الجبري</title>
+<meta name="description" content="جزيرة سقطرى، 'جزيرة الأحلام' و 'جزر جالاباغوس الشرق'. محمية طبيعية عالمية وموطن شجرة دم الأخوين الفريدة.">
+<meta name="author" content="م/ عبدالله محمد ناصر الجبري">
+<meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://jabri-com.vercel.app/Soqatra.html" />
+<!-- ======== Canonical ======== -->
+<link rel="canonical" href="https://jabri-com.vercel.app/Soqatra.html">
 
+<!-- ======== Open Graph ======== -->
+<meta property="og:locale" content="ar_YE">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="واحة الجبري | Heaven Al-Jabri">
+<meta property="og:title" content="جزيرة سقطرى - جزيرة الأحلام">
+<meta property="og:description" content="جزيرة سقطرى، محمية طبيعية عالمية. ثلث نباتاتها لا توجد في أي مكان بالعالم مثل شجرة دم الاخوين.">
+<meta property="og:image" content="https://jabri-com.vercel.app/image/Soqatra2026.png">
+<meta property="og:url" content="https://jabri-com.vercel.app/Soqatra.html">
+
+<!-- ======== Twitter Cards ======== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="جزيرة سقطرى - جزيرة الأحلام">
+<meta name="twitter:description" content="جزيرة سقطرى، جزر جالاباغوس الشرق، جمال ساحر وتاريخ عمره الاف السنين.">
+<meta name="twitter:image" content="https://jabri-com.vercel.app/image/Soqatra2026.png">
+
+<!-- ======== JSON-LD ======== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "جزيرة سقطرى - Socotra Island",
+  "description": "جزيرة سقطرى، 'جزيرة الأحلام' و 'جزر جالاباغوس الشرق'. محمية طبيعية عالمية. ثلث نباتاتها لا توجد في أي مكان بالعالم مثل شجرة دم الاخوين.",
+  "image": "https://jabri-com.vercel.app/image/Soqatra2026.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "أرخبيل سقطرى",
+    "addressCountry": "YE"
+  },
+  "touristType": ["Natural", "Wildlife", "UNESCO World Heritage"],
+  "isAccessibleForFree": true
+}
+</script>
 
 <style>
-  body{background:#0a0a0f;color:#e8e8f0;font-family:'Tahoma';padding:30px;line-height:2;text-align:center}
-  body.en{direction:ltr} .container{max-width:900px;margin:auto}
-  img{width:100%;border-radius:12px;border:2px solid #6ae3ff;margin:20px 0}
+  *{box-sizing:border-box}
+  body{background:#0a0a0f;color:#e8e8f0;font-family:'Tahoma', sans-serif;padding:30px;line-height:2;text-align:center;margin:0}
+  body.en{direction:ltr} 
+  .container{max-width:900px;margin:auto}
+  
+  .main-img {width:100%; max-width:900px; border-radius:12px; border:2px solid #6ae3ff; margin:20px 0;}
+  
   h1{color:#6ae3ff;font-size:2.2rem;margin-bottom:20px}
   p{font-size:1.15rem;color:#c8c8d8;margin:15px 0}
-  .btn{background:#6ae3ff;color:#0a0a0f;border:none;padding:14px 30px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;margin-top:30px;font-size:16px}
-  .lang-btn{position:fixed;top:20px;left:20px;background:#6ae3ff;border:none;color:#0a0a0f;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:700}
-  .ar,.en{display:inline} body.en .ar{display:none} body:not(.en) .en{display:none}
+  
+  .btn{background:#6ae3ff;color:#0a0a0f;border:none;padding:14px 30px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;margin-top:30px;font-size:16px; transition:0.3s;}
+  .btn:hover {background: #4bcce6;}
+  
+  .lang-btn{position:fixed;top:20px;left:20px;background:#6ae3ff;border:none;color:#0a0a0f;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:700; z-index:1000;}
+  
+  .ar,.en{display:inline} 
+  body.en .ar{display:none} 
+  body:not(.en) .en{display:none}
+
+  /* ======== تنسيقات البطاقات والخريطة (اللي كانت ناقصة) ======== */
+  .atlas-hero { margin: 30px 0; }
+  .atlas-hero img { width: 100%; max-width: 500px; height: auto; border-radius: 12px; border: 2px solid #c9a84c; }
+  .atlas-hero figcaption { color: #c9a84c; margin-top: 10px; font-size: 0.9rem; }
+  
+  .location-box { background: #111118; padding: 20px; border-radius: 12px; margin-top: 30px; border: 1px solid #333; text-align: center;}
+  .location-box h2 { color: #6ae3ff; margin-bottom: 10px;}
 </style>
 </head>
 <body>
 <button class="lang-btn" onclick="document.body.classList.toggle('en')"><span class="ar">EN</span><span class="en">عربي</span></button>
 <div class="container">
   <h1><span class="ar">سقطرى - جزيرة الأحلام</span><span class="en">Socotra - Island of Dreams</span></h1>
-  <img src="/image/Soqatra2026.png" alt="سوقطرى الجزيرة الفريدة">
+  
+  <img src="/image/Soqatra2026.png" alt="سوقطرى الجزيرة الفريدة" class="main-img">
+  
   <p><span class="ar">جزيرة سقطرى، "جزيرة الأحلام" و "جزر جالاباغوس الشرق". ثلث نباتاتها لا توجد في أي مكان بالعالم مثل شجرة دم الاخوين.</span>
   <span class="en">Socotra Island, "Island of Dreams" and "Eastern Galapagos". One third of its plants exist nowhere else, like the Dragon's Blood Tree.</span></p>
+  
   <p><span class="ar">محمية طبيعية عالمية. جمال ساحر وتاريخ عمره الاف السنين في قلب المحيط الهندي.</span>
   <span class="en">A global nature reserve. Enchanting beauty and thousands of years of history in the heart of the Indian Ocean.</span></p>
+  
   <a href="index.html" class="btn">← <span class="ar">العودة الى الواحة</span><span class="en">Back to Heaven</span></a>
 </div>
 
 
 
+<!-- بطاقات الواحة -->
+<figure class="atlas-hero">
+    <img src="/image/atlas.png" onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الأمامي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong><br>الهوية البصرية · شعار الواحة</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/jabri-card-f.png" onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الأمامي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong><br>الهوية البصرية · شعار الواحة</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/jabri-card-b.png" onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>من صنعاء إلى الكون — اليمن الحضارة والتاريخ</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/real-jabri.png" onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>من صنعاء إلى الكون — اليمن الحضارة والتاريخ</figcaption>
+</figure>
+
+<!-- 2️⃣ الموقع -->
+<div class="location-box">
+    <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 منزلنا - عبدالله الجبري</h2>
+    <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR">اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR</p>
+    <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>
+    <br>
+    <a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:#6ae3ff;color:#0a0a0f;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب</a>
+</div>
+
 <!-- في كل صفحة HTML -->
-<div id="header-placeholder"></div>
 <div id="footer-placeholder"></div>
-<script src="/js/init-page-root.js"></script>
-<script src="/js/menu.js"></script>
+<script src="/js/init-page-root.js" defer></script>
 
 </body>
 </html>

@@ -91,24 +91,9 @@
       "@type": "BreadcrumbList",
       "@id": "https://jabri-com.vercel.app/Sanaa.html#breadcrumb",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "الرئيسية",
-          "item": "https://jabri-com.vercel.app/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "السياحة في اليمن",
-          "item": "https://jabri-com.vercel.app/yemen-photo.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "صنعاء القديمة",
-          "item": "https://jabri-com.vercel.app/Sanaa.html"
-        }
+        { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://jabri-com.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "السياحة في اليمن", "item": "https://jabri-com.vercel.app/yemen-photo.html" },
+        { "@type": "ListItem", "position": 3, "name": "صنعاء القديمة", "item": "https://jabri-com.vercel.app/Sanaa.html" }
       ]
     }
   ]
@@ -120,15 +105,30 @@
   body{background:#0a0a0f;color:#e8e8f0;font-family:'Tahoma',sans-serif;padding:30px;line-height:2;text-align:center;margin:0}
   body.en{direction:ltr}
   .container{max-width:900px;margin:auto}
-  img{width:100%;border-radius:12px;border:2px solid #6ae3ff;margin:20px 0;max-width:900px}
+  
+  /* فصل الصورة الرئيسية عن باقي الصور لتجنب تشوه البطاقات */
+  .main-img {width:100%; max-width:900px; border-radius:12px; border:2px solid #6ae3ff; margin:20px 0;}
+  
   h1{color:#6ae3ff;font-size:2.2rem;margin-bottom:20px}
   p{font-size:1.15rem;color:#c8c8d8;margin:15px 0}
+  
   .btn{background:#6ae3ff;color:#0a0a0f;border:none;padding:14px 30px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;margin-top:30px;font-size:16px;transition:.3s}
   .btn:hover{background:#8aebff;transform:translateY(-2px)}
+  
   .lang-btn{position:fixed;top:20px;left:20px;background:#6ae3ff;border:none;color:#0a0a0f;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:700;z-index:99}
+  
   .ar,.en{display:inline}
   body.en .ar{display:none}
   body:not(.en) .en{display:none}
+  
+  /* تنسيقات البطاقات والخريطة */
+  .atlas-hero { margin: 30px 0; }
+  .atlas-hero img { width: 100%; max-width: 500px; height: auto; border-radius: 12px; border: 2px solid #c9a84c; }
+  .atlas-hero figcaption { color: #c9a84c; margin-top: 10px; font-size: 0.9rem; }
+  
+  .location-box { background: #111118; padding: 20px; border-radius: 12px; margin-top: 30px; border: 1px solid #333; text-align: center;}
+  .location-box h2 { color: #6ae3ff; margin-bottom: 10px;}
+
   @media(max-width:600px){
     body{padding:15px}
     h1{font-size:1.6rem}
@@ -154,7 +154,8 @@
     <span class="en">Old Sana'a - Capital of History</span>
   </h1>
   
-  <img src="/Image/Sanaa2026.png" alt="صنعاء القديمة - مدينة التراث العالمي" loading="lazy" width="900" height="500">
+  <!-- تم إضافة كلاس main-img -->
+  <img src="/Image/Sanaa2026.png" alt="صنعاء القديمة - مدينة التراث العالمي" loading="lazy" width="900" height="500" class="main-img">
   
   <p>
     <span class="ar">صنعاء القديمة، عاصمة اليمن التاريخية، واحدة من أقدم المدن المسكونة بالعالم. تشتهر بمبانيها العالية المزينة بالجص الأبيض ونوافذها الملونة.</span>
@@ -169,12 +170,37 @@
   <a href="/index.html" class="btn">← <span class="ar">العودة الى الواحة</span><span class="en">Back to Heaven</span></a>
 </main>
 
-<!-- الفوتر placeholder -->
-<div id="footer-placeholder"></div>
+<!-- بطاقات الواحة -->
+<figure class="atlas-hero">
+    <img src="/image/atlas.png" onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الأمامي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong><br>الهوية البصرية · شعار الواحة</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/jabri-card-f.png" onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الأمامي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong><br>الهوية البصرية · شعار الواحة</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/jabri-card-b.png" onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>من صنعاء إلى الكون — اليمن الحضارة والتاريخ</figcaption>
+</figure>
+<figure class="atlas-hero">
+    <img src="/image/real-jabri.png" onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي" loading="eager">
+    <figcaption><strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>من صنعاء إلى الكون — اليمن الحضارة والتاريخ</figcaption>
+</figure>
 
-<!-- السكريبتات -->
-<script src="/js/init-page-root.js"></script>
-<script src="/js/menu.js"></script>
+<!-- 2️⃣ الموقع -->
+<div class="location-box">
+    <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 منزلنا - عبدالله الجبري</h2>
+    <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR">اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR</p>
+    <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>
+    <br>
+    <!-- تصحيح لون الزر ليكون أزرق مطابق للصفحة -->
+    <a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:#6ae3ff;color:#0a0a0f;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب</a>
+</div>
+
+<!-- في كل صفحة HTML -->
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js" defer></script>
 
 </body>
 </html>
