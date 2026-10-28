@@ -27,6 +27,11 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://jabri-com.vercel.app/Author-cv.html">
 
+    <!-- Hreflang (Self-referencing) -->
+    <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/Author-cv.html">
+    <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/Author-cv.html">
+    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/Author-cv.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="عبدالله الجبري - السيرة الذاتية">
     <meta property="og:description" content="مهندس حاسب آلي، محلل شبكات وأنظمة، خبرة 25+ عام">
@@ -37,62 +42,36 @@
     <meta property="profile:first_name" content="Abdulla">
     <meta property="profile:last_name" content="Al-Jabri">
 
-    <!-- 1. Person -->
+    <!-- JSON-LD Structured Data (ProfilePage) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Abdulla Mohammed Nasser Al-Jabri",
-      "alternateName": "عبدالله الجبري",
-      "birthDate": "1968-01-15",
-      "nationality": "Yemeni",
-      "jobTitle": "IT Analyst / Network Analyst",
-      "email": "jabri62018@gmail.com",
-      "telephone": "+967770577182",
-      "url": "https://jabri-com.vercel.app/Author-cv.html",
-      "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
-      "sameAs": [
-        "https://orcid.org/0009-0003-3319-3822",
-        "https://jabri-com.vercel.app/",
-        "https://github.com/Jabri-web"
-      ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "King Fahd University of Petroleum and Minerals"
-      },
-      "knowsLanguage": ["Arabic", "English"]
-    }
-    </script>
-
-    <!-- 2. NewsArticle (تم تصحيح الشعار ليأخذ الأيقونة) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://jabri-com.vercel.app/Author-cv.html"
-      },
-      "headline": "السيرة الذاتية للباحث عبدالله الجبري - 25 عام خبرة",
-      "description": "السيرة الذاتية لعبدالله الجبري مؤسس واحة الجبري ونظرية Z+C+A=1",
-      "datePublished": "2026-09-27T00:00:00+03:00",
-      "dateModified": "2026-10-05T00:00:00+03:00",
-      "author": {
+      "@type": "ProfilePage",
+      "mainEntity": {
         "@type": "Person",
         "name": "Abdulla Mohammed Nasser Al-Jabri",
+        "alternateName": "عبدالله الجبري",
+        "birthDate": "1968-01-15",
+        "nationality": "Yemeni",
+        "jobTitle": "IT Analyst / Network Analyst",
+        "email": "jabri62018@gmail.com",
+        "telephone": "+967773415383",
         "url": "https://jabri-com.vercel.app/Author-cv.html",
-        "sameAs": "https://orcid.org/0009-0003-3319-3822"
+        "image": "https://jabri-com.vercel.app/image/Jabri-photo.png",
+        "sameAs": [
+          "https://orcid.org/0009-0003-3319-3822",
+          "https://jabri-com.vercel.app/",
+          "https://github.com/Jabri-web",
+          "https://jabri-com.vercel.app/profile.html"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "King Fahd University of Petroleum and Minerals"
+        },
+        "knowsLanguage": ["Arabic", "English"]
       },
-      "publisher": {
-        "@type": "NewsMediaOrganization",
-        "name": "واحة الجبري",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://jabri-com.vercel.app/icon-192.png"
-        }
-      },
-      "image": "https://jabri-com.vercel.app/icon-192.png",
-      "isAccessibleForFree": true
+      "datePublished": "2026-09-27T00:00:00+03:00",
+      "dateModified": "2026-10-29T00:00:00+03:00"
     }
     </script>
 
@@ -504,6 +483,42 @@
             margin-top: 12px;
         }
 
+        /* ===== MAP & IMAGES STYLING ===== */
+        .location-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fafbff;
+            border-radius: 16px;
+            border: 1px solid #dde1f0;
+            text-align: center;
+        }
+        .location-box iframe {
+            border: 0;
+            border-radius: 12px;
+            width: 100%;
+            height: 320px;
+        }
+        .atlas-hero {
+            margin: 20px 0;
+            text-align: center;
+            background: #fafbff;
+            border: 1px solid #dde1f0;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        .atlas-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+        .atlas-hero figcaption {
+            color: #4a4a6a;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
         /* ===== LANGUAGE TOGGLE ===== */
         .lang-ar, .lang-en {
             display: block;
@@ -582,6 +597,7 @@
             .profile-image::after { display: none; }
             .exp-box:hover { transform: none; }
             .skill-tag:hover { background: #eef1f7; color: #1a1a2e; transform: none; }
+            #visitorCounter { display: none; }
         }
     </style>
 </head>
@@ -591,7 +607,8 @@
 
     <!-- ===== LANGUAGE SWITCHER ===== -->
     <div class="lang-switch">
-        <button class="lang-btn active" id="lang-ar-btn" onclick="setLanguage('ar')">🇸🇦 العربية</button>
+        <!-- تم تغيير العلم هنا إلى العلم اليمني 🇾🇪 -->
+        <button class="lang-btn active" id="lang-ar-btn" onclick="setLanguage('ar')">🇾🇪 العربية</button>
         <button class="lang-btn" id="lang-en-btn" onclick="setLanguage('en')">🇬🇧 English</button>
     </div>
 
@@ -608,27 +625,18 @@
         <a href="https://jabri-com.vercel.app/" target="_blank">🌐 الموقع</a>
     </nav>
 
-    <!-- ========================================================== -->
     <!-- ===== الأزرار العلوية ===== -->
     <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
-
-        <a href="/cv-2026a.html" target="_blank"
-           style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+        <a href="/cv-2026a.html" target="_blank" style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 السيرة - العربية (cv-2026a)
         </a>
-
-        <a href="/cv-2026e.html" target="_blank"
-           style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+        <a href="/cv-2026e.html" target="_blank" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 C.V - English (cv-2026e)
         </a>
-
-        <a href="/author-history.html" target="_blank"
-           style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+        <a href="/author-history.html" target="_blank" style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
             📄 قصة الباحث (Author-history)
         </a>
-
     </div>
-    <!-- ========================================================== -->
 
     <!-- ========================================================== -->
     <!-- ==================== ARABIC CONTENT ======================== -->
@@ -782,24 +790,17 @@
 
         <!-- ===== الأزرار السفلية ===== -->
         <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
-
-            <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
-               style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+            <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf" style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📄 تحميل السيرة الذاتية (PDF)
             </a>
-
-            <button onclick="toggleTable()"
-                    style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+            <button onclick="toggleTable()" style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📊 عرض جدول المشاريع والـ DOIs
             </button>
-
         </div>
 
         <!-- ===== جدول المشاريع ===== -->
         <div id="projectsTable" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
-
             <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 المشاريع البحثية والـ DOIs</h3>
-
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; direction: ltr;">
                 <thead>
                     <tr style="background: #1a1a2e; color: #fff;">
@@ -829,20 +830,13 @@
                     <tr><td>12</td><td>jabri.com</td><td><a href="https://jabri-web.github.io/jabri/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">21003991</a></td></tr>
                 </tbody>
             </table>
-
-            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">
-                ✅ تم التحقق 2026-06-11 بواسطة الجبري – جميع الروابط والـ DOIs محدثة
-            </p>
+            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">✅ تم التحقق 2026-06-11 بواسطة الجبري – جميع الروابط والـ DOIs محدثة</p>
         </div>
 
         <script>
             function toggleTable() {
                 const table = document.getElementById('projectsTable');
-                if (table.style.display === 'none') {
-                    table.style.display = 'block';
-                } else {
-                    table.style.display = 'none';
-                }
+                table.style.display = (table.style.display === 'none') ? 'block' : 'none';
             }
         </script>
 
@@ -1013,24 +1007,17 @@
 
         <!-- ===== الأزرار السفلية ===== -->
         <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px 0;">
-
-            <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf"
-               style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+            <a href="/Author-cv-tex.pdf" download="Abdulla-Al-Jabri-CV.pdf" style="background: linear-gradient(135deg, #dc3545, #b02a37); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📄 Download CV (PDF)
             </a>
-
-            <button onclick="toggleTableEn()"
-                    style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
+            <button onclick="toggleTableEn()" style="background: linear-gradient(135deg, #1a1a2e, #2a2a5e); color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;">
                 📊 View Projects & DOIs Table
             </button>
-
         </div>
 
         <!-- ===== Projects Table ===== -->
         <div id="projectsTableEn" style="display: none; margin: 20px 0 30px 0; overflow-x: auto; background: #fafbff; border-radius: 16px; padding: 20px; border: 1px solid #dde1f0;">
-
             <h3 style="text-align: center; color: #1a1a2e; margin-bottom: 16px;">📚 Research Projects & DOIs</h3>
-
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; direction: ltr;">
                 <thead>
                     <tr style="background: #1a1a2e; color: #fff;">
@@ -1060,20 +1047,13 @@
                     <tr><td>12</td><td>jabri.com</td><td><a href="https://jabri-web.github.io/jabri/" target="_blank">Pages</a></td><td><a href="https://doi.org/10.5281/zenodo.21003991" target="_blank">21003991</a></td></tr>
                 </tbody>
             </table>
-
-            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">
-                ✅ Verified 2026-06-11 by Al-Jabri – All links and DOIs are updated
-            </p>
+            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #666;">✅ Verified 2026-06-11 by Al-Jabri – All links and DOIs are updated</p>
         </div>
 
         <script>
             function toggleTableEn() {
                 const table = document.getElementById('projectsTableEn');
-                if (table.style.display === 'none') {
-                    table.style.display = 'block';
-                } else {
-                    table.style.display = 'none';
-                }
+                table.style.display = (table.style.display === 'none') ? 'block' : 'none';
             }
         </script>
 
@@ -1091,8 +1071,91 @@
 
     </div> <!-- end lang-en -->
 
+    <!-- ===== Visual Identity & Map (داخل الحاوية) ===== -->
+    <div class="section" style="margin-top: 40px;">
+        <h2><span class="icon">💳</span> الهوية البصرية | Visual Identity</h2>
+
+        <figure class="atlas-hero">
+            <img src="/image/jabri-card-f.png" onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الأمامي" loading="lazy">
+            <figcaption>
+                <strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong><br>
+                الهوية البصرية · شعار الواحة
+            </figcaption>
+        </figure>
+
+        <figure class="atlas-hero">
+            <img src="/image/jabri-card-b.png" onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي" loading="lazy">
+            <figcaption>
+                <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>
+                من صنعاء إلى الكون — اليمن الحضارة والتاريخ
+            </figcaption>
+        </figure>
+
+        <figure class="atlas-hero">
+            <img src="/image/real-jabri.png" onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';" alt="بطاقة واحة الجبري - الوجه الخلفي 2" loading="lazy">
+            <figcaption>
+                <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong><br>
+                من صنعاء إلى الكون — اليمن الحضارة والتاريخ
+            </figcaption>
+        </figure>
+    </div>
+
+    <!-- ===== الموقع الجغرافي ===== -->
+    <div class="location-box">
+        <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 منزلنا - عبدالله الجبري</h2>
+        <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR" style="margin-bottom: 15px; color: #666;">اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR</p>
+        <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" loading="lazy"></iframe>
+        <br>
+        <a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:15px;background:#1a1a2e;color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب | Open in Google Maps</a>
+    </div>
+
 </div> <!-- end container -->
 
+<!-- ========================================================== -->
+<!-- Visitor Counter -->
+<!-- ========================================================== -->
+<div id="visitorCounter" style="position:fixed; top:65px; left:25%; transform:translateX(-50%) scale(0.5); transform-origin:center; background:linear-gradient(135deg,#8B4513,#A0522D); color:white; padding:10px 20px; border-radius:50px; font-size:18px; font-weight:bold; box-shadow:0 4px 15px rgba(139,69,19,0.5); z-index:9999; display:flex; align-items:center; gap:8px; border:1px solid #D2B48C;">
+    <span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار visitor:</span>
+    <span id="counterNumber">١</span>
+</div>
+
+<script>
+(function() {
+    'use strict';
+    var counterTextEl = document.getElementById('counterText');
+    var counterNumberEl = document.getElementById('counterNumber');
+    var BASE_COUNT = 1247;
+    var STORAGE_KEY = 'jabri_visitor_count';
+    var VISIT_FLAG = 'jabri_visited_today';
+    var count = parseInt(localStorage.getItem(STORAGE_KEY) || BASE_COUNT, 10);
+    var today = new Date().toDateString();
+    var lastVisit = localStorage.getItem(VISIT_FLAG);
+
+    if (lastVisit !== today) {
+        count += 1;
+        localStorage.setItem(STORAGE_KEY, count);
+        localStorage.setItem(VISIT_FLAG, today);
+    }
+
+    function updateCounter() {
+        var isEn = document.body.classList.contains('show-en') || document.documentElement.lang === 'en';
+        var formatted = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
+        if (counterNumberEl) counterNumberEl.textContent = formatted;
+        if (counterTextEl) {
+            counterTextEl.textContent = isEn ? (counterTextEl.getAttribute('data-en') || '👥 Visitors:') : (counterTextEl.getAttribute('data-ar') || '👥 زوار visitor:');
+        }
+    }
+    updateCounter();
+
+    var oldSetLang = window.setLanguage;
+    if (typeof oldSetLang === 'function') {
+        window.setLanguage = function(lang) {
+            oldSetLang(lang);
+            setTimeout(updateCounter, 50);
+        };
+    }
+})();
+</script>
 
 <script>
     function setLanguage(lang) {
@@ -1114,132 +1177,13 @@
             document.documentElement.dir = 'ltr';
         }
     }
-
-    // Default: Arabic
     setLanguage('ar');
 </script>
 
-
-<!-- ========================================================== -->
-<!-- أيقونة العداد — بدون Firebase -->
-<!-- ========================================================== -->
-<div id="visitorCounter" style="position:fixed; top:65px; left:25%; transform:translateX(-50%) scale(0.5); transform-origin:center; background:linear-gradient(135deg,#8B4513,#A0522D); color:white; padding:10px 20px; border-radius:50px; font-size:18px; font-weight:bold; box-shadow:0 4px 15px rgba(139,69,19,0.5); z-index:9999; display:flex; align-items:center; gap:8px; border:1px solid #D2B48C;">
-    <span id="counterText" data-ar="👥 زوار visitor:" data-en="👥 Visitors:">👥 زوار visitor:</span>
-    <span id="counterNumber">١</span>
-</div>
-
-<script>
-(function() {
-    'use strict';
-
-    var counterTextEl = document.getElementById('counterText');
-    var counterNumberEl = document.getElementById('counterNumber');
-
-    // رقم البداية
-    var BASE_COUNT = 1247;
-
-    var STORAGE_KEY = 'jabri_visitor_count';
-    var VISIT_FLAG = 'jabri_visited_today';
-
-    var count = parseInt(localStorage.getItem(STORAGE_KEY) || BASE_COUNT, 10);
-
-    // زيادة العداد مرة واحدة يومياً
-    var today = new Date().toDateString();
-    var lastVisit = localStorage.getItem(VISIT_FLAG);
-
-    if (lastVisit !== today) {
-        count += 1;
-        localStorage.setItem(STORAGE_KEY, count);
-        localStorage.setItem(VISIT_FLAG, today);
-    }
-
-    // تحديث الرقم حسب اللغة
-    function updateCounter() {
-        var isEn = document.body.classList.contains('show-en') ||
-                   document.documentElement.lang === 'en';
-        var formatted = count.toLocaleString(isEn ? 'en-US' : 'ar-EG');
-
-        if (counterNumberEl) counterNumberEl.textContent = formatted;
-        if (counterTextEl) {
-            counterTextEl.textContent = isEn
-                ? (counterTextEl.getAttribute('data-en') || '👥 Visitors:')
-                : (counterTextEl.getAttribute('data-ar') || '👥 زوار visitor:');
-        }
-    }
-
-    updateCounter();
-
-    // تحديث عند تبديل اللغة
-    var oldSetLang = window.setLanguage;
-    if (typeof oldSetLang === 'function') {
-        window.setLanguage = function(lang) {
-            oldSetLang(lang);
-            setTimeout(updateCounter, 50);
-        };
-    }
-
-    console.log('✅ عداد الزوار — بدون Firebase');
-})();
-</script>
-
-
-
-
-
-<figure class="atlas-hero">
-    <img src="/image/jabri-card-f.png" 
-         onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الأمامي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong>
-        الهوية البصرية · شعار الواحة
-    </figcaption>
-</figure>
-
-<figure class="atlas-hero">
-    <img src="/image/jabri-card-b.png" 
-         onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الخلفي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong>
-        من صنعاء إلى الكون — اليمن الحضارة والتاريخ
-    </figcaption>
-</figure>
-
-
-<figure class="atlas-hero">
-    <img src="/image/real-jabri.png" 
-         onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الخلفي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong>
-        من صنعاء إلى الكون — اليمن الحضارة والتاريخ
-    </figcaption>
-</figure>
-    
-
-    <!-- 2️⃣ الموقع -->
-    <div class="location-box">
-        <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 منزلنا - عبدالله الجبري</h2>
-        <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR">اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR</p>
-        <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>
-        <br><a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:var(--primary);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب</a>
-    </div>
-
-
-
-
-    <!-- في كل صفحة HTML -->
-    
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <script src="/js/init-page-root.js" defer></script>
+<!-- في كل صفحة HTML -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script src="/js/init-page-root.js" defer></script>
 
 </body>
 </html>
