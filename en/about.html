@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     
-    <!-- ===== ICON FIX - يظهر icon-192.png في قوقل بدال Yemen2026.png ===== -->
+    <!-- ===== ICON FIX ===== -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
     <link rel="shortcut icon" href="/icon-192.png">
-    <!-- احتفظ بنسختين - في الروت وفي image عشان قوقل ما يضيع -->
     <link rel="icon" href="/image/icon-192.png" type="image/png">
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -21,11 +20,17 @@
     <meta name="keywords" content="Abdulla Al-Jabri, Heaven Al-Jabri, Yemeni researcher, theoretical mathematics, Sindbad Theory, Yemen heritage, Sana'a, Shibam, Socotra, KFUPM, Zx">
     <meta name="author" content="Eng. Abdulla Mohammed Nasser Saleh Al-Jabri">
     
-    <!-- Canonical & Hreflang (Fixed) -->
+    <!-- ✅ Canonical & Hreflang (تم التصحيح) -->
+    <!-- نؤكد أن هذه الصفحة هي الأساسية لنفسها -->
     <link rel="canonical" href="https://jabri-com.vercel.app/en/about.html">
+    
+    <!-- نربطها بالنسخة العربية -->
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about.html">
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/about.html">
-    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/about.html">
+    
+    <!-- ✅ تصحيح مهم: النسخة الافتراضية x-default يجب أن تشير لهذه الصفحة (الإنجليزية) لتجنب التكرار -->
+    <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/en/about.html">
+    
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph -->
@@ -44,11 +49,19 @@
     <meta name="twitter:description" content="Founder of Heaven Al-Jabri, researcher in theoretical mathematics and Yemeni heritage documentation.">
     <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
 
-    <!-- Schema.org (Person & Organization) -->
+    <!-- Schema.org (Person & Organization & ProfilePage) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "ProfilePage",
+          "@id": "https://jabri-com.vercel.app/en/about.html#page",
+          "url": "https://jabri-com.vercel.app/en/about.html",
+          "name": "About Al-Jabri & The Gateway",
+          "inLanguage": "en",
+          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" }
+        },
         {
           "@type": "Person",
           "@id": "https://jabri-com.vercel.app/#person",
@@ -140,6 +153,15 @@
         .btn-primary { background: #6ae3ff; color: #0b0b16; }
         
         .back-link { text-align: center; margin-top: 3rem; }
+
+        /* Card Atlas Styles */
+        .atlas-hero { margin: 30px 0; text-align: center; background: #1a1a32; padding: 20px; border-radius: 16px; border: 1px solid #2a2a4e; }
+        .atlas-hero img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+        .atlas-hero figcaption { margin-top: 15px; font-size: 1.1rem; color: #6ae3ff; }
+
+        .location-box { background: #1a1a32; padding: 25px; border-radius: 16px; border: 1px solid #2a2a4e; margin: 30px 0; text-align: center; }
+        .location-box h2 { color: #a78bfa; font-size: 1.5rem; margin-bottom: 10px; }
+        .location-box p { color: #c0c0d0; margin-bottom: 15px; }
 
         footer { margin-top: 50px; padding: 30px 20px 20px; border-top: 2px solid #2a2a4e; text-align: center; color: #888; font-size: 0.9rem; }
         footer .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
@@ -301,6 +323,61 @@
             </div>
         </main>
 
+        <figure class="atlas-hero">
+            <img src="/image/atlas.png" 
+                 onerror="this.src='/image/icon-192.png'; this.alt='Fallback image';"
+                 alt="Heaven Al-Jabri Card - Front Side" 
+                 width="1200" height="800"
+                 loading="eager" decoding="async" fetchpriority="high">
+            <figcaption>
+                <strong>💳 Heaven Al-Jabri Card (Front Side)</strong><br>
+                Visual Identity · The Oasis Logo
+            </figcaption>
+        </figure>
+        <figure class="atlas-hero">
+            <img src="/image/jabri-card-f.png" 
+                 onerror="this.src='/image/icon-512.png'; this.alt='Fallback image';"
+                 alt="Heaven Al-Jabri Card - Front Side" 
+                 width="1200" height="800"
+                 loading="eager" decoding="async" fetchpriority="high">
+            <figcaption>
+                <strong>💳 Heaven Al-Jabri Card (Front Side)</strong><br>
+                Visual Identity · The Oasis Logo
+            </figcaption>
+        </figure>
+
+        <figure class="atlas-hero">
+            <img src="/image/jabri-card-b.png" 
+                 onerror="this.src='/image/icon-192.png'; this.alt='Fallback image';"
+                 alt="Heaven Al-Jabri Card - Back Side" 
+                 width="1200" height="800"
+                 loading="eager" decoding="async" fetchpriority="high">
+            <figcaption>
+                <strong>💳 Heaven Al-Jabri Card (Back Side)</strong><br>
+                From Sana'a to the Universe — Yemen, Civilization & History
+            </figcaption>
+        </figure>
+
+        <figure class="atlas-hero">
+            <img src="/image/real-jabri.png" 
+                 onerror="this.src='/image/Yemen2026.png'; this.alt='Fallback image';"
+                 alt="Heaven Al-Jabri Card - Back Side" 
+                 width="1200" height="800"
+                 loading="eager" decoding="async" fetchpriority="high">
+            <figcaption>
+                <strong>💳 Heaven Al-Jabri Card (Back Side)</strong><br>
+                From Sana'a to the Universe — Yemen, Civilization & History
+            </figcaption>
+        </figure>
+    
+        <!-- 2️⃣ Location -->
+        <div class="location-box">
+            <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 Our Home - Abdulla Al-Jabri</h2>
+            <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR">Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR</p>
+            <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>
+            <br><a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:var(--primary);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ Open in Google Maps</a>
+        </div>
+
         <!-- Footer -->
         <footer>
             <div class="footer-links">
@@ -333,69 +410,7 @@
       </a>
     </div>
 
-
-<figure class="atlas-hero">
-    <img src="/image/atlas.png" 
-         onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الأمامي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong>
-        الهوية البصرية · شعار الواحة
-    </figcaption>
-</figure>
-<figure class="atlas-hero">
-    <img src="/image/jabri-card-f.png" 
-         onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الأمامي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الأمامي)</strong>
-        الهوية البصرية · شعار الواحة
-    </figcaption>
-</figure>
-
-<figure class="atlas-hero">
-    <img src="/image/jabri-card-b.png" 
-         onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الخلفي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong>
-        من صنعاء إلى الكون — اليمن الحضارة والتاريخ
-    </figcaption>
-</figure>
-
-
-<figure class="atlas-hero">
-    <img src="/image/real-jabri.png" 
-         onerror="this.src='/image/Yemen2026.png'; this.alt='صورة بديلة';"
-         alt="بطاقة واحة الجبري - الوجه الخلفي" 
-         width="1200" height="800"
-         loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>
-        <strong>💳 بطاقة واحة الجبري (الوجه الخلفي)</strong>
-        من صنعاء إلى الكون — اليمن الحضارة والتاريخ
-    </figcaption>
-</figure>
-    
-
-    <!-- 2️⃣ الموقع -->
-    <div class="location-box">
-        <h2 class="txt" data-ar="📍 منزلنا - عبدالله الجبري" data-en="📍 Our Home - Abdulla Al-Jabri">📍 منزلنا - عبدالله الجبري</h2>
-        <p class="txt" data-ar="اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR" data-en="Yemen-Sana'a-Safiya Hizyaz - Near Al-Qasim Mosque - 67M4+MR">اليمن-صنعاء-صافية حزيز - جوار جامع القاسم - 67M4+MR</p>
-        <iframe src="https://www.google.com/maps?q=15.2342173,44.2570646&z=17&output=embed" width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>
-        <br><a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:var(--primary);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب</a>
-    </div>
-
-
-
-
     <!-- في كل صفحة HTML -->
-    
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/init-page-root.js" defer></script>
