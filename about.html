@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     
-    <!-- ===== ICON FIX - يظهر icon-192.png في قوقل بدال Yemen2026.png ===== -->
+    <!-- ===== ICON FIX ===== -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
     <link rel="shortcut icon" href="/icon-192.png">
-    <!-- احتفظ بنسختين - في الروت وفي image عشان قوقل ما يضيع -->
     <link rel="icon" href="/image/icon-192.png" type="image/png">
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -21,7 +20,7 @@
     <meta name="keywords" content="عبدالله الجبري, واحة الجبري, باحث يمني, الرياضيات النظرية, نظرية السندباد, التراث اليمني, صنعاء, شبام, سقطرى, KFUPM, Zx">
     <meta name="author" content="م/ عبدالله محمد ناصر صالح الجبري">
     
-    <!-- Canonical & Hreflang (Fixed) -->
+    <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://jabri-com.vercel.app/about.html">
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about.html">
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/about.html">
@@ -44,11 +43,23 @@
     <meta name="twitter:description" content="مؤسس واحة الجبري وباحث في الرياضيات النظرية وتوثيق التراث اليمني.">
     <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
 
-    <!-- Schema.org (Person & Organization) -->
+    <!-- Schema.org (ProfilePage & Person & Organization & WebSite) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "ProfilePage",
+          "@id": "https://jabri-com.vercel.app/about.html#page",
+          "url": "https://jabri-com.vercel.app/about.html",
+          "name": "عن الواحة والباحث - م/ عبدالله الجبري",
+          "inLanguage": "ar",
+          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+          "mainEntity": { "@id": "https://jabri-com.vercel.app/#person" },
+          "about": { "@id": "https://jabri-com.vercel.app/#organization" },
+          "datePublished": "2026-10-06",
+          "dateModified": "2026-11-01"
+        },
         {
           "@type": "Person",
           "@id": "https://jabri-com.vercel.app/#person",
@@ -78,6 +89,15 @@
           "logo": "https://jabri-com.vercel.app/icon-192.png",
           "founder": { "@id": "https://jabri-com.vercel.app/#person" },
           "description": "بوابة ثقافية وعلمية يمنية توثق التراث وتدعم الأبحاث النظرية."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jabri-com.vercel.app/#website",
+          "url": "https://jabri-com.vercel.app/",
+          "name": "واحة الجبري",
+          "alternateName": "Heaven Al-Jabri",
+          "inLanguage": ["ar", "en"],
+          "publisher": { "@id": "https://jabri-com.vercel.app/#organization" }
         }
       ]
     }
@@ -140,6 +160,14 @@
         .btn-primary { background: #6ae3ff; color: #0b0b16; }
         
         .back-link { text-align: center; margin-top: 3rem; }
+
+        .atlas-hero { margin: 30px 0; text-align: center; background: #1a1a32; padding: 20px; border-radius: 16px; border: 1px solid #2a2a4e; }
+        .atlas-hero img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+        .atlas-hero figcaption { margin-top: 15px; font-size: 1.1rem; color: #6ae3ff; }
+
+        .location-box { background: #1a1a32; padding: 25px; border-radius: 16px; border: 1px solid #2a2a4e; margin: 30px 0; text-align: center; }
+        .location-box h2 { color: #a78bfa; font-size: 1.5rem; margin-bottom: 10px; }
+        .location-box p { color: #c0c0d0; margin-bottom: 15px; }
 
         footer { margin-top: 50px; padding: 30px 20px 20px; border-top: 2px solid #2a2a4e; text-align: center; color: #888; font-size: 0.9rem; }
         footer .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
@@ -333,8 +361,6 @@
       </a>
     </div>
 
-
-
 <figure class="atlas-hero">
     <img src="/image/jabri-card-f.png" 
          onerror="this.src='/image/icon-192.png'; this.alt='صورة بديلة';"
@@ -359,7 +385,6 @@
     </figcaption>
 </figure>
 
-
 <figure class="atlas-hero">
     <img src="/image/real-jabri.png" 
          onerror="this.src='/image/icon-512.png'; this.alt='صورة بديلة';"
@@ -381,11 +406,7 @@
         <br><a href="https://www.google.com/maps/search/?api=1&query=15.2342173,44.2570646" target="_blank" style="display:inline-block;margin-top:12px;background:var(--primary);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700">🗺️ افتح في جوجل ماب</a>
     </div>
 
-
-
-
     <!-- في كل صفحة HTML -->
-    
     <div id="header-placeholder"></div>
     <div id="footer-placeholder"></div>
     <script src="/js/init-page-root.js" defer></script>
