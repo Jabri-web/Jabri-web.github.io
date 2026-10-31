@@ -20,17 +20,11 @@
     <meta name="keywords" content="Abdulla Al-Jabri, Heaven Al-Jabri, Yemeni researcher, theoretical mathematics, Sindbad Theory, Yemen heritage, Sana'a, Shibam, Socotra, KFUPM, Zx">
     <meta name="author" content="Eng. Abdulla Mohammed Nasser Saleh Al-Jabri">
     
-    <!-- ✅ Canonical & Hreflang (تم التصحيح) -->
-    <!-- نؤكد أن هذه الصفحة هي الأساسية لنفسها -->
+    <!-- Canonical & Hreflang (Fixed) -->
     <link rel="canonical" href="https://jabri-com.vercel.app/en/about.html">
-    
-    <!-- نربطها بالنسخة العربية -->
     <link rel="alternate" hreflang="ar" href="https://jabri-com.vercel.app/about.html">
     <link rel="alternate" hreflang="en" href="https://jabri-com.vercel.app/en/about.html">
-    
-    <!-- ✅ تصحيح مهم: النسخة الافتراضية x-default يجب أن تشير لهذه الصفحة (الإنجليزية) لتجنب التكرار -->
     <link rel="alternate" hreflang="x-default" href="https://jabri-com.vercel.app/en/about.html">
-    
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph -->
@@ -49,7 +43,7 @@
     <meta name="twitter:description" content="Founder of Heaven Al-Jabri, researcher in theoretical mathematics and Yemeni heritage documentation.">
     <meta name="twitter:image" content="https://jabri-com.vercel.app/image/Jabri-photo.webp">
 
-    <!-- Schema.org (Person & Organization & ProfilePage) -->
+    <!-- Schema.org (ProfilePage, Person, Organization, WebSite) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -60,7 +54,11 @@
           "url": "https://jabri-com.vercel.app/en/about.html",
           "name": "About Al-Jabri & The Gateway",
           "inLanguage": "en",
-          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" }
+          "isPartOf": { "@id": "https://jabri-com.vercel.app/#website" },
+          "mainEntity": { "@id": "https://jabri-com.vercel.app/#person" },
+          "about": { "@id": "https://jabri-com.vercel.app/#organization" },
+          "datePublished": "2026-10-06",
+          "dateModified": "2026-11-01"
         },
         {
           "@type": "Person",
@@ -91,6 +89,15 @@
           "logo": "https://jabri-com.vercel.app/icon-192.png",
           "founder": { "@id": "https://jabri-com.vercel.app/#person" },
           "description": "A Yemeni cultural and scientific gateway documenting heritage and supporting theoretical research."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jabri-com.vercel.app/#website",
+          "url": "https://jabri-com.vercel.app/",
+          "name": "Heaven Al-Jabri",
+          "alternateName": "واحة الجبري",
+          "inLanguage": ["ar", "en"],
+          "publisher": { "@id": "https://jabri-com.vercel.app/#organization" }
         }
       ]
     }
