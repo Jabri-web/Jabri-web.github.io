@@ -123,6 +123,12 @@
 }
 </script>
 
+<!-- مكتبة MathJax لتحويل الرموز الرياضية إلى معادلات -->
+<script>
+    MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <style>
 .zx-panel{font-family:'Cairo',Tahoma,sans-serif;direction:rtl;text-align:right;background:#fff;border:3px solid #1B5E20;border-radius:12px;padding:20px;margin:25px 12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);line-height:1.8;color:#111;max-width:1000px;margin-left:auto;margin-right:auto;}
 .zx-header{text-align:center;color:#1B5E20;margin:0 0 10px 0;font-size:24px;}
@@ -322,11 +328,12 @@ details.zx-details[open] summary{border-radius:8px 8px 0 0;}
 </style>
 </head>
 
+
+
 <body style="background:#f4f4f4; margin:0; padding:20px;">
 
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- 🔀 مبدّل الحوار — Zx Switch                            -->
-<!-- ملاحظة: تأكد من وجود about-zx-en.html و about-zx2.html -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <nav class="zx-switch" aria-label="Zx Dialogue Switcher">
   <a href="/about-zx.html" class="current" aria-current="page">
@@ -631,3 +638,4 @@ for xp in [5, 10, 18, 21, 50]:
 
 </body>
 </html>
+
