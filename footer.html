@@ -1,5 +1,4 @@
-
-<!-- footer.html — الفوتر العام مثلما كان | + زر ZX يفتح فوتر المجلدين -->
+<!-- footer.html — الفوتر العام مثلما كان | + زر ZX يفتح فوتر المجلدين | v4.2 -->
 <footer id="site-footer">
   <style>
     #site-footer{background:#0a0a0f;color:#e8e8f0;padding:40px 15px 25px;border-top:1px solid #2a2a3e;font-family:'Cairo','Tajawal',Arial,sans-serif;text-align:center;display:block;visibility:visible}
@@ -128,15 +127,16 @@
     <a href="https://jabri-com.vercel.app" class="green">🏛️ <span class="txt" data-ar="الموقع الرئيسي" data-en="Main Site">الموقع الرئيسي</span></a>
   </div>
 
-  <!-- ===== زر ZX — قبل الحقوق ===== -->
+  <!-- ===== زر ZX — قبل الحقوق — بترجمة ===== -->
   <div>
     <button type="button" class="zx-toggle-btn" id="zxToggleBtn" aria-expanded="false" aria-controls="zx-folders-footer">
-      🔬 ZX — المجلدين الفريدين ▾
+      <span class="txt" data-ar="🔬 ZX — المجلدين الفريدين" data-en="🔬 ZX — Unique Folders">🔬 ZX — المجلدين الفريدين</span>
+      <span id="zxArrow">▾</span>
     </button>
   </div>
 
   <!-- ===== فوتر المجلدين — مخفي لحد ما نضغط الزر ===== -->
-  <div id="zx-folders-footer" aria-hidden="true">
+  <div id="zx-folders-footer" aria-hidden="true" hidden>
     <div class="wrap">
       <nav class="top-nav">
         <a href="https://jabri-com.vercel.app/Page11.html" class="nav-item">🏠 الرئيسية</a>
@@ -170,12 +170,9 @@
         <a href="https://jabri-com.vercel.app/about-zx2.html" class="nav-item">📝 zx2</a>
         <a href="https://jabri-com.vercel.app/about-zx2-en.html" class="nav-item">📝 zx2-en</a>
         <a href="https://jabri-com.vercel.app/jabri_5/wells/zx-simulate-z3.html" class="nav-item">📝 zx-simulate-z3</a>
-       <a href="https://jabri-com.vercel.app/jabri_5/wells/zx-simulate.html" class="nav-item">📝 zx-simulate</a>
-    
-    
       </nav>
     </div>
-    <button type="button" class="zx-back-btn" id="zxBackBtn">↑ العودة للفوتر العام</button>
+    <button type="button" class="zx-back-btn" id="zxBackBtn"><span class="txt" data-ar="↑ العودة للفوتر العام" data-en="↑ Back to General Footer">↑ العودة للفوتر العام</span></button>
   </div>
 
   <!-- © — زي ما كان بالظبط -->
@@ -187,30 +184,50 @@
 </footer>
 
 <script>
-(function(){
-  var btn = document.getElementById('zxToggleBtn');
-  var back = document.getElementById('zxBackBtn');
-  var box = document.getElementById('zx-folders-footer');
-  if(!btn || !box) return;
-  function openZX(){
-    box.classList.add('open');
-    box.setAttribute('aria-hidden','false');
-    btn.setAttribute('aria-expanded','true');
-    btn.textContent = '🔬 ZX — المجلدين الفريدين ▴';
-    box.scrollIntoView({behavior:'smooth', block:'nearest'});
+(function () {
+  function initZXFooter() {
+    var btn = document.getElementById('zxToggleBtn');
+    var back = document.getElementById('zxBackBtn');
+    var box = document.getElementById('zx-folders-footer');
+    var arrow = document.getElementById('zxArrow');
+    if (!btn || !box || btn.dataset.initialized === 'true') return;
+    btn.dataset.initialized = 'true';
+
+    function openZX(scroll) {
+      box.hidden = false;
+      box.classList.add('open');
+      box.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      if (arrow) arrow.textContent = '▴';
+      if (scroll) box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+    function closeZX(scroll) {
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      box.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (arrow) arrow.textContent = '▾';
+      if (scroll) btn.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+
+    btn.addEventListener('click', function () {
+      if (box.hidden) openZX(true); else closeZX(true);
+    });
+    if (back) back.addEventListener('click', function () { closeZX(true); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !box.hidden) closeZX(false);
+    });
+
+    var p = location.pathname || '';
+    if (p.indexOf('/jabri_5/') !== -1 || p.indexOf('/tree/') !== -1) openZX(false);
+    else closeZX(false);
   }
-  function closeZX(){
-    box.classList.remove('open');
-    box.setAttribute('aria-hidden','true');
-    btn.setAttribute('aria-expanded','false');
-    btn.textContent = '🔬 ZX — المجلدين الفريدين ▾';
-    btn.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZXFooter);
+  } else {
+    initZXFooter();
   }
-  btn.addEventListener('click', function(){
-    if(box.classList.contains('open')) closeZX(); else openZX();
-  });
-  if(back) back.addEventListener('click', closeZX);
+  window.initZXFooter = initZXFooter;
 })();
 </script>
-
-
