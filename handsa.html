@@ -482,7 +482,18 @@
 
   <main class="container">
 
-    <h1>🌊 هندسة الأعداد اليمنية</h1>
+<a href="/char-balance.html">📜Char Balance</a>
+<a href="/tree/appendix.html">📜 الملحق الجامع</a>
+<a href="/handsa.html">📜 handsa</a>
+<a href="/jst/handsa-v5.0.html">📜 handsa-v5.0</a>
+<a href="/jst/seesaw.html">📜 seesaw</a>
+<a href="/jst/jst-theory-proof.html">📜 jst-theory-proof</a>
+<a href="/jst/JST-v1-2.closing-f.html">📜JST-closing</a>
+<a href="/jst/odd-even.html">📜 odd-even</a>
+  
+    
+
+<h1>🌊 هندسة الأعداد اليمنية</h1>
     <div class="sub">Yemeni Number Geometry</div>
 
     <div class="intro">
@@ -1290,6 +1301,212 @@
       </p>
       <div class="from">— قارئ من واحة الجبري</div>
     </div>
+
+
+
+<!-- ===== القسم الثامن: تعميم المتمم والأساس 360 ===== -->
+<div class="section hex" id="section-8">
+  <h2><span>🔢</span> 8. المتمّم في الأساس 360 — من الخاصية إلى الرتبة</h2>
+
+  <p>
+    انتقلنا من المتمّم العشري إلى دراسة القاعدة العامة في أي أساس
+    صحيح b أكبر من 1. ونختار هنا الأساس
+    <span dir="ltr">b = 360</span> لاختبار البنية العددية خارج النظام العشري.
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    b = 360 = 2³ × 3² × 5 = 36 × 10
+    <small>الأساس الجديد الذي ندرس فيه دورات المتمّم</small>
+  </div>
+
+  <h3 style="color:var(--orange); margin-top:22px;">8.1 — المبرهنة العامة للمتمّم</h3>
+
+  <p>
+    ليكن p عدداً أولياً لا يقسم b، ولتكن رتبة b modulo p هي:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    ordₚ(b) = 2m
+  </div>
+
+  <p>
+    عندئذ:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    bᵐ ≡ −1 (mod p)
+    <small>لأن الرتبة الدقيقة 2m تمنع أن يكون bᵐ ≡ 1</small>
+  </div>
+
+  <p>
+    وإذا كانت الدورة في الأساس b مكوّنة من 2m خانة،
+    وقُسمت إلى نصفين A وB، مع حفظ الأصفار البادئة،
+    فإن:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    A + B = bᵐ − 1
+    <small>قانون المتمّم النصفي في أي أساس</small>
+  </div>
+
+  <div class="note">
+    <strong>النتيجة:</strong>
+    البنية الجبرية للمتمّم ليست خاصة بالأساس العشري.
+    الذي يتغير من أساس إلى آخر هو مجموعة الأوليات
+    والرتب التي تحقق هذه الخاصية.
+  </div>
+
+  <h3 style="color:var(--orange); margin-top:22px;">8.2 — جدول الرتب في الأساس 360</h3>
+
+  <p>
+    نحسب رتبة 360 modulo p للأعداد الأولية التي لا تقسم 360:
+  </p>
+
+  <table class="floors">
+    <thead>
+      <tr>
+        <th>p</th>
+        <th>360 mod p</th>
+        <th>الرتبة</th>
+        <th>متمّم نصفي؟</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>7</td><td>3</td><td>6</td><td>نعم</td></tr>
+      <tr><td>11</td><td>8</td><td>10</td><td>نعم</td></tr>
+      <tr><td>13</td><td>9</td><td>3</td><td>لا</td></tr>
+      <tr><td>17</td><td>3</td><td>16</td><td>نعم</td></tr>
+      <tr><td>19</td><td>18</td><td>2</td><td>نعم</td></tr>
+      <tr><td>23</td><td>15</td><td>22</td><td>نعم</td></tr>
+      <tr><td>29</td><td>12</td><td>4</td><td>نعم</td></tr>
+      <tr><td>31</td><td>19</td><td>15</td><td>لا</td></tr>
+      <tr><td>37</td><td>27</td><td>6</td><td>نعم</td></tr>
+      <tr><td>41</td><td>32</td><td>4</td><td>نعم</td></tr>
+      <tr><td>43</td><td>16</td><td>7</td><td>لا</td></tr>
+      <tr><td>73</td><td>68</td><td>72</td><td>نعم</td></tr>
+      <tr><td>97</td><td>69</td><td>32</td><td>نعم</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>قراءة الجدول:</strong>
+    كل رتبة زوجية تعطي المتمّم النصفي للأولي p.
+    أما الرتبة الفردية فلا تعطي هذا المتمّم.
+    وليس مطلوباً أن تكون الرتبة قوة للعدد 2 حتى يتحقق المتمّم.
+  </div>
+
+  <h3 style="color:var(--orange); margin-top:22px;">8.3 — البصمة التربيعية للأساس 360</h3>
+
+  <p>
+    نلاحظ أن:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    360 = 36 × 10 = 6² × 10
+  </div>
+
+  <p>
+    لذلك، لكل عدد أولي p أكبر من 5:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    (360/p) = (10/p)
+    <small>رمز ليجاندر متساوٍ لأن 36 مربع كامل modulo p</small>
+  </div>
+
+  <p>
+    إذا كانت قيمة الرمز −1، فإن مبرهنة أويلر تعطي:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    360^((p−1)/2) ≡ −1 (mod p)
+  </div>
+
+  <p>
+    وهذا يضمن أن رتبة 360 زوجية، ومن ثم يتحقق المتمّم النصفي.
+    لكنه شرط كافٍ وليس ضرورياً؛ فالأوليان 37 و41 يحققان المتمّم
+    رغم أن رمز ليجاندر لهما يساوي +1.
+  </p>
+
+  <div class="note">
+    <strong>تمييز مهم:</strong>
+    رمز ليجاندر −1 يضمن زوجية الرتبة، لكنه لا يضمن أن الرتبة
+    قوة خالصة للعدد 2. فمثلاً رتبة 360 modulo 7 تساوي 6،
+    ورتبته modulo 11 تساوي 10.
+  </div>
+
+  <h3 style="color:var(--orange); margin-top:22px;">8.4 — عائلة الرتب 2ᵏ</h3>
+
+  <p>
+    إذا كان:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    ordₚ(360) = 2ᵏ
+  </div>
+
+  <p>
+    فإن p يقسم العدد:
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    360^(2^(k−1)) + 1
+  </div>
+
+  <p>
+    والعكس صحيح لكل عامل أولي لهذا العدد: رتبته الدقيقة
+    modulo p تساوي 2ᵏ؛ لأن الرتبة تقسم 2ᵏ
+    ولا تقسم 2^(k−1).
+  </p>
+
+  <div class="formula-box hex" dir="ltr">
+    360² + 1 = 129601 = 19² × 29 × 41 × 109
+    <small>عوامل الرتبة 4: 29 و41 و109</small>
+  </div>
+
+  <div class="formula-box hex" dir="ltr">
+    360⁴ + 1 = 15497 × 1083833
+    <small>العاملان الأوليان من الرتبة 8</small>
+  </div>
+
+  <div class="formula-box hex" dir="ltr">
+    360⁸ + 1 =
+    17 × 285569 × 58111224122737
+    <small>العوامل الأولية الثلاثة من الرتبة 16</small>
+  </div>
+
+  <h3 style="color:var(--orange); margin-top:22px;">8.5 — خلاصة الامتداد</h3>
+
+  <div class="key-box">
+    <strong>قانون المتمّم بنية عامة:</strong><br>
+    إذا كانت رتبة الأساس b modulo p زوجية،
+    فإن نصف الدورة يكمل النصف الآخر إلى
+    <span dir="ltr">bᵐ − 1</span>.<br>
+    <br>
+    الأساس 360 يقدم عائلة جديدة من الرتب والعوامل الأولية،
+    مع احتفاظه بالبنية الجبرية نفسها.
+  </div>
+
+  <div class="limits">
+    <strong>حدود النتيجة:</strong>
+    <ul style="margin:8px 18px 0; padding:0;">
+      <li>المبرهنة العامة للمتمّم مثبتة جبرياً للأولي p عندما تكون الرتبة زوجية.</li>
+      <li>جدول الأوليات أعلاه أمثلة محسوبة، وليس تصنيفاً لجميع الأوليات.</li>
+      <li>تفكيكات الأعداد المعروضة تحدد عائلات الرتب 2 و4 و8 و16، ولا تعني أن جميع رتب الأساس 360 قوى للعدد 2.</li>
+      <li>البصمة التربيعية المشتركة بين 360 و10 لا تعني تطابق مجموعتي الرتب في كل التفاصيل.</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
     <div class="article-footer">
       ✍ <strong>#عبدالله_الجبري</strong> | صنعاء — اليمن<br>
